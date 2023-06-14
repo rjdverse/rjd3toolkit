@@ -1,0 +1,106 @@
+syntax = "proto3";
+import public "toolkit.proto";
+import public "modelling.proto";
+
+package sa;
+
+option java_package = "demetra.sa.io.protobuf";
+option java_outer_classname = "SaProtos";
+
+enum ComponentType{
+    UNDEFINED=0;
+	SERIES=1;
+    TREND=2;
+    SEASONAL=3;
+    SEASONALLYADJUSTED=4;
+    IRREGULAR=5;
+    CALENDAR=6;
+}
+
+enum DecompositionMode {
+  UNKNOWN = 0;	
+  /* Y = T + S + I) */
+  ADDITIVE = 1;
+  /* Y = T * S * I) */
+  MULTIPLICATIVE = 2;
+  /* Y = T * (S + I - 1) */
+  PSEUDOADDITIVE = 3;
+}
+
+message SaDecomposition{
+	DecompositionMode mode = 1;
+	modelling.TsComponent series = 2;
+	modelling.TsComponent seasonally_adjusted = 3;
+	modelling.TsComponent trend = 4;
+	modelling.TsComponent seasonal = 5;
+	modelling.TsComponent irregular = 6;
+}
+
+enum BenchmarkingTarget {
+	BENCH_TARGET_UNSPECIFIED = 0;
+	BENCH_TARGET_ORIGINAL = 1;
+	BENCH_TARGET_CALENDARADJUSTED = 2;
+}
+
+enum BenchmarkingBias {
+	BENCH_BIAS_UNSPECIFIED = 0;
+    BENCH_BIAS_NONE = 1;
+	BENCH_BIAS_ADDITIVE = 2;
+	BENCH_BIAS_MULTIPLICATIVE = 3;
+}
+
+message BenchmarkingSpec{
+	bool enabled = 1;
+	BenchmarkingTarget target = 2;
+	double lambda = 3;
+	double rho = 4;
+	BenchmarkingBias bias = 5;
+	bool forecast = 6;
+}
+
+message VarianceDecomposition{
+	double cycle = 1;
+	double seasonal = 2;
+	double irregular = 3;
+	double calendar = 4;
+	double others = 5;
+	double total = 6;
+}
+
+message Diagnostics{
+	VarianceDecomposition variance_decomposition = 1;
+	jd3.StatisticalTest seasonal_ftest_on_irregular = 2;
+	jd3.StatisticalTest seasonal_ftest_on_sa = 3;
+	jd3.StatisticalTest seasonal_qtest_on_irregular = 4;
+	jd3.StatisticalTest seasonal_qtest_on_sa = 5;
+	jd3.StatisticalTest td_ftest_on_irregular = 6;
+	jd3.StatisticalTest td_ftest_on_sa = 7;
+}
+
+enum EstimationPolicy{
+	POLICY_NONE = 0;
+	POLICY_CURRENT = 1;
+	POLICY_FIXED = 2;
+	POLICY_FIXED_PARAMETERS = 3;
+	POLICY_FIXED_AUTOREGRESSIVEPARAMETERS = 4;
+	POLICY_FREE_PARAMETERS = 5;
+	POLICY_LASTOUTLIERS = 6;
+	POLICY_OUTLIERS = 7;
+	POLICY_ARIMA = 8;
+	POLICY_COMPLETE = 9;
+}
+
+enum IdentifiableSeasonality
+{
+	SA_UNKNOWN = 0;
+    SA_NONE = 1;
+	SA_PROBABLY_NONE = 2;
+	SA_PRESENT = 3;
+}
+
+message CombinedSeasonalityTest{
+	IdentifiableSeasonality seasonality = 1;
+	jd3.StatisticalTest kruskal_wallis = 2;
+	jd3.OneWayAnova stable_seasonality = 3;
+	jd3.OneWayAnova evolutive_seasonality = 4;
+}
