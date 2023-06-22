@@ -70,7 +70,7 @@ sarima_random<-function(model, length, stde=1, tdegree=0){
          as.integer(tdegree)))
 }
 
-#' Decompose SARIMA Model
+#' Decompose SARIMA Model into three components trend, seasonal, irregular
 #'
 #' @param model SARIMA model to decompose.
 #' @param rmod trend threshold.
