@@ -74,7 +74,7 @@ plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
     # par(mar = c(5, 4, 4, 2) + 0.1)
     ts.plot(data_plot[, series_graph],
             col = colors[series_graph],
-            main = caption, lty = lty,
+            main = caption[1], lty = lty,
             ...)
     legend("bottomleft", legend = c("Series", "Trend","Seasonally adjusted"),
            col = colors[series_graph], lty = 1,
@@ -90,7 +90,7 @@ plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
     # col <- colors[gsub("_.*$", "", series_graph)]
     ts.plot(data_plot[, series_graph],
             col = colors[series_graph],
-            main = caption, lty = lty,
+            main = caption[1], lty = lty,
             ...)
     legend("bottomleft", legend = c("Seas (component)",
                                     "Irregular"),
