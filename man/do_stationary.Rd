@@ -29,3 +29,6 @@ Automatic processing (identification of the order of the differencing) based on 
 The series should not be seasonal.
 Source: Tramo
 }
+\examples{
+do_stationary(log(ABS$X0.2.09.10.M),12)
+}
