@@ -49,6 +49,19 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
+.jd2r_mts<-function(s){
+  if (is.null(s)){
+    return (NULL)
+  }
+  jx<-.jcall(s, "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "toMatrix")
+  x<-.jd2r_matrix(jx)
+  if (is.null(x)) return (NULL)
+  pstart<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[I", "startPeriod", s)
+  ts(x,start=pstart[2:3], frequency=pstart[1])
+}
+
+#' @export
+#' @rdname jd3_utilities
 .jd2r_matrix<-function(s){
   if (is.jnull(s)){
     return (NULL)

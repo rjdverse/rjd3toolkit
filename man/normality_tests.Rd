@@ -5,6 +5,8 @@
 \alias{bowmanshenton}
 \alias{doornikhansen}
 \alias{jarquebera}
+\alias{skewness}
+\alias{kurtosis}
 \title{Normality Tests}
 \usage{
 bowmanshenton(data)
@@ -12,6 +14,10 @@ bowmanshenton(data)
 doornikhansen(data)
 
 jarquebera(data, k = 0, sample = T)
+
+skewness(data)
+
+kurtosis(data)
 }
 \arguments{
 \item{data}{data being tested.}
@@ -33,6 +39,10 @@ Set of functions to test the normality of a time series.
 \item \code{doornikhansen()}: Doornik-Hansen test
 
 \item \code{jarquebera()}: Jarque-Bera test
+
+\item \code{skewness()}: Skewness test
+
+\item \code{kurtosis()}: Kurtosis test
 
 }}
 \examples{
