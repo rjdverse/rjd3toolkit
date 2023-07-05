@@ -7,6 +7,7 @@
 \alias{.r2jd_ts}
 \alias{.r2jd_tsdomain}
 \alias{.jd2r_ts}
+\alias{.jd2r_mts}
 \alias{.jd2r_matrix}
 \alias{.r2jd_matrix}
 \alias{.jdomain}
@@ -91,6 +92,8 @@ An object of class \code{Message} of length 3.
 .r2jd_tsdomain(period, startYear, startPeriod, length)
 
 .jd2r_ts(s)
+
+.jd2r_mts(s, type = "LAST")
 
 .jd2r_matrix(s)
 
