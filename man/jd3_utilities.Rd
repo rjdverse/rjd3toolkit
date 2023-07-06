@@ -93,7 +93,7 @@ An object of class \code{Message} of length 3.
 
 .jd2r_ts(s)
 
-.jd2r_mts(s, type = "LAST")
+.jd2r_mts(s)
 
 .jd2r_matrix(s)
 
