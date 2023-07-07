@@ -21,14 +21,14 @@ Imports:
   methods
 SystemRequirements: Java (>= 17)
 License: EUPL
-URL: https://github.com/palatej/rjd3toolkit
+URL: https://github.com/rjdemetra/rjd3toolkit
 LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
 RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
-BugReports: https://github.com/palatej/rjd3toolkit/issues
+BugReports: https://github.com/rjdemetra/rjd3toolkit/issues
 Encoding: UTF-8
 Collate: 
     'utils.R'
