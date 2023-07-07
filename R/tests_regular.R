@@ -190,4 +190,36 @@ autocorrelations_inverse<-function(data, nar=30, n=15){
   return (res)
 }
 
+#' @export
+#' @describeIn normality_tests Skewness test
+skewness<-function(data){
+  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "skewness",as.numeric(data))
+  return (.jd2r_test(jtest))
+}
+
+#' @export
+#' @describeIn normality_tests Kurtosis test
+kurtosis<-function(data){
+  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kurtosis",as.numeric(data))
+  return (.jd2r_test(jtest))
+}
+
+#' Title
+#'
+#' @param data
+#' @param centile
+#' @param medianCorrected
+#'
+#' @return
+#' @export
+#'
+#' @examples
+mad<-function(data, centile=50, medianCorrected=TRUE){
+  return (.jcall("jdplus/toolkit/base/r/stats/Tests", "D", "mad",as.numeric(data), as.numeric(centile), as.logical(medianCorrected)))
+}
+
+
+
+
+
 
