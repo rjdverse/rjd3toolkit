@@ -25,6 +25,12 @@ NULL
 #' aggregate(s, nfreq = 4, conversion = "Average")
 aggregate<-function(s, nfreq=1,
                     conversion=c("Sum", "Average", "First", "Last", "Min", "Max"),
+                    complete=TRUE) {
+  UseMethod("aggregate", s)
+}
+#' @export
+aggregate.default<-function(s, nfreq=1,
+                    conversion=c("Sum", "Average", "First", "Last", "Min", "Max"),
                     complete=TRUE){
   conversion <- match.arg(conversion)
   if (is.null(s)){
@@ -38,6 +44,26 @@ aggregate<-function(s, nfreq=1,
   else{
     return (.jd2r_ts(jd_agg))
   }
+}
+#' @export
+aggregate.matrix <- function(s, nfreq=1,
+                    conversion=c("Sum", "Average", "First", "Last", "Min", "Max"),
+                    complete=TRUE) {
+  res <- do.call(cbind, lapply(seq_len(ncol(s)), function(i){
+    aggregate(s[,i], nfreq = nfreq, conversion = conversion, complete = complete)
+  }))
+  colnames(res) <- colnames(s)
+  res
+}
+#' @export
+aggregate.data.frame <- function(s, nfreq=1,
+                             conversion=c("Sum", "Average", "First", "Last", "Min", "Max"),
+                             complete=TRUE) {
+  res <- base::list2DF(lapply(seq_len(ncol(s)), function(i){
+    aggregate(s[,i], nfreq = nfreq, conversion = conversion, complete = complete)
+  }))
+  colnames(res) <- colnames(s)
+  res
 }
 
 #' Removal of missing values at the beginning/end
@@ -77,8 +103,11 @@ clean_extremities<-function(s){
 #' @return The interpolated series
 #' @export
 #'
-#' @examples
 ts_interpolate<-function(s, method=c("airline", "average")){
+  UseMethod("ts_interpolate", s)
+}
+#' @export
+ts_interpolate.default<-function(s, method=c("airline", "average")){
   method<-match.arg(method)
   if (is.null(s)){
     return (NULL)
@@ -93,6 +122,22 @@ ts_interpolate<-function(s, method=c("airline", "average")){
   }else
     return (NULL)
 }
+#' @export
+ts_interpolate.matrix <- function(s, method=c("airline", "average")){
+  result <- s
+  for (i in seq_len(ncol(s))){
+    result[, i] <- ts_interpolate(s[,i], method = method)
+  }
+  result
+}
+#' @export
+ts_interpolate.data.frame <- function(s, method=c("airline", "average")){
+  result <- s
+  for (i in seq_len(ncol(s))){
+    result[, i] <- ts_interpolate(s[,i], method = method)
+  }
+  result
+}
 
 #' Multiplicative adjustment of a time series for leap year / length of periods
 #'
@@ -106,7 +151,15 @@ ts_interpolate<-function(s, method=c("airline", "average")){
 #' @export
 #'
 #' @examples
+#' y <- ABS$X0.2.09.10.M
+#' ts_adjust(y)
+#' # with reverse we can find the
+#' all.equal(ts_adjust(ts_adjust(y), reverse = TRUE), y)
 ts_adjust<-function(s, method=c("LeapYear", "LengthOfPeriod"), reverse = FALSE){
+  UseMethod("ts_adjust", s)
+}
+#' @export
+ts_adjust.default<-function(s, method=c("LeapYear", "LengthOfPeriod"), reverse = FALSE){
   method<-match.arg(method)
   if (is.null(s)){
     return (NULL)
@@ -119,6 +172,22 @@ ts_adjust<-function(s, method=c("LeapYear", "LengthOfPeriod"), reverse = FALSE){
   else{
     return (.jd2r_ts(jd_st))
   }
+}
+#' @export
+ts_adjust.matrix <- function(s, method=c("LeapYear", "LengthOfPeriod"), reverse = FALSE){
+  result <- s
+  for (i in seq_len(ncol(s))){
+    result[, i] <- ts_adjust(s[,i], method = method, reverse = reverse)
+  }
+  result
+}
+#' @export
+ts_adjust.data.frame <- function(s, method=c("LeapYear", "LengthOfPeriod"), reverse = FALSE){
+  result <- s
+  for (i in seq_len(ncol(s))){
+    result[, i] <- ts_adjust(s[,i], method = method, reverse = reverse)
+  }
+  result
 }
 
 

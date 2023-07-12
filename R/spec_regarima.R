@@ -464,10 +464,10 @@ set_outlier.default <- function(x,
   va_name <- ifelse(is_tramo, "va", "defva")
   tcr_name <- ifelse(is_tramo, "tcrate", "monthlytcrate")
 
-  if(missing(critical.value) | is.na(critical.value)){
+  if(missing(critical.value) | any(is.na(critical.value))){
     critical.value <- outlier[[va_name]]
   }else{
-    outlier[[va_name]] <- critical.value
+    outlier[[va_name]] <- critical.value[1]
   }
   if(is.null(outliers.type) || length(outliers.type) == 0){
     if (is_tramo) {
@@ -486,8 +486,9 @@ set_outlier.default <- function(x,
         outlier[[out.name]] <- out.name %in% tolower(outliers.type)
       }
     } else {
-      outlier$outliers <- lapply(outliers.type, function(x){
-        list(type = x, va = critical.value)
+      critical.value <- rep(critical.value, length(outliers.type))
+      outlier$outliers <- lapply(seq_along(outliers.type), function(i){
+        list(type = outliers.type[i], va = critical.value[i])
       })
     }
   }
