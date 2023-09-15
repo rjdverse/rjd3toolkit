@@ -45,9 +45,9 @@ vcov.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima")
     return(NULL)
   component <- match.arg(component)
   if (component == "regression") {
-    object$parameters$cov
-  } else {
     object$bvar
+  } else {
+    object$parameters$cov
   }
 }
 #' @export
