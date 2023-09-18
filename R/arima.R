@@ -323,7 +323,11 @@ sarima_estimate<-function(x, order=c(0,0,0), seasonal = list(order=c(0,0,0), per
   bytes<-.jcall("jdplus/toolkit/base/r/arima/SarimaModels", "[B", "toBuffer", jestim)
   p<-RProtoBuf::read(regarima.RegArimaModel$Estimation, bytes)
   res <- .p2r_regarima_estimation(p)
-  names(res$b) <- colnames(xreg)
+  names_xreg <- colnames(xreg)
+  if (mean) {
+    names_xreg <- c("intercept", names_xreg)
+  }
+  names(res$b) <- names_xreg
   names(res$parameters$val) <- c(sprintf("phi(%i)", seq_len(order[1])),
                                  sprintf("bphi(%i)", seq_len(seasonal$order[1])),
                                  sprintf("theta(%i)", seq_len(order[3])),
