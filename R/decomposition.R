@@ -4,7 +4,7 @@
 NULL
 
 
-#' @rdname sa.decomposition
+#' @rdname sa_decomposition
 #' @export
 sadecomposition<-function(y, sa, t, s, i, mul){
   if (! is.logical(mul))stop("Invalid SA decomposition")
@@ -33,7 +33,7 @@ sadecomposition<-function(y, sa, t, s, i, mul){
   return (structure(list(series=y, sa=sa, trend=t, seas=s, irr=i, multiplicative=mul), class=c("JD3_SADECOMPOSITION", "JD3")))
 }
 
-#' @rdname sa.decomposition
+#' @rdname sa_decomposition
 #' @export
 print.JD3_SADECOMPOSITION<-function(x, n_last_obs = frequency(x$series), ...){
   cat("Last values\n")
@@ -43,7 +43,7 @@ print.JD3_SADECOMPOSITION<-function(x, n_last_obs = frequency(x$series), ...){
     )
   )
 }
-#' @rdname sa.decomposition
+#' @rdname sa_decomposition
 #' @export
 plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
                        type_chart = c("sa-trend", "seas-irr"),
