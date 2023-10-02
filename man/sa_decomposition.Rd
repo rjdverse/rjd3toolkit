@@ -4,7 +4,7 @@
 \alias{sadecomposition}
 \alias{print.JD3_SADECOMPOSITION}
 \alias{plot.JD3_SADECOMPOSITION}
-\alias{sa.decomposition}
+\alias{sa_decomposition}
 \title{Generic Function for Seasonal Adjustment Decomposition}
 \usage{
 sadecomposition(y, sa, t, s, i, mul)
@@ -21,7 +21,7 @@ sadecomposition(y, sa, t, s, i, mul)
   ...
 )
 
-sa.decomposition(x, ...)
+sa_decomposition(x, ...)
 }
 \arguments{
 \item{y, sa, t, s, i, mul}{seasonal adjustment decomposition parameters.}
@@ -46,5 +46,5 @@ the seasonally adjusted and the trend; \code{"seas-irr"} plots the seasonal and 
 }
 \description{
 Generic function to format the seasonal adjustment decomposition components.
-\code{sa.decomposition()} is a generic function defined in other packages.
+\code{sa_decomposition()} is a generic function defined in other packages.
 }
