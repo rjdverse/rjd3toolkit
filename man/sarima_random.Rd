@@ -4,7 +4,7 @@
 \alias{sarima_random}
 \title{Simulate Seasonal ARIMA}
 \usage{
-sarima_random(model, length, stde = 1, tdegree = 0)
+sarima_random(model, length, stde = 1, tdegree = 0, seed = -1)
 }
 \arguments{
 \item{model}{a \code{"JD3_SARIMA"} model (see \code{\link[=sarima_model]{sarima_model()}} function).}
@@ -16,6 +16,8 @@ Unused if \code{tdegree} is larger than 0.}
 
 \item{tdegree}{degrees of freedom of the T distribution of the innovations.
 \code{tdegree = 0} if normal distribution is used.}
+
+\item{seed}{seed of the random numbers generator. Negative values mean random seeds}
 }
 \description{
 Simulate Seasonal ARIMA
@@ -23,6 +25,6 @@ Simulate Seasonal ARIMA
 \examples{
 # Airline model
 s_model <- sarima_model(period = 12, d =1, bd = 1, theta = 0.2, btheta = 0.2)
-x <- sarima_random(s_model, length = 64)
+x <- sarima_random(s_model, length = 64, seed = 0)
 plot(x, type = "line")
 }

@@ -47,14 +47,15 @@ sarima_properties<-function(model, nspectrum=601, nacf=36){
 #'  Unused if `tdegree` is larger than 0.
 #' @param tdegree degrees of freedom of the T distribution of the innovations.
 #' `tdegree = 0` if normal distribution is used.
+#' @param seed seed of the random numbers generator. Negative values mean random seeds
 #'
 #' @examples
 #' # Airline model
 #' s_model <- sarima_model(period = 12, d =1, bd = 1, theta = 0.2, btheta = 0.2)
-#' x <- sarima_random(s_model, length = 64)
-#' plot(x, type = "line")
+#' x <- sarima_random(s_model, length = 64, seed = 0)
+#' plot(x, type = "l")
 #' @export
-sarima_random<-function(model, length, stde=1, tdegree=0){
+sarima_random<-function(model, length, stde=1, tdegree=0, seed=-1){
   if (!inherits(model, "JD3_SARIMA"))
     stop("Invalid model")
   return (.jcall("jdplus/toolkit/base/r/arima/SarimaModels", "[D", "random",
@@ -67,7 +68,8 @@ sarima_random<-function(model, length, stde=1, tdegree=0){
          as.integer(model$bd),
          .jarray(as.numeric(model$btheta)),
          stde,
-         as.integer(tdegree)))
+         as.integer(tdegree),
+         as.integer(seed)))
 }
 
 #' Decompose SARIMA Model into three components trend, seasonal, irregular
