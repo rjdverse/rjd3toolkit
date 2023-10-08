@@ -26,5 +26,5 @@ Simulate Seasonal ARIMA
 # Airline model
 s_model <- sarima_model(period = 12, d =1, bd = 1, theta = 0.2, btheta = 0.2)
 x <- sarima_random(s_model, length = 64, seed = 0)
-plot(x, type = "line")
+plot(x, type = "l")
 }
