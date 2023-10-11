@@ -35,7 +35,7 @@ NULL
 #' }
 #' \item \code{model = "R011"} the following model is used:
 #' \deqn{
-#' y_t =\beta TD_t +  \varepsilon_t \text{ with }\varepsilon_t \sim ARIMA(0,1,1)(0,1,1)
+#' y_t =\beta TD_t +  \varepsilon_t \text{ with }\varepsilon_t \sim ARIMA(0,1,1)
 #' }
 #' \item \code{model = "R100"} the following model is used:
 #' \deqn{
@@ -48,7 +48,7 @@ NULL
 #' @export
 td_f<-function(s, model=c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"), nyears=0){
   model<-match.arg(model)
-  jts<-.r2jd_ts(s)
+  jts<-.r2jd_tsdata(s)
   jtest<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "fTest",
                 jts, model, as.integer(nyears))
   return (.jd2r_test(jtest))
@@ -64,7 +64,7 @@ td_f<-function(s, model=c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"), 
 #'
 #' @examples
 td_ch<-function(s, differencing){
-  jts<-.r2jd_ts(s)
+  jts<-.r2jd_tsdata(s)
   return (.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "[D", "chTest",
                 jts, .jarray(as.integer(differencing))))
 }

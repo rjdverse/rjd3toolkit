@@ -20,3 +20,9 @@ The interpolated series
 \description{
 Multiplicative adjustment of a time series for leap year / length of periods
 }
+\examples{
+y <- ABS$X0.2.09.10.M
+ts_adjust(y)
+# with reverse we can find the
+all.equal(ts_adjust(ts_adjust(y), reverse = TRUE), y)
+}

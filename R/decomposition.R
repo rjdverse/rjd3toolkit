@@ -4,7 +4,7 @@
 NULL
 
 
-#' @rdname sa.decomposition
+#' @rdname sa_decomposition
 #' @export
 sadecomposition<-function(y, sa, t, s, i, mul){
   if (! is.logical(mul))stop("Invalid SA decomposition")
@@ -33,7 +33,7 @@ sadecomposition<-function(y, sa, t, s, i, mul){
   return (structure(list(series=y, sa=sa, trend=t, seas=s, irr=i, multiplicative=mul), class=c("JD3_SADECOMPOSITION", "JD3")))
 }
 
-#' @rdname sa.decomposition
+#' @rdname sa_decomposition
 #' @export
 print.JD3_SADECOMPOSITION<-function(x, n_last_obs = frequency(x$series), ...){
   cat("Last values\n")
@@ -43,7 +43,7 @@ print.JD3_SADECOMPOSITION<-function(x, n_last_obs = frequency(x$series), ...){
     )
   )
 }
-#' @rdname sa.decomposition
+#' @rdname sa_decomposition
 #' @export
 plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
                        type_chart = c("sa-trend", "seas-irr"),
@@ -74,7 +74,7 @@ plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
     # par(mar = c(5, 4, 4, 2) + 0.1)
     ts.plot(data_plot[, series_graph],
             col = colors[series_graph],
-            main = caption, lty = lty,
+            main = caption[1], lty = lty,
             ...)
     legend("bottomleft", legend = c("Series", "Trend","Seasonally adjusted"),
            col = colors[series_graph], lty = 1,
@@ -90,7 +90,7 @@ plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
     # col <- colors[gsub("_.*$", "", series_graph)]
     ts.plot(data_plot[, series_graph],
             col = colors[series_graph],
-            main = caption, lty = lty,
+            main = caption[1], lty = lty,
             ...)
     legend("bottomleft", legend = c("Seas (component)",
                                     "Irregular"),

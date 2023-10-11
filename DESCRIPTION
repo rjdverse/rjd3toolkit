@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Toolkit Functions Around 'JDemetra+ 3.0'
-Version: 3.0.0
+Version: 3.1.0
 Authors@R: c(
   person("Jean", "Palate", role = c("aut", "cre"),
                 email = "jean.palate@nbb.be"),
@@ -15,20 +15,20 @@ Description: Interface around 'JDemetra+ 3.x' (<https://github.com/jdemetra/jdem
 Depends:
   R (>= 3.6.0)
 Imports:
-	RProtoBuf (>= 0.4.17),
+	RProtoBuf (>= 0.4.20),
   rJava (>= 1.0-6),
   checkmate,
   methods
 SystemRequirements: Java (>= 17)
 License: EUPL
-URL: https://github.com/palatej/rjd3toolkit
+URL: https://github.com/rjdemetra/rjd3toolkit
 LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
 RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
-BugReports: https://github.com/palatej/rjd3toolkit/issues
+BugReports: https://github.com/rjdemetra/rjd3toolkit/issues
 Encoding: UTF-8
 Collate: 
     'utils.R'

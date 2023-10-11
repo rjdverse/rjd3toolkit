@@ -3,6 +3,8 @@ NULL
 
 JD3_DYNAMICTS<-'JD3_DYNAMICTS'
 JD3_TSMONIKER<-'JD3_TSMONIKER'
+JD3_TS<-'JD3_TS'
+JD3_TSCOLLECTION<-'JD3_TSCOLLECTION'
 
 #' Title
 #'
@@ -14,15 +16,15 @@ JD3_TSMONIKER<-'JD3_TSMONIKER'
 #'
 #' @examples
 tsmoniker<-function(source, id){
-  return (structure(c(source=source, id=id), class=c(JD3_TSMONIKER)))
+  return (structure(list(source=source, id=id), class=c(JD3_TSMONIKER)))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2p_moniker<-function(r){
   p<-jd3.TsMoniker$new()
-  p$source<-r['source']
-  p$id<-r['id']
+  p$source<-r$source
+  p$id<-r$id
   return (p)
 }
 
@@ -33,12 +35,13 @@ tsmoniker<-function(source, id){
   return (tsmoniker(p$source, p$id))
 }
 
+
 #' @export
 #' @rdname jd3_utilities
 .r2p_datasupplier<-function(name, r){
   p<-jd3.TsDataSuppliers$Item$new()
   p$name<-name
-  if (is.ts(r)) p$data<-.r2p_ts(r)
+  if (is.ts(r)) p$data<-.r2p_tsdata(r)
   else if (is(r, JD3_DYNAMICTS)) p$dynamic_data<-.r2p_dynamic_ts(r)
   else return (NULL)
   return (p)
@@ -48,16 +51,144 @@ dynamic_ts<-function(moniker, data){
   return (structure(list(moniker=moniker, data=data), class=c(JD3_DYNAMICTS)))
 }
 
+.ts<-function(name, moniker, metadata, data){
+  return (structure(list(name=name, moniker=moniker, metadata=metadata, data=data), class=c(JD3_TS)))
+}
+
+.tscollection<-function(name, moniker, metadata, series){
+  return (structure(list(name=name, moniker=moniker, metadata=metadata, series=series), class=c(JD3_TSCOLLECTION)))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.p2r_metadata<-function(p){
+  n<-length(p)
+  if (n > 0){
+    lv<-lapply(p, function(v){return(v$value)})
+    ns<-sapply(p, function(v){return(v$key)})
+    names(lv)<-ns
+    return (lv)
+  }
+  return (NULL)
+}
+
+.entry<-function(key, value, type){
+  p<-type$new()
+  p$key<-key
+  p$value<-value
+  return (p)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2p_metadata<-function(r, type){
+  n<-names(r)
+  pm<-lapply(n, function(item){ return (.entry(item, r[[item]], type)) })
+  return (pm)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.p2r_ts<-function(p){
+  if (is.null(p)) return (NULL)
+  s<-.p2r_tsdata(p$data)
+  m<-.p2r_moniker(p$moniker)
+  md<-.p2r_metadata(p$metadata)
+  return (.ts(p$name, m, md, s))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2p_ts<-function(r){
+  p<-jd3.Ts$new()
+  p$name<-r$name
+  p$moniker<-.r2p_moniker(r$moniker)
+  p$metadata<-.r2p_metadata(r$metadata,jd3.Ts$MetadataEntry)
+  p$data<- .r2p_tsdata(r$data)
+  return (p)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.p2r_tscollection<-function(p){
+  if (is.null(p))
+    return (NULL)
+  else{
+    rs<-lapply(p$series, function(s){return (.p2r_ts(s))})
+    names<-lapply(rs, function(s){return (s$name)})
+    rs<-`names<-`(rs, names)
+    return (.tscollection(p$name, .p2r_moniker(p$moniker), .p2r_metadata(p$metadata), rs))
+  }
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2p_tscollection<-function(r){
+  p<-jd3.TsCollection$new()
+  p$name<-r$name
+  p$moniker<-.r2p_moniker(r$moniker)
+  p$metadata<-.r2p_metadata(r$metadata,jd3.TsCollection$MetadataEntry)
+  p$series<- lapply(r$series, function(s){return (.r2p_ts(s))})
+  return (p)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2jd_ts<-function(s){
+  if (is.null(s))
+    return (.jnull("jdplus/toolkit/base/api/timeseries/Ts"))
+  ps<-.r2p_ts(s)
+  bytes<-RProtoBuf::serialize(ps, NULL)
+  return (.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsOfBytes", bytes))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.jd2r_ts<-function(js){
+  if (is.jnull(js))
+    return (NULL)
+  q<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", js)
+  p<-RProtoBuf::read(jd3.Ts, q)
+  return (.p2r_ts(p))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2jd_tscollection<-function(s){
+  if (is.null(s))
+    return (.jnull("jdplus/toolkit/base/api/timeseries/TsCollection"))
+  ps<-.r2p_tscollection(s)
+  bytes<-RProtoBuf::serialize(ps, NULL)
+  return (.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsCollectionOfBytes", bytes))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.jd2r_tscollection<-function(js){
+  if (is.jnull(js))
+    return (NULL)
+  q<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", js)
+  p<-RProtoBuf::read(jd3.TsCollection, q)
+  return (.p2r_tscollection(p))
+}
+
+.r2p_dynamic_ts<-function(r){
+  p<-jd3.DynamicTsData$new()
+  p$current<- .r2p_tsdata(r$data)
+  p$moniker<-.r2p_moniker(r$moniker)
+  return (p)
+}
+
 .p2r_dynamic_ts<-function(p){
   if (is.null(p)) return (NULL)
-  s<-.p2r_ts(p$current)
+  s<-.p2r_tsdata(p$current)
   m<-.p2r_moniker(p$moniker)
   return (dynamic_ts(m, s))
 }
 
 .r2p_dynamic_ts<-function(r){
   p<-jd3.DynamicTsData$new()
-  p$current<- .r2p_ts(r$data)
+  p$current<- .r2p_tsdata(r$data)
   p$moniker<-.r2p_moniker(r$moniker)
   return (p)
 }
@@ -66,7 +197,7 @@ dynamic_ts<-function(moniker, data){
 #' @rdname jd3_utilities
 .p2r_datasupplier<-function(p){
   if (p$has('dynamic_data')) return (.p2r_dynamic_ts(p$dynamic_data))
-  if (p$has('data')) return (.p2r_ts(p$data))
+  if (p$has('data')) return (.p2r_tsdata(p$data))
   return (NULL)
 }
 
@@ -252,4 +383,5 @@ modelling_context<-function(calendars=NULL, variables=NULL){
   p<-.r2p_context(r)
   return (.p2jd_context(p))
 }
+
 

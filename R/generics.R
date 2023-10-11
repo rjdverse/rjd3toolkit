@@ -6,7 +6,7 @@
 #'
 #' @export
 diagnostics<-function(x, ...){
-  UseMethod("diagnostics")
+  UseMethod("diagnostics", x)
 }
 
 
@@ -24,15 +24,15 @@ diagnostics.JD3<-function(x, ...){
 #' @param x,... parameters.
 #'
 #' @export
-sa.preprocessing<-function(x, ...){
-  UseMethod("sa.preprocessing")
+sa_preprocessing<-function(x, ...){
+  UseMethod("sa_preprocessing", x)
 }
 
 
 #' Generic Function for Seasonal Adjustment Decomposition
 #'
 #' Generic function to format the seasonal adjustment decomposition components.
-#' \code{sa.decomposition()} is a generic function defined in other packages.
+#' \code{sa_decomposition()} is a generic function defined in other packages.
 #'
 #' @param y,sa,t,s,i,mul seasonal adjustment decomposition parameters.
 #' @param x the object to print.
@@ -45,11 +45,25 @@ sa.preprocessing<-function(x, ...){
 #' @param ... further arguments.
 #'
 #' @return \code{"JD3_SADECOMPOSITION"} object.
-#' @name sa.decomposition
+#' @name sa_decomposition
 NULL
 
 #' @export
-#' @rdname sa.decomposition
+#' @rdname sa_decomposition
+sa_decomposition<-function(x, ...){
+  UseMethod("sa_decomposition", x)
+}
+
+#' Deprecated functions
+#'
+#' @description
+#' Use [sa_decomposition()] instead of `sa.decomposition()`.
+#'
+#' @inheritParams sa_decomposition
+#' @name deprecated-rjd3toolkit
+#' @export
+#' @export
 sa.decomposition<-function(x, ...){
-  UseMethod("sa.decomposition")
+  .Deprecated("sa_decomposition")
+  UseMethod("sa_decomposition", x)
 }

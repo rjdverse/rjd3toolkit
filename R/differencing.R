@@ -9,7 +9,7 @@ NULL
     del<-`rownames<-`(del, c("lag", "order"))
     return (list(ddata=p$stationary_series,
                  mean=p$mean_correction,
-            differences=del))
+                 differences=del))
   }
 }
 
@@ -34,11 +34,12 @@ NULL
 #' @export
 #'
 #' @examples
+#' do_stationary(log(ABS$X0.2.09.10.M),12)
 do_stationary<-function(data, period){
   if (is.ts(data) & missing(period))
     period <- frequency(data)
   jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "doStationary",
-         as.numeric(data), as.integer(period))
+              as.numeric(data), as.integer(period))
   q<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "[B", "toBuffer", jst)
   p<-RProtoBuf::read(modelling.StationaryTransformation, q)
   res <- .p2r_differencing(p)
@@ -67,7 +68,7 @@ do_stationary<-function(data, period){
 #' @export
 #'
 #' @examples
-#' z <- differencing_fast(log(ABS$X0.2.09.10.M),12)
+#' differencing_fast(log(ABS$X0.2.09.10.M),12)
 #'
 differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
   if (is.ts(data) & missing(period))
@@ -95,11 +96,31 @@ differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
 #' differences(retail$BookStores, c(1,1,12), FALSE)
 #'
 differences<-function(data, lags=1, mean=TRUE){
+  UseMethod("differences", data)
+}
+#' @export
+differences.default<-function(data, lags=1, mean=TRUE){
   res <- .jcall("jdplus/toolkit/base/r/modelling/Differencing", "[D", "differences",
                 as.numeric(data), .jarray(as.integer(lags)), mean)
   if (is.ts(data))
     res <- ts(res, end = end(data), frequency = frequency(data))
   return (res)
+}
+#' @export
+differences.matrix<-function(data, lags=1, mean=TRUE){
+  result <- data[-(1:sum(lags)),]
+  for (i in seq_len(ncol(data))){
+    result[, i] <- differences(data[,i], lags = lags, mean = mean)
+  }
+  result
+}
+#' @export
+differences.data.frame<-function(data, lags=1, mean=TRUE){
+  result <- data[-(1:sum(lags)),]
+  for (i in seq_len(ncol(data))){
+    result[, i] <- differences(data[,i], lags = lags, mean = mean)
+  }
+  result
 }
 
 #' Range-Mean Regression

@@ -16,7 +16,7 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
-.r2jd_ts<-function(s){
+.r2jd_tsdata<-function(s){
   if (is.null(s)){
     return (NULL)
   }
@@ -35,8 +35,8 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
-.jd2r_ts<-function(s){
-  if (is.null(s)){
+.jd2r_tsdata<-function(s){
+  if (is.jnull(s)){
     return (NULL)
   }
   jx<-.jcall(s, "Ljdplus/toolkit/base/api/data/DoubleSeq;", "getValues")
@@ -45,6 +45,37 @@ NULL
   if (length(x) == 0) return (NULL)
   pstart<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[I", "startPeriod", s)
   ts(x,start=pstart[2:3], frequency=pstart[1])
+}
+
+#' @export
+#' @rdname jd3_utilities
+.jd2r_mts<-function(s){
+  if (is.jnull(s)){
+    return (NULL)
+  }
+  jx<-.jcall(s, "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "toMatrix")
+  x<-.jd2r_matrix(jx)
+  if (is.jnull(x)) return (NULL)
+  pstart<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[I", "startPeriod", s)
+  ts(x,start=pstart[2:3], frequency=pstart[1])
+}
+
+.extract_jts<-function(collection, index){
+  js<- .jcall(collection, "Ljdplus/toolkit/base/api/timeseries/Ts;", "get", as.integer(index-1) )
+  return (js)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.jd2r_lts<-function(s){
+  if (is.jnull(s)){
+    return (NULL)
+  }
+  size<-.jcall(s, "I", "length")
+  if (size == 0)
+    return (NULL)
+  all <- lapply(1:size, function(idx){ return (.jd2r_ts(.extract_jts(s, idx)))} )
+  return (all)
 }
 
 #' @export

@@ -2,7 +2,7 @@
 % Please edit documentation in R/arima.R
 \name{sarima_decompose}
 \alias{sarima_decompose}
-\title{Decompose SARIMA Model}
+\title{Decompose SARIMA Model into three components trend, seasonal, irregular}
 \usage{
 sarima_decompose(model, rmod = 0, epsphi = 0)
 }
@@ -14,7 +14,7 @@ sarima_decompose(model, rmod = 0, epsphi = 0)
 \item{epsphi}{seasonal tolerance (in degrees).}
 }
 \description{
-Decompose SARIMA Model
+Decompose SARIMA Model into three components trend, seasonal, irregular
 }
 \examples{
 model <- sarima_model(period = 12, d =1, bd = 1, theta = -0.6, btheta = -0.5)
