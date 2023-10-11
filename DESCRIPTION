@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Toolkit Functions Around 'JDemetra+ 3.0'
-Version: 3.1.0
+Version: 3.1.1
 Authors@R: c(
   person("Jean", "Palate", role = c("aut", "cre"),
                 email = "jean.palate@nbb.be"),
