@@ -40,7 +40,7 @@
   if (is.jnull(s))
     return (NULL)
   if (.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData"))
-    return(.jd2r_ts(.jcast(s,"jdplus/toolkit/base/api/timeseries/TsData")))
+    return(.jd2r_tsdata(.jcast(s,"jdplus/toolkit/base/api/timeseries/TsData")))
   else
     return (NULL)
 }
@@ -111,7 +111,7 @@
   if (is.jnull(s))
     return (NULL)
   if (.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData"))
-    return(.jd2r_ts(.jcast(s,"jdplus/toolkit/base/api/timeseries/TsData")))
+    return(.jd2r_tsdata(.jcast(s,"jdplus/toolkit/base/api/timeseries/TsData")))
   else if (.jinstanceof(s, "java/lang/Number"))
     return (.jcall(s, "D", "doubleValue"))
   else if (.jinstanceof(s, "jdplus/toolkit/base/api/math/matrices/Matrix"))
