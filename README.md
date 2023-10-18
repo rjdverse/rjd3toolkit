@@ -3,7 +3,7 @@ Basic package around JDemetra+ 3.x
 
 ## Installation
 
-To get the current released version:
+To get the current stable version (from the latest release):
 
 ``` r
 # install.packages("remotes")
