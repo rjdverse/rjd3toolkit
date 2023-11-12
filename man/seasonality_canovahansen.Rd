@@ -9,13 +9,13 @@ seasonality_canovahansen(data, p0, p1, np, original = FALSE)
 \arguments{
 \item{data}{the input data.}
 
-\item{p0}{Initial periodicity (included)}
+\item{p0}{Initial periodicity (included).}
 
-\item{p1}{Final periodicity (included)}
+\item{p1}{Final periodicity (included).}
 
 \item{np}{Number of periodicities equally spaced in \eqn{[p_0,p_1]}.}
 
-\item{original}{\code{TRUE} for original algorithm, \code{FALSE} for solution proposed by T. Proietti (based on Ox code)}
+\item{original}{\code{TRUE} for original algorithm, \code{FALSE} for solution proposed by T. Proietti (based on Ox code).}
 }
 \description{
 Seasonal Canova-Hansen test
