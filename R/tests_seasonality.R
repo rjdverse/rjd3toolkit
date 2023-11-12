@@ -109,7 +109,9 @@ seasonality_f<-function(data,
 #' "X12" Test On Seasonality
 #'
 #' @inheritParams seasonality_qs
-#' @param firstperiod First period of the series (1-based)
+#' @param firstperiod Position in a cycle of the first obs.
+#' For example, for a monthly, `firstperiod = 1` means January.
+#' If `data` is not a `"ts"` object, `firstperiod = 1` by default.
 #' @param mul boolean indicating if the seasonal decomposition is multiplicative (`mul = TRUE`) or additive (`mul = FALSE`).
 #' @details Combined test on the presence of identifiable seasonality (see Ladiray and Quenneville, 1999).
 #' @export
@@ -117,7 +119,7 @@ seasonality_f<-function(data,
 #' @examples
 #' seasonality_combined(ABS$X0.2.09.10.M, 12)
 #' seasonality_combined(random_t(2, 1000), 7)
-seasonality_combined<-function(data, period, firstperiod=1, mul=TRUE){
+seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRUE){
   if (is.ts(data) & missing(period))
     period <- frequency(data)
   jctest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/sa/base/core/tests/CombinedSeasonality;", "combinedTest",
@@ -134,10 +136,10 @@ seasonality_combined<-function(data, period, firstperiod=1, mul=TRUE){
 #' Seasonal Canova-Hansen test
 #'
 #' @inheritParams seasonality_qs
-#' @param p0 Initial periodicity (included)
-#' @param p1 Final periodicity (included)
-#' @param np Number of periodicities equally spaced in $\[p0,p1\]$
-#' @param original True for original algorithm, False for solution proposed by T. Proietti (based on Ox code)
+#' @param p0 Initial periodicity (included).
+#' @param p1 Final periodicity (included).
+#' @param np Number of periodicities equally spaced in \eqn{[p_0,p_1]}.
+#' @param original `TRUE` for original algorithm, `FALSE` for solution proposed by T. Proietti (based on Ox code).
 #'
 #' @export
 #'
