@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Toolkit Functions Around 'JDemetra+ 3.0'
-Version: 3.0.1
+Version: 3.1.1
 Authors@R: c(
   person("Jean", "Palate", role = c("aut", "cre"),
                 email = "jean.palate@nbb.be"),
@@ -15,7 +15,7 @@ Description: Interface around 'JDemetra+ 3.x' (<https://github.com/jdemetra/jdem
 Depends:
   R (>= 3.6.0)
 Imports:
-	RProtoBuf (>= 0.4.17),
+	RProtoBuf (>= 0.4.20),
   rJava (>= 1.0-6),
   checkmate,
   methods

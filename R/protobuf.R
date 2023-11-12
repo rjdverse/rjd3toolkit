@@ -153,17 +153,17 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
-.p2r_ts<-function(p){
+.p2r_tsdata<-function(p){
   if (length(p$values) == 0)
     return (NULL)
   s<-ts(data=p$values, frequency = p$annual_frequency, start = c(p$start_year, p$start_period))
-  `attr<-`(s, "name", p$name)
+  s<-`attr<-`(s, "name", p$name)
   return (s)
 }
 
 #' @export
 #' @rdname jd3_utilities
-.r2p_ts<-function(r){
+.r2p_tsdata<-function(r){
   p<-jd3.TsData$new()
   p$name<-attr(r, "name")
   p$annual_frequency<-frequency(r)

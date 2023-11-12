@@ -47,14 +47,15 @@ sarima_properties<-function(model, nspectrum=601, nacf=36){
 #'  Unused if `tdegree` is larger than 0.
 #' @param tdegree degrees of freedom of the T distribution of the innovations.
 #' `tdegree = 0` if normal distribution is used.
+#' @param seed seed of the random numbers generator. Negative values mean random seeds
 #'
 #' @examples
 #' # Airline model
 #' s_model <- sarima_model(period = 12, d =1, bd = 1, theta = 0.2, btheta = 0.2)
-#' x <- sarima_random(s_model, length = 64)
-#' plot(x, type = "line")
+#' x <- sarima_random(s_model, length = 64, seed = 0)
+#' plot(x, type = "l")
 #' @export
-sarima_random<-function(model, length, stde=1, tdegree=0){
+sarima_random<-function(model, length, stde=1, tdegree=0, seed=-1){
   if (!inherits(model, "JD3_SARIMA"))
     stop("Invalid model")
   return (.jcall("jdplus/toolkit/base/r/arima/SarimaModels", "[D", "random",
@@ -67,7 +68,8 @@ sarima_random<-function(model, length, stde=1, tdegree=0){
          as.integer(model$bd),
          .jarray(as.numeric(model$btheta)),
          stde,
-         as.integer(tdegree)))
+         as.integer(tdegree),
+         as.integer(seed)))
 }
 
 #' Decompose SARIMA Model into three components trend, seasonal, irregular
@@ -348,4 +350,33 @@ sarima_estimate<-function(x, order=c(0,0,0), seasonal = list(order=c(0,0,0), per
   res$orders <- list(order = order, seasonal = seasonal)
   class(res) <- c("JD3_SARIMA_ESTIMATE", "JD3_REGARIMA_RSLTS")
   return (res)
+}
+
+#' Title
+#'
+#' @param x a univariate time series.
+#' @param order vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.
+#' @param seasonal specification of the seasonal part of the ARIMA model and the seasonal frequency (by default equals to `frequency(x)`).
+#' Either  a list with components `order` and `period` or a numeric vector specifying the seasonal order (the default period is then used).
+#' @param initialization Algorithm used in the computation of the long order auto-regressive model (used to estimate the innovations)
+#' @param biasCorrection Bias correction
+#' @param finalCorrection Final correction as implemented in Tramo
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' y <- ABS$X0.2.09.10.M
+#' sarima_hannan_rissanen(y, order = c(0,1,1), seasonal = c(0,1,1))
+sarima_hannan_rissanen<-function(x, order=c(0,0,0), seasonal = list(order=c(0,0,0), period=NA), initialization=c("Ols", "Levinson", "Burg"), biasCorrection=TRUE, finalCorrection=TRUE){
+  if (!is.list(seasonal) && is.numeric(seasonal) && length(seasonal) == 3) {
+    initialization=match.arg(initialization)
+    seasonal <- list(order = seasonal,
+                     period = NA)
+  }
+  if (is.na(seasonal$period))
+    seasonal$period <- frequency(x)
+  jmodel<-.jcall("jdplus/toolkit/base/r/arima/SarimaModels", "Ljdplus/toolkit/base/core/sarima/SarimaModel;", "hannanRissanen",
+                 as.numeric(x), as.integer(order), as.integer(seasonal$period), as.integer(seasonal$order), as.character(initialization), as.logical(biasCorrection), as.logical(finalCorrection))
+  return (.jd2r_sarima(jmodel))
 }
