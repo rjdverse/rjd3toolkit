@@ -21,7 +21,7 @@ Imports:
   methods
 SystemRequirements: Java (>= 17)
 License: EUPL
-URL: https://github.com/rjdemetra/rjd3toolkit
+URL: https://github.com/rjdemetra/rjd3toolkit, https://rjdemetra.github.io/rjd3toolkit/
 LazyData: TRUE
 Suggests:
     knitr,
