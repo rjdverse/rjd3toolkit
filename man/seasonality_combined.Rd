@@ -4,14 +4,16 @@
 \alias{seasonality_combined}
 \title{"X12" Test On Seasonality}
 \usage{
-seasonality_combined(data, period, firstperiod = 1, mul = TRUE)
+seasonality_combined(data, period, firstperiod = cycle(data)[1], mul = TRUE)
 }
 \arguments{
 \item{data}{the input data.}
 
 \item{period}{Tested periodicity.}
 
-\item{firstperiod}{First period of the series (1-based)}
+\item{firstperiod}{Position in a cycle of the first obs.
+For example, for a monthly, \code{firstperiod = 1} means January.
+If \code{data} is not a \code{"ts"} object, \code{firstperiod = 1} by default.}
 
 \item{mul}{boolean indicating if the seasonal decomposition is multiplicative (\code{mul = TRUE}) or additive (\code{mul = FALSE}).}
 }

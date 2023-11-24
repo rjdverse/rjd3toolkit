@@ -1,10 +1,18 @@
 # rjd3toolkit
-Basic package around jdemetra+ 3.x
+Basic package around JDemetra+ 3.x
 
 ## Installation
 
+To get the current stable version (from the latest release):
+
 ``` r
-# Install development version from GitHub
+# install.packages("remotes")
+remotes::install_github("rjdemetra/rjd3toolkit@*release")
+```
+
+To get the current development version from GitHub:
+
+``` r
 # install.packages("remotes")
 remotes::install_github("rjdemetra/rjd3toolkit")
 ```

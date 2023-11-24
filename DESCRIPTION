@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Toolkit Functions Around 'JDemetra+ 3.0'
-Version: 3.1.0
+Version: 3.2.0
 Authors@R: c(
   person("Jean", "Palate", role = c("aut", "cre"),
                 email = "jean.palate@nbb.be"),
@@ -21,7 +21,7 @@ Imports:
   methods
 SystemRequirements: Java (>= 17)
 License: EUPL
-URL: https://github.com/rjdemetra/rjd3toolkit
+URL: https://github.com/rjdemetra/rjd3toolkit, https://rjdemetra.github.io/rjd3toolkit/
 LazyData: TRUE
 Suggests:
     knitr,

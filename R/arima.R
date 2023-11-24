@@ -185,6 +185,30 @@ arima_lsum<-function(components){
   return (.jd2r_arima(jsum))
 }
 
+#' Remove an arima model from an existing one
+#'
+#' @param left Left operand
+#' @param right Right operand
+#' @param simplify Simplify the results
+#'
+#' @return a `"JD3_ARIMA"` model.
+#' @export
+#'
+#' @details
+#'
+#' @examples
+#' mod1 = arima_model(delta = c(1,-2,1))
+#' mod2 = arima_model(variance=.01)
+#' diff<- arima_difference(mod1, mod2)
+#'
+arima_difference<-function(left, right, simplify=TRUE){
+  jleft<-.r2jd_arima(left)
+  jright<-.r2jd_arima(right)
+  jdiff<-.jcall(jleft, "Ljdplus/toolkit/base/core/arima/ArimaModel;", "minus", jright, as.logical(simplify))
+  return (.jd2r_arima(jdiff))
+}
+
+
 #' ARIMA Properties
 #'
 #' @param model a `"JD3_ARIMA"` model (created with [arima_model()]).
@@ -291,7 +315,7 @@ ucarima_canonical<-function(ucm, cmp=0, adjust=TRUE){
 #' @examples
 ucarima_estimate<-function(x, ucm, stdev=TRUE){
   jucm<-.r2jd_ucarima(ucm)
-  jcmps<-.jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/math/matrices/Matrix;", "estimate",
+  jcmps<-.jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "estimate",
                 as.numeric(x), jucm, as.logical(stdev))
   return (.jd2r_matrix(jcmps))
 }
