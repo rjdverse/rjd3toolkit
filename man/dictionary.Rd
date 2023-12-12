@@ -20,5 +20,5 @@ user_defined(object, userdefined = NULL)
 \item{userdefined}{vector containing the names of the object to extract.}
 }
 \description{
-Extract dictionnay of a \code{"JD3_ProcResults"} object (\code{dictionary()}) and extract a specific value (\code{result()}) or a list of values (\code{user_defined()}).
+Extract dictionary of a \code{"JD3_ProcResults"} object (\code{dictionary()}) and extract a specific value (\code{result()}) or a list of values (\code{user_defined()}).
 }
