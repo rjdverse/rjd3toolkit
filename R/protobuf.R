@@ -183,11 +183,16 @@ NULL
 }
 
 
+#' @export
+#' @rdname jd3_utilities
 .p2r_likelihood<-function(p){
   return (likelihood(p$nobs, p$neffectiveobs, p$nparams,
                          p$log_likelihood, p$adjusted_log_likelihood,
                          p$aic, p$aicc, p$bic, p$bicc, p$ssq))
 }
+
+#' @export
+#' @rdname jd3_utilities
 .p2r_date<-function(p){
   if (p$has('year')){
     return (ymd(p$year, p$month, p$day))
@@ -196,6 +201,8 @@ NULL
   }
 }
 
+#' @export
+#' @rdname jd3_utilities
 .r2p_date<-function(s){
   if (is.null(s)) return(jd3.Date$new())
   else return (parseDate(s))
