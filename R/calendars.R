@@ -676,7 +676,7 @@ weighted_calendar<-function(calendars, weights){
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 #' @export
-national_calendar<-function(days, mean_correction=T){
+national_calendar<-function(days, mean_correction=TRUE){
   if (! is.list(days)) stop ('Days should be a list of holidays')
   return (structure(list(days=days, mean_correction=mean_correction), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
 }
@@ -836,4 +836,3 @@ print.JD3_WEIGHTEDCALENDAR <- function (x, ...)
 
   return(invisible(x))
 }
-

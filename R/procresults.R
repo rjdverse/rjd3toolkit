@@ -6,7 +6,7 @@ RSLT<-'JD3_ProcResults'
 
 #' @export
 #' @rdname jd3_utilities
-.jd3_object<-function(jobjRef, subclasses=NULL, result=F){
+.jd3_object<-function(jobjRef, subclasses=NULL, result=FALSE){
   if (result)
     classes<-c(OBJ, RSLT, subclasses)
   else
@@ -64,5 +64,3 @@ user_defined <- function(object, userdefined = NULL){
   class(result) <- c("user_defined")
   result
 }
-
-

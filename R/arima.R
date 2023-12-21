@@ -150,7 +150,7 @@ arima_model<-function(name="arima", ar=1, delta=1, ma=1, variance=1){
                  .jarray(as.numeric(model$ar)),
                  .jarray(as.numeric(model$delta)),
                  .jarray(as.numeric(model$ma)),
-                 as.numeric(model$var), F))
+                 as.numeric(model$var), FALSE))
 }
 
 #' Sum ARIMA Models
@@ -236,7 +236,7 @@ arima_properties<-function(model, nspectrum=601, nacf=36){
 #' @export
 #'
 #' @examples
-ucarima_model<-function(model=NULL, components, complements=NULL, checkmodel=F){
+ucarima_model<-function(model=NULL, components, complements=NULL, checkmodel=FALSE){
   if (is.null(model))
     model<-arima_lsum(components)
   else if (! is(model, "JD3_ARIMA") && ! is(model, "JD3_SARIMA")) stop("Invalid model")

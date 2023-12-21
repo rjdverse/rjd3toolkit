@@ -149,4 +149,3 @@ seasonality_canovahansen<-function(data, p0, p1, np, original=FALSE){
                 as.numeric(data), as.numeric(p0), as.numeric(p1), as.integer(np), as.logical(original))
   return (jtest)
 }
-
