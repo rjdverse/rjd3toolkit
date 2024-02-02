@@ -48,9 +48,9 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">data</span>, mean <span class="op">=</span> <span class="cn">T</span>, number <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">data</span>, mean <span class="op">=</span> <span class="cn">TRUE</span>, number <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">testofupdownruns</span><span class="op">(</span><span class="va">data</span>, number <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">testofupdownruns</span><span class="op">(</span><span class="va">data</span>, number <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -85,11 +85,11 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="studentdistribution.html">random_t</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1000</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -0.2379111 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.8120 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -1.075591 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.2821 </span>
 <span class="r-in"><span><span class="fu">testofupdownruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  1.551407 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.1208 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -2.05186 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.0402 </span>
 <span class="r-in"><span><span class="co"># non-random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -14.05884 </span>
