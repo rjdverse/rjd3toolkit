@@ -63,5 +63,3 @@ likelihood<-function(nobs, neffectiveobs=NA, nparams=0, ll, adjustedll=NA, aic, 
                          aic=aic, aicc=aicc, bic=bic, bicc=bicc, ssq=ssq),
                     class = "JD3_LIKELIHOOD"))
 }
-
-

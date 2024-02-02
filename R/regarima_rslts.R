@@ -39,4 +39,3 @@ NULL
   tnames<-lapply(p$residuals_tests, function(z){z$key})
   testonresiduals<-`names<-`(tlist, tnames)
 }
-

@@ -39,7 +39,7 @@ aggregate.default<-function(s, nfreq=1,
   jd_s<-.r2jd_tsdata(s)
   jd_agg<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/TsData;", "aggregate", jd_s, as.integer(nfreq), conversion, complete)
   if (is.jnull(jd_agg)){
-    return (NULL);
+    return (NULL)
   }
   else{
     return (.jd2r_tsdata(jd_agg))
@@ -85,7 +85,7 @@ clean_extremities<-function(s){
   jd_scleaned<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/TsData;", "cleanExtremities", jd_s)
 
   if (is.jnull(jd_scleaned)){
-    return (NULL);
+    return (NULL)
   }
   else{
     return (.jd2r_tsdata(jd_scleaned))
@@ -167,7 +167,7 @@ ts_adjust.default<-function(s, method=c("LeapYear", "LengthOfPeriod"), reverse =
   jd_s<-.r2jd_tsdata(s)
   jd_st<-.jcall("jdplus/toolkit/base/r/modelling/Transformation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "adjust", jd_s, method, as.logical(reverse))
   if (is.jnull(jd_st)){
-    return (NULL);
+    return (NULL)
   }
   else{
     return (.jd2r_tsdata(jd_st))

@@ -151,5 +151,3 @@ NULL
                , as.integer(period), as.integer(start[1]), as.integer(start[2]), as.integer(n))
   return (jdom)
 }
-
-

@@ -239,7 +239,7 @@ NULL
 #' @rdname jd3_utilities
 .p2r_ucarima<-function(p){
   model<-.p2r_arima(p$model)
-  return (ucarima_model(model,lapply(p$components, function(z){.p2r_arima(z)}), lapply(p$complements, function(z){.p2r_arima(z)}), F))
+  return (ucarima_model(model,lapply(p$components, function(z){.p2r_arima(z)}), lapply(p$complements, function(z){.p2r_arima(z)}), FALSE))
 }
 
 
@@ -459,7 +459,7 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
-.p2r_sa_decomposition<-function(p, full=F){
+.p2r_sa_decomposition<-function(p, full=FALSE){
   if (full){
     return (list(mode = .enum_extract(sa.DecompositionMode, p$mode),
                  series=.p2r_sa_component(p$series),
@@ -526,6 +526,3 @@ NULL
   p$forecast<-r$forecast
   return (p)
 }
-
-
-

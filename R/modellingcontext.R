@@ -270,7 +270,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
     if (any(mts_var)) {
       # case of a simple mts dictionary
       for (i in which(mts_var)) {
-        all_var <- lapply(1:ncol(variables[[i]]), function(j) {
+        all_var <- lapply(seq_len(ncol(variables[[i]])), function(j) {
           variables[[i]][, j]
         })
         names(all_var) <- colnames(variables[[i]])
@@ -383,5 +383,3 @@ modelling_context<-function(calendars=NULL, variables=NULL){
   p<-.r2p_context(r)
   return (.p2jd_context(p))
 }
-
-
