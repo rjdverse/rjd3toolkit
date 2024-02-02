@@ -29,6 +29,9 @@
 \alias{.p2r_tsdata}
 \alias{.r2p_tsdata}
 \alias{.p2r_parameters_estimation}
+\alias{.p2r_likelihood}
+\alias{.p2r_date}
+\alias{.r2p_date}
 \alias{.p2r_span}
 \alias{.r2p_span}
 \alias{.p2r_arima}
@@ -149,6 +152,12 @@ An object of class \code{Message} of length 3.
 
 .p2r_parameters_estimation(p)
 
+.p2r_likelihood(p)
+
+.p2r_date(p)
+
+.r2p_date(s)
+
 .p2r_span(span)
 
 .r2p_span(rspan)
@@ -175,7 +184,7 @@ An object of class \code{Message} of length 3.
 
 .p2r_variables(p)
 
-.p2r_sa_decomposition(p, full = F)
+.p2r_sa_decomposition(p, full = FALSE)
 
 .p2r_sa_diagnostics(p)
 
@@ -265,7 +274,7 @@ An object of class \code{Message} of length 3.
 
 .r2jd_modellingcontext(r)
 
-.jd3_object(jobjRef, subclasses = NULL, result = F)
+.jd3_object(jobjRef, subclasses = NULL, result = FALSE)
 
 .p2r_regarima_rslts(p)
 
