@@ -40,6 +40,12 @@
 \alias{.r2p_spec_sarima}
 \alias{.p2r_outliers}
 \alias{.r2p_outliers}
+\alias{.p2r_sequences}
+\alias{.r2p_sequences}
+\alias{.p2r_iv}
+\alias{.r2p_iv}
+\alias{.p2r_ivs}
+\alias{.r2p_ivs}
 \alias{.p2r_ramps}
 \alias{.r2p_ramps}
 \alias{.p2r_uservars}
@@ -173,6 +179,18 @@ An object of class \code{Message} of length 3.
 .p2r_outliers(p)
 
 .r2p_outliers(r)
+
+.p2r_sequences(p)
+
+.r2p_sequences(r)
+
+.p2r_iv(p)
+
+.r2p_iv(r)
+
+.p2r_ivs(p)
+
+.r2p_ivs(r)
 
 .p2r_ramps(p)
 
