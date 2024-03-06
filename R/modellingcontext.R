@@ -387,7 +387,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 #' @export
 #' @rdname jd3_utilities
 .p2r_calendars<-function(p){
-    n<-length(p)
+    n<-length(p$calendars)
     lcal <- NULL
     if (n > 0){
         lcal<-lapply(1:n, function(i){return(.p2r_calendardef(p$calendars[[i]]$value))})
@@ -402,19 +402,16 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 .r2p_calendars<-function(r){
     p<-jd3.Calendars$new()
     ns<-names(r)
-    length<-length(ns)
+    n<-length(ns)
     # To take into account empty calendars
     length_cal <- sapply(r, length)
 
-    p<-lapply((1:n)[length_cal!=0], function(i){
+    p$calendars<-lapply((1:n)[length_cal!=0], function(i){
             entry<-jd3.Calendars$CalendarsEntry$new()
             entry$key<-ns[i]
-            entry$value<-.r2p_calendardef(r$calendars[[i]])
+            entry$value<-.r2p_calendardef(r[[i]])
             return(entry)
         })
-        if (length(lcal) > 0) {
-            p$calendars<-lcal
-        }
     return (p)
 }
 
@@ -422,7 +419,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 #' @rdname jd3_utilities
 .p2jd_calendars<-function(p){
     bytes<-p$serialize(NULL)
-    jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/regression/ModellingContext;",
+    jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/calendars/CalendarManager;",
                    "calendarsOf",
                    bytes)
     return (jcal)
@@ -432,7 +429,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 #' @rdname jd3_utilities
 .jd2p_calendars<-function(jd){
     bytes<-.jcall("jdplus/toolkit/base/r/util/Modelling", "[B", "toBuffer", jd)
-    p<-RProtoBuf::read(jd3.ModellingContext, bytes)
+    p<-RProtoBuf::read(jd3.Calendars, bytes)
     return (p)
 }
 
@@ -440,7 +437,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 #' @export
 #' @rdname jd3_utilities
 .jd2r_calendars<-function(jcals){
-    p<-.jd2p_context(jcals)
+    p<-.jd2p_calendars(jcals)
     return (.p2r_calendars(p))
 }
 
