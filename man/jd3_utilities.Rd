@@ -96,6 +96,12 @@
 \alias{.jd2p_context}
 \alias{.jd2r_modellingcontext}
 \alias{.r2jd_modellingcontext}
+\alias{.p2r_calendars}
+\alias{.r2p_calendars}
+\alias{.p2jd_calendars}
+\alias{.jd2p_calendars}
+\alias{.jd2r_calendars}
+\alias{.r2jd_calendars}
 \alias{.jd3_object}
 \alias{.p2r_regarima_rslts}
 \alias{.r2jd_tmp_ts}
@@ -291,6 +297,18 @@ An object of class \code{Message} of length 3.
 .jd2r_modellingcontext(jcontext)
 
 .r2jd_modellingcontext(r)
+
+.p2r_calendars(p)
+
+.r2p_calendars(r)
+
+.p2jd_calendars(p)
+
+.jd2p_calendars(jd)
+
+.jd2r_calendars(jcals)
+
+.r2jd_calendars(r)
 
 .jd3_object(jobjRef, subclasses = NULL, result = FALSE)
 
