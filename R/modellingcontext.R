@@ -226,6 +226,41 @@ dynamic_ts<-function(moniker, data){
   return (l)
 }
 
+#' @export
+#' @rdname jd3_utilities
+.p2jd_variables<-function(p){
+    bytes<-p$serialize(NULL)
+    jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/regression/TsDataSuppliers;",
+                   "variablesOf",
+                   bytes)
+    return (jcal)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.jd2p_variables<-function(jd){
+    bytes<-.jcall("jdplus/toolkit/base/r/util/Modelling", "[B", "toBuffer", jd)
+    p<-RProtoBuf::read(jd3.TsDataSuppliers, bytes)
+    return (p)
+}
+
+
+
+#' @export
+#' @rdname jd3_utilities
+.jd2r_variables<-function(jcals){
+    p<-.jd2p_variables(jcals)
+    return (.p2r_datasuppliers(p))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2jd_variables<-function(r){
+    p<-.r2p_datasuppliers(r)
+    return (.p2jd_variables(p))
+}
+
+
 #' Create context
 #' @description
 #' Function allowing to include calendars and external regressors in a format that makes them usable

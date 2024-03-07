@@ -90,6 +90,10 @@
 \alias{.p2r_datasupplier}
 \alias{.r2p_datasuppliers}
 \alias{.p2r_datasuppliers}
+\alias{.p2jd_variables}
+\alias{.jd2p_variables}
+\alias{.jd2r_variables}
+\alias{.r2jd_variables}
 \alias{.p2r_context}
 \alias{.r2p_context}
 \alias{.p2jd_context}
@@ -285,6 +289,14 @@ An object of class \code{Message} of length 3.
 .r2p_datasuppliers(r)
 
 .p2r_datasuppliers(p)
+
+.p2jd_variables(p)
+
+.jd2p_variables(jd)
+
+.jd2r_variables(jcals)
+
+.r2jd_variables(r)
 
 .p2r_context(p)
 
