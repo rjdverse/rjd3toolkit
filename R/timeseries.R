@@ -303,5 +303,19 @@ tsdata_of<-function(values, dates){
                     "of", as.numeric(values), as.character(dates))
 
     return (.jd2r_tsdata(jtsdata))
+}
 
+#' Compare the annual totals of two series (usually the raw series and the seasonally adjusted series)
+#'
+#' @param raw Raw series
+#' @param sa Seasonally adjusted series
+#'
+#' @return The largest annual difference (in percentage of the average level of the seasonally adjusted series)
+#' @export
+#'
+#' @examples
+compare_annual_totals<-function(raw, sa){
+    jsa<-.r2jd_tsdata(sa)
+    jraw<-.r2jd_tsdata(raw)
+    return (.jcall("jdplus/sa/base/r/SaUtility", "D", "compareAnnualTotals", jraw, jsa))
 }
