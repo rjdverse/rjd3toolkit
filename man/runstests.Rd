@@ -6,9 +6,9 @@
 \alias{testofupdownruns}
 \title{Runs Tests around the mean or the median}
 \usage{
-testofruns(data, mean = T, number = T)
+testofruns(data, mean = TRUE, number = TRUE)
 
-testofupdownruns(data, number = T)
+testofupdownruns(data, number = TRUE)
 }
 \arguments{
 \item{data}{data being tested.}

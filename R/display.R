@@ -131,7 +131,7 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
       stde<-sqrt(diag(cov))
       sel<-fr$type=='ESTIMATED'
       t<-fr$value[sel]/stde
-      pval<-2*pt(abs(t), ndf, lower.tail = F)
+      pval<-2*pt(abs(t), ndf, lower.tail = FALSE)
       fr$stde[sel]<-stde
       fr$t[sel]<-t
       fr$pvalue[sel]<-pval
@@ -163,7 +163,7 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
   if (length(estimate) > 0){
     stde <- sqrt(diag(x$parameters$cov))
     t<-estimate/stde
-    pval<-2*pt(abs(t), ndf, lower.tail = F)
+    pval<-2*pt(abs(t), ndf, lower.tail = FALSE)
     table <- data.frame(estimate, "ESTIMATED", stde, t, pval)
     colnames(table) <- c("Estimate", "Type", "Std. Error",
                          "T-stat", "Pr(>|t|)")
@@ -313,7 +313,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
     sel<-xregs$type=='ESTIMATED'
     t<-xregs$value[sel]/stde
     ndf<-q$estimation$likelihood$neffectiveobs-q$estimation$likelihood$nparams+1
-    pval<-2*pt(abs(t), ndf, lower.tail = F)
+    pval<-2*pt(abs(t), ndf, lower.tail = FALSE)
     xregs$stde[sel]<-stde
     xregs$t[sel]<-t
     xregs$pvalue[sel]<-pval
@@ -331,7 +331,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
   if (length(estimate) > 0){
     stde <- sqrt(diag(x$bvar))
     t<-estimate/stde
-    pval<-2*pt(abs(t), ndf, lower.tail = F)
+    pval<-2*pt(abs(t), ndf, lower.tail = FALSE)
     table <- data.frame(estimate, "ESTIMATED", stde, t, pval)
     colnames(table) <- c("Estimate", "Type", "Std. Error",
                          "T-stat", "Pr(>|t|)")

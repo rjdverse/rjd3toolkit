@@ -226,6 +226,41 @@ dynamic_ts<-function(moniker, data){
   return (l)
 }
 
+#' @export
+#' @rdname jd3_utilities
+.p2jd_variables<-function(p){
+    bytes<-p$serialize(NULL)
+    jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/regression/TsDataSuppliers;",
+                   "variablesOf",
+                   bytes)
+    return (jcal)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.jd2p_variables<-function(jd){
+    bytes<-.jcall("jdplus/toolkit/base/r/util/Modelling", "[B", "toBuffer", jd)
+    p<-RProtoBuf::read(jd3.TsDataSuppliers, bytes)
+    return (p)
+}
+
+
+
+#' @export
+#' @rdname jd3_utilities
+.jd2r_variables<-function(jcals){
+    p<-.jd2p_variables(jcals)
+    return (.p2r_datasuppliers(p))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2jd_variables<-function(r){
+    p<-.r2p_datasuppliers(r)
+    return (.p2jd_variables(p))
+}
+
+
 #' Create context
 #' @description
 #' Function allowing to include calendars and external regressors in a format that makes them usable
@@ -270,7 +305,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
     if (any(mts_var)) {
       # case of a simple mts dictionary
       for (i in which(mts_var)) {
-        all_var <- lapply(1:ncol(variables[[i]]), function(j) {
+        all_var <- lapply(seq_len(ncol(variables[[i]])), function(j) {
           variables[[i]][, j]
         })
         names(all_var) <- colnames(variables[[i]])
@@ -384,4 +419,67 @@ modelling_context<-function(calendars=NULL, variables=NULL){
   return (.p2jd_context(p))
 }
 
+#' @export
+#' @rdname jd3_utilities
+.p2r_calendars<-function(p){
+    n<-length(p$calendars)
+    lcal <- NULL
+    if (n > 0){
+        lcal<-lapply(1:n, function(i){return(.p2r_calendardef(p$calendars[[i]]$value))})
+        ns<-sapply(1:n, function(i){return(p$calendars[[i]]$key)})
+        names(lcal)<-ns
+    }
+    return (lcal)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2p_calendars<-function(r){
+    p<-jd3.Calendars$new()
+    ns<-names(r)
+    n<-length(ns)
+    # To take into account empty calendars
+    length_cal <- sapply(r, length)
+
+    p$calendars<-lapply((1:n)[length_cal!=0], function(i){
+            entry<-jd3.Calendars$CalendarsEntry$new()
+            entry$key<-ns[i]
+            entry$value<-.r2p_calendardef(r[[i]])
+            return(entry)
+        })
+    return (p)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.p2jd_calendars<-function(p){
+    bytes<-p$serialize(NULL)
+    jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/calendars/CalendarManager;",
+                   "calendarsOf",
+                   bytes)
+    return (jcal)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.jd2p_calendars<-function(jd){
+    bytes<-.jcall("jdplus/toolkit/base/r/util/Modelling", "[B", "toBuffer", jd)
+    p<-RProtoBuf::read(jd3.Calendars, bytes)
+    return (p)
+}
+
+
+#' @export
+#' @rdname jd3_utilities
+.jd2r_calendars<-function(jcals){
+    p<-.jd2p_calendars(jcals)
+    return (.p2r_calendars(p))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2jd_calendars<-function(r){
+    p<-.r2p_calendars(r)
+    return (.p2jd_calendars(p))
+}
 

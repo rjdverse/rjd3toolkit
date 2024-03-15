@@ -146,10 +146,12 @@ NULL
 #' @rdname jd3_utilities
 .jdomain<-function(period, start, end){
   if (period == 0)return (.jnull("jdplus/toolkit/base/api/timeseries/TsDomain"))
+  if (is.null(start))
+      start<-c(1900,1)
+  if (is.null(end))
+      end<-c(2100, 1)
   n<-period*(end[1]-start[1])+end[2]-start[2]
   jdom<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/TsDomain;", "of"
                , as.integer(period), as.integer(start[1]), as.integer(start[2]), as.integer(n))
   return (jdom)
 }
-
-

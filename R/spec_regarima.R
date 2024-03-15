@@ -1549,4 +1549,3 @@ set_span <- function(x,
   }
   x
 }
-

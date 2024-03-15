@@ -76,4 +76,3 @@ residuals.JD3_REGARIMA_RSLTS <- function(object, ...){
     object <- object$estimation
   object$res
 }
-

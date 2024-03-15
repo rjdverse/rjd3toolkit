@@ -13,7 +13,7 @@ bowmanshenton(data)
 
 doornikhansen(data)
 
-jarquebera(data, k = 0, sample = T)
+jarquebera(data, k = 0, sample = TRUE)
 
 skewness(data)
 

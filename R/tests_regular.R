@@ -67,7 +67,7 @@ print.JD3_TEST<-function(x, details=FALSE, ...){
 #' ljungbox(random_t(2, 100), lag = 24, k =1)
 #' ljungbox(ABS$X0.2.09.10.M, lag = 24, k =1)
 #' @export
-ljungbox<-function(data, k=1, lag=1, nhp=0, sign=0, mean=T){
+ljungbox<-function(data, k=1, lag=1, nhp=0, sign=0, mean=TRUE){
   jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "ljungBox",
                 as.numeric(data), as.integer(k), as.integer(lag), as.integer(nhp), as.integer(sign), as.logical(mean))
   return (.jd2r_test(jtest))
@@ -112,7 +112,7 @@ doornikhansen<-function(data){
 
 #' @export
 #' @describeIn normality_tests Jarque-Bera test
-jarquebera<-function(data, k=0, sample=T){
+jarquebera<-function(data, k=0, sample=TRUE){
   jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "jarqueBera",
                 as.numeric(data), as.integer(k), as.logical(sample))
   return (.jd2r_test(jtest))
@@ -141,7 +141,7 @@ NULL
 
 #' @describeIn runstests Runs test around mean or median
 #' @export
-testofruns<-function(data, mean=T, number=T){
+testofruns<-function(data, mean=TRUE, number=TRUE){
   jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfRuns",
                 as.numeric(data), as.logical(mean), as.logical(number))
   return (.jd2r_test(jtest))
@@ -149,7 +149,7 @@ testofruns<-function(data, mean=T, number=T){
 
 #' @describeIn runstests up and down runs test
 #' @export
-testofupdownruns<-function(data, number=T){
+testofupdownruns<-function(data, number=TRUE){
   jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfUpDownRuns",
                 as.numeric(data), as.logical(number))
   return (.jd2r_test(jtest))
@@ -167,7 +167,7 @@ testofupdownruns<-function(data, number=T){
 #' autocorrelations_partial(x)
 #' autocorrelations_inverse(x)
 #' @export
-autocorrelations<-function(data, mean=T, n=15){
+autocorrelations<-function(data, mean=TRUE, n=15){
   res = .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "autocorrelations",
                as.numeric(data), as.logical(mean), as.integer(n))
   names(res) <- seq_len(n)
@@ -175,7 +175,7 @@ autocorrelations<-function(data, mean=T, n=15){
 }
 #' @export
 #' @rdname autocorrelations
-autocorrelations_partial<-function(data, mean=T, n=15){
+autocorrelations_partial<-function(data, mean=TRUE, n=15){
   res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "partialAutocorrelations",
                 as.numeric(data), as.logical(mean), as.integer(n))
   names(res) <- seq_len(n)
@@ -217,9 +217,3 @@ kurtosis<-function(data){
 mad<-function(data, centile=50, medianCorrected=TRUE){
   return (.jcall("jdplus/toolkit/base/r/stats/Tests", "D", "mad",as.numeric(data), as.numeric(centile), as.logical(medianCorrected)))
 }
-
-
-
-
-
-

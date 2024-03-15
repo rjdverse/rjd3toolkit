@@ -183,11 +183,16 @@ NULL
 }
 
 
+#' @export
+#' @rdname jd3_utilities
 .p2r_likelihood<-function(p){
   return (likelihood(p$nobs, p$neffectiveobs, p$nparams,
                          p$log_likelihood, p$adjusted_log_likelihood,
                          p$aic, p$aicc, p$bic, p$bicc, p$ssq))
 }
+
+#' @export
+#' @rdname jd3_utilities
 .p2r_date<-function(p){
   if (p$has('year')){
     return (ymd(p$year, p$month, p$day))
@@ -196,6 +201,8 @@ NULL
   }
 }
 
+#' @export
+#' @rdname jd3_utilities
 .r2p_date<-function(s){
   if (is.null(s)) return(jd3.Date$new())
   else return (parseDate(s))
@@ -239,7 +246,7 @@ NULL
 #' @rdname jd3_utilities
 .p2r_ucarima<-function(p){
   model<-.p2r_arima(p$model)
-  return (ucarima_model(model,lapply(p$components, function(z){.p2r_arima(z)}), lapply(p$complements, function(z){.p2r_arima(z)}), F))
+  return (ucarima_model(model,lapply(p$components, function(z){.p2r_arima(z)}), lapply(p$complements, function(z){.p2r_arima(z)}), FALSE))
 }
 
 
@@ -309,6 +316,74 @@ NULL
   return (lapply(r, function(z){.r2p_outlier(z)}))
 }
 
+.p2r_sequence<-function(p){
+    return (list(
+        start=.p2r_date(p$start),
+        end=.p2r_date(p$end)
+     ))
+}
+
+.r2p_sequence<-function(r){
+    p<-modelling.InterventionVariable$Sequence$new()
+    p$start<-.r2p_date(r$start)
+    p$end<-.r2p_date(r$end)
+    return (p)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.p2r_sequences<-function(p){
+    if (length(p) == 0){return (NULL)}
+    return (lapply(p, function(z){.p2r_sequence(z)}))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2p_sequences<-function(r){
+    if (length(r) == 0){return (list())}
+    return (lapply(r, function(z){.r2p_sequence(z)}))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.p2r_iv<-function(p){
+    return (list(
+        name=p$name,
+        sequences=.p2r_sequences(p$sequences),
+        delta=p$delta,
+        seasonaldelta=p$seasonal_delta,
+        coef=.p2r_parameter(p$coefficient),
+        regeffect=.regeffect(p$metadata)
+    ))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2p_iv<-function(r){
+    p<-modelling.InterventionVariable$new()
+    p$name<-r$name
+    p$sequences<-.r2p_sequences(r$sequences)
+    p$coefficient<-.r2p_parameter(r$coef)
+    p$metadata<-modelling.InterventionVariable.MetadataEntry$new(key = "regeffect", value=r$regeffect)
+    return (p)
+}
+
+#' @export
+#' @rdname jd3_utilities
+.p2r_ivs<-function(p){
+    if (length(p) == 0){return (NULL)}
+    return (lapply(p, function(z){.p2r_iv(z)}))
+}
+
+#' @export
+#' @rdname jd3_utilities
+.r2p_ivs<-function(r){
+    if (length(r) == 0){return (list())}
+    return (lapply(r, function(z){.r2p_iv(z)}))
+}
+
+
+
 
 .p2r_ramp<-function(p){
   return (list(
@@ -318,6 +393,7 @@ NULL
     coef=.p2r_parameter(p$coefficient)
   ))
 }
+
 
 .r2p_ramp<-function(r){
   p<-modelling.Ramp$new()
@@ -339,7 +415,6 @@ NULL
 #' @rdname jd3_utilities
 .r2p_ramps<-function(r){
   if (length(r) == 0){return (list())}
-  l<-list()
   return (lapply(r, function(z){.r2p_ramp(z)}))
 }
 
@@ -381,7 +456,6 @@ NULL
 #' @rdname jd3_utilities
 .r2p_uservars<-function(r){
   if (length(r) == 0){return (list())}
-  l<-list()
   return (lapply(r, function(z){.r2p_uservar(z)}))
 }
 #' @export
@@ -459,7 +533,7 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
-.p2r_sa_decomposition<-function(p, full=F){
+.p2r_sa_decomposition<-function(p, full=FALSE){
   if (full){
     return (list(mode = .enum_extract(sa.DecompositionMode, p$mode),
                  series=.p2r_sa_component(p$series),
@@ -526,6 +600,3 @@ NULL
   p$forecast<-r$forecast
   return (p)
 }
-
-
-

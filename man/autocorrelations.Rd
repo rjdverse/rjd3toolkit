@@ -6,9 +6,9 @@
 \alias{autocorrelations_inverse}
 \title{Autocorrelation Functions}
 \usage{
-autocorrelations(data, mean = T, n = 15)
+autocorrelations(data, mean = TRUE, n = 15)
 
-autocorrelations_partial(data, mean = T, n = 15)
+autocorrelations_partial(data, mean = TRUE, n = 15)
 
 autocorrelations_inverse(data, nar = 30, n = 15)
 }

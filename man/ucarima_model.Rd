@@ -4,7 +4,7 @@
 \alias{ucarima_model}
 \title{Title}
 \usage{
-ucarima_model(model = NULL, components, complements = NULL, checkmodel = F)
+ucarima_model(model = NULL, components, complements = NULL, checkmodel = FALSE)
 }
 \arguments{
 \item{complements}{Complements of (some) components}

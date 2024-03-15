@@ -34,5 +34,3 @@ NULL
   DATE_MAX<<-dateOf(9999, 12, 31)
 
 }
-
-

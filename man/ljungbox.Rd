@@ -4,7 +4,7 @@
 \alias{ljungbox}
 \title{Ljung-Box Test}
 \usage{
-ljungbox(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = T)
+ljungbox(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE)
 }
 \arguments{
 \item{data}{data being tested.}
