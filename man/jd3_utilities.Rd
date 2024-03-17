@@ -40,6 +40,12 @@
 \alias{.r2p_spec_sarima}
 \alias{.p2r_outliers}
 \alias{.r2p_outliers}
+\alias{.p2r_sequences}
+\alias{.r2p_sequences}
+\alias{.p2r_iv}
+\alias{.r2p_iv}
+\alias{.p2r_ivs}
+\alias{.r2p_ivs}
 \alias{.p2r_ramps}
 \alias{.r2p_ramps}
 \alias{.p2r_uservars}
@@ -84,12 +90,22 @@
 \alias{.p2r_datasupplier}
 \alias{.r2p_datasuppliers}
 \alias{.p2r_datasuppliers}
+\alias{.p2jd_variables}
+\alias{.jd2p_variables}
+\alias{.jd2r_variables}
+\alias{.r2jd_variables}
 \alias{.p2r_context}
 \alias{.r2p_context}
 \alias{.p2jd_context}
 \alias{.jd2p_context}
 \alias{.jd2r_modellingcontext}
 \alias{.r2jd_modellingcontext}
+\alias{.p2r_calendars}
+\alias{.r2p_calendars}
+\alias{.p2jd_calendars}
+\alias{.jd2p_calendars}
+\alias{.jd2r_calendars}
+\alias{.r2jd_calendars}
 \alias{.jd3_object}
 \alias{.p2r_regarima_rslts}
 \alias{.r2jd_tmp_ts}
@@ -173,6 +189,18 @@ An object of class \code{Message} of length 3.
 .p2r_outliers(p)
 
 .r2p_outliers(r)
+
+.p2r_sequences(p)
+
+.r2p_sequences(r)
+
+.p2r_iv(p)
+
+.r2p_iv(r)
+
+.p2r_ivs(p)
+
+.r2p_ivs(r)
 
 .p2r_ramps(p)
 
@@ -262,6 +290,14 @@ An object of class \code{Message} of length 3.
 
 .p2r_datasuppliers(p)
 
+.p2jd_variables(p)
+
+.jd2p_variables(jd)
+
+.jd2r_variables(jcals)
+
+.r2jd_variables(r)
+
 .p2r_context(p)
 
 .r2p_context(r)
@@ -273,6 +309,18 @@ An object of class \code{Message} of length 3.
 .jd2r_modellingcontext(jcontext)
 
 .r2jd_modellingcontext(r)
+
+.p2r_calendars(p)
+
+.r2p_calendars(r)
+
+.p2jd_calendars(p)
+
+.jd2p_calendars(jd)
+
+.jd2r_calendars(jcals)
+
+.r2jd_calendars(r)
 
 .jd3_object(jobjRef, subclasses = NULL, result = FALSE)
 

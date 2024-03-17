@@ -30,7 +30,7 @@ message Date {
   // significant.
   int32 day = 3;
 }
- 
+
 
 message TimeSelector{
 	SelectionType type = 1;
@@ -60,7 +60,7 @@ message ParametersEstimation{
 	repeated double value = 1;
 	repeated double score = 2;
 	Matrix covariance = 3;
-	string description = 4; 
+	string description = 4;
 }
 
 message TsPeriod{
@@ -112,7 +112,7 @@ message OneWayAnova{
 	double SSR = 3;
 	// N-nfactors
 	int32 dfr = 4;
-	
+
 	StatisticalTest test = 5;
 }
 
@@ -170,13 +170,13 @@ message NIIDTests{
 	StatisticalTest box_pierce = 6;
 	StatisticalTest seasonal_ljung_box = 7;
 	StatisticalTest seasonal_box_pierce = 8;
-	
+
 	/* Randomness */
     StatisticalTest runs_number = 9;
 	StatisticalTest runs_length = 10;
 	StatisticalTest up_down_runs_number = 11;
 	StatisticalTest up_down_runs_length = 12;
-	
+
 	/* Linearity */
 	StatisticalTest ljung_box_on_squares = 13;
 	StatisticalTest box_pierce_on_squares = 14;
@@ -212,7 +212,7 @@ enum CalendarEvent{
      */
     HOLIDAY_EASTER = 5;
     /**
-     * Julian Easter. 
+     * Julian Easter.
      */
     HOLIDAY_JULIANEASTER = 6;
     /**
@@ -306,7 +306,7 @@ message PrespecifiedHoliday{
 message FixedWeekDay{
 	int32 month = 1;
 	/* Corresponds to the first, second...)*/
-	int32 position = 2; 
+	int32 position = 2;
 	/* ISO-8601 standard, from 1 (Monday) to 7 (Sunday) */
 	int32 weekday = 3;
 	double weight = 4;
@@ -382,9 +382,13 @@ message TsDataSuppliers{
 	repeated Item items = 1;
 }
 
+message Calendars{
+	map<string, CalendarDefinition> calendars = 1;
+}
+
 message ModellingContext{
 	map<string, CalendarDefinition> calendars = 1;
-	map<string, TsDataSuppliers> variables = 2; 
+	map<string, TsDataSuppliers> variables = 2;
 }
 
 enum InformationType {
