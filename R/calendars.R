@@ -12,47 +12,47 @@ SPECIALDAY='JD3_SPECIALDAY'
 SINGLEDAY='JD3_SINGLEDAY'
 
 .r2p_validityPeriod<-function(start, end){
-  vp<-jd3.ValidityPeriod$new()
-  if (is.null(start)) {
-    pstart=DATE_MIN
-  }else{
-    pstart=parseDate(start)
-  }
-  if (is.null(end)){
-    pend=DATE_MAX
-  }else{
-    pend=parseDate(end)
-  }
-  vp$start<-pstart
-  vp$end<-pend
-  return (vp)
+    vp<-jd3.ValidityPeriod$new()
+    if (is.null(start)) {
+        pstart=DATE_MIN
+    }else{
+        pstart=parseDate(start)
+    }
+    if (is.null(end)){
+        pend=DATE_MAX
+    }else{
+        pend=parseDate(end)
+    }
+    vp$start<-pstart
+    vp$end<-pend
+    return (vp)
 }
 
 
 .p2r_validityPeriod<-function(vp){
-  pstart<-vp$start
-  if (pstart == DATE_MIN)
-    start<-NULL
-  else
-    start<-as.Date(sprintf("%04i-%02i-%02i", pstart$year, pstart$month, pstart$day))
+    pstart<-vp$start
+    if (pstart == DATE_MIN)
+        start<-NULL
+    else
+        start<-as.Date(sprintf("%04i-%02i-%02i", pstart$year, pstart$month, pstart$day))
 
-  pend<-vp$end
-  if (pend == DATE_MAX)
-    end<-NULL
-  else
-    end<-as.Date(sprintf("%04i-%02i-%02i", pend$year, pend$month, pend$day))
-  if (is.null(start) && is.null(end))
-    return (NULL)
-  else
-    return (list(start=start, end=end))
+    pend<-vp$end
+    if (pend == DATE_MAX)
+        end<-NULL
+    else
+        end<-as.Date(sprintf("%04i-%02i-%02i", pend$year, pend$month, pend$day))
+    if (is.null(start) && is.null(end))
+        return (NULL)
+    else
+        return (list(start=start, end=end))
 }
 
 .length_ts <- function(s){
-  if(is.mts(s)){
-    nrow(s)
-  }else{
-    length(s)
-  }
+    if(is.mts(s)){
+        nrow(s)
+    }else{
+        length(s)
+    }
 }
 
 #' Set a holiday on a Fixed Day
@@ -79,24 +79,24 @@ SINGLEDAY='JD3_SINGLEDAY'
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 fixed_day<-function(month, day, weight=1, validity=NULL){
-  return (structure(list(month=month, day=day, weight=weight, validity=validity), class=c(FIXEDDAY, HOLIDAY)))
+    return (structure(list(month=month, day=day, weight=weight, validity=validity), class=c(FIXEDDAY, HOLIDAY)))
 }
 
 .p2r_fixedday<-function(p){
-  return (structure(list(month=p$month, day=p$day, weight=p$weight, validity=.p2r_validityPeriod(p$validity)), class=FIXEDDAY))
+    return (structure(list(month=p$month, day=p$day, weight=p$weight, validity=.p2r_validityPeriod(p$validity)), class=FIXEDDAY))
 }
 
 .r2p_fixedday<-function(r){
-  fd<-jd3.FixedDay$new()
-  fd$month<-r$month
-  fd$day<-r$day
-  fd$weight<-r$weight
-  if (is.null(r$validity))
-    fd$validity<-.r2p_validityPeriod(NULL, NULL)
-  else
-    fd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
+    fd<-jd3.FixedDay$new()
+    fd$month<-r$month
+    fd$day<-r$day
+    fd$weight<-r$weight
+    if (is.null(r$validity))
+        fd$validity<-.r2p_validityPeriod(NULL, NULL)
+    else
+        fd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
 
-  return (fd)
+    return (fd)
 }
 
 
@@ -125,24 +125,24 @@ fixed_day<-function(month, day, weight=1, validity=NULL){
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #'
 fixed_week_day<-function(month, week, dayofweek, weight=1, validity=NULL){
-  return (structure(list(month=month, week=week, dayofweek=dayofweek, weight=weight, validity=validity), class=c(FIXEDWEEKDAY, HOLIDAY)))
+    return (structure(list(month=month, week=week, dayofweek=dayofweek, weight=weight, validity=validity), class=c(FIXEDWEEKDAY, HOLIDAY)))
 }
 
 .p2r_fixedweekday<-function(p){
-  return (fixed_week_day(p$month, week=p$position, dayofweek=p$weekday, weight=p$weight, validity=.p2r_validityPeriod(p$validity)))
+    return (fixed_week_day(p$month, week=p$position, dayofweek=p$weekday, weight=p$weight, validity=.p2r_validityPeriod(p$validity)))
 }
 
 .r2p_fixedweekday<-function(r){
-  fd<-jd3.FixedWeekDay$new()
-  fd$month<-r$month
-  fd$position <- r$week
-  fd$weekday <- r$dayofweek
-  fd$weight<-r$weight
-  if (is.null(r$validity))
-    fd$validity<-.r2p_validityPeriod(NULL, NULL)
-  else
-    fd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
-  return (fd)
+    fd<-jd3.FixedWeekDay$new()
+    fd$month<-r$month
+    fd$position <- r$week
+    fd$weekday <- r$dayofweek
+    fd$weight<-r$weight
+    if (is.null(r$validity))
+        fd$validity<-.r2p_validityPeriod(NULL, NULL)
+    else
+        fd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
+    return (fd)
 }
 
 #' Set a Holiday on an Easter related day
@@ -168,23 +168,23 @@ fixed_week_day<-function(month, week, dayofweek, weight=1, validity=NULL){
 #'
 #' @export
 easter_day<-function(offset, julian=FALSE, weight=1, validity=NULL){
-  return (structure(list(offset=offset, julian=julian, weight=weight, validity=validity), class=c(EASTERDAY, HOLIDAY)))
+    return (structure(list(offset=offset, julian=julian, weight=weight, validity=validity), class=c(EASTERDAY, HOLIDAY)))
 }
 
 .p2r_easterday<-function(p){
-  return (easter_day(p$offset, p$julian, p$weight, .p2r_validityPeriod(p$validity)))
+    return (easter_day(p$offset, p$julian, p$weight, .p2r_validityPeriod(p$validity)))
 }
 
 .r2p_easterday<-function(r){
-  fd<-jd3.EasterRelatedDay$new()
-  fd$offset<-r$offset
-  fd$julian<-r$julian
-  fd$weight<-r$weight
-  if (is.null(r$validity))
-    fd$validity<-.r2p_validityPeriod(NULL, NULL)
-  else
-    fd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
-  return (fd)
+    fd<-jd3.EasterRelatedDay$new()
+    fd$offset<-r$offset
+    fd$julian<-r$julian
+    fd$weight<-r$weight
+    if (is.null(r$validity))
+        fd$validity<-.r2p_validityPeriod(NULL, NULL)
+    else
+        fd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
+    return (fd)
 }
 
 
@@ -205,18 +205,18 @@ easter_day<-function(offset, julian=FALSE, weight=1, validity=NULL){
 #'
 #' @export
 single_day<-function(date, weight=1){
-  return (structure(list(date=date, weight=weight), class=c(SINGLEDAY, HOLIDAY)))
+    return (structure(list(date=date, weight=weight), class=c(SINGLEDAY, HOLIDAY)))
 }
 
 .p2r_singleday<-function(p){
-  return (single_day(.p2r_date(p$date), p$weight))
+    return (single_day(.p2r_date(p$date), p$weight))
 }
 
 .r2p_singleday<-function(r){
-  sd<-jd3.SingleDate$new()
-  sd$date<-parseDate(r$date)
-  sd$weight<-r$weight
-  return (sd)
+    sd<-jd3.SingleDate$new()
+    sd$date<-parseDate(r$date)
+    sd$weight<-r$weight
+    return (sd)
 }
 
 
@@ -265,40 +265,40 @@ single_day<-function(date, weight=1){
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 special_day<-function(event, offset=0, weight=1, validity=NULL){
-  return (structure(list(event=event, offset=offset, weight=weight, validity=validity), class=c(SPECIALDAY, HOLIDAY)))
+    return (structure(list(event=event, offset=offset, weight=weight, validity=validity), class=c(SPECIALDAY, HOLIDAY)))
 }
 
 .p2r_specialday<-function(p){
-  return (special_day(.enum_extract(jd3.CalendarEvent, p$event), p$offset, p$weight, .p2r_validityPeriod(p$validity)))
+    return (special_day(.enum_extract(jd3.CalendarEvent, p$event), p$offset, p$weight, .p2r_validityPeriod(p$validity)))
 }
 
 .r2p_specialday<-function(r){
-  pd<-jd3.PrespecifiedHoliday$new()
-  pd$event<-.enum_of(jd3.CalendarEvent, r$event, "HOLIDAY")
-  pd$offset<-r$offset
-  pd$weight<-r$weight
-  if (is.null(r$validity))
-    pd$validity<-.r2p_validityPeriod(NULL, NULL)
-  else
-    pd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
-  return (pd)
+    pd<-jd3.PrespecifiedHoliday$new()
+    pd$event<-.enum_of(jd3.CalendarEvent, r$event, "HOLIDAY")
+    pd$offset<-r$offset
+    pd$weight<-r$weight
+    if (is.null(r$validity))
+        pd$validity<-.r2p_validityPeriod(NULL, NULL)
+    else
+        pd$validity<-.r2p_validityPeriod(r$validity$start, r$validity$end)
+    return (pd)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .p2jd_calendar<-function(pcalendar){
-  bytes<-pcalendar$serialize(NULL)
-  jcal<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "Ljdplus/toolkit/base/api/timeseries/calendars/Calendar;",
-               "calendarOf", bytes)
-  return (jcal)
+    bytes<-pcalendar$serialize(NULL)
+    jcal<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "Ljdplus/toolkit/base/api/timeseries/calendars/Calendar;",
+                 "calendarOf", bytes)
+    return (jcal)
 }
 
 .group_names <- function(x, contrasts = TRUE){
-  if(!is.matrix(x))
-    return(x)
-  col_names <- seq_len(ncol(x)) - !contrasts #if !contrast then it starts from 0
-  colnames(x) <- sprintf("group_%i", col_names)
-  x
+    if(!is.matrix(x))
+        return(x)
+    col_names <- seq_len(ncol(x)) - !contrasts #if !contrast then it starts from 0
+    colnames(x) <- sprintf("group_%i", col_names)
+    x
 }
 
 #' Trading day regressors without holidays
@@ -335,18 +335,18 @@ special_day<-function(event, offset=0, weight=1, validity=NULL){
 #' # contrasts to week-end days (1 series)
 #' regs_wd<- td(4,c(2020,1),60, groups = c(1, 1, 1, 1, 1, 0, 0), contrasts = TRUE)
 td<-function(frequency, start, length, s, groups=c(1,2,3,4,5,6,0), contrasts=TRUE){
-  if (!missing(s) && is.ts(s)) {
-    frequency = stats::frequency(s)
-    start = stats::start(s)
-    length = .length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  igroups<-as.integer(groups)
-  jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
-             "td", jdom, igroups, contrasts)
-  data <- .jd2r_matrix(jm)
-  data <- .group_names(data, contrasts = contrasts)
-  return (ts(data, start = start, frequency = frequency))
+    if (!missing(s) && is.ts(s)) {
+        frequency = stats::frequency(s)
+        start = stats::start(s)
+        length = .length_ts(s)
+    }
+    jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
+    igroups<-as.integer(groups)
+    jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+               "td", jdom, igroups, contrasts)
+    data <- .jd2r_matrix(jm)
+    data <- .group_names(data, contrasts = contrasts)
+    return (ts(data, start = start, frequency = frequency))
 }
 
 #' Daily calendar regressors corresponding to holidays
@@ -378,28 +378,33 @@ td<-function(frequency, start, length, s, groups=c(1,2,3,4,5,6,0), contrasts=TRU
 #' @examples
 #' BE <- national_calendar(list(
 #'   fixed_day(7,21),
-#'   special_day('NEWYEAR'),
-#'   special_day('CHRISTMAS'),
-#'   special_day('MAYDAY'),
-#'   special_day('EASTERMONDAY'),
-#'   special_day('ASCENSION'),
-#'   special_day('WHITMONDAY'),
-#'   special_day('ASSUMPTION'),
-#'   special_day('ALLSAINTSDAY'),
-#'   special_day('ARMISTICE')))
+#'   special_day("NEWYEAR"),
+#'   special_day("CHRISTMAS"),
+#'   special_day("MAYDAY"),
+#'   special_day("EASTERMONDAY"),
+#'   special_day("ASCENSION"),
+#'   special_day("WHITMONDAY"),
+#'   special_day("ASSUMPTION"),
+#'   special_day("ALLSAINTSDAY"),
+#'   special_day("ARMISTICE")))
 #' q<-holidays(BE, "2021-01-01", 366*10, type="All")
 #' plot(apply(q,1, max))
 #' @export
-holidays<-function(calendar, start, length, nonworking=c(6,7), type=c("Skip", "All", "NextWorkingDay", "PreviousWorkingDay"), single=FALSE){
-  type<-match.arg(type)
-  pcal<-.r2p_calendar(calendar)
-  jcal<-.p2jd_calendar(pcal)
-  jm<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
-             "holidays", jcal, as.character(start), as.integer(length), .jarray(as.integer(nonworking)), type,  as.logical(single))
-  res <- .jd2r_matrix(jm)
-  rownames(res) <- as.character(seq(as.Date(start), length.out = nrow(res), by="days"))
-  return (res)
-
+holidays <- function(calendar,
+                     start,
+                     length,
+                     nonworking=c(6,7),
+                     type=c("Skip", "All", "NextWorkingDay", "PreviousWorkingDay"),
+                     single=FALSE){
+    type<-match.arg(type)
+    pcal<-.r2p_calendar(calendar)
+    jcal<-.p2jd_calendar(pcal)
+    jm<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+               "holidays", jcal, as.character(start), as.integer(length), .jarray(as.integer(nonworking)), type,  as.logical(single))
+    res <- .jd2r_matrix(jm)
+    rownames(res) <- as.character(seq(as.Date(start), length.out = nrow(res), by="days"))
+    colnames(res) <- names(calendar$days)
+    return (res)
 }
 
 #' Display Long-term means for a set of calendar regressors
@@ -419,25 +424,25 @@ holidays<-function(calendar, start, length, nonworking=c(6,7), type=c("Skip", "A
 #' @examples
 #' BE <- national_calendar(list(
 #' fixed_day(7,21),
-#' special_day('NEWYEAR'),
-#' special_day('CHRISTMAS'),
-#' special_day('MAYDAY'),
-#' special_day('EASTERMONDAY'),
-#' special_day('ASCENSION'),
-#' special_day('WHITMONDAY'),
-#' special_day('ASSUMPTION'),
-#' special_day('ALLSAINTSDAY'),
-#' special_day('ARMISTICE')))
+#' special_day("NEWYEAR"),
+#' special_day("CHRISTMAS"),
+#' special_day("MAYDAY"),
+#' special_day("EASTERMONDAY"),
+#' special_day("ASCENSION"),
+#' special_day("WHITMONDAY"),
+#' special_day("ASSUMPTION"),
+#' special_day("ALLSAINTSDAY"),
+#' special_day("ARMISTICE")))
 #' lt<-long_term_mean(BE,12,
 #'                   groups = c(1,1,1,1,1,0,0),
 #'                   holiday = 7)
 long_term_mean <-function(calendar,frequency,groups=c(1,2,3,4,5,6,0), holiday=7){
-  pcal<-.r2p_calendar(calendar)
-  jcal<-.p2jd_calendar(pcal)
-  jm<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
-             "longTermMean", jcal, as.integer(frequency), as.integer(groups), as.integer(holiday))
-  res <- .jd2r_matrix(jm)
-  return (.group_names(res, contrasts = FALSE))
+    pcal<-.r2p_calendar(calendar)
+    jcal<-.p2jd_calendar(pcal)
+    jm<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+               "longTermMean", jcal, as.integer(frequency), as.integer(groups), as.integer(holiday))
+    res <- .jd2r_matrix(jm)
+    return (.group_names(res, contrasts = FALSE))
 }
 
 #' Display Easter Sunday dates in given period
@@ -459,8 +464,8 @@ long_term_mean <-function(calendar,frequency,groups=c(1,2,3,4,5,6,0), holiday=7)
 #' #Dates from 2018(included) to 2023 (included)
 #' easter_dates(2018, 2023)
 easter_dates<-function(year0, year1, julian = FALSE){
-  dates<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "[S", "easter", as.integer(year0), as.integer(year1), as.logical(julian))
-  return (sapply(dates, as.Date))
+    dates<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "[S", "easter", as.integer(year0), as.integer(year1), as.logical(julian))
+    return (sapply(dates, as.Date))
 }
 
 #' Trading day Regressor for Stock series
@@ -479,61 +484,61 @@ easter_dates<-function(year0, year1, julian = FALSE){
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @export
 stock_td<-function(frequency, start, length, s, w = 31){
-  if (!missing(s) && is.ts(s)) {
-    frequency = stats::frequency(s)
-    start = stats::start(s)
-    length = .length_ts(s)
-  }
-  jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-  jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "stockTradingDays", jdom, as.integer(w))
-  data <- .jd2r_matrix(jm)
-  colnames(data) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-  return (ts(data, frequency = frequency, start= start))
+    if (!missing(s) && is.ts(s)) {
+        frequency = stats::frequency(s)
+        start = stats::start(s)
+        length = .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "stockTradingDays", jdom, as.integer(w))
+    data <- .jd2r_matrix(jm)
+    colnames(data) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+    return (ts(data, frequency = frequency, start= start))
 }
 
 .r2p_holiday<-function(r){
-  if (is(r, SPECIALDAY)){return (.r2p_specialday(r))}
-  if (is(r, FIXEDDAY)){return (.r2p_fixedday(r))}
-  if (is(r, EASTERDAY)){return (.r2p_easterday(r))}
-  if (is(r, FIXEDWEEKDAY)){return (.r2p_fixedweekday(r))}
-  if (is(r, SINGLEDAY)){return (.r2p_singleday(r))}
-  return (NULL)
+    if (is(r, SPECIALDAY)){return (.r2p_specialday(r))}
+    if (is(r, FIXEDDAY)){return (.r2p_fixedday(r))}
+    if (is(r, EASTERDAY)){return (.r2p_easterday(r))}
+    if (is(r, FIXEDWEEKDAY)){return (.r2p_fixedweekday(r))}
+    if (is(r, SINGLEDAY)){return (.r2p_singleday(r))}
+    return (NULL)
 }
 
 .p2r_calendar<-function(p){
-  return (structure(
-    list(days=c(lapply(p$fixed_days, function(z) .p2r_fixedday(z)),
-      lapply(p$fixed_week_days, function(z) .p2r_fixedweekday(z)),
-      lapply(p$easter_related_days, function(z) .p2r_easterday(z)),
-      lapply(p$prespecified_holidays, function(z) .p2r_specialday(z)),
-      lapply(p$single_dates, function(z) .p2r_singleday(z)),
-      mean_correction=p$mean_correction)
-  ), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
+    return (structure(
+        list(days=c(lapply(p$fixed_days, function(z) .p2r_fixedday(z)),
+                    lapply(p$fixed_week_days, function(z) .p2r_fixedweekday(z)),
+                    lapply(p$easter_related_days, function(z) .p2r_easterday(z)),
+                    lapply(p$prespecified_holidays, function(z) .p2r_specialday(z)),
+                    lapply(p$single_dates, function(z) .p2r_singleday(z)),
+                    mean_correction=p$mean_correction)
+        ), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2p_calendar<-function(r){
-  p<-jd3.Calendar$new()
-  if (length(r$days)>0){
-    #select fixed days
-    sel<-which(sapply(r$days,function(z) is(z, FIXEDDAY)))
-    p$fixed_days<-lapply(r$days[sel], function(z) .r2p_fixedday(z))
-    #select fixed week days
-    sel<-which(sapply(r$days,function(z) is(z, FIXEDWEEKDAY)))
-    p$fixed_week_days<-lapply(r$days[sel], function(z) .r2p_fixedweekday(z))
-    # select easter days
-    sel<-which(sapply(r$days,function(z) is(z, EASTERDAY)))
-    p$easter_related_days<-lapply(r$days[sel], function(z) .r2p_easterday(z))
-    # select special days
-    sel<-which(sapply(r$days,function(z) is(z, SPECIALDAY)))
-    p$prespecified_holidays<-lapply(r$days[sel], function(z) .r2p_specialday(z))
-    # select single days
-    sel<-which(sapply(r$days,function(z) is(z, SINGLEDAY)))
-    p$single_dates<-lapply(r$days[sel], function(z) .r2p_singleday(z))
-  }
-  p$mean_correction<-r$mean_correction
-  return (p)
+    p<-jd3.Calendar$new()
+    if (length(r$days)>0){
+        #select fixed days
+        sel<-which(sapply(r$days,function(z) is(z, FIXEDDAY)))
+        p$fixed_days<-lapply(r$days[sel], function(z) .r2p_fixedday(z))
+        #select fixed week days
+        sel<-which(sapply(r$days,function(z) is(z, FIXEDWEEKDAY)))
+        p$fixed_week_days<-lapply(r$days[sel], function(z) .r2p_fixedweekday(z))
+        # select easter days
+        sel<-which(sapply(r$days,function(z) is(z, EASTERDAY)))
+        p$easter_related_days<-lapply(r$days[sel], function(z) .r2p_easterday(z))
+        # select special days
+        sel<-which(sapply(r$days,function(z) is(z, SPECIALDAY)))
+        p$prespecified_holidays<-lapply(r$days[sel], function(z) .r2p_specialday(z))
+        # select single days
+        sel<-which(sapply(r$days,function(z) is(z, SINGLEDAY)))
+        p$single_dates<-lapply(r$days[sel], function(z) .r2p_singleday(z))
+    }
+    p$mean_correction<-r$mean_correction
+    return (p)
 }
 
 #' Create a Chained Calendar
@@ -554,29 +559,29 @@ stock_td<-function(frequency, start, length, s, w = 31){
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @examples
-#' Belgium <- national_calendar(list(special_day('NEWYEAR'),fixed_day(7,21)))
-#' France <- national_calendar(list(special_day('NEWYEAR'),fixed_day(7,14)))
+#' Belgium <- national_calendar(list(special_day("NEWYEAR"),fixed_day(7,21)))
+#' France <- national_calendar(list(special_day("NEWYEAR"),fixed_day(7,14)))
 #' chained_cal<-chained_calendar(France, Belgium, "2000-01-01")
 #'
 #' @export
 chained_calendar<-function(calendar1, calendar2, break_date){
-  return (structure(list(
-    calendar1=calendar1,
-    calendar2=calendar2,
-    break_date=break_date
-  ), class=c('JD3_CHAINEDCALENDAR', 'JD3_CALENDARDEFINITION')))
+    return (structure(list(
+        calendar1=calendar1,
+        calendar2=calendar2,
+        break_date=break_date
+    ), class=c('JD3_CHAINEDCALENDAR', 'JD3_CALENDARDEFINITION')))
 }
 
 .p2r_chainedcalendar<-function(p){
-  return (chained_calendar(p$calendar1, p$calendar2, .p2r_date(p$break_date)))
+    return (chained_calendar(p$calendar1, p$calendar2, .p2r_date(p$break_date)))
 }
 
 .r2p_chainedcalendar<-function(r){
-  pc<-jd3.ChainedCalendar$new()
-  pc$calendar1<-.r2p_calendardef(r$calendar1)
-  pc$calendar2<-.r2p_calendardef(r$calendar2)
-  pc$break_date<-parseDate(r$break_date)
-  return (pc)
+    pc<-jd3.ChainedCalendar$new()
+    pc$calendar1<-.r2p_calendardef(r$calendar1)
+    pc$calendar2<-.r2p_calendardef(r$calendar2)
+    pc$break_date<-parseDate(r$break_date)
+    return (pc)
 }
 
 #' Create a Composite Calendar
@@ -599,45 +604,45 @@ chained_calendar<-function(calendar1, calendar2, break_date){
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @export
 #' @examples
-#' Belgium <- national_calendar(list(special_day('NEWYEAR'),fixed_day(7,21)))
-#' France <- national_calendar(list(special_day('NEWYEAR'),fixed_day(7,14)))
+#' Belgium <- national_calendar(list(special_day("NEWYEAR"),fixed_day(7,21)))
+#' France <- national_calendar(list(special_day("NEWYEAR"),fixed_day(7,14)))
 #' composite_calendar<- weighted_calendar(list(France,Belgium), weights = c(1,2))
 weighted_calendar<-function(calendars, weights){
-  # checkmate::assertNames(calendars)
-  checkmate::assertNumeric(weights)
-  if (length(calendars) != length(weights)) stop("Calendars and weights should have the same length")
+    # checkmate::assertNames(calendars)
+    checkmate::assertNumeric(weights)
+    if (length(calendars) != length(weights)) stop("Calendars and weights should have the same length")
 
-  return (structure(list(calendars=calendars, weights=weights), class=c('JD3_WEIGHTEDCALENDAR', 'JD3_CALENDARDEFINITION')))
+    return (structure(list(calendars=calendars, weights=weights), class=c('JD3_WEIGHTEDCALENDAR', 'JD3_CALENDARDEFINITION')))
 }
 
 
 .p2r_wcalendar<-function(p){
-  calendars<-sapply(p, function(item){return (item$calendar)})
-  weights<-sapply(p, function(item){return (item$weights)})
-  return (weighted_calendar(calendars, weights))
+    calendars<-sapply(p, function(item){return (item$calendar)})
+    weights<-sapply(p, function(item){return (item$weights)})
+    return (weighted_calendar(calendars, weights))
 
 }
 
 .r2p_wcalendar<-function(r){
-  pwc<-jd3.WeightedCalendar$new()
-  n<-length(r$calendars)
-  pwc$items<-lapply(1:n, function(i){return (list(calendar=r$calendars[[i]], weight=r$weights[i]))})
-  pwc
+    pwc<-jd3.WeightedCalendar$new()
+    n<-length(r$calendars)
+    pwc$items<-lapply(1:n, function(i){return (list(calendar=r$calendars[[i]], weight=r$weights[i]))})
+    pwc
 }
 
 .p2r_calendardef<-function(p){
-  if (p$has('calendar')) return (.p2r_calendar(p$calendar))
-  if (p$has('chained_calendar')) return (.p2r_chainedcalendar(p$chained_calendar))
-  if (p$has('weighted_calendar')) return (.p2r_wcalendar(p$weighted_calendar))
-  return (NULL)
+    if (p$has('calendar')) return (.p2r_calendar(p$calendar))
+    if (p$has('chained_calendar')) return (.p2r_chainedcalendar(p$chained_calendar))
+    if (p$has('weighted_calendar')) return (.p2r_wcalendar(p$weighted_calendar))
+    return (NULL)
 }
 
 .r2p_calendardef<-function(r){
-  p<-jd3.CalendarDefinition$new()
-  if (is(r, 'JD3_CALENDAR')){p$calendar<-.r2p_calendar(r)}
-  else if (is(r, 'JD3_CHAINEDCALENDAR')){p$chained_calendar<-.r2p_chainedcalendar(r)}
-  else if (is(r, 'JD3_WEIGHTEDCALENDAR')){p$weighted_calendar<-.r2p_wcalendar(r)}
-  return (p)
+    p<-jd3.CalendarDefinition$new()
+    if (is(r, 'JD3_CALENDAR')){p$calendar<-.r2p_calendar(r)}
+    else if (is(r, 'JD3_CHAINEDCALENDAR')){p$chained_calendar<-.r2p_chainedcalendar(r)}
+    else if (is(r, 'JD3_WEIGHTEDCALENDAR')){p$weighted_calendar<-.r2p_wcalendar(r)}
+    return (p)
 }
 
 
@@ -656,29 +661,29 @@ weighted_calendar<-function(calendars, weights){
 #' #Fictional calendar using all possibilities to set the required holidays
 #' MyCalendar <- national_calendar(list(
 #'   fixed_day(7,21),
-#'   special_day('NEWYEAR'),
-#'   special_day('CHRISTMAS'),
+#'   special_day("NEWYEAR"),
+#'   special_day("CHRISTMAS"),
 #'   fixed_week_day(7, 2, 3), # second Wednesday of July
-#'   special_day('MAYDAY'),
+#'   special_day("MAYDAY"),
 #'   easter_day(1), # Easter Monday
 #'   easter_day(-2), # Good Friday
 #'   single_day("2001-09-11"), # appearing once
-#'   special_day('ASCENSION'),
+#'   special_day("ASCENSION"),
 #'   easter_day(offset=60, julian=FALSE, weight=0.5,
 #'   validity = list(start="2000-01-01", end = "2020-12-01")),  # Corpus Christi
-#'   special_day('WHITMONDAY'),
-#'   special_day('ASSUMPTION'),
-#'   special_day('ALLSAINTSDAY'),
-#'   special_day('ARMISTICE')))
+#'   special_day("WHITMONDAY"),
+#'   special_day("ASSUMPTION"),
+#'   special_day("ALLSAINTSDAY"),
+#'   special_day("ARMISTICE")))
 #' @return returns an object of class \code{c("JD3_CALENDAR","JD3_CALENDARDEFINITION")}
 #' @seealso \code{\link{chained_calendar}}, \code{\link{weighted_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 #' @export
-national_calendar<-function(days, mean_correction=TRUE){
-  if (! is.list(days)) stop ('Days should be a list of holidays')
-  return (structure(list(days=days, mean_correction=mean_correction), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
+national_calendar <- function(days, mean_correction=TRUE){
+    if (! is.list(days)) stop ('Days should be a list of holidays')
+    return (structure(list(days=days, mean_correction=mean_correction), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
 }
 
 #' Trading day regressors with pre-defined holidays
@@ -704,15 +709,15 @@ national_calendar<-function(days, mean_correction=TRUE){
 #' @examples
 #' BE <- national_calendar(list(
 #'     fixed_day(7,21),
-#'     special_day('NEWYEAR'),
-#'     special_day('CHRISTMAS'),
-#'     special_day('MAYDAY'),
-#'     special_day('EASTERMONDAY'),
-#'     special_day('ASCENSION'),
-#'     special_day('WHITMONDAY'),
-#'     special_day('ASSUMPTION'),
-#'     special_day('ALLSAINTSDAY'),
-#'     special_day('ARMISTICE')))
+#'     special_day("NEWYEAR"),
+#'     special_day("CHRISTMAS"),
+#'     special_day("MAYDAY"),
+#'     special_day("EASTERMONDAY"),
+#'     special_day("ASCENSION"),
+#'     special_day("WHITMONDAY"),
+#'     special_day("ASSUMPTION"),
+#'     special_day("ALLSAINTSDAY"),
+#'     special_day("ARMISTICE")))
 #' calendar_td(BE, 12, c(1980,1), 240, holiday=7, groups=c(1,1,1,2,2,3,0),
 #' contrasts = FALSE)
 #' @seealso \code{\link{national_calendar}}, \code{\link{td}}
@@ -720,20 +725,20 @@ national_calendar<-function(days, mean_correction=TRUE){
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 calendar_td<-function(calendar,frequency, start, length, s, groups=c(1,2,3,4,5,6,0), holiday=7, contrasts=TRUE){
-  if(! is(calendar, 'JD3_CALENDAR')) stop('Invalid calendar')
-  if (!missing(s) && is.ts(s)) {
-    frequency = stats::frequency(s)
-    start = stats::start(s)
-    length = .length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  pcal<-.r2p_calendar(calendar)
-  jcal<-.p2jd_calendar(pcal)
-  jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
-             "htd", jcal, jdom, as.integer(groups), as.integer(holiday), contrasts)
-  output <- .jd2r_matrix(jm)
-  output <- .group_names(output, contrasts = contrasts)
-  return (ts(output, start = start, frequency = frequency))
+    if(! is(calendar, 'JD3_CALENDAR')) stop('Invalid calendar')
+    if (!missing(s) && is.ts(s)) {
+        frequency = stats::frequency(s)
+        start = stats::start(s)
+        length = .length_ts(s)
+    }
+    jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
+    pcal<-.r2p_calendar(calendar)
+    jcal<-.p2jd_calendar(pcal)
+    jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+               "htd", jcal, jdom, as.integer(groups), as.integer(holiday), contrasts)
+    output <- .jd2r_matrix(jm)
+    output <- .group_names(output, contrasts = contrasts)
+    return (ts(output, start = start, frequency = frequency))
 }
 
 #' Calendars Print Methods
@@ -748,91 +753,91 @@ NULL
 #' @export
 #' @rdname print.calendars
 print.JD3_FIXEDDAY<-function(x, ...){
-  cat('Fixed day: month=', x$month, ', day=', x$day,  sep='')
-  .print_weight(x)
-  .print_validityperiod(x)
+    cat('Fixed day: month=', x$month, ', day=', x$day,  sep='')
+    .print_weight(x)
+    .print_validityperiod(x)
 }
 .print_weight <- function(x, ...) {
-  if (x$weight != 1)
-    cat(' , weight=', x$weight, sep='')
+    if (x$weight != 1)
+        cat(' , weight=', x$weight, sep='')
 }
 .print_validityperiod <- function(x, ...) {
-  if (!is.null(x$validity$start))
-    cat(sprintf(' , from=%s', x$validity$start))
-  if (!is.null(x$validity$end))
-    cat(sprintf(' , to=%s', x$validity$end))
+    if (!is.null(x$validity$start))
+        cat(sprintf(' , from=%s', x$validity$start))
+    if (!is.null(x$validity$end))
+        cat(sprintf(' , to=%s', x$validity$end))
 }
 DAYS=c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
 
 #' @export
 #' @rdname print.calendars
 print.JD3_FIXEDWEEKDAY<-function(x, ...){
-  cat('Fixed week day: month=', x$month, ', day of the week=', DAYS[x$dayofweek], ', week=', x$week,  sep='')
-  .print_weight(x)
-  .print_validityperiod(x)
+    cat('Fixed week day: month=', x$month, ', day of the week=', DAYS[x$dayofweek], ', week=', x$week,  sep='')
+    .print_weight(x)
+    .print_validityperiod(x)
 }
 
 #' @export
 #' @rdname print.calendars
 print.JD3_EASTERDAY<-function(x, ...){
-  cat('Easter related day: offset=', x$offset, sep='')
-  .print_weight(x)
-  .print_validityperiod(x)
+    cat('Easter related day: offset=', x$offset, sep='')
+    .print_weight(x)
+    .print_validityperiod(x)
 }
 
 #' @export
 #' @rdname print.calendars
 print.JD3_SPECIALDAY<-function(x, ...){
-  cat('Prespecified holiday: event=', x$event,  sep='')
-  if (x$offset != 0)cat(' , offset=', x$offset, sep='')
-  .print_weight(x)
-  .print_validityperiod(x)
+    cat('Prespecified holiday: event=', x$event,  sep='')
+    if (x$offset != 0)cat(' , offset=', x$offset, sep='')
+    .print_weight(x)
+    .print_validityperiod(x)
 }
 
 #' @export
 #' @rdname print.calendars
 print.JD3_SINGLEDAY<-function(x, ...){
-  cat('Single date: ', x$date,  sep='')
-  .print_weight(x)
+    cat('Single date: ', x$date,  sep='')
+    .print_weight(x)
 }
 
 #' @export
 #' @rdname print.calendars
 print.JD3_CALENDAR <- function(x, ...) {
-  cat("Holiday:\n")
-  for (day in x$day) {
-    cat("\t- ")
-    print(day)
-    cat('\n')
-  }
-  cat("\nMean correction: ", ifelse(x$mean_correction, "Yes", "No"), "\n", sep = "")
+    cat("Holiday:\n")
+    for (day in x$day) {
+        cat("\t- ")
+        print(day)
+        cat('\n')
+    }
+    cat("\nMean correction: ", ifelse(x$mean_correction, "Yes", "No"), "\n", sep = "")
 
-  return(invisible(x))
+    return(invisible(x))
 }
 
 #' @export
 print.JD3_CHAINEDCALENDAR <- function (x, ...)
 {
-  cat("First calendar before ", x$break_date, "\n", sep = "")
-  print(x$calendar1)
+    cat("First calendar before ", x$break_date, "\n", sep = "")
+    print(x$calendar1)
 
-  cat("\n")
+    cat("\n")
 
-  cat("Second calendar after ", x$break_date, "\n", sep = "")
-  print(x$calendar2, enable_print_style = FALSE)
+    cat("Second calendar after ", x$break_date, "\n", sep = "")
+    print(x$calendar2, enable_print_style = FALSE)
 
-  return(invisible(x))
+    return(invisible(x))
 }
 
 #' @export
 print.JD3_WEIGHTEDCALENDAR <- function (x, ...)
 {
-  for (index_cal in seq_along(x$weights)) {
-    cat("Calendar n", index_cal, "\n", sep = "")
-    cat("weight: ", x$weight[index_cal], "\n", sep = "")
-    print(x$calendars[[index_cal]])
-    cat("\n")
-  }
+    for (index_cal in seq_along(x$weights)) {
+        cat("Calendar n", index_cal, "\n", sep = "")
+        cat("weight: ", x$weight[index_cal], "\n", sep = "")
+        print(x$calendars[[index_cal]])
+        cat("\n")
+    }
 
-  return(invisible(x))
+    return(invisible(x))
 }
