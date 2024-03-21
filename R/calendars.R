@@ -395,14 +395,23 @@ holidays <- function(calendar,
                      length,
                      nonworking=c(6,7),
                      type=c("Skip", "All", "NextWorkingDay", "PreviousWorkingDay"),
-                     single=FALSE){
+                     single=FALSE) {
     type<-match.arg(type)
     pcal<-.r2p_calendar(calendar)
     jcal<-.p2jd_calendar(pcal)
-    jm<-.jcall("jdplus/toolkit/base/r/calendar/Calendars", "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
-               "holidays", jcal, as.character(start), as.integer(length), .jarray(as.integer(nonworking)), type,  as.logical(single))
+    jm<-.jcall(
+        obj = "jdplus/toolkit/base/r/calendar/Calendars",
+        returnSig = "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+        method = "holidays",
+        jcal,
+        as.character(start),
+        as.integer(length),
+        .jarray(as.integer(nonworking)),
+        type,
+        as.logical(single)
+    )
     res <- .jd2r_matrix(jm)
-    rownames(res) <- as.character(seq(as.Date(start), length.out = nrow(res), by="days"))
+    rownames(res) <- as.character(seq(as.Date(start), length.out = nrow(res), by = "days"))
     colnames(res) <- names(calendar$days)
     return (res)
 }
