@@ -29,6 +29,9 @@ of day effect but don't take into account any holiday. To do so user-defined reg
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -196,15 +199,15 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
 <span class="r-in"><span><span class="co">### create a calendar</span></span></span>
 <span class="r-in"><span><span class="va">BE</span> <span class="op">&lt;-</span> <span class="fu"><a href="national_calendar.html">national_calendar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="fixed_day.html">fixed_day</a></span><span class="op">(</span><span class="fl">7</span>,<span class="fl">21</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'NEWYEAR'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'CHRISTMAS'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'MAYDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'EASTERMONDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ASCENSION'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'WHITMONDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ASSUMPTION'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ALLSAINTSDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ARMISTICE'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"NEWYEAR"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"CHRISTMAS"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"MAYDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"EASTERMONDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ASCENSION"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"WHITMONDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ASSUMPTION"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ALLSAINTSDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span> <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ARMISTICE"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">## put into a context</span></span></span>
 <span class="r-in"><span><span class="va">my_context</span><span class="op">&lt;-</span><span class="fu"><a href="modelling_context.html">modelling_context</a></span><span class="op">(</span>calendars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cal<span class="op">=</span><span class="va">BE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">## create a specification</span></span></span>

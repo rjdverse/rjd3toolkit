@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -115,15 +118,15 @@ This kind of non-aggregated regressors are used for calendar correction in daily
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">BE</span> <span class="op">&lt;-</span> <span class="fu"><a href="national_calendar.html">national_calendar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="fixed_day.html">fixed_day</a></span><span class="op">(</span><span class="fl">7</span>,<span class="fl">21</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'NEWYEAR'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'CHRISTMAS'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'MAYDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'EASTERMONDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ASCENSION'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'WHITMONDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ASSUMPTION'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ALLSAINTSDAY'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">'ARMISTICE'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"NEWYEAR"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"CHRISTMAS"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"MAYDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"EASTERMONDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ASCENSION"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"WHITMONDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ASSUMPTION"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ALLSAINTSDAY"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ARMISTICE"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">q</span><span class="op">&lt;-</span><span class="fu">holidays</span><span class="op">(</span><span class="va">BE</span>, <span class="st">"2021-01-01"</span>, <span class="fl">366</span><span class="op">*</span><span class="fl">10</span>, type<span class="op">=</span><span class="st">"All"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">q</span>,<span class="fl">1</span>, <span class="va">max</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="holidays-1.png" alt="" width="700" height="433"></span>

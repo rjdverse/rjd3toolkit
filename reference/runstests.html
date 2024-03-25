@@ -21,6 +21,9 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -85,11 +88,11 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="studentdistribution.html">random_t</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1000</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  0.1285876 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.8977 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -1.137038 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.2555 </span>
 <span class="r-in"><span><span class="fu">testofupdownruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -0.02502269 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.9800 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -0.8507714 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.3949 </span>
 <span class="r-in"><span><span class="co"># non-random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Value:  -14.05884 </span>
