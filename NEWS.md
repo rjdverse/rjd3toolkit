@@ -12,5 +12,3 @@ to [Semantic Versioning](https://semver.org/spec/v3.2.3.html).
 ## [3.2.3] - 2023-12-12
 
 [3.2.3]: https://github.com/rjdemetra/rjd3toolkit/releases/tag/v3.2.3
-
-## First commit
