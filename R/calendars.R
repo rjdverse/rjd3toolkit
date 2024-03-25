@@ -1,6 +1,6 @@
 #' @import checkmate
 #' @importFrom methods is
-#' @importFrom stats frequency ts is.ts is.mts start end
+#' @importFrom stats frequency ts is.ts is.mts start end cycle
 #' @include protobuf.R jd2r.R
 NULL
 
