@@ -1,0 +1,17 @@
+name: Check changelog
+
+on: [ push, pull_request ]
+
+jobs:
+  check-changelog-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - uses: jbangdev/jbang-action@v0.115.0
+        with:
+          script: com.github.nbbrd.heylogs:heylogs-cli:0.7.2:bin
+          scriptargs: "check NEWS.md"
