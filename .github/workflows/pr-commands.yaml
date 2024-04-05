@@ -11,6 +11,8 @@ jobs:
     if: ${{ github.event.issue.pull_request && (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') && startsWith(github.event.comment.body, '/document') }}
     name: document
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.check_changes.outputs.test }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -52,17 +54,17 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --exit-code --quiet --name-only -- NAMESPACE man/ || echo "Changes detected"
+          git diff --exit-code --quiet --name-only -- NAMESPACE man/ || echo "Changes detected" >> "$GITHUB_OUTPUT"
           
       - name: Commit the changes
-        if: steps.check_changes.outputs.stdout == 'Changes detected'
+        if: steps.check_changes.outputs.test == 'Changes detected'
         run: |
           git add man/\* NAMESPACE
           git commit -m '[GHA] Document package'
 
       # Commit changes or a placeholder commit if no changes
       - name: Commit no changes
-        if: steps.check_changes.outputs.stdout != 'Changes detected'
+        if: steps.check_changes.outputs.test != 'Changes detected'
         run: |
           git commit --allow-empty -m '[GHA] Package already documented'
 
@@ -74,6 +76,8 @@ jobs:
     if: ${{ github.event.issue.pull_request && (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') && startsWith(github.event.comment.body, '/style') }}
     name: style
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.check_changes.outputs.test }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -112,17 +116,17 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --quiet \*.R || echo "Changes detected"
+          git diff --quiet \*.R || echo "Changes detected" >> "$GITHUB_OUTPUT"
           
       - name: Commit the changes
-        if: steps.check_changes.outputs.stdout == 'Changes detected'
+        if: steps.check_changes.outputs.test == 'Changes detected'
         run: |
           git add \*.R
           git commit -m '[GHA] Style package'
 
       # Commit changes or a placeholder commit if no changes
       - name: Commit no changes
-        if: steps.check_changes.outputs.stdout != 'Changes detected'
+        if: steps.check_changes.outputs.test != 'Changes detected'
         run: |
           git commit --allow-empty -m '[GHA] Package already styled'
 
