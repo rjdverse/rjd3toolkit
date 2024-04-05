@@ -43,12 +43,28 @@ jobs:
         run: roxygen2::roxygenise()
         shell: Rscript {0}
 
-      - name: commit
+      - name: Config git
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      # Check if there are any changes
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --exit-code --quiet --name-only -- NAMESPACE man/ || echo "Changes detected"
+          
+      - name: Commit the changes
+        if: steps.check_changes.outputs.stdout == 'Changes detected'
+        run: |
           git add man/\* NAMESPACE
           git commit -m '[GHA] Document package'
+
+      # Commit changes or a placeholder commit if no changes
+      - name: Commit no changes
+        if: steps.check_changes.outputs.stdout != 'Changes detected'
+        run: |
+          git commit --allow-empty -m '[GHA] Package already documented'
 
       - uses: r-lib/actions/pr-push@v2
         with:
@@ -79,7 +95,6 @@ jobs:
       - name: Set up for RProtoBuf
         run: sudo apt-get update -y && sudo apt-get install protobuf-compiler libprotobuf-dev libprotoc-dev
 
-
       - name: Install dependencies
         run: install.packages("styler")
         shell: Rscript {0}
@@ -88,12 +103,28 @@ jobs:
         run: styler::style_pkg(transformers = styler::tidyverse_style(indent_by = 4))
         shell: Rscript {0}
 
-      - name: commit
+      - name: Config git
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      # Check if there are any changes
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet \*.R || echo "Changes detected"
+          
+      - name: Commit the changes
+        if: steps.check_changes.outputs.stdout == 'Changes detected'
+        run: |
           git add \*.R
           git commit -m '[GHA] Style package'
+
+      # Commit changes or a placeholder commit if no changes
+      - name: Commit no changes
+        if: steps.check_changes.outputs.stdout != 'Changes detected'
+        run: |
+          git commit --allow-empty -m '[GHA] Package already styled'
 
       - uses: r-lib/actions/pr-push@v2
         with:
