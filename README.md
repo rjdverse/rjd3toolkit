@@ -1,21 +1,28 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # rjd3toolkit
 
-Utility package in JDemetra+ 3.x R ecosystem. Contains utility functions used in other `rjd3` packages and has to be systematically installed before using any other rjd3 package. 
+<!-- badges: start -->
+<!-- badges: end -->
 
-## Main Functions 
+Utility package in JDemetra+ 3.x R ecosystem. Contains utility functions
+used in other `rjd3` packages and has to be systematically installed
+before using any other rjd3 package.
 
--   customize specifications in rjd3x13 and rjdtramoseats
+## Main Functions
 
--   generate user-defined regressors for calendar correction
+- customize specifications in rjd3x13 and rjdtramoseats
 
--   generate auxiliary variables (outliers, ramps..)
+- generate user-defined regressors for calendar correction
 
--   run arima model estimations
+- generate auxiliary variables (outliers, ramps..)
 
--   perform tests (seasonality, normality, white noise)
+- run arima model estimations
 
--   access general functions such as auto-correlations, distributions
+- perform tests (seasonality, normality, white noise)
 
+- access general functions such as auto-correlations, distributions
 
 ## Installation
 
@@ -33,4 +40,12 @@ To get the current development version from GitHub:
 remotes::install_github("rjdemetra/rjd3toolkit")
 ```
 
+## Contributing
 
+Any contribution is welcome and should be done through pull requests
+and/or issues.
+
+## Licensing
+
+The code of this project is licensed under the [European Union Public
+Licence (EUPL)](https://joinup.ec.europa.eu/page/eupl-text-11-12).

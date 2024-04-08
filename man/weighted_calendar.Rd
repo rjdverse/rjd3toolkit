@@ -25,8 +25,8 @@ For example, in Germany public holidays are determined by the federal states.
 Therefore, Epiphany is celebrated only in Baden-Wurttemberg, Bavaria and in Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated only in Saxony.
 }
 \examples{
-Belgium <- national_calendar(list(special_day('NEWYEAR'),fixed_day(7,21)))
-France <- national_calendar(list(special_day('NEWYEAR'),fixed_day(7,14)))
+Belgium <- national_calendar(list(special_day("NEWYEAR"),fixed_day(7,21)))
+France <- national_calendar(list(special_day("NEWYEAR"),fixed_day(7,14)))
 composite_calendar<- weighted_calendar(list(France,Belgium), weights = c(1,2))
 }
 \references{
