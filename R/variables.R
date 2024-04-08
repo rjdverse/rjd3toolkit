@@ -121,7 +121,7 @@ ao_variable<-function(frequency, start, length, s, pos, date=NULL){
   jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
   if (is.null(date)){
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ao", jdom, as.integer(pos-1))
-  }else{
+  } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ao", jdom, as.character(date))
   }
   return (ts(data, frequency = frequency, start= start))
@@ -137,7 +137,7 @@ tc_variable<-function(frequency, start, length, s, pos, date=NULL, rate=0.7){
   jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
   if (is.null(date)){
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "tc", jdom, as.integer(pos-1), rate)
-  }else{
+  } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "tc", jdom, as.character(date), rate)
   }
   return (ts(data, frequency = frequency, start= start))
@@ -154,7 +154,7 @@ ls_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRU
   jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
   if (is.null(date)){
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ls", jdom, as.integer(pos-1), as.logical(zeroended))
-  }else{
+  } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ls", jdom, as.character(date), as.logical(zeroended))
   }
   return (ts(data, frequency = frequency, start= start))
@@ -171,7 +171,7 @@ so_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRU
   jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
   if (is.null(date)){
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "so", jdom, as.integer(pos-1), as.logical(zeroended))
-  }else{
+  } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "so", jdom, as.character(date),
                  as.logical(zeroended))
   }
@@ -214,7 +214,7 @@ ramp_variable<-function(frequency, start, length, s, range){
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ramp", jdom,
                  as.character(range[1]),
                  as.character(range[2]))
-  }else{
+  } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ramp", jdom,
                  as.integer(range[1]-1),
                  as.integer(range[2]-1))
@@ -281,7 +281,7 @@ intervention_variable<-function(frequency, start, length, s, starts, ends, delta
                  seasonaldelta,
                  .jarray(as.character(starts)),
                  .jarray(as.character(ends)))
-  }else{
+  } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "interventionVariable", jdom,
                  delta,
                  seasonaldelta,

@@ -26,7 +26,7 @@ NULL
 statisticaltest<-function(val, pval, dist=NULL){
   if (pval<0){
     pval=0
-  }else if (pval>1){
+  } else if (pval>1){
     pval=1
   }
   return (structure(list(value=val, pvalue=pval), distribution=dist, class=c("JD3_TEST", "JD3")))
