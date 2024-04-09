@@ -46,7 +46,7 @@ jobs:
 
       - name: Set up for RProtoBuf on Windows
         if: runner.os == 'Windows'
-        run: choco install protobuf
+        run: choco install protoc
 
       - name: Set up for RProtoBuf on macos
         if: runner.os == 'macOS'
