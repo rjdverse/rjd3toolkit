@@ -44,7 +44,16 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - name: Set up for RProtoBuf
+      - name: Set up for RProtoBuf on Windows
+        if: runner.os == 'Windows'
+        run: choco install protobuf
+
+      - name: Set up for RProtoBuf on macos
+        if: runner.os == 'macOS'
+        run: brew install protobuf
+
+      - name: Set up for RProtoBuf on ubuntu
+        if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install protobuf-compiler libprotobuf-dev libprotoc-dev
 
       - uses: r-lib/actions/setup-r-dependencies@v2
