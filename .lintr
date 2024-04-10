@@ -1,5 +1,4 @@
 linters: linters_with_defaults(
-        indentation_linter = lintr::indentation_linter(indent = 4L),
         indentation_linter = NULL,
         trailing_blank_lines_linter = NULL,
         trailing_whitespace_linter = NULL,
