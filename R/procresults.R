@@ -29,10 +29,10 @@ dictionary<-function(object){
     stop("No dictionary for this type of object")
   if (is.jnull(object$internal)){
     stop("No java object")
-  }else{
+  } else{
     if (.jinstanceof(object$internal, "jdplus/toolkit/base/api/information/Explorable")){
       .proc_dictionary2(object$internal)
-    }else{
+    } else{
       .proc_dictionary(.jclass(object$internal))
     }
   }
@@ -45,7 +45,7 @@ result<-function(object, id){
     stop("No result for this type of object")
   if (is.jnull(object$internal)){
     stop("No java object")
-  }else{
+  } else{
     .proc_data(object$internal, id)
     }
 }
@@ -55,7 +55,7 @@ result<-function(object, id){
 user_defined <- function(object, userdefined = NULL){
   if(is.null(userdefined)){
     result <- list()
-  }else{
+  } else{
     result <- lapply(userdefined,
                      function(var) result(object, var))
     if (is.null(names(userdefined)))

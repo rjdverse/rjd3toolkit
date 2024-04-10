@@ -4,6 +4,8 @@
 # rjd3toolkit
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/rjdemetra/rjd3toolkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rjdemetra/rjd3toolkit/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Utility package in JDemetra+ 3.x R ecosystem. Contains utility functions
@@ -40,10 +42,12 @@ To get the current development version from GitHub:
 remotes::install_github("rjdemetra/rjd3toolkit")
 ```
 
-## Contributing
+## Package Maintenance and contributing
 
 Any contribution is welcome and should be done through pull requests
-and/or issues.
+and/or issues. pull requests should include **updated tests** and
+**updated documentation**. If functionality is changed, docstrings
+should be added or updated.
 
 ## Licensing
 
