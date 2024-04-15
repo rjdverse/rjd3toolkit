@@ -17,7 +17,7 @@ NULL
 #' @export
 sarima_model<-function(name="sarima", period, phi=NULL, d=0, theta=NULL, bphi=NULL, bd=0, btheta=NULL){
   return (structure(
-    list(name=name, period=period, phi = phi, d=d, theta=theta,
+    list(name = name, period = period, phi = phi, d = d, theta = theta,
                          bphi = bphi, bd = bd, btheta = btheta), class="JD3_SARIMA"))
 }
 
@@ -353,7 +353,7 @@ sarima_estimate<-function(x, order=c(0,0,0), seasonal = list(order=c(0,0,0), per
   if (length(res$b) > 0) {
 
     names_xreg <- colnames(xreg)
-    if (is.null (names_xreg) & !is.null (xreg)){
+    if (is.null (names_xreg) && !is.null (xreg)){
       if (is.matrix(xreg)) {
         # unnamed matrix regressors
         names_xreg <- sprintf("xreg_%i", seq_len(ncol(xreg)))
@@ -394,7 +394,7 @@ sarima_estimate<-function(x, order=c(0,0,0), seasonal = list(order=c(0,0,0), per
 #' sarima_hannan_rissanen(y, order = c(0,1,1), seasonal = c(0,1,1))
 sarima_hannan_rissanen<-function(x, order=c(0,0,0), seasonal = list(order=c(0,0,0), period=NA), initialization=c("Ols", "Levinson", "Burg"), biasCorrection=TRUE, finalCorrection=TRUE){
   if (!is.list(seasonal) && is.numeric(seasonal) && length(seasonal) == 3) {
-    initialization=match.arg(initialization)
+    initialization<-match.arg(initialization)
     seasonal <- list(order = seasonal,
                      period = NA)
   }

@@ -36,7 +36,7 @@ NULL
 #' @examples
 #' do_stationary(log(ABS$X0.2.09.10.M),12)
 do_stationary<-function(data, period){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "doStationary",
               as.numeric(data), as.integer(period))
@@ -71,7 +71,7 @@ do_stationary<-function(data, period){
 #' differencing_fast(log(ABS$X0.2.09.10.M),12)
 #'
 differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "fastDifferencing",
               as.numeric(data), as.integer(period), as.logical(mad), centile, k)
@@ -177,7 +177,7 @@ differences.data.frame<-function(data, lags=1, mean=TRUE){
 #' pt(rm_t_log, period - 2, lower.tail = FALSE)
 #' @export
 rangemean_tstat<-function(data, period=0, groupsize = 0, trim = 0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   return (.jcall("jdplus/toolkit/base/r/modelling/AutoModelling", "D", "rangeMean",
                  as.numeric(data), as.integer(period), as.integer(groupsize), as.integer(trim)))

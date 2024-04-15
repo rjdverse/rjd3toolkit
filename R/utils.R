@@ -48,7 +48,7 @@ NULL
 
 test_anova<-function(ssm, dfm, ssr, dfr){
   val<-(ssm/dfm)*(dfr/ssr)
-  desc=paste0("F(",dfm,",",dfr,")")
+  desc<-paste0("F(",dfm,",",dfr,")")
   pval<-1-pf(val, dfm, dfr)
   return (statisticaltest(val, pval, desc))
 }
@@ -72,8 +72,8 @@ test_anova<-function(ssm, dfm, ssr, dfr){
 #' @examples
 likelihood<-function(nobs, neffectiveobs=NA, nparams=0, ll, adjustedll=NA, aic, aicc, bic, bicc, ssq){
 
-  if (is.na(neffectiveobs)) neffectiveobs=nobs
-  if (is.na(adjustedll)) adjustedll=ll
+  if (is.na(neffectiveobs)) neffectiveobs<-obs
+  if (is.na(adjustedll)) adjustedll<-ll
 
   return (structure(list(nobs=nobs, neffectiveobs=neffectiveobs, nparams=nparams,
                          ll=ll, adjustedll=adjustedll,
