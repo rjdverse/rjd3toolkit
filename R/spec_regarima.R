@@ -466,7 +466,7 @@ set_outlier.default <- function(x,
 
   if(missing(critical.value) || any(is.na(critical.value))){
     critical.value <- outlier[[va_name]]
-  }else{
+  } else{
     outlier[[va_name]] <- critical.value[1]
   }
   if(is.null(outliers.type) || length(outliers.type) == 0){
@@ -475,7 +475,7 @@ set_outlier.default <- function(x,
     } else {
       outlier$outliers <- list()
     }
-  }else if(!missing(outliers.type) && !all(is.na(outliers.type))){
+  } else if(!missing(outliers.type) && !all(is.na(outliers.type))){
     outliers.type = match.arg(toupper(outliers.type),
                               choices = c("AO", "LS", "TC", "SO"),
                               several.ok = TRUE)
@@ -770,7 +770,7 @@ set_arima.default <- function(x,
   }
   if(missing(coef.type) || is.null(coef.type)){
     coef.type <- "UNDEFINED"
-  }else{
+  } else{
     coef.type <- match.arg(toupper(coef.type),
                            choices = c(NA, "UNDEFINED", "FIXED", "INITIAL"),
                            several.ok = TRUE)
@@ -778,7 +778,7 @@ set_arima.default <- function(x,
   }
   if(missing(coef) || is.null(coef)){
     coef <- 0
-  }else{
+  } else{
     coef[is.na(coef)] <- 0
   }
 
@@ -1066,7 +1066,7 @@ set_tradingdays.default <- function(x,
                          switch(test,
                                 NONE = "NO",
                                 test))
-    }else{
+    } else{
       test <- match.arg(toupper(test)[1],
                         choices = c("REMOVE", "ADD", "NONE"))
       td$test <- switch(test,
@@ -1112,10 +1112,10 @@ set_tradingdays.default <- function(x,
 
   if(missing(coef) || is.null(coef)){
     # coef <- 0
-  }else{
+  } else{
     if(missing(coef.type) || is.null(coef.type)){
       coef.type <- "FIXED"
-    }else{
+    } else{
       coef.type <- match.arg(toupper(coef.type),
                              choices = c(NA, "ESTIMATED", "FIXED"),
                              several.ok = TRUE)
@@ -1144,10 +1144,10 @@ set_tradingdays.default <- function(x,
   }
   if(missing(leapyear.coef) || is.null(leapyear.coef)){
     # coef <- 0
-  }else{
+  } else{
     if(missing(leapyear.coef.type) || is.null(leapyear.coef.type)){
       leapyear.coef.type <- "FIXED"
-    }else{
+    } else{
       leapyear.coef.type <- match.arg(toupper(leapyear.coef.type),
                                       choices = c(NA, "ESTIMATED", "FIXED"))
       leapyear.coef.type[is.na(leapyear.coef.type)] <- "FIXED"
@@ -1494,7 +1494,7 @@ set_span <- function(x,
     } else if (type == "FROM"){
       if(is.null(d0)){
         warning("d0 parameter must be defined")
-      }else{
+      } else{
         x$type <- type
         x$d0 <- d0
         x$d1 <- NULL
@@ -1503,7 +1503,7 @@ set_span <- function(x,
     } else if (type == "TO"){
       if(is.na(d1)){
         warning("d1 parameter must be defined")
-      }else{
+      } else{
         x$type <- type
         x$d1 <- d1
         x$d0 <- NULL
@@ -1512,7 +1512,7 @@ set_span <- function(x,
     } else if (type=="BETWEEN"){
       if(is.na(d0) || is.na(d1)){
         warning("d0 and d1 parameters must be defined")
-      }else{
+      } else{
         x$type <- type
         x$d0 <- d0
         x$d1 <- d1
@@ -1521,7 +1521,7 @@ set_span <- function(x,
     } else if (type=="FIRST"){
       if(is.na(n0)){
         warning("n0 parameter must be defined")
-      }else{
+      } else{
         x$type <- type
         x$d0 <- x$d1 <- NULL
         x$n0 <- n0
@@ -1530,7 +1530,7 @@ set_span <- function(x,
     } else if (type=="LAST"){
       if(is.na(n1)){
         warning("n1 parameter must be defined")
-      }else{
+      } else{
         x$type <- type
         x$d0 <- x$d1 <- NULL
         x$n0 <- 0
@@ -1539,7 +1539,7 @@ set_span <- function(x,
     } else if (type=="EXCLUDING"){
       if(is.na(n0) || is.na(n1)){
         warning("n0 and n1 parameters must be defined")
-      }else{
+      } else{
         x$type <- type
         x$d0 <- x$d1 <- NULL
         x$n0 <- n0

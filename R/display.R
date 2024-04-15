@@ -64,9 +64,9 @@ print.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("digits") - 
   cat("\nCoefficients\n")
   if(is.null(tables$coef_table)){
     cat("No SARIMA variables\n")
-  }else if(ncol(tables$coef_table) == 2){
+  } else if(ncol(tables$coef_table) == 2){
     print(tables$coef_table)
-  }else{
+  } else{
     printCoefmat(tables$coef_table[-2], digits = digits,
                  P.values= FALSE,
                  na.print = "NA", ...)
@@ -97,9 +97,9 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
   cat("\nCoefficients\n")
   if(is.null(x$coef_table)){
     cat("No SARIMA variables\n")
-  }else if(ncol(x$coef_table) == 2){
+  } else if(ncol(x$coef_table) == 2){
     print(x$coef_table)
-  }else{
+  } else{
     printCoefmat(x$coef_table[-2], digits = digits, signif.stars = signif.stars,
                  na.print = "NA", ...)
   }
@@ -137,10 +137,10 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
       fr$pvalue[sel]<-pval
       colnames(fr) <- c("Estimate", "Type", "Std. Error",
                         "T-stat", "Pr(>|t|)")
-    }else{
+    } else{
       colnames(fr) <- c("Estimate", "Type")
     }
-  }else{
+  } else{
     fr <- NULL
   }
   list(sarima_orders = sarima_orders,
@@ -167,7 +167,7 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
     table <- data.frame(estimate, "ESTIMATED", stde, t, pval)
     colnames(table) <- c("Estimate", "Type", "Std. Error",
                          "T-stat", "Pr(>|t|)")
-  }else{
+  } else{
     table <- NULL
   }
   list(sarima_orders = sarima_orders,
@@ -260,7 +260,7 @@ print.JD3_REGARIMA_RSLTS<-function(x, digits = max(3L, getOption("digits") - 3L)
   if (!is.null(xregs)){
     cat("Regression model:\n")
     printCoefmat(xregs[-2], digits = digits, P.values= FALSE, na.print = "NA", ...)
-  }else{
+  } else{
     cat("No regression variables\n")
   }
   print(x$estimation$likelihood, ...)
@@ -283,9 +283,9 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
   cat("\nCoefficients\n")
   if(is.null(tables$coef_table)){
     cat("No SARIMA variables\n")
-  }else if(ncol(tables$coef_table) == 2){
+  } else if(ncol(tables$coef_table) == 2){
     print(tables$coef_table)
-  }else{
+  } else{
     printCoefmat(tables$coef_table[-2], digits = digits,
                  P.values= FALSE,
                  na.print = "NA", ...)
@@ -295,7 +295,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
   if (!is.null(xregs)){
     cat("Regression model:\n")
     printCoefmat(xregs[-2], digits = digits, P.values= FALSE, na.print = "NA", ...)
-  }else{
+  } else{
     cat("No regression variables\n")
   }
   # print(x$likelihood, ...) # likelihood not printed but in summary method
@@ -320,7 +320,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
     colnames(xregs) <- c("Estimate", "Type", "Std. Error",
                          "T-stat", "Pr(>|t|)")
     xregs
-  }else{
+  } else{
     NULL
   }
 }
@@ -335,7 +335,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
     table <- data.frame(estimate, "ESTIMATED", stde, t, pval)
     colnames(table) <- c("Estimate", "Type", "Std. Error",
                          "T-stat", "Pr(>|t|)")
-  }else{
+  } else{
     table <- NULL
   }
   table
@@ -378,7 +378,7 @@ print.summary.JD3_REGARIMA_RSLTS <- function(x,  digits = max(3L, getOption("dig
     cat("Regression model:\n")
     printCoefmat(x$xregs[-2], digits = digits, signif.stars = signif.stars,
                  na.print = "NA", ...)
-  }else{
+  } else{
     cat("No regression variables\n")
   }
   print(x$likelihood, ...)

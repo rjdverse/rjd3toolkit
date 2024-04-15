@@ -45,7 +45,7 @@ NULL
   if (is.null(r)) {
     p$value<-0
     p$type<-.enum_of(jd3.ParameterType, "UNUSED", "PARAMETER")
-  }else{
+  } else{
     p$value<-r$value
     p$type<-.enum_of(jd3.ParameterType, r$type, "PARAMETER")
   }
@@ -197,7 +197,7 @@ NULL
 .p2r_date<-function(p){
   if (p$has('year')){
     return (ymd(p$year, p$month, p$day))
-  }else{
+  } else{
     return (NULL)
   }
 }
@@ -542,7 +542,7 @@ NULL
                  s=.p2r_sa_component(p$seasonal),
                  i=.p2r_sa_component(p$irregular)
     ))
-  }else{
+  } else{
     return (list(mode = .enum_extract(sa.DecompositionMode, p$mode),
                  series=.p2r_component(p$series),
                  sa=.p2r_component(p$seasonally_adjusted),

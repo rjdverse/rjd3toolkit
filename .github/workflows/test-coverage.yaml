@@ -2,25 +2,18 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [develop]
+    branches: [main, develop]
   pull_request:
-    branches: [develop]
-  release:
-    types: [published]
-  workflow_dispatch:
+    branches: [main, develop]
 
-name: pkgdown
+name: test-coverage
 
 jobs:
-  pkgdown:
+  test-coverage:
     runs-on: ubuntu-latest
-    # Only restrict concurrency for non-PR jobs
-    concurrency:
-      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    permissions:
-      contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -40,17 +33,28 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::.
-          needs: website
+          extra-packages: any::covr
+          needs: coverage
 
-      - name: Build site
-        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+      - name: Test coverage
+        run: |
+          covr::codecov(
+            quiet = FALSE,
+            clean = FALSE,
+            install_path = file.path(normalizePath(Sys.getenv("RUNNER_TEMP"), winslash = "/"), "package")
+          )
         shell: Rscript {0}
 
-      - name: Deploy to GitHub pages 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+      - name: Show testthat output
+        if: always()
+        run: |
+          ## --------------------------------------------------------------------
+          find '${{ runner.temp }}/package' -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
         with:
-          clean: false
-          branch: gh-pages
-          folder: docs
+          name: coverage-test-failures
+          path: ${{ runner.temp }}/package

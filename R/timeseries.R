@@ -116,10 +116,10 @@ ts_interpolate.default<-function(s, method=c("airline", "average")){
   if (method == "airline"){
     jd_si<-.jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "airlineInterpolation", jd_s)
     return (.jd2r_tsdata(jd_si))
-  }else if (method == "average"){
+  } else if (method == "average"){
     jd_si<-.jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "averageInterpolation", jd_s)
     return (.jd2r_tsdata(jd_si))
-  }else
+  } else
     return (NULL)
 }
 #' @export
