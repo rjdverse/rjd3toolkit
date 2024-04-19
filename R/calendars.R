@@ -4,24 +4,24 @@
 #' @include protobuf.R jd2r.R
 NULL
 
-HOLIDAY='JD3_HOLIDAY'
-FIXEDDAY='JD3_FIXEDDAY'
-FIXEDWEEKDAY='JD3_FIXEDWEEKDAY'
-EASTERDAY='JD3_EASTERDAY'
-SPECIALDAY='JD3_SPECIALDAY'
-SINGLEDAY='JD3_SINGLEDAY'
+HOLIDAY<-'JD3_HOLIDAY'
+FIXEDDAY<-'JD3_FIXEDDAY'
+FIXEDWEEKDAY<-'JD3_FIXEDWEEKDAY'
+EASTERDAY<-'JD3_EASTERDAY'
+SPECIALDAY<-'JD3_SPECIALDAY'
+SINGLEDAY<-'JD3_SINGLEDAY'
 
 .r2p_validityPeriod<-function(start, end){
     vp<-jd3.ValidityPeriod$new()
     if (is.null(start)) {
-        pstart=DATE_MIN
-    } else{
-        pstart=parseDate(start)
+        pstart<-DATE_MIN
+    }else{
+        pstart<-parseDate(start)
     }
     if (is.null(end)){
-        pend=DATE_MAX
-    } else{
-        pend=parseDate(end)
+        pend<-DATE_MAX
+    }else{
+        pend<-parseDate(end)
     }
     vp$start<-pstart
     vp$end<-pend
@@ -50,7 +50,7 @@ SINGLEDAY='JD3_SINGLEDAY'
 .length_ts <- function(s){
     if(is.mts(s)){
         nrow(s)
-    } else{
+    }else{
         length(s)
     }
 }
@@ -336,9 +336,9 @@ special_day<-function(event, offset=0, weight=1, validity=NULL){
 #' regs_wd<- td(4,c(2020,1),60, groups = c(1, 1, 1, 1, 1, 0, 0), contrasts = TRUE)
 td<-function(frequency, start, length, s, groups=c(1,2,3,4,5,6,0), contrasts=TRUE){
     if (!missing(s) && is.ts(s)) {
-        frequency = stats::frequency(s)
-        start = stats::start(s)
-        length = .length_ts(s)
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
     }
     jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
     igroups<-as.integer(groups)
@@ -736,9 +736,9 @@ national_calendar <- function(days, mean_correction=TRUE){
 calendar_td<-function(calendar,frequency, start, length, s, groups=c(1,2,3,4,5,6,0), holiday=7, contrasts=TRUE){
     if(! is(calendar, 'JD3_CALENDAR')) stop('Invalid calendar')
     if (!missing(s) && is.ts(s)) {
-        frequency = stats::frequency(s)
-        start = stats::start(s)
-        length = .length_ts(s)
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
     }
     jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
     pcal<-.r2p_calendar(calendar)
@@ -776,7 +776,7 @@ print.JD3_FIXEDDAY<-function(x, ...){
     if (!is.null(x$validity$end))
         cat(sprintf(' , to=%s', x$validity$end))
 }
-DAYS=c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+DAYS<-c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
 
 #' @export
 #' @rdname print.calendars

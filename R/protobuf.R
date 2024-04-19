@@ -34,7 +34,8 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .enum_of<-function(type, code, prefix){
-  i<-type$value(name=paste(prefix, code, sep='_'))$number()
+    i<-type$value(name=paste(prefix, code, sep='_'))$number()
+    return (i)
 }
 
 #' @export
@@ -312,7 +313,6 @@ NULL
 #' @rdname jd3_utilities
 .r2p_outliers<-function(r){
   if (length(r) == 0){return (list())}
-  l<-list()
   return (lapply(r, function(z){.r2p_outlier(z)}))
 }
 

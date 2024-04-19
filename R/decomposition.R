@@ -10,19 +10,19 @@ sadecomposition<-function(y, sa, t, s, i, mul){
   if (! is.logical(mul))stop("Invalid SA decomposition")
   if (is.null(y))stop("Invalid SA decomposition")
   if (! is.ts(y))stop("Invalid SA decomposition")
-  n=length(y)
+  n<-length(y)
   if (is.null(s)){
     if (mul){
-      s=ts(rep(1,1,n), start = start(y), frequency = frequency(y))
-    } else{
+      s<-ts(rep(1,1,n), start = start(y), frequency = frequency(y))
+    }else{
       s=ts(rep(0,1,n), start = start(y), frequency = frequency(y))
     }
   } else if (! is.ts(s))stop("Invalid SA decomposition")
   if (is.null(i)){
     if (mul){
-      i=ts(rep(1,1,n), start = start(y), frequency = frequency(y))
-    } else{
-      i=ts(rep(0,1,n), start = start(y), frequency = frequency(y))
+      i<-ts(rep(1,1,n), start = start(y), frequency = frequency(y))
+    }else{
+      i<-ts(rep(0,1,n), start = start(y), frequency = frequency(y))
     }
   } else if (! is.ts(i))stop("Invalid SA decomposition")
 
@@ -70,7 +70,7 @@ plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
 
     lty <- rep(1, length(series_graph))
     # lty[grep("_f$", series_graph)] <- 1
-    col <- colors[gsub("_.*$", "", series_graph)]
+    # col <- colors[gsub("_.*$", "", series_graph)]
     # par(mar = c(5, 4, 4, 2) + 0.1)
     ts.plot(data_plot[, series_graph],
             col = colors[series_graph],
