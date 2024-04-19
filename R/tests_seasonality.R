@@ -19,7 +19,7 @@ NULL
 #' seasonality_qs(ABS$X0.2.09.10.M, 12)
 #' seasonality_qs(random_t(2, 1000), 7)
 seasonality_qs<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "qsTest",
          as.numeric(data), as.integer(period), as.integer(nyears))
@@ -39,7 +39,7 @@ seasonality_qs<-function(data, period, nyears=0){
 #' seasonality_kruskalwallis(ABS$X0.2.09.10.M, 12)
 #' seasonality_kruskalwallis(random_t(2, 1000), 7)
 seasonality_kruskalwallis<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kruskalWallisTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
@@ -58,7 +58,7 @@ seasonality_kruskalwallis<-function(data, period, nyears=0){
 #' seasonality_periodogram(ABS$X0.2.09.10.M, 12)
 #' seasonality_periodogram(random_t(2, 1000), 7)
 seasonality_periodogram<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "periodogramTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
@@ -75,7 +75,7 @@ seasonality_periodogram<-function(data, period, nyears=0){
 #'
 #' @examples
 seasonality_friedman<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "friedmanTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
@@ -97,7 +97,7 @@ seasonality_f<-function(data,
                         period,
                         model=c("AR", "D1", "WN"),
                         nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   model<-match.arg(model)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "fTest",
@@ -120,7 +120,7 @@ seasonality_f<-function(data,
 #' seasonality_combined(ABS$X0.2.09.10.M, 12)
 #' seasonality_combined(random_t(2, 1000), 7)
 seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRUE){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jctest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/sa/base/core/tests/CombinedSeasonality;", "combinedTest",
                 as.numeric(data), as.integer(period), as.integer(firstperiod-1), as.logical(mul))

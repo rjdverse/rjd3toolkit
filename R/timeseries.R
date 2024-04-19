@@ -116,10 +116,10 @@ ts_interpolate.default<-function(s, method=c("airline", "average")){
   if (method == "airline"){
     jd_si<-.jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "airlineInterpolation", jd_s)
     return (.jd2r_tsdata(jd_si))
-  }else if (method == "average"){
+  } else if (method == "average"){
     jd_si<-.jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "averageInterpolation", jd_s)
     return (.jd2r_tsdata(jd_si))
-  }else
+  } else
     return (NULL)
 }
 #' @export
@@ -217,7 +217,7 @@ daysOf<-function(ts, pos=0){
 #'
 #' @examples
 to_ts<-function(source, id, type="All"){
-  jmoniker=.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
+  jmoniker<-.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
   bytes<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jts)
   p<-RProtoBuf::read(jd3.Ts, bytes)
@@ -235,7 +235,7 @@ to_ts<-function(source, id, type="All"){
 #'
 #' @examples
 to_tscollection<-function(source, id, type="All"){
-  jmoniker=.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
+  jmoniker<-.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
   jtscoll<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
   bytes<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jtscoll)
   p<-RProtoBuf::read(jd3.TsCollection, bytes)
@@ -278,7 +278,7 @@ data_to_ts<-function(s, name){
 #' @export
 #' @rdname jd3_utilities
 .r2jd_make_tscollection<-function(source, id, type="All"){
-  jmoniker=.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
+  jmoniker<-.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
   jtscoll<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
   return (jtscoll)
 }

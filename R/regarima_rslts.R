@@ -38,4 +38,5 @@ NULL
   tlist<-lapply(p$residuals_tests, function(z){.p2r_test(z$value)})
   tnames<-lapply(p$residuals_tests, function(z){z$key})
   testonresiduals<-`names<-`(tlist, tnames)
+  return (testonresiduals)
 }
