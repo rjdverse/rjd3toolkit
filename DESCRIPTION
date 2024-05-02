@@ -14,9 +14,9 @@ Authors@R: c(
                  email ="anna.smyk@insee.fr")
                  )
 Description: Interface around 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
- It offers access to several functions to model time series (create outlier regressors, user-defined calendar regressors,
- UCARIMA models...), to test the presence of trading days or seasonal effects and other tools around seasonal adjustment and 
- to set specifications around pre-adjustment (RegARIMA/X-13 and TRAMO/TRAMO-SEATS).
+ It provides functions allowing to model time series (create outlier regressors, user-defined calendar regressors,
+ UCARIMA models...), to test the presence of trading days or seasonal effects and also
+ to set specifications in pre-adjustment and benchmarking when using rjd3x13 or rjd3tramoseats.
 Depends:
   R (>= 4.1.0)
 Imports:
