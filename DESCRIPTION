@@ -13,7 +13,7 @@ Authors@R: c(
   person("Anna", "Smyk", role = c("aut"),
                  email ="anna.smyk@insee.fr")
                  )
-Description: Interface around 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
+Description: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
  It provides functions allowing to model time series (create outlier regressors, user-defined calendar regressors,
  UCARIMA models...), to test the presence of trading days or seasonal effects and also
  to set specifications in pre-adjustment and benchmarking when using rjd3x13 or rjd3tramoseats.
