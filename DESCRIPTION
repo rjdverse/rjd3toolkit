@@ -3,17 +3,22 @@ Type: Package
 Title: Toolkit Functions Around 'JDemetra+ 3.0'
 Version: 3.2.3
 Authors@R: c(
-  person("Jean", "Palate", role = c("aut", "cre"),
-                email = "jean.palate@nbb.be"),
+  person("Jean", "Palate", role = c("aut"),
+                email = "palatejean@gmail.com"),
   person("Alain", "Quartier-la-Tente", role = c("aut"),
                  email = "alain.quartier@yahoo.fr",
-                 comment = c(ORCID = "0000-0001-7890-3857")))
-Description: Interface around 'JDemetra+ 3.x' (<https://github.com/jdemetra/jdemetra-core>) seasonal adjustment software, STACE project.
+                 comment = c(ORCID = "0000-0001-7890-3857")),
+  person("Tanguy", "Barthelemy", role = c("aut","cre"),
+                 email ="tanguy.barthelemy@insee.fr"),
+  person("Anna", "Smyk", role = c("aut"),
+                 email ="anna.smyk@insee.fr")
+                 )
+Description: Interface around 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
  It offers access to several functions to model time series (create outlier regressors, user-defined calendar regressors,
  UCARIMA models...), to test the presence of trading days or seasonal effects and other tools around seasonal adjustment and 
  to set specifications around pre-adjustment (RegARIMA/X-13 and TRAMO/TRAMO-SEATS).
 Depends:
-  R (>= 3.6.0)
+  R (>= 4.1.0)
 Imports:
 	RProtoBuf (>= 0.4.20),
   rJava (>= 1.0-6),
