@@ -1,6 +1,6 @@
 Package: rjd3toolkit
 Type: Package
-Title: Toolkit Functions Around 'JDemetra+ 3.0'
+Title: Utility Functions around 'JDemetra+ 3.0'
 Version: 3.2.3
 Authors@R: c(
   person("Jean", "Palate", role = c("aut"),
@@ -26,14 +26,14 @@ Imports:
   methods
 SystemRequirements: Java (>= 17)
 License: EUPL
-URL: https://github.com/rjdemetra/rjd3toolkit, https://rjdemetra.github.io/rjd3toolkit/
+URL: https://github.com/rjdverse/rjd3toolkit, https://rjdverse.github.io/rjd3toolkit/
 LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
 RoxygenNote: 7.3.1
 Roxygen: list(markdown = TRUE)
-BugReports: https://github.com/rjdemetra/rjd3toolkit/issues
+BugReports: https://github.com/rjdverse/rjd3toolkit/issues
 Encoding: UTF-8
 Collate: 
     'utils.R'
