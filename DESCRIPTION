@@ -1,19 +1,27 @@
 Package: rjd3toolkit
 Type: Package
-Title: Toolkit Functions Around 'JDemetra+ 3.0'
+Title: Utility Functions around 'JDemetra+ 3.0'
 Version: 3.2.3
 Authors@R: c(
-    person(given = "Tanguy", family = "Barthelemy",
-           email = "tanguy.barthelemy@insee.fr", role = c("cre", "aut")),
-    person(given = "Alain", family = "Quartier-la-Tente", role = "aut",
-           email = "alain.quartier@yahoo.fr",
-           comment = c(ORCID = "0000-0001-7890-3857")))
-Description: Interface around 'JDemetra+ 3.x' (<https://github.com/jdemetra/jdemetra-core>) seasonal adjustment software, STACE project.
- It offers access to several functions to model time series (create outlier regressors, user-defined calendar regressors,
- UCARIMA models...), to test the presence of trading days or seasonal effects and other tools around seasonal adjustment and 
- to set specifications around pre-adjustment (RegARIMA/X-13 and TRAMO/TRAMO-SEATS).
+  person(given = "Jean", 
+         family = "Palate", role = c("aut"),
+         email = "palatejean@gmail.com"),
+  person(given = "Alain", 
+         family = "Quartier-la-Tente", role = c("aut"),
+         email = "alain.quartier@yahoo.fr",
+         comment = c(ORCID = "0000-0001-7890-3857")),
+  person(given = "Tanguy", 
+         family = "Barthelemy", role = c("aut","cre"),
+         email ="tanguy.barthelemy@insee.fr"),
+  person(given = "Anna", family = "Smyk", role = c("aut"),
+         email ="anna.smyk@insee.fr")
+)
+Description: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
+ It provides functions allowing to model time series (create outlier regressors, user-defined calendar regressors,
+ UCARIMA models...), to test the presence of trading days or seasonal effects and also
+ to set specifications in pre-adjustment and benchmarking when using rjd3x13 or rjd3tramoseats.
 Depends:
-    R (>= 3.6.0)
+  R (>= 4.1.0)
 Imports:
 	RProtoBuf (>= 0.4.20),
     rJava (>= 1.0-6),
@@ -21,14 +29,14 @@ Imports:
     methods
 SystemRequirements: Java (>= 17)
 License: EUPL
-URL: https://github.com/rjdemetra/rjd3toolkit, https://rjdemetra.github.io/rjd3toolkit/
+URL: https://github.com/rjdverse/rjd3toolkit, https://rjdverse.github.io/rjd3toolkit/
 LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
 RoxygenNote: 7.3.1
 Roxygen: list(markdown = TRUE)
-BugReports: https://github.com/rjdemetra/rjd3toolkit/issues
+BugReports: https://github.com/rjdverse/rjd3toolkit/issues
 Encoding: UTF-8
 Collate: 
     'utils.R'
