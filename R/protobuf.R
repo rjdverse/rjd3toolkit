@@ -419,7 +419,7 @@ NULL
 }
 
 .regeffect<-function(map){
-  if(length(map) == 0)
+  if (length(map) == 0)
     return("Undefined")
   r<-which(sapply(map, function(z){z$key == "regeffect"}))
   if (length(r) == 0) return ("Undefined")

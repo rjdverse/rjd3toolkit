@@ -58,7 +58,7 @@ add_outlier.default <- function(x,
                              new_out)
   all_out <- t(simplify2array(x$regression$outliers)[c("pos","code"),])
   dupl_out <- duplicated(all_out,fromLast = TRUE)
-  if(any(dupl_out)){
+  if (any(dupl_out)){
     warning("Duplicated outliers removed: last outliers kept")
     x$regression$outliers <- x$regression$outliers[!dupl_out]
   }
@@ -154,7 +154,7 @@ add_ramp.default <- function(x,
                           new_ramp)
   all_out <- t(simplify2array(x$regression$ramps)[c("start", "end"),])
   dupl_out <- duplicated(all_out,fromLast = TRUE)
-  if(any(dupl_out)){
+  if (any(dupl_out)){
     warning("Duplicated ramps removed")
     x$regression$ramps <- x$regression$ramps[!dupl_out]
   }
@@ -282,10 +282,10 @@ set_basic.default <- function(x,
                          type = type,
                          d0 = d0, d1 = d1,
                          n0 = n0, n1 = n1)
-  if(!missing(preprocessing) && !is.na(preprocessing) && !is_tramo){
+  if (!missing(preprocessing) && !is.na(preprocessing) && !is_tramo){
     basic$preprocessing <- preprocessing
   }
-  if(!missing(preliminary.check) && !is.na(preliminary.check)){
+  if (!missing(preliminary.check) && !is.na(preliminary.check)){
     # basic$preliminaryCheck <- preliminary.check
   }
   x$basic <- basic
@@ -464,18 +464,18 @@ set_outlier.default <- function(x,
   va_name <- ifelse(is_tramo, "va", "defva")
   tcr_name <- ifelse(is_tramo, "tcrate", "monthlytcrate")
 
-  if(missing(critical.value) || any(is.na(critical.value))){
+  if (missing(critical.value) || any(is.na(critical.value))){
     critical.value <- outlier[[va_name]]
   } else{
     outlier[[va_name]] <- critical.value[1]
   }
-  if(is.null(outliers.type) || length(outliers.type) == 0){
+  if (is.null(outliers.type) || length(outliers.type) == 0){
     if (is_tramo) {
       outlier$enabled <- FALSE
     } else {
       outlier$outliers <- list()
     }
-  } else if(!missing(outliers.type) && !all(is.na(outliers.type))){
+  } else if (!missing(outliers.type) && !all(is.na(outliers.type))){
     outliers.type = match.arg(toupper(outliers.type),
                               choices = c("AO", "LS", "TC", "SO"),
                               several.ok = TRUE)
@@ -635,52 +635,52 @@ set_automodel.default <- function(x,
   is_tramo <- inherits(x, "JD3_TRAMO_SPEC")
   reducecv_col <- ifelse(is_tramo, "pc", "predcv")
   lblim_col <- ifelse(is_tramo, "pcr", "ljungbox")
-  if(!is.na(enabled) && is.logical(enabled)){
+  if (!is.na(enabled) && is.logical(enabled)){
     automodel$enabled <- enabled
   }
 
-  if(!is.na(ub1)){
+  if (!is.na(ub1)){
     automodel$ub1 <- ub1
   }
-  if(!is.na(ub2)){
+  if (!is.na(ub2)){
     automodel$ub2 <- ub2
   }
-  if(!is.na(cancel)){
+  if (!is.na(cancel)){
     automodel$cancel <- cancel
   }
-  if(!is.na(fct)){
+  if (!is.na(fct)){
     automodel$fct <- fct
   }
-  if(!is.na(ljungboxlimit)){
+  if (!is.na(ljungboxlimit)){
     automodel[[lblim_col]] <- ljungboxlimit
   }
-  if(!is.na(reducecv)){
+  if (!is.na(reducecv)){
     automodel[[reducecv_col]] <- reducecv
   }
-  if(!is.na(acceptdefault) && is.logical(acceptdefault)){
+  if (!is.na(acceptdefault) && is.logical(acceptdefault)){
     automodel$acceptdef <- acceptdefault
   }
 
-  if(!is.na(tsig)){
+  if (!is.na(tsig)){
     automodel$tsig <- tsig
   }
   if (is_tramo) {
     # TRAMO SPECIFIC
-    if(!is.na(amicompare) && is.logical(amicompare)){
+    if (!is.na(amicompare) && is.logical(amicompare)){
       automodel$amicompare <- amicompare
     }
   } else {
     # REGARIMA SPECIFIC
-    if(!is.na(ubfinal)){
+    if (!is.na(ubfinal)){
       automodel$ubfinal <- ubfinal
     }
-    if(!is.na(checkmu) && is.logical(checkmu)){
+    if (!is.na(checkmu) && is.logical(checkmu)){
       automodel$checkmu <- checkmu
     }
-    if(!is.na(mixed) && is.logical(mixed)){
+    if (!is.na(mixed) && is.logical(mixed)){
       automodel$mixed <- mixed
     }
-    if(!is.na(balanced) && is.logical(balanced)){
+    if (!is.na(balanced) && is.logical(balanced)){
       automodel$balanced <- balanced
     }
   }
@@ -759,16 +759,16 @@ set_arima.default <- function(x,
                               coef = NA,
                               coef.type = c(NA, "Undefined", "Fixed", "Initial")){
   arima <- x$arima
-  if(x$automodel$enabled){
+  if (x$automodel$enabled){
     warning("autmodel enabled: the parameters will not impact the final parameters")
   }
-  if(!is.na(d)){
+  if (!is.na(d)){
     arima$d <- d
   }
-  if(!is.na(bd)){
+  if (!is.na(bd)){
     arima$bd <- bd
   }
-  if(missing(coef.type) || is.null(coef.type)){
+  if (missing(coef.type) || is.null(coef.type)){
     coef.type <- "UNDEFINED"
   } else{
     coef.type <- match.arg(toupper(coef.type),
@@ -776,7 +776,7 @@ set_arima.default <- function(x,
                            several.ok = TRUE)
     coef.type[is.na(coef.type)] <- "UNDEFINED"
   }
-  if(missing(coef) || is.null(coef)){
+  if (missing(coef) || is.null(coef)){
     coef <- 0
   } else{
     coef[is.na(coef)] <- 0
@@ -1019,7 +1019,7 @@ set_tradingdays.default <- function(x,
 
   is_tramo <- inherits(x, "JD3_TRAMO_SPEC")
 
-  if(!missing(option) && !any(is.na(option))){
+  if (!missing(option) && !any(is.na(option))){
     option <- match.arg(toupper(option)[1],
                         choices = c("TRADINGDAYS", "WORKINGDAYS", "NONE","USERDEFINED",
                                     "TD3", "TD3C", "TD4", "HOLIDAYS"))
@@ -1032,10 +1032,10 @@ set_tradingdays.default <- function(x,
     td$users <- character()
   }
 
-  if(!missing(calendar.name) && !any(is.na(calendar.name))){
+  if (!missing(calendar.name) && !any(is.na(calendar.name))){
     td$holidays <- calendar.name
   }
-  if(!is.null(uservariable) &&
+  if (!is.null(uservariable) &&
      !any(is.na(uservariable)) &&
      length(uservariable) > 0){
     td$td <- "TD_NONE"
@@ -1048,17 +1048,17 @@ set_tradingdays.default <- function(x,
       coef.type <- "ESTIMATED"
     }
   }
-  if(!missing(stocktd) && !is.na(stocktd)){
+  if (!missing(stocktd) && !is.na(stocktd)){
     td$users <- character()
     td$td <- "TD_NONE"
     td$holidays <- ""
     td$w <- stocktd
   }
-  if(!missing(autoadjust) && !is.na(autoadjust)){
+  if (!missing(autoadjust) && !is.na(autoadjust)){
     td$autoadjust <- autoadjust
   }
 
-  if(!is.null(test) && !any(is.na(test))){
+  if (!is.null(test) && !any(is.na(test))){
     if (is_tramo) {
       test <- match.arg(toupper(test)[1],
                         choices = c("SEPARATE_T", "JOINT_F", "NONE"))
@@ -1074,7 +1074,7 @@ set_tradingdays.default <- function(x,
                         test)
     }
   }
-  if(!missing(automatic) && !any(is.na(automatic))){
+  if (!missing(automatic) && !any(is.na(automatic))){
     if (is_tramo) {
       automatic <- match.arg(toupper(automatic)[1],
                              choices = c("UNUSED", "FTEST", "WALDTEST", "AIC", "BIC"))
@@ -1096,7 +1096,7 @@ set_tradingdays.default <- function(x,
 
   }
   if (is_tramo) {
-    if(!missing(pftd) && !any(is.na(pftd))){
+    if (!missing(pftd) && !any(is.na(pftd))){
       td$ptest <- pftd
     }
   }
@@ -1110,10 +1110,10 @@ set_tradingdays.default <- function(x,
     }
   }
 
-  if(missing(coef) || is.null(coef)){
+  if (missing(coef) || is.null(coef)){
     # coef <- 0
   } else{
-    if(missing(coef.type) || is.null(coef.type)){
+    if (missing(coef.type) || is.null(coef.type)){
       coef.type <- "FIXED"
     } else{
       coef.type <- match.arg(toupper(coef.type),
@@ -1142,10 +1142,10 @@ set_tradingdays.default <- function(x,
     }
 
   }
-  if(missing(leapyear.coef) || is.null(leapyear.coef)){
+  if (missing(leapyear.coef) || is.null(leapyear.coef)){
     # coef <- 0
   } else{
-    if(missing(leapyear.coef.type) || is.null(leapyear.coef.type)){
+    if (missing(leapyear.coef.type) || is.null(leapyear.coef.type)){
       leapyear.coef.type <- "FIXED"
     } else{
       leapyear.coef.type <- match.arg(toupper(leapyear.coef.type),
@@ -1232,7 +1232,7 @@ set_easter.default <- function(x, enabled = NA,
   # to set specific TRAMO/REGARIMA values
   is_tramo <- inherits(x, "JD3_TRAMO_SPEC")
 
-  if(!is.null(test) && !any(is.na(test))){
+  if (!is.null(test) && !any(is.na(test))){
     if (is_tramo) {
       if (!is.logical(test)) {
         test <- match.arg(toupper(test)[1],
@@ -1247,7 +1247,7 @@ set_easter.default <- function(x, enabled = NA,
                             test)
     }
   }
-  if(!missing(enabled) && !is.na(enabled)){
+  if (!missing(enabled) && !is.na(enabled)){
     easter$type <- ifelse(enabled, "STANDARD", "UNUSED")
   }
   if (is_tramo && !is.null(type) && !any(is.na(type))) {
@@ -1256,21 +1256,21 @@ set_easter.default <- function(x, enabled = NA,
                       choices = c("UNUSED", "STANDARD", "INCLUDEEASTER", "INCLUDEEASTERMONDAY"))
     easter$type <- type
   }
-  if(!missing(julian) && !is.na(julian)){
+  if (!missing(julian) && !is.na(julian)){
     if (is_tramo) {
       easter$julian <- julian
     } else {
       easter$type <- ifelse(julian, "JULIAN", easter$type)
     }
   }
-  if(easter$type == "UNUSED"){
+  if (easter$type == "UNUSED"){
     if (is_tramo) {
       easter$test <- FALSE
     } else {
       easter$test <- "NO"
     }
   }
-  if(!missing(duration) && !is.na(duration)){
+  if (!missing(duration) && !is.na(duration)){
     easter$duration <- duration
   }
   if (missing(coef) ||is.null(coef) || is.na(coef)) {
@@ -1354,14 +1354,14 @@ set_transform.default <- function(x,
   # to set specific TRAMO/REGARIMA values
   is_tramo <- inherits(x, "JD3_TRAMO_SPEC")
 
-  if(!is.na(fun)){
+  if (!is.na(fun)){
     transform$fn <- switch(fun,
                            "NONE" = "LEVEL",
                            fun)
   }
   adjust = match.arg(toupper(adjust[1]),
                      c(NA, "NONE", "LEAPYEAR", "LENGTHOFPERIOD"))
-  if(!is.na(adjust)){
+  if (!is.na(adjust)){
     transform$adjust = adjust
   }
 
@@ -1370,11 +1370,11 @@ set_transform.default <- function(x,
   }
   if (is_tramo) {
     # TRAMO SPECIFIC PARAMETER
-    if(!is.na(fct)){
+    if (!is.na(fct)){
       transform$fct <- fct
     }
   } else {
-    if(!is.na(aicdiff)){
+    if (!is.na(aicdiff)){
       transform$aicdiff = aicdiff
     }
   }
@@ -1484,7 +1484,7 @@ set_span <- function(x,
                      d1 = NULL,
                      n0 = 0,
                      n1 = 0){
-  if(!missing(type) && !is.null(type) && !is.na(type[1])){
+  if (!missing(type) && !is.null(type) && !is.na(type[1])){
     type <- match.arg(toupper(type),
                       choices = c("ALL", "FROM", "TO", "BETWEEN", "LAST", "FIRST", "EXCLUDING"))
     if (type == "ALL") {
@@ -1492,7 +1492,7 @@ set_span <- function(x,
       x$d1 <- x$d1 <- NULL
       x$n0 <- x$n1 <- 0
     } else if (type == "FROM"){
-      if(is.null(d0)){
+      if (is.null(d0)){
         warning("d0 parameter must be defined")
       } else{
         x$type <- type
@@ -1501,7 +1501,7 @@ set_span <- function(x,
         x$n0 <- x$n1 <- 0
       }
     } else if (type == "TO"){
-      if(is.na(d1)){
+      if (is.na(d1)){
         warning("d1 parameter must be defined")
       } else{
         x$type <- type
@@ -1510,7 +1510,7 @@ set_span <- function(x,
         x$n0 <- x$n1 <- 0
       }
     } else if (type=="BETWEEN"){
-      if(is.na(d0) || is.na(d1)){
+      if (is.na(d0) || is.na(d1)){
         warning("d0 and d1 parameters must be defined")
       } else{
         x$type <- type
@@ -1519,7 +1519,7 @@ set_span <- function(x,
         x$n0 <- x$n1 <- 0
       }
     } else if (type=="FIRST"){
-      if(is.na(n0)){
+      if (is.na(n0)){
         warning("n0 parameter must be defined")
       } else{
         x$type <- type
@@ -1528,7 +1528,7 @@ set_span <- function(x,
         x$n1 <- 0
       }
     } else if (type=="LAST"){
-      if(is.na(n1)){
+      if (is.na(n1)){
         warning("n1 parameter must be defined")
       } else{
         x$type <- type
@@ -1537,7 +1537,7 @@ set_span <- function(x,
         x$n1 <- n1
       }
     } else if (type=="EXCLUDING"){
-      if(is.na(n0) || is.na(n1)){
+      if (is.na(n0) || is.na(n1)){
         warning("n0 and n1 parameters must be defined")
       } else{
         x$type <- type
