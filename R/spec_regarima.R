@@ -12,14 +12,14 @@
 #' @param coef the coefficient if needs to be fixed. If equal to 0 the outliers/ramps coefficients
 #' are estimated.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' If a Seasonal adjustment process is performed, each type of Outlier will be allocated to a pre-defined
 #' component after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to the trend.
 #' @examples
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
 #' # ramp on year 2012
 #' # new_spec<-rjd3toolkit::add_ramp(init_spec,start="2012-01-01",end="2012-12-01")
@@ -230,12 +230,12 @@ remove_ramp.default <- function(x,
 #' @param preprocessing (REGARIMA/X13 Specific) a Boolean to enable/disable the pre-processing.
 #' Option disabled for the moment.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' @examples
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # estimation on sub-span between two dates (date d1 is excluded)
 #' # new_spec<-set_basic(init_spec,type = "Between",d0 = "2014-01-01",
 #' # d1 = "2019-01-01", preliminary.check = TRUE, preprocessing = TRUE)
@@ -312,7 +312,7 @@ set_basic.default <- function(x,
 #'  (non-seasonal, seasonal) is increased.(Default value: 0.96)
 #'
 #' @details
-#'  \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#'  \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -402,7 +402,7 @@ set_estimate.default <- function(x,
 #' for parameter estimation in the intermediate steps. If \code{TRUE}, an exact likelihood estimation method is used.
 #' When \code{FALSE}, the fast Hannan-Rissanen method is used.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -578,12 +578,12 @@ set_outlier.default <- function(x,
 #' @param amicompare (TRAMO Specific) \code{logical}. If `TRUE`, the program compares the model identified by the automatic procedure to the default model (\eqn{ARIMA(0,1,1)(0,1,1)})
 #' and the model with the best fit is selected. Criteria considered are residual diagnostics, the model structure and the number of outliers.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' @examples
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-set_automodel(init_spec,
 #' #                        enabled = FALSE,
 #' #                        acceptdefault = TRUE)
@@ -712,14 +712,14 @@ set_automodel.default <- function(x,
 #' \code{"Fixed"} = the coefficients are fixed at the value provided by the user,
 #' \code{"Initial"} = the value defined by the user is used as the initial condition.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' @seealso \code{\link{set_automodel}}, \code{\link{set_transform}}
 #' @examples
 #' # create default spec
-#' # my_spec<-rjd3x13::spec_x13("rsa5c")
+#' # my_spec<-rjd3x13::x13_spec("rsa5c")
 #' # disable automatic arima modelling
 #' # my_spec<-set_automodel(my_spec, enabled = FALSE)
 #' # customize arima model
@@ -921,7 +921,7 @@ set_arima.default <- function(x,
 #' @param leapyear.coef coefficient of the leap year regressor.
 #' @param coef.type,leapyear.coef.type vector defining if the coefficients are fixed or estimated.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -932,7 +932,7 @@ set_arima.default <- function(x,
 #' @examples
 #' # Pre-defined regressors
 #' # y_raw<-ABS$X0.2.09.10.M
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-set_tradingdays(init_spec,
 #' #                          option = "TD4",
 #' #                          test =  "None",
@@ -958,7 +958,7 @@ set_arima.default <- function(x,
 #' ## put into a context
 #' my_context<-modelling_context(calendars = list(cal=BE))
 #' ## create a specification
-#' #init_spec <- rjd3x13::spec_x13("RSA5c")
+#' #init_spec <- rjd3x13::x13_spec("RSA5c")
 #'## modify the specification
 #' # new_spec<-set_tradingdays(init_spec,
 #' #                          option = "TradingDays", calendar.name="cal")
@@ -966,7 +966,7 @@ set_arima.default <- function(x,
 #' # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
 #'
 #' # User-defined regressors
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # add regressors to context
 #' # variables<-list(Monday,Tuesday, Wednesday,
 #' # Thursday, Friday, Saturday)
@@ -1191,7 +1191,7 @@ set_tradingdays.default <- function(x,
 #' \code{"IncludeEaster"} = influences the entire period (\code{n}) up to and including Easter Sunday;
 #' \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to and including Easter Monday.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -1200,7 +1200,7 @@ set_tradingdays.default <- function(x,
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @examples
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-set_easter(init_spec,
 #' #                     enabled = TRUE,
 #' #                     duration = 12,
@@ -1312,7 +1312,7 @@ set_easter.default <- function(x, enabled = NA,
 #' \code{transform.fct}> 1 favors levels, \code{transform.fct}< 1 favors logs.
 #' Considered only when \code{fun = "Auto"}.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -1321,7 +1321,7 @@ set_easter.default <- function(x, enabled = NA,
 #' More information in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 #' @examples
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<- set_transform(init_spec,
 #' #                        fun = "Log",
 #' #                        outliers = TRUE)
@@ -1401,7 +1401,7 @@ set_transform.default <- function(x,
 #' @param regeffect component to which the effect of the user-defined variable will be assigned.
 #' By default (`"Undefined"`), see details.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -1433,7 +1433,7 @@ set_transform.default <- function(x,
 #' # creating the modelling context
 #' my_context<-modelling_context(variables=vars)
 #' # customize a default specification
-#' # init_spec <- rjd3x13::spec_x13("RSA5c")
+#' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # regressors have to be added one by one
 #' # new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
 #' # new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)
