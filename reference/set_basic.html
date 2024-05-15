@@ -95,7 +95,7 @@ Option disabled for the moment.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>x</code> specification param must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::spec_x13()</code>
+    <p><code>x</code> specification param must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::x13_spec()</code>
 (or "JD3_REGARIMA_SPEC" generated with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC"
 generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC" generated with
 <code>rjd3tramoseats::spec_tramo()</code>).</p>
@@ -112,7 +112,7 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::spec_x13("RSA5c")</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
 <span class="r-in"><span><span class="co"># estimation on sub-span between two dates (date d1 is excluded)</span></span></span>
 <span class="r-in"><span><span class="co"># new_spec&lt;-set_basic(init_spec,type = "Between",d0 = "2014-01-01",</span></span></span>
 <span class="r-in"><span><span class="co"># d1 = "2019-01-01", preliminary.check = TRUE, preprocessing = TRUE)</span></span></span>

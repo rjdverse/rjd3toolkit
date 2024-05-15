@@ -166,7 +166,7 @@ of trading day regressors.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>x</code> specification param must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::spec_x13()</code>
+    <p><code>x</code> specification param must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::x13_spec()</code>
 (or "JD3_REGARIMA_SPEC" generated with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC"
 generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC" generated with
 <code>rjd3tramoseats::spec_tramo()</code>).</p>
@@ -185,7 +185,7 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Pre-defined regressors</span></span></span>
 <span class="r-in"><span><span class="co"># y_raw&lt;-ABS$X0.2.09.10.M</span></span></span>
-<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::spec_x13("RSA5c")</span></span></span>
+<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
 <span class="r-in"><span><span class="co"># new_spec&lt;-set_tradingdays(init_spec,</span></span></span>
 <span class="r-in"><span><span class="co">#                          option = "TD4",</span></span></span>
 <span class="r-in"><span><span class="co">#                          test =  "None",</span></span></span>
@@ -211,7 +211,7 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
 <span class="r-in"><span><span class="co">## put into a context</span></span></span>
 <span class="r-in"><span><span class="va">my_context</span><span class="op">&lt;-</span><span class="fu"><a href="modelling_context.html">modelling_context</a></span><span class="op">(</span>calendars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cal<span class="op">=</span><span class="va">BE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">## create a specification</span></span></span>
-<span class="r-in"><span><span class="co">#init_spec &lt;- rjd3x13::spec_x13("RSA5c")</span></span></span>
+<span class="r-in"><span><span class="co">#init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
 <span class="r-in"><span><span class="co">## modify the specification</span></span></span>
 <span class="r-in"><span><span class="co"># new_spec&lt;-set_tradingdays(init_spec,</span></span></span>
 <span class="r-in"><span><span class="co">#                          option = "TradingDays", calendar.name="cal")</span></span></span>
@@ -219,7 +219,7 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
 <span class="r-in"><span><span class="co"># sa&lt;-rjd3x13::x13(y_raw,new_spec, context=my_context)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># User-defined regressors</span></span></span>
-<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::spec_x13("RSA5c")</span></span></span>
+<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
 <span class="r-in"><span><span class="co"># add regressors to context</span></span></span>
 <span class="r-in"><span><span class="co"># variables&lt;-list(Monday,Tuesday, Wednesday,</span></span></span>
 <span class="r-in"><span><span class="co"># Thursday, Friday, Saturday)</span></span></span>
