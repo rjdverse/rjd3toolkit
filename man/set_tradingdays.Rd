@@ -90,7 +90,7 @@ All the built-in regressors are meant to correct for type
 of day effect but don't take into account any holiday. To do so user-defined regressors have to be built.
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
@@ -98,7 +98,7 @@ generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" gene
 \examples{
 # Pre-defined regressors
 # y_raw<-ABS$X0.2.09.10.M
-# init_spec <- rjd3x13::spec_x13("RSA5c")
+# init_spec <- rjd3x13::x13_spec("RSA5c")
 # new_spec<-set_tradingdays(init_spec,
 #                          option = "TD4",
 #                          test =  "None",
@@ -124,7 +124,7 @@ fixed_day(7,21),
 ## put into a context
 my_context<-modelling_context(calendars = list(cal=BE))
 ## create a specification
-#init_spec <- rjd3x13::spec_x13("RSA5c")
+#init_spec <- rjd3x13::x13_spec("RSA5c")
 ## modify the specification
 # new_spec<-set_tradingdays(init_spec,
 #                          option = "TradingDays", calendar.name="cal")
@@ -132,7 +132,7 @@ my_context<-modelling_context(calendars = list(cal=BE))
 # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
 
 # User-defined regressors
-# init_spec <- rjd3x13::spec_x13("RSA5c")
+# init_spec <- rjd3x13::x13_spec("RSA5c")
 # add regressors to context
 # variables<-list(Monday,Tuesday, Wednesday,
 # Thursday, Friday, Saturday)

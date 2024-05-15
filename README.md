@@ -56,4 +56,5 @@ should be added or updated.
 ## Licensing
 
 The code of this project is licensed under the [European Union Public
-Licence (EUPL)](https://joinup.ec.europa.eu/page/eupl-text-11-12).
+Licence
+(EUPL)](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12).
