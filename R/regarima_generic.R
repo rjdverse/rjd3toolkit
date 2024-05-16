@@ -29,7 +29,7 @@ logLik.JD3_REGARIMA_RSLTS <- function(object, ...) {
     res <- NA
   } else{
     res <- structure(object$likelihood$ll,
-                     df = object$likelihood$nparams + 1,
+                     df = object$likelihood$nparams,
                      nall = object$likelihood$nobs,
                      nobs = object$likelihood$neffectiveobs)
   }
@@ -57,7 +57,7 @@ df.residual.JD3_REGARIMA_RSLTS <- function(object, ...){
   if (!is.null(object$estimation)) # for sarima_estimate outputs
     object <- object$estimation
 
-  object$likelihood$neffectiveobs - object$likelihood$nparams
+  object$likelihood$neffectiveobs - object$likelihood$nparams + 1
 }
 #' @export
 nobs.JD3_REGARIMA_RSLTS <- function(object, ...){
