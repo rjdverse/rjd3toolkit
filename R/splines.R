@@ -14,6 +14,6 @@ periodic_splines<-function(order=4, period=1, knots, pos){
   jm<-.jcall("jdplus/toolkit/base/r/math/BSplines", "Ljdplus/toolkit/base/core//math/matrices/Matrix;",
              "periodic", as.integer(order), as.numeric(period), .jarray(as.numeric(knots)),  .jarray(as.numeric(pos)))
   res <- .jd2r_matrix(jm)
-  return (res)
+  return(res)
 
 }

@@ -29,7 +29,7 @@ easter_variable<-function(frequency, start, length, s, duration=6, endpos=-1,
   }
   jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
   data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "easter", jdom, as.integer(duration), as.integer(endpos), correction)
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' @rdname easter_variable
@@ -42,7 +42,7 @@ julianeaster_variable<-function(frequency, start, length, s, duration=6){
   }
   jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
   data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "julianEaster", jdom, as.integer(duration))
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' Leap Year regressor
@@ -73,7 +73,7 @@ lp_variable<-function(frequency, start, length, s, type=c("LeapYear", "LengthOfP
   }
   jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
   data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "leapYear", jdom, as.logical(lp))
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' Generating Outlier regressors
@@ -124,7 +124,7 @@ ao_variable<-function(frequency, start, length, s, pos, date=NULL){
   } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ao", jdom, as.character(date))
   }
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 #' @export
 #' @rdname outliers_variables
@@ -140,7 +140,7 @@ tc_variable<-function(frequency, start, length, s, pos, date=NULL, rate=0.7){
   } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "tc", jdom, as.character(date), rate)
   }
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' @export
@@ -157,7 +157,7 @@ ls_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRU
   } else{
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ls", jdom, as.character(date), as.logical(zeroended))
   }
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' @export
@@ -175,7 +175,7 @@ so_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRU
     data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "so", jdom, as.character(date),
                  as.logical(zeroended))
   }
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' Ramp regressor
@@ -219,7 +219,7 @@ ramp_variable<-function(frequency, start, length, s, range){
                  as.integer(range[1]-1),
                  as.integer(range[2]-1))
   }
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' Intervention variable
@@ -288,7 +288,7 @@ intervention_variable<-function(frequency, start, length, s, starts, ends, delta
                  .jarray(as.integer(starts-1)),
                  .jarray(as.integer(ends-1)))
   }
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 
 #' Periodic dummies and contrasts
@@ -314,7 +314,7 @@ periodic.dummies <-function(frequency, start, length, s){
   jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
   jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicDummies", jdom)
   data <- .jd2r_matrix(jm)
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 #'@export
 #'@rdname periodic.dummies
@@ -327,7 +327,7 @@ periodic.contrasts <-function(frequency, start, length, s){
   jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
   jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicContrasts", jdom)
   data <- .jd2r_matrix(jm)
-  return (ts(data, frequency = frequency, start= start))
+  return(ts(data, frequency = frequency, start= start))
 }
 #' Trigonometric variables
 #'
