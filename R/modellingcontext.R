@@ -482,4 +482,3 @@ modelling_context<-function(calendars=NULL, variables=NULL){
     p<-.r2p_calendars(r)
     return (.p2jd_calendars(p))
 }
-
