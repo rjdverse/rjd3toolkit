@@ -47,10 +47,10 @@ are the five harmonics. The output matrix will be equal to:
 \deqn{
 \begin{pmatrix}
 \cos(\lambda_1) & \sin (\lambda_1) & \cdots &
-\cos(\lambda_6) & \sin (\lambda_6) \newline
+\cos(\lambda_6) & \sin (\lambda_6) \\
 \cos(\lambda_1\times 2) & \sin (\lambda_1\times 2) & \cdots &
-\cos(\lambda_6\times 2) & \sin (\lambda_6\times 2)\newline
-\vdots & \vdots & \cdots & \vdots & \vdots \newline
+\cos(\lambda_6\times 2) & \sin (\lambda_6\times 2)\\
+\vdots & \vdots & \cdots & \vdots & \vdots \\
 \cos(\lambda_1\times 12) & \sin (\lambda_1\times 12) & \cdots &
 \cos(\lambda_6\times 12) & \sin (\lambda_6\times 12)
 \end{pmatrix}
