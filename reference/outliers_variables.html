@@ -92,17 +92,17 @@ or by a specific <code>date</code> defined in the format <code>"YYYY-MM-DD"</cod
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>An additive outlier (AO, <code>ao_variable</code>) is defined as:
-$$AO_t = \begin{cases}1 &amp;\text{if } t=t_0 \newline
+$$AO_t = \begin{cases}1 &amp;\text{if } t=t_0 \\
  0 &amp; \text{if }t\ne t_0\end{cases}$$</p>
 <p>A level shift (LS, <code>ls_variable</code>) is defined as (if <code>zeroended = TRUE</code>):
-$$LS_t = \begin{cases}-1 &amp;\text{if } t &lt; t_0 \newline
+$$LS_t = \begin{cases}-1 &amp;\text{if } t &lt; t_0 \\
  0 &amp; \text{if }t\geq t_0 \end{cases}$$
 A transitory change (TC, <code>tc_variable</code>) is defined as:
-$$TC_t = \begin{cases} 0 &amp;\text{if }t &lt; t_0 \newline
+$$TC_t = \begin{cases} 0 &amp;\text{if }t &lt; t_0 \\
 \alpha^{t-t_0} &amp; t\geq t_0 \end{cases}$$
 A seasonal outlier (SO, <code>so_variable</code>) is defined as (if <code>zeroended = TRUE</code>):
-$$SO_t = \begin{cases} 0 &amp;\text{if }t\geq t_0 \newline
--1 &amp; \text{if }t &lt; t_0 \text{ and $t$ same periode as }t_0\newline
+$$SO_t = \begin{cases} 0 &amp;\text{if }t\geq t_0 \\
+-1 &amp; \text{if }t &lt; t_0 \text{ and $t$ same periode as }t_0\\
  -\frac{1}{s-1} &amp; \text{otherwise }\end{cases}$$</p>
     </div>
 
