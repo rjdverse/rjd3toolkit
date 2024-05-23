@@ -86,18 +86,18 @@ lp_variable<-function(frequency, start, length, s, type=c("LeapYear", "LengthOfP
 #'
 #' @details
 #' An additive outlier (AO, \code{ao_variable}) is defined as:
-#' \deqn{AO_t = \begin{cases}1 &\text{if } t=t_0 \newline
+#' \deqn{AO_t = \begin{cases}1 &\text{if } t=t_0 \\
 #'  0 & \text{if }t\ne t_0\end{cases}}
 #'
 #' A level shift (LS, \code{ls_variable}) is defined as (if \code{zeroended = TRUE}):
-#' \deqn{LS_t = \begin{cases}-1 &\text{if } t < t_0 \newline
+#' \deqn{LS_t = \begin{cases}-1 &\text{if } t < t_0 \\
 #'  0 & \text{if }t\geq t_0 \end{cases}}
 #' A transitory change (TC, \code{tc_variable}) is defined as:
-#' \deqn{TC_t = \begin{cases} 0 &\text{if }t < t_0 \newline
+#' \deqn{TC_t = \begin{cases} 0 &\text{if }t < t_0 \\
 #' \alpha^{t-t_0} & t\geq t_0 \end{cases}}
 #' A seasonal outlier (SO, \code{so_variable}) is defined as (if \code{zeroended = TRUE}):
-#' \deqn{SO_t = \begin{cases} 0 &\text{if }t\geq t_0 \newline
-#' -1 & \text{if }t < t_0 \text{ and $t$ same periode as }t_0\newline
+#' \deqn{SO_t = \begin{cases} 0 &\text{if }t\geq t_0 \\
+#' -1 & \text{if }t < t_0 \text{ and $t$ same periode as }t_0\\
 #'  -\frac{1}{s-1} & \text{otherwise }\end{cases}}
 #'
 #' @export
@@ -188,8 +188,8 @@ so_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRU
 #' A ramp between two dates \eqn{t_0} and \eqn{t_1} is defined as:
 #' \deqn{RP_t=
 #' \begin{cases}
-#' -1 & \text{if }t\geq t_0 \newline
-#' \frac{t-t_0}{t_1-t_0}-1 & t_0< t < t_1 \newline
+#' -1 & \text{if }t\geq t_0 \\
+#' \frac{t-t_0}{t_1-t_0}-1 & t_0< t < t_1 \\
 #' 0 & t \leq t_1
 #' \end{cases}
 #' }
@@ -363,10 +363,10 @@ periodic.contrasts <-function(frequency, start, length, s){
 #' \deqn{
 #' \begin{pmatrix}
 #' \cos(\lambda_1) & \sin (\lambda_1) & \cdots &
-#' \cos(\lambda_6) & \sin (\lambda_6) \newline
+#' \cos(\lambda_6) & \sin (\lambda_6) \\
 #' \cos(\lambda_1\times 2) & \sin (\lambda_1\times 2) & \cdots &
-#' \cos(\lambda_6\times 2) & \sin (\lambda_6\times 2)\newline
-#' \vdots & \vdots & \cdots & \vdots & \vdots \newline
+#' \cos(\lambda_6\times 2) & \sin (\lambda_6\times 2)\\
+#' \vdots & \vdots & \cdots & \vdots & \vdots \\
 #' \cos(\lambda_1\times 12) & \sin (\lambda_1\times 12) & \cdots &
 #' \cos(\lambda_6\times 12) & \sin (\lambda_6\times 12)
 #' \end{pmatrix}
@@ -404,13 +404,13 @@ trigonometric_variables <- function(frequency, start, length, s,
 # \eqn{2*i+1} are equal to
 # \deqn{
 # \begin{pmatrix}
-# \cos(f_i \pi (0 + s)) \newline
-# \cos(f_i \pi (1 + s)) \newline \vdots \newline
+# \cos(f_i \pi (0 + s)) \\
+# \cos(f_i \pi (1 + s)) \\ \vdots \\
 # \cos(f_i \pi (l-1 + s))
 # \end{pmatrix} \text{ and }
 # \begin{pmatrix}
-# \sin(f_i \pi (0 + s)) \newline
-# \sin(f_i \pi (1 + s)) \newline \vdots \newline
+# \sin(f_i \pi (0 + s)) \\
+# \sin(f_i \pi (1 + s)) \\ \vdots \\
 # \sin(f_i \pi (l-1 + s))
 # \end{pmatrix}
 # }
