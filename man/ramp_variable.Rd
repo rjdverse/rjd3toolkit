@@ -25,8 +25,8 @@ Ramp regressor
 A ramp between two dates \eqn{t_0} and \eqn{t_1} is defined as:
 \deqn{RP_t=
 \begin{cases}
--1 & \text{if }t\geq t_0 \newline
-\frac{t-t_0}{t_1-t_0}-1 & t_0< t < t_1 \newline
+-1 & \text{if }t\geq t_0 \\
+\frac{t-t_0}{t_1-t_0}-1 & t_0< t < t_1 \\
 0 & t \leq t_1
 \end{cases}
 }
