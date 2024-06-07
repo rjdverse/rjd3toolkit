@@ -5,7 +5,14 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rjd3toolkit)](https://CRAN.R-project.org/package=rjd3toolkit)
+
 [![R-CMD-check](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml)
+[![lint](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yaml)
+
+[![GH Pages
+built](https://github.com/rjdverse/rjd3toolkit/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/pkgdown.yaml)
 <!-- badges: end -->
 
 Utility package in JDemetra+ 3.x R ecosystem. Contains functions used in
