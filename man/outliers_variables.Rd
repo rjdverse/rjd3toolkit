@@ -37,18 +37,18 @@ Generating Outlier regressors
 }
 \details{
 An additive outlier (AO, \code{ao_variable}) is defined as:
-\deqn{AO_t = \begin{cases}1 &\text{if } t=t_0 \newline
+\deqn{AO_t = \begin{cases}1 &\text{if } t=t_0 \\
  0 & \text{if }t\ne t_0\end{cases}}
 
 A level shift (LS, \code{ls_variable}) is defined as (if \code{zeroended = TRUE}):
-\deqn{LS_t = \begin{cases}-1 &\text{if } t < t_0 \newline
+\deqn{LS_t = \begin{cases}-1 &\text{if } t < t_0 \\
  0 & \text{if }t\geq t_0 \end{cases}}
 A transitory change (TC, \code{tc_variable}) is defined as:
-\deqn{TC_t = \begin{cases} 0 &\text{if }t < t_0 \newline
+\deqn{TC_t = \begin{cases} 0 &\text{if }t < t_0 \\
 \alpha^{t-t_0} & t\geq t_0 \end{cases}}
 A seasonal outlier (SO, \code{so_variable}) is defined as (if \code{zeroended = TRUE}):
-\deqn{SO_t = \begin{cases} 0 &\text{if }t\geq t_0 \newline
--1 & \text{if }t < t_0 \text{ and $t$ same periode as }t_0\newline
+\deqn{SO_t = \begin{cases} 0 &\text{if }t\geq t_0 \\
+-1 & \text{if }t < t_0 \text{ and $t$ same periode as }t_0\\
  -\frac{1}{s-1} & \text{otherwise }\end{cases}}
 }
 \examples{
