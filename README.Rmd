@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rjd3toolkit
+# `rjd3toolkit` <a href="https://rjdverse.github.io/rjd3toolkit/"><img src="man/figures/logo.png" align="right" height="150" style="float:right; height:150px;"/></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml)
