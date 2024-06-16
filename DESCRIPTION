@@ -11,7 +11,7 @@ Authors@R: c(
            email = "alain.quartier@yahoo.fr",
            comment = c(ORCID = "0000-0001-7890-3857")),
     person(given = "Tanguy", 
-           family = "Barthelemy", role = c("aut","cre"),
+           family = "Barthelemy", role = c("aut", "cre", "art"),
            email ="tanguy.barthelemy@insee.fr"),
     person(given = "Anna", 
            family = "Smyk", role = c("aut"),
