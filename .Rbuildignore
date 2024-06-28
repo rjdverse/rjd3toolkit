@@ -24,4 +24,4 @@ cran-comments.md
 
 ^revdep$
 ^reconf\.sh$
-^rjd3toolkit-java-deps\.xml$
+^pom\.xml$

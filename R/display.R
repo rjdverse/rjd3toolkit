@@ -34,7 +34,7 @@ print.JD3_UCARIMA<-function(x,...){
 
 .arima_node<-function(p,d,q){
   s<-paste(p,d,q,sep=',')
-  return (paste0('(', s, ')'))
+  return(paste0('(', s, ')'))
 }
 
 #' @rdname jd3_print
@@ -365,7 +365,7 @@ summary.JD3_SARIMA_ESTIMATE <-function(object, ...){
              xregs = .regarima_coef_table(object, ...),
              likelihood = likelihood)
   class(res) <- "summary.JD3_REGARIMA_RSLTS"
-  return (res)
+  return(res)
 }
 #' @export
 print.summary.JD3_REGARIMA_RSLTS <- function(x,  digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...){
@@ -387,7 +387,7 @@ print.summary.JD3_REGARIMA_RSLTS <- function(x,  digits = max(3L, getOption("dig
 
 #' @export
 diagnostics.JD3_REGARIMA_RSLTS<-function(x, ...){
-  if (is.null(x)) return (NULL)
+  if (is.null(x)) return(NULL)
   residuals_test = x$diagnostics
   residuals_test = data.frame(Statistic = sapply(residuals_test, function(test) test[["value"]]),
                               P.value = sapply(residuals_test, function(test) test[["pvalue"]]),

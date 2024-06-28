@@ -4,7 +4,7 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .p2r_regarima_rslts<-function(p){
-  return (structure(list(
+  return(structure(list(
     description=.p2r_regarima_description(p$description),
     estimation=.p2r_regarima_estimation(p$estimation),
     diagnostics=.p2r_regarima_diagnostics(p$diagnostics)),
@@ -13,7 +13,7 @@ NULL
 }
 
 .p2r_regarima_description<-function(p){
-  return (list(
+  return(list(
     log=p$log,
     preadjustment = .enum_extract(modelling.LengthOfPeriod, p$preadjustment),
     arima=.p2r_spec_sarima(p$arima),
@@ -22,7 +22,7 @@ NULL
 }
 
 .p2r_regarima_estimation<-function(p){
-  return (list(
+  return(list(
     y=p$y,
     X=.p2r_matrix(p$x),
     parameters=.p2r_parameters_estimation(p$parameters),
@@ -38,5 +38,5 @@ NULL
   tlist<-lapply(p$residuals_tests, function(z){.p2r_test(z$value)})
   tnames<-lapply(p$residuals_tests, function(z){z$key})
   testonresiduals<-`names<-`(tlist, tnames)
-  return (testonresiduals)
+  return(testonresiduals)
 }

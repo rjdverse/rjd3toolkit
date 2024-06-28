@@ -508,7 +508,7 @@ set_outlier.default <- function(x,
                           choices = c("ADDONE", "ADDALL"))
       outlier$method <- method
     }
-    if (!is.na(maxiter) ) {
+    if (!is.na(maxiter)) {
       outlier$maxiter <- maxiter
     }
     if (!is.na(lsrun)) {

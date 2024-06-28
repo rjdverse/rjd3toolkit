@@ -34,15 +34,15 @@ aggregate.default<-function(s, nfreq=1,
                     complete=TRUE){
   conversion <- match.arg(conversion)
   if (is.null(s)){
-    return (NULL)
+    return(NULL)
   }
   jd_s<-.r2jd_tsdata(s)
   jd_agg<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/TsData;", "aggregate", jd_s, as.integer(nfreq), conversion, complete)
   if (is.jnull(jd_agg)){
-    return (NULL)
+    return(NULL)
   }
   else{
-    return (.jd2r_tsdata(jd_agg))
+    return(.jd2r_tsdata(jd_agg))
   }
 }
 #' @export
@@ -79,16 +79,16 @@ aggregate.data.frame <- function(s, nfreq=1,
 #' clean_extremities(y)
 clean_extremities<-function(s){
   if (is.null(s)){
-    return (NULL)
+    return(NULL)
   }
   jd_s<-.r2jd_tsdata(s)
   jd_scleaned<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/TsData;", "cleanExtremities", jd_s)
 
   if (is.jnull(jd_scleaned)){
-    return (NULL)
+    return(NULL)
   }
   else{
-    return (.jd2r_tsdata(jd_scleaned))
+    return(.jd2r_tsdata(jd_scleaned))
   }
 
 }
@@ -110,17 +110,17 @@ ts_interpolate<-function(s, method=c("airline", "average")){
 ts_interpolate.default<-function(s, method=c("airline", "average")){
   method<-match.arg(method)
   if (is.null(s)){
-    return (NULL)
+    return(NULL)
   }
   jd_s<-.r2jd_tsdata(s)
   if (method == "airline"){
     jd_si<-.jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "airlineInterpolation", jd_s)
-    return (.jd2r_tsdata(jd_si))
+    return(.jd2r_tsdata(jd_si))
   } else if (method == "average"){
     jd_si<-.jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "averageInterpolation", jd_s)
-    return (.jd2r_tsdata(jd_si))
+    return(.jd2r_tsdata(jd_si))
   } else
-    return (NULL)
+    return(NULL)
 }
 #' @export
 ts_interpolate.matrix <- function(s, method=c("airline", "average")){
@@ -162,15 +162,15 @@ ts_adjust<-function(s, method=c("LeapYear", "LengthOfPeriod"), reverse = FALSE){
 ts_adjust.default<-function(s, method=c("LeapYear", "LengthOfPeriod"), reverse = FALSE){
   method<-match.arg(method)
   if (is.null(s)){
-    return (NULL)
+    return(NULL)
   }
   jd_s<-.r2jd_tsdata(s)
   jd_st<-.jcall("jdplus/toolkit/base/r/modelling/Transformation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "adjust", jd_s, method, as.logical(reverse))
   if (is.jnull(jd_st)){
-    return (NULL)
+    return(NULL)
   }
   else{
-    return (.jd2r_tsdata(jd_st))
+    return(.jd2r_tsdata(jd_st))
   }
 }
 #' @export
@@ -203,7 +203,7 @@ daysOf<-function(ts, pos=0){
   start<-start(ts)
   jdom<-.r2jd_tsdomain(frequency(ts), start[1], start[2], length(ts))
   days<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[S", "daysOf",jdom, as.integer(pos))
-  return (as.Date(days))
+  return(as.Date(days))
 }
 
 #' Title
@@ -221,7 +221,7 @@ to_ts<-function(source, id, type="All"){
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
   bytes<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jts)
   p<-RProtoBuf::read(jd3.Ts, bytes)
-  return (.p2r_ts(p))
+  return(.p2r_ts(p))
 }
 
 #' Title
@@ -239,7 +239,7 @@ to_tscollection<-function(source, id, type="All"){
   jtscoll<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
   bytes<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jtscoll)
   p<-RProtoBuf::read(jd3.TsCollection, bytes)
-  return (.p2r_tscollection(p))
+  return(.p2r_tscollection(p))
 }
 
 #' Promote a R time series to a "full" ts of jdemetra
@@ -257,14 +257,14 @@ data_to_ts<-function(s, name){
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", .r2jd_tsdata(s), name)
   bytes<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jts)
   p<-RProtoBuf::read(jd3.Ts, bytes)
-  return (.p2r_ts(p))
+  return(.p2r_ts(p))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_tmp_ts<-function(s, name){
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", .r2jd_tsdata(s), name)
-  return (jts)
+  return(jts)
 }
 
 #' @export
@@ -272,7 +272,7 @@ data_to_ts<-function(s, name){
 .r2jd_make_ts<-function(source, id, type="All"){
   jmoniker=.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
-  return (jts)
+  return(jts)
 }
 
 #' @export
@@ -280,7 +280,7 @@ data_to_ts<-function(s, name){
 .r2jd_make_tscollection<-function(source, id, type="All"){
   jmoniker<-.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
   jtscoll<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
-  return (jtscoll)
+  return(jtscoll)
 }
 
 #' Title
@@ -302,7 +302,7 @@ tsdata_of<-function(values, dates){
     jtsdata<-.jcall("jdplus/toolkit/base/r/timeseries/TsDataCollector", "Ljdplus/toolkit/base/api/timeseries/TsData;",
                     "of", as.numeric(values), as.character(dates))
 
-    return (.jd2r_tsdata(jtsdata))
+    return(.jd2r_tsdata(jtsdata))
 }
 
 #' Compare the annual totals of two series (usually the raw series and the seasonally adjusted series)
@@ -317,5 +317,5 @@ tsdata_of<-function(values, dates){
 compare_annual_totals<-function(raw, sa){
     jsa<-.r2jd_tsdata(sa)
     jraw<-.r2jd_tsdata(raw)
-    return (.jcall("jdplus/sa/base/r/SaUtility", "D", "compareAnnualTotals", jraw, jsa))
+    return(.jcall("jdplus/sa/base/r/SaUtility", "D", "compareAnnualTotals", jraw, jsa))
 }

@@ -16,7 +16,7 @@ JD3_TSCOLLECTION<-'JD3_TSCOLLECTION'
 #'
 #' @examples
 tsmoniker<-function(source, id){
-  return (structure(list(source=source, id=id), class=c(JD3_TSMONIKER)))
+  return(structure(list(source=source, id=id), class=c(JD3_TSMONIKER)))
 }
 
 #' @export
@@ -25,14 +25,14 @@ tsmoniker<-function(source, id){
   p<-jd3.TsMoniker$new()
   p$source<-r$source
   p$id<-r$id
-  return (p)
+  return(p)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .p2r_moniker<-function(p){
-  if (is.null(p)) return (NULL)
-  return (tsmoniker(p$source, p$id))
+  if (is.null(p)) return(NULL)
+  return(tsmoniker(p$source, p$id))
 }
 
 
@@ -43,20 +43,20 @@ tsmoniker<-function(source, id){
   p$name<-name
   if (is.ts(r)) p$data<-.r2p_tsdata(r)
   else if (is(r, JD3_DYNAMICTS)) p$dynamic_data<-.r2p_dynamic_ts(r)
-  else return (NULL)
-  return (p)
+  else return(NULL)
+  return(p)
 }
 
 dynamic_ts<-function(moniker, data){
-  return (structure(list(moniker=moniker, data=data), class=c(JD3_DYNAMICTS)))
+  return(structure(list(moniker=moniker, data=data), class=c(JD3_DYNAMICTS)))
 }
 
 .ts<-function(name, moniker, metadata, data){
-  return (structure(list(name=name, moniker=moniker, metadata=metadata, data=data), class=c(JD3_TS)))
+  return(structure(list(name=name, moniker=moniker, metadata=metadata, data=data), class=c(JD3_TS)))
 }
 
 .tscollection<-function(name, moniker, metadata, series){
-  return (structure(list(name=name, moniker=moniker, metadata=metadata, series=series), class=c(JD3_TSCOLLECTION)))
+  return(structure(list(name=name, moniker=moniker, metadata=metadata, series=series), class=c(JD3_TSCOLLECTION)))
 }
 
 #' @export
@@ -67,34 +67,34 @@ dynamic_ts<-function(moniker, data){
     lv<-lapply(p, function(v){return(v$value)})
     ns<-sapply(p, function(v){return(v$key)})
     names(lv)<-ns
-    return (lv)
+    return(lv)
   }
-  return (NULL)
+  return(NULL)
 }
 
 .entry<-function(key, value, type){
   p<-type$new()
   p$key<-key
   p$value<-value
-  return (p)
+  return(p)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2p_metadata<-function(r, type){
   n<-names(r)
-  pm<-lapply(n, function(item){ return (.entry(item, r[[item]], type)) })
-  return (pm)
+  pm<-lapply(n, function(item){ return(.entry(item, r[[item]], type)) })
+  return(pm)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .p2r_ts<-function(p){
-  if (is.null(p)) return (NULL)
+  if (is.null(p)) return(NULL)
   s<-.p2r_tsdata(p$data)
   m<-.p2r_moniker(p$moniker)
   md<-.p2r_metadata(p$metadata)
-  return (.ts(p$name, m, md, s))
+  return(.ts(p$name, m, md, s))
 }
 
 #' @export
@@ -105,19 +105,19 @@ dynamic_ts<-function(moniker, data){
   p$moniker<-.r2p_moniker(r$moniker)
   p$metadata<-.r2p_metadata(r$metadata,jd3.Ts$MetadataEntry)
   p$data<- .r2p_tsdata(r$data)
-  return (p)
+  return(p)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .p2r_tscollection<-function(p){
   if (is.null(p))
-    return (NULL)
+    return(NULL)
   else{
-    rs<-lapply(p$series, function(s){return (.p2r_ts(s))})
-    names<-lapply(rs, function(s){return (s$name)})
+    rs<-lapply(p$series, function(s){return(.p2r_ts(s))})
+    names<-lapply(rs, function(s){return(s$name)})
     rs<-`names<-`(rs, names)
-    return (.tscollection(p$name, .p2r_moniker(p$moniker), .p2r_metadata(p$metadata), rs))
+    return(.tscollection(p$name, .p2r_moniker(p$moniker), .p2r_metadata(p$metadata), rs))
   }
 }
 
@@ -128,77 +128,77 @@ dynamic_ts<-function(moniker, data){
   p$name<-r$name
   p$moniker<-.r2p_moniker(r$moniker)
   p$metadata<-.r2p_metadata(r$metadata,jd3.TsCollection$MetadataEntry)
-  p$series<- lapply(r$series, function(s){return (.r2p_ts(s))})
-  return (p)
+  p$series<- lapply(r$series, function(s){return(.r2p_ts(s))})
+  return(p)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_ts<-function(s){
   if (is.null(s))
-    return (.jnull("jdplus/toolkit/base/api/timeseries/Ts"))
+    return(.jnull("jdplus/toolkit/base/api/timeseries/Ts"))
   ps<-.r2p_ts(s)
   bytes<-RProtoBuf::serialize(ps, NULL)
-  return (.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsOfBytes", bytes))
+  return(.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsOfBytes", bytes))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .jd2r_ts<-function(js){
   if (is.jnull(js))
-    return (NULL)
+    return(NULL)
   q<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", js)
   p<-RProtoBuf::read(jd3.Ts, q)
-  return (.p2r_ts(p))
+  return(.p2r_ts(p))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_tscollection<-function(s){
   if (is.null(s))
-    return (.jnull("jdplus/toolkit/base/api/timeseries/TsCollection"))
+    return(.jnull("jdplus/toolkit/base/api/timeseries/TsCollection"))
   ps<-.r2p_tscollection(s)
   bytes<-RProtoBuf::serialize(ps, NULL)
-  return (.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsCollectionOfBytes", bytes))
+  return(.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsCollectionOfBytes", bytes))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .jd2r_tscollection<-function(js){
   if (is.jnull(js))
-    return (NULL)
+    return(NULL)
   q<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", js)
   p<-RProtoBuf::read(jd3.TsCollection, q)
-  return (.p2r_tscollection(p))
+  return(.p2r_tscollection(p))
 }
 
 .r2p_dynamic_ts<-function(r){
   p<-jd3.DynamicTsData$new()
   p$current<- .r2p_tsdata(r$data)
   p$moniker<-.r2p_moniker(r$moniker)
-  return (p)
+  return(p)
 }
 
 .p2r_dynamic_ts<-function(p){
-  if (is.null(p)) return (NULL)
+  if (is.null(p)) return(NULL)
   s<-.p2r_tsdata(p$current)
   m<-.p2r_moniker(p$moniker)
-  return (dynamic_ts(m, s))
+  return(dynamic_ts(m, s))
 }
 
 .r2p_dynamic_ts<-function(r){
   p<-jd3.DynamicTsData$new()
   p$current<- .r2p_tsdata(r$data)
   p$moniker<-.r2p_moniker(r$moniker)
-  return (p)
+  return(p)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .p2r_datasupplier<-function(p){
-  if (p$has('dynamic_data')) return (.p2r_dynamic_ts(p$dynamic_data))
-  if (p$has('data')) return (.p2r_tsdata(p$data))
-  return (NULL)
+  if (p$has('dynamic_data')) return(.p2r_dynamic_ts(p$dynamic_data))
+  if (p$has('data')) return(.p2r_tsdata(p$data))
+  return(NULL)
 }
 
 #' @export
@@ -212,18 +212,18 @@ dynamic_ts<-function(moniker, data){
   all<-lapply(1:n, function(z){.r2p_datasupplier(ns[z], r[[z]])})
   p<-jd3.TsDataSuppliers$new()
   p$items<-all
-  return (p)
+  return(p)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .p2r_datasuppliers<-function(p){
   n<-length(p$items)
-  if (n == 0){return (list())}
+  if (n == 0){return(list())}
   l<-lapply(1:n, function(i){return(.p2r_datasupplier(p$items[[i]]))})
   ns<-sapply(1:n, function(i){return(p$items[[i]]$name)})
   names(l)<-ns
-  return (l)
+  return(l)
 }
 
 #' @export
@@ -233,7 +233,7 @@ dynamic_ts<-function(moniker, data){
     jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/regression/TsDataSuppliers;",
                    "variablesOf",
                    bytes)
-    return (jcal)
+    return(jcal)
 }
 
 #' @export
@@ -241,7 +241,7 @@ dynamic_ts<-function(moniker, data){
 .jd2p_variables<-function(jd){
     bytes<-.jcall("jdplus/toolkit/base/r/util/Modelling", "[B", "toBuffer", jd)
     p<-RProtoBuf::read(jd3.TsDataSuppliers, bytes)
-    return (p)
+    return(p)
 }
 
 
@@ -250,14 +250,14 @@ dynamic_ts<-function(moniker, data){
 #' @rdname jd3_utilities
 .jd2r_variables<-function(jcals){
     p<-.jd2p_variables(jcals)
-    return (.p2r_datasuppliers(p))
+    return(.p2r_datasuppliers(p))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_variables<-function(r){
     p<-.r2p_datasuppliers(r)
-    return (.p2jd_variables(p))
+    return(.p2jd_variables(p))
 }
 
 
@@ -326,7 +326,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
     }
   }
 
-  return (list(calendars=calendars, variables=variables))
+  return(list(calendars=calendars, variables=variables))
 }
 
 
@@ -346,7 +346,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
     ns<-sapply(1:n, function(i){return(p$variables[[i]]$key)})
     names(lvar)<-ns
   }
-  return (list(calendars=lcal, variables=lvar))
+  return(list(calendars=lcal, variables=lvar))
 }
 
 #' @export
@@ -383,7 +383,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
       p$variables=lvar
     }
   }
-  return (p)
+  return(p)
 }
 
 #' @export
@@ -393,7 +393,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
   jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/regression/ModellingContext;",
                 "of",
                 bytes)
-  return (jcal)
+  return(jcal)
 }
 
 #' @export
@@ -401,7 +401,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 .jd2p_context<-function(jd){
   bytes<-.jcall("jdplus/toolkit/base/r/util/Modelling", "[B", "toBuffer", jd)
   p<-RProtoBuf::read(jd3.ModellingContext, bytes)
-  return (p)
+  return(p)
 }
 
 
@@ -409,14 +409,14 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 #' @rdname jd3_utilities
 .jd2r_modellingcontext<-function(jcontext){
   p<-.jd2p_context(jcontext)
-  return (.p2r_context(p))
+  return(.p2r_context(p))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_modellingcontext<-function(r){
   p<-.r2p_context(r)
-  return (.p2jd_context(p))
+  return(.p2jd_context(p))
 }
 
 #' @export
@@ -429,7 +429,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
         ns<-sapply(1:n, function(i){return(p$calendars[[i]]$key)})
         names(lcal)<-ns
     }
-    return (lcal)
+    return(lcal)
 }
 
 #' @export
@@ -447,7 +447,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
             entry$value<-.r2p_calendardef(r[[i]])
             return(entry)
         })
-    return (p)
+    return(p)
 }
 
 #' @export
@@ -457,7 +457,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
     jcal <- .jcall("jdplus/toolkit/base/r/util/Modelling", "Ljdplus/toolkit/base/api/timeseries/calendars/CalendarManager;",
                    "calendarsOf",
                    bytes)
-    return (jcal)
+    return(jcal)
 }
 
 #' @export
@@ -465,7 +465,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 .jd2p_calendars<-function(jd){
     bytes<-.jcall("jdplus/toolkit/base/r/util/Modelling", "[B", "toBuffer", jd)
     p<-RProtoBuf::read(jd3.Calendars, bytes)
-    return (p)
+    return(p)
 }
 
 
@@ -473,13 +473,12 @@ modelling_context<-function(calendars=NULL, variables=NULL){
 #' @rdname jd3_utilities
 .jd2r_calendars<-function(jcals){
     p<-.jd2p_calendars(jcals)
-    return (.p2r_calendars(p))
+    return(.p2r_calendars(p))
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_calendars<-function(r){
     p<-.r2p_calendars(r)
-    return (.p2jd_calendars(p))
+    return(.p2jd_calendars(p))
 }
-
