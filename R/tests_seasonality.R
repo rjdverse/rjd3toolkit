@@ -23,7 +23,7 @@ seasonality_qs<-function(data, period, nyears=0){
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "qsTest",
          as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' Kruskall-Wallis Seasonality Test
@@ -43,7 +43,7 @@ seasonality_kruskalwallis<-function(data, period, nyears=0){
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kruskalWallisTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' Periodogram Seasonality Test
@@ -62,7 +62,7 @@ seasonality_periodogram<-function(data, period, nyears=0){
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "periodogramTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' Friedman Seasonality Test
@@ -79,7 +79,7 @@ seasonality_friedman<-function(data, period, nyears=0){
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "friedmanTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' F-test on seasonal dummies
@@ -102,7 +102,7 @@ seasonality_f<-function(data,
   model<-match.arg(model)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "fTest",
                 as.numeric(data), as.integer(period), model, as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 
@@ -126,7 +126,7 @@ seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRU
                 as.numeric(data), as.integer(period), as.integer(firstperiod-1), as.logical(mul))
   q<-.jcall("jdplus/sa/base/r/SeasonalityTests",  "[B", "toBuffer", jctest)
   p<-RProtoBuf::read(sa.CombinedSeasonalityTest, q)
-  return (list(
+  return(list(
     seasonality=.enum_extract(sa.IdentifiableSeasonality, p$seasonality),
     kruskalwallis=.p2r_test(p$kruskal_wallis),
     stable=.p2r_anova(p$stable_seasonality),
@@ -147,5 +147,5 @@ seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRU
 seasonality_canovahansen<-function(data, p0, p1, np, original=FALSE){
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "[D", "canovaHansenTest",
                 as.numeric(data), as.numeric(p0), as.numeric(p1), as.integer(np), as.logical(original))
-  return (jtest)
+  return(jtest)
 }

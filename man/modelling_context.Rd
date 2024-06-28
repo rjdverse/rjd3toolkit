@@ -31,8 +31,8 @@ vars<-list(reg1=list(x = iv1),reg2=list(x = iv2) )
 # creating the modelling context
 my_context<-modelling_context(variables=vars)
 # customize a default specification
-# init_spec <- rjd3x13::spec_x13("RSA5c")
-#  new_spec<- add_usrdefvar(init_spec,id = "reg1.iv1", regeffect="Trend")
+# init_spec <- rjd3x13::x13_spec("RSA5c")
+# new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
 # modelling context is needed for the estimation phase
 # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
 }

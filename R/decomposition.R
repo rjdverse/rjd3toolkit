@@ -30,7 +30,7 @@ sadecomposition<-function(y, sa, t, s, i, mul){
   if (! is.ts(sa))stop("Invalid SA decomposition")
   if (! is.ts(t))stop("Invalid SA decomposition")
 
-  return (structure(list(series=y, sa=sa, trend=t, seas=s, irr=i, multiplicative=mul), class=c("JD3_SADECOMPOSITION", "JD3")))
+  return(structure(list(series=y, sa=sa, trend=t, seas=s, irr=i, multiplicative=mul), class=c("JD3_SADECOMPOSITION", "JD3")))
 }
 
 #' @rdname sa_decomposition

@@ -12,12 +12,12 @@
 #' jobj<-r2jd_calendarts(obs)
 r2jd_calendarts<-function(calendarobs){
   if (is.null(calendarobs) || !is.list(calendarobs)){
-    return (NULL)
+    return(NULL)
   }
   starts<-sapply(calendarobs, function(z){as.character(z$start)})
   ends<-sapply(calendarobs, function(z){as.character(z$end)})
   values<-sapply(calendarobs, function(z){as.numeric(z$value)})
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/CalendarTimeSeries;", "of",
         .jarray(starts, "Ljava/lang/String;"), .jarray(ends, "Ljava/lang/String;"), .jarray(values))
-  return (jts)
+  return(jts)
 }

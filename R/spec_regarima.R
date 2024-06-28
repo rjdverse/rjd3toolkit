@@ -508,7 +508,7 @@ set_outlier.default <- function(x,
                           choices = c("ADDONE", "ADDALL"))
       outlier$method <- method
     }
-    if (!is.na(maxiter) ) {
+    if (!is.na(maxiter)) {
       outlier$maxiter <- maxiter
     }
     if (!is.na(lsrun)) {
@@ -1414,7 +1414,7 @@ set_transform.default <- function(x,
 #' - "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
 #' - "Series": after the decomposition the effect is allocated to
 #' the raw series: \eqn{yc_t=y_t+ effect}
-#' - "SeasonallyAdjusted": after the decomposition the effect is allocated to
+#' - "Seasonally Adjusted": after the decomposition the effect is allocated to
 #' the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 #' @examples
 #' # creating one or several external regressors (TS objects),

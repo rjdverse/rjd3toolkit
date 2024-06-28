@@ -11,7 +11,7 @@ RSLT<-'JD3_ProcResults'
     classes<-c(OBJ, RSLT, subclasses)
   else
     classes<-c(OBJ, subclasses)
-  return (structure(list(internal=jobjRef), class=classes))
+  return(structure(list(internal=jobjRef), class=classes))
 }
 
 

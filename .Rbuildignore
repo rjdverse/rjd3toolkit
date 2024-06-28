@@ -17,4 +17,4 @@ TO_DO
 ^\.github$
 .DS_Store
 ^reconf\.sh$
-^rjd3toolkit-java-deps\.xml$
+^pom\.xml$
