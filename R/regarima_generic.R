@@ -57,7 +57,7 @@ df.residual.JD3_REGARIMA_RSLTS <- function(object, ...){
   if (!is.null(object$estimation)) # for sarima_estimate outputs
     object <- object$estimation
 
-  object$likelihood$neffectiveobs - object$likelihood$nparams + 1
+  object$likelihood$neffectiveobs - object$likelihood$nparams
 }
 #' @export
 nobs.JD3_REGARIMA_RSLTS <- function(object, ...){

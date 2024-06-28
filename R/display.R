@@ -312,7 +312,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
     stde<-sqrt(diag(q$estimation$bvar))
     sel<-xregs$type=='ESTIMATED'
     t<-xregs$value[sel]/stde
-    ndf<-q$estimation$likelihood$neffectiveobs-q$estimation$likelihood$nparams+1
+    ndf<-q$estimation$likelihood$neffectiveobs-q$estimation$likelihood$nparams
     pval<-2*pt(abs(t), ndf, lower.tail = FALSE)
     xregs$stde[sel]<-stde
     xregs$t[sel]<-t
