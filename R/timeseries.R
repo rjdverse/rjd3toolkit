@@ -41,7 +41,7 @@ aggregate.default<-function(s, nfreq=1,
   if (is.jnull(jd_agg)){
     return(NULL)
   }
-  else{
+  else {
     return(.jd2r_tsdata(jd_agg))
   }
 }
@@ -87,7 +87,7 @@ clean_extremities<-function(s){
   if (is.jnull(jd_scleaned)){
     return(NULL)
   }
-  else{
+  else {
     return(.jd2r_tsdata(jd_scleaned))
   }
 
@@ -169,7 +169,7 @@ ts_adjust.default<-function(s, method=c("LeapYear", "LengthOfPeriod"), reverse =
   if (is.jnull(jd_st)){
     return(NULL)
   }
-  else{
+  else {
     return(.jd2r_tsdata(jd_st))
   }
 }
@@ -270,7 +270,7 @@ data_to_ts<-function(s, name){
 #' @export
 #' @rdname jd3_utilities
 .r2jd_make_ts<-function(source, id, type="All"){
-  jmoniker=.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
+  jmoniker<-.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
   return(jts)
 }

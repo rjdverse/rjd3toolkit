@@ -14,14 +14,14 @@ sadecomposition<-function(y, sa, t, s, i, mul){
   if (is.null(s)){
     if (mul){
       s<-ts(rep(1,1,n), start = start(y), frequency = frequency(y))
-    }else{
-      s=ts(rep(0,1,n), start = start(y), frequency = frequency(y))
+    }else {
+      s <- ts(rep(0,1,n), start = start(y), frequency = frequency(y))
     }
   } else if (! is.ts(s))stop("Invalid SA decomposition")
   if (is.null(i)){
     if (mul){
       i<-ts(rep(1,1,n), start = start(y), frequency = frequency(y))
-    }else{
+    }else {
       i<-ts(rep(0,1,n), start = start(y), frequency = frequency(y))
     }
   } else if (! is.ts(i))stop("Invalid SA decomposition")

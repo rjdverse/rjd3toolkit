@@ -15,7 +15,8 @@ Authors@R: c(
            email ="tanguy.barthelemy@insee.fr"),
     person(given = "Anna", 
            family = "Smyk", role = c("aut"),
-           email ="anna.smyk@insee.fr"))
+           email ="anna.smyk@insee.fr")
+	)
 Description: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
  It provides functions allowing to model time series (create outlier regressors, user-defined calendar regressors,
  UCARIMA models...), to test the presence of trading days or seasonal effects and also
@@ -34,7 +35,7 @@ LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 BugReports: https://github.com/rjdverse/rjd3toolkit/issues
 Encoding: UTF-8
