@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.rjdemetra.rjd3toolkit</groupId>
+	<groupId>com.github.rjdverse.rjd3toolkit</groupId>
 	<artifactId>rjd3toolkit-java-deps</artifactId>
 	<version>ignore_version</version>
 	<packaging>pom</packaging>
 
-	<description>Usage: mvn -f rjd3toolkit-java-deps.xml</description>
+	<description>Usage: mvn -Pcopy-jars</description>
 
 	<properties>
 		<jdplus-main.version>3.2.2</jdplus-main.version>
@@ -58,48 +58,76 @@
 	</dependencies>
 
 	<build>
-		<defaultGoal>clean package</defaultGoal>
 		<directory>${project.basedir}/inst/java</directory>
-		<plugins>
-			<plugin>
-				<groupId>org.simplify4u.plugins</groupId>
-				<artifactId>pgpverify-maven-plugin</artifactId>
-				<version>1.17.0</version>
-				<executions>
-					<execution>
-						<id>check-signatures</id>
-						<goals>
-							<goal>check</goal>
-						</goals>
-						<configuration>
-							<verifySnapshots>true</verifySnapshots>
-							<failNoSignature>true</failNoSignature>
-							<failWeakSignature>true</failWeakSignature>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.6.1</version>
-				<executions>
-					<execution>
-						<id>copy-jars</id>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<outputDirectory>${project.build.directory}</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.simplify4u.plugins</groupId>
+					<artifactId>pgpverify-maven-plugin</artifactId>
+					<version>1.17.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.6.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>copy-jars</id>
+			<build>
+				<defaultGoal>clean package</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.simplify4u.plugins</groupId>
+						<artifactId>pgpverify-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>check-signatures</id>
+								<goals>
+									<goal>check</goal>
+								</goals>
+								<configuration>
+									<verifySnapshots>true</verifySnapshots>
+									<failWeakSignature>true</failWeakSignature>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-jars</id>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+								<phase>package</phase>
+								<configuration>
+									<outputDirectory>${project.build.directory}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<!-- Custom repositories: order matters! -->
+	<!-- Maven Central is enforced at top to prevent dependabot to use snapshots as releases -->
 	<repositories>
+		<repository>
+			<id>central</id>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 		<repository>
 			<id>jdemetra-snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>

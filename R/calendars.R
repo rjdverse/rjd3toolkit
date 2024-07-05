@@ -48,7 +48,7 @@ SINGLEDAY<-'JD3_SINGLEDAY'
 }
 
 .length_ts <- function(s){
-    if(is.mts(s)){
+    if (is.mts(s)){
         nrow(s)
     }else{
         length(s)
@@ -294,7 +294,7 @@ special_day<-function(event, offset=0, weight=1, validity=NULL){
 }
 
 .group_names <- function(x, contrasts = TRUE){
-    if(!is.matrix(x))
+    if (!is.matrix(x))
         return(x)
     col_names <- seq_len(ncol(x)) - !contrasts #if !contrast then it starts from 0
     colnames(x) <- sprintf("group_%i", col_names)
@@ -734,7 +734,7 @@ national_calendar <- function(days, mean_correction=TRUE){
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 calendar_td<-function(calendar,frequency, start, length, s, groups=c(1,2,3,4,5,6,0), holiday=7, contrasts=TRUE){
-    if(! is(calendar, 'JD3_CALENDAR')) stop('Invalid calendar')
+    if (! is(calendar, 'JD3_CALENDAR')) stop('Invalid calendar')
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)

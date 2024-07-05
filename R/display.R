@@ -62,9 +62,9 @@ print.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("digits") - 
   cat("\n")
 
   cat("\nCoefficients\n")
-  if(is.null(tables$coef_table)){
+  if (is.null(tables$coef_table)){
     cat("No SARIMA variables\n")
-  } else if(ncol(tables$coef_table) == 2){
+  } else if (ncol(tables$coef_table) == 2){
     print(tables$coef_table)
   } else{
     printCoefmat(tables$coef_table[-2], digits = digits,
@@ -95,9 +95,9 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
 
   cat("\n")
   cat("\nCoefficients\n")
-  if(is.null(x$coef_table)){
+  if (is.null(x$coef_table)){
     cat("No SARIMA variables\n")
-  } else if(ncol(x$coef_table) == 2){
+  } else if (ncol(x$coef_table) == 2){
     print(x$coef_table)
   } else{
     printCoefmat(x$coef_table[-2], digits = digits, signif.stars = signif.stars,
@@ -126,7 +126,7 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
     for(i in colnames(fr)){
       fr[,i] <- unlist(fr[,i])
     }
-    if(!is.null(cov) && !is.null(ndf)){
+    if (!is.null(cov) && !is.null(ndf)){
       fr$pvalue <- fr$t <- fr$stde <- NA
       stde<-sqrt(diag(cov))
       sel<-fr$type=='ESTIMATED'
@@ -247,7 +247,7 @@ print.summary.JD3_LIKELIHOOD<-function(x, ...){
 #' @rdname jd3_print
 #' @export
 print.JD3_REGARIMA_RSLTS<-function(x, digits = max(3L, getOption("digits") - 3L), ...){
-  cat("Log-transformation:",if(x$description$log) {"yes"} else {"no"},
+  cat("Log-transformation:",if (x$description$log) {"yes"} else {"no"},
       "\n", sep=" ")
 
   ndf<-x$estimation$likelihood$neffectiveobs-x$estimation$likelihood$nparams
@@ -281,9 +281,9 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
   cat("\n")
 
   cat("\nCoefficients\n")
-  if(is.null(tables$coef_table)){
+  if (is.null(tables$coef_table)){
     cat("No SARIMA variables\n")
-  } else if(ncol(tables$coef_table) == 2){
+  } else if (ncol(tables$coef_table) == 2){
     print(tables$coef_table)
   } else{
     printCoefmat(tables$coef_table[-2], digits = digits,
@@ -343,7 +343,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
 #' @export
 summary.JD3_REGARIMA_RSLTS<-function(object, ...){
   log = object$description$log
-  ndf<-object$estimation$likelihood$neffectiveobs-object$estimation$likelihood$nparams
+  ndf<-object$estimation$likelihood$neffectiveobs-object$estimation$likelihood$nparams+1
   sarima_sum <- summary(object$description$arima, cov = object$estimation$parameters$cov,
                 ndf = ndf, ...)
   xregs = .regarima_coef_table(object, ...)
@@ -370,7 +370,7 @@ summary.JD3_SARIMA_ESTIMATE <-function(object, ...){
 #' @export
 print.summary.JD3_REGARIMA_RSLTS <- function(x,  digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...){
   if (!is.null(x$log))
-    cat("Log-transformation:",if(x$log) {"yes"} else {"no"},"\n",sep=" ")
+    cat("Log-transformation:",if (x$log) {"yes"} else {"no"},"\n",sep=" ")
 
   print(x$sarima, digits = digits, signif.stars = signif.stars, ...)
   cat("\n")
