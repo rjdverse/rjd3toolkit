@@ -150,7 +150,7 @@ print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("dig
   .sarima_coef_table(x$description$arima, cov = cov, ndf = ndf, ...)
 }
 .sarima_coef_table.JD3_SARIMA_ESTIMATE <- function(x,...){
-  ndf<-x$likelihood$neffectiveobs-x$likelihood$nparams+1
+  ndf<-x$likelihood$neffectiveobs-x$likelihood$nparams
   sarima_orders <- list(p = x$orders$order[1],
                        d = x$orders$order[2],
                        q = x$orders$order[3],
@@ -250,7 +250,7 @@ print.JD3_REGARIMA_RSLTS<-function(x, digits = max(3L, getOption("digits") - 3L)
   cat("Log-transformation:",if (x$description$log) {"yes"} else {"no"},
       "\n", sep=" ")
 
-  ndf<-x$estimation$likelihood$neffectiveobs-x$estimation$likelihood$nparams+1
+  ndf<-x$estimation$likelihood$neffectiveobs-x$estimation$likelihood$nparams
   print(x$description$arima, cov = x$estimation$parameters$cov,
         ndf = ndf,
         digits = digits,
@@ -312,7 +312,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
     stde<-sqrt(diag(q$estimation$bvar))
     sel<-xregs$type=='ESTIMATED'
     t<-xregs$value[sel]/stde
-    ndf<-q$estimation$likelihood$neffectiveobs-q$estimation$likelihood$nparams+1
+    ndf<-q$estimation$likelihood$neffectiveobs-q$estimation$likelihood$nparams
     pval<-2*pt(abs(t), ndf, lower.tail = FALSE)
     xregs$stde[sel]<-stde
     xregs$t[sel]<-t
@@ -325,7 +325,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
   }
 }
 .regarima_coef_table.JD3_SARIMA_ESTIMATE <- function(x,...){
-  ndf<-x$likelihood$neffectiveobs-x$likelihood$nparams+1
+  ndf<-x$likelihood$neffectiveobs-x$likelihood$nparams
 
   estimate <- x$b
   if (length(estimate) > 0){
