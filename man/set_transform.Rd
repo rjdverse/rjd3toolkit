@@ -37,13 +37,13 @@ Considered only when \code{fun = "Auto"}.}
 Set Log-level Transformation and Decomposition scheme in Pre-Processing Specification
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-# init_spec <- rjd3x13::x13_spec("RSA5c")
+# init_spec <- rjd3x13::spec_x13("RSA5c")
 # new_spec<- set_transform(init_spec,
 #                        fun = "Log",
 #                        outliers = TRUE)

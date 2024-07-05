@@ -34,7 +34,7 @@ Generic function to add outliers or Ramp regressors (\code{add_outlier()} and \c
 to a specification or to remove them (\code{remove_outlier()} and \code{remove_ramp()}).
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
@@ -42,7 +42,7 @@ If a Seasonal adjustment process is performed, each type of Outlier will be allo
 component after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to the trend.
 }
 \examples{
-# init_spec <- rjd3x13::x13_spec("RSA5c")
+# init_spec <- rjd3x13::spec_x13("RSA5c")
 # new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
 # ramp on year 2012
 # new_spec<-rjd3toolkit::add_ramp(init_spec,start="2012-01-01",end="2012-12-01")

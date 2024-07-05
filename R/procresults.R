@@ -53,7 +53,7 @@ result<-function(object, id){
 #' @rdname dictionary
 #' @export
 user_defined <- function(object, userdefined = NULL){
-  if (is.null(userdefined)){
+  if(is.null(userdefined)){
     result <- list()
   } else{
     result <- lapply(userdefined,

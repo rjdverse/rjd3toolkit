@@ -7,11 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v3.2.3.html).
 
 ## [Unreleased]
 
-### Fixed
+[Unreleased]: https://github.com/rjdemetra/rjd3toolkit/compare/v3.2.3...HEAD
 
-- Correct SA decomposition with backcasts and forecasts (Java to R transfer) [#2](https://github.com/rjdverse/rjd3tramoseats/issues/2)
+## [3.2.3] - 2023-12-12
 
-## [3.2.2] - 2024-03-15 
-
-[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.2.2...HEAD
-[3.2.2]: https://github.com/rjdverse/rjd3toolkit/releases/tag/v3.2.2
+[3.2.3]: https://github.com/rjdemetra/rjd3toolkit/releases/tag/v3.2.3

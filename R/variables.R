@@ -256,7 +256,7 @@ ramp_variable<-function(frequency, start, length, s, range){
 #' # creating the modelling context
 #' my_context<-modelling_context(variables=vars)
 #' # customize a default specification
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
+#' # init_spec <- rjd3x13::spec_x13("RSA5c")
 #' # new_spec<- add_usrdefvar(init_spec,id = "reg1.iv1", regeffect="Trend")
 #' # modelling context is needed for the estimation phase
 #' # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
@@ -383,13 +383,13 @@ trigonometric_variables <- function(frequency, start, length, s,
   }
   jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
 
-  if (!is.null(seasonal_frequency))
+  if(!is.null(seasonal_frequency))
     seasonal_frequency <- as.integer(seasonal_frequency)
   jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "trigonometricVariables",
              jdom, .jarray(seasonal_frequency))
   data <- .jd2r_matrix(jm)
 
-  if (ncol(data) %% 2 == 1)
+  if(ncol(data) %% 2 == 1)
     data <- cbind(data, 0)
 
   return(ts(data, frequency = frequency, start = start))
@@ -420,7 +420,7 @@ trigonometric_variables <- function(frequency, start, length, s,
 #                                      as.integer(start),
 #                                      as.integer(length))
 #   data <- .jd2r_matrix(data)
-#   if (ncol(data) %% 2 == 1)
+#   if(ncol(data) %% 2 == 1)
 #     data <- cbind(data, 0)
 #   colnames(data) <- sprintf("%s - frequency %i",
 #                             rep(c("cos","sin"), length(freq)),
