@@ -4,7 +4,7 @@ NULL
 .p2r_differencing<-function(p){
   if (is.null(p)){
     return(NULL)
-  } else{
+  } else {
     del<-sapply(p$differences, function(z){(return(c(z$lag,z$order)))})
     del<-`rownames<-`(del, c("lag", "order"))
     return(list(ddata=p$stationary_series,

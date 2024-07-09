@@ -25,9 +25,9 @@ NULL
 #' @export
 statisticaltest<-function(val, pval, dist=NULL){
   if (pval<0){
-    pval=0
+    pval <- 0
   } else if (pval>1){
-    pval=1
+    pval <- 1
   }
   return(structure(list(value=val, pvalue=pval), distribution=dist, class=c("JD3_TEST", "JD3")))
 }
@@ -38,7 +38,7 @@ print.JD3_TEST<-function(x, details=FALSE, ...){
   cat('Value: ', x$value, '\n')
   cat('P-Value: ', sprintf('%.4f', x$pvalue), '\n')
   if (details){
-    dist=attr(x, "distribution")
+    dist<-attr(x, "distribution")
     if (! is.null(dist)){
       cat('[', dist, ']\n')
     }
@@ -168,7 +168,7 @@ testofupdownruns<-function(data, number=TRUE){
 #' autocorrelations_inverse(x)
 #' @export
 autocorrelations<-function(data, mean=TRUE, n=15){
-  res = .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "autocorrelations",
+  res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "autocorrelations",
                as.numeric(data), as.logical(mean), as.integer(n))
   names(res) <- seq_len(n)
   return(res)

@@ -45,7 +45,7 @@ NULL
   if (is.null(r)) {
     p$value<-0
     p$type<-.enum_of(jd3.ParameterType, "UNUSED", "PARAMETER")
-  } else{
+  } else {
     p$value<-r$value
     p$type<-.enum_of(jd3.ParameterType, r$type, "PARAMETER")
   }
@@ -131,7 +131,7 @@ NULL
 .p2r_test<-function(p){
   if (is.null(p))
     return(NULL)
-  p = p$as.list()
+  p <- p$as.list()
   return(statisticaltest(p$value, p$pvalue, p$description))
 }
 
@@ -168,9 +168,9 @@ NULL
   p<-jd3.TsData$new()
   p$name<-attr(r, "name")
   p$annual_frequency<-frequency(r)
-  s=start(r)
-  p$start_year=s[1]
-  p$start_period=s[2]
+  s<-start(r)
+  p$start_year<-s[1]
+  p$start_period<-s[2]
   p$values<-as.numeric(r)
   return(p)
 }
@@ -197,7 +197,7 @@ NULL
 .p2r_date<-function(p){
   if (p$has('year')){
     return(ymd(p$year, p$month, p$day))
-  } else{
+  } else {
     return(NULL)
   }
 }
@@ -295,7 +295,7 @@ NULL
 
 .r2p_outlier<-function(r){
   p<-modelling.Outlier$new()
-  p$name=r$name
+  p$name<-r$name
   p$code<-r$code
   p$position<-.r2p_date(r$pos)
   p$coefficient<-.r2p_parameter(r$coef)
@@ -542,7 +542,7 @@ NULL
                  s=.p2r_sa_component(p$seasonal),
                  i=.p2r_sa_component(p$irregular)
     ))
-  } else{
+  } else {
     return(list(mode = .enum_extract(sa.DecompositionMode, p$mode),
                  series=.p2r_component(p$series),
                  sa=.p2r_component(p$seasonally_adjusted),

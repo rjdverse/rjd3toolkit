@@ -113,7 +113,7 @@ dynamic_ts<-function(moniker, data){
 .p2r_tscollection<-function(p){
   if (is.null(p))
     return(NULL)
-  else{
+  else {
     rs<-lapply(p$series, function(s){return(.p2r_ts(s))})
     names<-lapply(rs, function(s){return(s$name)})
     rs<-`names<-`(rs, names)
@@ -380,7 +380,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
       return(entry)
       })
     if (length(lvar) > 0) {
-      p$variables=lvar
+      p$variables <- lvar
     }
   }
   return(p)

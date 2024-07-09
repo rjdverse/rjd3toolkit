@@ -10,7 +10,7 @@ coef.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima",
     coefs <- .regarima_coef_table(object)
   } else if (component == "arima") {
     coefs <- .sarima_coef_table(object)$coef_table
-  } else{
+  } else {
     coefs <- rbind(.sarima_coef_table(object)$coef_table[,1:2],
                   .regarima_coef_table(object)[,1:2])
   }
@@ -27,7 +27,7 @@ logLik.JD3_REGARIMA_RSLTS <- function(object, ...) {
   if (is.null(object) ||
       is.null(object$likelihood$ll)) {
     res <- NA
-  } else{
+  } else {
     res <- structure(object$likelihood$ll,
                      df = object$likelihood$nparams,
                      nall = object$likelihood$nobs,

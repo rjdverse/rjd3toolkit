@@ -15,12 +15,12 @@ SINGLEDAY<-'JD3_SINGLEDAY'
     vp<-jd3.ValidityPeriod$new()
     if (is.null(start)) {
         pstart<-DATE_MIN
-    }else{
+    }else {
         pstart<-parseDate(start)
     }
     if (is.null(end)){
         pend<-DATE_MAX
-    }else{
+    }else {
         pend<-parseDate(end)
     }
     vp$start<-pstart
@@ -50,7 +50,7 @@ SINGLEDAY<-'JD3_SINGLEDAY'
 .length_ts <- function(s){
     if (is.mts(s)){
         nrow(s)
-    }else{
+    }else {
         length(s)
     }
 }
@@ -494,9 +494,9 @@ easter_dates<-function(year0, year1, julian = FALSE){
 #' @export
 stock_td<-function(frequency, start, length, s, w = 31){
     if (!missing(s) && is.ts(s)) {
-        frequency = stats::frequency(s)
-        start = stats::start(s)
-        length = .length_ts(s)
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "stockTradingDays", jdom, as.integer(w))
