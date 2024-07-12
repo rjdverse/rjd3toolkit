@@ -8,6 +8,9 @@ to [Semantic Versioning](https://semver.org/spec/v3.2.3.html).
 
 ## [Unreleased]
 
+## [3.2.4] - 2024-07-12
+
+
 ### Changed
 
 * New .jar (related to release [3.2.4](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.4))
@@ -28,6 +31,7 @@ to [Semantic Versioning](https://semver.org/spec/v3.2.3.html).
 ## [3.2.2] - 2024-03-15 
 
 
-[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.2.3...HEAD
+[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.2.4...HEAD
+[3.2.4]: https://github.com/rjdverse/rjd3toolkit/releases/tag/v3.2.3...v3.2.4
 [3.2.3]: https://github.com/rjdverse/rjd3toolkit/releases/tag/v3.2.2...v3.2.3
 [3.2.2]: https://github.com/rjdverse/rjd3toolkit/releases/tag/v3.2.2
