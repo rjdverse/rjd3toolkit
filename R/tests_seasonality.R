@@ -19,11 +19,11 @@ NULL
 #' seasonality_qs(ABS$X0.2.09.10.M, 12)
 #' seasonality_qs(random_t(2, 1000), 7)
 seasonality_qs<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "qsTest",
          as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' Kruskall-Wallis Seasonality Test
@@ -39,11 +39,11 @@ seasonality_qs<-function(data, period, nyears=0){
 #' seasonality_kruskalwallis(ABS$X0.2.09.10.M, 12)
 #' seasonality_kruskalwallis(random_t(2, 1000), 7)
 seasonality_kruskalwallis<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kruskalWallisTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' Periodogram Seasonality Test
@@ -58,11 +58,11 @@ seasonality_kruskalwallis<-function(data, period, nyears=0){
 #' seasonality_periodogram(ABS$X0.2.09.10.M, 12)
 #' seasonality_periodogram(random_t(2, 1000), 7)
 seasonality_periodogram<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "periodogramTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' Friedman Seasonality Test
@@ -75,11 +75,11 @@ seasonality_periodogram<-function(data, period, nyears=0){
 #'
 #' @examples
 seasonality_friedman<-function(data, period, nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "friedmanTest",
                 as.numeric(data), as.integer(period), as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 #' F-test on seasonal dummies
@@ -97,12 +97,12 @@ seasonality_f<-function(data,
                         period,
                         model=c("AR", "D1", "WN"),
                         nyears=0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   model<-match.arg(model)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "fTest",
                 as.numeric(data), as.integer(period), model, as.integer(nyears))
-  return (.jd2r_test(jtest))
+  return(.jd2r_test(jtest))
 }
 
 
@@ -120,13 +120,13 @@ seasonality_f<-function(data,
 #' seasonality_combined(ABS$X0.2.09.10.M, 12)
 #' seasonality_combined(random_t(2, 1000), 7)
 seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRUE){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jctest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/sa/base/core/tests/CombinedSeasonality;", "combinedTest",
                 as.numeric(data), as.integer(period), as.integer(firstperiod-1), as.logical(mul))
   q<-.jcall("jdplus/sa/base/r/SeasonalityTests",  "[B", "toBuffer", jctest)
   p<-RProtoBuf::read(sa.CombinedSeasonalityTest, q)
-  return (list(
+  return(list(
     seasonality=.enum_extract(sa.IdentifiableSeasonality, p$seasonality),
     kruskalwallis=.p2r_test(p$kruskal_wallis),
     stable=.p2r_anova(p$stable_seasonality),
@@ -147,5 +147,5 @@ seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRU
 seasonality_canovahansen<-function(data, p0, p1, np, original=FALSE){
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "[D", "canovaHansenTest",
                 as.numeric(data), as.numeric(p0), as.numeric(p1), as.integer(np), as.logical(original))
-  return (jtest)
+  return(jtest)
 }

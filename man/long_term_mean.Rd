@@ -40,15 +40,15 @@ A long-term mean is a probability based computation of the average value for eve
 \examples{
 BE <- national_calendar(list(
 fixed_day(7,21),
-special_day('NEWYEAR'),
-special_day('CHRISTMAS'),
-special_day('MAYDAY'),
-special_day('EASTERMONDAY'),
-special_day('ASCENSION'),
-special_day('WHITMONDAY'),
-special_day('ASSUMPTION'),
-special_day('ALLSAINTSDAY'),
-special_day('ARMISTICE')))
+special_day("NEWYEAR"),
+special_day("CHRISTMAS"),
+special_day("MAYDAY"),
+special_day("EASTERMONDAY"),
+special_day("ASCENSION"),
+special_day("WHITMONDAY"),
+special_day("ASSUMPTION"),
+special_day("ALLSAINTSDAY"),
+special_day("ARMISTICE")))
 lt<-long_term_mean(BE,12,
                   groups = c(1,1,1,1,1,0,0),
                   holiday = 7)

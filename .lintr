@@ -1,0 +1,18 @@
+linters: linters_with_defaults(
+        indentation_linter = NULL,
+        brace_linter = NULL,
+        infix_spaces_linter = NULL,
+        paren_body_linter = NULL,
+        #function_left_parentheses_linter = NULL,
+        spaces_left_parentheses_linter = NULL,
+        commas_linter = NULL,
+        quotes_linter = NULL,
+        object_length_linter = NULL,
+        semicolon_linter = NULL,
+        cyclocomp_linter = NULL,
+        object_usage_linter = NULL,
+        object_name_linter = NULL,
+        line_length_linter = NULL,
+        commented_code_linter = NULL
+    )
+encoding: "UTF-8"

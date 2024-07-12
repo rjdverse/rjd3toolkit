@@ -39,7 +39,7 @@ a specification, the external regressor(s) will also have to be added to a model
 before being used in an estimation process. see \code{\link{modelling_context}} and example.
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::spec_x13()}
+\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
@@ -53,7 +53,7 @@ for the decomposition.
 \item "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
 \item "Series": after the decomposition the effect is allocated to
 the raw series: \eqn{yc_t=y_t+ effect}
-\item "SeasonallyAdjusted": after the decomposition the effect is allocated to
+\item "Seasonally Adjusted": after the decomposition the effect is allocated to
 the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 }
 }
@@ -74,7 +74,7 @@ vars<-list(reg1=list(iv1 = iv1),reg2=list(iv2 = iv2) )
 # creating the modelling context
 my_context<-modelling_context(variables=vars)
 # customize a default specification
-# init_spec <- rjd3x13::spec_x13("RSA5c")
+# init_spec <- rjd3x13::x13_spec("RSA5c")
 # regressors have to be added one by one
 # new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
 # new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)

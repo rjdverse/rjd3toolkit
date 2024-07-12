@@ -56,15 +56,15 @@ Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
 \examples{
 BE <- national_calendar(list(
     fixed_day(7,21),
-    special_day('NEWYEAR'),
-    special_day('CHRISTMAS'),
-    special_day('MAYDAY'),
-    special_day('EASTERMONDAY'),
-    special_day('ASCENSION'),
-    special_day('WHITMONDAY'),
-    special_day('ASSUMPTION'),
-    special_day('ALLSAINTSDAY'),
-    special_day('ARMISTICE')))
+    special_day("NEWYEAR"),
+    special_day("CHRISTMAS"),
+    special_day("MAYDAY"),
+    special_day("EASTERMONDAY"),
+    special_day("ASCENSION"),
+    special_day("WHITMONDAY"),
+    special_day("ASSUMPTION"),
+    special_day("ALLSAINTSDAY"),
+    special_day("ARMISTICE")))
 calendar_td(BE, 12, c(1980,1), 240, holiday=7, groups=c(1,1,1,2,2,3,0),
 contrasts = FALSE)
 }

@@ -141,14 +141,14 @@
 .proc_dictionary<-function(name){
   jmapping<-.jcall(name, "Ljdplus/toolkit/base/api/information/InformationMapping;", "getMapping")
   jmap<-.jnew("java/util/LinkedHashMap")
-  .jcall(jmapping, "V", "fillDictionary", .jnull("java/lang/String"), .jcast(jmap, "java/util/Map"), TRUE )
+  .jcall(jmapping, "V", "fillDictionary", .jnull("java/lang/String"), .jcast(jmap, "java/util/Map"), TRUE)
   jkeys<-.jcall(jmap, "Ljava/util/Set;", "keySet")
   size<-.jcall(jkeys, "I", "size")
   keys<-array(dim=size)
   if (size >0){
     jiter<-.jcall(jkeys, "Ljava/util/Iterator;", "iterator")
     for (i in 1:size){
-      keys[i]=.jcall(.jcall(jiter, "Ljava/lang/Object;", "next"), "Ljava/lang/String;", "toString")
+      keys[i] <- .jcall(.jcall(jiter, "Ljava/lang/Object;", "next"), "Ljava/lang/String;", "toString")
     }
   }
   return (keys)
@@ -164,7 +164,7 @@
   if (size > 0){
     jiter<-.jcall(jkeys, "Ljava/util/Iterator;", "iterator")
     for (i in 1:size){
-      keys[i]=.jcall(.jcall(jiter, "Ljava/lang/Object;", "next"), "Ljava/lang/String;", "toString")
+      keys[i] <- .jcall(.jcall(jiter, "Ljava/lang/Object;", "next"), "Ljava/lang/String;", "toString")
     }
   }
   return (keys)

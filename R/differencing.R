@@ -3,11 +3,11 @@ NULL
 
 .p2r_differencing<-function(p){
   if (is.null(p)){
-    return (NULL)
-  } else{
-    del<-sapply(p$differences, function(z){(return (c(z$lag,z$order)))})
+    return(NULL)
+  } else {
+    del<-sapply(p$differences, function(z){(return(c(z$lag,z$order)))})
     del<-`rownames<-`(del, c("lag", "order"))
-    return (list(ddata=p$stationary_series,
+    return(list(ddata=p$stationary_series,
                  mean=p$mean_correction,
                  differences=del))
   }
@@ -36,7 +36,7 @@ NULL
 #' @examples
 #' do_stationary(log(ABS$X0.2.09.10.M),12)
 do_stationary<-function(data, period){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "doStationary",
               as.numeric(data), as.integer(period))
@@ -45,7 +45,7 @@ do_stationary<-function(data, period){
   res <- .p2r_differencing(p)
   if (is.ts(data))
     res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
-  return (res)
+  return(res)
 }
 
 #' Automatic differencing
@@ -71,7 +71,7 @@ do_stationary<-function(data, period){
 #' differencing_fast(log(ABS$X0.2.09.10.M),12)
 #'
 differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
   jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "fastDifferencing",
               as.numeric(data), as.integer(period), as.logical(mad), centile, k)
@@ -80,7 +80,7 @@ differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
   res <- .p2r_differencing(p)
   if (is.ts(data))
     res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
-  return (res)
+  return(res)
 }
 
 #' Differencing of a series
@@ -104,7 +104,7 @@ differences.default<-function(data, lags=1, mean=TRUE){
                 as.numeric(data), .jarray(as.integer(lags)), mean)
   if (is.ts(data))
     res <- ts(res, end = end(data), frequency = frequency(data))
-  return (res)
+  return(res)
 }
 #' @export
 differences.matrix<-function(data, lags=1, mean=TRUE){
@@ -177,9 +177,9 @@ differences.data.frame<-function(data, lags=1, mean=TRUE){
 #' pt(rm_t_log, period - 2, lower.tail = FALSE)
 #' @export
 rangemean_tstat<-function(data, period=0, groupsize = 0, trim = 0){
-  if (is.ts(data) & missing(period))
+  if (is.ts(data) && missing(period))
     period <- frequency(data)
-  return (.jcall("jdplus/toolkit/base/r/modelling/AutoModelling", "D", "rangeMean",
+  return(.jcall("jdplus/toolkit/base/r/modelling/AutoModelling", "D", "rangeMean",
                  as.numeric(data), as.integer(period), as.integer(groupsize), as.integer(trim)))
 
 }

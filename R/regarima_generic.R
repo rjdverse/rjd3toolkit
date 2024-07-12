@@ -7,14 +7,14 @@ coef.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima",
 
   component <- match.arg(component)
   if (component == "regression") {
-    coefs = .regarima_coef_table(object)
+    coefs <- .regarima_coef_table(object)
   } else if (component == "arima") {
-    coefs = .sarima_coef_table(object)$coef_table
-  } else{
-    coefs = rbind(.sarima_coef_table(object)$coef_table[,1:2],
+    coefs <- .sarima_coef_table(object)$coef_table
+  } else {
+    coefs <- rbind(.sarima_coef_table(object)$coef_table[,1:2],
                   .regarima_coef_table(object)[,1:2])
   }
-  res = coefs[,1]
+  res <- coefs[,1]
   names(res) <- rownames(coefs)
   res
 }
@@ -27,9 +27,9 @@ logLik.JD3_REGARIMA_RSLTS <- function(object, ...) {
   if (is.null(object) ||
       is.null(object$likelihood$ll)) {
     res <- NA
-  }else{
+  } else {
     res <- structure(object$likelihood$ll,
-                     df = object$likelihood$nparams + 1,
+                     df = object$likelihood$nparams,
                      nall = object$likelihood$nobs,
                      nobs = object$likelihood$neffectiveobs)
   }
@@ -56,7 +56,6 @@ df.residual.JD3_REGARIMA_RSLTS <- function(object, ...){
     return(NULL)
   if (!is.null(object$estimation)) # for sarima_estimate outputs
     object <- object$estimation
-
   object$likelihood$neffectiveobs - object$likelihood$nparams
 }
 #' @export
