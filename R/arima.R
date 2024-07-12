@@ -353,7 +353,7 @@ sarima_estimate<-function(x, order=c(0,0,0), seasonal = list(order=c(0,0,0), per
   if (length(res$b) > 0) {
 
     names_xreg <- colnames(xreg)
-    if (is.null (names_xreg) && !is.null (xreg)){
+    if (is.null(names_xreg) && !is.null(xreg)){
       if (is.matrix(xreg)) {
         # unnamed matrix regressors
         names_xreg <- sprintf("xreg_%i", seq_len(ncol(xreg)))

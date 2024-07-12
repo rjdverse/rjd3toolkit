@@ -67,18 +67,18 @@ add_outlier.default <- function(x,
 
 .create_outlier<-function(code, pos, name = NULL, coef=NULL){
   res <- list(name=name, pos=pos, code=code, coef = .fixed_parameter(coef))
-  return (res)
+  return(res)
 }
 .fixed_parameters<-function(coef){
   ncoef<-length(coef)
-  if (ncoef == 0)return (NULL)
+  if (ncoef == 0)return(NULL)
   l<-lapply(coef, function(v){list(value=v, type='FIXED')})
-  return (l)
+  return(l)
 }
 .fixed_parameter<-function(coef){
-  if (is.null(coef)) return (NULL)
-  if (coef == 0) return (NULL)
-  return (list(value=coef, type='FIXED'))
+  if (is.null(coef)) return(NULL)
+  if (coef == 0) return(NULL)
+  return(list(value=coef, type='FIXED'))
 }
 
 
@@ -97,7 +97,7 @@ remove_outlier.default <- function(x,
                                    date = NULL,
                                    name = NULL){
   if (is.null(x$regression$outliers))
-    return (x)
+    return(x)
   out_mat <- simplify2array(x$regression$outliers)[c("code", "pos", "name"),, drop = FALSE]
   if (is.null(type)) {
     out_mat["code",] <- ""
@@ -115,7 +115,7 @@ remove_outlier.default <- function(x,
   out_id <- apply(out_mat,2, paste0, collapse = "")
   rm_out_id <- rbind(type = type, date = date, name = name)
   if (is.null(rm_out_id))
-    return (x)
+    return(x)
   rm_out_id <- apply(rm_out_id,2, paste0, collapse = "")
 
   remove_out <- out_id %in% rm_out_id
@@ -163,7 +163,7 @@ add_ramp.default <- function(x,
 
 .create_ramp<-function(start, end, name = NULL, coef=NULL){
   res <- list(name=name, start=start, end=end, coef = .fixed_parameter(coef))
-  return (res)
+  return(res)
 }
 #' @rdname add_outlier
 #' @export
@@ -179,7 +179,7 @@ remove_ramp.default <- function(x,
                                 end = NULL,
                                 name = NULL){
   if (is.null(x$regression$ramps))
-    return (x)
+    return(x)
   rp_mat <- simplify2array(x$regression$ramps)[c("start", "end", "name"),, drop = FALSE]
   if (is.null(start)) {
     rp_mat["start",] <- ""
@@ -193,7 +193,7 @@ remove_ramp.default <- function(x,
   rp_id <- apply(rp_mat,2, paste0, collapse = "")
   rm_rp_id <- rbind(start = start, end = end, name = name)
   if (is.null(rm_rp_id))
-    return (x)
+    return(x)
   rm_rp_id <- apply(rm_rp_id,2, paste0, collapse = "")
 
   remove_rp <- rp_id %in% rm_rp_id
@@ -1474,7 +1474,7 @@ add_usrdefvar.default <- function(x,
     label<-id
   }
   res <- list(id = id, name=label, lag=lag, coef = .fixed_parameter(coef), regeffect=regeffect)
-  return (res)
+  return(res)
 }
 
 
