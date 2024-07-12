@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Utility Functions around 'JDemetra+ 3.0'
-Version: 3.2.3
+Version: 3.2.3.9000
 Authors@R: c(
     person(given = "Jean", 
            family = "Palate", role = c("aut"),
