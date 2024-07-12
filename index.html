@@ -81,14 +81,30 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Running rjd3 packages requires <strong>Java 17 or higher</strong>. How to set up such a configuration in R is explained <a href="https://jdemetra-new-documentation.netlify.app/#Rconfig" class="external-link">here</a></p>
+<div class="section level3">
+<h3 id="latest-release">Latest release<a class="anchor" aria-label="anchor" href="#latest-release"></a>
+</h3>
 <p>To get the current stable version (from the latest release):</p>
+<ul>
+<li>From GitHub:</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rjdverse/rjd3toolkit@*release"</span><span class="op">)</span></span></code></pre></div>
-<p>To get the current development version from GitHub:</p>
+<ul>
+<li>From <a href="https://rjdverse.r-universe.dev/rjd3toolkit" class="external-link">r-universe</a>:</li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rjd3toolkit"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://rjdverse.r-universe.dev"</span>, <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="development-version">Development version<a class="anchor" aria-label="anchor" href="#development-version"></a>
+</h3>
+<p>You can install the development version of <strong>rjd3toolkit</strong> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rjdverse/rjd3toolkit"</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="package-maintenance-and-contributing">Package Maintenance and contributing<a class="anchor" aria-label="anchor" href="#package-maintenance-and-contributing"></a>
