@@ -15,12 +15,12 @@ SINGLEDAY<-'JD3_SINGLEDAY'
     vp<-jd3.ValidityPeriod$new()
     if (is.null(start)) {
         pstart<-DATE_MIN
-    }else {
+    } else {
         pstart<-parseDate(start)
     }
     if (is.null(end)){
         pend<-DATE_MAX
-    }else {
+    } else {
         pend<-parseDate(end)
     }
     vp$start<-pstart
@@ -50,7 +50,7 @@ SINGLEDAY<-'JD3_SINGLEDAY'
 .length_ts <- function(s){
     if (is.mts(s)){
         nrow(s)
-    }else {
+    } else {
         length(s)
     }
 }
