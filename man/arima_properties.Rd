@@ -17,6 +17,6 @@ arima_properties(model, nspectrum = 601, nacf = 36)
 ARIMA Properties
 }
 \examples{
-mod1 = arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
+mod1 <- arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
 arima_properties(mod1)
 }

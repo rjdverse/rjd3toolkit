@@ -7,7 +7,9 @@
 ucarima_canonical(ucm, cmp = 0, adjust = TRUE)
 }
 \arguments{
-\item{ucm}{UCARIMA model returned by \code{\link[=ucarima_model]{ucarima_model()}}.}
+\item{ucm}{An UCARIMA model returned by \code{\link[=ucarima_model]{ucarima_model()}}.}
+
+\item{cmp}{Index of the component for which we want to compute the filter}
 
 \item{adjust}{}
 }

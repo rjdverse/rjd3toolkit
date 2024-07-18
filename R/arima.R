@@ -185,21 +185,22 @@ arima_lsum<-function(components){
   return(.jd2r_arima(jsum))
 }
 
-#' Remove an arima model from an existing one
+#' Remove an arima model from an existing one. More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
 #'
-#' @param left Left operand
-#' @param right Right operand
-#' @param simplify Simplify the results
+#' @param left Left operand (JD3_ARIMA object)
+#' @param right Right operand (JD3_ARIMA object)
+#' @param simplify Simplify the results if possible (common roots in the auto-regressive and in the moving average polynomials)
 #'
 #' @return a `"JD3_ARIMA"` model.
 #' @export
 #'
-#' @details
 #'
 #' @examples
 #' mod1 = arima_model(delta = c(1,-2,1))
 #' mod2 = arima_model(variance=.01)
-#' diff<- arima_difference(mod1, mod2)
+#' diff <- arima_difference(mod1, mod2)
+#' sum <- arima_sum(diff, mod2)
+#' # sum should be equal to mod1
 #'
 arima_difference<-function(left, right, simplify=TRUE){
   jleft<-.r2jd_arima(left)
@@ -216,7 +217,7 @@ arima_difference<-function(left, right, simplify=TRUE){
 #' @param nacf maximum lag at which to calculate the acf.
 #'
 #' @examples
-#' mod1 = arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
+#' mod1 <- arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
 #' arima_properties(mod1)
 #' @export
 arima_properties<-function(model, nspectrum=601, nacf=36){
@@ -226,16 +227,21 @@ arima_properties<-function(model, nspectrum=601, nacf=36){
   return(list(acf=acf, spectrum=spectrum))
 }
 
-#' Title
+#' Creates an UCARIMA model, which is composed of ARIMA models with independent innovations.
 #'
-#' @param model
-#' @param components
-#' @param complements Complements of (some) components
+#' @param model The reduced model. Usually not provided.
+#' @param components The ARIMA models representing the components
+#' @param complements Complements of (some) components. Usually not provided
+#' @param checkmodel When the model is provided and *checkmodel* is TRUE, we check that it indeed corresponds to the reduced form of the components; similar controls are applied on complements. Currently not implemented
 #'
-#' @return
+#' @return A list with the reduced model, the components and their complements
 #' @export
 #'
 #' @examples
+#' mod1 <- arima_model("trend", delta = c(1,-2,1))
+#' mod2 <- arima_model("noise", var = 1600)
+#' hp<-ucarima_model(components=list(mod1, mod2))
+#' print(hp$model)
 ucarima_model<-function(model=NULL, components, complements=NULL, checkmodel=FALSE){
   if (is.null(model))
     model<-arima_lsum(components)
@@ -265,16 +271,22 @@ ucarima_model<-function(model=NULL, components, complements=NULL, checkmodel=FAL
 
 #' Wiener Kolmogorov Estimators
 #'
-#' @param ucm UCARIMA model returned by [ucarima_model()].
-#' @param cmp
-#' @param signal
-#' @param nspectrum
-#' @param nwk
+#' @param ucm An UCARIMA model returned by [ucarima_model()].
+#' @param cmp Index of the component for which we want to compute the filter
+#' @param signal TRUE for the signal (component), FALSE for the noise (complement)
+#' @param nspectrum Number of points used to compute the (pseudo-) spectrum of the estimator
+#' @param nwk Number of weights of the wiener-kolmogorov filter returned in the result
 #'
-#' @return
+#' @return A list with the (pseudo-)spectrum, the weights of the filter and the squared-gain function (with the same number of points as the spectrum)
 #' @export
 #'
 #' @examples
+#' mod1 <- arima_model("trend", delta = c(1,-2,1))
+#' mod2 <- arima_model("noise", var = 1600)
+#' hp<-ucarima_model(components=list(mod1, mod2))
+#' wk1<-ucarima_wk(hp, 1, nwk=50)
+#' wk2<-ucarima_wk(hp, 2)
+#' plot(wk1$filter, type='h')
 ucarima_wk<-function(ucm, cmp, signal=TRUE, nspectrum=601, nwk=300){
   jucm<-.r2jd_ucarima(ucm)
   jwks<-.jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/ucarima/WienerKolmogorovEstimators;", "wienerKolmogorovEstimators", jucm)
@@ -306,13 +318,21 @@ ucarima_canonical<-function(ucm, cmp=0, adjust=TRUE){
 #' Estimate UCARIMA Model
 #'
 #' @inheritParams ucarima_wk
-#' @param x univariate time series
-#' @param stdev
+#' @param x Univariate time series
+#' @param stdev TRUE if standard deviation of the components are computed
 #'
-#' @return matrix containing the different components.
+#' @return A matrix containing the different components and their standard deviations if stdev is TRUE.
 #' @export
 #'
 #' @examples
+#' mod1 <- arima_model("trend", delta = c(1,-2,1))
+#' mod2 <- arima_model("noise", var = 16)
+#' hp <- ucarima_model(components=list(mod1, mod2))
+#' s <- log(aggregate(retail$AutomobileDealers))
+#' all <- ucarima_estimate(s, hp, stdev=TRUE)
+#' plot(s, type = 'l')
+#' t <- ts(all[,1], frequency = frequency(s), start = start(s))
+#' lines(t, col='blue')
 ucarima_estimate<-function(x, ucm, stdev=TRUE){
   jucm<-.r2jd_ucarima(ucm)
   jcmps<-.jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "estimate",
