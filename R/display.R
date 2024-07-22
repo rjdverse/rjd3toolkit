@@ -238,9 +238,9 @@ print.summary.JD3_LIKELIHOOD<-function(x, ...){
   cat("Loglikelihood:", x$ll)
   if (x$ll != x$adjustedll)cat(", Adjusted loglikelihood:", x$adjustedll)
   cat("\nStandard error of the regression (ML estimate):", x$se, "\n")
-  cat("AIC:", x$aic, ", ")
-  cat("AICc:", x$aicc, ", ")
-  cat("BIC:", x$bic, "\n")
+  cat("AIC: ", x$aic, ", ",
+      "AICc: ", x$aicc, ", ",
+      "BIC: ", x$bic, "\n", sep = "")
   invisible(x)
 }
 
