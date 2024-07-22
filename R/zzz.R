@@ -32,4 +32,7 @@ NULL
   DATE_MIN<<-dateOf(1,1,1)
   DATE_MAX<<-dateOf(9999, 12, 31)
 
+  if(is.null(getOption("summary_info")))
+      options(summary_info = TRUE)
+
 }
