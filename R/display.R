@@ -15,9 +15,9 @@ print.JD3_ARIMA<-function(x, ...){
   m <- x
   if (m$var > 0 || length(m$delta)>1){
     cat(m$name, "\n\n")
-    if (length(m$ar)>1) cat("AR: ", m$ar, "\n")
-    if (length(m$delta)>1)cat("DIF: ", m$delta, "\n")
-    if (length(m$ma)>1)cat("MA: ", m$ma, "\n")
+    if (length(m$ar)>1) cat("AR:", m$ar, "\n")
+    if (length(m$delta)>1)cat("DIF:", m$delta, "\n")
+    if (length(m$ma)>1)cat("MA:", m$ma, "\n")
     cat("var: ", m$var, "\n\n")
   }
   invisible(x)
@@ -43,10 +43,10 @@ print.JD3_UCARIMA<-function(x,...){
 print.JD3_SARIMA<-function(x, ...){
   m <- x
   cat("SARIMA model: ", .arima_node(length(m$phi), m$d, length(m$theta)), .arima_node(length(m$bphi), m$bd, length(m$btheta)), m$period, "\n")
-  if (length(m$phi)>0) cat("phi: ", m$phi, "\n")
-  if (length(m$theta)>0)cat("theta: ", m$theta, "\n")
-  if (length(m$bphi)>0) cat("bphi: ", m$bphi, "\n")
-  if (length(m$btheta)>0)cat("btheta: ", m$btheta, "\n")
+  if (length(m$phi)>0) cat("phi:", m$phi, "\n")
+  if (length(m$theta)>0)cat("theta:", m$theta, "\n")
+  if (length(m$bphi)>0) cat("bphi:", m$bphi, "\n")
+  if (length(m$btheta)>0)cat("btheta:", m$btheta, "\n")
 }
 #' @rdname jd3_print
 #' @export
@@ -54,7 +54,7 @@ print.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("digits") - 
   tables <- .sarima_coef_table(x, ...)
   orders <- tables$sarima_orders
 
-  cat("SARIMA model: ",
+  cat("SARIMA model:",
       .arima_node(orders$p, orders$d, orders$q),
       .arima_node(orders$bp, orders$bd, orders$bq))
   if (!is.null(orders$period)) # when sarima_estimate() is used
@@ -86,7 +86,7 @@ summary.JD3_SARIMA_ESTIMATION<-function(object, ...){
 print.summary.JD3_SARIMA_ESTIMATION<-function(x, digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...){
   orders <- x$sarima_orders
 
-  cat("SARIMA model: ",
+  cat("SARIMA model:",
       .arima_node(orders$p, orders$d, orders$q),
       .arima_node(orders$bp, orders$bd, orders$bq))
   if (!is.null(orders$period)) # when sarima_estimate() is used
@@ -203,15 +203,15 @@ print.JD3_SPAN <- function(x, ...){
 #' @export
 print.JD3_LIKELIHOOD<-function(x, ...){
   ll <- x
-  cat("Number of observations: ", ll$nobs, "\n")
-  cat("Number of effective observations: ", ll$neffectiveobs, "\n")
-  cat("Number of parameters: ", ll$nparams, "\n\n")
-  cat("Loglikelihood: ", ll$ll, "\n")
-  if (ll$ll != ll$adjustedll)cat("Adjusted loglikelihood: ", ll$adjustedll, "\n\n")
-  cat("Standard error of the regression (ML estimate): ", sqrt(ll$ssq/ll$neffectiveobs), "\n")
-  cat("AIC: ", ll$aic, "\n")
-  cat("AICC: ", ll$aicc, "\n")
-  cat("BIC: ", ll$bic, "\n\n")
+  cat("Number of observations:", ll$nobs, "\n")
+  cat("Number of effective observations:", ll$neffectiveobs, "\n")
+  cat("Number of parameters:", ll$nparams, "\n\n")
+  cat("Loglikelihood:", ll$ll, "\n")
+  if (ll$ll != ll$adjustedll)cat("Adjusted loglikelihood:", ll$adjustedll, "\n\n")
+  cat("Standard error of the regression (ML estimate):", sqrt(ll$ssq/ll$neffectiveobs), "\n")
+  cat("AIC:", ll$aic, "\n")
+  cat("AICC:", ll$aicc, "\n")
+  cat("BIC:", ll$bic, "\n\n")
   invisible(x)
 }
 #' @export
@@ -234,13 +234,13 @@ summary.JD3_LIKELIHOOD<-function(object, ...){
 print.summary.JD3_LIKELIHOOD<-function(x, ...){
   cat("Number of observations: ", x$nobs,
       ", Number of effective observations: ", x$neffectiveobs,
-      ", Number of parameters: ", x$nparams, "\n")
-  cat("Loglikelihood: ", x$ll)
-  if (x$ll != x$adjustedll)cat(", Adjusted loglikelihood: ", x$adjustedll)
-  cat("\nStandard error of the regression (ML estimate): ", x$se, "\n")
-  cat("AIC: ", x$aic, ", ")
-  cat("AICc: ", x$aicc, ", ")
-  cat("BIC: ", x$bic, "\n")
+      ", Number of parameters: ", x$nparams, "\n", sep = "")
+  cat("Loglikelihood:", x$ll)
+  if (x$ll != x$adjustedll)cat(", Adjusted loglikelihood:", x$adjustedll)
+  cat("\nStandard error of the regression (ML estimate):", x$se, "\n")
+  cat("AIC:", x$aic, ", ")
+  cat("AICc:", x$aicc, ", ")
+  cat("BIC:", x$bic, "\n")
   invisible(x)
 }
 
@@ -277,7 +277,7 @@ print.JD3_SARIMA_ESTIMATE<-function(x, digits = max(3L, getOption("digits") - 3L
   tables <- .sarima_coef_table(x, ...)
   orders <- tables$sarima_orders
 
-  cat("SARIMA model: ",
+  cat("SARIMA model:",
       .arima_node(orders$p, orders$d, orders$q),
       .arima_node(orders$bp, orders$bd, orders$bq))
   if (!is.null(orders$period)) # when sarima_estimate() is used
