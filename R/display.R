@@ -375,6 +375,9 @@ summary.JD3_SARIMA_ESTIMATE <-function(object, ...){
 }
 #' @export
 print.summary.JD3_REGARIMA_RSLTS <- function(x,  digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...){
+  if (!is.null(x$method)) # Used to add the method when regarima/tramo function is used
+      cat("Method:", x$method, "\n")
+
   if (!is.null(x$log))
     cat("Log-transformation:",if (x$log) {"yes"} else {"no"},"\n",sep=" ")
 
