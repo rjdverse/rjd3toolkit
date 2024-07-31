@@ -72,7 +72,7 @@ test_anova<-function(ssm, dfm, ssr, dfr){
 #' @examples
 likelihood<-function(nobs, neffectiveobs=NA, nparams=0, ll, adjustedll=NA, aic, aicc, bic, bicc, ssq){
 
-  if (is.na(neffectiveobs)) neffectiveobs<-obs
+  if (is.na(neffectiveobs)) neffectiveobs<-nobs
   if (is.na(adjustedll)) adjustedll<-ll
 
   return(structure(list(nobs=nobs, neffectiveobs=neffectiveobs, nparams=nparams,

@@ -189,7 +189,7 @@ arima_lsum<-function(components){
 #'
 #' @param left Left operand (JD3_ARIMA object)
 #' @param right Right operand (JD3_ARIMA object)
-#' @param simplify Simplify the results if possible (common roots in the auto-regressive and in the moving average polynomials)
+#' @param simplify Simplify the results if possible (common roots in the auto-regressive and in the moving average polynomials, including unit roots)
 #'
 #' @return a `"JD3_ARIMA"` model.
 #' @export
@@ -210,20 +210,21 @@ arima_difference<-function(left, right, simplify=TRUE){
 }
 
 
-#' ARIMA Properties
+#' Properties of an ARIMA model; the (pseudo-)spectrum and the auto-covariances of the model are returned
 #'
 #' @param model a `"JD3_ARIMA"` model (created with [arima_model()]).
-#' @param nspectrum number of points in \[0, pi\] to calculate the spectrum.
-#' @param nacf maximum lag at which to calculate the acf.
+#' @param nspectrum number of points to calculate the spectrum; th points are uniformly distributed in \[0, pi\]
+#' @param nac maximum lag at which to calculate the auto-covariances; if the model is non-stationary, the auto-covariances are computed on its stationary transformation.
+#' @returns A list with tha auto-covariances and with the (pseudo-)spectrum
 #'
 #' @examples
-#' mod1 <- arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
+#' mod1 <- arima_model(ar = c(0.1, 0.2), delta = c(1,-1), ma = 0)
 #' arima_properties(mod1)
 #' @export
-arima_properties<-function(model, nspectrum=601, nacf=36){
+arima_properties<-function(model, nspectrum=601, nac=36){
   jmodel<-.r2jd_arima(model)
   spectrum<-.jcall("jdplus/toolkit/base/r/arima/ArimaModels", "[D", "spectrum", jmodel, as.integer(nspectrum))
-  acf<-.jcall("jdplus/toolkit/base/r/arima/ArimaModels", "[D", "acf", jmodel, as.integer(nacf))
+  acf<-.jcall("jdplus/toolkit/base/r/arima/ArimaModels", "[D", "acf", jmodel, as.integer(nac))
   return(list(acf=acf, spectrum=spectrum))
 }
 
@@ -299,15 +300,21 @@ ucarima_wk<-function(ucm, cmp, signal=TRUE, nspectrum=601, nwk=300){
   return(structure(list(spectrum=spectrum, filter=wk, gain2=gain*gain), class="JD3_UCARIMA_WK"))
 }
 
-#' Title
+#' Makes a UCARIMA model canonical; more specifically, put all the noise of the components in one dedicated component
 #'
-#' @inheritParams ucarima_wk
-#' @param adjust
+#' @param ucm An UCARIMA model returned by [ucarima_model()].
+#' @param cmp Index of the component that will contain the noises; 0 if a new component with all the noises will be added to the model
+#' @param adjust If TRUE, some noise could be added to the model to ensure that all the components has positive (pseudo-)spectrum
 #'
-#' @return
+#' @return A new UCARIMA model
 #' @export
 #'
 #' @examples
+#' mod1 <- arima_model("trend", delta = c(1,-2,1))
+#' mod2 <- arima_model("noise", var = 1600)
+#' hp <- ucarima_model(components=list(mod1, mod2))
+#' hpc <- ucarima_canonical(hp, cmp=2)
+
 ucarima_canonical<-function(ucm, cmp=0, adjust=TRUE){
   jucm<-.r2jd_ucarima(ucm)
   jnucm<-.jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/ucarima/UcarimaModel;", "doCanonical",

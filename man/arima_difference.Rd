@@ -11,7 +11,7 @@ arima_difference(left, right, simplify = TRUE)
 
 \item{right}{Right operand (JD3_ARIMA object)}
 
-\item{simplify}{Simplify the results if possible (common roots in the auto-regressive and in the moving average polynomials)}
+\item{simplify}{Simplify the results if possible (common roots in the auto-regressive and in the moving average polynomials, including unit roots)}
 }
 \value{
 a \code{"JD3_ARIMA"} model.
