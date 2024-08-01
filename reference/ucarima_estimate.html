@@ -46,22 +46,35 @@
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>univariate time series</p></dd>
+<dd><p>Univariate time series</p></dd>
 
 
 <dt id="arg-ucm">ucm<a class="anchor" aria-label="anchor" href="#arg-ucm"></a></dt>
-<dd><p>UCARIMA model returned by <code><a href="ucarima_model.html">ucarima_model()</a></code>.</p></dd>
+<dd><p>An UCARIMA model returned by <code><a href="ucarima_model.html">ucarima_model()</a></code>.</p></dd>
 
 
 <dt id="arg-stdev">stdev<a class="anchor" aria-label="anchor" href="#arg-stdev"></a></dt>
-<dd></dd>
+<dd><p>TRUE if standard deviation of the components are computed</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>matrix containing the different components.</p>
+    <p>A matrix containing the different components and their standard deviations if stdev is TRUE.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span><span class="st">"trend"</span>, delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span><span class="st">"noise"</span>, var <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">hp</span> <span class="op">&lt;-</span> <span class="fu"><a href="ucarima_model.html">ucarima_model</a></span><span class="op">(</span>components<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mod1</span>, <span class="va">mod2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">retail</span><span class="op">$</span><span class="va">AutomobileDealers</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu">ucarima_estimate</span><span class="op">(</span><span class="va">s</span>, <span class="va">hp</span>, stdev<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">s</span>, type <span class="op">=</span> <span class="st">'l'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="va">all</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, frequency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">t</span>, col<span class="op">=</span><span class="st">'blue'</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="ucarima_estimate-1.png" alt="" width="700" height="433"></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

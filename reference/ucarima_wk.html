@@ -46,14 +46,41 @@
 
 
 <dl><dt id="arg-ucm">ucm<a class="anchor" aria-label="anchor" href="#arg-ucm"></a></dt>
-<dd><p>UCARIMA model returned by <code><a href="ucarima_model.html">ucarima_model()</a></code>.</p></dd>
+<dd><p>An UCARIMA model returned by <code><a href="ucarima_model.html">ucarima_model()</a></code>.</p></dd>
+
+
+<dt id="arg-cmp">cmp<a class="anchor" aria-label="anchor" href="#arg-cmp"></a></dt>
+<dd><p>Index of the component for which we want to compute the filter</p></dd>
+
+
+<dt id="arg-signal">signal<a class="anchor" aria-label="anchor" href="#arg-signal"></a></dt>
+<dd><p>TRUE for the signal (component), FALSE for the noise (complement)</p></dd>
+
+
+<dt id="arg-nspectrum">nspectrum<a class="anchor" aria-label="anchor" href="#arg-nspectrum"></a></dt>
+<dd><p>Number of points used to compute the (pseudo-) spectrum of the estimator</p></dd>
 
 
 <dt id="arg-nwk">nwk<a class="anchor" aria-label="anchor" href="#arg-nwk"></a></dt>
-<dd></dd>
+<dd><p>Number of weights of the wiener-kolmogorov filter returned in the result</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A list with the (pseudo-)spectrum, the weights of the filter and the squared-gain function (with the same number of points as the spectrum)</p>
+    </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span><span class="st">"trend"</span>, delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span><span class="st">"noise"</span>, var <span class="op">=</span> <span class="fl">1600</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">hp</span><span class="op">&lt;-</span><span class="fu"><a href="ucarima_model.html">ucarima_model</a></span><span class="op">(</span>components<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mod1</span>, <span class="va">mod2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">wk1</span><span class="op">&lt;-</span><span class="fu">ucarima_wk</span><span class="op">(</span><span class="va">hp</span>, <span class="fl">1</span>, nwk<span class="op">=</span><span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">wk2</span><span class="op">&lt;-</span><span class="fu">ucarima_wk</span><span class="op">(</span><span class="va">hp</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">wk1</span><span class="op">$</span><span class="va">filter</span>, type<span class="op">=</span><span class="st">'h'</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="ucarima_wk-1.png" alt="" width="700" height="433"></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
