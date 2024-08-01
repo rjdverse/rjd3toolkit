@@ -691,7 +691,7 @@ weighted_calendar<-function(calendars, weights){
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 #' @export
 national_calendar <- function(days, mean_correction=TRUE){
-    if (! is.list(days)) stop ('Days should be a list of holidays')
+    if (! is.list(days)) stop('Days should be a list of holidays')
     return(structure(list(days=days, mean_correction=mean_correction), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
 }
 
@@ -825,7 +825,7 @@ print.JD3_CALENDAR <- function(x, ...) {
 }
 
 #' @export
-print.JD3_CHAINEDCALENDAR <- function (x, ...)
+print.JD3_CHAINEDCALENDAR <- function(x, ...)
 {
     cat("First calendar before ", x$break_date, "\n", sep = "")
     print(x$calendar1)
@@ -839,7 +839,7 @@ print.JD3_CHAINEDCALENDAR <- function (x, ...)
 }
 
 #' @export
-print.JD3_WEIGHTEDCALENDAR <- function (x, ...)
+print.JD3_WEIGHTEDCALENDAR <- function(x, ...)
 {
     for (index_cal in seq_along(x$weights)) {
         cat("Calendar n", index_cal, "\n", sep = "")
