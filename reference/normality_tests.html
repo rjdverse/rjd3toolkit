@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.2.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.2.4.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Normality Tests</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/v3.2.4/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/develop/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
       <div class="d-none name"><code>normality_tests.Rd</code></div>
     </div>
 
@@ -83,25 +83,25 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>  <span class="co"># null</span></span></span>
 <span class="r-in"><span><span class="fu">bowmanshenton</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  1.124224 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.5700 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 1.124224 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.5700 </span>
 <span class="r-in"><span><span class="fu">doornikhansen</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  1.797865 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.4070 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 1.797865 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.4070 </span>
 <span class="r-in"><span><span class="fu">jarquebera</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  1.373862 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.5031 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 1.373862 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.5031 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="studentdistribution.html">random_t</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">100</span><span class="op">)</span> <span class="co"># alternative</span></span></span>
 <span class="r-in"><span><span class="fu">bowmanshenton</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  334.8188 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.0000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 96.00559 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.0000 </span>
 <span class="r-in"><span><span class="fu">doornikhansen</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  56.30913 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.0000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 22.15248 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.0000 </span>
 <span class="r-in"><span><span class="fu">jarquebera</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value:  372.9997 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value:  0.0000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 106.9598 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.0000 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
