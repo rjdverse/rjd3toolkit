@@ -7,7 +7,7 @@
   if (!is.jnull(s))
     .jcall(s, "D", "doubleValue")
   else
-    return (NaN)
+    return(NaN)
 }
 #' @export
 #' @rdname jd3_utilities
@@ -38,11 +38,11 @@
 .proc_ts<-function(rslt, name){
   s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
-    return (NULL)
+    return(NULL)
   if (.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData"))
     return(.jd2r_tsdata(.jcast(s,"jdplus/toolkit/base/api/timeseries/TsData")))
   else
-    return (NULL)
+    return(NULL)
 }
 #' @export
 #' @rdname jd3_utilities
@@ -80,7 +80,7 @@
   if (is.jnull(s))
     return(NULL)
   val<-.jcall(s, "D", "getValue")
-  return (val)
+  return(val)
 }
 #' @export
 #' @rdname jd3_utilities
@@ -102,23 +102,23 @@
   s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(NULL)
-  return (.jd2r_matrix(s))
+  return(.jd2r_matrix(s))
 }
 #' @export
 #' @rdname jd3_utilities
 .proc_data<-function(rslt, name){
   s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
-    return (NULL)
+    return(NULL)
   if (.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData"))
     return(.jd2r_tsdata(.jcast(s,"jdplus/toolkit/base/api/timeseries/TsData")))
   else if (.jinstanceof(s, "java/lang/Number"))
-    return (.jcall(s, "D", "doubleValue"))
+    return(.jcall(s, "D", "doubleValue"))
   else if (.jinstanceof(s, "jdplus/toolkit/base/api/math/matrices/Matrix"))
     return(.jd2r_matrix(.jcast(s,"jdplus/toolkit/base/api/math/matrices/Matrix")))
   else if (.jinstanceof(s, "jdplus/toolkit/base/api/data/Parameter")){
     val<-.jcall(s, "D", "getValue")
-     return (c(val))
+     return(c(val))
   }  else if (.jinstanceof(s, "[Ljdplus/toolkit/base/api/data/Parameter;")){
     p<-.jcastToArray(s)
     len<-length(p)
@@ -126,14 +126,14 @@
     for (i in 1:len){
       all[i]<-.jcall(p[[i]], "D", "getValue")
     }
-    return (all)
+    return(all)
   } else if (.jcall(.jcall(s, "Ljava/lang/Class;", "getClass"), "Z", "isArray"))
-    return (.jevalArray(s, silent=TRUE))
+    return(.jevalArray(s, silent=TRUE))
   else if (.jinstanceof(s, "jdplus/toolkit/base/api/stats/StatisticalTest")) {
-    return (.jd2r_test(s))
+    return(.jd2r_test(s))
   }
   else
-    return (.jcall(s, "S", "toString"))
+    return(.jcall(s, "S", "toString"))
 }
 
 #' @export
@@ -151,7 +151,7 @@
       keys[i] <- .jcall(.jcall(jiter, "Ljava/lang/Object;", "next"), "Ljava/lang/String;", "toString")
     }
   }
-  return (keys)
+  return(keys)
 }
 
 #' @export
@@ -167,13 +167,13 @@
       keys[i] <- .jcall(.jcall(jiter, "Ljava/lang/Object;", "next"), "Ljava/lang/String;", "toString")
     }
   }
-  return (keys)
+  return(keys)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .proc_likelihood<-function(jrslt, prefix){
-  return (list(
+  return(list(
     ll=.proc_numeric(jrslt, paste(prefix,"ll", sep="")),
     ssq=.proc_numeric(jrslt, paste(prefix,"ssqerr", sep="")),
     nobs=.proc_int(jrslt, paste(prefix,"nobs", sep="")),

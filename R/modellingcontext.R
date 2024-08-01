@@ -312,7 +312,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
         variables[[i]] <- all_var
       }
     }
-    if (any (ts_var)) {
+    if (any(ts_var)) {
       # case of a simple ts dictionary
       # Use 'r' as the name of the dictionary
       variables <- c(variables[!ts_var], list(r = variables[ts_var]))
