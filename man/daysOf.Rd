@@ -2,13 +2,21 @@
 % Please edit documentation in R/timeseries.R
 \name{daysOf}
 \alias{daysOf}
-\title{Title}
+\title{Provides a list of dates corresponding to each period of the given time series}
 \usage{
-daysOf(ts, pos = 0)
+daysOf(ts, pos = 1)
 }
 \arguments{
-\item{pos}{}
+\item{ts}{A time series}
+
+\item{pos}{The position of the first considered period.}
+}
+\value{
+A list of the starting dates of each period
 }
 \description{
-Title
+Provides a list of dates corresponding to each period of the given time series
+}
+\examples{
+daysOf(retail$BookStores)
 }

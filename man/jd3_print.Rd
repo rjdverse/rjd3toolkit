@@ -23,7 +23,12 @@
 
 \method{print}{JD3_LIKELIHOOD}(x, ...)
 
-\method{print}{JD3_REGARIMA_RSLTS}(x, digits = max(3L, getOption("digits") - 3L), ...)
+\method{print}{JD3_REGARIMA_RSLTS}(
+  x,
+  digits = max(3L, getOption("digits") - 3L),
+  summary_info = getOption("summary_info"),
+  ...
+)
 }
 \arguments{
 \item{x}{the object to print.}
@@ -31,6 +36,8 @@
 \item{...}{further unused parameters.}
 
 \item{digits}{minimum number of significant digits to be used for most numbers.}
+
+\item{summary_info}{boolean indicating if a message suggesting the use of the summary function for more details should be printed. By default used the option \code{"summary_info"} it used, which initialized to \code{TRUE}.}
 }
 \description{
 JD3 print functions

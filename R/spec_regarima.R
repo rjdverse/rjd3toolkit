@@ -71,7 +71,7 @@ add_outlier.default <- function(x,
 }
 .fixed_parameters<-function(coef){
   ncoef<-length(coef)
-  if (ncoef == 0)return(NULL)
+  if (ncoef == 0) return(NULL)
   l<-lapply(coef, function(v){list(value=v, type='FIXED')})
   return(l)
 }
