@@ -64,6 +64,7 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/sarima_properties.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/sarima_random.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/seasonality_canovahansen.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/seasonality_canovahansen_trigs.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/seasonality_combined.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/seasonality_f.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/seasonality_friedman.html</loc></url>
@@ -85,7 +86,7 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/stock_td.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/studentdistribution.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/td.html</loc></url>
-<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/td_ch.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/td_canovahansen.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/td_f.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/to_ts.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/to_tscollection.html</loc></url>
