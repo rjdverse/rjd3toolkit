@@ -133,19 +133,59 @@ seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRU
     evolutive=.p2r_anova(p$evolutive_seasonality)))
 }
 
-#' Seasonal Canova-Hansen test
+#' Canova-Hansen test using trigonometric variables
 #'
 #' @inheritParams seasonality_qs
-#' @param p0 Initial periodicity (included).
-#' @param p1 Final periodicity (included).
-#' @param np Number of periodicities equally spaced in \eqn{[p_0,p_1]}.
+#' @param periods Periodicities.
+#' @param lag1 Lagged variable in the regression model.
+#' @param kernel Kernel used to compute the robust covariance matrix.
+#' @param order The truncation parameter used to compute the robust covariance matrix.
 #' @param original `TRUE` for original algorithm, `FALSE` for solution proposed by T. Proietti (based on Ox code).
 #'
 #' @export
 #'
 #' @examples
-seasonality_canovahansen<-function(data, p0, p1, np, original=FALSE){
-  jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "[D", "canovaHansenTest",
-                as.numeric(data), as.numeric(p0), as.numeric(p1), as.integer(np), as.logical(original))
-  return(jtest)
+#' s<-log(ABS$X0.2.20.10.M)
+#' freqs<-seq(0.01, 0.5, 0.001)
+#' plot(seasonality_canovahansen_trigs(s, 1/freqs, original = FALSE), type='l')
+seasonality_canovahansen_trigs<-function(data, periods, lag1=TRUE,
+                                         kernel=c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
+                                         order=NA, original=FALSE){
+
+    kernel<-match.arg(kernel)
+    if (is.na(order)) order<--1
+
+    jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "[D", "canovaHansenTrigs",
+                  as.numeric(data), .jarray(periods),
+                  as.logical(lag1), kernel, as.integer(order), as.logical(original))
+    return(jtest)
+}
+
+#' Canova-Hansen seasonality test
+#'
+#' @inheritParams seasonality_qs
+#' @param trigs TRUE for trigonometric variables, FALSE for seasonal dummies.
+#' @param lag1 Lagged variable in the regression model.
+#' @param kernel Kernel used to compute the robust covariance matrix.
+#' @param order The truncation parameter used to compute the robust covariance matrix.
+#' @param start Position of the first observation of the series
+#' @return list with the joint test and with details for the different seasonal variables
+#' @export
+#'
+#' @examples
+#' s<-log(ABS$X0.2.20.10.M)
+#' seasonality_canovahansen(s, 12, trigs = FALSE)
+#' seasonality_canovahansen(s, 12, trigs = TRUE)
+seasonality_canovahansen<-function(data, period, trigs=TRUE, lag1=TRUE,
+                                   kernel=c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
+                                   order=NA, start=1){
+    kernel<-match.arg(kernel)
+    if (is.na(order)) order<--1
+
+    q<-.jcall("jdplus/sa/base/r/SeasonalityTests", "[D", "canovaHansen",
+                  as.numeric(data), as.integer(period),
+                  as.logical(trigs), as.logical(lag1),
+                  kernel, as.integer(order), as.integer(start-1))
+    last<-length(q)
+    return(list(joint=q[last], details=q[-last]))
 }
