@@ -8,6 +8,12 @@ to [Semantic Versioning](https://semver.org/spec/v3.2.3.html).
 
 ## [Unreleased]
 
+### Changed
+
+* New JARS
+* Improve Canova-Hansen tests for seasonality and trading days (new options, more output)
+* Document (UC)ARIMA models
+
 ## [3.2.4] - 2024-07-12
 
 

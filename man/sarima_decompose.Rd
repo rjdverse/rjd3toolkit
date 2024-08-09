@@ -13,6 +13,9 @@ sarima_decompose(model, rmod = 0, epsphi = 0)
 
 \item{epsphi}{seasonal tolerance (in degrees).}
 }
+\value{
+An UCARIMA model
+}
 \description{
 Decompose SARIMA Model into three components trend, seasonal, irregular
 }

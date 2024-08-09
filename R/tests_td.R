@@ -54,17 +54,27 @@ td_f<-function(s, model=c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"), 
   return(.jd2r_test(jtest))
 }
 
-#' Canova-Hansen Trading Days test
+#' Canova-Hansen test for stable trading days
 #'
 #' @inheritParams td_f
-#' @param differencing differencing lags.
+#' @param differencing Differencing lags.
+#' @param kernel Kernel used to compute the robust covariance matrix.
+#' @param order The truncation parameter used to compute the robust covariance matrix.
 #'
-#' @return
+#' @return list with the joint test and with details for the different days (starting with Mondays).
 #' @export
 #'
 #' @examples
-td_ch<-function(s, differencing){
-  jts<-.r2jd_tsdata(s)
-  return(.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "[D", "chTest",
-                jts, .jarray(as.integer(differencing))))
+#' s<-log(ABS$X0.2.20.10.M)
+#' td_canovahansen(s, c(1,12))
+td_canovahansen<-function(s, differencing, kernel=c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
+                          order=NA){
+    kernel<-match.arg(kernel)
+    if (is.na(order)) order<--1
+    jts<-.r2jd_tsdata(s)
+  q<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "[D", "canovaHansen",
+                jts, .jarray(as.integer(differencing)), kernel, as.integer(order))
+
+  last<-length(q)
+  return(list(joint=q[last], details=q[-last]))
 }
