@@ -78,7 +78,7 @@ sarima_random<-function(model, length, stde=1, tdegree=0, seed=-1){
 #' @param rmod trend threshold.
 #' @param epsphi seasonal tolerance (in degrees).
 #'
-#' @return
+#' @return An UCARIMA model
 #' @export
 #'
 #' @examples
