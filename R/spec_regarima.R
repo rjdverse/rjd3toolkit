@@ -782,7 +782,7 @@ set_arima.default <- function(x,
     coef[is.na(coef)] <- 0
   }
 
-  if (any(!is.na(c(p, bp, q, bq)))) {
+  if (!all(is.na(c(p, bp, q, bq)))) {
     np <- ifelse(is.na(p), 0, p)
     nbp <- ifelse(is.na(bp), 0, bp)
     nq <- ifelse(is.na(q), 0, q)
