@@ -187,7 +187,7 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .p2r_likelihood<-function(p){
-  return(likelihood(p$nobs, p$neffectiveobs, p$nparams,
+  return(.likelihood(p$nobs, p$neffectiveobs, p$nparams,
                          p$log_likelihood, p$adjusted_log_likelihood,
                          p$aic, p$aicc, p$bic, p$bicc, p$ssq))
 }

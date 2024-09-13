@@ -33,7 +33,6 @@ NULL
   ))
 }
 
-
 .p2r_regarima_diagnostics<-function(p){
   tlist<-lapply(p$residuals_tests, function(z){.p2r_test(z$value)})
   tnames<-lapply(p$residuals_tests, function(z){z$key})
