@@ -318,7 +318,7 @@ special_day<-function(event, offset=0, weight=1, validity=NULL){
 #' @param groups Groups of days. The length of the array must be 7. It indicates to what group each week day
 #' belongs. The first item corresponds to Mondays and the last one to Sundays. The group used for contrasts (usually Sundays) is identified by 0.
 #' The other groups are identified by 1, 2,... n (<= 6). For instance, usual trading days are defined by c(1,2,3,4,5,6,0),
-#' week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc...
+#' week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc.
 #' @param contrasts If true, the variables are defined by contrasts with the 0-group. Otherwise, raw number of days is provided.
 #' @return Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
 #' or the 1-group (\code{contrasts = TRUE}).
@@ -695,7 +695,7 @@ national_calendar <- function(days, mean_correction=TRUE){
     return(structure(list(days=days, mean_correction=mean_correction), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
 }
 
-#' Trading day regressors with pre-defined holidays
+#' @title Trading day regressors with pre-defined holidays
 #'
 #' @description
 #' Allows to generate trading day regressors (as many as defined groups), taking into account

@@ -297,7 +297,7 @@ intervention_variable<-function(frequency, start, length, s, starts, ends, delta
 #'@details
 #' The function periodic.dummies creates as many time series as types of periods in a year (4 or 12)
 #' with the value one only for one given type of period (ex Q1)
-#' The function periodic.contrasts is based on periodic.dummies but adds -1 to the period preeceding a 1.
+#' The periodic.contrasts function is based on periodic.dummies but adds -1 to the period preceding a 1.
 #'@examples
 #' # periodic dummies for a quarterly series
 #' p<-periodic.dummies(4, c(2000,1), 60)

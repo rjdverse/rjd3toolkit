@@ -90,7 +90,7 @@ All the built-in regressors are meant to correct for type
 of day effect but don't take into account any holiday. To do so user-defined regressors have to be built.
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+\code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).

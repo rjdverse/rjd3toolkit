@@ -143,8 +143,8 @@ ts_interpolate.data.frame <- function(s, method=c("airline", "average")){
 #'
 #' @param s The original time series
 #' @param method
-#'    LeapYear: correction for leap year
-#'    LengthOfPeriod: correction for the length of periods
+#'    \code{"LeapYear"}: correction for leap year
+#'    \code{"LengthOfPeriod"}: correction for the length of periods
 #' @param reverse Adjustment or reverse operation
 #' @return The interpolated series
 #'
@@ -242,7 +242,7 @@ to_tscollection<-function(source, id, type="All"){
   return(.p2r_tscollection(p))
 }
 
-#' Promote a R time series to a "full" ts of jdemetra
+#' Promote a R time series to a "full" \code{ts} of JDemetra+
 #'
 #' @param s R time series
 #' @param name name of the series
@@ -288,7 +288,7 @@ data_to_ts<-function(s, name){
 #' @param values Values of the time series
 #' @param dates Dates of the values (could be any date inside the considered period)
 #'
-#' @return A ts object. The frequency will be identified automatically and missing values will be added in need be.
+#' @return A \code{ts} object. The frequency will be identified automatically and missing values will be added in need be.
 #' The identified frequency will be the lowest frequency that match the figures.
 #' The provided data can contain missing values (NA)
 #' @export

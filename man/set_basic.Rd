@@ -40,7 +40,7 @@ Function allowing to check if the series can be processed and to define a sub-sp
 estimation will be performed
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+\code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).

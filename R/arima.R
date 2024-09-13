@@ -276,7 +276,7 @@ ucarima_model<-function(model=NULL, components, complements=NULL, checkmodel=FAL
 #' @param cmp Index of the component for which we want to compute the filter
 #' @param signal TRUE for the signal (component), FALSE for the noise (complement)
 #' @param nspectrum Number of points used to compute the (pseudo-) spectrum of the estimator
-#' @param nwk Number of weights of the wiener-kolmogorov filter returned in the result
+#' @param nwk Number of weights of the Wiener-Kolmogorov filter returned in the result
 #'
 #' @return A list with the (pseudo-)spectrum, the weights of the filter and the squared-gain function (with the same number of points as the spectrum)
 #' @export

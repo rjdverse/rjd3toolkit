@@ -41,7 +41,7 @@ sa_preprocessing<-function(x, ...){
 #' @param type_chart the chart to plot: `"sa-trend"` (by default) plots the input time series,
 #' the seasonally adjusted and the trend; `"seas-irr"` plots the seasonal and the irregular components.
 #' @param caption the caption of the plot.
-#' @param colors the colors used in the plot.
+#' @param colors the colours used in the plot.
 #' @param ... further arguments.
 #'
 #' @return \code{"JD3_SADECOMPOSITION"} object.

@@ -12,7 +12,7 @@
 #' @param coef the coefficient if needs to be fixed. If equal to 0 the outliers/ramps coefficients
 #' are estimated.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -230,7 +230,7 @@ remove_ramp.default <- function(x,
 #' @param preprocessing (REGARIMA/X13 Specific) a Boolean to enable/disable the pre-processing.
 #' Option disabled for the moment.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -312,7 +312,7 @@ set_basic.default <- function(x,
 #'  (non-seasonal, seasonal) is increased.(Default value: 0.96)
 #'
 #' @details
-#'  \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -402,7 +402,7 @@ set_estimate.default <- function(x,
 #' for parameter estimation in the intermediate steps. If \code{TRUE}, an exact likelihood estimation method is used.
 #' When \code{FALSE}, the fast Hannan-Rissanen method is used.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -578,7 +578,7 @@ set_outlier.default <- function(x,
 #' @param amicompare (TRAMO Specific) \code{logical}. If `TRUE`, the program compares the model identified by the automatic procedure to the default model (\eqn{ARIMA(0,1,1)(0,1,1)})
 #' and the model with the best fit is selected. Criteria considered are residual diagnostics, the model structure and the number of outliers.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -712,7 +712,7 @@ set_automodel.default <- function(x,
 #' \code{"Fixed"} = the coefficients are fixed at the value provided by the user,
 #' \code{"Initial"} = the value defined by the user is used as the initial condition.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -921,7 +921,7 @@ set_arima.default <- function(x,
 #' @param leapyear.coef coefficient of the leap year regressor.
 #' @param coef.type,leapyear.coef.type vector defining if the coefficients are fixed or estimated.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -1191,7 +1191,7 @@ set_tradingdays.default <- function(x,
 #' \code{"IncludeEaster"} = influences the entire period (\code{n}) up to and including Easter Sunday;
 #' \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to and including Easter Monday.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -1309,10 +1309,10 @@ set_easter.default <- function(x, enabled = NA,
 #' @param aicdiff (REGARIMA/X-13 specific)  a numeric defining the difference in AICC needed to accept no transformation when the automatic
 #' transformation selection is chosen (considered only when \code{fun = "Auto"}). Default= -2.
 #' @param fct (TRAMO specific) \code{numeric} controlling the bias in the log/level pre-test:
-#' \code{transform.fct}> 1 favors levels, \code{transform.fct}< 1 favors logs.
+#' \code{transform.fct}> 1 favours levels, \code{transform.fct}< 1 favours logs.
 #' Considered only when \code{fun = "Auto"}.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
@@ -1401,7 +1401,7 @@ set_transform.default <- function(x,
 #' @param regeffect component to which the effect of the user-defined variable will be assigned.
 #' By default (`"Undefined"`), see details.
 #' @details
-#' \code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).

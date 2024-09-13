@@ -53,7 +53,7 @@ test_anova<-function(ssm, dfm, ssr, dfr){
   return(statisticaltest(val, pval, desc))
 }
 
-#' Title
+#' Create an object JD3_LIKELIHOOD
 #'
 #' @param nobs
 #' @param neffectiveobs
@@ -70,7 +70,7 @@ test_anova<-function(ssm, dfm, ssr, dfr){
 #' @export
 #'
 #' @examples
-likelihood<-function(nobs, neffectiveobs=NA, nparams=0, ll, adjustedll=NA, aic, aicc, bic, bicc, ssq){
+.likelihood<-function(nobs, neffectiveobs=NA, nparams=0, ll, adjustedll=NA, aic, aicc, bic, bicc, ssq){
 
   if (is.na(neffectiveobs)) neffectiveobs<-nobs
   if (is.na(adjustedll)) adjustedll<-ll

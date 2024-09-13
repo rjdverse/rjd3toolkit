@@ -25,11 +25,11 @@ NULL
 #'
 #' @return
 #' Stationary transformation
-#' * ddata: data after differencing
-#' * mean: mean correction
-#' * differences:
-#'    * lag: ddata(t)=data(t)-data(t-lag)
-#'    * order: order of the differencing
+#' * \code{ddata}: data after differencing
+#' * \code{mean}: mean correction
+#' * \code{differences}:
+#'    * \code{lag}: \eqn{ddata(t)=data(t)-data(t-lag)}
+#'    * \code{order}: order of the differencing
 #' @md
 #' @export
 #'
@@ -56,15 +56,15 @@ do_stationary<-function(data, period){
 #' @param period Period considered in the automatic differencing.
 #' @param mad Use of MAD in the computation of the variance (true by default).
 #' @param centile Percentage of the data used for computing the variance (90 by default).
-#' @param k tolerance in the decrease of the variance. The algorithm stops if the new varance is higher than k*the old variance.
+#' @param k tolerance in the decrease of the variance. The algorithm stops if the new variance is higher than k*the old variance.
 #'
 #' @return
 #' Stationary transformation
-#' * ddata: data after differencing
-#' * mean: mean correction
-#' * differences:
-#'    * lag: ddata(t)=data(t)-data(t-lag)
-#'    * order: order of the differencing
+#' * \code{ddata}: data after differencing
+#' * \code{mean}: mean correction
+#' * \code{differences}:
+#'    * \code{lag}: \eqn{ddata(t)=data(t)-data(t-lag)}
+#'    * \code{order}: order of the differencing
 #' @export
 #'
 #' @examples
