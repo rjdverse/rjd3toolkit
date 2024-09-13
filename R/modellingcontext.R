@@ -15,7 +15,7 @@ JD3_TSCOLLECTION<-'JD3_TSCOLLECTION'
 #' @export
 #'
 #' @examples
-tsmoniker<-function(source, id){
+.tsmoniker<-function(source, id){
   return(structure(list(source=source, id=id), class=c(JD3_TSMONIKER)))
 }
 
@@ -32,7 +32,7 @@ tsmoniker<-function(source, id){
 #' @rdname jd3_utilities
 .p2r_moniker<-function(p){
   if (is.null(p)) return(NULL)
-  return(tsmoniker(p$source, p$id))
+  return(.tsmoniker(p$source, p$id))
 }
 
 
