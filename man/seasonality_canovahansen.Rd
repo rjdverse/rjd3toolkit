@@ -29,6 +29,9 @@ seasonality_canovahansen(
 
 \item{start}{Position of the first observation of the series}
 }
+\value{
+list with the joint test and with details for the different seasonal variables
+}
 \description{
 Canova-Hansen seasonality test
 }

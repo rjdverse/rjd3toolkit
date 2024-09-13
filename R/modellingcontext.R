@@ -357,7 +357,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
   if (n > 0){
     ns<-names(r$calendars)
     # To take into account empty calendars
-    length_cal <- sapply(r$calendars, length)
+    length_cal <- lengths(r$calendars)
 
     lcal<-lapply((1:n)[length_cal!=0], function(i){
       entry<-jd3.ModellingContext$CalendarsEntry$new()
@@ -372,7 +372,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
   n<-length(r$variables)
   if (n > 0){
     ns<-names(r$variables)
-    length_var <- sapply(r$variables, length)
+    length_var <- lengths(r$variables)
     lvar<-lapply((1:n)[length_var!=0], function(i){
       entry<-jd3.ModellingContext$VariablesEntry$new()
       entry$key<-ns[i]
@@ -439,7 +439,7 @@ modelling_context<-function(calendars=NULL, variables=NULL){
     ns<-names(r)
     n<-length(ns)
     # To take into account empty calendars
-    length_cal <- sapply(r, length)
+    length_cal <- lengths(r)
 
     p$calendars<-lapply((1:n)[length_cal!=0], function(i){
             entry<-jd3.Calendars$CalendarsEntry$new()

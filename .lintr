@@ -1,4 +1,4 @@
-linters: linters_with_defaults(
+linters: lintr::all_linters(
         indentation_linter = NULL,
         brace_linter = NULL,
         infix_spaces_linter = NULL,
@@ -13,6 +13,11 @@ linters: linters_with_defaults(
         object_usage_linter = NULL,
         object_name_linter = NULL,
         line_length_linter = NULL,
-        commented_code_linter = NULL
+        commented_code_linter = NULL,
+        extraction_operator_linter = NULL,
+        implicit_integer_linter = NULL,
+        nonportable_path_linter = NULL,
+        undesirable_function_linter = NULL,
+        unnecessary_lambda_linter = NULL
     )
 encoding: "UTF-8"

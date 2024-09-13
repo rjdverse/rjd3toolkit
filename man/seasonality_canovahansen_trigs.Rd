@@ -18,6 +18,12 @@ seasonality_canovahansen_trigs(
 
 \item{periods}{Periodicities.}
 
+\item{lag1}{Lagged variable in the regression model.}
+
+\item{kernel}{Kernel used to compute the robust covariance matrix.}
+
+\item{order}{The truncation parameter used to compute the robust covariance matrix.}
+
 \item{original}{\code{TRUE} for original algorithm, \code{FALSE} for solution proposed by T. Proietti (based on Ox code).}
 }
 \description{

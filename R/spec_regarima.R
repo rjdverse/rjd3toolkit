@@ -464,7 +464,7 @@ set_outlier.default <- function(x,
   va_name <- ifelse(is_tramo, "va", "defva")
   tcr_name <- ifelse(is_tramo, "tcrate", "monthlytcrate")
 
-  if (missing(critical.value) || any(is.na(critical.value))){
+  if (missing(critical.value) || anyNA(critical.value)){
     critical.value <- outlier[[va_name]]
   } else {
     outlier[[va_name]] <- critical.value[1]
@@ -840,7 +840,7 @@ set_arima.default <- function(x,
   x$arima <- arima
 
   regression <- x$regression
-  if (missing(mean.type) || any(is.na(mean.type))) {
+  if (missing(mean.type) || anyNA(mean.type)) {
     mean.type <- "UNDEFINED"
   } else {
     mean.type <- match.arg(toupper(mean.type)[1],
@@ -1019,7 +1019,7 @@ set_tradingdays.default <- function(x,
 
   is_tramo <- inherits(x, "JD3_TRAMO_SPEC")
 
-  if (!missing(option) && !any(is.na(option))){
+  if (!missing(option) && !anyNA(option)){
     option <- match.arg(toupper(option)[1],
                         choices = c("TRADINGDAYS", "WORKINGDAYS", "NONE","USERDEFINED",
                                     "TD3", "TD3C", "TD4", "HOLIDAYS"))
@@ -1032,11 +1032,11 @@ set_tradingdays.default <- function(x,
     td$users <- character()
   }
 
-  if (!missing(calendar.name) && !any(is.na(calendar.name))){
+  if (!missing(calendar.name) && !anyNA(calendar.name)){
     td$holidays <- calendar.name
   }
   if (!is.null(uservariable) &&
-     !any(is.na(uservariable)) &&
+     !anyNA(uservariable) &&
      length(uservariable) > 0){
     td$td <- "TD_NONE"
     td$holidays <- ""
@@ -1058,7 +1058,7 @@ set_tradingdays.default <- function(x,
     td$autoadjust <- autoadjust
   }
 
-  if (!is.null(test) && !any(is.na(test))){
+  if (!is.null(test) && !anyNA(test)){
     if (is_tramo) {
       test <- match.arg(toupper(test)[1],
                         choices = c("SEPARATE_T", "JOINT_F", "NONE"))
@@ -1074,7 +1074,7 @@ set_tradingdays.default <- function(x,
                         test)
     }
   }
-  if (!missing(automatic) && !any(is.na(automatic))){
+  if (!missing(automatic) && !anyNA(automatic)){
     if (is_tramo) {
       automatic <- match.arg(toupper(automatic)[1],
                              choices = c("UNUSED", "FTEST", "WALDTEST", "AIC", "BIC"))
@@ -1096,12 +1096,12 @@ set_tradingdays.default <- function(x,
 
   }
   if (is_tramo) {
-    if (!missing(pftd) && !any(is.na(pftd))){
+    if (!missing(pftd) && !anyNA(pftd)){
       td$ptest <- pftd
     }
   }
 
-  if (!is.null(leapyear) && !any(is.na(leapyear))) {
+  if (!is.null(leapyear) && !anyNA(leapyear)) {
     leapyear <- match.arg(toupper(leapyear),
                           choices = c("LEAPYEAR", "LENGTHOFPERIOD", "NONE"))
     if (leapyear != "LENGTHOFPERIOD" || (leapyear == "LENGTHOFPERIOD" && !is_tramo)) {
@@ -1232,7 +1232,7 @@ set_easter.default <- function(x, enabled = NA,
   # to set specific TRAMO/REGARIMA values
   is_tramo <- inherits(x, "JD3_TRAMO_SPEC")
 
-  if (!is.null(test) && !any(is.na(test))){
+  if (!is.null(test) && !anyNA(test)){
     if (is_tramo) {
       if (!is.logical(test)) {
         test <- match.arg(toupper(test)[1],
@@ -1250,7 +1250,7 @@ set_easter.default <- function(x, enabled = NA,
   if (!missing(enabled) && !is.na(enabled)){
     easter$type <- ifelse(enabled, "STANDARD", "UNUSED")
   }
-  if (is_tramo && !is.null(type) && !any(is.na(type))) {
+  if (is_tramo && !is.null(type) && !anyNA(type)) {
     # TRAMO SPECIFIC
     type <- match.arg(toupper(type)[1],
                       choices = c("UNUSED", "STANDARD", "INCLUDEEASTER", "INCLUDEEASTERMONDAY"))
@@ -1276,7 +1276,7 @@ set_easter.default <- function(x, enabled = NA,
   if (missing(coef) ||is.null(coef) || is.na(coef)) {
 
   } else {
-    if (missing(coef.type) || any(is.na(coef.type))) {
+    if (missing(coef.type) || anyNA(coef.type)) {
       coef.type <- "FIXED"
     } else {
       coef.type <- match.arg(toupper(coef.type)[1],
