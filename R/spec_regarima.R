@@ -1356,7 +1356,7 @@ set_transform.default <- function(x,
 
   if (!is.na(fun)){
     transform$fn <- switch(fun,
-                           "NONE" = "LEVEL",
+                           NONE = "LEVEL",
                            fun)
   }
   adjust <- match.arg(toupper(adjust[1]),
