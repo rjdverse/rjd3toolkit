@@ -2,29 +2,54 @@
 NULL
 
 
-#' QS Seasonality Test
-#'
-#' QS (modified seasonal Ljung-Box) test.
+#' QS (seasonal Ljung-Box) test.
 #'
 #' @param data the input data.
-#' @param period Tested periodicity.
-#' @param nyears Number of number of periods number of cycles considered in the test, at the end of the series:
+#' @param period Tested periodicity. Can be missing if the input is a time series
+#' @param nyears Number of periods or number of cycles considered in the test, at the end of the series:
 #' in periods (positive value) or years (negative values).
 #' By default (\code{nyears = 0}), the entire sample is used.
+#' @param type 1 for positive autocorrelations, -1 for negative autocorrelations,
+#' 0 for all autocorrelations. By default (\code{type = 1})
 #'
 #' @return A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
 #' @examples
-#' seasonality_qs(ABS$X0.2.09.10.M, 12)
+#' s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+#' seasonality_qs(s)
 #' seasonality_qs(random_t(2, 1000), 7)
-seasonality_qs<-function(data, period, nyears=0){
+seasonality_qs<-function(data, period=NA, nyears=0, type=1){
   if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "qsTest",
-         as.numeric(data), as.integer(period), as.integer(nyears))
+         as.numeric(data), as.integer(period), as.integer(nyears), as.integer((type)))
   return(.jd2r_test(jtest))
 }
+
+#' Modified QS Seasonality Test (Maravall)
+#'
+#'
+#' @param data the input data.
+#' @param period Tested periodicity. Can be missing if the input is a time series
+#' @param nyears Number of periods or number of cycles considered in the test, at the end of the series:
+#' in periods (positive value) or years (negative values).
+#' By default (\code{nyears = 0}), the entire sample is used.
+#'
+#' @return The value of the test
+#' @export
+#'
+#' @examples
+#' s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+#' seasonality_modified_qs(s)
+seasonality_modified_qs<-function(data, period=NA, nyears=0){
+    if (is.ts(data) && missing(period))
+        period <- frequency(data)
+    test<-.jcall("jdplus/sa/base/r/SeasonalityTests", "D", "modifiedQsTest",
+                  as.numeric(data), as.integer(period), as.integer(nyears))
+    return(test)
+}
+
 
 #' Kruskall-Wallis Seasonality Test
 #'
@@ -36,7 +61,8 @@ seasonality_qs<-function(data, period, nyears=0){
 #' @export
 #'
 #' @examples
-#' seasonality_kruskalwallis(ABS$X0.2.09.10.M, 12)
+#' s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+#' seasonality_kruskalwallis(s)
 #' seasonality_kruskalwallis(random_t(2, 1000), 7)
 seasonality_kruskalwallis<-function(data, period, nyears=0){
   if (is.ts(data) && missing(period))
@@ -55,9 +81,10 @@ seasonality_kruskalwallis<-function(data, period, nyears=0){
 #' @export
 #'
 #' @examples
-#' seasonality_periodogram(ABS$X0.2.09.10.M, 12)
+#' s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+#' seasonality_periodogram(s)
 #' seasonality_periodogram(random_t(2, 1000), 7)
-seasonality_periodogram<-function(data, period, nyears=0){
+seasonality_periodogram<-function(data, period=NA, nyears=0){
   if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "periodogramTest",
@@ -74,7 +101,10 @@ seasonality_periodogram<-function(data, period, nyears=0){
 #' @export
 #'
 #' @examples
-seasonality_friedman<-function(data, period, nyears=0){
+#' s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+#' seasonality_friedman(s)
+#' seasonality_friedman(random_t(2, 1000), 12)
+seasonality_friedman<-function(data, period=NA, nyears=0){
   if (is.ts(data) && missing(period))
     period <- frequency(data)
   jtest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "friedmanTest",
@@ -91,10 +121,10 @@ seasonality_friedman<-function(data, period, nyears=0){
 #' @export
 #'
 #' @examples
-#' seasonality_f(ABS$X0.2.09.10.M, 12)
+#' seasonality_f(ABS$X0.2.09.10.M, model="D1")
 #' seasonality_f(random_t(2, 1000), 7)
 seasonality_f<-function(data,
-                        period,
+                        period=NA,
                         model=c("AR", "D1", "WN"),
                         nyears=0){
   if (is.ts(data) && missing(period))
@@ -117,9 +147,10 @@ seasonality_f<-function(data,
 #' @export
 #'
 #' @examples
-#' seasonality_combined(ABS$X0.2.09.10.M, 12)
+#' s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+#' seasonality_combined(s)
 #' seasonality_combined(random_t(2, 1000), 7)
-seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRUE){
+seasonality_combined<-function(data, period=NA, firstperiod=cycle(data)[1], mul=TRUE){
   if (is.ts(data) && missing(period))
     period <- frequency(data)
   jctest<-.jcall("jdplus/sa/base/r/SeasonalityTests", "Ljdplus/sa/base/core/tests/CombinedSeasonality;", "combinedTest",
@@ -138,8 +169,8 @@ seasonality_combined<-function(data, period, firstperiod=cycle(data)[1], mul=TRU
 #' @inheritParams seasonality_qs
 #' @param periods Periodicities.
 #' @param lag1 Lagged variable in the regression model.
-#' @param kernel Kernel used to compute the robust covariance matrix.
-#' @param order The truncation parameter used to compute the robust covariance matrix.
+#' @param kernel Kernel used to compute the robust Newey-West covariance matrix.
+#' @param order The truncation parameter used to compute the robust Newey-West covariance matrix.
 #' @param original `TRUE` for original algorithm, `FALSE` for solution proposed by T. Proietti (based on Ox code).
 #'
 #' @export
@@ -166,11 +197,12 @@ seasonality_canovahansen_trigs<-function(data, periods, lag1=TRUE,
 #' @inheritParams seasonality_qs
 #' @param trigs TRUE for trigonometric variables, FALSE for seasonal dummies.
 #' @param lag1 Lagged variable in the regression model.
-#' @param kernel Kernel used to compute the robust covariance matrix.
-#' @param order The truncation parameter used to compute the robust covariance matrix.
+#' @param kernel Kernel used to compute the robust Newey-West covariance matrix.
+#' @param order The truncation parameter used to compute the robust Newey-West covariance matrix.
 #' @param start Position of the first observation of the series
-#' @return list with the joint test and with details for the different seasonal variables
+#' @return list with the FTest on seasonal variables, the joint test and the details for the stability of the different seasonal variables
 #' @export
+#'
 #'
 #' @examples
 #' s<-log(ABS$X0.2.20.10.M)
@@ -187,5 +219,5 @@ seasonality_canovahansen<-function(data, period, trigs=TRUE, lag1=TRUE,
                   as.logical(trigs), as.logical(lag1),
                   kernel, as.integer(order), as.integer(start-1))
     last<-length(q)
-    return(list(joint=q[last], details=q[-last]))
+    return(list(seasonality=list(value=q[last-1], pvalue=q[last]), joint=q[last-2], details=q[-c(last-2, last-1, last)]))
 }

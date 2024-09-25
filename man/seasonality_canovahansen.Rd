@@ -17,17 +17,20 @@ seasonality_canovahansen(
 \arguments{
 \item{data}{the input data.}
 
-\item{period}{Tested periodicity.}
+\item{period}{Tested periodicity. Can be missing if the input is a time series}
 
 \item{trigs}{TRUE for trigonometric variables, FALSE for seasonal dummies.}
 
 \item{lag1}{Lagged variable in the regression model.}
 
-\item{kernel}{Kernel used to compute the robust covariance matrix.}
+\item{kernel}{Kernel used to compute the robust Newey-West covariance matrix.}
 
-\item{order}{The truncation parameter used to compute the robust covariance matrix.}
+\item{order}{The truncation parameter used to compute the robust Newey-West covariance matrix.}
 
 \item{start}{Position of the first observation of the series}
+}
+\value{
+list with the FTest on seasonal variables, the joint test and the details for the stability of the different seasonal variables
 }
 \description{
 Canova-Hansen seasonality test

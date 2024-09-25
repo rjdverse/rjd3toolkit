@@ -31,7 +31,7 @@ T-Stat of the slope of the range-mean regression.
 }
 \description{
 Function to perform a range-mean regression, trimmed to avoid outlier distortion.
-The slope is used in TRAMO to select whether the original series will be transformed into log or maintain in level.
+The can be used to select whether the original series will be transformed into log or maintain in level.
 }
 \details{
 First, the data is divided into \eqn{n} groups of successive observations of length \eqn{l} (\code{groupsize}).

@@ -53,20 +53,19 @@ test_anova<-function(ssm, dfm, ssr, dfr){
   return(statisticaltest(val, pval, desc))
 }
 
-#' Title
+#' Information on the (log-)likelihood
 #'
-#' @param nobs
-#' @param neffectiveobs
-#' @param nparams
-#' @param ll
-#' @param adjustedll
-#' @param aic
-#' @param aicc
-#' @param bic
-#' @param bicc
-#' @param ssq
+#' @param nobs Number of observation
+#' @param neffectiveobs Number of effective observations. NA if it is the same as nobs.
+#' @param nparams Number of hyper-parameters
+#' @param ll Log-likelihood
+#' @param adjustedll Adjusted log-likelihood when the series has been transformed
+#' @param aic AIC
+#' @param aicc AICC
+#' @param bic BIC
+#' @param bicc BIC corrected for the length
+#' @param ssq Sum of the squared residuals
 #'
-#' @return
 #' @export
 #'
 #' @examples

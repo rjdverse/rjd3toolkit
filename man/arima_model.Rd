@@ -23,3 +23,6 @@ a \code{"JD3_ARIMA"} model.
 \description{
 ARIMA Model
 }
+\examples{
+model <- arima_model("trend", ar=c(1,-.8), delta = c(1,-1), ma=c(1,-.5), var=100)
+}

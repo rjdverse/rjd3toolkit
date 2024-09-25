@@ -61,7 +61,7 @@ td_f<-function(s, model=c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"), 
 #' @param kernel Kernel used to compute the robust covariance matrix.
 #' @param order The truncation parameter used to compute the robust covariance matrix.
 #'
-#' @return list with the joint test and with details for the different days (starting with Mondays).
+#' @return list with the ftest on td, the joint test and the details for the stability of the different days (starting with Mondays).
 #' @export
 #'
 #' @examples
@@ -76,5 +76,5 @@ td_canovahansen<-function(s, differencing, kernel=c("Bartlett", "Square", "Welch
                 jts, .jarray(as.integer(differencing)), kernel, as.integer(order))
 
   last<-length(q)
-  return(list(joint=q[last], details=q[-last]))
+  return(list(td=list(value=q[last-1], pvalue=q[last]), joint=q[last-2], details=q[-c(last-2, last-1, last)]))
 }

@@ -15,7 +15,6 @@ NULL
 
 #' Automatic stationary transformation
 #'
-#' Stationary transformation of a series by simple differencing of lag 1.
 #' Automatic processing (identification of the order of the differencing) based on auto-correlations and on mean correction.
 #' The series should not be seasonal.
 #' Source: Tramo
@@ -50,13 +49,13 @@ do_stationary<-function(data, period){
 
 #' Automatic differencing
 #'
-#' The series is differentiated till its variance is decreasing.
+#' The series is differenced till its variance is decreasing.
 #'
 #' @param data Series being differenced.
 #' @param period Period considered in the automatic differencing.
 #' @param mad Use of MAD in the computation of the variance (true by default).
 #' @param centile Percentage of the data used for computing the variance (90 by default).
-#' @param k tolerance in the decrease of the variance. The algorithm stops if the new varance is higher than k*the old variance.
+#' @param k tolerance in the decrease of the variance. The algorithm stops if the new variance is higher than k*the old variance. k should be equal or slightly higher than 1 (1.2 by default)
 #'
 #' @return
 #' Stationary transformation
@@ -87,7 +86,7 @@ differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
 #'
 #' @param data The series to be differenced.
 #' @param lags Lags of the differencing.
-#' @param mean Mean correction.
+#' @param mean Apply a mean correction at the end of the differencing process.
 #'
 #' @return The differenced series.
 #' @export
@@ -126,7 +125,7 @@ differences.data.frame<-function(data, lags=1, mean=TRUE){
 #' Range-Mean Regression
 #'
 #' Function to perform a range-mean regression, trimmed to avoid outlier distortion.
-#' The slope is used in TRAMO to select whether the original series will be transformed into log or maintain in level.
+#' The can be used to select whether the original series will be transformed into log or maintain in level.
 #'
 #' @param data data to test.
 #' @param period periodicity of the data.

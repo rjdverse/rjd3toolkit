@@ -4,14 +4,14 @@
 \alias{seasonality_periodogram}
 \title{Periodogram Seasonality Test}
 \usage{
-seasonality_periodogram(data, period, nyears = 0)
+seasonality_periodogram(data, period = NA, nyears = 0)
 }
 \arguments{
 \item{data}{the input data.}
 
-\item{period}{Tested periodicity.}
+\item{period}{Tested periodicity. Can be missing if the input is a time series}
 
-\item{nyears}{Number of number of periods number of cycles considered in the test, at the end of the series:
+\item{nyears}{Number of periods or number of cycles considered in the test, at the end of the series:
 in periods (positive value) or years (negative values).
 By default (\code{nyears = 0}), the entire sample is used.}
 }
@@ -25,6 +25,7 @@ Periodogram Seasonality Test
 Tests on the sum of a periodogram at seasonal frequencies.
 }
 \examples{
-seasonality_periodogram(ABS$X0.2.09.10.M, 12)
+s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+seasonality_periodogram(s)
 seasonality_periodogram(random_t(2, 1000), 7)
 }

@@ -4,16 +4,16 @@
 \alias{seasonality_f}
 \title{F-test on seasonal dummies}
 \usage{
-seasonality_f(data, period, model = c("AR", "D1", "WN"), nyears = 0)
+seasonality_f(data, period = NA, model = c("AR", "D1", "WN"), nyears = 0)
 }
 \arguments{
 \item{data}{the input data.}
 
-\item{period}{Tested periodicity.}
+\item{period}{Tested periodicity. Can be missing if the input is a time series}
 
 \item{model}{the model to use for the residuals.}
 
-\item{nyears}{Number of number of periods number of cycles considered in the test, at the end of the series:
+\item{nyears}{Number of periods or number of cycles considered in the test, at the end of the series:
 in periods (positive value) or years (negative values).
 By default (\code{nyears = 0}), the entire sample is used.}
 }
@@ -27,6 +27,6 @@ F-test on seasonal dummies
 Estimation of a model with seasonal dummies. Joint F-test on the coefficients of the dummies.
 }
 \examples{
-seasonality_f(ABS$X0.2.09.10.M, 12)
+seasonality_f(ABS$X0.2.09.10.M, model="D1")
 seasonality_f(random_t(2, 1000), 7)
 }
