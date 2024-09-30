@@ -42,6 +42,12 @@ seasonality_qs<-function(data, period=NA, nyears=0, type=1){
 #' @examples
 #' s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_modified_qs(s)
+#' @details
+#' Thresholds for p-values: p.9=2.49, p.95=3.83, p.99=7.06, p.999=11.88.
+#' Computed on 100.000.000 random series (different lengths).
+#' Remark: the length of the series has some impact on the p-values, mainly on
+#' short series. Not critical.
+
 seasonality_modified_qs<-function(data, period=NA, nyears=0){
     if (is.ts(data) && missing(period))
         period <- frequency(data)
@@ -50,6 +56,11 @@ seasonality_modified_qs<-function(data, period=NA, nyears=0){
     return(test)
 }
 
+
+# PVALUES: P.9=2.49, P.95=3.83, P.99=7.06, P.999=11.88
+# Computed on 100.000.000 random series (different lengths)
+# Remark: the length of the series has some impact on the p-values, mainly on
+# short series. Not critical.
 
 #' Kruskall-Wallis Seasonality Test
 #'
@@ -195,7 +206,7 @@ seasonality_canovahansen_trigs<-function(data, periods, lag1=TRUE,
 #' Canova-Hansen seasonality test
 #'
 #' @inheritParams seasonality_qs
-#' @param trigs TRUE for trigonometric variables, FALSE for seasonal dummies.
+#' @param type Trigonometric variables, seasonal dummies or seasonal contrasts.
 #' @param lag1 Lagged variable in the regression model.
 #' @param kernel Kernel used to compute the robust Newey-West covariance matrix.
 #' @param order The truncation parameter used to compute the robust Newey-West covariance matrix.
@@ -206,17 +217,18 @@ seasonality_canovahansen_trigs<-function(data, periods, lag1=TRUE,
 #'
 #' @examples
 #' s<-log(ABS$X0.2.20.10.M)
-#' seasonality_canovahansen(s, 12, trigs = FALSE)
-#' seasonality_canovahansen(s, 12, trigs = TRUE)
-seasonality_canovahansen<-function(data, period, trigs=TRUE, lag1=TRUE,
+#' seasonality_canovahansen(s, 12, type="Contrast")
+#' seasonality_canovahansen(s, 12, type="Trigonometric")
+seasonality_canovahansen<-function(data, period, type=c("Contrast", "Dummy", "Trigonometric"), lag1=TRUE,
                                    kernel=c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
                                    order=NA, start=1){
+    type<-match.arg(type)
     kernel<-match.arg(kernel)
     if (is.na(order)) order<--1
 
     q<-.jcall("jdplus/sa/base/r/SeasonalityTests", "[D", "canovaHansen",
                   as.numeric(data), as.integer(period),
-                  as.logical(trigs), as.logical(lag1),
+                  type, as.logical(lag1),
                   kernel, as.integer(order), as.integer(start-1))
     last<-length(q)
     return(list(seasonality=list(value=q[last-1], pvalue=q[last]), joint=q[last-2], details=q[-c(last-2, last-1, last)]))

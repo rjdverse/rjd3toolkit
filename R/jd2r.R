@@ -14,6 +14,17 @@ NULL
   }
 }
 
+
+.jd2r_regression_item <- function(s) {
+    desc <- .jcall(s, "S", "getDescription")
+    val <- .jcall(s, "D", "getCoefficient")
+    stderr <- .jcall(s, "D", "getStdError")
+    pval <- .jcall(s, "D", "getPvalue")
+    res <- matrix(c(val, stderr, val/stderr, pval), nrow = 1)
+    colnames(res) <- c("Estimate", "Std. Error", "T-stat", "Pr(>|t|)")
+    rownames(res) <- desc
+    res
+}
 #' @export
 #' @rdname jd3_utilities
 .r2jd_tsdata<-function(s){

@@ -22,8 +22,7 @@ NULL
   # what's your java  version?  Need >= 17
   jversion <- .jcall('java.lang.System','S','getProperty','java.version')
   if (jversion < "17") {
-    stop(paste("Your java version is ", jversion,
-               ".  N or higher.", sep=""))
+    stop(sprintf("Your java version is %s. 17 or higher is needed.", jversion))
   }
 
   proto.dir <- system.file("proto", package = pkgname)

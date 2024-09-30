@@ -21,6 +21,12 @@ The value of the test
 \description{
 Modified QS Seasonality Test (Maravall)
 }
+\details{
+Thresholds for p-values: p.9=2.49, p.95=3.83, p.99=7.06, p.999=11.88.
+Computed on 100.000.000 random series (different lengths).
+Remark: the length of the series has some impact on the p-values, mainly on
+short series. Not critical.
+}
 \examples{
 s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_modified_qs(s)

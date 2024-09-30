@@ -72,9 +72,30 @@ td_canovahansen<-function(s, differencing, kernel=c("Bartlett", "Square", "Welch
     kernel<-match.arg(kernel)
     if (is.na(order)) order<--1
     jts<-.r2jd_tsdata(s)
-  q<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "[D", "canovaHansen",
-                jts, .jarray(as.integer(differencing)), kernel, as.integer(order))
+    q<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "[D", "canovaHansen",
+              jts, .jarray(as.integer(differencing)), kernel, as.integer(order))
 
-  last<-length(q)
-  return(list(td=list(value=q[last-1], pvalue=q[last]), joint=q[last-2], details=q[-c(last-2, last-1, last)]))
+    last<-length(q)
+    return(list(td=list(value=q[last-1], pvalue=q[last]), joint=q[last-2], details=q[-c(last-2, last-1, last)]))
+}
+
+#' Likelihood ratio test on time varying trading days
+#'
+#' @param s
+#' @param groups
+#' @param contrasts
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' s<-log(ABS$X0.2.20.10.M)
+#' td_timevarying(s)
+td_timevarying<-function(s, groups=c(1,2,3,4,5,6,0), contrasts=TRUE){
+    jts<-.r2jd_tsdata(s)
+    igroups<-as.integer(groups)
+    jtest<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "timeVaryingTradingDaysTest",
+        jts, igroups, as.logical(contrasts))
+    return(.jd2r_test(jtest))
+
 }

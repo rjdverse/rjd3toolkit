@@ -7,7 +7,7 @@
 seasonality_canovahansen(
   data,
   period,
-  trigs = TRUE,
+  type = c("Contrast", "Dummy", "Trigonometric"),
   lag1 = TRUE,
   kernel = c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
   order = NA,
@@ -19,7 +19,7 @@ seasonality_canovahansen(
 
 \item{period}{Tested periodicity. Can be missing if the input is a time series}
 
-\item{trigs}{TRUE for trigonometric variables, FALSE for seasonal dummies.}
+\item{type}{Trigonometric variables, seasonal dummies or seasonal contrasts.}
 
 \item{lag1}{Lagged variable in the regression model.}
 
@@ -37,6 +37,6 @@ Canova-Hansen seasonality test
 }
 \examples{
 s<-log(ABS$X0.2.20.10.M)
-seasonality_canovahansen(s, 12, trigs = FALSE)
-seasonality_canovahansen(s, 12, trigs = TRUE)
+seasonality_canovahansen(s, 12, type="Contrast")
+seasonality_canovahansen(s, 12, type="Trigonometric")
 }
