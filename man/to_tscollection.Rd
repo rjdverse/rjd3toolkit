@@ -2,13 +2,22 @@
 % Please edit documentation in R/timeseries.R
 \name{to_tscollection}
 \alias{to_tscollection}
-\title{Title}
+\title{Creates a collection of time series}
 \usage{
 to_tscollection(source, id, type = "All")
 }
 \arguments{
-\item{type}{}
+\item{source}{Source of the collection of time series}
+
+\item{id}{Identifier of the collection of time series (source-dependent)}
+
+\item{type}{Type of the requested information (Data, Metadata...).
+All by default.}
+}
+\value{
+An object of type "JD3_TSCOLLECTION". List containing the identifiers,
+the metadata and all the series.
 }
 \description{
-Title
+Creates a collection of time series
 }

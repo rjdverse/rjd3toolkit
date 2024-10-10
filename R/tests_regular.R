@@ -204,16 +204,18 @@ kurtosis<-function(data){
   return(.jd2r_test(jtest))
 }
 
-#' Title
+#' Compute a robust median absolute deviation (MAD)
 #'
-#' @param data
-#' @param centile
-#' @param medianCorrected
+#' @param data The data for which we compute the robust deviation
+#' @param centile The centile used to exclude extreme values (only the "centile" part of the data are is to compute the mad)
+#' @param medianCorrected TRUE if the series is corrected for its median, FALSE if the median is supposed to be 0
 #'
-#' @return
+#' @return The median absolute deviation
 #' @export
 #'
 #' @examples
+#' y<-rnorm(1000)
+#' m<-rjd3toolkit::mad(y, centile=70)
 mad<-function(data, centile=50, medianCorrected=TRUE){
   return(.jcall("jdplus/toolkit/base/r/stats/Tests", "D", "mad",as.numeric(data), as.numeric(centile), as.logical(medianCorrected)))
 }

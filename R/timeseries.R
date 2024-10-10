@@ -206,16 +206,16 @@ daysOf<-function(ts, pos=1){
   return(as.Date(days))
 }
 
-#' Title
+#' Creates a time series object
 #'
-#' @param source
-#' @param id
-#' @param type
+#' @param source Source of the time series
+#' @param id Identifier of the time series (source-dependent)
+#' @param type Type of the requested information (Data, Metadata...).
+#' All by default.
 #'
-#' @return
+#' @return An object of type "JD3_TS". List containing the identifiers,
+#' the data and the metadata
 #' @export
-#'
-#' @examples
 to_ts<-function(source, id, type="All"){
   jmoniker<-.jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
   jts<-.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
@@ -224,13 +224,15 @@ to_ts<-function(source, id, type="All"){
   return(.p2r_ts(p))
 }
 
-#' Title
+#' Creates a collection of time series
 #'
-#' @param source
-#' @param id
-#' @param type
+#' @param source Source of the collection of time series
+#' @param id Identifier of the collection of time series (source-dependent)
+#' @param type Type of the requested information (Data, Metadata...).
+#' All by default.
 #'
-#' @return
+#' @return An object of type "JD3_TSCOLLECTION". List containing the identifiers,
+#' the metadata and all the series.
 #' @export
 #'
 #' @examples

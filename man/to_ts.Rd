@@ -2,13 +2,22 @@
 % Please edit documentation in R/timeseries.R
 \name{to_ts}
 \alias{to_ts}
-\title{Title}
+\title{Creates a time series object}
 \usage{
 to_ts(source, id, type = "All")
 }
 \arguments{
-\item{type}{}
+\item{source}{Source of the time series}
+
+\item{id}{Identifier of the time series (source-dependent)}
+
+\item{type}{Type of the requested information (Data, Metadata...).
+All by default.}
+}
+\value{
+An object of type "JD3_TS". List containing the identifiers,
+the data and the metadata
 }
 \description{
-Title
+Creates a time series object
 }

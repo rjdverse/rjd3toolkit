@@ -4,12 +4,17 @@
 \alias{seasonality_combined}
 \title{"X12" Test On Seasonality}
 \usage{
-seasonality_combined(data, period, firstperiod = cycle(data)[1], mul = TRUE)
+seasonality_combined(
+  data,
+  period = NA,
+  firstperiod = cycle(data)[1],
+  mul = TRUE
+)
 }
 \arguments{
 \item{data}{the input data.}
 
-\item{period}{Tested periodicity.}
+\item{period}{Tested periodicity. Can be missing if the input is a time series}
 
 \item{firstperiod}{Position in a cycle of the first obs.
 For example, for a monthly, \code{firstperiod = 1} means January.
@@ -24,6 +29,7 @@ If \code{data} is not a \code{"ts"} object, \code{firstperiod = 1} by default.}
 Combined test on the presence of identifiable seasonality (see Ladiray and Quenneville, 1999).
 }
 \examples{
-seasonality_combined(ABS$X0.2.09.10.M, 12)
+s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+seasonality_combined(s)
 seasonality_combined(random_t(2, 1000), 7)
 }
