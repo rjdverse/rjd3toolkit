@@ -81,17 +81,19 @@ td_canovahansen<-function(s, differencing, kernel=c("Bartlett", "Square", "Welch
 
 #' Likelihood ratio test on time varying trading days
 #'
-#' @param s
-#' @param groups
-#' @param contrasts
+#' @param s The tested time series
+#' @param groups The groups of days used to generate the regression variables.
+#' @param contrasts The covariance matrix of the multivariate random walk model
+#' used for the time-varying coefficients are related to the contrasts if TRUE,
+#' on the actual number of days (all the days are driven by the same variance) if FALSE.
 #'
-#' @return
+#' @return A Chi2 test
 #' @export
 #'
 #' @examples
 #' s<-log(ABS$X0.2.20.10.M)
 #' td_timevarying(s)
-td_timevarying<-function(s, groups=c(1,2,3,4,5,6,0), contrasts=TRUE){
+td_timevarying<-function(s, groups=c(1,2,3,4,5,6,0), contrasts=FALSE){
     jts<-.r2jd_tsdata(s)
     igroups<-as.integer(groups)
     jtest<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "timeVaryingTradingDaysTest",

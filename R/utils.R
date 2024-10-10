@@ -2,6 +2,27 @@
 #' @importFrom methods is
 NULL
 
+#' Retail trade statistics in Australia
+#'
+#' @source ABS
+"ABS"
+
+#' US Retail trade statistics
+#'
+#' @source US-Census Bureau
+"retail"
+
+#' Belgian exports to European countries
+#'
+#' @source NBB
+"Exports"
+
+#' Belgian imports from European countries
+#'
+#' @source NBB
+"Imports"
+
+
 ymd<-function(y, m, d=1){
   return(as.Date(sprintf("%04i-%02i-%02i", y, m, d)))
 }
