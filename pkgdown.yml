@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-09-30T07:15Z
+last_built: 2024-10-10T16:02Z
 urls:
   reference: https://rjdverse.github.io/rjd3toolkit/reference
   article: https://rjdverse.github.io/rjd3toolkit/articles

@@ -50,11 +50,11 @@
 
 
 <dt id="arg-period">period<a class="anchor" aria-label="anchor" href="#arg-period"></a></dt>
-<dd><p>Tested periodicity.</p></dd>
+<dd><p>Tested periodicity. Can be missing if the input is a time series</p></dd>
 
 
 <dt id="arg-nyears">nyears<a class="anchor" aria-label="anchor" href="#arg-nyears"></a></dt>
-<dd><p>Number of number of periods number of cycles considered in the test, at the end of the series:
+<dd><p>Number of periods or number of cycles considered in the test, at the end of the series:
 in periods (positive value) or years (negative values).
 By default (<code>nyears = 0</code>), the entire sample is used.</p></dd>
 
@@ -70,12 +70,13 @@ By default (<code>nyears = 0</code>), the entire sample is used.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">seasonality_kruskalwallis</span><span class="op">(</span><span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span>, <span class="fl">12</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 96.33197 </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">s</span><span class="op">&lt;-</span><span class="fu"><a href="do_stationary.html">do_stationary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">ddata</span></span></span>
+<span class="r-in"><span><span class="fu">seasonality_kruskalwallis</span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 333.9183 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.0000 </span>
 <span class="r-in"><span><span class="fu">seasonality_kruskalwallis</span><span class="op">(</span><span class="fu"><a href="studentdistribution.html">random_t</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1000</span><span class="op">)</span>, <span class="fl">7</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 5.897862 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.4347 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 4.183592 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.6518 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
