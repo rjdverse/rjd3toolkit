@@ -478,7 +478,12 @@ sarima_estimate <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 
 #' @examples
 #' y <- ABS$X0.2.09.10.M
 #' sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
-sarima_hannan_rissanen <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 0, 0), period = NA), initialization = c("Ols", "Levinson", "Burg"), biasCorrection = TRUE, finalCorrection = TRUE) {
+sarima_hannan_rissanen <- function(x,
+                                   order = c(0, 0, 0),
+                                   seasonal = list(order = c(0, 0, 0), period = NA),
+                                   initialization = c("Ols", "Levinson", "Burg"),
+                                   biasCorrection = TRUE,
+                                   finalCorrection = TRUE) {
     if (!is.list(seasonal) && is.numeric(seasonal) && length(seasonal) == 3) {
         initialization <- match.arg(initialization)
         seasonal <- list(
@@ -490,8 +495,12 @@ sarima_hannan_rissanen <- function(x, order = c(0, 0, 0), seasonal = list(order 
         seasonal$period <- frequency(x)
     }
     jmodel <- .jcall(
-        "jdplus/toolkit/base/r/arima/SarimaModels", "Ljdplus/toolkit/base/core/sarima/SarimaModel;", "hannanRissanen",
-        as.numeric(x), as.integer(order), as.integer(seasonal$period), as.integer(seasonal$order), as.character(initialization), as.logical(biasCorrection), as.logical(finalCorrection)
+        "jdplus/toolkit/base/r/arima/SarimaModels",
+        "Ljdplus/toolkit/base/core/sarima/SarimaModel;",
+        "hannanRissanen",
+        as.numeric(x), as.integer(order), as.integer(seasonal$period),
+        as.integer(seasonal$order), as.character(initialization),
+        as.logical(biasCorrection), as.logical(finalCorrection)
     )
     return(.jd2r_sarima(jmodel))
 }

@@ -1095,9 +1095,9 @@ set_tradingdays.default <- function(x,
     if (!missing(calendar.name) && !anyNA(calendar.name)) {
         td$holidays <- calendar.name
     }
-    if (!is.null(uservariable) &&
-        !anyNA(uservariable) &&
-        length(uservariable) > 0) {
+    if (!is.null(uservariable)
+        && !anyNA(uservariable)
+        && length(uservariable) > 0) {
         td$td <- "TD_NONE"
         td$holidays <- ""
 
