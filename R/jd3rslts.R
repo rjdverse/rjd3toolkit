@@ -188,6 +188,6 @@
         bic=.proc_numeric(jrslt, paste(prefix,"bic", sep="")),
         bic2=.proc_numeric(jrslt, paste(prefix,"bic2", sep="")),
         bicc=.proc_numeric(jrslt, paste(prefix,"bicc", sep="")),
-        hannanquinn=.proc_numeric(jrslt, paste(prefix,"hannanquinn", sep="")))
-    )
+        hannanquinn=.proc_numeric(jrslt, paste(prefix,"hannanquinn", sep=""))
+    ))
 }

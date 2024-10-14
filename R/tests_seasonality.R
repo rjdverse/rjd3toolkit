@@ -168,11 +168,14 @@ seasonality_combined<-function(data, period=NA, firstperiod=cycle(data)[1], mul=
                    as.numeric(data), as.integer(period), as.integer(firstperiod-1), as.logical(mul))
     q<-.jcall("jdplus/sa/base/r/SeasonalityTests",  "[B", "toBuffer", jctest)
     p<-RProtoBuf::read(sa.CombinedSeasonalityTest, q)
-    return(list(
+
+    output <- list(
         seasonality=.enum_extract(sa.IdentifiableSeasonality, p$seasonality),
         kruskalwallis=.p2r_test(p$kruskal_wallis),
         stable=.p2r_anova(p$stable_seasonality),
-        evolutive=.p2r_anova(p$evolutive_seasonality)))
+        evolutive=.p2r_anova(p$evolutive_seasonality)
+    )
+    return(output)
 }
 
 #' Canova-Hansen test using trigonometric variables

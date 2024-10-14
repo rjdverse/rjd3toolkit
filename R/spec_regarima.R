@@ -1,23 +1,27 @@
 #' Manage Outliers/Ramps in Specification
 #'
-#' Generic function to add outliers or Ramp regressors (\code{add_outlier()} and \code{add_ramp()})
-#' to a specification or to remove them (\code{remove_outlier()} and \code{remove_ramp()}).
+#' Generic function to add outliers or Ramp regressors (\code{add_outlier()} and
+#' \code{add_ramp()}) to a specification or to remove them
+#' (\code{remove_outlier()} and \code{remove_ramp()}).
 #'
-#' @param x the specification to customize, must be a "SPEC" class object (see details).
+#' @param x the specification to customize, must be a "SPEC" class object (see
+#' details).
 #' @param type,date type and date of the outliers. Possible \code{type} are:
-#' \code{"AO"} = additive, \code{"LS"} = level shift, \code{"TC"} = transitory change and
-#' \code{"SO"} = seasonal outlier.
+#' \code{"AO"} = additive, \code{"LS"} = level shift, \code{"TC"} = transitory
+#' change and \code{"SO"} = seasonal outlier.
 #' @param start,end dates of the ramp regressor.
 #' @param name the name of the variable (to format print).
-#' @param coef the coefficient if needs to be fixed. If equal to 0 the outliers/ramps coefficients
-#' are estimated.
+#' @param coef the coefficient if needs to be fixed. If equal to 0 the
+#' outliers/ramps coefficients are estimated.
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
-#' \code{rjd3tramoseats::spec_tramo()}).
-#' If a Seasonal adjustment process is performed, each type of Outlier will be allocated to a pre-defined
-#' component after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to the trend.
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramo()}). If a Seasonal adjustment process is
+#' performed, each type of Outlier will be allocated to a pre-defined component
+#' after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to
+#' the trend.
 #' @examples
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
@@ -207,33 +211,39 @@ remove_ramp.default <- function(x,
 #' Set estimation sub-span and quality check specification
 #'
 #' @description
-#' Function allowing to check if the series can be processed and to define a sub-span on which
-#' estimation will be performed
-#'
+#' Function allowing to check if the series can be processed and to define a
+#' sub-span on which estimation will be performed
 #'
 #' @inheritParams add_outlier
 #'
 #' @param type,d0,d1,n0,n1 parameters to specify the sub-span .
 #'
-#' \code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify first/last date
-#' of the span when \code{type} equals to \code{"From"}, \code{"To"} or \code{"Between"}.
+#' \code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify
+#' first/last date of the span when \code{type} equals to \code{"From"},
+#' \code{"To"} or \code{"Between"}.
 #' Date corresponding to \code{d0} will be included in the sub-span
 #' Date corresponding to \code{d1} will be excluded from the sub span
 #'
-#' \code{n0} and \code{n1} numeric to specify the number of periods at the beginning/end of the series
-#' to be used for defining the sub-span
-#' (\code{type} equals to \code{"First"}, \code{"Last"}) or to exclude (\code{type} equals to \code{"Excluding"}).
+#' \code{n0} and \code{n1} numeric to specify the number of periods at the
+#' beginning/end of the series to be used for defining the sub-span
+#' (\code{type} equals to \code{"First"}, \code{"Last"}) or to exclude
+#' (\code{type} equals to \code{"Excluding"}).
 #'
-#' @param preliminary.check a Boolean to check the quality of the input series and exclude highly problematic ones
-#' (e.g. the series with a number of identical observations and/or missing values above pre-specified threshold values).
+#' @param preliminary.check a Boolean to check the quality of the input series
+#' and exclude highly problematic ones (e.g. the series with a number of
+#' identical observations and/or missing values above pre-specified threshold
+#' values).
 #'
 #' @param preprocessing (REGARIMA/X13 Specific) a Boolean to enable/disable the pre-processing.
 #' Option disabled for the moment.
+#'
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
+#'
 #' @examples
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # estimation on sub-span between two dates (date d1 is excluded)
@@ -294,27 +304,33 @@ set_basic.default <- function(x,
 #' Set Numeric Estimation Parameters and Modelling Span
 #'
 #' @description
-#' Function allowing to define numeric boundaries for estimation and to define a sub-span on which
-#' reg-arima (tramo) modelling will be performed (pre-processing step)
+#' Function allowing to define numeric boundaries for estimation and to define
+#' a sub-span on which reg-arima (tramo) modelling will be performed
+#' (pre-processing step)
 #'
 #' @inheritParams set_basic
 #'
-#' @param tol a numeric, convergence tolerance. The absolute changes in the log-likelihood function
-#' are compared to this value to check for the convergence of the estimation iterations.
-#' (The default setting is 0.0000001)
+#' @param tol a numeric, convergence tolerance. The absolute changes in the
+#' log-likelihood function are compared to this value to check for the
+#' convergence of the estimation iterations. (The default setting is 0.0000001)
 #'
-#' @param exact.ml (TRAMO specific) \code{logical}, the exact maximum likelihood estimation. If \code{TRUE}, the program performs an exact
-#' maximum likelihood estimation. If \code{FASLE}, the Unconditional Least Squares method is used.(Default=TRUE)
+#' @param exact.ml (TRAMO specific) \code{logical}, the exact maximum likelihood
+#' estimation. If \code{TRUE}, the program performs an exact maximum likelihood
+#' estimation. If \code{FASLE}, the Unconditional Least Squares method is used.
+#' (Default=TRUE)
 #'
-#' @param unit.root.limit (TRAMO specific) \code{numeric}, the final unit root limit. The threshold value for the final unit root test
-#' for identification of differencing orders. If the magnitude of an AR root for the final model is smaller than this number,
-#'  then a unit root is assumed, the order of the AR polynomial is reduced by one and the appropriate order of the differencing
-#'  (non-seasonal, seasonal) is increased.(Default value: 0.96)
+#' @param unit.root.limit (TRAMO specific) \code{numeric}, the final unit root
+#' limit. The threshold value for the final unit root test for identification of
+#' differencing orders. If the magnitude of an AR root for the final model is
+#' smaller than this number, then a unit root is assumed, the order of the AR
+#' polynomial is reduced by one and the appropriate order of the differencing
+#' (non-seasonal, seasonal) is increased.(Default value: 0.96)
 #'
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
 #' @examples

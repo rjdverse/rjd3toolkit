@@ -24,8 +24,8 @@ coef.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima",
 logLik.JD3_REGARIMA_RSLTS <- function(object, ...) {
     if (!is.null(object$estimation)) # for sarima_estimate outputs
         object <- object$estimation
-    if (is.null(object) ||
-        is.null(object$likelihood$ll)) {
+    if (is.null(object)
+        || is.null(object$likelihood$ll)) {
         res <- NA
     } else {
         res <- structure(object$likelihood$ll,

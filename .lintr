@@ -1,5 +1,5 @@
 linters: lintr::all_linters(
-        indentation_linter = NULL,
+        indentation_linter = lintr::indentation_linter(indent = 4L),
         # line_length_linter = lintr::line_length_linter(80L),
         line_length_linter = lintr::line_length_linter(200L),
         brace_linter = NULL,
@@ -22,7 +22,6 @@ linters: lintr::all_linters(
         function_argument_linter = NULL,
         condition_message_linter = NULL,
         unnecessary_concatenation_linter = NULL,
-        #keyword_quote_linter = NULL,
         fixed_regex_linter = NULL,
         strings_as_factors_linter = NULL,
         todo_comment_linter = NULL,

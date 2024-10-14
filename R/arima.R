@@ -249,12 +249,15 @@ arima_properties<-function(model, nspectrum=601, nac=36){
     return(list(acf=acf, spectrum=spectrum))
 }
 
-#' Creates an UCARIMA model, which is composed of ARIMA models with independent innovations.
+#' Creates an UCARIMA model, which is composed of ARIMA models with independent
+#' innovations.
 #'
 #' @param model The reduced model. Usually not provided.
 #' @param components The ARIMA models representing the components
 #' @param complements Complements of (some) components. Usually not provided
-#' @param checkmodel When the model is provided and *checkmodel* is TRUE, we check that it indeed corresponds to the reduced form of the components; similar controls are applied on complements. Currently not implemented
+#' @param checkmodel When the model is provided and *checkmodel* is TRUE, we
+#' check that it indeed corresponds to the reduced form of the components;
+#' similar controls are applied on complements. Currently not implemented
 #'
 #' @return A list with the reduced model, the components and their complements
 #' @export
@@ -264,19 +267,30 @@ arima_properties<-function(model, nspectrum=601, nac=36){
 #' mod2 <- arima_model("noise", var = 1600)
 #' hp<-ucarima_model(components=list(mod1, mod2))
 #' print(hp$model)
-ucarima_model<-function(model=NULL, components, complements=NULL, checkmodel=FALSE){
-    if (is.null(model))
+ucarima_model<-function(model=NULL,
+                        components,
+                        complements=NULL,
+                        checkmodel=FALSE){
+    if (is.null(model)) {
         model<-arima_lsum(components)
-    else if (! is(model, "JD3_ARIMA") && ! is(model, "JD3_SARIMA")) stop("Invalid model")
+    } else if (! is(model, "JD3_ARIMA") && ! is(model, "JD3_SARIMA")) {
+        stop("Invalid model")
+    }
 
     # TODO: checkmodel
-    return(structure(list(model=model, components=components, complements=complements), class="JD3_UCARIMA"))
+    output <- list(model=model, components=components, complements=complements)
+    class(output) <- "JD3_UCARIMA"
+    return(output)
 }
 
 .r2jd_ucarima<-function(ucm){
     jmodel<-.r2jd_arima(ucm$model)
-    jcmps<-.jarray(lapply(ucm$components, .r2jd_arima), "jdplus/toolkit/base/core/arima/ArimaModel")
-    return(.jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/ucarima/UcarimaModel;", "of", jmodel, jcmps))
+    jcmps<-.jarray(lapply(ucm$components, .r2jd_arima),
+                   "jdplus/toolkit/base/core/arima/ArimaModel")
+    return(.jcall("jdplus/toolkit/base/r/arima/UcarimaModels",
+                  "Ljdplus/toolkit/base/core/ucarima/UcarimaModel;",
+                  "of",
+                  jmodel, jcmps))
 }
 
 #' @export

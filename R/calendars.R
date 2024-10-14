@@ -521,8 +521,9 @@ stock_td<-function(frequency, start, length, s, w = 31){
                     lapply(p$easter_related_days, function(z) .p2r_easterday(z)),
                     lapply(p$prespecified_holidays, function(z) .p2r_specialday(z)),
                     lapply(p$single_dates, function(z) .p2r_singleday(z)),
-                    mean_correction=p$mean_correction)
-        ), class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')))
+                    mean_correction=p$mean_correction)),
+        class=c('JD3_CALENDAR', 'JD3_CALENDARDEFINITION')
+    ))
 }
 
 #' @export

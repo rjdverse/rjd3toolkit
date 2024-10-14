@@ -4,12 +4,13 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .p2r_regarima_rslts<-function(p){
-    return(structure(list(
+    output <- list(
         description=.p2r_regarima_description(p$description),
         estimation=.p2r_regarima_estimation(p$estimation),
-        diagnostics=.p2r_regarima_diagnostics(p$diagnostics)),
-        class="JD3_REGARIMA_RSLTS")
+        diagnostics=.p2r_regarima_diagnostics(p$diagnostics)
     )
+    class(output) <- "JD3_REGARIMA_RSLTS"
+    return(output)
 }
 
 .p2r_regarima_description<-function(p){

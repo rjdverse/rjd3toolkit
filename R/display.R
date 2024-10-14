@@ -5,8 +5,11 @@ NULL
 #' JD3 print functions
 #'
 #' @param x the object to print.
-#' @param digits minimum number of significant digits to be used for most numbers.
-#' @param summary_info boolean indicating if a message suggesting the use of the summary function for more details should be printed. By default used the option `"summary_info"` it used, which initialized to `TRUE`.
+#' @param digits minimum number of significant digits to be used for most
+#' numbers.
+#' @param summary_info boolean indicating if a message suggesting the use of the
+#' summary function for more details should be printed. By default used the
+#' option `"summary_info"` it used, which initialized to `TRUE`.
 #' @param ... further unused parameters.
 #' @name jd3_print
 #' @rdname jd3_print

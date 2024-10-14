@@ -276,7 +276,8 @@ NULL
             bphi=.p2r_parameters(spec$bphi),
             btheta=.p2r_parameters(spec$btheta)
         ),
-        class="JD3_SARIMA_ESTIMATION"))
+        class="JD3_SARIMA_ESTIMATION"
+    ))
 }
 
 #' @export
@@ -544,23 +545,26 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .p2r_sa_decomposition<-function(p, full=FALSE){
-    if (full){
-        return(list(mode = .enum_extract(sa.DecompositionMode, p$mode),
-                    series=.p2r_sa_component(p$series),
-                    sa=.p2r_sa_component(p$seasonally_adjusted),
-                    t=.p2r_sa_component(p$trend),
-                    s=.p2r_sa_component(p$seasonal),
-                    i=.p2r_sa_component(p$irregular)
-        ))
+    if (full) {
+        output <- list(
+            mode = .enum_extract(sa.DecompositionMode, p$mode),
+            series=.p2r_sa_component(p$series),
+            sa=.p2r_sa_component(p$seasonally_adjusted),
+            t=.p2r_sa_component(p$trend),
+            s=.p2r_sa_component(p$seasonal),
+            i=.p2r_sa_component(p$irregular)
+        )
     } else {
-        return(list(mode = .enum_extract(sa.DecompositionMode, p$mode),
-                    series=.p2r_component(p$series),
-                    sa=.p2r_component(p$seasonally_adjusted),
-                    t=.p2r_component(p$trend),
-                    s=.p2r_component(p$seasonal),
-                    i=.p2r_component(p$irregular)
-        ))
+        output <- list(
+            mode = .enum_extract(sa.DecompositionMode, p$mode),
+            series=.p2r_component(p$series),
+            sa=.p2r_component(p$seasonally_adjusted),
+            t=.p2r_component(p$trend),
+            s=.p2r_component(p$seasonal),
+            i=.p2r_component(p$irregular)
+        )
     }
+    return(output)
 }
 
 #' @export
