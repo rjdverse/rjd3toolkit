@@ -6,14 +6,14 @@
 #'
 #' @export
 diagnostics<-function(x, ...){
-  UseMethod("diagnostics", x)
+    UseMethod("diagnostics", x)
 }
 
 
 #' @rdname diagnostics
 #' @export
 diagnostics.JD3<-function(x, ...){
-  cat("No diagnostic\n")
+    cat("No diagnostic\n")
 }
 
 
@@ -25,7 +25,7 @@ diagnostics.JD3<-function(x, ...){
 #'
 #' @export
 sa_preprocessing<-function(x, ...){
-  UseMethod("sa_preprocessing", x)
+    UseMethod("sa_preprocessing", x)
 }
 
 
@@ -51,7 +51,7 @@ NULL
 #' @export
 #' @rdname sa_decomposition
 sa_decomposition<-function(x, ...){
-  UseMethod("sa_decomposition", x)
+    UseMethod("sa_decomposition", x)
 }
 
 #' Deprecated functions
@@ -64,6 +64,6 @@ sa_decomposition<-function(x, ...){
 #' @export
 #' @export
 sa.decomposition<-function(x, ...){
-  .Deprecated("sa_decomposition")
-  UseMethod("sa_decomposition", x)
+    .Deprecated("sa_decomposition")
+    UseMethod("sa_decomposition", x)
 }

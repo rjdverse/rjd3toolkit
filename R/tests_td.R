@@ -47,11 +47,11 @@ NULL
 #' td_f(ABS$X0.2.09.10.M)
 #' @export
 td_f<-function(s, model=c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"), nyears=0){
-  model<-match.arg(model)
-  jts<-.r2jd_tsdata(s)
-  jtest<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "fTest",
-                jts, model, as.integer(nyears))
-  return(.jd2r_test(jtest))
+    model<-match.arg(model)
+    jts<-.r2jd_tsdata(s)
+    jtest<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "fTest",
+                  jts, model, as.integer(nyears))
+    return(.jd2r_test(jtest))
 }
 
 #' Canova-Hansen test for stable trading days
@@ -97,7 +97,7 @@ td_timevarying<-function(s, groups=c(1,2,3,4,5,6,0), contrasts=FALSE){
     jts<-.r2jd_tsdata(s)
     igroups<-as.integer(groups)
     jtest<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "timeVaryingTradingDaysTest",
-        jts, igroups, as.logical(contrasts))
+                  jts, igroups, as.logical(contrasts))
     return(.jd2r_test(jtest))
 
 }

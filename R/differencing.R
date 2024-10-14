@@ -2,15 +2,15 @@
 NULL
 
 .p2r_differencing<-function(p){
-  if (is.null(p)){
-    return(NULL)
-  } else {
-    del<-sapply(p$differences, function(z){(return(c(z$lag,z$order)))})
-    del<-`rownames<-`(del, c("lag", "order"))
-    return(list(ddata=p$stationary_series,
-                 mean=p$mean_correction,
-                 differences=del))
-  }
+    if (is.null(p)){
+        return(NULL)
+    } else {
+        del<-sapply(p$differences, function(z){(return(c(z$lag,z$order)))})
+        del<-`rownames<-`(del, c("lag", "order"))
+        return(list(ddata=p$stationary_series,
+                    mean=p$mean_correction,
+                    differences=del))
+    }
 }
 
 #' Automatic stationary transformation
@@ -35,16 +35,16 @@ NULL
 #' @examples
 #' do_stationary(log(ABS$X0.2.09.10.M),12)
 do_stationary<-function(data, period){
-  if (is.ts(data) && missing(period))
-    period <- frequency(data)
-  jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "doStationary",
-              as.numeric(data), as.integer(period))
-  q<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "[B", "toBuffer", jst)
-  p<-RProtoBuf::read(modelling.StationaryTransformation, q)
-  res <- .p2r_differencing(p)
-  if (is.ts(data))
-    res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
-  return(res)
+    if (is.ts(data) && missing(period))
+        period <- frequency(data)
+    jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "doStationary",
+                as.numeric(data), as.integer(period))
+    q<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "[B", "toBuffer", jst)
+    p<-RProtoBuf::read(modelling.StationaryTransformation, q)
+    res <- .p2r_differencing(p)
+    if (is.ts(data))
+        res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
+    return(res)
 }
 
 #' Automatic differencing
@@ -70,16 +70,16 @@ do_stationary<-function(data, period){
 #' differencing_fast(log(ABS$X0.2.09.10.M),12)
 #'
 differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
-  if (is.ts(data) && missing(period))
-    period <- frequency(data)
-  jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "fastDifferencing",
-              as.numeric(data), as.integer(period), as.logical(mad), centile, k)
-  q<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "[B", "toBuffer", jst)
-  p<-RProtoBuf::read(modelling.StationaryTransformation, q)
-  res <- .p2r_differencing(p)
-  if (is.ts(data))
-    res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
-  return(res)
+    if (is.ts(data) && missing(period))
+        period <- frequency(data)
+    jst<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;", "fastDifferencing",
+                as.numeric(data), as.integer(period), as.logical(mad), centile, k)
+    q<-.jcall("jdplus/toolkit/base/r/modelling/Differencing", "[B", "toBuffer", jst)
+    p<-RProtoBuf::read(modelling.StationaryTransformation, q)
+    res <- .p2r_differencing(p)
+    if (is.ts(data))
+        res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
+    return(res)
 }
 
 #' Differencing of a series
@@ -95,31 +95,31 @@ differencing_fast<-function(data, period, mad=TRUE, centile=90, k=1.2){
 #' differences(retail$BookStores, c(1,1,12), FALSE)
 #'
 differences<-function(data, lags=1, mean=TRUE){
-  UseMethod("differences", data)
+    UseMethod("differences", data)
 }
 #' @export
 differences.default<-function(data, lags=1, mean=TRUE){
-  res <- .jcall("jdplus/toolkit/base/r/modelling/Differencing", "[D", "differences",
-                as.numeric(data), .jarray(as.integer(lags)), mean)
-  if (is.ts(data))
-    res <- ts(res, end = end(data), frequency = frequency(data))
-  return(res)
+    res <- .jcall("jdplus/toolkit/base/r/modelling/Differencing", "[D", "differences",
+                  as.numeric(data), .jarray(as.integer(lags)), mean)
+    if (is.ts(data))
+        res <- ts(res, end = end(data), frequency = frequency(data))
+    return(res)
 }
 #' @export
 differences.matrix<-function(data, lags=1, mean=TRUE){
-  result <- data[-(1:sum(lags)),]
-  for (i in seq_len(ncol(data))){
-    result[, i] <- differences(data[,i], lags = lags, mean = mean)
-  }
-  result
+    result <- data[-(1:sum(lags)),]
+    for (i in seq_len(ncol(data))){
+        result[, i] <- differences(data[,i], lags = lags, mean = mean)
+    }
+    result
 }
 #' @export
 differences.data.frame<-function(data, lags=1, mean=TRUE){
-  result <- data[-(1:sum(lags)),]
-  for (i in seq_len(ncol(data))){
-    result[, i] <- differences(data[,i], lags = lags, mean = mean)
-  }
-  result
+    result <- data[-(1:sum(lags)),]
+    for (i in seq_len(ncol(data))){
+        result[, i] <- differences(data[,i], lags = lags, mean = mean)
+    }
+    result
 }
 
 #' Range-Mean Regression
@@ -176,9 +176,9 @@ differences.data.frame<-function(data, lags=1, mean=TRUE){
 #' pt(rm_t_log, period - 2, lower.tail = FALSE)
 #' @export
 rangemean_tstat<-function(data, period=0, groupsize = 0, trim = 0){
-  if (is.ts(data) && missing(period))
-    period <- frequency(data)
-  return(.jcall("jdplus/toolkit/base/r/modelling/AutoModelling", "D", "rangeMean",
-                 as.numeric(data), as.integer(period), as.integer(groupsize), as.integer(trim)))
+    if (is.ts(data) && missing(period))
+        period <- frequency(data)
+    return(.jcall("jdplus/toolkit/base/r/modelling/AutoModelling", "D", "rangeMean",
+                  as.numeric(data), as.integer(period), as.integer(groupsize), as.integer(trim)))
 
 }

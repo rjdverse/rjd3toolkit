@@ -24,25 +24,25 @@ NULL
 #'
 #' @export
 statisticaltest<-function(val, pval, dist=NULL){
-  if (pval<0){
-    pval <- 0
-  } else if (pval>1){
-    pval <- 1
-  }
-  return(structure(list(value=val, pvalue=pval), distribution=dist, class=c("JD3_TEST", "JD3")))
+    if (pval<0){
+        pval <- 0
+    } else if (pval>1){
+        pval <- 1
+    }
+    return(structure(list(value=val, pvalue=pval), distribution=dist, class=c("JD3_TEST", "JD3")))
 }
 
 #' @rdname statisticaltest
 #' @export
 print.JD3_TEST<-function(x, details=FALSE, ...){
-  cat('Value:', x$value, '\n')
-  cat('P-Value:', sprintf('%.4f', x$pvalue), '\n')
-  if (details){
-    dist<-attr(x, "distribution")
-    if (! is.null(dist)){
-      cat('[', dist, ']\n')
+    cat('Value:', x$value, '\n')
+    cat('P-Value:', sprintf('%.4f', x$pvalue), '\n')
+    if (details){
+        dist<-attr(x, "distribution")
+        if (! is.null(dist)){
+            cat('[', dist, ']\n')
+        }
     }
-  }
 }
 
 
@@ -68,9 +68,9 @@ print.JD3_TEST<-function(x, details=FALSE, ...){
 #' ljungbox(ABS$X0.2.09.10.M, lag = 24, k =1)
 #' @export
 ljungbox<-function(data, k=1, lag=1, nhp=0, sign=0, mean=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "ljungBox",
-                as.numeric(data), as.integer(k), as.integer(lag), as.integer(nhp), as.integer(sign), as.logical(mean))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "ljungBox",
+                  as.numeric(data), as.integer(k), as.integer(lag), as.integer(nhp), as.integer(sign), as.logical(mean))
+    return(.jd2r_test(jtest))
 }
 
 #' Normality Tests
@@ -99,23 +99,23 @@ NULL
 #' @export
 #' @describeIn normality_tests Bowman-Shenton test
 bowmanshenton<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "bowmanShenton",as.numeric(data))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "bowmanShenton",as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' @export
 #' @describeIn normality_tests Doornik-Hansen test
 doornikhansen<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "doornikHansen",as.numeric(data))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "doornikHansen",as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' @export
 #' @describeIn normality_tests Jarque-Bera test
 jarquebera<-function(data, k=0, sample=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "jarqueBera",
-                as.numeric(data), as.integer(k), as.logical(sample))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "jarqueBera",
+                  as.numeric(data), as.integer(k), as.logical(sample))
+    return(.jd2r_test(jtest))
 }
 
 #' Runs Tests around the mean or the median
@@ -142,17 +142,17 @@ NULL
 #' @describeIn runstests Runs test around mean or median
 #' @export
 testofruns<-function(data, mean=TRUE, number=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfRuns",
-                as.numeric(data), as.logical(mean), as.logical(number))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfRuns",
+                  as.numeric(data), as.logical(mean), as.logical(number))
+    return(.jd2r_test(jtest))
 }
 
 #' @describeIn runstests up and down runs test
 #' @export
 testofupdownruns<-function(data, number=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfUpDownRuns",
-                as.numeric(data), as.logical(number))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfUpDownRuns",
+                  as.numeric(data), as.logical(number))
+    return(.jd2r_test(jtest))
 }
 
 #' Autocorrelation Functions
@@ -168,40 +168,40 @@ testofupdownruns<-function(data, number=TRUE){
 #' autocorrelations_inverse(x)
 #' @export
 autocorrelations<-function(data, mean=TRUE, n=15){
-  res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "autocorrelations",
-               as.numeric(data), as.logical(mean), as.integer(n))
-  names(res) <- seq_len(n)
-  return(res)
+    res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "autocorrelations",
+                  as.numeric(data), as.logical(mean), as.integer(n))
+    names(res) <- seq_len(n)
+    return(res)
 }
 #' @export
 #' @rdname autocorrelations
 autocorrelations_partial<-function(data, mean=TRUE, n=15){
-  res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "partialAutocorrelations",
-                as.numeric(data), as.logical(mean), as.integer(n))
-  names(res) <- seq_len(n)
-  return(res)
+    res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "partialAutocorrelations",
+                  as.numeric(data), as.logical(mean), as.integer(n))
+    names(res) <- seq_len(n)
+    return(res)
 }
 #' @export
 #' @rdname autocorrelations
 autocorrelations_inverse<-function(data, nar=30, n=15){
-  res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "inverseAutocorrelations",
-                as.numeric(data), as.integer(nar), as.integer(n))
-  names(res) <- seq_len(n)
-  return(res)
+    res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "inverseAutocorrelations",
+                  as.numeric(data), as.integer(nar), as.integer(n))
+    names(res) <- seq_len(n)
+    return(res)
 }
 
 #' @export
 #' @describeIn normality_tests Skewness test
 skewness<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "skewness",as.numeric(data))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "skewness",as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' @export
 #' @describeIn normality_tests Kurtosis test
 kurtosis<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kurtosis",as.numeric(data))
-  return(.jd2r_test(jtest))
+    jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kurtosis",as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' Compute a robust median absolute deviation (MAD)
@@ -217,5 +217,5 @@ kurtosis<-function(data){
 #' y<-rnorm(1000)
 #' m<-rjd3toolkit::mad(y, centile=70)
 mad<-function(data, centile=50, medianCorrected=TRUE){
-  return(.jcall("jdplus/toolkit/base/r/stats/Tests", "D", "mad",as.numeric(data), as.numeric(centile), as.logical(medianCorrected)))
+    return(.jcall("jdplus/toolkit/base/r/stats/Tests", "D", "mad",as.numeric(data), as.numeric(centile), as.logical(medianCorrected)))
 }

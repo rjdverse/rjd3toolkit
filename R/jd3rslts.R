@@ -133,7 +133,7 @@
     } else if (.jinstanceof(s, "jdplus/toolkit/base/api/stats/StatisticalTest")) {
         return(.jd2r_test(s))
     } else if (.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/regression/RegressionItem")) {
-      return(.jd2r_regression_item(s))
+        return(.jd2r_regression_item(s))
     } else {
         return(.jcall(s, "S", "toString"))
     }
