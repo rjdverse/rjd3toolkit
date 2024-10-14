@@ -21,7 +21,7 @@ td_canovahansen(
 \item{order}{The truncation parameter used to compute the robust covariance matrix.}
 }
 \value{
-list with the joint test and with details for the different days (starting with Mondays).
+list with the ftest on td, the joint test and the details for the stability of the different days (starting with Mondays).
 }
 \description{
 Canova-Hansen test for stable trading days

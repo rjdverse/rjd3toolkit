@@ -7,7 +7,7 @@
 seasonality_canovahansen(
   data,
   period,
-  trigs = TRUE,
+  type = c("Contrast", "Dummy", "Trigonometric"),
   lag1 = TRUE,
   kernel = c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
   order = NA,
@@ -17,26 +17,26 @@ seasonality_canovahansen(
 \arguments{
 \item{data}{the input data.}
 
-\item{period}{Tested periodicity.}
+\item{period}{Tested periodicity. Can be missing if the input is a time series}
 
-\item{trigs}{TRUE for trigonometric variables, FALSE for seasonal dummies.}
+\item{type}{Trigonometric variables, seasonal dummies or seasonal contrasts.}
 
 \item{lag1}{Lagged variable in the regression model.}
 
-\item{kernel}{Kernel used to compute the robust covariance matrix.}
+\item{kernel}{Kernel used to compute the robust Newey-West covariance matrix.}
 
-\item{order}{The truncation parameter used to compute the robust covariance matrix.}
+\item{order}{The truncation parameter used to compute the robust Newey-West covariance matrix.}
 
 \item{start}{Position of the first observation of the series}
 }
 \value{
-list with the joint test and with details for the different seasonal variables
+list with the FTest on seasonal variables, the joint test and the details for the stability of the different seasonal variables
 }
 \description{
 Canova-Hansen seasonality test
 }
 \examples{
 s<-log(ABS$X0.2.20.10.M)
-seasonality_canovahansen(s, 12, trigs = FALSE)
-seasonality_canovahansen(s, 12, trigs = TRUE)
+seasonality_canovahansen(s, 12, type="Contrast")
+seasonality_canovahansen(s, 12, type="Trigonometric")
 }

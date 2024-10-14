@@ -2,6 +2,27 @@
 #' @importFrom methods is
 NULL
 
+#' Retail trade statistics in Australia
+#'
+#' @source ABS
+"ABS"
+
+#' US Retail trade statistics
+#'
+#' @source US-Census Bureau
+"retail"
+
+#' Belgian exports to European countries
+#'
+#' @source NBB
+"Exports"
+
+#' Belgian imports from European countries
+#'
+#' @source NBB
+"Imports"
+
+
 ymd<-function(y, m, d=1){
   return(as.Date(sprintf("%04i-%02i-%02i", y, m, d)))
 }
@@ -53,20 +74,19 @@ test_anova<-function(ssm, dfm, ssr, dfr){
   return(statisticaltest(val, pval, desc))
 }
 
-#' Create an object JD3_LIKELIHOOD
+#' Information on the (log-)likelihood
 #'
-#' @param nobs
-#' @param neffectiveobs
-#' @param nparams
-#' @param ll
-#' @param adjustedll
-#' @param aic
-#' @param aicc
-#' @param bic
-#' @param bicc
-#' @param ssq
+#' @param nobs Number of observation
+#' @param neffectiveobs Number of effective observations. NA if it is the same as nobs.
+#' @param nparams Number of hyper-parameters
+#' @param ll Log-likelihood
+#' @param adjustedll Adjusted log-likelihood when the series has been transformed
+#' @param aic AIC
+#' @param aicc AICC
+#' @param bic BIC
+#' @param bicc BIC corrected for the length
+#' @param ssq Sum of the squared residuals
 #'
-#' @return
 #' @export
 #'
 #' @examples

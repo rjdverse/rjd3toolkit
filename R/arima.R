@@ -108,6 +108,7 @@ sarima_decompose<-function(model, rmod=0, epsphi=0){
 #' @export
 #'
 #' @examples
+#' model <- arima_model("trend", ar=c(1,-.8), delta = c(1,-1), ma=c(1,-.5), var=100)
 arima_model<-function(name="arima", ar=1, delta=1, ma=1, variance=1){
   return(structure(list(name=name, ar=ar, delta=delta, ma=ma, var=variance), class="JD3_ARIMA"))
 }

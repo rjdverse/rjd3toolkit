@@ -61,7 +61,7 @@ td_f<-function(s, model=c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"), 
 #' @param kernel Kernel used to compute the robust covariance matrix.
 #' @param order The truncation parameter used to compute the robust covariance matrix.
 #'
-#' @return list with the joint test and with details for the different days (starting with Mondays).
+#' @return list with the ftest on td, the joint test and the details for the stability of the different days (starting with Mondays).
 #' @export
 #'
 #' @examples
@@ -72,9 +72,32 @@ td_canovahansen<-function(s, differencing, kernel=c("Bartlett", "Square", "Welch
     kernel<-match.arg(kernel)
     if (is.na(order)) order<--1
     jts<-.r2jd_tsdata(s)
-  q<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "[D", "canovaHansen",
-                jts, .jarray(as.integer(differencing)), kernel, as.integer(order))
+    q<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "[D", "canovaHansen",
+              jts, .jarray(as.integer(differencing)), kernel, as.integer(order))
 
-  last<-length(q)
-  return(list(joint=q[last], details=q[-last]))
+    last<-length(q)
+    return(list(td=list(value=q[last-1], pvalue=q[last]), joint=q[last-2], details=q[-c(last-2, last-1, last)]))
+}
+
+#' Likelihood ratio test on time varying trading days
+#'
+#' @param s The tested time series
+#' @param groups The groups of days used to generate the regression variables.
+#' @param contrasts The covariance matrix of the multivariate random walk model
+#' used for the time-varying coefficients are related to the contrasts if TRUE,
+#' on the actual number of days (all the days are driven by the same variance) if FALSE.
+#'
+#' @return A Chi2 test
+#' @export
+#'
+#' @examples
+#' s<-log(ABS$X0.2.20.10.M)
+#' td_timevarying(s)
+td_timevarying<-function(s, groups=c(1,2,3,4,5,6,0), contrasts=FALSE){
+    jts<-.r2jd_tsdata(s)
+    igroups<-as.integer(groups)
+    jtest<-.jcall("jdplus/toolkit/base/r/modelling/TradingDaysTests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "timeVaryingTradingDaysTest",
+        jts, igroups, as.logical(contrasts))
+    return(.jd2r_test(jtest))
+
 }

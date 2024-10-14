@@ -24,7 +24,6 @@ Stationary transformation
 }
 }
 \description{
-Stationary transformation of a series by simple differencing of lag 1.
 Automatic processing (identification of the order of the differencing) based on auto-correlations and on mean correction.
 The series should not be seasonal.
 Source: Tramo

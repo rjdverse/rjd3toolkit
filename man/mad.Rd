@@ -2,13 +2,24 @@
 % Please edit documentation in R/tests_regular.R
 \name{mad}
 \alias{mad}
-\title{Title}
+\title{Compute a robust median absolute deviation (MAD)}
 \usage{
 mad(data, centile = 50, medianCorrected = TRUE)
 }
 \arguments{
-\item{medianCorrected}{}
+\item{data}{The data for which we compute the robust deviation}
+
+\item{centile}{The centile used to exclude extreme values (only the "centile" part of the data are is to compute the mad)}
+
+\item{medianCorrected}{TRUE if the series is corrected for its median, FALSE if the median is supposed to be 0}
+}
+\value{
+The median absolute deviation
 }
 \description{
-Title
+Compute a robust median absolute deviation (MAD)
+}
+\examples{
+y<-rnorm(1000)
+m<-rjd3toolkit::mad(y, centile=70)
 }

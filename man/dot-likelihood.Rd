@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{.likelihood}
 \alias{.likelihood}
-\title{Create an object JD3_LIKELIHOOD}
+\title{Information on the (log-)likelihood}
 \usage{
 .likelihood(
   nobs,
@@ -18,8 +18,26 @@
 )
 }
 \arguments{
-\item{ssq}{}
+\item{nobs}{Number of observation}
+
+\item{neffectiveobs}{Number of effective observations. NA if it is the same as nobs.}
+
+\item{nparams}{Number of hyper-parameters}
+
+\item{ll}{Log-likelihood}
+
+\item{adjustedll}{Adjusted log-likelihood when the series has been transformed}
+
+\item{aic}{AIC}
+
+\item{aicc}{AICC}
+
+\item{bic}{BIC}
+
+\item{bicc}{BIC corrected for the length}
+
+\item{ssq}{Sum of the squared residuals}
 }
 \description{
-Create an object JD3_LIKELIHOOD
+Information on the (log-)likelihood
 }
