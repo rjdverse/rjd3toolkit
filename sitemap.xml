@@ -1,5 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/404.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/CONTRIBUTING.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/LICENSE-text.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/authors.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/index.html</loc></url>
@@ -28,6 +30,8 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/differences.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/differencing_fast.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/do_stationary.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/dot-likelihood.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/dot-tsmoniker.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/easter_dates.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/easter_day.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/easter_variable.html</loc></url>
@@ -41,7 +45,6 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/invgaussiandistribution.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/jd3_print.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.html</loc></url>
-<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/likelihood.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ljungbox.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/long_term_mean.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/lp_variable.html</loc></url>
@@ -100,7 +103,6 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ts_adjust.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ts_interpolate.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/tsdata_of.html</loc></url>
-<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/tsmoniker.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ucarima_canonical.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ucarima_estimate.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ucarima_model.html</loc></url>
