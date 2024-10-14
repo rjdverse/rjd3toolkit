@@ -878,14 +878,17 @@ set_arima.default <- function(x,
 #'
 #'
 #' @description
-#' Function allowing to select the trading-days regressors to be used for calendar correction in the
-#' pre-processing step of a seasonal adjustment procedure. The default is \code{"TradingDays"}, with easter specific effect enabled.
-#' (see \code{\link{set_easter}})
+#' Function allowing to select the trading-days regressors to be used for
+#' calendar correction in the pre-processing step of a seasonal adjustment
+#' procedure. The default is \code{"TradingDays"}, with easter specific effect
+#' enabled. (see \code{\link{set_easter}})
 #'
-#' All the built-in regressors are meant to correct for type
-#' of day effect but don't take into account any holiday. To do so user-defined regressors have to be built.
+#' All the built-in regressors are meant to correct for type of day effect but
+#' don't take into account any holiday. To do so user-defined regressors have to
+#' be built.
 #'
 #' @inheritParams set_basic
+#'
 #' @param option to specify the set of trading days regression variables:
 #' \code{"TradingDays"} = six contrast variables, each type of day (from Monday to Saturday) vs Sundays;
 #' \code{"WorkingDays"} = one working (week days)/non-working (week-ends) day contrast variable;
@@ -894,6 +897,7 @@ set_arima.default <- function(x,
 #' \code{"TD4"} = three contrast variables: week-days (Mondays to Thursdays) vs Sundays, Fridays vs Sundays, Saturdays vs Sundays;
 #' \code{"None"} = no correction for trading days;
 #' \code{"UserDefined"} = userdefined trading days regressors.
+#'
 #' @param calendar.name name (string) of the user-defined calendar to be taken into account when generating
 #' built-in regressors set in 'option' (if not 'UserDefined).(see examples)
 #' @param uservariable a vector of characters to specify the name of user-defined calendar regressors.
@@ -921,9 +925,13 @@ set_arima.default <- function(x,
 #'
 #' @param coef vector of coefficients for the trading-days regressors.
 #'
-#' @param automatic defines whether the calendar effects should be added to the model manually (\code{"Unused"}) or automatically.
-#' During the automatic selection, the choice of the number of calendar variables can be based on the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test (\code{"WaldTest"}), or by minimizing AIC or BIC;
-#' the model with higher F value is chosen, provided that it is higher than \code{pftd}).
+#' @param automatic defines whether the calendar effects should be added to the
+#' model manually (\code{"Unused"}) or automatically. During the automatic
+#' selection, the choice of the number of calendar variables can be based on
+#' the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test
+#' (\code{"WaldTest"}), or by minimizing AIC or BIC; the model with higher
+#' F-value is chosen, provided that it is higher than \code{pftd}).
+#'
 #' @param pftd (TRAMO SPECIFIC) \code{numeric}. The p-value used to assess the significance of the pre-tested calendar effects.
 #'
 #' @param autoadjust a logical indicating if the program corrects automatically the raw series for

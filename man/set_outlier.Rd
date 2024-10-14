@@ -21,7 +21,8 @@ set_outlier(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{span.type, d0, d1, n0, n1}{parameters to specify the sub-span on which outliers will be detected.
 

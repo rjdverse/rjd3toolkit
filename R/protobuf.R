@@ -570,17 +570,17 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .p2r_sa_diagnostics<-function(p){
-    return(list(vardecomposition =p$variance_decomposition$as.list(),
-                seas.ftest.i=.p2r_test(p$seasonal_ftest_on_irregular),
-                seas.ftest.sa=.p2r_test(p$seasonal_ftest_on_sa),
-                seas.qstest.i=.p2r_test(p$seasonal_qtest_on_irregular),
-                seas.qstest.sa=.p2r_test(p$seasonal_qtest_on_sa),
-                td.ftest.i=.p2r_test(p$td_ftest_on_irregular),
-                td.ftest.sa=.p2r_test(p$td_ftest_on_sa)
-    ))
-
+    output <- list(
+        vardecomposition =p$variance_decomposition$as.list(),
+        seas.ftest.i=.p2r_test(p$seasonal_ftest_on_irregular),
+        seas.ftest.sa=.p2r_test(p$seasonal_ftest_on_sa),
+        seas.qstest.i=.p2r_test(p$seasonal_qtest_on_irregular),
+        seas.qstest.sa=.p2r_test(p$seasonal_qtest_on_sa),
+        td.ftest.i=.p2r_test(p$td_ftest_on_irregular),
+        td.ftest.sa=.p2r_test(p$td_ftest_on_sa)
+    )
+    return(output)
 }
-
 
 .ts_move<-function(period, freq, delta){
     if (delta == 0)return(period)

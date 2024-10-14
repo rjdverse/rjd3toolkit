@@ -14,7 +14,8 @@ set_transform(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{fun}{the transformation of the input series: \code{"None"} = no transformation of the series;
 \code{"Log"} = takes the log of the series; \code{"Auto"} = the program tests for the log-level specification.}

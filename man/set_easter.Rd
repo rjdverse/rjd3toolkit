@@ -16,7 +16,8 @@ set_easter(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{enabled}{a logical indicating if the program considers the Easter effect in the pre-processing model.
 Default = TRUE.}

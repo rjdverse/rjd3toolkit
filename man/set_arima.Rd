@@ -19,7 +19,8 @@ set_arima(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{mean}{to fix the coefficient of the mean. If \code{mean = 0}, the mean is disabled.}
 

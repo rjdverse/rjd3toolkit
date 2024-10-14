@@ -23,7 +23,8 @@ set_automodel(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{enabled}{\code{logical}. If \code{TRUE}, the automatic modelling of the ARIMA model is enabled.
 If \code{FALSE}, the parameters of the ARIMA model can be specified.}

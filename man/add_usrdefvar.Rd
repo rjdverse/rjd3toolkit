@@ -16,7 +16,8 @@ add_usrdefvar(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{group, name}{the name of the regressor in the format \code{"group.name"}, by default \code{"r.name"} by default if \code{group} NULL
 \code{"group.name"} has to be the same as in \code{\link{modelling_context}} (see examples)}
