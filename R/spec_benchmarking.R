@@ -58,10 +58,14 @@ set_benchmarking.default <- function(x, enabled = NA,
                                      lambda = NA,
                                      forecast = NA,
                                      bias = c(NA, "None")) {
-    target <- match.arg(toupper(target[1]),
-                        c(NA, "CALENDARADJUSTED", "ORIGINAL"))
-    bias <- match.arg(toupper(bias)[1],
-                      c(NA, "NONE"))
+    target <- match.arg(
+        toupper(target[1]),
+        c(NA, "CALENDARADJUSTED", "ORIGINAL")
+    )
+    bias <- match.arg(
+        toupper(bias)[1],
+        c(NA, "NONE")
+    )
     if (!is.na(enabled) && is.logical(enabled)) {
         x$enabled <- enabled
     }

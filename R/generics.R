@@ -1,18 +1,17 @@
-
 #' Generic Diagnostics Function
 #'
 #' @param x the object to extract diagnostics.
 #' @param ... further arguments.
 #'
 #' @export
-diagnostics<-function(x, ...){
+diagnostics <- function(x, ...) {
     UseMethod("diagnostics", x)
 }
 
 
 #' @rdname diagnostics
 #' @export
-diagnostics.JD3<-function(x, ...){
+diagnostics.JD3 <- function(x, ...) {
     cat("No diagnostic\n")
 }
 
@@ -24,7 +23,7 @@ diagnostics.JD3<-function(x, ...){
 #' @param x,... parameters.
 #'
 #' @export
-sa_preprocessing<-function(x, ...){
+sa_preprocessing <- function(x, ...) {
     UseMethod("sa_preprocessing", x)
 }
 
@@ -50,7 +49,7 @@ NULL
 
 #' @export
 #' @rdname sa_decomposition
-sa_decomposition<-function(x, ...){
+sa_decomposition <- function(x, ...) {
     UseMethod("sa_decomposition", x)
 }
 
@@ -63,7 +62,7 @@ sa_decomposition<-function(x, ...){
 #' @name deprecated-rjd3toolkit
 #' @export
 #' @export
-sa.decomposition<-function(x, ...){
+sa.decomposition <- function(x, ...) {
     .Deprecated("sa_decomposition")
     UseMethod("sa_decomposition", x)
 }

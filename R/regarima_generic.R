@@ -1,9 +1,10 @@
 # Method "JD3_REGARIMA_RSLTS" for the function coef
 #' @importFrom stats coef df.residual logLik residuals vcov nobs
 #' @export
-coef.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima", "both"), ...){
-    if (is.null(object))
+coef.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima", "both"), ...) {
+    if (is.null(object)) {
         return(NULL)
+    }
 
     component <- match.arg(component)
     if (component == "regression") {
@@ -11,10 +12,12 @@ coef.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima",
     } else if (component == "arima") {
         coefs <- .sarima_coef_table(object)$coef_table
     } else {
-        coefs <- rbind(.sarima_coef_table(object)$coef_table[,1:2],
-                       .regarima_coef_table(object)[,1:2])
+        coefs <- rbind(
+            .sarima_coef_table(object)$coef_table[, 1:2],
+            .regarima_coef_table(object)[, 1:2]
+        )
     }
-    res <- coefs[,1]
+    res <- coefs[, 1]
     names(res) <- rownames(coefs)
     res
 }
@@ -22,27 +25,31 @@ coef.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima",
 # Method "JD3_REGARIMA_RSLTS" for the function logLik
 #' @export
 logLik.JD3_REGARIMA_RSLTS <- function(object, ...) {
-    if (!is.null(object$estimation)) # for sarima_estimate outputs
+    if (!is.null(object$estimation)) { # for sarima_estimate outputs
         object <- object$estimation
-    if (is.null(object)
-        || is.null(object$likelihood$ll)) {
+    }
+    if (is.null(object) ||
+        is.null(object$likelihood$ll)) {
         res <- NA
     } else {
         res <- structure(object$likelihood$ll,
-                         df = object$likelihood$nparams,
-                         nall = object$likelihood$nobs,
-                         nobs = object$likelihood$neffectiveobs)
+            df = object$likelihood$nparams,
+            nall = object$likelihood$nobs,
+            nobs = object$likelihood$neffectiveobs
+        )
     }
     class(res) <- "logLik"
     res
 }
 #' @export
-vcov.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima"), ...){
-    if (!is.null(object$estimation)) # for sarima_estimate outputs
+vcov.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima"), ...) {
+    if (!is.null(object$estimation)) { # for sarima_estimate outputs
         object <- object$estimation
+    }
 
-    if (is.null(object))
+    if (is.null(object)) {
         return(NULL)
+    }
     component <- match.arg(component)
     if (component == "regression") {
         object$bvar
@@ -51,27 +58,33 @@ vcov.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima")
     }
 }
 #' @export
-df.residual.JD3_REGARIMA_RSLTS <- function(object, ...){
-    if (is.null(object))
+df.residual.JD3_REGARIMA_RSLTS <- function(object, ...) {
+    if (is.null(object)) {
         return(NULL)
-    if (!is.null(object$estimation)) # for sarima_estimate outputs
+    }
+    if (!is.null(object$estimation)) { # for sarima_estimate outputs
         object <- object$estimation
+    }
     object$likelihood$neffectiveobs - object$likelihood$nparams
 }
 #' @export
-nobs.JD3_REGARIMA_RSLTS <- function(object, ...){
-    if (is.null(object))
+nobs.JD3_REGARIMA_RSLTS <- function(object, ...) {
+    if (is.null(object)) {
         return(NULL)
-    if (!is.null(object$estimation)) # for sarima_estimate outputs
+    }
+    if (!is.null(object$estimation)) { # for sarima_estimate outputs
         object <- object$estimation
+    }
     object$likelihood$neffectiveobs
 }
 
 #' @export
-residuals.JD3_REGARIMA_RSLTS <- function(object, ...){
-    if (is.null(object))
+residuals.JD3_REGARIMA_RSLTS <- function(object, ...) {
+    if (is.null(object)) {
         return(NULL)
-    if (!is.null(object$estimation)) # for sarima_estimate outputs
+    }
+    if (!is.null(object$estimation)) { # for sarima_estimate outputs
         object <- object$estimation
+    }
     object$res
 }
