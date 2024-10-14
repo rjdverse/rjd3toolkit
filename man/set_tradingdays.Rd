@@ -23,7 +23,8 @@ set_tradingdays(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{option}{to specify the set of trading days regression variables:
 \code{"TradingDays"} = six contrast variables, each type of day (from Monday to Saturday) vs Sundays;
@@ -65,9 +66,12 @@ if at least one t-statistic is greater than 2.6 or if two t-statistics are great
 
 \item{coef.type, leapyear.coef.type}{vector defining if the coefficients are fixed or estimated.}
 
-\item{automatic}{defines whether the calendar effects should be added to the model manually (\code{"Unused"}) or automatically.
-During the automatic selection, the choice of the number of calendar variables can be based on the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test (\code{"WaldTest"}), or by minimizing AIC or BIC;
-the model with higher F value is chosen, provided that it is higher than \code{pftd}).}
+\item{automatic}{defines whether the calendar effects should be added to the
+model manually (\code{"Unused"}) or automatically. During the automatic
+selection, the choice of the number of calendar variables can be based on
+the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test
+(\code{"WaldTest"}), or by minimizing AIC or BIC; the model with higher
+F-value is chosen, provided that it is higher than \code{pftd}).}
 
 \item{pftd}{(TRAMO SPECIFIC) \code{numeric}. The p-value used to assess the significance of the pre-tested calendar effects.}
 
@@ -82,15 +86,17 @@ of trading day regressors.}
 \item{leapyear.coef}{coefficient of the leap year regressor.}
 }
 \description{
-Function allowing to select the trading-days regressors to be used for calendar correction in the
-pre-processing step of a seasonal adjustment procedure. The default is \code{"TradingDays"}, with easter specific effect enabled.
-(see \code{\link{set_easter}})
+Function allowing to select the trading-days regressors to be used for
+calendar correction in the pre-processing step of a seasonal adjustment
+procedure. The default is \code{"TradingDays"}, with easter specific effect
+enabled. (see \code{\link{set_easter}})
 
-All the built-in regressors are meant to correct for type
-of day effect but don't take into account any holiday. To do so user-defined regressors have to be built.
+All the built-in regressors are meant to correct for type of day effect but
+don't take into account any holiday. To do so user-defined regressors have to
+be built.
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+\code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).

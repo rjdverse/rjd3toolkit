@@ -9,8 +9,8 @@ ts_adjust(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE)
 \arguments{
 \item{s}{The original time series}
 
-\item{method}{LeapYear: correction for leap year
-LengthOfPeriod: correction for the length of periods}
+\item{method}{\code{"LeapYear"}: correction for leap year
+\code{"LengthOfPeriod"}: correction for the length of periods}
 
 \item{reverse}{Adjustment or reverse operation}
 }

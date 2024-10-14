@@ -1,0 +1,157 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "rjd3toolkit" in publications use:'
+type: software
+title: 'rjd3toolkit: Utility Functions around ''JDemetra+ 3.0'''
+version: 3.2.4.9000
+abstract: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series
+  analysis software. It provides functions allowing to model time series (create outlier
+  regressors, user-defined calendar regressors, UCARIMA models...), to test the presence
+  of trading days or seasonal effects and also to set specifications in pre-adjustment
+  and benchmarking when using rjd3x13 or rjd3tramoseats.
+authors:
+- family-names: Palate
+  given-names: Jean
+  email: palatejean@gmail.com
+- family-names: Quartier-la-Tente
+  given-names: Alain
+  email: alain.quartier@yahoo.fr
+  orcid: https://orcid.org/0000-0001-7890-3857
+- family-names: Barthelemy
+  given-names: Tanguy
+  email: tanguy.barthelemy@insee.fr
+- family-names: Smyk
+  given-names: Anna
+  email: anna.smyk@insee.fr
+repository-code: https://github.com/rjdverse/rjd3toolkit
+url: https://rjdverse.github.io/rjd3toolkit/
+contact:
+- family-names: Barthelemy
+  given-names: Tanguy
+  email: tanguy.barthelemy@insee.fr
+keywords:
+- jdemetra
+- package
+- r
+- r-package
+- rstats
+- seasonal-adjustment
+- timeseries
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  url: https://www.R-project.org/
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+  version: '>= 4.1.0'
+- type: software
+  title: checkmate
+  abstract: 'checkmate: Fast and Versatile Argument Checks'
+  notes: Imports
+  url: https://mllg.github.io/checkmate/
+  repository: https://CRAN.R-project.org/package=checkmate
+  authors:
+  - family-names: Lang
+    given-names: Michel
+    email: michellang@gmail.com
+    orcid: https://orcid.org/0000-0001-9754-0393
+  year: '2024'
+  doi: 10.32614/CRAN.package.checkmate
+- type: software
+  title: graphics
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+- type: software
+  title: methods
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+- type: software
+  title: rJava
+  abstract: 'rJava: Low-Level R to Java Interface'
+  notes: Imports
+  url: http://www.rforge.net/rJava/
+  repository: https://CRAN.R-project.org/package=rJava
+  authors:
+  - family-names: Urbanek
+    given-names: Simon
+    email: simon.urbanek@r-project.org
+  year: '2024'
+  doi: 10.32614/CRAN.package.rJava
+  version: '>= 1.0-6'
+- type: software
+  title: RProtoBuf
+  abstract: 'RProtoBuf: R Interface to the ''Protocol Buffers'' ''API'' (Version 2
+    or 3)'
+  notes: Imports
+  url: https://dirk.eddelbuettel.com/code/rprotobuf.html
+  repository: https://CRAN.R-project.org/package=RProtoBuf
+  authors:
+  - family-names: Francois
+    given-names: Romain
+  - family-names: Eddelbuettel
+    given-names: Dirk
+  - family-names: Stokely
+    given-names: Murray
+  - family-names: Ooms
+    given-names: Jeroen
+  year: '2024'
+  doi: 10.32614/CRAN.package.RProtoBuf
+  version: '>= 0.4.20'
+- type: software
+  title: stats
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+- type: software
+  title: utils
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+- type: software
+  title: spelling
+  abstract: 'spelling: Tools for Spell Checking in R'
+  notes: Suggests
+  url: https://ropensci.r-universe.dev/spelling
+  repository: https://CRAN.R-project.org/package=spelling
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroenooms@gmail.com
+    orcid: https://orcid.org/0000-0002-4035-0289
+  - family-names: Hester
+    given-names: Jim
+    email: james.hester@rstudio.com
+  year: '2024'
+  doi: 10.32614/CRAN.package.spelling
+

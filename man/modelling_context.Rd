@@ -17,7 +17,7 @@ list of calendars and variables
 \description{
 Function allowing to include calendars and external regressors in a format that makes them usable
 in an estimation processes (seasonal adjustment or pre-processing). The regressors can be created with functions available in the package
-or come from any other source, provided they are "TS" class objects.
+or come from any other source, provided they are \code{ts} class objects.
 }
 \examples{
 # creating one or several external regressors (TS objects), which will

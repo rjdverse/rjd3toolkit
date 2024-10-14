@@ -20,12 +20,12 @@ differencing_fast(data, period, mad = TRUE, centile = 90, k = 1.2)
 \value{
 Stationary transformation
 \itemize{
-\item ddata: data after differencing
-\item mean: mean correction
-\item differences:
+\item \code{ddata}: data after differencing
+\item \code{mean}: mean correction
+\item \code{differences}:
 \itemize{
-\item lag: ddata(t)=data(t)-data(t-lag)
-\item order: order of the differencing
+\item \code{lag}: \eqn{ddata(t)=data(t)-data(t-lag)}
+\item \code{order}: order of the differencing
 }
 }
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/timeseries.R
 \name{data_to_ts}
 \alias{data_to_ts}
-\title{Promote a R time series to a "full" ts of jdemetra}
+\title{Promote a R time series to a "full" \code{ts} of JDemetra+}
 \usage{
 data_to_ts(s, name)
 }
@@ -12,7 +12,7 @@ data_to_ts(s, name)
 \item{name}{name of the series}
 }
 \description{
-Promote a R time series to a "full" ts of jdemetra
+Promote a R time series to a "full" \code{ts} of JDemetra+
 }
 \examples{
 s<-ABS$X0.2.09.10.M

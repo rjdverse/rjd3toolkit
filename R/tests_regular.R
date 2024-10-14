@@ -18,31 +18,31 @@ NULL
 #' \item{\code{distribution}} the statistical distribution used.
 #' }
 #' @examples
-#' udr_test = testofupdownruns(random_t(5, 1000))
+#' udr_test <- testofupdownruns(random_t(5, 1000))
 #' udr_test # default print
 #' print(udr_test, details = TRUE) # with the distribution
 #'
 #' @export
-statisticaltest<-function(val, pval, dist=NULL){
-  if (pval<0){
-    pval <- 0
-  } else if (pval>1){
-    pval <- 1
-  }
-  return(structure(list(value=val, pvalue=pval), distribution=dist, class=c("JD3_TEST", "JD3")))
+statisticaltest <- function(val, pval, dist = NULL) {
+    if (pval < 0) {
+        pval <- 0
+    } else if (pval > 1) {
+        pval <- 1
+    }
+    return(structure(list(value = val, pvalue = pval), distribution = dist, class = c("JD3_TEST", "JD3")))
 }
 
 #' @rdname statisticaltest
 #' @export
-print.JD3_TEST<-function(x, details=FALSE, ...){
-  cat('Value:', x$value, '\n')
-  cat('P-Value:', sprintf('%.4f', x$pvalue), '\n')
-  if (details){
-    dist<-attr(x, "distribution")
-    if (! is.null(dist)){
-      cat('[', dist, ']\n')
+print.JD3_TEST <- function(x, details = FALSE, ...) {
+    cat("Value:", x$value, "\n")
+    cat("P-Value:", sprintf("%.4f", x$pvalue), "\n")
+    if (details) {
+        dist <- attr(x, "distribution")
+        if (!is.null(dist)) {
+            cat("[", dist, "]\n")
+        }
     }
-  }
 }
 
 
@@ -55,7 +55,7 @@ print.JD3_TEST<-function(x, details=FALSE, ...){
 #' @param k number of auto-correlations used in the test
 #' @param nhp number of hyper parameters (to correct the degree of freedom)
 #' @param lag number of lags used between two auto-correlations.
-#' @param sign if `sign = 1`, only positive auto-corrrelations are considered in the test.
+#' @param sign if `sign = 1`, only positive auto-correlations are considered in the test.
 #' If `sign = -1`, only negative auto-correlations are considered.
 #' If `sign = 0`, all auto-correlations are integrated in the test.
 #' @param mean Mean correction. If \code{TRUE}, the auto-correlations are computed as usual.
@@ -64,13 +64,15 @@ print.JD3_TEST<-function(x, details=FALSE, ...){
 #' @return A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for details).
 #'
 #' @examples
-#' ljungbox(random_t(2, 100), lag = 24, k =1)
-#' ljungbox(ABS$X0.2.09.10.M, lag = 24, k =1)
+#' ljungbox(random_t(2, 100), lag = 24, k = 1)
+#' ljungbox(ABS$X0.2.09.10.M, lag = 24, k = 1)
 #' @export
-ljungbox<-function(data, k=1, lag=1, nhp=0, sign=0, mean=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "ljungBox",
-                as.numeric(data), as.integer(k), as.integer(lag), as.integer(nhp), as.integer(sign), as.logical(mean))
-  return(.jd2r_test(jtest))
+ljungbox <- function(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE) {
+    jtest <- .jcall(
+        "jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "ljungBox",
+        as.numeric(data), as.integer(k), as.integer(lag), as.integer(nhp), as.integer(sign), as.logical(mean)
+    )
+    return(.jd2r_test(jtest))
 }
 
 #' Normality Tests
@@ -84,7 +86,7 @@ ljungbox<-function(data, k=1, lag=1, nhp=0, sign=0, mean=TRUE){
 #' @return A \code{c("JD3_TEST", "JD3")} object (see \code{\link{statisticaltest}} for details).
 #'
 #' @examples
-#' x <- rnorm(100)  # null
+#' x <- rnorm(100) # null
 #' bowmanshenton(x)
 #' doornikhansen(x)
 #' jarquebera(x)
@@ -98,24 +100,26 @@ NULL
 
 #' @export
 #' @describeIn normality_tests Bowman-Shenton test
-bowmanshenton<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "bowmanShenton",as.numeric(data))
-  return(.jd2r_test(jtest))
+bowmanshenton <- function(data) {
+    jtest <- .jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "bowmanShenton", as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' @export
 #' @describeIn normality_tests Doornik-Hansen test
-doornikhansen<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "doornikHansen",as.numeric(data))
-  return(.jd2r_test(jtest))
+doornikhansen <- function(data) {
+    jtest <- .jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "doornikHansen", as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' @export
 #' @describeIn normality_tests Jarque-Bera test
-jarquebera<-function(data, k=0, sample=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "jarqueBera",
-                as.numeric(data), as.integer(k), as.logical(sample))
-  return(.jd2r_test(jtest))
+jarquebera <- function(data, k = 0, sample = TRUE) {
+    jtest <- .jcall(
+        "jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "jarqueBera",
+        as.numeric(data), as.integer(k), as.logical(sample)
+    )
+    return(.jd2r_test(jtest))
 }
 
 #' Runs Tests around the mean or the median
@@ -131,7 +135,7 @@ jarquebera<-function(data, k=0, sample=TRUE){
 #'
 #' @examples
 #' x <- random_t(5, 1000)
-#'# random values
+#' # random values
 #' testofruns(x)
 #' testofupdownruns(x)
 #' # non-random values
@@ -141,18 +145,22 @@ NULL
 
 #' @describeIn runstests Runs test around mean or median
 #' @export
-testofruns<-function(data, mean=TRUE, number=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfRuns",
-                as.numeric(data), as.logical(mean), as.logical(number))
-  return(.jd2r_test(jtest))
+testofruns <- function(data, mean = TRUE, number = TRUE) {
+    jtest <- .jcall(
+        "jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfRuns",
+        as.numeric(data), as.logical(mean), as.logical(number)
+    )
+    return(.jd2r_test(jtest))
 }
 
 #' @describeIn runstests up and down runs test
 #' @export
-testofupdownruns<-function(data, number=TRUE){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfUpDownRuns",
-                as.numeric(data), as.logical(number))
-  return(.jd2r_test(jtest))
+testofupdownruns <- function(data, number = TRUE) {
+    jtest <- .jcall(
+        "jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "testOfUpDownRuns",
+        as.numeric(data), as.logical(number)
+    )
+    return(.jd2r_test(jtest))
 }
 
 #' Autocorrelation Functions
@@ -162,46 +170,52 @@ testofupdownruns<-function(data, number=TRUE){
 #' @param nar number of AR lags used to compute inverse autocorrelations.
 #'
 #' @examples
-#' x = ABS$X0.2.09.10.M
+#' x <- ABS$X0.2.09.10.M
 #' autocorrelations(x)
 #' autocorrelations_partial(x)
 #' autocorrelations_inverse(x)
 #' @export
-autocorrelations<-function(data, mean=TRUE, n=15){
-  res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "autocorrelations",
-               as.numeric(data), as.logical(mean), as.integer(n))
-  names(res) <- seq_len(n)
-  return(res)
+autocorrelations <- function(data, mean = TRUE, n = 15) {
+    res <- .jcall(
+        "jdplus/toolkit/base/r/stats/Tests", "[D", "autocorrelations",
+        as.numeric(data), as.logical(mean), as.integer(n)
+    )
+    names(res) <- seq_len(n)
+    return(res)
 }
 #' @export
 #' @rdname autocorrelations
-autocorrelations_partial<-function(data, mean=TRUE, n=15){
-  res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "partialAutocorrelations",
-                as.numeric(data), as.logical(mean), as.integer(n))
-  names(res) <- seq_len(n)
-  return(res)
+autocorrelations_partial <- function(data, mean = TRUE, n = 15) {
+    res <- .jcall(
+        "jdplus/toolkit/base/r/stats/Tests", "[D", "partialAutocorrelations",
+        as.numeric(data), as.logical(mean), as.integer(n)
+    )
+    names(res) <- seq_len(n)
+    return(res)
 }
 #' @export
 #' @rdname autocorrelations
-autocorrelations_inverse<-function(data, nar=30, n=15){
-  res <- .jcall("jdplus/toolkit/base/r/stats/Tests", "[D", "inverseAutocorrelations",
-                as.numeric(data), as.integer(nar), as.integer(n))
-  names(res) <- seq_len(n)
-  return(res)
+autocorrelations_inverse <- function(data, nar = 30, n = 15) {
+    res <- .jcall(
+        "jdplus/toolkit/base/r/stats/Tests", "[D", "inverseAutocorrelations",
+        as.numeric(data), as.integer(nar), as.integer(n)
+    )
+    names(res) <- seq_len(n)
+    return(res)
 }
 
 #' @export
 #' @describeIn normality_tests Skewness test
-skewness<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "skewness",as.numeric(data))
-  return(.jd2r_test(jtest))
+skewness <- function(data) {
+    jtest <- .jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "skewness", as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' @export
 #' @describeIn normality_tests Kurtosis test
-kurtosis<-function(data){
-  jtest<-.jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kurtosis",as.numeric(data))
-  return(.jd2r_test(jtest))
+kurtosis <- function(data) {
+    jtest <- .jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "kurtosis", as.numeric(data))
+    return(.jd2r_test(jtest))
 }
 
 #' Compute a robust median absolute deviation (MAD)
@@ -214,8 +228,8 @@ kurtosis<-function(data){
 #' @export
 #'
 #' @examples
-#' y<-rnorm(1000)
-#' m<-rjd3toolkit::mad(y, centile=70)
-mad<-function(data, centile=50, medianCorrected=TRUE){
-  return(.jcall("jdplus/toolkit/base/r/stats/Tests", "D", "mad",as.numeric(data), as.numeric(centile), as.logical(medianCorrected)))
+#' y <- rnorm(1000)
+#' m <- rjd3toolkit::mad(y, centile = 70)
+mad <- function(data, centile = 50, medianCorrected = TRUE) {
+    return(.jcall("jdplus/toolkit/base/r/stats/Tests", "D", "mad", as.numeric(data), as.numeric(centile), as.logical(medianCorrected)))
 }

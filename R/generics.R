@@ -1,19 +1,18 @@
-
 #' Generic Diagnostics Function
 #'
 #' @param x the object to extract diagnostics.
 #' @param ... further arguments.
 #'
 #' @export
-diagnostics<-function(x, ...){
-  UseMethod("diagnostics", x)
+diagnostics <- function(x, ...) {
+    UseMethod("diagnostics", x)
 }
 
 
 #' @rdname diagnostics
 #' @export
-diagnostics.JD3<-function(x, ...){
-  cat("No diagnostic\n")
+diagnostics.JD3 <- function(x, ...) {
+    cat("No diagnostic\n")
 }
 
 
@@ -24,8 +23,8 @@ diagnostics.JD3<-function(x, ...){
 #' @param x,... parameters.
 #'
 #' @export
-sa_preprocessing<-function(x, ...){
-  UseMethod("sa_preprocessing", x)
+sa_preprocessing <- function(x, ...) {
+    UseMethod("sa_preprocessing", x)
 }
 
 
@@ -41,7 +40,7 @@ sa_preprocessing<-function(x, ...){
 #' @param type_chart the chart to plot: `"sa-trend"` (by default) plots the input time series,
 #' the seasonally adjusted and the trend; `"seas-irr"` plots the seasonal and the irregular components.
 #' @param caption the caption of the plot.
-#' @param colors the colors used in the plot.
+#' @param colors the colours used in the plot.
 #' @param ... further arguments.
 #'
 #' @return \code{"JD3_SADECOMPOSITION"} object.
@@ -50,8 +49,8 @@ NULL
 
 #' @export
 #' @rdname sa_decomposition
-sa_decomposition<-function(x, ...){
-  UseMethod("sa_decomposition", x)
+sa_decomposition <- function(x, ...) {
+    UseMethod("sa_decomposition", x)
 }
 
 #' Deprecated functions
@@ -63,7 +62,7 @@ sa_decomposition<-function(x, ...){
 #' @name deprecated-rjd3toolkit
 #' @export
 #' @export
-sa.decomposition<-function(x, ...){
-  .Deprecated("sa_decomposition")
-  UseMethod("sa_decomposition", x)
+sa.decomposition <- function(x, ...) {
+    .Deprecated("sa_decomposition")
+    UseMethod("sa_decomposition", x)
 }
