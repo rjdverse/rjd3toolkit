@@ -54,7 +54,7 @@ for the decomposition.
 \item "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
 \item "Series": after the decomposition the effect is allocated to
 the raw series: \eqn{yc_t=y_t+ effect}
-\item "Seasonally Adjusted": after the decomposition the effect is allocated to
+\item "SeasonallyAdjusted": after the decomposition the effect is allocated to
 the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 }
 }
