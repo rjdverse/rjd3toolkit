@@ -49,8 +49,10 @@ CHRISTMAS      \tab Fixed holiday, falls on December, 25th.
 # To add Easter Monday
 special_day("EASTERMONDAY")
 # To define a holiday for the day after Christmas, with validity and weight
-special_day("CHRISTMAS", offset = 1, weight = 0.8,
-validity = list(start="2000-01-01", end = "2020-12-01"))
+special_day("CHRISTMAS",
+    offset = 1, weight = 0.8,
+    validity = list(start = "2000-01-01", end = "2020-12-01")
+)
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

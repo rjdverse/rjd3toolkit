@@ -28,6 +28,6 @@ Remark: the length of the series has some impact on the p-values, mainly on
 short series. Not critical.
 }
 \examples{
-s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_modified_qs(s)
 }

@@ -29,7 +29,7 @@ If \code{data} is not a \code{"ts"} object, \code{firstperiod = 1} by default.}
 Combined test on the presence of identifiable seasonality (see Ladiray and Quenneville, 1999).
 }
 \examples{
-s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_combined(s)
 seasonality_combined(random_t(2, 1000), 7)
 }

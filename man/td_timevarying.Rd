@@ -22,6 +22,6 @@ A Chi2 test
 Likelihood ratio test on time varying trading days
 }
 \examples{
-s<-log(ABS$X0.2.20.10.M)
+s <- log(ABS$X0.2.20.10.M)
 td_timevarying(s)
 }

@@ -20,6 +20,6 @@ The differenced series.
 Differencing of a series
 }
 \examples{
-differences(retail$BookStores, c(1,1,12), FALSE)
+differences(retail$BookStores, c(1, 1, 12), FALSE)
 
 }
