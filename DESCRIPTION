@@ -31,7 +31,8 @@ Imports:
     stats,
     utils
 Suggests:
-    spelling
+    spelling, 
+    knitr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
