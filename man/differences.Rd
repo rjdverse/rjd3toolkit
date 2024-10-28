@@ -11,7 +11,7 @@ differences(data, lags = 1, mean = TRUE)
 
 \item{lags}{Lags of the differencing.}
 
-\item{mean}{Mean correction.}
+\item{mean}{Apply a mean correction at the end of the differencing process.}
 }
 \value{
 The differenced series.
@@ -20,6 +20,6 @@ The differenced series.
 Differencing of a series
 }
 \examples{
-differences(retail$BookStores, c(1,1,12), FALSE)
+differences(retail$BookStores, c(1, 1, 12), FALSE)
 
 }

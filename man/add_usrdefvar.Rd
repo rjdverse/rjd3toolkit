@@ -16,7 +16,8 @@ add_usrdefvar(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{group, name}{the name of the regressor in the format \code{"group.name"}, by default \code{"r.name"} by default if \code{group} NULL
 \code{"group.name"} has to be the same as in \code{\link{modelling_context}} (see examples)}
@@ -39,7 +40,7 @@ a specification, the external regressor(s) will also have to be added to a model
 before being used in an estimation process. see \code{\link{modelling_context}} and example.
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+\code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
@@ -53,26 +54,28 @@ for the decomposition.
 \item "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
 \item "Series": after the decomposition the effect is allocated to
 the raw series: \eqn{yc_t=y_t+ effect}
-\item "Seasonally Adjusted": after the decomposition the effect is allocated to
+\item "SeasonallyAdjusted": after the decomposition the effect is allocated to
 the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 }
 }
 \examples{
 # creating one or several external regressors (TS objects),
 # which will be gathered in one or several groups
-iv1<-intervention_variable(12, c(2000, 1), 60,
-starts = "2001-01-01", ends = "2001-12-01")
-iv2<- intervention_variable(12, c(2000, 1), 60,
-starts = "2001-01-01", ends = "2001-12-01", delta = 1)
+iv1 <- intervention_variable(12, c(2000, 1), 60,
+    starts = "2001-01-01", ends = "2001-12-01"
+)
+iv2 <- intervention_variable(12, c(2000, 1), 60,
+    starts = "2001-01-01", ends = "2001-12-01", delta = 1
+)
 # configuration 1: regressors in the same default group (named "r")
-variables<-list("iv1"=iv1, "iv2"=iv2)
+variables <- list("iv1" = iv1, "iv2" = iv2)
 # to use those regressors, input : name=r.iv1 and r.iv2 in add_usrdefvar function
 # configuration 2: group names are user-defined
 # here: regressors as a list of two groups (lists) reg1 and reg2
-vars<-list(reg1=list(iv1 = iv1),reg2=list(iv2 = iv2) )
+vars <- list(reg1 = list(iv1 = iv1), reg2 = list(iv2 = iv2))
 # to use those regressors, input : name=reg1.iv1 and name=reg2.iv2 in add_usrdefvar function
 # creating the modelling context
-my_context<-modelling_context(variables=vars)
+my_context <- modelling_context(variables = vars)
 # customize a default specification
 # init_spec <- rjd3x13::x13_spec("RSA5c")
 # regressors have to be added one by one

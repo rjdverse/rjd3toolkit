@@ -14,21 +14,20 @@ do_stationary(data, period)
 \value{
 Stationary transformation
 \itemize{
-\item ddata: data after differencing
-\item mean: mean correction
-\item differences:
+\item \code{ddata}: data after differencing
+\item \code{mean}: mean correction
+\item \code{differences}:
 \itemize{
-\item lag: ddata(t)=data(t)-data(t-lag)
-\item order: order of the differencing
+\item \code{lag}: \eqn{ddata(t)=data(t)-data(t-lag)}
+\item \code{order}: order of the differencing
 }
 }
 }
 \description{
-Stationary transformation of a series by simple differencing of lag 1.
 Automatic processing (identification of the order of the differencing) based on auto-correlations and on mean correction.
 The series should not be seasonal.
 Source: Tramo
 }
 \examples{
-do_stationary(log(ABS$X0.2.09.10.M),12)
+do_stationary(log(ABS$X0.2.09.10.M), 12)
 }

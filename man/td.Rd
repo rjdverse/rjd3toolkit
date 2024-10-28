@@ -25,7 +25,7 @@ parameters \code{frequency}, \code{start} and \code{length} are ignored.}
 \item{groups}{Groups of days. The length of the array must be 7. It indicates to what group each week day
 belongs. The first item corresponds to Mondays and the last one to Sundays. The group used for contrasts (usually Sundays) is identified by 0.
 The other groups are identified by 1, 2,... n (<= 6). For instance, usual trading days are defined by c(1,2,3,4,5,6,0),
-week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc...}
+week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc.}
 
 \item{contrasts}{If true, the variables are defined by contrasts with the 0-group. Otherwise, raw number of days is provided.}
 }
@@ -46,10 +46,10 @@ the reference group (0).
 \examples{
 # Monthly regressors for Trading Days: each type of day is different
 # contrasts to Sundays (6 series)
-regs_td<- td(12,c(2020,1),60, groups = c(1, 2, 3, 4, 5, 6, 0), contrasts = TRUE)
+regs_td <- td(12, c(2020, 1), 60, groups = c(1, 2, 3, 4, 5, 6, 0), contrasts = TRUE)
 # Quarterly regressors for Working Days: week days are similar
 # contrasts to week-end days (1 series)
-regs_wd<- td(4,c(2020,1),60, groups = c(1, 1, 1, 1, 1, 0, 0), contrasts = TRUE)
+regs_wd <- td(4, c(2020, 1), 60, groups = c(1, 1, 1, 1, 1, 0, 0), contrasts = TRUE)
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

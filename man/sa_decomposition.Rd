@@ -39,7 +39,7 @@ the seasonally adjusted and the trend; \code{"seas-irr"} plots the seasonal and 
 
 \item{caption}{the caption of the plot.}
 
-\item{colors}{the colors used in the plot.}
+\item{colors}{the colours used in the plot.}
 }
 \value{
 \code{"JD3_SADECOMPOSITION"} object.

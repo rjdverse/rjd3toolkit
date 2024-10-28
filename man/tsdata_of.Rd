@@ -12,7 +12,7 @@ tsdata_of(values, dates)
 \item{dates}{Dates of the values (could be any date inside the considered period)}
 }
 \value{
-A ts object. The frequency will be identified automatically and missing values will be added in need be.
+A \code{ts} object. The frequency will be identified automatically and missing values will be added in need be.
 The identified frequency will be the lowest frequency that match the figures.
 The provided data can contain missing values (NA)
 }
@@ -21,7 +21,9 @@ Title
 }
 \examples{
 # Annual series
-s<-tsdata_of(c(1,2,3,4), c("1990-01-01", "1995-01-01", "1996-01-01", "2000-11-01"))
+s <- tsdata_of(c(1, 2, 3, 4), c("1990-01-01", "1995-01-01", "1996-01-01",
+        "2000-11-01"))
 # Quarterly series
-t<-tsdata_of(c(1,2,3,NA,4), c("1990-01-01", "1995-01-01", "1996-01-01", "2000-08-01", "2000-11-01"))
+t <- tsdata_of(c(1, 2, 3, NA, 4), c("1990-01-01", "1995-01-01", "1996-01-01",
+        "2000-08-01", "2000-11-01"))
 }

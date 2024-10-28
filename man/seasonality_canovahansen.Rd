@@ -2,21 +2,41 @@
 % Please edit documentation in R/tests_seasonality.R
 \name{seasonality_canovahansen}
 \alias{seasonality_canovahansen}
-\title{Seasonal Canova-Hansen test}
+\title{Canova-Hansen seasonality test}
 \usage{
-seasonality_canovahansen(data, p0, p1, np, original = FALSE)
+seasonality_canovahansen(
+  data,
+  period,
+  type = c("Contrast", "Dummy", "Trigonometric"),
+  lag1 = TRUE,
+  kernel = c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
+  order = NA,
+  start = 1
+)
 }
 \arguments{
 \item{data}{the input data.}
 
-\item{p0}{Initial periodicity (included).}
+\item{period}{Tested periodicity. Can be missing if the input is a time series}
 
-\item{p1}{Final periodicity (included).}
+\item{type}{Trigonometric variables, seasonal dummies or seasonal contrasts.}
 
-\item{np}{Number of periodicities equally spaced in \eqn{[p_0,p_1]}.}
+\item{lag1}{Lagged variable in the regression model.}
 
-\item{original}{\code{TRUE} for original algorithm, \code{FALSE} for solution proposed by T. Proietti (based on Ox code).}
+\item{kernel}{Kernel used to compute the robust Newey-West covariance matrix.}
+
+\item{order}{The truncation parameter used to compute the robust Newey-West covariance matrix.}
+
+\item{start}{Position of the first observation of the series}
+}
+\value{
+list with the FTest on seasonal variables, the joint test and the details for the stability of the different seasonal variables
 }
 \description{
-Seasonal Canova-Hansen test
+Canova-Hansen seasonality test
+}
+\examples{
+s <- log(ABS$X0.2.20.10.M)
+seasonality_canovahansen(s, 12, type = "Contrast")
+seasonality_canovahansen(s, 12, type = "Trigonometric")
 }

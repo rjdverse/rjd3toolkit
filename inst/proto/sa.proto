@@ -18,13 +18,15 @@ enum ComponentType{
 }
 
 enum DecompositionMode {
-  UNKNOWN = 0;	
+  UNKNOWN = 0;
   /* Y = T + S + I) */
   ADDITIVE = 1;
   /* Y = T * S * I) */
   MULTIPLICATIVE = 2;
+  /* LOG(Y) = T + S + I */
+  LOGADDITIVE = 3;
   /* Y = T * (S + I - 1) */
-  PSEUDOADDITIVE = 3;
+  PSEUDOADDITIVE = 4;
 }
 
 message SaDecomposition{

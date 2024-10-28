@@ -7,15 +7,25 @@
 ucarima_estimate(x, ucm, stdev = TRUE)
 }
 \arguments{
-\item{x}{univariate time series}
+\item{x}{Univariate time series}
 
-\item{ucm}{UCARIMA model returned by \code{\link[=ucarima_model]{ucarima_model()}}.}
+\item{ucm}{An UCARIMA model returned by \code{\link[=ucarima_model]{ucarima_model()}}.}
 
-\item{stdev}{}
+\item{stdev}{TRUE if standard deviation of the components are computed}
 }
 \value{
-matrix containing the different components.
+A matrix containing the different components and their standard deviations if stdev is TRUE.
 }
 \description{
 Estimate UCARIMA Model
+}
+\examples{
+mod1 <- arima_model("trend", delta = c(1, -2, 1))
+mod2 <- arima_model("noise", var = 16)
+hp <- ucarima_model(components = list(mod1, mod2))
+s <- log(aggregate(retail$AutomobileDealers))
+all <- ucarima_estimate(s, hp, stdev = TRUE)
+plot(s, type = "l")
+t <- ts(all[, 1], frequency = frequency(s), start = start(s))
+lines(t, col = "blue")
 }

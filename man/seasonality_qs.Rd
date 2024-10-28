@@ -2,26 +2,30 @@
 % Please edit documentation in R/tests_seasonality.R
 \name{seasonality_qs}
 \alias{seasonality_qs}
-\title{QS Seasonality Test}
+\title{QS (seasonal Ljung-Box) test.}
 \usage{
-seasonality_qs(data, period, nyears = 0)
+seasonality_qs(data, period = NA, nyears = 0, type = 1)
 }
 \arguments{
 \item{data}{the input data.}
 
-\item{period}{Tested periodicity.}
+\item{period}{Tested periodicity. Can be missing if the input is a time series}
 
-\item{nyears}{Number of number of periods number of cycles considered in the test, at the end of the series:
+\item{nyears}{Number of periods or number of cycles considered in the test, at the end of the series:
 in periods (positive value) or years (negative values).
 By default (\code{nyears = 0}), the entire sample is used.}
+
+\item{type}{1 for positive autocorrelations, -1 for negative autocorrelations,
+0 for all autocorrelations. By default (\code{type = 1})}
 }
 \value{
 A \code{c("JD3_TEST", "JD3")} object (see \code{\link[=statisticaltest]{statisticaltest()}} for details).
 }
 \description{
-QS (modified seasonal Ljung-Box) test.
+QS (seasonal Ljung-Box) test.
 }
 \examples{
-seasonality_qs(ABS$X0.2.09.10.M, 12)
+s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
+seasonality_qs(s)
 seasonality_qs(random_t(2, 1000), 7)
 }

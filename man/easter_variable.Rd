@@ -40,8 +40,8 @@ A time series (object of class \code{"ts"})
 Allows to generate a regressor taking into account the (Julian) Easter effect in monthly or quarterly time series.
 }
 \examples{
-#Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
-ee<-easter_variable(12, c(2020,1),length=5*12,duration=8, endpos=1)
+# Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
+ee <- easter_variable(12, c(2020, 1), length = 5 * 12, duration = 8, endpos = 1)
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

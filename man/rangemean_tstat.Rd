@@ -31,7 +31,7 @@ T-Stat of the slope of the range-mean regression.
 }
 \description{
 Function to perform a range-mean regression, trimmed to avoid outlier distortion.
-The slope is used in TRAMO to select whether the original series will be transformed into log or maintain in level.
+The can be used to select whether the original series will be transformed into log or maintain in level.
 }
 \details{
 First, the data is divided into \eqn{n} groups of successive observations of length \eqn{l} (\code{groupsize}).
@@ -49,19 +49,19 @@ The function \code{rangemean_tstat} returns the T-statistic associated to \eqn{\
 If it is significantly higher than 0, log transformation is recommended.
 }
 \examples{
-y = ABS$X0.2.09.10.M
+y <- ABS$X0.2.09.10.M
 # Multiplicative pattern
 plot(y)
-period = 12
-rm_t = rangemean_tstat(y, period = period, groupsize = period)
+period <- 12
+rm_t <- rangemean_tstat(y, period = period, groupsize = period)
 rm_t # higher than 0
 # Can be tested:
 pt(rm_t, period - 2, lower.tail = FALSE)
 # Or :
-1-cdf_t(period-2, rm_t)
+1 - cdf_t(period - 2, rm_t)
 
 # Close to 0
-rm_t_log = rangemean_tstat(log(y), period = period, groupsize = period)
+rm_t_log <- rangemean_tstat(log(y), period = period, groupsize = period)
 rm_t_log
 pt(rm_t_log, period - 2, lower.tail = FALSE)
 }

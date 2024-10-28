@@ -15,7 +15,7 @@ ljungbox(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE)
 
 \item{nhp}{number of hyper parameters (to correct the degree of freedom)}
 
-\item{sign}{if \code{sign = 1}, only positive auto-corrrelations are considered in the test.
+\item{sign}{if \code{sign = 1}, only positive auto-correlations are considered in the test.
 If \code{sign = -1}, only negative auto-correlations are considered.
 If \code{sign = 0}, all auto-correlations are integrated in the test.}
 
@@ -29,6 +29,6 @@ A \code{c("JD3_TEST", "JD3")} object (see \code{\link[=statisticaltest]{statisti
 Compute Ljung-Box test to check the independence of a data.
 }
 \examples{
-ljungbox(random_t(2, 100), lag = 24, k =1)
-ljungbox(ABS$X0.2.09.10.M, lag = 24, k =1)
+ljungbox(random_t(2, 100), lag = 24, k = 1)
+ljungbox(ABS$X0.2.09.10.M, lag = 24, k = 1)
 }

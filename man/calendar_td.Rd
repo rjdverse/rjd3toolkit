@@ -29,7 +29,7 @@ parameters \code{frequency}, \code{start} and \code{length} are ignored.}
 \item{groups}{Groups of days. The length of the array must be 7. It indicates to what group each week day
 belongs. The first item corresponds to Mondays and the last one to Sundays. The group used for contrasts (usually Sundays) is identified by 0.
 The other groups are identified by 1, 2,... n (<= 6). For instance, usual trading days are defined by c(1,2,3,4,5,6,0),
-week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc...}
+week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc.}
 
 \item{holiday}{Day to aggregate holidays with. (holidays are considered as that day).
 1 for Monday... 7 for Sunday. Doesn't necessary belong to the 0-group.}
@@ -55,7 +55,7 @@ Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
 }
 \examples{
 BE <- national_calendar(list(
-    fixed_day(7,21),
+    fixed_day(7, 21),
     special_day("NEWYEAR"),
     special_day("CHRISTMAS"),
     special_day("MAYDAY"),
@@ -64,9 +64,12 @@ BE <- national_calendar(list(
     special_day("WHITMONDAY"),
     special_day("ASSUMPTION"),
     special_day("ALLSAINTSDAY"),
-    special_day("ARMISTICE")))
-calendar_td(BE, 12, c(1980,1), 240, holiday=7, groups=c(1,1,1,2,2,3,0),
-contrasts = FALSE)
+    special_day("ARMISTICE")
+))
+calendar_td(BE, 12, c(1980, 1), 240,
+    holiday = 7, groups = c(1, 1, 1, 2, 2, 3, 0),
+    contrasts = FALSE
+)
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

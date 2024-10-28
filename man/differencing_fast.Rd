@@ -15,24 +15,24 @@ differencing_fast(data, period, mad = TRUE, centile = 90, k = 1.2)
 
 \item{centile}{Percentage of the data used for computing the variance (90 by default).}
 
-\item{k}{tolerance in the decrease of the variance. The algorithm stops if the new varance is higher than k*the old variance.}
+\item{k}{tolerance in the decrease of the variance. The algorithm stops if the new variance is higher than k*the old variance. k should be equal or slightly higher than 1 (1.2 by default)}
 }
 \value{
 Stationary transformation
 \itemize{
-\item ddata: data after differencing
-\item mean: mean correction
-\item differences:
+\item \code{ddata}: data after differencing
+\item \code{mean}: mean correction
+\item \code{differences}:
 \itemize{
-\item lag: ddata(t)=data(t)-data(t-lag)
-\item order: order of the differencing
+\item \code{lag}: \eqn{ddata(t)=data(t)-data(t-lag)}
+\item \code{order}: order of the differencing
 }
 }
 }
 \description{
-The series is differentiated till its variance is decreasing.
+The series is differenced till its variance is decreasing.
 }
 \examples{
-differencing_fast(log(ABS$X0.2.09.10.M),12)
+differencing_fast(log(ABS$X0.2.09.10.M), 12)
 
 }

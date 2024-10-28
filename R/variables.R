@@ -16,33 +16,33 @@ NULL
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @examples
-#' #Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
-#' ee<-easter_variable(12, c(2020,1),length=5*12,duration=8, endpos=1)
+#' # Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
+#' ee <- easter_variable(12, c(2020, 1), length = 5 * 12, duration = 8, endpos = 1)
 #' @export
-easter_variable<-function(frequency, start, length, s, duration=6, endpos=-1,
-                          correction=c("Simple", "PreComputed", "Theoretical", "None")){
-  correction<-match.arg(correction)
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "easter", jdom, as.integer(duration), as.integer(endpos), correction)
-  return(ts(data, frequency = frequency, start= start))
+easter_variable <- function(frequency, start, length, s, duration = 6, endpos = -1,
+                            correction = c("Simple", "PreComputed", "Theoretical", "None")) {
+    correction <- match.arg(correction)
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "easter", jdom, as.integer(duration), as.integer(endpos), correction)
+    return(ts(data, frequency = frequency, start = start))
 }
 
 #' @rdname easter_variable
 #' @export
-julianeaster_variable<-function(frequency, start, length, s, duration=6){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "julianEaster", jdom, as.integer(duration))
-  return(ts(data, frequency = frequency, start= start))
+julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "julianEaster", jdom, as.integer(duration))
+    return(ts(data, frequency = frequency, start = start))
 }
 
 #' Leap Year regressor
@@ -61,19 +61,19 @@ julianeaster_variable<-function(frequency, start, length, s, duration=6){
 #'
 #' @examples
 #' # Leap years occur in year 2000, 2004, 2008 and 2012
-#' lp_variable(4, start = c(2000, 1), length = 4*13)
-#' lper<-lp_variable(12,c(2000,1),length=10*12,type ="LengthOfPeriod")
-lp_variable<-function(frequency, start, length, s, type=c("LeapYear", "LengthOfPeriod")){
-  type<-match.arg(type)
-  lp<-type == "LeapYear"
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "leapYear", jdom, as.logical(lp))
-  return(ts(data, frequency = frequency, start= start))
+#' lp_variable(4, start = c(2000, 1), length = 4 * 13)
+#' lper <- lp_variable(12, c(2000, 1), length = 10 * 12, type = "LengthOfPeriod")
+lp_variable <- function(frequency, start, length, s, type = c("LeapYear", "LengthOfPeriod")) {
+    type <- match.arg(type)
+    lp <- type == "LeapYear"
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "leapYear", jdom, as.logical(lp))
+    return(ts(data, frequency = frequency, start = start))
 }
 
 #' Generating Outlier regressors
@@ -103,79 +103,83 @@ lp_variable<-function(frequency, start, length, s, type=c("LeapYear", "LengthOfP
 #' @export
 #'
 #' @examples
-#' #Outliers in February 2002
-#' ao <- ao_variable(12, c(2000,1), length = 12*4, date = "2002-02-01")
-#' ls <- ls_variable(12, c(2000,1), length = 12*4, date = "2002-02-01")
-#' tc <- tc_variable(12, c(2000,1), length = 12*4, date = "2002-02-01")
-#' so <- so_variable(12, c(2000,1), length = 12*4, date = "2002-02-01")
-#' plot.ts(ts.union(ao, ls, tc, so), plot.type = "single",
-#'         col = c("black", "orange", "green", "gray"))
+#' # Outliers in February 2002
+#' ao <- ao_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
+#' ls <- ls_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
+#' tc <- tc_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
+#' so <- so_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
+#' plot.ts(ts.union(ao, ls, tc, so),
+#'     plot.type = "single",
+#'     col = c("black", "orange", "green", "gray")
+#' )
 #' @name outliers_variables
 #' @rdname outliers_variables
-ao_variable<-function(frequency, start, length, s, pos, date=NULL){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  if (is.null(date)){
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ao", jdom, as.integer(pos-1))
-  } else {
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ao", jdom, as.character(date))
-  }
-  return(ts(data, frequency = frequency, start= start))
+ao_variable <- function(frequency, start, length, s, pos, date = NULL) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    if (is.null(date)) {
+        data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ao", jdom, as.integer(pos - 1))
+    } else {
+        data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ao", jdom, as.character(date))
+    }
+    return(ts(data, frequency = frequency, start = start))
 }
 #' @export
 #' @rdname outliers_variables
-tc_variable<-function(frequency, start, length, s, pos, date=NULL, rate=0.7){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  if (is.null(date)){
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "tc", jdom, as.integer(pos-1), rate)
-  } else {
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "tc", jdom, as.character(date), rate)
-  }
-  return(ts(data, frequency = frequency, start= start))
-}
-
-#' @export
-#' @rdname outliers_variables
-ls_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRUE){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  if (is.null(date)){
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ls", jdom, as.integer(pos-1), as.logical(zeroended))
-  } else {
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ls", jdom, as.character(date), as.logical(zeroended))
-  }
-  return(ts(data, frequency = frequency, start= start))
+tc_variable <- function(frequency, start, length, s, pos, date = NULL, rate = 0.7) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    if (is.null(date)) {
+        data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "tc", jdom, as.integer(pos - 1), rate)
+    } else {
+        data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "tc", jdom, as.character(date), rate)
+    }
+    return(ts(data, frequency = frequency, start = start))
 }
 
 #' @export
 #' @rdname outliers_variables
-so_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRUE){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  if (is.null(date)){
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "so", jdom, as.integer(pos-1), as.logical(zeroended))
-  } else {
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "so", jdom, as.character(date),
-                 as.logical(zeroended))
-  }
-  return(ts(data, frequency = frequency, start= start))
+ls_variable <- function(frequency, start, length, s, pos, date = NULL, zeroended = TRUE) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    if (is.null(date)) {
+        data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ls", jdom, as.integer(pos - 1), as.logical(zeroended))
+    } else {
+        data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ls", jdom, as.character(date), as.logical(zeroended))
+    }
+    return(ts(data, frequency = frequency, start = start))
+}
+
+#' @export
+#' @rdname outliers_variables
+so_variable <- function(frequency, start, length, s, pos, date = NULL, zeroended = TRUE) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    if (is.null(date)) {
+        data <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "so", jdom, as.integer(pos - 1), as.logical(zeroended))
+    } else {
+        data <- .jcall(
+            "jdplus/toolkit/base/r/modelling/Variables", "[D", "so", jdom, as.character(date),
+            as.logical(zeroended)
+        )
+    }
+    return(ts(data, frequency = frequency, start = start))
 }
 
 #' Ramp regressor
@@ -198,28 +202,32 @@ so_variable<-function(frequency, start, length, s, pos, date=NULL, zeroended=TRU
 #'
 #' @examples
 #' # Ramp variable from January 2001 to September 2001
-#' rp <- ramp_variable(12, c(2000,1), length = 12*4, range = c(13, 21))
+#' rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c(13, 21))
 #' # Or equivalently
-#' rp<-ramp_variable(12, c(2000,1), length = 12*4, range = c("2001-01-01", "2001-09-02"))
+#' rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c("2001-01-01", "2001-09-02"))
 #' plot.ts(rp)
-ramp_variable<-function(frequency, start, length, s, range){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  if (length(range) != 2) stop("Invalid range")
-  if (is.character(range)){
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ramp", jdom,
-                 as.character(range[1]),
-                 as.character(range[2]))
-  } else {
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "ramp", jdom,
-                 as.integer(range[1]-1),
-                 as.integer(range[2]-1))
-  }
-  return(ts(data, frequency = frequency, start= start))
+ramp_variable <- function(frequency, start, length, s, range) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    if (length(range) != 2) stop("Invalid range")
+    if (is.character(range)) {
+        data <- .jcall(
+            "jdplus/toolkit/base/r/modelling/Variables", "[D", "ramp", jdom,
+            as.character(range[1]),
+            as.character(range[2])
+        )
+    } else {
+        data <- .jcall(
+            "jdplus/toolkit/base/r/modelling/Variables", "[D", "ramp", jdom,
+            as.integer(range[1] - 1),
+            as.integer(range[2] - 1)
+        )
+    }
+    return(ts(data, frequency = frequency, start = start))
 }
 
 #' Intervention variable
@@ -244,17 +252,19 @@ ramp_variable<-function(frequency, start, length, s, range){
 #' the cumulative sum of temporary level shifts, once differenced the regressor will become a classical level shift.
 #'
 #' @examples
-#' iv1<-intervention_variable(12, c(2000, 1), 60,
-#'     starts = "2001-01-01", ends = "2001-12-01")
+#' iv1 <- intervention_variable(12, c(2000, 1), 60,
+#'     starts = "2001-01-01", ends = "2001-12-01"
+#' )
 #' plot(iv1)
-#' iv2<- intervention_variable(12, c(2000, 1), 60,
-#'     starts = "2001-01-01", ends = "2001-12-01", delta = 1)
-#' plot (iv2)
+#' iv2 <- intervention_variable(12, c(2000, 1), 60,
+#'     starts = "2001-01-01", ends = "2001-12-01", delta = 1
+#' )
+#' plot(iv2)
 #' # using one variable in a a seasonal adjustment process
 #' # regressors as a list of two groups reg1 and reg2
-#' vars<-list(reg1=list(x = iv1),reg2=list(x = iv2) )
+#' vars <- list(reg1 = list(x = iv1), reg2 = list(x = iv2))
 #' # creating the modelling context
-#' my_context<-modelling_context(variables=vars)
+#' my_context <- modelling_context(variables = vars)
 #' # customize a default specification
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<- add_usrdefvar(init_spec,id = "reg1.iv1", regeffect="Trend")
@@ -266,68 +276,72 @@ ramp_variable<-function(frequency, start, length, s, range){
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 
 #' @export
-intervention_variable<-function(frequency, start, length, s, starts, ends, delta=0, seasonaldelta=0){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  if (length(starts) != length(ends)) stop("Invalid spans in intervention variable")
+intervention_variable <- function(frequency, start, length, s, starts, ends, delta = 0, seasonaldelta = 0) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    if (length(starts) != length(ends)) stop("Invalid spans in intervention variable")
 
-  jdom<-.r2jd_tsdomain(frequency, start[1], start[2], length)
-  if (is.character(starts) && is.character(ends)){
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "interventionVariable", jdom,
-                 delta,
-                 seasonaldelta,
-                 .jarray(as.character(starts)),
-                 .jarray(as.character(ends)))
-  } else {
-    data<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "[D", "interventionVariable", jdom,
-                 delta,
-                 seasonaldelta,
-                 .jarray(as.integer(starts-1)),
-                 .jarray(as.integer(ends-1)))
-  }
-  return(ts(data, frequency = frequency, start= start))
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    if (is.character(starts) && is.character(ends)) {
+        data <- .jcall(
+            "jdplus/toolkit/base/r/modelling/Variables", "[D", "interventionVariable", jdom,
+            delta,
+            seasonaldelta,
+            .jarray(as.character(starts)),
+            .jarray(as.character(ends))
+        )
+    } else {
+        data <- .jcall(
+            "jdplus/toolkit/base/r/modelling/Variables", "[D", "interventionVariable", jdom,
+            delta,
+            seasonaldelta,
+            .jarray(as.integer(starts - 1)),
+            .jarray(as.integer(ends - 1))
+        )
+    }
+    return(ts(data, frequency = frequency, start = start))
 }
 
 #' Periodic dummies and contrasts
 #'
-#'@inheritParams outliers_variables
-#'@details
+#' @inheritParams outliers_variables
+#' @details
 #' The function periodic.dummies creates as many time series as types of periods in a year (4 or 12)
 #' with the value one only for one given type of period (ex Q1)
-#' The function periodic.contrasts is based on periodic.dummies but adds -1 to the period preeceding a 1.
-#'@examples
+#' The periodic.contrasts function is based on periodic.dummies but adds -1 to the period preceding a 1.
+#' @examples
 #' # periodic dummies for a quarterly series
-#' p<-periodic.dummies(4, c(2000,1), 60)
-#' #periodic contrasts for a quarterly series
-#'q<-periodic.contrasts(4, c(2000,1), 60)
-#'q[1:9,]
-#'@export
-periodic.dummies <-function(frequency, start, length, s){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-  jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicDummies", jdom)
-  data <- .jd2r_matrix(jm)
-  return(ts(data, frequency = frequency, start= start))
+#' p <- periodic.dummies(4, c(2000, 1), 60)
+#' # periodic contrasts for a quarterly series
+#' q <- periodic.contrasts(4, c(2000, 1), 60)
+#' q[1:9, ]
+#' @export
+periodic.dummies <- function(frequency, start, length, s) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    jm <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicDummies", jdom)
+    data <- .jd2r_matrix(jm)
+    return(ts(data, frequency = frequency, start = start))
 }
-#'@export
-#'@rdname periodic.dummies
-periodic.contrasts <-function(frequency, start, length, s){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-  jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicContrasts", jdom)
-  data <- .jd2r_matrix(jm)
-  return(ts(data, frequency = frequency, start= start))
+#' @export
+#' @rdname periodic.dummies
+periodic.contrasts <- function(frequency, start, length, s) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+    jm <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicContrasts", jdom)
+    data <- .jd2r_matrix(jm)
+    return(ts(data, frequency = frequency, start = start))
 }
 #' Trigonometric variables
 #'
@@ -375,24 +389,28 @@ periodic.contrasts <-function(frequency, start, length, s){
 #'
 #' @export
 trigonometric_variables <- function(frequency, start, length, s,
-                                    seasonal_frequency = NULL){
-  if (!missing(s) && is.ts(s)) {
-    frequency<-stats::frequency(s)
-    start<-stats::start(s)
-    length<-.length_ts(s)
-  }
-  jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
+                                    seasonal_frequency = NULL) {
+    if (!missing(s) && is.ts(s)) {
+        frequency <- stats::frequency(s)
+        start <- stats::start(s)
+        length <- .length_ts(s)
+    }
+    jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
 
-  if (!is.null(seasonal_frequency))
-    seasonal_frequency <- as.integer(seasonal_frequency)
-  jm<-.jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "trigonometricVariables",
-             jdom, .jarray(seasonal_frequency))
-  data <- .jd2r_matrix(jm)
+    if (!is.null(seasonal_frequency)) {
+        seasonal_frequency <- as.integer(seasonal_frequency)
+    }
+    jm <- .jcall(
+        "jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "trigonometricVariables",
+        jdom, .jarray(seasonal_frequency)
+    )
+    data <- .jd2r_matrix(jm)
 
-  if (ncol(data) %% 2 == 1)
-    data <- cbind(data, 0)
+    if (ncol(data) %% 2 == 1) {
+        data <- cbind(data, 0)
+    }
 
-  return(ts(data, frequency = frequency, start = start))
+    return(ts(data, frequency = frequency, start = start))
 }
 
 # Denote by \eqn{l} the value of \code{length},

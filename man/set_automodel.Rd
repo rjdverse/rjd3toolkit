@@ -23,7 +23,8 @@ set_automodel(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{enabled}{\code{logical}. If \code{TRUE}, the automatic modelling of the ARIMA model is enabled.
 If \code{FALSE}, the parameters of the ARIMA model can be specified.}
@@ -90,7 +91,7 @@ and the model with the best fit is selected. Criteria considered are residual di
 Function allowing to customize Arima model identification procedure.
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
+\code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).

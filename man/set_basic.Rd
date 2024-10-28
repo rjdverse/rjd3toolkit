@@ -16,33 +16,39 @@ set_basic(
 )
 }
 \arguments{
-\item{x}{the specification to customize, must be a "SPEC" class object (see details).}
+\item{x}{the specification to customize, must be a "SPEC" class object (see
+details).}
 
 \item{type, d0, d1, n0, n1}{parameters to specify the sub-span .
 
-\code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify first/last date
-of the span when \code{type} equals to \code{"From"}, \code{"To"} or \code{"Between"}.
+\code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify
+first/last date of the span when \code{type} equals to \code{"From"},
+\code{"To"} or \code{"Between"}.
 Date corresponding to \code{d0} will be included in the sub-span
 Date corresponding to \code{d1} will be excluded from the sub span
 
-\code{n0} and \code{n1} numeric to specify the number of periods at the beginning/end of the series
-to be used for defining the sub-span
-(\code{type} equals to \code{"First"}, \code{"Last"}) or to exclude (\code{type} equals to \code{"Excluding"}).}
+\code{n0} and \code{n1} numeric to specify the number of periods at the
+beginning/end of the series to be used for defining the sub-span
+(\code{type} equals to \code{"First"}, \code{"Last"}) or to exclude
+(\code{type} equals to \code{"Excluding"}).}
 
-\item{preliminary.check}{a Boolean to check the quality of the input series and exclude highly problematic ones
-(e.g. the series with a number of identical observations and/or missing values above pre-specified threshold values).}
+\item{preliminary.check}{a Boolean to check the quality of the input series
+and exclude highly problematic ones (e.g. the series with a number of
+identical observations and/or missing values above pre-specified threshold
+values).}
 
 \item{preprocessing}{(REGARIMA/X13 Specific) a Boolean to enable/disable the pre-processing.
 Option disabled for the moment.}
 }
 \description{
-Function allowing to check if the series can be processed and to define a sub-span on which
-estimation will be performed
+Function allowing to check if the series can be processed and to define a
+sub-span on which estimation will be performed
 }
 \details{
-\code{x} specification param must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-(or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+\code{x} specification parameter must be a JD3_X13_SPEC" class object
+generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+\code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{

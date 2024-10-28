@@ -337,7 +337,27 @@ DATE_MIN
 DATE_MAX
 }
 \arguments{
-\item{p, r, spec, model, jucm, start, end, name, s, period, startYear, startPeriod, length, type, code, prefix, span, rspan, full, rslt, jobj, jrslt, jd, jcontext, jobjRef, subclasses, result, pcalendar}{parameters.}
+\item{s}{Time series}
+
+\item{startYear}{Initial year in the time domain}
+
+\item{startPeriod}{Initial period in the time domain(1 for the first period)}
+
+\item{length}{Length}
+
+\item{p, r, spec, jucm, start, end, name, period, type, code, prefix, span, rspan, full, rslt, jd, jcontext, jobjRef, jcals, subclasses, result, pcalendar}{parameters.}
+
+\item{model}{Model}
+
+\item{jobj}{Java object}
+
+\item{jrslt}{Reference to a Java object}
+
+\item{js}{Java time series}
+
+\item{source}{Source of the time series information}
+
+\item{id}{Identifier of the time series information (source-dependent)}
 }
 \description{
 These functions are used in all JDemetra+ 3.0 packages to easily interact between R and Java objects.
