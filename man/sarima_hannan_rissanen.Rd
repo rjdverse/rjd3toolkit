@@ -32,5 +32,5 @@ Title
 }
 \examples{
 y <- ABS$X0.2.09.10.M
-sarima_hannan_rissanen(y, order = c(0,1,1), seasonal = c(0,1,1))
+sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 }

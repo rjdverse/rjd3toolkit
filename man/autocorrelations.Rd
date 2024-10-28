@@ -26,7 +26,7 @@ If \code{FALSE}, we consider that the (known) mean is 0 and that the series has 
 Autocorrelation Functions
 }
 \examples{
-x = ABS$X0.2.09.10.M
+x <- ABS$X0.2.09.10.M
 autocorrelations(x)
 autocorrelations_partial(x)
 autocorrelations_inverse(x)

@@ -46,7 +46,7 @@ Set of functions to test the normality of a time series.
 
 }}
 \examples{
-x <- rnorm(100)  # null
+x <- rnorm(100) # null
 bowmanshenton(x)
 doornikhansen(x)
 jarquebera(x)

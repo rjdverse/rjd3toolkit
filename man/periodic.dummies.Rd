@@ -28,8 +28,8 @@ The periodic.contrasts function is based on periodic.dummies but adds -1 to the 
 }
 \examples{
 # periodic dummies for a quarterly series
-p<-periodic.dummies(4, c(2000,1), 60)
-#periodic contrasts for a quarterly series
-q<-periodic.contrasts(4, c(2000,1), 60)
-q[1:9,]
+p <- periodic.dummies(4, c(2000, 1), 60)
+# periodic contrasts for a quarterly series
+q <- periodic.contrasts(4, c(2000, 1), 60)
+q[1:9, ]
 }

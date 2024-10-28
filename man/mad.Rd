@@ -20,6 +20,6 @@ The median absolute deviation
 Compute a robust median absolute deviation (MAD)
 }
 \examples{
-y<-rnorm(1000)
-m<-rjd3toolkit::mad(y, centile=70)
+y <- rnorm(1000)
+m <- rjd3toolkit::mad(y, centile = 70)
 }

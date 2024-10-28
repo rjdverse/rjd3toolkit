@@ -33,6 +33,6 @@ Stationary transformation
 The series is differenced till its variance is decreasing.
 }
 \examples{
-differencing_fast(log(ABS$X0.2.09.10.M),12)
+differencing_fast(log(ABS$X0.2.09.10.M), 12)
 
 }

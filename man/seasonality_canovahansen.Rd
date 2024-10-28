@@ -36,7 +36,7 @@ list with the FTest on seasonal variables, the joint test and the details for th
 Canova-Hansen seasonality test
 }
 \examples{
-s<-log(ABS$X0.2.20.10.M)
-seasonality_canovahansen(s, 12, type="Contrast")
-seasonality_canovahansen(s, 12, type="Trigonometric")
+s <- log(ABS$X0.2.20.10.M)
+seasonality_canovahansen(s, 12, type = "Contrast")
+seasonality_canovahansen(s, 12, type = "Trigonometric")
 }

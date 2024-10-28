@@ -25,7 +25,7 @@ Friedman Seasonality Test
 Non parametric test ("ANOVA"-type).
 }
 \examples{
-s<-do_stationary(log(ABS$X0.2.09.10.M))$ddata
+s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_friedman(s)
 seasonality_friedman(random_t(2, 1000), 12)
 }
