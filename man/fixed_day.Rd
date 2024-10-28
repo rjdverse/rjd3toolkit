@@ -22,10 +22,10 @@ like Christmas which is always celebrated on December 25th.
 }
 \examples{
 day <- fixed_day(7, 21, .9)
-day  # July 21st, with weight=0.9, on the whole sample
+day # July 21st, with weight=0.9, on the whole sample
 day <- fixed_day(12, 25, .5, validity = list(start = "2010-01-01"))
 day # December 25th, with weight=0.5, from January 2010
-day <- fixed_day(12, 25, .5, validity = list(start="1968-02-01", end = "2010-01-01"))
+day <- fixed_day(12, 25, .5, validity = list(start = "1968-02-01", end = "2010-01-01"))
 day # December 25th, with weight=0.9, from February 1968 until January 2010
 }
 \references{

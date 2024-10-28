@@ -54,26 +54,28 @@ for the decomposition.
 \item "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
 \item "Series": after the decomposition the effect is allocated to
 the raw series: \eqn{yc_t=y_t+ effect}
-\item "Seasonally Adjusted": after the decomposition the effect is allocated to
+\item "SeasonallyAdjusted": after the decomposition the effect is allocated to
 the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 }
 }
 \examples{
 # creating one or several external regressors (TS objects),
 # which will be gathered in one or several groups
-iv1<-intervention_variable(12, c(2000, 1), 60,
-starts = "2001-01-01", ends = "2001-12-01")
-iv2<- intervention_variable(12, c(2000, 1), 60,
-starts = "2001-01-01", ends = "2001-12-01", delta = 1)
+iv1 <- intervention_variable(12, c(2000, 1), 60,
+    starts = "2001-01-01", ends = "2001-12-01"
+)
+iv2 <- intervention_variable(12, c(2000, 1), 60,
+    starts = "2001-01-01", ends = "2001-12-01", delta = 1
+)
 # configuration 1: regressors in the same default group (named "r")
-variables<-list("iv1"=iv1, "iv2"=iv2)
+variables <- list("iv1" = iv1, "iv2" = iv2)
 # to use those regressors, input : name=r.iv1 and r.iv2 in add_usrdefvar function
 # configuration 2: group names are user-defined
 # here: regressors as a list of two groups (lists) reg1 and reg2
-vars<-list(reg1=list(iv1 = iv1),reg2=list(iv2 = iv2) )
+vars <- list(reg1 = list(iv1 = iv1), reg2 = list(iv2 = iv2))
 # to use those regressors, input : name=reg1.iv1 and name=reg2.iv2 in add_usrdefvar function
 # creating the modelling context
-my_context<-modelling_context(variables=vars)
+my_context <- modelling_context(variables = vars)
 # customize a default specification
 # init_spec <- rjd3x13::x13_spec("RSA5c")
 # regressors have to be added one by one

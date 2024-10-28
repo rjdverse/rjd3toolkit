@@ -27,6 +27,6 @@ list with the ftest on td, the joint test and the details for the stability of t
 Canova-Hansen test for stable trading days
 }
 \examples{
-s<-log(ABS$X0.2.20.10.M)
-td_canovahansen(s, c(1,12))
+s <- log(ABS$X0.2.20.10.M)
+td_canovahansen(s, c(1, 12))
 }

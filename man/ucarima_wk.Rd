@@ -24,10 +24,10 @@ A list with the (pseudo-)spectrum, the weights of the filter and the squared-gai
 Wiener Kolmogorov Estimators
 }
 \examples{
-mod1 <- arima_model("trend", delta = c(1,-2,1))
+mod1 <- arima_model("trend", delta = c(1, -2, 1))
 mod2 <- arima_model("noise", var = 1600)
-hp<-ucarima_model(components=list(mod1, mod2))
-wk1<-ucarima_wk(hp, 1, nwk=50)
-wk2<-ucarima_wk(hp, 2)
-plot(wk1$filter, type='h')
+hp <- ucarima_model(components = list(mod1, mod2))
+wk1 <- ucarima_wk(hp, 1, nwk = 50)
+wk2 <- ucarima_wk(hp, 2)
+plot(wk1$filter, type = "h")
 }

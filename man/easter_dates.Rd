@@ -20,7 +20,7 @@ Allows to display the date of Easter Sunday for each year, in the defined period
 displayed in "YYYY-MM-DD" format and as a number of days since January 1st 1970.
 }
 \examples{
-#Dates from 2018(included) to 2023 (included)
+# Dates from 2018(included) to 2023 (included)
 easter_dates(2018, 2023)
 }
 \references{

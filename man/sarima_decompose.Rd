@@ -20,7 +20,7 @@ An UCARIMA model
 Decompose SARIMA Model into three components trend, seasonal, irregular
 }
 \examples{
-model <- sarima_model(period = 12, d =1, bd = 1, theta = -0.6, btheta = -0.5)
+model <- sarima_model(period = 12, d = 1, bd = 1, theta = -0.6, btheta = -0.5)
 ucm <- sarima_decompose(model)
 
 }

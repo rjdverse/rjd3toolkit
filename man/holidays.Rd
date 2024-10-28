@@ -44,18 +44,19 @@ This kind of non-aggregated regressors are used for calendar correction in daily
 }
 \examples{
 BE <- national_calendar(list(
-  fixed_day(7,21),
-  special_day("NEWYEAR"),
-  special_day("CHRISTMAS"),
-  special_day("MAYDAY"),
-  special_day("EASTERMONDAY"),
-  special_day("ASCENSION"),
-  special_day("WHITMONDAY"),
-  special_day("ASSUMPTION"),
-  special_day("ALLSAINTSDAY"),
-  special_day("ARMISTICE")))
-q<-holidays(BE, "2021-01-01", 366*10, type="All")
-plot(apply(q,1, max))
+    fixed_day(7, 21),
+    special_day("NEWYEAR"),
+    special_day("CHRISTMAS"),
+    special_day("MAYDAY"),
+    special_day("EASTERMONDAY"),
+    special_day("ASCENSION"),
+    special_day("WHITMONDAY"),
+    special_day("ASSUMPTION"),
+    special_day("ALLSAINTSDAY"),
+    special_day("ARMISTICE")
+))
+q <- holidays(BE, "2021-01-01", 366 * 10, type = "All")
+plot(apply(q, 1, max))
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

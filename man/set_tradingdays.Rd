@@ -117,20 +117,21 @@ generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" gene
 # Pre-defined regressors based on user-defined calendar
 ### create a calendar
 BE <- national_calendar(list(
-fixed_day(7,21),
- special_day("NEWYEAR"),
- special_day("CHRISTMAS"),
- special_day("MAYDAY"),
- special_day("EASTERMONDAY"),
- special_day("ASCENSION"),
- special_day("WHITMONDAY"),
- special_day("ASSUMPTION"),
- special_day("ALLSAINTSDAY"),
- special_day("ARMISTICE")))
+    fixed_day(7, 21),
+    special_day("NEWYEAR"),
+    special_day("CHRISTMAS"),
+    special_day("MAYDAY"),
+    special_day("EASTERMONDAY"),
+    special_day("ASCENSION"),
+    special_day("WHITMONDAY"),
+    special_day("ASSUMPTION"),
+    special_day("ALLSAINTSDAY"),
+    special_day("ARMISTICE")
+))
 ## put into a context
-my_context<-modelling_context(calendars = list(cal=BE))
+my_context <- modelling_context(calendars = list(cal = BE))
 ## create a specification
-#init_spec <- rjd3x13::x13_spec("RSA5c")
+# init_spec <- rjd3x13::x13_spec("RSA5c")
 ## modify the specification
 # new_spec<-set_tradingdays(init_spec,
 #                          option = "TradingDays", calendar.name="cal")

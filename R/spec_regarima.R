@@ -1497,7 +1497,7 @@ set_transform.default <- function(x,
 #' - "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
 #' - "Series": after the decomposition the effect is allocated to
 #' the raw series: \eqn{yc_t=y_t+ effect}
-#' - "Seasonally Adjusted": after the decomposition the effect is allocated to
+#' - "SeasonallyAdjusted": after the decomposition the effect is allocated to
 #' the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 #' @examples
 #' # creating one or several external regressors (TS objects),

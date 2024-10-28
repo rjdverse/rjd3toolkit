@@ -15,6 +15,6 @@ data_to_ts(s, name)
 Promote a R time series to a "full" \code{ts} of JDemetra+
 }
 \examples{
-s<-ABS$X0.2.09.10.M
-t<-data_to_ts(s,"test")
+s <- ABS$X0.2.09.10.M
+t <- data_to_ts(s, "test")
 }

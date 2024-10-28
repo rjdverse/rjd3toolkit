@@ -26,8 +26,8 @@ Creates an UCARIMA model, which is composed of ARIMA models with independent
 innovations.
 }
 \examples{
-mod1 <- arima_model("trend", delta = c(1,-2,1))
+mod1 <- arima_model("trend", delta = c(1, -2, 1))
 mod2 <- arima_model("noise", var = 1600)
-hp<-ucarima_model(components=list(mod1, mod2))
+hp <- ucarima_model(components = list(mod1, mod2))
 print(hp$model)
 }

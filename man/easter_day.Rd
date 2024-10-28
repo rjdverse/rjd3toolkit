@@ -19,12 +19,14 @@ easter_day(offset, julian = FALSE, weight = 1, validity = NULL)
 Allows to define a holiday which date is related to Easter Sunday.
 }
 \examples{
-easter_day(1) #Easter Monday
+easter_day(1) # Easter Monday
 easter_day(-2) # Easter Good Friday
 # Corpus Christi 60 days after Easter
 # Sunday in Julian calendar with weight 0.5, from January 2000 to December 2020
-easter_day(offset=60,julian=TRUE,weight=0.5,
-validity = list(start="2000-01-01", end = "2020-12-01"))
+easter_day(
+    offset = 60, julian = TRUE, weight = 0.5,
+    validity = list(start = "2000-01-01", end = "2020-12-01")
+)
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:
