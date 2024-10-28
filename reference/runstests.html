@@ -28,7 +28,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Runs Tests around the mean or the median</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/untagged-4803cf1781bfe14b3949/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/develop/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
       <div class="d-none name"><code>runstests.Rd</code></div>
     </div>
 
@@ -75,11 +75,11 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="studentdistribution.html">random_t</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1000</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 0.06441854 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.9486 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: -0.9491585 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.3425 </span>
 <span class="r-in"><span><span class="fu">testofupdownruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 0.6505899 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.5153 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: -0.9258394 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.3545 </span>
 <span class="r-in"><span><span class="co"># non-random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Value: -14.05884 </span>

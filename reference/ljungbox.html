@@ -28,7 +28,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Ljung-Box Test</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/untagged-4803cf1781bfe14b3949/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/develop/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
       <div class="d-none name"><code>ljungbox.Rd</code></div>
     </div>
 
@@ -80,8 +80,8 @@ If <code>FALSE</code>, we consider that the (known) mean is 0 and that the serie
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">ljungbox</span><span class="op">(</span><span class="fu"><a href="studentdistribution.html">random_t</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">100</span><span class="op">)</span>, lag <span class="op">=</span> <span class="fl">24</span>, k <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 0.06023924 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.8061 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 0.1494423 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.6991 </span>
 <span class="r-in"><span><span class="fu">ljungbox</span><span class="op">(</span><span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span>, lag <span class="op">=</span> <span class="fl">24</span>, k <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Value: 350.021 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.0000 </span>
