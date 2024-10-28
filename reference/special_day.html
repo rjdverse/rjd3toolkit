@@ -85,8 +85,10 @@ By default <code>offset = 0</code>.</p></dd>
 <span class="r-in"><span><span class="fu">special_day</span><span class="op">(</span><span class="st">"EASTERMONDAY"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Prespecified holiday: event=EASTERMONDAY</span>
 <span class="r-in"><span><span class="co"># To define a holiday for the day after Christmas, with validity and weight</span></span></span>
-<span class="r-in"><span><span class="fu">special_day</span><span class="op">(</span><span class="st">"CHRISTMAS"</span>, offset <span class="op">=</span> <span class="fl">1</span>, weight <span class="op">=</span> <span class="fl">0.8</span>,</span></span>
-<span class="r-in"><span>validity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>start<span class="op">=</span><span class="st">"2000-01-01"</span>, end <span class="op">=</span> <span class="st">"2020-12-01"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">special_day</span><span class="op">(</span><span class="st">"CHRISTMAS"</span>,</span></span>
+<span class="r-in"><span>    offset <span class="op">=</span> <span class="fl">1</span>, weight <span class="op">=</span> <span class="fl">0.8</span>,</span></span>
+<span class="r-in"><span>    validity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>start <span class="op">=</span> <span class="st">"2000-01-01"</span>, end <span class="op">=</span> <span class="st">"2020-12-01"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Prespecified holiday: event=CHRISTMAS , offset=1 , weight=0.8 , from=2000-01-01 , to=2020-12-01</span>
 </code></pre></div>
     </div>
