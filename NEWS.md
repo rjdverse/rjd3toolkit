@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 to [Semantic Versioning](https://semver.org/spec/v3.2.3.html).
 
 
-## [Unreleased]
+## [Unreleased](https://github.com/rjdverse/rjd3toolkit/compare/v3.3.0...HEAD)
+
+## [3.3.0](https://github.com/rjdverse/rjd3toolkit/releases/tag/v3.2.4...v3.3.0) - 2024-10-28
 
 ### Changed
 
