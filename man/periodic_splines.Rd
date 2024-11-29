@@ -11,13 +11,17 @@ periodic_splines(order = 4, period = 1, knots, pos)
 
 \item{period}{Period of the splines (1 by default)}
 
-\item{knots}{Knots of the splines (in [0, period[]])}
+\item{knots}{Knots of the splines (in [0, period[)}
 
-\item{pos}{Requested positions (in [0, period[]])}
+\item{pos}{Requested positions (in [0, period[)}
 }
 \value{
 A matrix (len(pos) x len(knots))
 }
 \description{
 Period splines
+}
+\examples{
+s<-periodic_splines(knots = c(0,.2,.3, .9,.95), pos=seq(0,1,0.01))
+matplot(s, type='l')
 }
