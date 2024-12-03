@@ -294,9 +294,11 @@ data_to_ts <- function(s, name) {
 #'
 #' @examples
 #' # Annual series
-#' s <- tsdata_of(c(1, 2, 3, 4), c("1990-01-01", "1995-01-01", "1996-01-01", "2000-11-01"))
+#' s <- tsdata_of(c(1, 2, 3, 4), c("1990-01-01", "1995-01-01", "1996-01-01",
+#'         "2000-11-01"))
 #' # Quarterly series
-#' t <- tsdata_of(c(1, 2, 3, NA, 4), c("1990-01-01", "1995-01-01", "1996-01-01", "2000-08-01", "2000-11-01"))
+#' t <- tsdata_of(c(1, 2, 3, NA, 4), c("1990-01-01", "1995-01-01", "1996-01-01",
+#'         "2000-08-01", "2000-11-01"))
 tsdata_of <- function(values, dates) {
     jtsdata <- .jcall(
         "jdplus/toolkit/base/r/timeseries/TsDataCollector", "Ljdplus/toolkit/base/api/timeseries/TsData;",
