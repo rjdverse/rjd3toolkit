@@ -402,7 +402,7 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 
 #' Estimate SARIMA Model
 #'
-#' @param x a univariate time series.
+#' @param x an univariate time series (class Ts object).
 #' @param order vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.
 #' @param seasonal specification of the seasonal part of the ARIMA model and the seasonal frequency (by default equals to `frequency(x)`).
 #' Either  a list with components `order` and `period` or a numeric vector specifying the seasonal order (the default period is then used).
@@ -411,6 +411,9 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 #' @param eps precision.
 #'
 #' @return
+#' Returns a java object of class JD3_SARIMA_ESTIMATE and JD3_REGARIMA_RSLTS.
+#'
+#'
 #' @export
 #'
 #' @examples
@@ -464,7 +467,7 @@ sarima_estimate <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 
 
 #' Title
 #'
-#' @param x a univariate time series.
+#' @param x an univariate time series (TS object).
 #' @param order vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.
 #' @param seasonal specification of the seasonal part of the ARIMA model and the seasonal frequency (by default equals to `frequency(x)`).
 #' Either  a list with components `order` and `period` or a numeric vector specifying the seasonal order (the default period is then used).
@@ -473,11 +476,12 @@ sarima_estimate <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 
 #' @param finalCorrection Final correction as implemented in Tramo
 #'
 #' @return
+#' Returns a java object of class JD3_SARIMA.
 #' @export
 #'
 #' @examples
 #' y <- ABS$X0.2.09.10.M
-#' sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
+#' model<- sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 sarima_hannan_rissanen <- function(x,
                                    order = c(0, 0, 0),
                                    seasonal = list(order = c(0, 0, 0), period = NA),

@@ -1,4 +1,4 @@
-#' Period splines
+#' Periodic splines
 #'
 #' @param order Order of the splines (4 for cubic)
 #' @param period Period of the splines (1 by default)
@@ -6,9 +6,12 @@
 #' @param pos Requested positions (in [0, period[]])
 #'
 #' @return A matrix (len(pos) x len(knots))
-#' @export
+
 #'
 #' @examples
+#'
+#'
+#' @export
 periodic_splines <- function(order = 4, period = 1, knots, pos) {
     jm <- .jcall(
         "jdplus/toolkit/base/r/math/BSplines", "Ljdplus/toolkit/base/core//math/matrices/Matrix;",
