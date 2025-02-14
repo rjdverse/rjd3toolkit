@@ -18,9 +18,9 @@
 )
 }
 \arguments{
-\item{nobs}{Number of observation}
+\item{nobs}{Number of observations}
 
-\item{neffectiveobs}{Number of effective observations. NA if it is the same as nobs.}
+\item{neffectiveobs}{Number of effective observations. NA if the same as nobs.}
 
 \item{nparams}{Number of hyper-parameters}
 
@@ -38,6 +38,16 @@
 
 \item{ssq}{Sum of the squared residuals}
 }
+\value{
+Returns a java object of class JD3_LIKELIHOOD.
+}
 \description{
-Information on the (log-)likelihood
+Function allowing to gather information on likelihood estimation
+}
+\examples{
+# Values used below are taken from the following estimation
+# m<- x13(rjd3toolkit::ABS$X0.2.09.10.M,"rsa3")
+# m$result$preprocessing$estimation$likelihood
+ll_estimation <- .likelihood(425,4,7,720.2,-2147.407,4308.14,4309.09,4333.96, 433.962, 0.0418)
+
 }

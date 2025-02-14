@@ -1,0 +1,19 @@
+---
+title: "SA_custom_specifications"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SA_custom_specifications}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rjd3toolkit)
+```
