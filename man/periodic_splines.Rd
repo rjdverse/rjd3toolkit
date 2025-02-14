@@ -2,7 +2,7 @@
 % Please edit documentation in R/splines.R
 \name{periodic_splines}
 \alias{periodic_splines}
-\title{Period splines}
+\title{Periodic splines}
 \usage{
 periodic_splines(order = 4, period = 1, knots, pos)
 }
@@ -19,5 +19,5 @@ periodic_splines(order = 4, period = 1, knots, pos)
 A matrix (len(pos) x len(knots))
 }
 \description{
-Period splines
+Periodic splines
 }

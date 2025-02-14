@@ -229,10 +229,16 @@ to_ts <- function(source, id, type = "All") {
 #' All by default.
 #'
 #' @return An object of type "JD3_TSCOLLECTION". List containing the identifiers,
-#' the metadata and all the series.
-#' @export
+#' the metadata and all the series (data).
 #'
 #' @examples
+#' # id is split due to length restrictions
+#' # id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd%2FMM%2Fyyyy&delimiter=SEMICOLON&"
+#' # id2 <- "file=C%3A%5CDocuments%5CIPI%5CData%5CIPI_nace4.csv#seriesIndex=0"
+#' # id<-paste(id1,id2)
+#' # source <-"Txt"
+#' # my_collection<-to_tscollection(source,id)
+#' @export
 to_tscollection <- function(source, id, type = "All") {
     jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
     jtscoll <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
@@ -241,12 +247,13 @@ to_tscollection <- function(source, id, type = "All") {
     return(.p2r_tscollection(p))
 }
 
-#' Promote a R time series to a "full" \code{ts} of JDemetra+
+#' Promote a R time series to a "full JDemetra+ time series"
 #'
-#' @param s R time series
+#' @param s R time series (class TS)
 #' @param name name of the series
 #'
 #' @return
+#' Returns a java object of class JD3_TS
 #' @export
 #'
 #' @examples
@@ -308,15 +315,23 @@ tsdata_of <- function(values, dates) {
     return(.jd2r_tsdata(jtsdata))
 }
 
-#' Compare the annual totals of two series (usually the raw series and the seasonally adjusted series)
+#' Compare the annual totals of two series
+#'
+#' @description
+#' Usually a raw series and the corresponding seasonally adjusted series
 #'
 #' @param raw Raw series
 #' @param sa Seasonally adjusted series
 #'
-#' @return The largest annual difference (in percentage of the average level of the seasonally adjusted series)
-#' @export
+#' @return
+#' The largest annual difference (in percentage of the average level of the seasonally adjusted series)
 #'
 #' @examples
+#' s1<- rjd3toolkit::ABS$X0.2.09.10.M
+#' # two raw series for example's sake
+#' s2 <- rjd3toolkit::ABS$X0.2.08.10.M
+#' compare_annual_totals(s1,s2)
+#' @export
 compare_annual_totals <- function(raw, sa) {
     jsa <- .r2jd_tsdata(sa)
     jraw <- .r2jd_tsdata(raw)
