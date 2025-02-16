@@ -57,3 +57,6 @@ renv/library
 rsconnect/
 vignettes/*.html
 vignettes/*.pdf
+inst/doc
+/doc/
+/Meta/
