@@ -17,6 +17,7 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/arima_properties.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/arima_sum.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/autocorrelations.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/bsplines.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/calendar_td.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/chained_calendar.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/chi2distribution.html</loc></url>
@@ -50,11 +51,15 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/lp_variable.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/mad.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/modelling_context.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/monotonic_cspline.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/national_calendar.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/natural_cspline.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/normality_tests.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/outliers_variables.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/periodic.dummies.html</loc></url>
-<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/periodic_splines.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/periodic_bsplines.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/periodic_cspline.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/periodic_csplines.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/print.calendars.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/r2jd_calendarts.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ramp_variable.html</loc></url>
