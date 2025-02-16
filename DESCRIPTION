@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Utility Functions around 'JDemetra+ 3.0'
-Version: 3.3.1
+Version: 3.4.0
 Authors@R: c(
     person(given = "Jean", 
            family = "Palate", role = c("aut"),
@@ -34,12 +34,10 @@ URL: https://github.com/rjdverse/rjd3toolkit, https://rjdverse.github.io/rjd3too
 LazyData: TRUE
 Suggests:
     knitr,
-    rmarkdown,
-    spelling
+    rmarkdown
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 BugReports: https://github.com/rjdverse/rjd3toolkit/issues
-VignetteBuilder: knitr
 Encoding: UTF-8
 Collate: 
     'utils.R'
@@ -67,4 +65,4 @@ Collate:
     'timeseries.R'
     'variables.R'
     'zzz.R'
-
+VignetteBuilder: knitr
