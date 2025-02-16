@@ -14,7 +14,7 @@ sarima_estimate(
 )
 }
 \arguments{
-\item{x}{a univariate time series.}
+\item{x}{an univariate time series (class Ts object).}
 
 \item{order}{vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.}
 
@@ -26,6 +26,9 @@ Either  a list with components \code{order} and \code{period} or a numeric vecto
 \item{xreg}{vector or matrix of external regressors.}
 
 \item{eps}{precision.}
+}
+\value{
+Returns a java object of class JD3_SARIMA_ESTIMATE and JD3_REGARIMA_RSLTS.
 }
 \description{
 Estimate SARIMA Model
