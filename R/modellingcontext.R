@@ -6,15 +6,21 @@ JD3_TSMONIKER <- "JD3_TSMONIKER"
 JD3_TS <- "JD3_TS"
 JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 
-#' Title
+#' Create a Moniker
 #'
 #' @param source Source of the time series.
 #' @param id Id of the time series.
 #'
 #' @return
-#' @export
-#'
+#' Returns a java object of class JD3_TSMONIKER.
 #' @examples
+#' source <- "Txt"
+#' # id is split due to length restrictions
+#' id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd%2FMM%2Fyyyy&delimiter=SEMICOLON&"
+#' id2 <- "file=C%3A%5CDocuments%5CIPI%5CData%5CIPI_nace4.csv#seriesIndex=0"
+#' id<-paste(id1,id2)
+#' moniker <- .tsmoniker(source,id)
+#' @export
 .tsmoniker <- function(source, id) {
     return(structure(list(source = source, id = id), class = c(JD3_TSMONIKER)))
 }
@@ -302,10 +308,11 @@ dynamic_ts <- function(moniker, data) {
 }
 
 
-#' @title Create context
+#' @title Create modelling context
 #' @description
 #' Function allowing to include calendars and external regressors in a format that makes them usable
-#' in an estimation processes (seasonal adjustment or pre-processing). The regressors can be created with functions available in the package
+#' in an estimation process (reg-arima or tramo modelling, stand alone or as pre-processing in seasonal adjustment).
+#' The regressors can be created with functions available in the package
 #' or come from any other source, provided they are \code{ts} class objects.
 #' @param calendars list of calendars.
 #' @param variables list of variables.
