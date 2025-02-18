@@ -83,4 +83,4 @@ pull requests should include **updated tests** and **updated documentation**. If
 
 ## Licensing
 
-The code of this project is licensed under the [European Union Public Licence (EUPL)](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12).
+The code of this project is licensed under the [European Union Public Licence (EUPL)](https://interoperable-europe.ec.europa.eu:443/collection/eupl/eupl-text-eupl-12).

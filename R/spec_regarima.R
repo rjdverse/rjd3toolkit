@@ -1466,7 +1466,7 @@ set_transform.default <- function(x,
     x
 }
 
-#' Add a User-Defined Variable to Pre-Processing Specification.
+#' @title Add a User-Defined Variable to Pre-Processing Specification.
 #'
 #' Function allowing to add any user-defined regressor to a specification and
 #' allocate its effect to a selected component, excepted to the calendar component.
@@ -1489,15 +1489,15 @@ set_transform.default <- function(x,
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' Components to which the effect of the regressor can be allocated:
-#' - "Undefined" : the effect of the regressor is assigned to an additional component,
+#' - \code{"Undefined"} : the effect of the regressor is assigned to an additional component,
 #' the variable is used to improve the pre-processing step, but is not removed from the series
 #' for the decomposition.
-#' - "Trend": after the decomposition the effect is allocated to the trend component, like a Level-Shift
-#' - "Irregular": after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
-#' - "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
-#' - "Series": after the decomposition the effect is allocated to
+#' - \code{"Trend"}: after the decomposition the effect is allocated to the trend component, like a Level-Shift
+#' - \code{"Irregular"}: after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
+#' - \code{"Seasonal"}: after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
+#' - \code{"Series"}: after the decomposition the effect is allocated to
 #' the raw series: \eqn{yc_t=y_t+ effect}
-#' - "SeasonallyAdjusted": after the decomposition the effect is allocated to
+#' - \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to
 #' the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 #' @examples
 #' # creating one or several external regressors (TS objects),

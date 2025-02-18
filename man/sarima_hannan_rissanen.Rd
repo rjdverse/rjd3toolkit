@@ -2,7 +2,7 @@
 % Please edit documentation in R/arima.R
 \name{sarima_hannan_rissanen}
 \alias{sarima_hannan_rissanen}
-\title{Title}
+\title{Estimate ARIMA Model with Hannan-Rissanen method}
 \usage{
 sarima_hannan_rissanen(
   x,
@@ -27,8 +27,11 @@ Either  a list with components \code{order} and \code{period} or a numeric vecto
 
 \item{finalCorrection}{Final correction as implemented in Tramo}
 }
+\value{
+An object of class \code{JD3_SARIMA} with the estimated coefficient.
+}
 \description{
-Title
+Estimate ARIMA Model with Hannan-Rissanen method
 }
 \examples{
 y <- ABS$X0.2.09.10.M

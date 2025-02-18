@@ -18,16 +18,15 @@ linters: lintr::all_linters(
         nonportable_path_linter = NULL,
         undesirable_function_linter = NULL,
         unnecessary_lambda_linter = NULL,
-        paste_linter = NULL,
         function_argument_linter = NULL,
         condition_message_linter = NULL,
         unnecessary_concatenation_linter = NULL,
-        fixed_regex_linter = NULL,
-        strings_as_factors_linter = NULL,
-        todo_comment_linter = NULL,
-        if_not_else_linter = NULL,
-        unnecessary_nested_if_linter = NULL,
-        undesirable_operator_linter = NULL,
+        #fixed_regex_linter = NULL,
+        #strings_as_factors_linter = NULL,
+        #todo_comment_linter = NULL,
+        #if_not_else_linter = NULL,
+        #unnecessary_nested_if_linter = NULL,
+        #undesirable_operator_linter = NULL,
         object_usage_linter = NULL
     )
 encoding: "UTF-8"

@@ -2,7 +2,13 @@
 % Please edit documentation in R/spec_regarima.R
 \name{add_usrdefvar}
 \alias{add_usrdefvar}
-\title{Add a User-Defined Variable to Pre-Processing Specification.}
+\title{Add a User-Defined Variable to Pre-Processing Specification.
+
+Function allowing to add any user-defined regressor to a specification and
+allocate its effect to a selected component, excepted to the calendar component.
+To add user-defined calendar regressors, \code{\link{set_tradingdays}}. Once added to
+a specification, the external regressor(s) will also have to be added to a modelling context
+before being used in an estimation process. see \code{\link{modelling_context}} and example.}
 \usage{
 add_usrdefvar(
   x,
@@ -33,6 +39,8 @@ By default (\code{lag = 0}), the regressor \eqn{x_t} is not lagged. If \code{lag
 By default (\code{"Undefined"}), see details.}
 }
 \description{
+Add a User-Defined Variable to Pre-Processing Specification.
+
 Function allowing to add any user-defined regressor to a specification and
 allocate its effect to a selected component, excepted to the calendar component.
 To add user-defined calendar regressors, \code{\link{set_tradingdays}}. Once added to
@@ -46,15 +54,15 @@ generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" gene
 \code{rjd3tramoseats::spec_tramo()}).
 Components to which the effect of the regressor can be allocated:
 \itemize{
-\item "Undefined" : the effect of the regressor is assigned to an additional component,
+\item \code{"Undefined"} : the effect of the regressor is assigned to an additional component,
 the variable is used to improve the pre-processing step, but is not removed from the series
 for the decomposition.
-\item "Trend": after the decomposition the effect is allocated to the trend component, like a Level-Shift
-\item "Irregular": after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
-\item "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
-\item "Series": after the decomposition the effect is allocated to
+\item \code{"Trend"}: after the decomposition the effect is allocated to the trend component, like a Level-Shift
+\item \code{"Irregular"}: after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
+\item \code{"Seasonal"}: after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
+\item \code{"Series"}: after the decomposition the effect is allocated to
 the raw series: \eqn{yc_t=y_t+ effect}
-\item "SeasonallyAdjusted": after the decomposition the effect is allocated to
+\item \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to
 the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 }
 }

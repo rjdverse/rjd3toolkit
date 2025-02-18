@@ -2,7 +2,7 @@
 #' @include protobuf.R jd2r.R
 NULL
 
-#' Seasonal ARIMA model (Box-Jenkins)
+#' @title Seasonal ARIMA model (Box-Jenkins)
 #'
 #' @param period period of the model.
 #' @param phi coefficients of the regular auto-regressive polynomial
@@ -19,6 +19,10 @@ NULL
 #'
 #' @return A `"JD3_SARIMA"` model.
 #' @export
+#'
+#' @examples
+#' mod1 <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
+#'
 sarima_model <- function(name = "sarima",
                          period,
                          phi = NULL,
@@ -41,16 +45,19 @@ sarima_model <- function(name = "sarima",
     return(output)
 }
 
-#' SARIMA Properties
+#' @title SARIMA Properties
 #'
 #' @param model a `"JD3_SARIMA"` model (created with [sarima_model()]).
 #' @param nspectrum number of points in \[0, pi\] to calculate the spectrum.
 #' @param nacf maximum lag at which to calculate the acf.
 #'
+#' @returns List with the acf and the spectrum of the model.
+#'
 #' @examples
 #' mod1 <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 #' sarima_properties(mod1)
 #' @export
+#'
 sarima_properties <- function(model, nspectrum = 601, nacf = 36) {
     jmodel <- .r2jd_sarima(model)
     spectrum <- .jcall("jdplus/toolkit/base/r/arima/SarimaModels", "[D", "spectrum", jmodel, as.integer(nspectrum))
@@ -69,12 +76,16 @@ sarima_properties <- function(model, nspectrum = 601, nacf = 36) {
 #' `tdegree = 0` if normal distribution is used.
 #' @param seed seed of the random numbers generator. Negative values mean random seeds
 #'
+#' @returns a numeric vector with the simulated series.
+#'
 #' @examples
 #' # Airline model
 #' s_model <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 #' x <- sarima_random(s_model, length = 64, seed = 0)
 #' plot(x, type = "l")
+#'
 #' @export
+#'
 sarima_random <- function(model, length, stde = 1, tdegree = 0, seed = -1) {
     if (!inherits(model, "JD3_SARIMA")) {
         stop("Invalid model")
@@ -95,13 +106,13 @@ sarima_random <- function(model, length, stde = 1, tdegree = 0, seed = -1) {
     ))
 }
 
-#' Decompose SARIMA Model into three components trend, seasonal, irregular
+#' @title Decompose SARIMA Model into three components trend, seasonal, irregular
 #'
 #' @param model SARIMA model to decompose.
 #' @param rmod trend threshold.
 #' @param epsphi seasonal tolerance (in degrees).
 #'
-#' @return An UCARIMA model
+#' @returns An UCARIMA model
 #' @export
 #'
 #' @examples
@@ -185,12 +196,11 @@ arima_model <- function(name = "arima", ar = 1, delta = 1, ma = 1, variance = 1)
     ))
 }
 
-#' Sum ARIMA Models
+#' @title Sum ARIMA Models
 #'
 #' @param ... list of ARIMA models (created with [arima_model()]).
 #'
 #' @return a `"JD3_ARIMA"` model.
-#'
 #'
 #' @details
 #' Adds several Arima models, considering that their innovations are independent.
@@ -217,7 +227,7 @@ arima_lsum <- function(components) {
     return(.jd2r_arima(jsum))
 }
 
-#' Remove an arima model from an existing one. More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
+#' @title Remove an arima model from an existing one. More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
 #'
 #' @param left Left operand (JD3_ARIMA object)
 #' @param right Right operand (JD3_ARIMA object)
@@ -225,7 +235,6 @@ arima_lsum <- function(components) {
 #'
 #' @return a `"JD3_ARIMA"` model.
 #' @export
-#'
 #'
 #' @examples
 #' mod1 <- arima_model(delta = c(1, -2, 1))
@@ -242,12 +251,12 @@ arima_difference <- function(left, right, simplify = TRUE) {
 }
 
 
-#' Properties of an ARIMA model; the (pseudo-)spectrum and the auto-covariances of the model are returned
+#' @title Properties of an ARIMA model; the (pseudo-)spectrum and the auto-covariances of the model are returned
 #'
 #' @param model a `"JD3_ARIMA"` model (created with [arima_model()]).
 #' @param nspectrum number of points to calculate the spectrum; th points are uniformly distributed in \[0, pi\]
 #' @param nac maximum lag at which to calculate the auto-covariances; if the model is non-stationary, the auto-covariances are computed on its stationary transformation.
-#' @returns A list with tha auto-covariances and with the (pseudo-)spectrum
+#' @returns A list with the auto-covariances and with the (pseudo-)spectrum
 #'
 #' @examples
 #' mod1 <- arima_model(ar = c(0.1, 0.2), delta = c(1, -1), ma = 0)
@@ -260,8 +269,8 @@ arima_properties <- function(model, nspectrum = 601, nac = 36) {
     return(list(acf = acf, spectrum = spectrum))
 }
 
-#' Creates an UCARIMA model, which is composed of ARIMA models with independent
-#' innovations.
+#' @title Creates an UCARIMA model, which is composed of ARIMA models with
+#' independent innovations.
 #'
 #' @param model The reduced model. Usually not provided.
 #' @param components The ARIMA models representing the components
@@ -320,7 +329,7 @@ ucarima_model <- function(model = NULL,
 }
 
 
-#' Wiener Kolmogorov Estimators
+#' @title Wiener Kolmogorov Estimators
 #'
 #' @param ucm An UCARIMA model returned by [ucarima_model()].
 #' @param cmp Index of the component for which we want to compute the filter
@@ -350,7 +359,7 @@ ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
     return(structure(list(spectrum = spectrum, filter = wk, gain2 = gain * gain), class = "JD3_UCARIMA_WK"))
 }
 
-#' Makes a UCARIMA model canonical; more specifically, put all the noise of the components in one dedicated component
+#' @title Makes a UCARIMA model canonical; more specifically, put all the noise of the components in one dedicated component
 #'
 #' @param ucm An UCARIMA model returned by [ucarima_model()].
 #' @param cmp Index of the component that will contain the noises; 0 if a new component with all the noises will be added to the model
@@ -410,7 +419,15 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 #' @param xreg vector or matrix of external regressors.
 #' @param eps precision.
 #'
-#' @return
+#' @returns An object of class `JD3_SARIMA_ESTIMATE` containing:
+#' - the estimated parameters,
+#' - the raw data,
+#' - the regressors,
+#' - the standard errors,
+#' - the log-likelihood (with the number of observations, the number of effective observations, the number of parameters, the log-likelihood, the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and the sum of squares),
+#' - the residuals,
+#' - the orders of the model.
+#'
 #' @export
 #'
 #' @examples
@@ -462,7 +479,7 @@ sarima_estimate <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 
     return(res)
 }
 
-#' Title
+#' @title Estimate ARIMA Model with Hannan-Rissanen method
 #'
 #' @param x a univariate time series.
 #' @param order vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.
@@ -472,7 +489,8 @@ sarima_estimate <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 
 #' @param biasCorrection Bias correction
 #' @param finalCorrection Final correction as implemented in Tramo
 #'
-#' @return
+#' @returns An object of class `JD3_SARIMA` with the estimated coefficient.
+#'
 #' @export
 #'
 #' @examples

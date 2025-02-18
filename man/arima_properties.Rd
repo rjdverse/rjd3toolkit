@@ -14,7 +14,7 @@ arima_properties(model, nspectrum = 601, nac = 36)
 \item{nac}{maximum lag at which to calculate the auto-covariances; if the model is non-stationary, the auto-covariances are computed on its stationary transformation.}
 }
 \value{
-A list with tha auto-covariances and with the (pseudo-)spectrum
+A list with the auto-covariances and with the (pseudo-)spectrum
 }
 \description{
 Properties of an ARIMA model; the (pseudo-)spectrum and the auto-covariances of the model are returned
