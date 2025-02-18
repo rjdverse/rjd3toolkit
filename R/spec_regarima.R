@@ -408,56 +408,81 @@ set_estimate.default <- function(x,
     x$estimate <- estimate
     x
 }
-#' Set Outlier Detection Parameters
+#' @title Set Outlier Detection Parameters
 #'
-#' @description Function allowing to customize the automatic outlier detection process built in
-#' in the pre-processing step (regarima or tramo)
+#' @description Function allowing to customize the automatic outlier detection
+#' process built in in the pre-processing step (regarima or tramo).
 #'
 #' @inheritParams set_basic
-#' @param span.type,d0,d1,n0,n1 parameters to specify the sub-span on which outliers will be detected.
+#' @param span.type,d0,d1,n0,n1 parameters to specify the sub-span on which
+#' outliers will be detected.
 #'
-#' \code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify first/last date of the span when \code{type} equals to \code{"From"}, \code{"To"} or \code{"Between"}.
-#'
-#' \code{n0} and \code{n1} numerics to specify the number of periods at the beginning/end of the series to be used for the span
-#' (\code{type} equals to \code{"From"}, \code{"To"}) or to exclude (\code{type} equals to \code{"Excluding"}).
+#' - \code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify
+#'  first/last date of the span when \code{type} equals to \code{"From"},
+#'  \code{"To"} or \code{"Between"}.
+#' - \code{n0} and \code{n1} numerics to specify the number of periods at the
+#'  beginning/end of the series to be used for the span (\code{type} equals to
+#'  \code{"From"}, \code{"To"}) or to exclude (\code{type} equals to
+#'  \code{"Excluding"}).
 
-#' @param outliers.type vector of characters of the outliers to be automatically detected. \code{"AO"} for additive outliers, \code{"TC"} for transitory changes
-#' \code{"LS"} for level shifts and \code{"SO"} for seasonal outliers.
-#' For example \code{outliers.type = c("AO", "LS")} to enable the detection of additive outliers and level shifts.
-#' If \code{outliers.type = NULL} or \code{outliers.type = character()}, automatic detection of outliers is disabled.
+#' @param outliers.type vector of characters of the outliers to be automatically
+#' detected.
+#' - \code{"AO"} for additive outliers,
+#' - \code{"TC"} for transitory changes,
+#' - \code{"LS"} for level shifts,
+#' - \code{"SO"} for seasonal outliers.
+#' For example \code{outliers.type = c("AO", "LS")} to enable the detection of
+#' additive outliers and level shifts.
+#' If \code{outliers.type = NULL} or \code{outliers.type = character()},
+#' automatic detection of outliers is disabled.
 #' Default value = \code{outliers.type = c("AO", "LS", "TC")}
 #'
-#' @param critical.value \code{numeric}. Critical value for the outlier detection procedure.
+#' @param critical.value \code{numeric}. Critical value for the outlier
+#' detection procedure.
 #' If equal to 0 the critical value is automatically determined
-#' by the number of observations in the outlier detection time span.(Default value = 4 REGARIMA/X13 and 3.5 in TRAMO)
+#' by the number of observations in the outlier detection time span.
+#' (Default value = 4 REGARIMA/X13 and 3.5 in TRAMO)
 #'
-#' @param tc.rate the rate of decay for the transitory change outlier (Default = 0.7).
-#' @param method (REGARIMA/X13 Specific) determines how the program successively adds detected outliers to the model.
+#' @param tc.rate the rate of decay for the transitory change outlier.
+#' (Default = 0.7).
+#' @param method (REGARIMA/X13 Specific) determines how the program successively
+#' adds detected outliers to the model.
 #' Currently, only the \code{"AddOne"} method is supported.
-#' @param maxiter (REGARIMA/X13 Specific) maximum number of iterations (Default = 30).
-#' @param lsrun (REGARIMA/X13 Specific) number of successive level shifts to test for cancellation (Default = 0).
-#' @param eml.est (TRAMO Specific) \code{logical} for the exact likelihood estimation method. It controls the method applied
-#' for parameter estimation in the intermediate steps. If \code{TRUE}, an exact likelihood estimation method is used.
+#' @param maxiter (REGARIMA/X13 Specific) maximum number of iterations
+#' (Default = 30).
+#' @param lsrun (REGARIMA/X13 Specific) number of successive level shifts to
+#' test for cancellation (Default = 0).
+#' @param eml.est (TRAMO Specific) \code{logical} for the exact likelihood
+#' estimation method. It controls the method applied for parameter estimation
+#' in the intermediate steps. If \code{TRUE}, an exact likelihood estimation
+#' method is used.
 #' When \code{FALSE}, the fast Hannan-Rissanen method is used.
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
-#' If a Seasonal adjustment process is performed, each type of Outlier will be allocated to a pre-defined
-#' component after the decomposition: "AO" and "TC" to the irregular, "LS" to the trend and "SO" to seasonal component.
+#' If a Seasonal adjustment process is performed, each type of Outlier will be
+#' allocated to a pre-defined component after the decomposition: "AO" and "TC"
+#' to the irregular, "LS" to the trend and "SO" to seasonal component.
+#'
 #' @examples
 #' # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
 #' # new_spec<-set_outlier(init_spec, span.type= "From", d0 = "2012-01-01",
 #' #                      outliers.type = c("LS", "AO"),
 #' #                      critical.value = 5,
 #' #                      tc.rate =0.85)
+#'
 #' @seealso \code{\link{add_outlier}}, \code{\link{add_usrdefvar}}
+#'
 #' @references
 #' More information on outliers and other auxiliary variables in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
+#'
 #' @export
+#'
 set_outlier <- function(x,
                         span.type = c(NA, "All", "From", "To", "Between", "Last", "First", "Excluding"),
                         d0 = NULL,
@@ -567,73 +592,119 @@ set_outlier.default <- function(x,
 #
 #' @inheritParams set_basic
 #'
-#' @param enabled \code{logical}. If \code{TRUE}, the automatic modelling of the ARIMA model is enabled.
-#' If \code{FALSE}, the parameters of the ARIMA model can be specified.
-#' @param acceptdefault \code{logical}. If \code{TRUE}, the default model (ARIMA(0,1,1)(0,1,1)) will be chosen in the first step
-#' of the automatic model identification, if the Ljung-Box Q statistics for the residuals are acceptable. No further attempt will be made to identify a better model.
-#' Default = \code{FALSE}
-#' @param cancel \code{numeric} cancellation limit. A limit for the AR and the MA roots to be assumed equal. This option is used in
-#' the automatic identification of the differencing order. If the difference in moduli of an AR and an MA root (when estimating ARIMA(1,0,1)(1,0,1) models
-#' in the second step of the automatic identification of the differencing polynomial) is smaller than cancellation limit, the two roots cancel out.
-#' Default = 0.1.
-#' @param ub1 \code{numeric}, the first unit root limit. It is the threshold value for the initial unit root test in the automatic differencing procedure.
-#' When one of the roots in the estimation of the ARIMA(2,0,0)(1,0,0) plus mean model, performed in the first step of the automatic model identification procedure,
-#' is larger than first unit root limit in modulus, it is set equal to unity.
-#' Default =   1.030928.
-#' @param ub2 \code{numeric}, the second unit root limit. When one of the roots in the estimation of the ARIMA(1,0,1)(1,0,1) plus mean model,
-#' which is performed in the second step of the automatic model identification procedure, is larger than second unit root limit in modulus,
-#' it is checked if there is a common factor in the corresponding AR and MA polynomials of the ARMA model that can be cancelled (see \code{automdl.cancel}).
-#' If there is no cancellation, the AR root is set equal to unity (i.e. the differencing order changes).
-#' Default = 1.136364.
+#' @param enabled \code{logical}. If \code{TRUE}, the automatic modelling of the
+#'  ARIMA model is enabled.
+#'  If \code{FALSE}, the parameters of the ARIMA model can be specified.
 #'
-#' @param reducecv \code{numeric}, ReduceCV. The percentage by which the outlier critical value will be reduced
-#' when an identified model is found to have a Ljung-Box statistic with an unacceptable confidence coefficient.
-#' The parameter should be between 0 and 1, and will only be active when automatic outlier identification is enabled.
-#' The reduced critical value will be set to (1-ReduceCV)xCV, where CV is the original critical value.
-#' Default =  0.14268.
+#' @param acceptdefault \code{logical}. If \code{TRUE}, the default model
+#'  (ARIMA(0,1,1)(0,1,1)) will be chosen in the first step of the automatic
+#'  model identification, if the Ljung-Box Q statistics for the residuals are
+#'  acceptable. No further attempt will be made to identify a better model.
+#'  Default = \code{FALSE}
 #'
-#' @param ljungboxlimit \code{numeric}, the Ljung Box limit, setting the acceptance criterion for the confidence intervals of the Ljung-Box Q statistic.
-#' If the LjungBox Q statistics for the residuals of a final model is greater than Ljung Box limit, then the model is rejected, the outlier critical value is reduced,
-#' and model and outlier identification (if specified) is redone with a reduced value.
-#' Default = 0.95.
+#' @param cancel \code{numeric} cancellation limit. A limit for the AR and the
+#'  MA roots to be assumed equal. This option is used in the automatic
+#'  identification of the differencing order. If the difference in moduli of an
+#'  AR and an MA root (when estimating ARIMA(1,0,1)(1,0,1) models in the second
+#'  step of the automatic identification of the differencing polynomial) is
+#'  smaller than cancellation limit, the two roots cancel out.
+#'  Default = 0.1.
 #'
-#' @param tsig \code{numeric}, the arma limit. It is the threshold value for t-statistics of ARMA coefficients and the constant term used
-#' for the final test of model parsimony. If the highest order ARMA coefficient has a t-value smaller than this value in magnitude, the order of the model is reduced.
-#' If the constant term has a t-value smaller than the ARMA limit in magnitude, it is removed from the set of regressors.
+#' @param ub1 \code{numeric}, the first unit root limit. It is the threshold
+#'  value for the initial unit root test in the automatic differencing
+#'  procedure. When one of the roots in the estimation of the
+#'  ARIMA(2,0,0)(1,0,0) plus mean model, performed in the first step of the
+#'  automatic model identification procedure, is larger than first unit root
+#'  limit in modulus, it is set equal to unity.
+#'  Default =   1.030928.
+#'
+#' @param ub2 \code{numeric}, the second unit root limit. When one of the roots
+#'  in the estimation of the ARIMA(1,0,1)(1,0,1) plus mean model, which is
+#'  performed in the second step of the automatic model identification
+#'  procedure, is larger than second unit root limit in modulus, it is checked
+#'  if there is a common factor in the corresponding AR and MA polynomials of
+#'  the ARMA model that can be cancelled (see \code{automdl.cancel}).
+#'  If there is no cancellation, the AR root is set equal to unity (i.e. the
+#'  differencing order changes).
+#'  Default = 1.136364.
+#'
+#' @param reducecv \code{numeric}, ReduceCV. The percentage by which the outlier
+#'  critical value will be reduced when an identified model is found to have a
+#'  Ljung-Box statistic with an unacceptable confidence coefficient.
+#'  The parameter should be between 0 and 1, and will only be active when
+#'  automatic outlier identification is enabled. The reduced critical value will
+#'  be set to (1 - ReduceCV) x CV, where CV is the original critical value.
+#'  Default =  0.14268.
+#'
+#' @param ljungboxlimit \code{numeric}, the Ljung Box limit, setting the
+#'  acceptance criterion for the confidence intervals of the Ljung-Box
+#'  Q-statistic. If the LjungBox Q statistics for the residuals of a final model
+#'  is greater than Ljung Box limit, then the model is rejected, the outlier
+#'  critical value is reduced, and model and outlier identification (if
+#'  specified) is redone with a reduced value.
+#'  Default = 0.95.
+#'
+#' @param tsig \code{numeric}, the arma limit. It is the threshold value for
+#' t-statistics of ARMA coefficients and the constant term used for the final
+#' test of model parsimony. If the highest order ARMA coefficient has a t-value
+#' smaller than this value in magnitude, the order of the model is reduced.
+#' If the constant term has a t-value smaller than the ARMA limit in magnitude,
+#' it is removed from the set of regressors.
 #' Default=1.
 #'
-#' @param ubfinal (REGARIMA/X13 Specific) \code{numeric}, final unit root limit. The threshold value for the final unit root test.
-#' If the magnitude of an AR root for the final model is smaller than the final unit root limit, then a unit root is assumed,
-#' the order of the AR polynomial is reduced by one and the appropriate order of the differencing (non-seasonal, seasonal)
-#' is increased. The parameter value should be greater than one.
-#' Default = 1.05.
-#' @param checkmu (REGARIMA/X13 Specific) \code{logical} indicating if the automatic model selection checks the significance of the constant term.
-#' @param mixed (REGARIMA/X13 Specific) \code{logical}. This variable controls whether ARIMA models with non-seasonal AR and MA terms
-#' or seasonal AR and MA terms will be considered in the automatic model identification procedure.
-#' If \code{FALSE}, a model with AR and MA terms in both the seasonal and non-seasonal parts of the model can be acceptable,
-#' provided there are no AR or MA terms in either the seasonal or non-seasonal terms.
+#' @param ubfinal (REGARIMA/X13 Specific) \code{numeric}, final unit root limit.
+#'  The threshold value for the final unit root test. If the magnitude of an AR
+#'  root for the final model is smaller than the final unit root limit, then a
+#'  unit root is assumed, the order of the AR polynomial is reduced by one and
+#'  the appropriate order of the differencing (non-seasonal, seasonal) is
+#'  increased. The parameter value should be greater than one.
+#'  Default = 1.05.
+#'
+#' @param checkmu (REGARIMA/X13 Specific) \code{logical} indicating if the
+#'  automatic model selection checks the significance of the constant term.
+#'
+#' @param mixed (REGARIMA/X13 Specific) \code{logical}. This variable controls
+#'  whether ARIMA models with non-seasonal AR and MA terms or seasonal AR and
+#'  MA terms will be considered in the automatic model identification procedure.
+#'  If \code{FALSE}, a model with AR and MA terms in both the seasonal and
+#'  non-seasonal parts of the model can be acceptable, provided there are no AR
+#'  or MA terms in either the seasonal or non-seasonal terms.
+#'
 #' @param fct (REGARIMA/X13 Specific) \code{numeric}. TODO.
-#' @param balanced (REGARIMA/X13 Specific) \code{logical} If \code{TRUE}, the automatic model identification procedure will have a preference
-#' for balanced models (i.e. models for which the order of the combined AR and differencing operators is equal to the order
-#' of the combined MA operators). Default = \code{FALSE}
-#' @param amicompare (TRAMO Specific) \code{logical}. If `TRUE`, the program compares the model identified by the automatic procedure to the default model (\eqn{ARIMA(0,1,1)(0,1,1)})
-#' and the model with the best fit is selected. Criteria considered are residual diagnostics, the model structure and the number of outliers.
+#'
+#' @param balanced (REGARIMA/X13 Specific) \code{logical} If \code{TRUE}, the
+#'  automatic model identification procedure will have a preference for balanced
+#'  models (i.e. models for which the order of the combined AR and differencing
+#'  operators is equal to the order of the combined MA operators).
+#'  Default = \code{FALSE}
+#'
+#' @param amicompare (TRAMO Specific) \code{logical}. If `TRUE`, the program
+#'  compares the model identified by the automatic procedure to the default model
+#'  (\eqn{ARIMA(0,1,1)(0,1,1)}) and the model with the best fit is selected.
+#'  Criteria considered are residual diagnostics, the model structure and the
+#'  number of outliers.
+#'
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
+#'
 #' @examples
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-set_automodel(init_spec,
 #' #                        enabled = FALSE,
 #' #                        acceptdefault = TRUE)
+#'
 #' @seealso \code{\link{set_arima}}, \code{\link{set_transform}}
+#'
 #' @references
 #' More information on reg-arima modelling in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 #'
 #' @export
+#'
 set_automodel <- function(x,
                           enabled = NA,
                           acceptdefault = NA,
@@ -905,8 +976,7 @@ set_arima.default <- function(x,
 }
 
 
-#' Set Calendar effects correction in Pre-Processing Specification
-#'
+#' @title Set Calendar effects correction in Pre-Processing Specification
 #'
 #' @description
 #' Function allowing to select the trading-days regressors to be used for
@@ -921,69 +991,94 @@ set_arima.default <- function(x,
 #' @inheritParams set_basic
 #'
 #' @param option to specify the set of trading days regression variables:
-#' \code{"TradingDays"} = six contrast variables, each type of day (from Monday to Saturday) vs Sundays;
-#' \code{"WorkingDays"} = one working (week days)/non-working (week-ends) day contrast variable;
-#' \code{"TD3"} = two contrast variables: week-days vs Sundays and  Saturdays vs Sundays;
-#' \code{"TD3c"} = two contrast variables: week-days (Mondays to Thursdays) vs Sundays and  Fridays+Saturdays vs Sundays;
-#' \code{"TD4"} = three contrast variables: week-days (Mondays to Thursdays) vs Sundays, Fridays vs Sundays, Saturdays vs Sundays;
-#' \code{"None"} = no correction for trading days;
-#' \code{"UserDefined"} = userdefined trading days regressors.
+#'  - \code{"TradingDays"} = six contrast variables, each type of day (from
+#'      Monday to Saturday) vs Sundays;
+#'  - \code{"WorkingDays"} = one working (week days)/non-working (week-ends) day
+#'      contrast variable;
+#'  - \code{"TD3"} = two contrast variables: week-days vs Sundays and  Saturdays
+#'      vs Sundays;
+#'  - \code{"TD3c"} = two contrast variables: week-days (Mondays to Thursdays)
+#'      vs Sundays and  Fridays+Saturdays vs Sundays;
+#'  - \code{"TD4"} = three contrast variables: week-days (Mondays to Thursdays)
+#'      vs Sundays, Fridays vs Sundays, Saturdays vs Sundays;
+#'  - \code{"None"} = no correction for trading days;
+#'  - \code{"UserDefined"} = userdefined trading days regressors.
 #'
-#' @param calendar.name name (string) of the user-defined calendar to be taken into account when generating
-#' built-in regressors set in 'option' (if not 'UserDefined).(see examples)
-#' @param uservariable a vector of characters to specify the name of user-defined calendar regressors.
-#' When specified, automatically set \code{option = "UserDefined"}. Names have to be the same as
-#' in \code{\link{modelling_context}}, see example.
-#' @param stocktd  a numeric indicating the day of the month when inventories and other stock are reported
-#' (to denote the last day of the month, set the variable to 31).
-#' When specified, automatically set \code{option = "None"}. See \code{stock_td} function for details.
+#' @param calendar.name name (string) of the user-defined calendar to be taken
+#'  into account when generating built-in regressors set in \code{option} (if
+#'  not \code{"UserDefined"}).(see examples)
+#' @param uservariable a vector of characters to specify the name of
+#'  user-defined calendar regressors. When specified, automatically set
+#'  \code{option = "UserDefined"}. Names have to be the same as in
+#'  \code{\link{modelling_context}}, see example.
+#' @param stocktd  a numeric indicating the day of the month when inventories
+#'  and other stock are reported (to denote the last day of the month, set the
+#'  variable to 31). When specified, automatically set \code{option = "None"}.
+#'  See \code{stock_td} function for details.
 #'
-#' @param test defines the pre-tests for the significance of the trading day regression variables
-#' based on the AICC statistics: \code{"None"} = the trading day variables are not pre-tested and are included in the model;
+#' @param test defines the pre-tests for the significance of the trading day
+#'  regression variables based on the AICC statistics: \code{"None"} = the
+#'  trading day variables are not pre-tested and are included in the model;
 #'
-#' (REGARIMA/X-13 specific)
+#'  (REGARIMA/X-13 specific)
 #'
-#' \code{"Add"} = the trading day variables are not included in the initial regression model
-#' but can be added to the RegARIMA model after the test;
-#' \code{"Remove"} = the trading day variables belong to the initial regression model but can be removed from the RegARIMA model
-#' after the test;
+#'  - \code{"Add"} = the trading day variables are not included in the initial
+#'      regression model but can be added to the RegARIMA model after the test;
+#'  - \code{"Remove"} = the trading day variables belong to the initial
+#'      regression model but can be removed from the RegARIMA model after the
+#'      test;
 #'
 #' (TRAMO specific)
 #'
-#' \code{"Separate_T"} = a t-test is applied to each trading day variable separately and the trading day variables are included in the RegArima model
-#' if at least one t-statistic is greater than 2.6 or if two t-statistics are greater than 2.0 (in absolute terms);
-#' \code{"Joint_F"} = a joint F-test of significance of all the trading day variables. The trading day effect is significant if the F statistic is greater than 0.95.
+#'  - \code{"Separate_T"} = a t-test is applied to each trading day variable
+#'      separately and the trading day variables are included in the RegArima
+#'      model if at least one t-statistic is greater than 2.6 or if two
+#'      t-statistics are greater than 2.0 (in absolute terms);
+#'  - \code{"Joint_F"} = a joint F-test of significance of all the trading day
+#'      variables. The trading day effect is significant if the F statistic is
+#'      greater than 0.95.
 #'
 #' @param coef vector of coefficients for the trading-days regressors.
 #'
 #' @param automatic defines whether the calendar effects should be added to the
-#' model manually (\code{"Unused"}) or automatically. During the automatic
-#' selection, the choice of the number of calendar variables can be based on
-#' the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test
-#' (\code{"WaldTest"}), or by minimizing AIC or BIC; the model with higher
-#' F-value is chosen, provided that it is higher than \code{pftd}).
+#'  model manually (\code{"Unused"}) or automatically. During the automatic
+#'  selection, the choice of the number of calendar variables can be based on
+#'  the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test
+#'  (\code{"WaldTest"}), or by minimizing AIC or BIC; the model with higher
+#'  F-value is chosen, provided that it is higher than \code{pftd}).
 #'
-#' @param pftd (TRAMO SPECIFIC) \code{numeric}. The p-value used to assess the significance of the pre-tested calendar effects.
+#' @param pftd (TRAMO SPECIFIC) \code{numeric}. The p-value used to assess the
+#'  significance of the pre-tested calendar effects.
 #'
-#' @param autoadjust a logical indicating if the program corrects automatically the raw series for
-#' the leap year effect if the leap year regressor is significant. Only used when the data is log transformed.
+#' @param autoadjust a logical indicating if the program corrects automatically
+#' the raw series for the leap year effect if the leap year regressor is
+#' significant. Only used when the data is log transformed.
 #'
-#' @param leapyear a \code{character} to specify whether or not to include the leap-year effect in the model:
-#' \code{"LeapYear"} = leap year effect; \code{"LengthOfPeriod"} = length of period (REGARIMA/X-13 specific),
-#' \code{"None"} = no effect included. Default: a leap year effect regressor is included with any built-in set
-#' of trading day regressors.
+#' @param leapyear a \code{character} to specify whether or not to include the
+#' leap-year effect in the model:
+#' - \code{"LeapYear"} = leap year effect;
+#' - \code{"LengthOfPeriod"} = length of period (REGARIMA/X-13 specific),
+#' - \code{"None"} = no effect included.
+#' Default: a leap year effect regressor is included with any built-in set of
+#' trading day regressors.
 #'
 #' @param leapyear.coef coefficient of the leap year regressor.
-#' @param coef.type,leapyear.coef.type vector defining if the coefficients are fixed or estimated.
+#' @param coef.type,leapyear.coef.type vector defining if the coefficients are
+#' fixed or estimated.
+#'
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
+#'
 #' @seealso \code{\link{modelling_context}}, \code{\link{calendar_td}}
+#'
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
+#'
 #' @examples
 #' # Pre-defined regressors
 #' # y_raw<-ABS$X0.2.09.10.M
@@ -1164,10 +1259,8 @@ set_tradingdays.default <- function(x,
             )
         }
     }
-    if (is_tramo) {
-        if (!missing(pftd) && !anyNA(pftd)) {
-            td$ptest <- pftd
-        }
+    if (is_tramo && !missing(pftd) && !anyNA(pftd)) {
+        td$ptest <- pftd
     }
 
     if (!is.null(leapyear) && !anyNA(leapyear)) {
@@ -1553,7 +1646,13 @@ add_usrdefvar.default <- function(x,
 }
 
 # read in protofile
-.create_variable <- function(id, label = NULL, lag = 0, coef = NULL, regeffect = c("Undefined", "Trend", "Seasonal", "Irregular", "Series", "SeasonallyAdjusted")) {
+.create_variable <- function(
+        id,
+        label = NULL,
+        lag = 0,
+        coef = NULL,
+        regeffect = c("Undefined", "Trend", "Seasonal", "Irregular",
+                      "Series", "SeasonallyAdjusted")) {
     regeffect <- match.arg(regeffect)
     if (is.null(label)) {
         label <- id

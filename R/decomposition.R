@@ -7,30 +7,38 @@ NULL
 #' @rdname sa_decomposition
 #' @export
 sadecomposition <- function(y, sa, t, s, i, mul) {
-    if (!is.logical(mul)) stop("Invalid SA decomposition")
-    if (is.null(y)) stop("Invalid SA decomposition")
-    if (!is.ts(y)) stop("Invalid SA decomposition")
+    if (!is.logical(mul)) stop("Invalid SA decomposition: mul must be boolean.")
+    if (is.null(y) && !is.ts(y)) stop("Invalid SA decomposition: y must be a ts object.")
+    if (!is.null(s) && !is.ts(s)) stop("Invalid SA decomposition: s must be a ts object.")
+    if (!is.null(i) && !is.ts(i)) stop("Invalid SA decomposition: i must be a ts object.")
+    if (!is.ts(sa)) stop("Invalid SA decomposition: sa must be a ts object.")
+    if (!is.ts(t)) stop("Invalid SA decomposition: t must be a ts object.")
+
     n <- length(y)
+    if (mul) {
+        content <- rep(1, 1, n)
+    } else {
+        content <- rep(0, 1, n)
+    }
+
     if (is.null(s)) {
-        if (mul) {
-            s <- ts(rep(1, 1, n), start = start(y), frequency = frequency(y))
-        } else {
-            s <- ts(rep(0, 1, n), start = start(y), frequency = frequency(y))
-        }
-    } else if (!is.ts(s)) stop("Invalid SA decomposition")
+        s <- ts(content, start = start(y), frequency = frequency(y))
+    }
     if (is.null(i)) {
-        if (mul) {
-            i <- ts(rep(1, 1, n), start = start(y), frequency = frequency(y))
-        } else {
-            i <- ts(rep(0, 1, n), start = start(y), frequency = frequency(y))
-        }
-    } else if (!is.ts(i)) stop("Invalid SA decomposition")
+        i <- ts(content, start = start(y), frequency = frequency(y))
+    }
 
+    output <- structure(
+        .Data = list(series = y,
+                     sa = sa,
+                     trend = t,
+                     seas = s,
+                     irr = i,
+                     multiplicative = mul),
+        class = c("JD3_SADECOMPOSITION", "JD3")
+    )
 
-    if (!is.ts(sa)) stop("Invalid SA decomposition")
-    if (!is.ts(t)) stop("Invalid SA decomposition")
-
-    return(structure(list(series = y, sa = sa, trend = t, seas = s, irr = i, multiplicative = mul), class = c("JD3_SADECOMPOSITION", "JD3")))
+    return(output)
 }
 
 #' @rdname sa_decomposition
@@ -74,12 +82,14 @@ plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
         # lty[grep("_f$", series_graph)] <- 1
         # col <- colors[gsub("_.*$", "", series_graph)]
         # par(mar = c(5, 4, 4, 2) + 0.1)
-        ts.plot(data_plot[, series_graph],
+        ts.plot(
+            data_plot[, series_graph],
             col = colors[series_graph],
             main = caption[1], lty = lty,
             ...
         )
-        legend("bottomleft",
+        legend(
+            "bottomleft",
             legend = c("Series", "Trend", "Seasonally adjusted"),
             col = colors[series_graph], lty = 1,
             pch = NA_integer_,
@@ -93,12 +103,14 @@ plot.JD3_SADECOMPOSITION <- function(x, first_date = NULL, last_date = NULL,
         lty <- rep(1, length(series_graph))
         # lty[grep("_f$", series_graph, invert = TRUE)] <- 1
         # col <- colors[gsub("_.*$", "", series_graph)]
-        ts.plot(data_plot[, series_graph],
+        ts.plot(
+            data_plot[, series_graph],
             col = colors[series_graph],
             main = caption[1], lty = lty,
             ...
         )
-        legend("bottomleft",
+        legend(
+            "bottomleft",
             legend = c(
                 "Seas (component)",
                 "Irregular"

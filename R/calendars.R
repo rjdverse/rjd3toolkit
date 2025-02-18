@@ -365,28 +365,38 @@ td <- function(frequency, start, length, s, groups = c(1, 2, 3, 4, 5, 6, 0), con
     return(ts(data, start = start, frequency = frequency))
 }
 
-#' Daily calendar regressors corresponding to holidays
+#' @title Daily calendar regressors corresponding to holidays
 #'
 #' @description
-#' Allows to generate daily regressors (dummy variables) corresponding to each holiday of a pre-defined calendar.
+#' Allows to generate daily regressors (dummy variables) corresponding to each
+#' holiday of a pre-defined calendar.
 #'
 #' @details
-#' The pre-defined in a calendar has to be created with the functions \code{\link{national_calendar}} or \code{\link{weighted_calendar}} or
-#' \code{\link{weighted_calendar}}. A many regressors  as defined holidays are generated, when the holiday occurs
-#' the value is 1 and 0 otherwise.
-#' This kind of non-aggregated regressors are used for calendar correction in daily data.
+#' The pre-defined in a calendar has to be created with the functions
+#' \code{\link{national_calendar}} or \code{\link{weighted_calendar}} or
+#' \code{\link{weighted_calendar}}. A many regressors  as defined holidays are
+#' generated, when the holiday occurs the value is 1 and 0 otherwise.
+#' This kind of non-aggregated regressors are used for calendar correction in
+#' daily data.
 #'
 #' @param calendar The calendar in which the holidays are defined.
 #' @param start  Starting date for the regressors, format \code{"YYYY-MM-DD"}.
 #' @param length Length of the regressors in days.
 #' @param nonworking Indexes of non working days (Monday=1, Sunday=7).
 #' @param type Adjustment type when a holiday falls on a week-end:
-#' \code{"NextWorkingDay"}: the holiday is set to the next day,
-#' \code{"PreviousWorkingDay"}: the holiday is set to the previous day,
-#' \code{"Skip"}: holidays corresponding to non working days are simply skipped in the matrix,
-#' \code{"All"}: (holidays are always put in the matrix, even if they correspond to a non working day.
-#' @param single Boolean indication if a single variable (`TRUE`) should be returned or a matrix (`FALSE`, the default) containing the different holidays in separate columns.
-#' @returns A matrix (class \code{"matrix"}) where each column is associated to a holiday (in the order of creation of the holiday) and each row to a date.
+#'  - \code{"NextWorkingDay"}: the holiday is set to the next day,
+#'  - \code{"PreviousWorkingDay"}: the holiday is set to the previous day,
+#'  - \code{"Skip"}: holidays corresponding to non working days are simply
+#'      skipped in the matrix,
+#'  - \code{"All"}: (holidays are always put in the matrix, even if they
+#'      correspond to a non working day.
+#' @param single Boolean indication if a single variable (`TRUE`) should be
+#'  returned or a matrix (`FALSE`, the default) containing the different
+#'  holidays in separate columns.
+#'
+#' @returns A matrix (class \code{"matrix"}) where each column is associated to
+#' a holiday (in the order of creation of the holiday) and each row to a date.
+#'
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -626,29 +636,40 @@ chained_calendar <- function(calendar1, calendar2, break_date) {
     return(pc)
 }
 
-#' Create a Composite Calendar
+#' @title Create a Composite Calendar
 #'
 #' @description
-#' Allows to combine two or more calendars into one calendar, weighting all the holidays of each of them.
+#' Allows to combine two or more calendars into one calendar, weighting all the
+#' holidays of each of them.
 #'
 #' @param calendars list of calendars.
 #' @param weights vector of weights associated to each calendar.
+#'
 #' @details
-#' Composite calendars are useful for a series that including data from more than one country/region.
-#' They can be used, for example, to create the calendar for the European Union or to create the national calendar for a country,
-#' in which regional holidays are celebrated.
+#' Composite calendars are useful for a series that including data from more
+#' than one country/region. They can be used, for example, to create the
+#' calendar for the European Union or to create the national calendar for a
+#' country, in which regional holidays are celebrated.
 #' For example, in Germany public holidays are determined by the federal states.
-#' Therefore, Epiphany is celebrated only in Baden-Wurttemberg, Bavaria and in Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated only in Saxony.
-#' @return returns an object of class \code{c("JD3_WEIGHTEDCALENDAR","JD3_CALENDARDEFINITION")}
+#' Therefore, Epiphany is celebrated only in Baden-Wurttemberg, Bavaria and in
+#' Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated
+#' only in Saxony.
+#'
+#' @return returns an object of class
+#' \code{c("JD3_WEIGHTEDCALENDAR", "JD3_CALENDARDEFINITION")}
+#'
 #' @seealso \code{\link{national_calendar}}, \code{\link{chained_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
+#'
 #' @export
+#'
 #' @examples
 #' Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
 #' France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
 #' composite_calendar <- weighted_calendar(list(France, Belgium), weights = c(1, 2))
+#'
 weighted_calendar <- function(calendars, weights) {
     # checkmate::assertNames(calendars)
     checkmate::assertNumeric(weights)

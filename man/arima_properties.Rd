@@ -2,22 +2,25 @@
 % Please edit documentation in R/arima.R
 \name{arima_properties}
 \alias{arima_properties}
-\title{Properties of an ARIMA model; the (pseudo-)spectrum and the auto-covariances of the model are returned}
+\title{Properties of an ARIMA model}
 \usage{
 arima_properties(model, nspectrum = 601, nac = 36)
 }
 \arguments{
 \item{model}{a \code{"JD3_ARIMA"} model (created with \code{\link[=arima_model]{arima_model()}}).}
 
-\item{nspectrum}{number of points to calculate the spectrum; th points are uniformly distributed in [0, pi]}
+\item{nspectrum}{number of points to calculate the spectrum; th points are
+uniformly distributed in [0, pi]}
 
-\item{nac}{maximum lag at which to calculate the auto-covariances; if the model is non-stationary, the auto-covariances are computed on its stationary transformation.}
+\item{nac}{maximum lag at which to calculate the auto-covariances; if the
+model is non-stationary, the auto-covariances are computed on its stationary
+transformation.}
 }
 \value{
 A list with the auto-covariances and with the (pseudo-)spectrum
 }
 \description{
-Properties of an ARIMA model; the (pseudo-)spectrum and the auto-covariances of the model are returned
+The (pseudo-)spectrum and the auto-covariances of the model are returned
 }
 \examples{
 mod1 <- arima_model(ar = c(0.1, 0.2), delta = c(1, -1), ma = 0)

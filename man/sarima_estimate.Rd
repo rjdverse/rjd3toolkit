@@ -34,7 +34,10 @@ An object of class \code{JD3_SARIMA_ESTIMATE} containing:
 \item the raw data,
 \item the regressors,
 \item the standard errors,
-\item the log-likelihood (with the number of observations, the number of effective observations, the number of parameters, the log-likelihood, the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and the sum of squares),
+\item the log-likelihood (with the number of observations, the number of
+effective observations, the number of parameters, the log-likelihood,
+the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and
+the sum of squares),
 \item the residuals,
 \item the orders of the model.
 }

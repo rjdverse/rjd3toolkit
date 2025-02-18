@@ -63,7 +63,9 @@ do_stationary <- function(data, period) {
 #' @param period Period considered in the automatic differencing.
 #' @param mad Use of MAD in the computation of the variance (true by default).
 #' @param centile Percentage of the data used for computing the variance (90 by default).
-#' @param k tolerance in the decrease of the variance. The algorithm stops if the new variance is higher than k*the old variance. k should be equal or slightly higher than 1 (1.2 by default)
+#' @param k tolerance in the decrease of the variance. The algorithm stops if
+#'  the new variance is higher than k*the old variance. k should be equal or
+#'  slightly higher than 1 (1.2 by default)
 #'
 #' @return
 #' Stationary transformation

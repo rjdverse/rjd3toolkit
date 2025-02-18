@@ -23,24 +23,34 @@ holidays(
 \item{nonworking}{Indexes of non working days (Monday=1, Sunday=7).}
 
 \item{type}{Adjustment type when a holiday falls on a week-end:
-\code{"NextWorkingDay"}: the holiday is set to the next day,
-\code{"PreviousWorkingDay"}: the holiday is set to the previous day,
-\code{"Skip"}: holidays corresponding to non working days are simply skipped in the matrix,
-\code{"All"}: (holidays are always put in the matrix, even if they correspond to a non working day.}
+\itemize{
+\item \code{"NextWorkingDay"}: the holiday is set to the next day,
+\item \code{"PreviousWorkingDay"}: the holiday is set to the previous day,
+\item \code{"Skip"}: holidays corresponding to non working days are simply
+skipped in the matrix,
+\item \code{"All"}: (holidays are always put in the matrix, even if they
+correspond to a non working day.
+}}
 
-\item{single}{Boolean indication if a single variable (\code{TRUE}) should be returned or a matrix (\code{FALSE}, the default) containing the different holidays in separate columns.}
+\item{single}{Boolean indication if a single variable (\code{TRUE}) should be
+returned or a matrix (\code{FALSE}, the default) containing the different
+holidays in separate columns.}
 }
 \value{
-A matrix (class \code{"matrix"}) where each column is associated to a holiday (in the order of creation of the holiday) and each row to a date.
+A matrix (class \code{"matrix"}) where each column is associated to
+a holiday (in the order of creation of the holiday) and each row to a date.
 }
 \description{
-Allows to generate daily regressors (dummy variables) corresponding to each holiday of a pre-defined calendar.
+Allows to generate daily regressors (dummy variables) corresponding to each
+holiday of a pre-defined calendar.
 }
 \details{
-The pre-defined in a calendar has to be created with the functions \code{\link{national_calendar}} or \code{\link{weighted_calendar}} or
-\code{\link{weighted_calendar}}. A many regressors  as defined holidays are generated, when the holiday occurs
-the value is 1 and 0 otherwise.
-This kind of non-aggregated regressors are used for calendar correction in daily data.
+The pre-defined in a calendar has to be created with the functions
+\code{\link{national_calendar}} or \code{\link{weighted_calendar}} or
+\code{\link{weighted_calendar}}. A many regressors  as defined holidays are
+generated, when the holiday occurs the value is 1 and 0 otherwise.
+This kind of non-aggregated regressors are used for calendar correction in
+daily data.
 }
 \examples{
 BE <- national_calendar(list(

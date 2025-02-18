@@ -227,11 +227,15 @@ arima_lsum <- function(components) {
     return(.jd2r_arima(jsum))
 }
 
-#' @title Remove an arima model from an existing one. More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
+#' @title Remove an arima model from an existing one.
+#'
+#' @description
+#' More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
 #'
 #' @param left Left operand (JD3_ARIMA object)
 #' @param right Right operand (JD3_ARIMA object)
-#' @param simplify Simplify the results if possible (common roots in the auto-regressive and in the moving average polynomials, including unit roots)
+#' @param simplify Simplify the results if possible (common roots in the
+#'  auto-regressive and in the moving average polynomials, including unit roots)
 #'
 #' @return a `"JD3_ARIMA"` model.
 #' @export
@@ -246,16 +250,27 @@ arima_lsum <- function(components) {
 arima_difference <- function(left, right, simplify = TRUE) {
     jleft <- .r2jd_arima(left)
     jright <- .r2jd_arima(right)
-    jdiff <- .jcall(jleft, "Ljdplus/toolkit/base/core/arima/ArimaModel;", "minus", jright, as.logical(simplify))
+    jdiff <- .jcall(
+        obj = jleft,
+        returnSig = "Ljdplus/toolkit/base/core/arima/ArimaModel;",
+        method = "minus",
+        jright, as.logical(simplify)
+    )
     return(.jd2r_arima(jdiff))
 }
 
-
-#' @title Properties of an ARIMA model; the (pseudo-)spectrum and the auto-covariances of the model are returned
+#' @title Properties of an ARIMA model
+#'
+#' @description
+#' The (pseudo-)spectrum and the auto-covariances of the model are returned
 #'
 #' @param model a `"JD3_ARIMA"` model (created with [arima_model()]).
-#' @param nspectrum number of points to calculate the spectrum; th points are uniformly distributed in \[0, pi\]
-#' @param nac maximum lag at which to calculate the auto-covariances; if the model is non-stationary, the auto-covariances are computed on its stationary transformation.
+#' @param nspectrum number of points to calculate the spectrum; th points are
+#'  uniformly distributed in \[0, pi\]
+#' @param nac maximum lag at which to calculate the auto-covariances; if the
+#'  model is non-stationary, the auto-covariances are computed on its stationary
+#'  transformation.
+#'
 #' @returns A list with the auto-covariances and with the (pseudo-)spectrum
 #'
 #' @examples
@@ -264,8 +279,18 @@ arima_difference <- function(left, right, simplify = TRUE) {
 #' @export
 arima_properties <- function(model, nspectrum = 601, nac = 36) {
     jmodel <- .r2jd_arima(model)
-    spectrum <- .jcall("jdplus/toolkit/base/r/arima/ArimaModels", "[D", "spectrum", jmodel, as.integer(nspectrum))
-    acf <- .jcall("jdplus/toolkit/base/r/arima/ArimaModels", "[D", "acf", jmodel, as.integer(nac))
+    spectrum <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/ArimaModels",
+        returnSig = "[D",
+        method = "spectrum",
+        jmodel, as.integer(nspectrum)
+    )
+    acf <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/ArimaModels",
+        returnSig = "[D",
+        method = "acf",
+        jmodel, as.integer(nac)
+    )
     return(list(acf = acf, spectrum = spectrum))
 }
 
@@ -349,8 +374,18 @@ ucarima_model <- function(model = NULL,
 #' plot(wk1$filter, type = "h")
 ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
     jucm <- .r2jd_ucarima(ucm)
-    jwks <- .jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/ucarima/WienerKolmogorovEstimators;", "wienerKolmogorovEstimators", jucm)
-    jwk <- .jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/ucarima/WienerKolmogorovEstimator;", "finalEstimator", jwks, as.integer(cmp - 1), signal)
+    jwks <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig = "Ljdplus/toolkit/base/core/ucarima/WienerKolmogorovEstimators;",
+        method = "wienerKolmogorovEstimators",
+        jucm
+    )
+    jwk <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig = "Ljdplus/toolkit/base/core/ucarima/WienerKolmogorovEstimator;",
+        method = "finalEstimator",
+        jwks, as.integer(cmp - 1), signal
+    )
 
     spectrum <- .jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "[D", "spectrum", jwk, as.integer(nspectrum))
     wk <- .jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "[D", "filter", jwk, as.integer(nwk))
@@ -424,7 +459,10 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 #' - the raw data,
 #' - the regressors,
 #' - the standard errors,
-#' - the log-likelihood (with the number of observations, the number of effective observations, the number of parameters, the log-likelihood, the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and the sum of squares),
+#' - the log-likelihood (with the number of observations, the number of
+#'      effective observations, the number of parameters, the log-likelihood,
+#'      the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and
+#'      the sum of squares),
 #' - the residuals,
 #' - the orders of the model.
 #'

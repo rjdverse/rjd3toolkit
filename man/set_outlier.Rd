@@ -24,48 +24,71 @@ set_outlier(
 \item{x}{the specification to customize, must be a "SPEC" class object (see
 details).}
 
-\item{span.type, d0, d1, n0, n1}{parameters to specify the sub-span on which outliers will be detected.
+\item{span.type, d0, d1, n0, n1}{parameters to specify the sub-span on which
+outliers will be detected.
+\itemize{
+\item \code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify
+first/last date of the span when \code{type} equals to \code{"From"},
+\code{"To"} or \code{"Between"}.
+\item \code{n0} and \code{n1} numerics to specify the number of periods at the
+beginning/end of the series to be used for the span (\code{type} equals to
+\code{"From"}, \code{"To"}) or to exclude (\code{type} equals to
+\code{"Excluding"}).
+}}
 
-\code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify first/last date of the span when \code{type} equals to \code{"From"}, \code{"To"} or \code{"Between"}.
+\item{outliers.type}{vector of characters of the outliers to be automatically
+detected.
+\itemize{
+\item \code{"AO"} for additive outliers,
+\item \code{"TC"} for transitory changes,
+\item \code{"LS"} for level shifts,
+\item \code{"SO"} for seasonal outliers.
+For example \code{outliers.type = c("AO", "LS")} to enable the detection of
+additive outliers and level shifts.
+If \code{outliers.type = NULL} or \code{outliers.type = character()},
+automatic detection of outliers is disabled.
+Default value = \code{outliers.type = c("AO", "LS", "TC")}
+}}
 
-\code{n0} and \code{n1} numerics to specify the number of periods at the beginning/end of the series to be used for the span
-(\code{type} equals to \code{"From"}, \code{"To"}) or to exclude (\code{type} equals to \code{"Excluding"}).}
-
-\item{outliers.type}{vector of characters of the outliers to be automatically detected. \code{"AO"} for additive outliers, \code{"TC"} for transitory changes
-\code{"LS"} for level shifts and \code{"SO"} for seasonal outliers.
-For example \code{outliers.type = c("AO", "LS")} to enable the detection of additive outliers and level shifts.
-If \code{outliers.type = NULL} or \code{outliers.type = character()}, automatic detection of outliers is disabled.
-Default value = \code{outliers.type = c("AO", "LS", "TC")}}
-
-\item{critical.value}{\code{numeric}. Critical value for the outlier detection procedure.
+\item{critical.value}{\code{numeric}. Critical value for the outlier
+detection procedure.
 If equal to 0 the critical value is automatically determined
-by the number of observations in the outlier detection time span.(Default value = 4 REGARIMA/X13 and 3.5 in TRAMO)}
+by the number of observations in the outlier detection time span.
+(Default value = 4 REGARIMA/X13 and 3.5 in TRAMO)}
 
-\item{tc.rate}{the rate of decay for the transitory change outlier (Default = 0.7).}
+\item{tc.rate}{the rate of decay for the transitory change outlier.
+(Default = 0.7).}
 
-\item{method}{(REGARIMA/X13 Specific) determines how the program successively adds detected outliers to the model.
+\item{method}{(REGARIMA/X13 Specific) determines how the program successively
+adds detected outliers to the model.
 Currently, only the \code{"AddOne"} method is supported.}
 
-\item{maxiter}{(REGARIMA/X13 Specific) maximum number of iterations (Default = 30).}
+\item{maxiter}{(REGARIMA/X13 Specific) maximum number of iterations
+(Default = 30).}
 
-\item{lsrun}{(REGARIMA/X13 Specific) number of successive level shifts to test for cancellation (Default = 0).}
+\item{lsrun}{(REGARIMA/X13 Specific) number of successive level shifts to
+test for cancellation (Default = 0).}
 
-\item{eml.est}{(TRAMO Specific) \code{logical} for the exact likelihood estimation method. It controls the method applied
-for parameter estimation in the intermediate steps. If \code{TRUE}, an exact likelihood estimation method is used.
+\item{eml.est}{(TRAMO Specific) \code{logical} for the exact likelihood
+estimation method. It controls the method applied for parameter estimation
+in the intermediate steps. If \code{TRUE}, an exact likelihood estimation
+method is used.
 When \code{FALSE}, the fast Hannan-Rissanen method is used.}
 }
 \description{
-Function allowing to customize the automatic outlier detection process built in
-in the pre-processing step (regarima or tramo)
+Function allowing to customize the automatic outlier detection
+process built in in the pre-processing step (regarima or tramo).
 }
 \details{
-\code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-(or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+\code{x} specification parameter must be a JD3_X13_SPEC" class object
+generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+\code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 
-If a Seasonal adjustment process is performed, each type of Outlier will be allocated to a pre-defined
-component after the decomposition: "AO" and "TC" to the irregular, "LS" to the trend and "SO" to seasonal component.
+If a Seasonal adjustment process is performed, each type of Outlier will be
+allocated to a pre-defined component after the decomposition: "AO" and "TC"
+to the irregular, "LS" to the trend and "SO" to seasonal component.
 }
 \examples{
 # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
@@ -73,6 +96,7 @@ component after the decomposition: "AO" and "TC" to the irregular, "LS" to the t
 #                      outliers.type = c("LS", "AO"),
 #                      critical.value = 5,
 #                      tc.rate =0.85)
+
 }
 \references{
 More information on outliers and other auxiliary variables in JDemetra+ online documentation:
