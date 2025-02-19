@@ -2,17 +2,20 @@
 % Please edit documentation in R/timeseries.R
 \name{data_to_ts}
 \alias{data_to_ts}
-\title{Promote a R time series to a "full" \code{ts} of JDemetra+}
+\title{Promote a R time series to a "full JDemetra+ time series"}
 \usage{
 data_to_ts(s, name)
 }
 \arguments{
-\item{s}{R time series}
+\item{s}{R time series (class TS)}
 
 \item{name}{name of the series}
 }
+\value{
+Returns a java object of class JD3_TS
+}
 \description{
-Promote a R time series to a "full" \code{ts} of JDemetra+
+Promote a R time series to a "full JDemetra+ time series"
 }
 \examples{
 s <- ABS$X0.2.09.10.M

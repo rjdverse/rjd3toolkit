@@ -2,10 +2,10 @@
 % Please edit documentation in R/utils.R
 \name{reload_dictionaries}
 \alias{reload_dictionaries}
-\title{Title}
+\title{Reload dictionaries}
 \usage{
 reload_dictionaries()
 }
 \description{
-Title
+Reload dictionaries
 }

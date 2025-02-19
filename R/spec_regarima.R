@@ -1561,6 +1561,7 @@ set_transform.default <- function(x,
 
 #' @title Add a User-Defined Variable to Pre-Processing Specification.
 #'
+#' @description
 #' Function allowing to add any user-defined regressor to a specification and
 #' allocate its effect to a selected component, excepted to the calendar component.
 #' To add user-defined calendar regressors, \code{\link{set_tradingdays}}. Once added to

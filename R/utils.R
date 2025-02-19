@@ -51,13 +51,12 @@ parseDate <- function(s) {
     return(d)
 }
 
-#' Title
+#' Reload dictionaries
 #'
 #' @export
 reload_dictionaries <- function() {
     .jcall("jdplus/toolkit/base/api/information/InformationExtractors", "V", "reloadExtractors")
 }
-
 
 #' @importFrom stats pf frequency
 NULL
@@ -76,8 +75,12 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
 
 #' Information on the (log-)likelihood
 #'
-#' @param nobs Number of observation
-#' @param neffectiveobs Number of effective observations. NA if it is the same as nobs.
+#' @description
+#' Function allowing to gather information on likelihood estimation
+#'
+#'
+#' @param nobs Number of observations
+#' @param neffectiveobs Number of effective observations. NA if the same as nobs.
 #' @param nparams Number of hyper-parameters
 #' @param ll Log-likelihood
 #' @param adjustedll Adjusted log-likelihood when the series has been transformed
@@ -87,9 +90,17 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
 #' @param bicc BIC corrected for the length
 #' @param ssq Sum of the squared residuals
 #'
-#' @export
+#' @return
+#' Returns a java object of class JD3_LIKELIHOOD.
 #'
 #' @examples
+#' # Values used below are taken from the following estimation
+#' # m<- x13(rjd3toolkit::ABS$X0.2.09.10.M,"rsa3")
+#' # m$result$preprocessing$estimation$likelihood
+#' ll_estimation <- .likelihood(425,4,7,720.2,-2147.407,4308.14,4309.09,4333.96, 433.962, 0.0418)
+#'
+#' @export
+#'
 .likelihood <- function(nobs, neffectiveobs = NA, nparams = 0, ll, adjustedll = NA, aic, aicc, bic, bicc, ssq) {
     if (is.na(neffectiveobs)) neffectiveobs <- nobs
     if (is.na(adjustedll)) adjustedll <- ll

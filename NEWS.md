@@ -8,6 +8,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+* New JARS
+
+### Added
+
+* Spline functions (periodic, b-splines, cardinal splines)
+
 ## [3.3.0] - 2024-10-28
 
 ### Changed

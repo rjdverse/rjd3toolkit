@@ -14,7 +14,7 @@ sarima_hannan_rissanen(
 )
 }
 \arguments{
-\item{x}{a univariate time series.}
+\item{x}{an univariate time series (TS object).}
 
 \item{order}{vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.}
 
@@ -35,5 +35,5 @@ Estimate ARIMA Model with Hannan-Rissanen method
 }
 \examples{
 y <- ABS$X0.2.09.10.M
-sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
+model<- sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 }
