@@ -35,5 +35,3 @@ NULL
         options(summary_info = TRUE)
     }
 }
-
-
