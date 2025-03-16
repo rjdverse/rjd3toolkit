@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
-Title: Utility Functions around 'JDemetra+ 3.0'
-Version: 3.4.0
+Title: Utility Functions Around 'JDemetra+ 3.0'
+Version: 3.3.0.9000
 Authors@R: c(
     person(given = "Jean", 
            family = "Palate", role = c("aut"),
@@ -65,4 +65,4 @@ Collate:
     'timeseries.R'
     'variables.R'
     'zzz.R'
-VignetteBuilder: knitr
+Language: en-GB

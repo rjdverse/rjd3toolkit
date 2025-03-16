@@ -28,7 +28,19 @@ Either  a list with components \code{order} and \code{period} or a numeric vecto
 \item{eps}{precision.}
 }
 \value{
-Returns a java object of class JD3_SARIMA_ESTIMATE and JD3_REGARIMA_RSLTS.
+An object of class \code{JD3_SARIMA_ESTIMATE} containing:
+\itemize{
+\item the estimated parameters,
+\item the raw data,
+\item the regressors,
+\item the standard errors,
+\item the log-likelihood (with the number of observations, the number of
+effective observations, the number of parameters, the log-likelihood,
+the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and
+the sum of squares),
+\item the residuals,
+\item the orders of the model.
+}
 }
 \description{
 Estimate SARIMA Model

@@ -108,7 +108,12 @@ bowmanshenton <- function(data) {
 #' @export
 #' @describeIn normality_tests Doornik-Hansen test
 doornikhansen <- function(data) {
-    jtest <- .jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "doornikHansen", as.numeric(data))
+    jtest <- .jcall(
+        obj = "jdplus/toolkit/base/r/stats/Tests",
+        returnSig = "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
+        method = "doornikHansen",
+        as.numeric(data)
+    )
     return(.jd2r_test(jtest))
 }
 
@@ -122,15 +127,21 @@ jarquebera <- function(data, k = 0, sample = TRUE) {
     return(.jd2r_test(jtest))
 }
 
-#' Runs Tests around the mean or the median
+#' @title Runs Tests around the mean or the median
 #'
-#' Functions to compute runs test around the mean or the median (\code{testofruns}) or up and down runs test (\code{testofupdownruns}) to check randomness of a data.
+#' @description
+#' Functions to compute runs test around the mean or the median
+#' (\code{testofruns}) or up and down runs test (\code{testofupdownruns}) to
+#' check randomness of a data.
 #'
 #' @inheritParams ljungbox
-#' @param mean If \code{TRUE}, runs around the mean. Otherwise, runs around the median.
-#' @param number If \code{TRUE}, test the number of runs. Otherwise, test the lengths of the runs.
+#' @param mean If \code{TRUE}, runs around the mean. Otherwise, runs around the
+#' median.
+#' @param number If \code{TRUE}, test the number of runs. Otherwise, test the
+#' lengths of the runs.
 #'
-#' @return A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for details).
+#' @return A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for
+#' details).
 #' @name runstests
 #'
 #' @examples
