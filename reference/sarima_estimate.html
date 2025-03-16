@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,8 +79,17 @@ Either  a list with components <code>order</code> and <code>period</code> or a n
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Returns a java object of class JD3_SARIMA_ESTIMATE and JD3_REGARIMA_RSLTS.</p>
-    </div>
+    <p>An object of class <code>JD3_SARIMA_ESTIMATE</code> containing:</p><ul><li><p>the estimated parameters,</p></li>
+<li><p>the raw data,</p></li>
+<li><p>the regressors,</p></li>
+<li><p>the standard errors,</p></li>
+<li><p>the log-likelihood (with the number of observations, the number of
+effective observations, the number of parameters, the log-likelihood,
+the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and
+the sum of squares),</p></li>
+<li><p>the residuals,</p></li>
+<li><p>the orders of the model.</p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

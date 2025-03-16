@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,77 +67,103 @@ details).</p></dd>
 
 
 <dt id="arg-enabled">enabled<a class="anchor" aria-label="anchor" href="#arg-enabled"></a></dt>
-<dd><p><code>logical</code>. If <code>TRUE</code>, the automatic modelling of the ARIMA model is enabled.
+<dd><p><code>logical</code>. If <code>TRUE</code>, the automatic modelling of the
+ARIMA model is enabled.
 If <code>FALSE</code>, the parameters of the ARIMA model can be specified.</p></dd>
 
 
 <dt id="arg-acceptdefault">acceptdefault<a class="anchor" aria-label="anchor" href="#arg-acceptdefault"></a></dt>
-<dd><p><code>logical</code>. If <code>TRUE</code>, the default model (ARIMA(0,1,1)(0,1,1)) will be chosen in the first step
-of the automatic model identification, if the Ljung-Box Q statistics for the residuals are acceptable. No further attempt will be made to identify a better model.
+<dd><p><code>logical</code>. If <code>TRUE</code>, the default model
+(ARIMA(0,1,1)(0,1,1)) will be chosen in the first step of the automatic
+model identification, if the Ljung-Box Q statistics for the residuals are
+acceptable. No further attempt will be made to identify a better model.
 Default = <code>FALSE</code></p></dd>
 
 
 <dt id="arg-cancel">cancel<a class="anchor" aria-label="anchor" href="#arg-cancel"></a></dt>
-<dd><p><code>numeric</code> cancellation limit. A limit for the AR and the MA roots to be assumed equal. This option is used in
-the automatic identification of the differencing order. If the difference in moduli of an AR and an MA root (when estimating ARIMA(1,0,1)(1,0,1) models
-in the second step of the automatic identification of the differencing polynomial) is smaller than cancellation limit, the two roots cancel out.
+<dd><p><code>numeric</code> cancellation limit. A limit for the AR and the
+MA roots to be assumed equal. This option is used in the automatic
+identification of the differencing order. If the difference in moduli of an
+AR and an MA root (when estimating ARIMA(1,0,1)(1,0,1) models in the second
+step of the automatic identification of the differencing polynomial) is
+smaller than cancellation limit, the two roots cancel out.
 Default = 0.1.</p></dd>
 
 
 <dt id="arg-ub-">ub1<a class="anchor" aria-label="anchor" href="#arg-ub-"></a></dt>
-<dd><p><code>numeric</code>, the first unit root limit. It is the threshold value for the initial unit root test in the automatic differencing procedure.
-When one of the roots in the estimation of the ARIMA(2,0,0)(1,0,0) plus mean model, performed in the first step of the automatic model identification procedure,
-is larger than first unit root limit in modulus, it is set equal to unity.
+<dd><p><code>numeric</code>, the first unit root limit. It is the threshold
+value for the initial unit root test in the automatic differencing
+procedure. When one of the roots in the estimation of the
+ARIMA(2,0,0)(1,0,0) plus mean model, performed in the first step of the
+automatic model identification procedure, is larger than first unit root
+limit in modulus, it is set equal to unity.
 Default =   1.030928.</p></dd>
 
 
 <dt id="arg-ub-">ub2<a class="anchor" aria-label="anchor" href="#arg-ub-"></a></dt>
-<dd><p><code>numeric</code>, the second unit root limit. When one of the roots in the estimation of the ARIMA(1,0,1)(1,0,1) plus mean model,
-which is performed in the second step of the automatic model identification procedure, is larger than second unit root limit in modulus,
-it is checked if there is a common factor in the corresponding AR and MA polynomials of the ARMA model that can be cancelled (see <code>automdl.cancel</code>).
-If there is no cancellation, the AR root is set equal to unity (i.e. the differencing order changes).
+<dd><p><code>numeric</code>, the second unit root limit. When one of the roots
+in the estimation of the ARIMA(1,0,1)(1,0,1) plus mean model, which is
+performed in the second step of the automatic model identification
+procedure, is larger than second unit root limit in modulus, it is checked
+if there is a common factor in the corresponding AR and MA polynomials of
+the ARMA model that can be cancelled (see <code>automdl.cancel</code>).
+If there is no cancellation, the AR root is set equal to unity (i.e. the
+differencing order changes).
 Default = 1.136364.</p></dd>
 
 
 <dt id="arg-reducecv">reducecv<a class="anchor" aria-label="anchor" href="#arg-reducecv"></a></dt>
-<dd><p><code>numeric</code>, ReduceCV. The percentage by which the outlier critical value will be reduced
-when an identified model is found to have a Ljung-Box statistic with an unacceptable confidence coefficient.
-The parameter should be between 0 and 1, and will only be active when automatic outlier identification is enabled.
-The reduced critical value will be set to (1-ReduceCV)xCV, where CV is the original critical value.
+<dd><p><code>numeric</code>, ReduceCV. The percentage by which the outlier
+critical value will be reduced when an identified model is found to have a
+Ljung-Box statistic with an unacceptable confidence coefficient.
+The parameter should be between 0 and 1, and will only be active when
+automatic outlier identification is enabled. The reduced critical value will
+be set to (1 - ReduceCV) x CV, where CV is the original critical value.
 Default =  0.14268.</p></dd>
 
 
 <dt id="arg-ljungboxlimit">ljungboxlimit<a class="anchor" aria-label="anchor" href="#arg-ljungboxlimit"></a></dt>
-<dd><p><code>numeric</code>, the Ljung Box limit, setting the acceptance criterion for the confidence intervals of the Ljung-Box Q statistic.
-If the LjungBox Q statistics for the residuals of a final model is greater than Ljung Box limit, then the model is rejected, the outlier critical value is reduced,
-and model and outlier identification (if specified) is redone with a reduced value.
+<dd><p><code>numeric</code>, the Ljung Box limit, setting the
+acceptance criterion for the confidence intervals of the Ljung-Box
+Q-statistic. If the LjungBox Q statistics for the residuals of a final model
+is greater than Ljung Box limit, then the model is rejected, the outlier
+critical value is reduced, and model and outlier identification (if
+specified) is redone with a reduced value.
 Default = 0.95.</p></dd>
 
 
 <dt id="arg-tsig">tsig<a class="anchor" aria-label="anchor" href="#arg-tsig"></a></dt>
-<dd><p><code>numeric</code>, the arma limit. It is the threshold value for t-statistics of ARMA coefficients and the constant term used
-for the final test of model parsimony. If the highest order ARMA coefficient has a t-value smaller than this value in magnitude, the order of the model is reduced.
-If the constant term has a t-value smaller than the ARMA limit in magnitude, it is removed from the set of regressors.
+<dd><p><code>numeric</code>, the arma limit. It is the threshold value for
+t-statistics of ARMA coefficients and the constant term used for the final
+test of model parsimony. If the highest order ARMA coefficient has a t-value
+smaller than this value in magnitude, the order of the model is reduced.
+If the constant term has a t-value smaller than the ARMA limit in magnitude,
+it is removed from the set of regressors.
 Default=1.</p></dd>
 
 
 <dt id="arg-ubfinal">ubfinal<a class="anchor" aria-label="anchor" href="#arg-ubfinal"></a></dt>
-<dd><p>(REGARIMA/X13 Specific) <code>numeric</code>, final unit root limit. The threshold value for the final unit root test.
-If the magnitude of an AR root for the final model is smaller than the final unit root limit, then a unit root is assumed,
-the order of the AR polynomial is reduced by one and the appropriate order of the differencing (non-seasonal, seasonal)
-is increased. The parameter value should be greater than one.
+<dd><p>(REGARIMA/X13 Specific) <code>numeric</code>, final unit root limit.
+The threshold value for the final unit root test. If the magnitude of an AR
+root for the final model is smaller than the final unit root limit, then a
+unit root is assumed, the order of the AR polynomial is reduced by one and
+the appropriate order of the differencing (non-seasonal, seasonal) is
+increased. The parameter value should be greater than one.
 Default = 1.05.</p></dd>
 
 
 <dt id="arg-checkmu">checkmu<a class="anchor" aria-label="anchor" href="#arg-checkmu"></a></dt>
-<dd><p>(REGARIMA/X13 Specific) <code>logical</code> indicating if the automatic model selection checks the significance of the constant term.</p></dd>
+<dd><p>(REGARIMA/X13 Specific) <code>logical</code> indicating if the
+automatic model selection checks the significance of the constant term.</p></dd>
 
 
 <dt id="arg-mixed">mixed<a class="anchor" aria-label="anchor" href="#arg-mixed"></a></dt>
-<dd><p>(REGARIMA/X13 Specific) <code>logical</code>. This variable controls whether ARIMA models with non-seasonal AR and MA terms
-or seasonal AR and MA terms will be considered in the automatic model identification procedure.
-If <code>FALSE</code>, a model with AR and MA terms in both the seasonal and non-seasonal parts of the model can be acceptable,
-provided there are no AR or MA terms in either the seasonal or non-seasonal terms.</p></dd>
+<dd><p>(REGARIMA/X13 Specific) <code>logical</code>. This variable controls
+whether ARIMA models with non-seasonal AR and MA terms or seasonal AR and
+MA terms will be considered in the automatic model identification procedure.
+If <code>FALSE</code>, a model with AR and MA terms in both the seasonal and
+non-seasonal parts of the model can be acceptable, provided there are no AR
+or MA terms in either the seasonal or non-seasonal terms.</p></dd>
 
 
 <dt id="arg-fct">fct<a class="anchor" aria-label="anchor" href="#arg-fct"></a></dt>
@@ -145,21 +171,27 @@ provided there are no AR or MA terms in either the seasonal or non-seasonal term
 
 
 <dt id="arg-balanced">balanced<a class="anchor" aria-label="anchor" href="#arg-balanced"></a></dt>
-<dd><p>(REGARIMA/X13 Specific) <code>logical</code> If <code>TRUE</code>, the automatic model identification procedure will have a preference
-for balanced models (i.e. models for which the order of the combined AR and differencing operators is equal to the order
-of the combined MA operators). Default = <code>FALSE</code></p></dd>
+<dd><p>(REGARIMA/X13 Specific) <code>logical</code> If <code>TRUE</code>, the
+automatic model identification procedure will have a preference for balanced
+models (i.e. models for which the order of the combined AR and differencing
+operators is equal to the order of the combined MA operators).
+Default = <code>FALSE</code></p></dd>
 
 
 <dt id="arg-amicompare">amicompare<a class="anchor" aria-label="anchor" href="#arg-amicompare"></a></dt>
-<dd><p>(TRAMO Specific) <code>logical</code>. If <code>TRUE</code>, the program compares the model identified by the automatic procedure to the default model (\(ARIMA(0,1,1)(0,1,1)\))
-and the model with the best fit is selected. Criteria considered are residual diagnostics, the model structure and the number of outliers.</p></dd>
+<dd><p>(TRAMO Specific) <code>logical</code>. If <code>TRUE</code>, the program
+compares the model identified by the automatic procedure to the default model
+(\(ARIMA(0,1,1)(0,1,1)\)) and the model with the best fit is selected.
+Criteria considered are residual diagnostics, the model structure and the
+number of outliers.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>x</code> specification parameter must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::x13_spec()</code>
-(or "JD3_REGARIMA_SPEC" generated with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC"
-generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC" generated with
+    <p><code>x</code> specification parameter must be a JD3_X13_SPEC" class object
+generated with <code>rjd3x13::x13_spec()</code> (or "JD3_REGARIMA_SPEC" generated
+with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC" generated with
+<code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC" generated with
 <code>rjd3tramoseats::spec_tramo()</code>).</p>
     </div>
     <div class="section level2">
@@ -178,6 +210,7 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
 <span class="r-in"><span><span class="co"># new_spec&lt;-set_automodel(init_spec,</span></span></span>
 <span class="r-in"><span><span class="co">#                        enabled = FALSE,</span></span></span>
 <span class="r-in"><span><span class="co">#                        acceptdefault = TRUE)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
