@@ -22,7 +22,7 @@ Description: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time
  UCARIMA models...), to test the presence of trading days or seasonal effects and also
  to set specifications in pre-adjustment and benchmarking when using rjd3x13 or rjd3tramoseats.
 Depends:
-    R (>= 4.1.0)
+    R (>= 4.0.5)
 Imports:
     RProtoBuf (>= 0.4.20),
     rJava (>= 1.0-6),
