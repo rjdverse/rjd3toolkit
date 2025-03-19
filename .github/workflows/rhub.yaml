@@ -83,14 +83,15 @@ jobs:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
 
-      - name: "Configure java pour ubuntu et macos"
-        if: runner.os != 'Windows'
-        run: sudo R CMD javareconf
-
       - uses: r-hub/actions/setup-r@v1
         with:
           job-config: ${{ matrix.config.job-config }}
           token: ${{ secrets.RHUB_TOKEN }}
+
+      - name: "Configure java pour ubuntu et macos"
+        if: runner.os != 'Windows'
+        run: sudo R CMD javareconf
+
       - uses: r-hub/actions/platform-info@v1
         with:
           token: ${{ secrets.RHUB_TOKEN }}
