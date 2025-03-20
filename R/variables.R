@@ -12,7 +12,7 @@ NULL
 #' -1(default): before Easter Sunday, 0: on Easter Sunday, 1: on Easter Monday)
 #' @param correction mean correction option. Simple"(default), "PreComputed", "Theoretical" or "None".
 #'
-#' @return A time series (object of class \code{"ts"})
+#' @returns A time series (object of class \code{"ts"})
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -56,7 +56,7 @@ julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
 #' @param type the modelling of the leap year effect: as a contrast variable (\code{type = "LeapYear"}, default)
 #' or by a length-of-month (or length-of-quarter; \code{type = "LengthOfPeriod"}).
 #'
-#' @return Time series (object of class \code{"ts"})
+#' @returns Time series (object of class \code{"ts"})
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:

@@ -11,7 +11,7 @@ NULL
 #' @param details boolean indicating if the statistical distribution should be printed.
 #' @param ... further arguments (ignored).
 #'
-#' @return \code{c("JD3_TEST", "JD3")} object that is a list of three parameters:
+#' @returns \code{c("JD3_TEST", "JD3")} object that is a list of three parameters:
 #' \itemize{
 #' \item{\code{value}} the statistical value of the test.
 #' \item{\code{pvalue}} the p-value of the test.
@@ -62,7 +62,7 @@ print.JD3_TEST <- function(x, details = FALSE, ...) {
 #' @param mean Mean correction. If \code{TRUE}, the auto-correlations are computed as usual.
 #' If `FALSE`, we consider that the (known) mean is 0 and that the series has been corrected for it.
 #'
-#' @return A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for details).
+#' @returns A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for details).
 #'
 #' @examples
 #' ljungbox(random_t(2, 100), lag = 24, k = 1)
@@ -85,7 +85,7 @@ ljungbox <- function(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE) {
 #' @param k number of degrees of freedom to be subtracted if the input time series is a series of residuals.
 #' @param sample boolean indicating if unbiased empirical moments should be computed.
 #'
-#' @return A \code{c("JD3_TEST", "JD3")} object (see \code{\link{statisticaltest}} for details).
+#' @returns A \code{c("JD3_TEST", "JD3")} object (see \code{\link{statisticaltest}} for details).
 #'
 #' @examples
 #' x <- rnorm(100) # null
@@ -142,7 +142,7 @@ jarquebera <- function(data, k = 0, sample = TRUE) {
 #' @param number If \code{TRUE}, test the number of runs. Otherwise, test the
 #' lengths of the runs.
 #'
-#' @return A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for
+#' @returns A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for
 #' details).
 #' @name runstests
 #'
@@ -239,7 +239,7 @@ kurtosis <- function(data) {
 #' @param centile The centile used to exclude extreme values (only the "centile" part of the data are is to compute the mad)
 #' @param medianCorrected TRUE if the series is corrected for its median, FALSE if the median is supposed to be 0
 #'
-#' @return The median absolute deviation
+#' @returns The median absolute deviation
 #' @export
 #'
 #' @examples

@@ -14,7 +14,7 @@ NULL
 #' @param complete  Boolean indicating if the observation for a given period in the
 #' new series is set missing if some data in the original series are missing.
 #'
-#' @return A new time series of frequency \code{nfreq}.
+#' @returns A new time series of frequency \code{nfreq}.
 #' @export
 #'
 #' @examples
@@ -78,7 +78,7 @@ aggregate.data.frame <- function(s, nfreq = 1,
 #'
 #' @param s Original series
 #'
-#' @return Cleaned series
+#' @returns Cleaned series
 #' @export
 #'
 #' @examples
@@ -106,7 +106,7 @@ clean_extremities <- function(s) {
 #' @param method
 #'    airline: interpolation through an estimated airline model
 #'    average: interpolation using the average of the previous and next non missing values
-#' @return The interpolated series
+#' @returns The interpolated series
 #' @export
 #'
 ts_interpolate <- function(s, method = c("airline", "average")) {
@@ -156,7 +156,7 @@ ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
 #'    \code{"LeapYear"}: correction for leap year
 #'    \code{"LengthOfPeriod"}: correction for the length of periods
 #' @param reverse Adjustment or reverse operation
-#' @return The interpolated series
+#' @returns The interpolated series
 #'
 #' @export
 #'
@@ -212,7 +212,7 @@ ts_adjust.data.frame <- function(s, method = c("LeapYear", "LengthOfPeriod"), re
 #' @param ts A time series
 #' @param pos The position of the first considered period.
 #'
-#' @return A list of the starting dates of each period
+#' @returns A list of the starting dates of each period
 #' @export
 #'
 #' @examples daysOf(retail$BookStores)
@@ -230,7 +230,7 @@ daysOf <- function(ts, pos = 1) {
 #' @param type Type of the requested information (Data, Metadata...).
 #' All by default.
 #'
-#' @return An object of type "JD3_TS". List containing the identifiers,
+#' @returns An object of type "JD3_TS". List containing the identifiers,
 #' the data and the metadata
 #' @export
 to_ts <- function(source, id, type = "All") {
@@ -248,7 +248,7 @@ to_ts <- function(source, id, type = "All") {
 #' @param type Type of the requested information (Data, Metadata...).
 #' All by default.
 #'
-#' @return An object of type "JD3_TSCOLLECTION". List containing the identifiers,
+#' @returns An object of type "JD3_TSCOLLECTION". List containing the identifiers,
 #' the metadata and all the series (data).
 #'
 #' @examples
@@ -272,7 +272,7 @@ to_tscollection <- function(source, id, type = "All") {
 #' @param s R time series (class TS)
 #' @param name name of the series
 #'
-#' @return
+#' @returns
 #' Returns a java object of class JD3_TS
 #' @export
 #'
@@ -314,7 +314,7 @@ data_to_ts <- function(s, name) {
 #' @param values Values of the time series
 #' @param dates Dates of the values (could be any date inside the considered period)
 #'
-#' @return A \code{ts} object. The frequency will be identified automatically and missing values will be added in need be.
+#' @returns A \code{ts} object. The frequency will be identified automatically and missing values will be added in need be.
 #' The identified frequency will be the lowest frequency that match the figures.
 #' The provided data can contain missing values (NA)
 #' @export
@@ -343,7 +343,7 @@ tsdata_of <- function(values, dates) {
 #' @param raw Raw series
 #' @param sa Seasonally adjusted series
 #'
-#' @return
+#' @returns
 #' The largest annual difference (in percentage of the average level of the seasonally adjusted series)
 #'
 #' @examples

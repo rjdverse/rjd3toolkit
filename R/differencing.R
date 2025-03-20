@@ -26,7 +26,7 @@ NULL
 #' @param data Series being differenced.
 #' @param period Period of the series.
 #'
-#' @return
+#' @returns
 #' Stationary transformation
 #' * \code{ddata}: data after differencing
 #' * \code{mean}: mean correction
@@ -67,7 +67,7 @@ do_stationary <- function(data, period) {
 #'  the new variance is higher than k*the old variance. k should be equal or
 #'  slightly higher than 1 (1.2 by default)
 #'
-#' @return
+#' @returns
 #' Stationary transformation
 #' * \code{ddata}: data after differencing
 #' * \code{mean}: mean correction
@@ -102,7 +102,7 @@ differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
 #' @param lags Lags of the differencing.
 #' @param mean Apply a mean correction at the end of the differencing process.
 #'
-#' @return The differenced series.
+#' @returns The differenced series.
 #' @export
 #'
 #' @examples
@@ -174,7 +174,7 @@ differences.data.frame <- function(data, lags = 1, mean = TRUE) {
 #' The function `rangemean_tstat` returns the T-statistic associated to \eqn{\beta}.
 #' If it is significantly higher than 0, log transformation is recommended.
 #'
-#' @return T-Stat of the slope of the range-mean regression.
+#' @returns T-Stat of the slope of the range-mean regression.
 #'
 #' @examples
 #' y <- ABS$X0.2.09.10.M

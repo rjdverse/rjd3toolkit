@@ -45,7 +45,7 @@ sa_preprocessing <- function(x, ...) {
 #' @param colors the colours used in the plot.
 #' @param ... further arguments.
 #'
-#' @return \code{"JD3_SADECOMPOSITION"} object.
+#' @returns \code{"JD3_SADECOMPOSITION"} object.
 #' @name sa_decomposition
 NULL
 

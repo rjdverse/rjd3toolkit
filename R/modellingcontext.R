@@ -11,7 +11,7 @@ JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 #' @param source Source of the time series.
 #' @param id Id of the time series.
 #'
-#' @return
+#' @returns
 #' Returns a java object of class JD3_TSMONIKER.
 #' @examples
 #' source <- "Txt"
@@ -319,7 +319,7 @@ dynamic_ts <- function(moniker, data) {
 #' @param calendars list of calendars.
 #' @param variables list of variables.
 #'
-#' @return list of calendars and variables
+#' @returns list of calendars and variables
 #' @export
 #'
 #' @examples

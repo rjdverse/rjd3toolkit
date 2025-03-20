@@ -67,7 +67,7 @@ SINGLEDAY <- "JD3_SINGLEDAY"
 #' @param weight weight associated to the holiday.
 #' @param validity validity period: either `NULL` (full sample) or a named list with `"start"` and/or "end" dates in the format `"YYYY-MM-DD"`.
 #'
-#' @return returns an object of class \code{c("JD3_FIXEDDAY","JD3_HOLIDAY")}
+#' @returns returns an object of class \code{c("JD3_FIXEDDAY","JD3_HOLIDAY")}
 #' @export
 #'
 #' @examples
@@ -116,7 +116,7 @@ fixed_day <- function(month, day, weight = 1, validity = NULL) {
 #' @param week position of the specified week day in the month: from `1` (first week of the month) to `5`. Should be always lower than 5.
 #' `-1` for the last `dayofweek` of the month.
 #' @param dayofweek day of the week: from `1` (Monday) to `7` (Sunday).
-#' @return returns an object of class \code{c("JD3_FIXEDWEEKDAY","JD3_HOLIDAY")}
+#' @returns returns an object of class \code{c("JD3_FIXEDWEEKDAY","JD3_HOLIDAY")}
 
 #' @export
 #'
@@ -340,7 +340,7 @@ special_day <- function(event, offset = 0, weight = 1, validity = NULL) {
 #' week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc.
 #' @param contrasts If true, the variables are defined by contrasts with the 0-group. Otherwise, raw number of days is provided.
 #'
-#' @return Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
+#' @returns Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
 #' or the 1-group (\code{contrasts = TRUE}).
 #'
 #' @seealso \code{\link{calendar_td}}
@@ -462,7 +462,7 @@ holidays <- function(calendar,
 #' (see references). For monthly regressors there are 12 types of periods (January to December).
 #' @inheritParams calendar_td
 #'
-#' @return returns an object of class \code{c("matrix","array")} with the long term means corresponding
+#' @returns returns an object of class \code{c("matrix","array")} with the long term means corresponding
 #' to each group/period, starting with the 0-group.
 #' @export
 #' @examples
@@ -503,7 +503,7 @@ long_term_mean <- function(calendar, frequency, groups = c(1, 2, 3, 4, 5, 6, 0),
 #' @inheritParams easter_day
 #'
 #' @export
-#' @return a named numeric vector. Names are the dates in format "YYYY-MM-DD",
+#' @returns a named numeric vector. Names are the dates in format "YYYY-MM-DD",
 #' values are number of days since January 1st 1970.
 #' @seealso \code{\link{national_calendar}}, \code{\link{easter_day}}
 #' @references
@@ -527,7 +527,7 @@ easter_dates <- function(year0, year1, julian = FALSE) {
 #' (to denote the last day of the month enter 31).
 #' @details
 #' The regressor will have the value -1 if the w-th day is a Sunday, 1 if it is a Monday as 0 otherwise.
-#' @return Time series (object of class \code{c("ts","mts","matrix")}).
+#' @returns Time series (object of class \code{c("ts","mts","matrix")}).
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -616,7 +616,7 @@ stock_td <- function(frequency, start, length, s, w = 31) {
 #' @param calendar1,calendar2 calendars to chain.
 #' @param break_date the break date in the format `"YYYY-MM-DD"`.
 #'
-#' @return returns an object of class \code{c("JD3_CHAINEDCALENDAR","JD3_CALENDARDEFINITION")}
+#' @returns returns an object of class \code{c("JD3_CHAINEDCALENDAR","JD3_CALENDARDEFINITION")}
 #' @seealso \code{\link{national_calendar}}, \code{\link{weighted_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -666,7 +666,7 @@ chained_calendar <- function(calendar1, calendar2, break_date) {
 #' Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated
 #' only in Saxony.
 #'
-#' @return returns an object of class
+#' @returns returns an object of class
 #' \code{c("JD3_WEIGHTEDCALENDAR", "JD3_CALENDARDEFINITION")}
 #'
 #' @seealso \code{\link{national_calendar}}, \code{\link{chained_calendar}}
@@ -768,7 +768,7 @@ weighted_calendar <- function(calendars, weights) {
 #'     special_day("ALLSAINTSDAY"),
 #'     special_day("ARMISTICE")
 #' ))
-#' @return returns an object of class \code{c("JD3_CALENDAR","JD3_CALENDARDEFINITION")}
+#' @returns returns an object of class \code{c("JD3_CALENDAR","JD3_CALENDARDEFINITION")}
 #' @seealso \code{\link{chained_calendar}}, \code{\link{weighted_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -796,7 +796,7 @@ national_calendar <- function(days, mean_correction = TRUE) {
 #' @param calendar The calendar containing the required holidays
 #' @param holiday Day to aggregate holidays with. (holidays are considered as that day).
 #' 1 for Monday... 7 for Sunday. Doesn't necessary belong to the 0-group.
-#' @return Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
+#' @returns Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
 #' or the 1-group (\code{contrasts = TRUE}).
 #' @export
 #' @examples
@@ -846,6 +846,7 @@ calendar_td <- function(calendar, frequency, start, length, s, groups = c(1, 2, 
 #'
 #' @param x The object.
 #' @param ... other unused parameters.
+#'
 #' @name print.calendars
 NULL
 

@@ -17,7 +17,7 @@ NULL
 #' signs.
 #' @param name name of the model.
 #'
-#' @return A `"JD3_SARIMA"` model.
+#' @returns A `"JD3_SARIMA"` model.
 #' @export
 #'
 #' @examples
@@ -142,7 +142,7 @@ sarima_decompose <- function(model, rmod = 0, epsphi = 0) {
 #' @param ma coefficients of the regular moving average polynomial (1 + ma(1)B + ma(2)B + ...). True signs.
 #' @param variance variance.
 #'
-#' @return a `"JD3_ARIMA"` model.
+#' @returns a `"JD3_ARIMA"` model.
 #' @export
 #'
 #' @examples
@@ -200,7 +200,7 @@ arima_model <- function(name = "arima", ar = 1, delta = 1, ma = 1, variance = 1)
 #'
 #' @param ... list of ARIMA models (created with [arima_model()]).
 #'
-#' @return a `"JD3_ARIMA"` model.
+#' @returns a `"JD3_ARIMA"` model.
 #'
 #' @details
 #' Adds several Arima models, considering that their innovations are independent.
@@ -237,7 +237,7 @@ arima_lsum <- function(components) {
 #' @param simplify Simplify the results if possible (common roots in the
 #'  auto-regressive and in the moving average polynomials, including unit roots)
 #'
-#' @return a `"JD3_ARIMA"` model.
+#' @returns a `"JD3_ARIMA"` model.
 #' @export
 #'
 #' @examples
@@ -304,7 +304,7 @@ arima_properties <- function(model, nspectrum = 601, nac = 36) {
 #' check that it indeed corresponds to the reduced form of the components;
 #' similar controls are applied on complements. Currently not implemented
 #'
-#' @return A list with the reduced model, the components and their complements
+#' @returns A list with the reduced model, the components and their complements
 #' @export
 #'
 #' @examples
@@ -362,7 +362,7 @@ ucarima_model <- function(model = NULL,
 #' @param nspectrum Number of points used to compute the (pseudo-) spectrum of the estimator
 #' @param nwk Number of weights of the Wiener-Kolmogorov filter returned in the result
 #'
-#' @return A list with the (pseudo-)spectrum, the weights of the filter and the squared-gain function (with the same number of points as the spectrum)
+#' @returns A list with the (pseudo-)spectrum, the weights of the filter and the squared-gain function (with the same number of points as the spectrum)
 #' @export
 #'
 #' @examples
@@ -400,7 +400,7 @@ ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
 #' @param cmp Index of the component that will contain the noises; 0 if a new component with all the noises will be added to the model
 #' @param adjust If TRUE, some noise could be added to the model to ensure that all the components has positive (pseudo-)spectrum
 #'
-#' @return A new UCARIMA model
+#' @returns A new UCARIMA model
 #' @export
 #'
 #' @examples
@@ -423,7 +423,7 @@ ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
 #' @param x Univariate time series
 #' @param stdev TRUE if standard deviation of the components are computed
 #'
-#' @return A matrix containing the different components and their standard deviations if stdev is TRUE.
+#' @returns A matrix containing the different components and their standard deviations if stdev is TRUE.
 #' @export
 #'
 #' @examples

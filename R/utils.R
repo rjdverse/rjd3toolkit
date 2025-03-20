@@ -90,7 +90,7 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
 #' @param bicc BIC corrected for the length
 #' @param ssq Sum of the squared residuals
 #'
-#' @return
+#' @returns
 #' Returns a java object of class JD3_LIKELIHOOD.
 #'
 #' @examples

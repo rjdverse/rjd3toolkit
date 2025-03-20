@@ -12,7 +12,7 @@ NULL
 #' @param type 1 for positive autocorrelations, -1 for negative autocorrelations,
 #' 0 for all autocorrelations. By default (\code{type = 1})
 #'
-#' @return A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
+#' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
 #' @examples
@@ -44,7 +44,7 @@ seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
 #' Remark: the length of the series has some impact on the p-values, mainly on
 #' short series. Not critical.
 #'
-#' @return The value of the test
+#' @returns The value of the test
 #' @export
 #'
 #' @examples
@@ -74,7 +74,7 @@ seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
 #' @inheritParams seasonality_qs
 #'
 #' @details Non parametric test on the ranks.
-#' @return A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
+#' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
 #' @examples
@@ -98,7 +98,7 @@ seasonality_kruskalwallis <- function(data, period, nyears = 0) {
 #' @inheritParams seasonality_qs
 #'
 #' @details Tests on the sum of a periodogram at seasonal frequencies.
-#' @return A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
+#' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
 #' @examples
@@ -122,7 +122,7 @@ seasonality_periodogram <- function(data, period = NA, nyears = 0) {
 #' @inheritParams seasonality_qs
 #'
 #' @details Non parametric test ("ANOVA"-type).
-#' @return A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
+#' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
 #' @examples
@@ -146,7 +146,7 @@ seasonality_friedman <- function(data, period = NA, nyears = 0) {
 #' @inheritParams seasonality_qs
 #' @param model the model to use for the residuals.
 #' @details Estimation of a model with seasonal dummies. Joint F-test on the coefficients of the dummies.
-#' @return A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
+#' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
 #' @examples
@@ -244,7 +244,7 @@ seasonality_canovahansen_trigs <- function(data, periods, lag1 = TRUE,
 #' @param order The truncation parameter used to compute the robust Newey-West covariance matrix.
 #' @param start Position of the first observation of the series
 #'
-#' @return list with the FTest on seasonal variables, the joint test and the details for the stability of the different seasonal variables
+#' @returns list with the FTest on seasonal variables, the joint test and the details for the stability of the different seasonal variables
 #' @export
 #'
 #'
