@@ -362,7 +362,8 @@ ucarima_model <- function(model = NULL,
 #' @param nspectrum Number of points used to compute the (pseudo-) spectrum of the estimator
 #' @param nwk Number of weights of the Wiener-Kolmogorov filter returned in the result
 #'
-#' @returns A list with the (pseudo-)spectrum, the weights of the filter and the squared-gain function (with the same number of points as the spectrum)
+#' @returns A list with the (pseudo-)spectrum, the weights of the filter and the
+#' squared-gain function (with the same number of points as the spectrum)
 #' @export
 #'
 #' @examples
@@ -471,7 +472,12 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 #' @examples
 #' y <- ABS$X0.2.09.10.M
 #' sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
-sarima_estimate <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 0, 0), period = NA), mean = FALSE, xreg = NULL, eps = 1e-9) {
+sarima_estimate <- function(x,
+                            order = c(0, 0, 0),
+                            seasonal = list(order = c(0, 0, 0), period = NA),
+                            mean = FALSE,
+                            xreg = NULL,
+                            eps = 1e-9) {
     if (!is.list(seasonal) && is.numeric(seasonal) && length(seasonal) == 3) {
         seasonal <- list(
             order = seasonal,
@@ -483,10 +489,19 @@ sarima_estimate <- function(x, order = c(0, 0, 0), seasonal = list(order = c(0, 
     }
     jxreg <- .r2jd_matrix(xreg)
     jestim <- .jcall(
-        "jdplus/toolkit/base/r/arima/SarimaModels", "Ljdplus/toolkit/base/core/regarima/RegArimaEstimation;", "estimate",
-        as.numeric(x), as.integer(order), as.integer(seasonal$period), as.integer(seasonal$order), as.logical(mean), jxreg, .jnull("[D"), as.numeric(eps)
+        obj = "jdplus/toolkit/base/r/arima/SarimaModels",
+        returnSig = "Ljdplus/toolkit/base/core/regarima/RegArimaEstimation;",
+        method = "estimate",
+        as.numeric(x), as.integer(order), as.integer(seasonal$period),
+        as.integer(seasonal$order), as.logical(mean), jxreg, .jnull("[D"),
+        as.numeric(eps)
     )
-    bytes <- .jcall("jdplus/toolkit/base/r/arima/SarimaModels", "[B", "toBuffer", jestim)
+    bytes <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/SarimaModels",
+        returnSig = "[B",
+        method = "toBuffer",
+        jestim
+    )
     p <- RProtoBuf::read(regarima.RegArimaModel$Estimation, bytes)
     res <- .p2r_regarima_estimation(p)
 

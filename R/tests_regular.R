@@ -103,7 +103,12 @@ NULL
 #' @export
 #' @describeIn normality_tests Bowman-Shenton test
 bowmanshenton <- function(data) {
-    jtest <- .jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "bowmanShenton", as.numeric(data))
+    jtest <- .jcall(
+        obj = "jdplus/toolkit/base/r/stats/Tests",
+        returnSig = "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
+        method = "bowmanShenton",
+        as.numeric(data)
+    )
     return(.jd2r_test(jtest))
 }
 
@@ -123,7 +128,9 @@ doornikhansen <- function(data) {
 #' @describeIn normality_tests Jarque-Bera test
 jarquebera <- function(data, k = 0, sample = TRUE) {
     jtest <- .jcall(
-        "jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "jarqueBera",
+        obj = "jdplus/toolkit/base/r/stats/Tests",
+        returnSig = "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
+        method = "jarqueBera",
         as.numeric(data), as.integer(k), as.logical(sample)
     )
     return(.jd2r_test(jtest))

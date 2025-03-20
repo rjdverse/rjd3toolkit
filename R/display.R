@@ -47,7 +47,8 @@ print.JD3_UCARIMA <- function(x, ...) {
 #' @export
 print.JD3_SARIMA <- function(x, ...) {
     m <- x
-    cat("SARIMA model: ", .arima_node(length(m$phi), m$d, length(m$theta)), .arima_node(length(m$bphi), m$bd, length(m$btheta)), m$period, "\n")
+    cat("SARIMA model: ", .arima_node(length(m$phi), m$d, length(m$theta)),
+        .arima_node(length(m$bphi), m$bd, length(m$btheta)), m$period, "\n")
     if (length(m$phi) > 0) cat("phi:", m$phi, "\n")
     if (length(m$theta) > 0) cat("theta:", m$theta, "\n")
     if (length(m$bphi) > 0) cat("bphi:", m$bphi, "\n")
@@ -91,7 +92,10 @@ summary.JD3_SARIMA_ESTIMATION <- function(object, ...) {
 
 #' @importFrom stats printCoefmat
 #' @export
-print.summary.JD3_SARIMA_ESTIMATION <- function(x, digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...) {
+print.summary.JD3_SARIMA_ESTIMATION <- function(x,
+                                                digits = max(3L, getOption("digits") - 3L),
+                                                signif.stars = getOption("show.signif.stars"),
+                                                ...) {
     orders <- x$sarima_orders
 
     cat(
@@ -444,7 +448,10 @@ summary.JD3_SARIMA_ESTIMATE <- function(object, ...) {
     return(res)
 }
 #' @export
-print.summary.JD3_REGARIMA_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...) {
+print.summary.JD3_REGARIMA_RSLTS <- function(x,
+                                             digits = max(3L, getOption("digits") - 3L),
+                                             signif.stars = getOption("show.signif.stars"),
+                                             ...) {
     if (!is.null(x$method)) { # Used to add the method when regarima/tramo function is used
         cat("Method:", x$method, "\n")
     }

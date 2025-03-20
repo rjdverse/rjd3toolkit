@@ -1339,34 +1339,47 @@ set_tradingdays.default <- function(x,
 #' @title Set Easter effect correction in Pre-Processing Specification
 #'
 #' @inheritParams set_basic
-#' @param enabled a logical indicating if the program considers the Easter effect in the pre-processing model.
-#' Default = TRUE.
+#' @param enabled a logical indicating if the program considers the Easter
+#' effect in the pre-processing model. Default = TRUE.
 #'
-#' @param julian a logical indicating if the program uses the Julian Easter (expressed in Gregorian calendar).
+#' @param julian a logical indicating if the program uses the Julian Easter
+#' (expressed in Gregorian calendar).
 #'
-#' @param duration a numeric indicating the duration of the Easter effect (length in days, between 1 and 20).
+#' @param duration a numeric indicating the duration of the Easter effect
+#' (length in days, between 1 and 20).
 #' Default value = 8 in REGARIMA/X-13 and 6 in TRAMO.
 #'
-#' @param test defines the pre-tests for the significance of the Easter effect based on the t-statistic
-#' (the Easter effect is considered as significant if the t-statistic is greater than 1.96):
-#' \code{"Add"} = the Easter effect variable is not included in the initial regression model but can be added
-#' to the RegARIMA model after the test;
-#' \code{"Remove"} = the Easter effect variable belongs to the initial regression model but can be removed
-#' from the RegARIMA model after the test;
-#' \code{"None"} = the Easter effect variable is not pre-tested and is included in the model.
-#' @param coef to set the coefficient of the easter regressor.(Test parameter has to be set to \code{"None"})
-#' @param coef.type a character defining the easter regressor coefficient estimation procedure.
-#' Possible procedures are: \code{"Estimated"} = coefficient is estimated,
-#' \code{"Fixed"} = the coefficients is fixed. By default the coefficient is estimated.
-#' @param type (TRAMO specific) a \code{character} that specifies the presence and the length of the Easter effect:
-#' \code{"Unused"} = the Easter effect is not considered; \code{"Standard"} = influences the period of \code{n} days strictly before Easter Sunday;
-#' \code{"IncludeEaster"} = influences the entire period (\code{n}) up to and including Easter Sunday;
-#' \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to and including Easter Monday.
+#' @param test defines the pre-tests for the significance of the Easter effect
+#' based on the t-statistic (the Easter effect is considered as significant if
+#' the t-statistic is greater than 1.96):
+#' \code{"Add"} = the Easter effect variable is not included in the initial
+#' regression model but can be added to the RegARIMA model after the test;
+#' \code{"Remove"} = the Easter effect variable belongs to the initial
+#' regression model but can be removed from the RegARIMA model after the test;
+#' \code{"None"} = the Easter effect variable is not pre-tested and is included
+#' in the model.
+#' @param coef to set the coefficient of the easter regressor.(Test parameter
+#' has to be set to \code{"None"})
+#' @param coef.type a character defining the easter regressor coefficient
+#' estimation procedure. Possible procedures are:
+#' \code{"Estimated"} =  coefficient is estimated,
+#' \code{"Fixed"} = the coefficients is fixed. By default the coefficient is
+#' estimated.
+#' @param type (TRAMO specific) a \code{character} that specifies the presence
+#' and the length of the Easter effect:
+#' \code{"Unused"} = the Easter effect is not considered;
+#' \code{"Standard"} = influences the period of \code{n} days strictly before
+#' Easter Sunday;
+#' \code{"IncludeEaster"} = influences the entire period (\code{n}) up to and
+#' including Easter Sunday;
+#' \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to
+#' and including Easter Monday.
 #'
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
 #' @seealso \code{\link{easter_variable}}, \code{\link{easter_day}}

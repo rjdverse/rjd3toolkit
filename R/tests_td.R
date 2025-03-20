@@ -3,15 +3,18 @@ NULL
 
 #' @title Residual Trading Days Test
 #'
-#' @param nyears \code{integer} that corresponds to the length of the sub series, starting from the end of the series, to be used for the test:
-#' in number of periods (positive value) or years (negative values).
+#' @param nyears \code{integer} that corresponds to the length of the sub
+#' series, starting from the end of the series, to be used for the test: in
+#' number of periods (positive value) or years (negative values).
 #' By default (\code{nyears = 0}), the entire sample is used.
-#' @param s a \code{ts} object that corresponds to the input time series to test.
+#' @param s a \code{ts} object that corresponds to the input time series to
+#' test.
 #' @param model the model to use for the residuals. See details.
 #'
 #' @details
-#' The function performs a residual seasonality test that is a joint F-Test on the coefficients of trading days regressors.
-#' Several specifications can be used on the model:
+#' The function performs a residual seasonality test that is a joint F-Test on
+#' the coefficients of trading days regressors. Several specifications can be
+#' used on the model:
 #' \itemize{
 #' \item \code{model = "WN"} the following model is used:
 #' \deqn{
@@ -27,7 +30,7 @@ NULL
 #' }
 #' \item \code{model = "DYD1"} the following model is used:
 #' \deqn{
-#' \Delta_s\Delta y_t - \overline{\Delta_s \Delta y} =\beta \Delta_s \Delta TD_t +  \varepsilon_t
+#' \Delta_s\Delta y_t - \overline{\Delta_s \Delta y} =\beta \Delta_s \Delta TD_t + \varepsilon_t
 #' }
 #' \item \code{model = "AIRLINE"} the following model is used:
 #' \deqn{

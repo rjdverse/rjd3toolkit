@@ -90,7 +90,12 @@ clean_extremities <- function(s) {
         return(NULL)
     }
     jd_s <- .r2jd_tsdata(s)
-    jd_scleaned <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/TsData;", "cleanExtremities", jd_s)
+    jd_scleaned <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsData;",
+        method = "cleanExtremities",
+        jd_s
+    )
 
     if (is.jnull(jd_scleaned)) {
         return(NULL)
@@ -121,10 +126,20 @@ ts_interpolate.default <- function(s, method = c("airline", "average")) {
     }
     jd_s <- .r2jd_tsdata(s)
     if (method == "airline") {
-        jd_si <- .jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "airlineInterpolation", jd_s)
+        jd_si <- .jcall(
+            obj = "jdplus/toolkit/base/r/modelling/Interpolation",
+            returnSig = "Ljdplus/toolkit/base/api/timeseries/TsData;",
+            method = "airlineInterpolation",
+            jd_s
+        )
         return(.jd2r_tsdata(jd_si))
     } else if (method == "average") {
-        jd_si <- .jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "averageInterpolation", jd_s)
+        jd_si <- .jcall(
+            obj = "jdplus/toolkit/base/r/modelling/Interpolation",
+            returnSig = "Ljdplus/toolkit/base/api/timeseries/TsData;",
+            method = "averageInterpolation",
+            jd_s
+        )
         return(.jd2r_tsdata(jd_si))
     } else {
         return(NULL)
@@ -260,9 +275,24 @@ to_ts <- function(source, id, type = "All") {
 #' # my_collection<-to_tscollection(source,id)
 #' @export
 to_tscollection <- function(source, id, type = "All") {
-    jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
-    jtscoll <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
-    bytes <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jtscoll)
+    jmoniker <- .jcall(
+        obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsMoniker;",
+        method = "of",
+        source, id
+    )
+    jtscoll <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTsCollection",
+        jmoniker, type
+    )
+    bytes <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "[B",
+        method = "toBuffer",
+        jtscoll
+    )
     p <- RProtoBuf::read(jd3.TsCollection, bytes)
     return(.p2r_tscollection(p))
 }
@@ -280,8 +310,18 @@ to_tscollection <- function(source, id, type = "All") {
 #' s <- ABS$X0.2.09.10.M
 #' t <- data_to_ts(s, "test")
 data_to_ts <- function(s, name) {
-    jts <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", .r2jd_tsdata(s), name)
-    bytes <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jts)
+    jts <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTs",
+        .r2jd_tsdata(s), name
+    )
+    bytes <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "[B",
+        method = "toBuffer",
+        jts
+    )
     p <- RProtoBuf::read(jd3.Ts, bytes)
     return(.p2r_ts(p))
 }
@@ -289,23 +329,48 @@ data_to_ts <- function(s, name) {
 #' @export
 #' @rdname jd3_utilities
 .r2jd_tmp_ts <- function(s, name) {
-    jts <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", .r2jd_tsdata(s), name)
+    jts <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTs",
+        .r2jd_tsdata(s), name
+    )
     return(jts)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_make_ts <- function(source, id, type = "All") {
-    jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
-    jts <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
+    jmoniker <- .jcall(
+        obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsMoniker;",
+        method = "of",
+        source, id
+    )
+    jts <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTs",
+        jmoniker, type
+    )
     return(jts)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_make_tscollection <- function(source, id, type = "All") {
-    jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
-    jtscoll <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
+    jmoniker <- .jcall(
+        obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsMoniker;",
+        method = "of",
+        source, id
+    )
+    jtscoll <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTsCollection",
+        jmoniker, type
+    )
     return(jtscoll)
 }
 
