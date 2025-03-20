@@ -66,7 +66,7 @@ sarima_properties <- function(model, nspectrum = 601, nacf = 36) {
 }
 
 
-#' Simulate Seasonal ARIMA
+#' @title Simulate Seasonal ARIMA
 #'
 #' @param model a `"JD3_SARIMA"` model (see [sarima_model()] function).
 #' @param length length of the output series.
@@ -134,7 +134,7 @@ sarima_decompose <- function(model, rmod = 0, epsphi = 0) {
     return(.jd2r_ucarima(jucm))
 }
 
-#' ARIMA Model
+#' @title ARIMA Model
 #'
 #' @param name Name of the model.
 #' @param ar coefficients of the regular auto-regressive polynomial (1 + ar(1)B + ar(2)B + ...). True signs.
@@ -417,7 +417,7 @@ ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
     return(.jd2r_ucarima(jnucm))
 }
 
-#' Estimate UCARIMA Model
+#' @title Estimate UCARIMA Model
 #'
 #' @inheritParams ucarima_wk
 #' @param x Univariate time series
@@ -444,7 +444,7 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
     return(.jd2r_matrix(jcmps))
 }
 
-#' Estimate SARIMA Model
+#' @title Estimate SARIMA Model
 #'
 #' @param x an univariate time series (class Ts object).
 #' @param order vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.

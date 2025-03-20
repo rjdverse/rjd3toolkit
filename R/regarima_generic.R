@@ -57,6 +57,7 @@ vcov.JD3_REGARIMA_RSLTS <- function(object, component = c("regression", "arima")
         object$parameters$cov
     }
 }
+
 #' @export
 df.residual.JD3_REGARIMA_RSLTS <- function(object, ...) {
     if (is.null(object)) {
@@ -67,6 +68,7 @@ df.residual.JD3_REGARIMA_RSLTS <- function(object, ...) {
     }
     object$likelihood$neffectiveobs - object$likelihood$nparams
 }
+
 #' @export
 nobs.JD3_REGARIMA_RSLTS <- function(object, ...) {
     if (is.null(object)) {

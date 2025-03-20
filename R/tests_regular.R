@@ -1,9 +1,9 @@
 #' @include utils.R
 NULL
 
-
-#' Generic Function For 'JDemetra+' Tests
+#' @title Generic Function For 'JDemetra+' Tests
 #'
+#' @description
 #' Generic function to format the results of 'JDemetra+' tests.
 #'
 #' @param val,pval,dist statistical parameters.
@@ -47,8 +47,9 @@ print.JD3_TEST <- function(x, details = FALSE, ...) {
 
 
 
-#' Ljung-Box Test
+#' @title Ljung-Box Test
 #'
+#' @description
 #' Compute Ljung-Box test to check the independence of a data.
 #'
 #' @param data data being tested.
@@ -75,8 +76,9 @@ ljungbox <- function(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE) {
     return(.jd2r_test(jtest))
 }
 
-#' Normality Tests
+#' @title Normality Tests
 #'
+#' @description
 #' Set of functions to test the normality of a time series.
 #'
 #' @inheritParams ljungbox
@@ -174,7 +176,7 @@ testofupdownruns <- function(data, number = TRUE) {
     return(.jd2r_test(jtest))
 }
 
-#' Autocorrelation Functions
+#' @title Autocorrelation Functions
 #'
 #' @inheritParams ljungbox
 #' @param n maximum lag at which to calculate the stats.
@@ -194,6 +196,7 @@ autocorrelations <- function(data, mean = TRUE, n = 15) {
     names(res) <- seq_len(n)
     return(res)
 }
+
 #' @export
 #' @rdname autocorrelations
 autocorrelations_partial <- function(data, mean = TRUE, n = 15) {
@@ -204,6 +207,7 @@ autocorrelations_partial <- function(data, mean = TRUE, n = 15) {
     names(res) <- seq_len(n)
     return(res)
 }
+
 #' @export
 #' @rdname autocorrelations
 autocorrelations_inverse <- function(data, nar = 30, n = 15) {
@@ -229,7 +233,7 @@ kurtosis <- function(data) {
     return(.jd2r_test(jtest))
 }
 
-#' Compute a robust median absolute deviation (MAD)
+#' @title Compute a robust median absolute deviation (MAD)
 #'
 #' @param data The data for which we compute the robust deviation
 #' @param centile The centile used to exclude extreme values (only the "centile" part of the data are is to compute the mad)

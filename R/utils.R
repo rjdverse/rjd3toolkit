@@ -2,22 +2,22 @@
 #' @importFrom methods is
 NULL
 
-#' Retail trade statistics in Australia
+#' @title Retail trade statistics in Australia
 #'
 #' @source ABS
 "ABS"
 
-#' US Retail trade statistics
+#' @title US Retail trade statistics
 #'
 #' @source US-Census Bureau
 "retail"
 
-#' Belgian exports to European countries
+#' @title Belgian exports to European countries
 #'
 #' @source NBB
 "Exports"
 
-#' Belgian imports from European countries
+#' @title Belgian imports from European countries
 #'
 #' @source NBB
 "Imports"
@@ -51,7 +51,7 @@ parseDate <- function(s) {
     return(d)
 }
 
-#' Reload dictionaries
+#' @title Reload dictionaries
 #'
 #' @export
 reload_dictionaries <- function() {
@@ -73,7 +73,7 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
     return(statisticaltest(val, pval, desc))
 }
 
-#' Information on the (log-)likelihood
+#' @title Information on the (log-)likelihood
 #'
 #' @description
 #' Function allowing to gather information on likelihood estimation

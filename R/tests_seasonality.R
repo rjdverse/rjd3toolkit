@@ -2,7 +2,7 @@
 NULL
 
 
-#' QS (seasonal Ljung-Box) test.
+#' @title QS (seasonal Ljung-Box) test.
 #'
 #' @param data the input data.
 #' @param period Tested periodicity. Can be missing if the input is a time series
@@ -30,8 +30,7 @@ seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
     return(.jd2r_test(jtest))
 }
 
-#' Modified QS Seasonality Test (Maravall)
-#'
+#' @title Modified QS Seasonality Test (Maravall)
 #'
 #' @param data the input data.
 #' @param period Tested periodicity. Can be missing if the input is a time series
@@ -39,17 +38,19 @@ seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
 #' in periods (positive value) or years (negative values).
 #' By default (\code{nyears = 0}), the entire sample is used.
 #'
+#' @details
+#' Thresholds for p-values: p.9=2.49, p.95=3.83, p.99=7.06, p.999=11.88.
+#' Computed on 100.000.000 random series (different lengths).
+#' Remark: the length of the series has some impact on the p-values, mainly on
+#' short series. Not critical.
+#'
 #' @return The value of the test
 #' @export
 #'
 #' @examples
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_modified_qs(s)
-#' @details
-#' Thresholds for p-values: p.9=2.49, p.95=3.83, p.99=7.06, p.999=11.88.
-#' Computed on 100.000.000 random series (different lengths).
-#' Remark: the length of the series has some impact on the p-values, mainly on
-#' short series. Not critical.
+#'
 
 seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
     if (is.ts(data) && missing(period)) {
@@ -68,8 +69,7 @@ seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
 # Remark: the length of the series has some impact on the p-values, mainly on
 # short series. Not critical.
 
-#' Kruskall-Wallis Seasonality Test
-#'
+#' @title Kruskall-Wallis Seasonality Test
 #'
 #' @inheritParams seasonality_qs
 #'
@@ -81,6 +81,7 @@ seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_kruskalwallis(s)
 #' seasonality_kruskalwallis(random_t(2, 1000), 7)
+#'
 seasonality_kruskalwallis <- function(data, period, nyears = 0) {
     if (is.ts(data) && missing(period)) {
         period <- frequency(data)
@@ -92,7 +93,7 @@ seasonality_kruskalwallis <- function(data, period, nyears = 0) {
     return(.jd2r_test(jtest))
 }
 
-#' Periodogram Seasonality Test
+#' @title Periodogram Seasonality Test
 #'
 #' @inheritParams seasonality_qs
 #'
@@ -104,6 +105,7 @@ seasonality_kruskalwallis <- function(data, period, nyears = 0) {
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_periodogram(s)
 #' seasonality_periodogram(random_t(2, 1000), 7)
+#'
 seasonality_periodogram <- function(data, period = NA, nyears = 0) {
     if (is.ts(data) && missing(period)) {
         period <- frequency(data)
@@ -115,7 +117,7 @@ seasonality_periodogram <- function(data, period = NA, nyears = 0) {
     return(.jd2r_test(jtest))
 }
 
-#' Friedman Seasonality Test
+#' @title Friedman Seasonality Test
 #'
 #' @inheritParams seasonality_qs
 #'
@@ -127,6 +129,7 @@ seasonality_periodogram <- function(data, period = NA, nyears = 0) {
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_friedman(s)
 #' seasonality_friedman(random_t(2, 1000), 12)
+#'
 seasonality_friedman <- function(data, period = NA, nyears = 0) {
     if (is.ts(data) && missing(period)) {
         period <- frequency(data)
@@ -138,7 +141,7 @@ seasonality_friedman <- function(data, period = NA, nyears = 0) {
     return(.jd2r_test(jtest))
 }
 
-#' F-test on seasonal dummies
+#' @title F-test on seasonal dummies
 #'
 #' @inheritParams seasonality_qs
 #' @param model the model to use for the residuals.
@@ -149,6 +152,7 @@ seasonality_friedman <- function(data, period = NA, nyears = 0) {
 #' @examples
 #' seasonality_f(ABS$X0.2.09.10.M, model = "D1")
 #' seasonality_f(random_t(2, 1000), 7)
+#'
 seasonality_f <- function(data,
                           period = NA,
                           model = c("AR", "D1", "WN"),
@@ -165,13 +169,14 @@ seasonality_f <- function(data,
 }
 
 
-#' "X12" Test On Seasonality
+#' @title "X12" Test On Seasonality
 #'
 #' @inheritParams seasonality_qs
 #' @param firstperiod Position in a cycle of the first obs.
 #' For example, for a monthly, `firstperiod = 1` means January.
 #' If `data` is not a `"ts"` object, `firstperiod = 1` by default.
 #' @param mul boolean indicating if the seasonal decomposition is multiplicative (`mul = TRUE`) or additive (`mul = FALSE`).
+#'
 #' @details Combined test on the presence of identifiable seasonality (see Ladiray and Quenneville, 1999).
 #' @export
 #'
@@ -179,6 +184,7 @@ seasonality_f <- function(data,
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_combined(s)
 #' seasonality_combined(random_t(2, 1000), 7)
+#'
 seasonality_combined <- function(data, period = NA, firstperiod = cycle(data)[1], mul = TRUE) {
     if (is.ts(data) && missing(period)) {
         period <- frequency(data)
@@ -199,7 +205,7 @@ seasonality_combined <- function(data, period = NA, firstperiod = cycle(data)[1]
     return(output)
 }
 
-#' Canova-Hansen test using trigonometric variables
+#' @title Canova-Hansen test using trigonometric variables
 #'
 #' @inheritParams seasonality_qs
 #' @param periods Periodicities.
@@ -214,6 +220,7 @@ seasonality_combined <- function(data, period = NA, firstperiod = cycle(data)[1]
 #' s <- log(ABS$X0.2.20.10.M)
 #' freqs <- seq(0.01, 0.5, 0.001)
 #' plot(seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE), type = "l")
+#'
 seasonality_canovahansen_trigs <- function(data, periods, lag1 = TRUE,
                                            kernel = c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
                                            order = NA, original = FALSE) {
@@ -228,7 +235,7 @@ seasonality_canovahansen_trigs <- function(data, periods, lag1 = TRUE,
     return(jtest)
 }
 
-#' Canova-Hansen seasonality test
+#' @title Canova-Hansen seasonality test
 #'
 #' @inheritParams seasonality_qs
 #' @param type Trigonometric variables, seasonal dummies or seasonal contrasts.
@@ -236,6 +243,7 @@ seasonality_canovahansen_trigs <- function(data, periods, lag1 = TRUE,
 #' @param kernel Kernel used to compute the robust Newey-West covariance matrix.
 #' @param order The truncation parameter used to compute the robust Newey-West covariance matrix.
 #' @param start Position of the first observation of the series
+#'
 #' @return list with the FTest on seasonal variables, the joint test and the details for the stability of the different seasonal variables
 #' @export
 #'
@@ -244,6 +252,7 @@ seasonality_canovahansen_trigs <- function(data, periods, lag1 = TRUE,
 #' s <- log(ABS$X0.2.20.10.M)
 #' seasonality_canovahansen(s, 12, type = "Contrast")
 #' seasonality_canovahansen(s, 12, type = "Trigonometric")
+#'
 seasonality_canovahansen <- function(data, period, type = c("Contrast", "Dummy", "Trigonometric"), lag1 = TRUE,
                                      kernel = c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
                                      order = NA, start = 1) {

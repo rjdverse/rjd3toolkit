@@ -2,7 +2,7 @@
 NULL
 
 
-#' JD3 print functions
+#' @title JD3 print functions
 #'
 #' @param x the object to print.
 #' @param digits minimum number of significant digits to be used for most

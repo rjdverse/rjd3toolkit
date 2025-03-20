@@ -58,7 +58,7 @@ SINGLEDAY <- "JD3_SINGLEDAY"
     }
 }
 
-#' Set a holiday on a Fixed Day
+#' @title Set a holiday on a Fixed Day
 #'
 #' @description creates a holiday falling on a fixed day each year, with an optional weight and period of validity,
 #' like Christmas which is always celebrated on December 25th.
@@ -104,7 +104,7 @@ fixed_day <- function(month, day, weight = 1, validity = NULL) {
 }
 
 
-#' Set a Holiday on a Fixed Week Day
+#' @title Set a Holiday on a Fixed Week Day
 #'
 #' @description
 #' Allows to define a holiday falling on a fixed week day each year, like Labour Day in the
@@ -150,7 +150,7 @@ fixed_week_day <- function(month, week, dayofweek, weight = 1, validity = NULL) 
     return(fd)
 }
 
-#' Set a Holiday on an Easter related day
+#' @title Set a Holiday on an Easter related day
 #'
 #' @description
 #' Allows to define a holiday which date is related to Easter Sunday.
@@ -196,7 +196,7 @@ easter_day <- function(offset, julian = FALSE, weight = 1, validity = NULL) {
 }
 
 
-#' Set a holiday on a Single Day
+#' @title Set a holiday on a Single Day
 #'
 #' @description
 #' Allows to set a holiday as a once-occurring event.
@@ -229,10 +229,12 @@ single_day <- function(date, weight = 1) {
 
 
 
-#' List of Pre-Defined Holidays to choose from
+#' @title List of Pre-Defined Holidays to choose from
+#'
 #' @description
 #' Allows to define a holiday choosing from a list of pre-specified events, equivalent
 #' to use `fixed_day` or `easter_day` functions.
+#'
 #' @inheritParams fixed_day
 #' @param offset The position of the holiday in relation to the selected pre-specified holiday measured in days (can be positive or negative).
 #' By default `offset = 0`.
@@ -315,15 +317,18 @@ special_day <- function(event, offset = 0, weight = 1, validity = NULL) {
     x
 }
 
-#' Trading day regressors without holidays
+#' @title Trading day regressors without holidays
+#'
 #' @description
 #' Allows to generate trading day regressors (as many as defined groups), taking into account
 #' 7 or less different types of days, from Monday to Sunday, but no specific holidays. Regressors are not
 #' corrected for long term mean.
+#'
 #' @details
 #' Aggregated values for monthly or quarterly are the numbers of days belonging to a given group.
 #' Contrasts are the differences between the number of days in a given group (1 to 6) and the number of days in
 #' the reference group (0).
+#'
 #' @param frequency Frequency of the series, number of periods per year (12,4,3,2..)
 #' @param start,length First date (array with the first year and the first period)
 #' (for instance `c(1980, 1)`) and number of periods of the output variables. Can also be provided with the `s` argument
@@ -334,13 +339,16 @@ special_day <- function(event, offset = 0, weight = 1, validity = NULL) {
 #' The other groups are identified by 1, 2,... n (<= 6). For instance, usual trading days are defined by c(1,2,3,4,5,6,0),
 #' week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc.
 #' @param contrasts If true, the variables are defined by contrasts with the 0-group. Otherwise, raw number of days is provided.
+#'
 #' @return Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
 #' or the 1-group (\code{contrasts = TRUE}).
+#'
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @export
+#'
 #' @examples
 #' # Monthly regressors for Trading Days: each type of day is different
 #' # contrasts to Sundays (6 series)
@@ -443,7 +451,7 @@ holidays <- function(calendar,
     return(res)
 }
 
-#' Display Long-term means for a set of calendar regressors
+#' @title Display Long-term means for a set of calendar regressors
 #'
 #' @description
 #' Given a pre-defined calendar and set of groups, the function displays the long-term means which
@@ -485,10 +493,12 @@ long_term_mean <- function(calendar, frequency, groups = c(1, 2, 3, 4, 5, 6, 0),
     return(.group_names(res, contrasts = FALSE))
 }
 
-#' Display Easter Sunday dates in given period
+#' @title Display Easter Sunday dates in given period
+#'
 #' @description
 #' Allows to display the date of Easter Sunday for each year, in the defined period. Dates are
 #' displayed in "YYYY-MM-DD" format and as a number of days since January 1st 1970.
+#'
 #' @param year0,year1 starting year and ending year
 #' @inheritParams easter_day
 #'
@@ -508,7 +518,7 @@ easter_dates <- function(year0, year1, julian = FALSE) {
     return(sapply(dates, as.Date))
 }
 
-#' Trading day Regressor for Stock series
+#' @title Trading day Regressor for Stock series
 #'
 #' @description
 #' Allows to generate a specific regressor for correcting trading days effects in Stock series.
@@ -593,7 +603,7 @@ stock_td <- function(frequency, start, length, s, w = 31) {
     return(p)
 }
 
-#' Create a Chained Calendar
+#' @title Create a Chained Calendar
 #'
 #' @description
 #' Allows to combine two calendars, one before and one after a given date.
@@ -605,6 +615,7 @@ stock_td <- function(frequency, start, length, s, w = 31) {
 #'
 #' @param calendar1,calendar2 calendars to chain.
 #' @param break_date the break date in the format `"YYYY-MM-DD"`.
+#'
 #' @return returns an object of class \code{c("JD3_CHAINEDCALENDAR","JD3_CALENDARDEFINITION")}
 #' @seealso \code{\link{national_calendar}}, \code{\link{weighted_calendar}}
 #' @references
@@ -724,7 +735,7 @@ weighted_calendar <- function(calendars, weights) {
 }
 
 
-#' Create a National Calendar
+#' @title Create a National Calendar
 #'
 #' @description
 #' Will create a calendar as a list of days corresponding to the required holidays.
@@ -828,8 +839,9 @@ calendar_td <- function(calendar, frequency, start, length, s, groups = c(1, 2, 
     return(ts(output, start = start, frequency = frequency))
 }
 
-#' Calendars Print Methods
+#' @title Calendars Print Methods
 #'
+#' @description
 #' Print functions for calendars
 #'
 #' @param x The object.

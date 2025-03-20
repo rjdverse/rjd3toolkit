@@ -57,7 +57,7 @@ do_stationary <- function(data, period) {
 
 #' Automatic differencing
 #'
-#' The series is differenced till its variance is decreasing.
+#' @title The series is differenced till its variance is decreasing.
 #'
 #' @param data Series being differenced.
 #' @param period Period considered in the automatic differencing.
@@ -96,7 +96,7 @@ differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
     return(res)
 }
 
-#' Differencing of a series
+#' @title Differencing of a series
 #'
 #' @param data The series to be differenced.
 #' @param lags Lags of the differencing.
@@ -139,8 +139,9 @@ differences.data.frame <- function(data, lags = 1, mean = TRUE) {
     result
 }
 
-#' Range-Mean Regression
+#' @title Range-Mean Regression
 #'
+#' @description
 #' Function to perform a range-mean regression, trimmed to avoid outlier distortion.
 #' The can be used to select whether the original series will be transformed into log or maintain in level.
 #'

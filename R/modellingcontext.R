@@ -6,7 +6,7 @@ JD3_TSMONIKER <- "JD3_TSMONIKER"
 JD3_TS <- "JD3_TS"
 JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 
-#' Create a Moniker
+#' @title Create a Moniker
 #'
 #' @param source Source of the time series.
 #' @param id Id of the time series.
@@ -309,11 +309,13 @@ dynamic_ts <- function(moniker, data) {
 
 
 #' @title Create modelling context
+#'
 #' @description
 #' Function allowing to include calendars and external regressors in a format that makes them usable
 #' in an estimation process (reg-arima or tramo modelling, stand alone or as pre-processing in seasonal adjustment).
 #' The regressors can be created with functions available in the package
 #' or come from any other source, provided they are \code{ts} class objects.
+#'
 #' @param calendars list of calendars.
 #' @param variables list of variables.
 #'

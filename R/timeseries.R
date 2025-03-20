@@ -1,8 +1,9 @@
 #' @include jd2r.R
 NULL
 
-#' Aggregation of time series
+#' @title Aggregation of time series
 #'
+#' @description
 #' Makes a frequency change of this series.
 #'
 #' @param s the input time series.
@@ -28,6 +29,7 @@ aggregate <- function(s, nfreq = 1,
                       complete = TRUE) {
     UseMethod("aggregate", s)
 }
+
 #' @export
 aggregate.default <- function(s, nfreq = 1,
                               conversion = c("Sum", "Average", "First", "Last", "Min", "Max"),
@@ -49,6 +51,7 @@ aggregate.default <- function(s, nfreq = 1,
         return(.jd2r_tsdata(jd_agg))
     }
 }
+
 #' @export
 aggregate.matrix <- function(s, nfreq = 1,
                              conversion = c("Sum", "Average", "First", "Last", "Min", "Max"),
@@ -59,6 +62,7 @@ aggregate.matrix <- function(s, nfreq = 1,
     colnames(res) <- colnames(s)
     res
 }
+
 #' @export
 aggregate.data.frame <- function(s, nfreq = 1,
                                  conversion = c("Sum", "Average", "First", "Last", "Min", "Max"),
@@ -70,7 +74,7 @@ aggregate.data.frame <- function(s, nfreq = 1,
     res
 }
 
-#' Removal of missing values at the beginning/end
+#' @title Removal of missing values at the beginning/end
 #'
 #' @param s Original series
 #'
@@ -96,7 +100,7 @@ clean_extremities <- function(s) {
 }
 
 
-#' Interpolation of a time series with missing values
+#' @title Interpolation of a time series with missing values
 #'
 #' @param s The original time series
 #' @param method
@@ -108,6 +112,7 @@ clean_extremities <- function(s) {
 ts_interpolate <- function(s, method = c("airline", "average")) {
     UseMethod("ts_interpolate", s)
 }
+
 #' @export
 ts_interpolate.default <- function(s, method = c("airline", "average")) {
     method <- match.arg(method)
@@ -125,6 +130,7 @@ ts_interpolate.default <- function(s, method = c("airline", "average")) {
         return(NULL)
     }
 }
+
 #' @export
 ts_interpolate.matrix <- function(s, method = c("airline", "average")) {
     result <- s
@@ -133,6 +139,7 @@ ts_interpolate.matrix <- function(s, method = c("airline", "average")) {
     }
     result
 }
+
 #' @export
 ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
     result <- s
@@ -142,7 +149,7 @@ ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
     result
 }
 
-#' Multiplicative adjustment of a time series for leap year / length of periods
+#' @title Multiplicative adjustment of a time series for leap year / length of periods
 #'
 #' @param s The original time series
 #' @param method
@@ -161,6 +168,7 @@ ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
 ts_adjust <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     UseMethod("ts_adjust", s)
 }
+
 #' @export
 ts_adjust.default <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     method <- match.arg(method)
@@ -180,6 +188,7 @@ ts_adjust.default <- function(s, method = c("LeapYear", "LengthOfPeriod"), rever
         return(.jd2r_tsdata(jd_st))
     }
 }
+
 #' @export
 ts_adjust.matrix <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     result <- s
@@ -188,6 +197,7 @@ ts_adjust.matrix <- function(s, method = c("LeapYear", "LengthOfPeriod"), revers
     }
     result
 }
+
 #' @export
 ts_adjust.data.frame <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     result <- s
@@ -197,7 +207,7 @@ ts_adjust.data.frame <- function(s, method = c("LeapYear", "LengthOfPeriod"), re
     result
 }
 
-#' Provides a list of dates corresponding to each period of the given time series
+#' @title Provides a list of dates corresponding to each period of the given time series
 #'
 #' @param ts A time series
 #' @param pos The position of the first considered period.
@@ -213,7 +223,7 @@ daysOf <- function(ts, pos = 1) {
     return(as.Date(days))
 }
 
-#' Creates a time series object
+#' @title Creates a time series object
 #'
 #' @param source Source of the time series
 #' @param id Identifier of the time series (source-dependent)
@@ -231,7 +241,7 @@ to_ts <- function(source, id, type = "All") {
     return(.p2r_ts(p))
 }
 
-#' Creates a collection of time series
+#' @title Creates a collection of time series
 #'
 #' @param source Source of the collection of time series
 #' @param id Identifier of the collection of time series (source-dependent)
@@ -257,7 +267,7 @@ to_tscollection <- function(source, id, type = "All") {
     return(.p2r_tscollection(p))
 }
 
-#' Promote a R time series to a "full JDemetra+ time series"
+#' @title Promote a R time series to a "full JDemetra+ time series"
 #'
 #' @param s R time series (class TS)
 #' @param name name of the series
@@ -299,7 +309,7 @@ data_to_ts <- function(s, name) {
     return(jtscoll)
 }
 
-#' Title
+#' @title Title
 #'
 #' @param values Values of the time series
 #' @param dates Dates of the values (could be any date inside the considered period)
@@ -325,7 +335,7 @@ tsdata_of <- function(values, dates) {
     return(.jd2r_tsdata(jtsdata))
 }
 
-#' Compare the annual totals of two series
+#' @title Compare the annual totals of two series
 #'
 #' @description
 #' Usually a raw series and the corresponding seasonally adjusted series

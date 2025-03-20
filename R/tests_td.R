@@ -1,7 +1,7 @@
 #' @include protobuf.R jd2r.R
 NULL
 
-#' Residual Trading Days Test
+#' @title Residual Trading Days Test
 #'
 #' @param nyears \code{integer} that corresponds to the length of the sub series, starting from the end of the series, to be used for the test:
 #' in number of periods (positive value) or years (negative values).
@@ -56,7 +56,7 @@ td_f <- function(s, model = c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100
     return(.jd2r_test(jtest))
 }
 
-#' Canova-Hansen test for stable trading days
+#' @title Canova-Hansen test for stable trading days
 #'
 #' @inheritParams td_f
 #' @param differencing Differencing lags.
@@ -83,7 +83,7 @@ td_canovahansen <- function(s, differencing, kernel = c("Bartlett", "Square", "W
     return(list(td = list(value = q[last - 1], pvalue = q[last]), joint = q[last - 2], details = q[-c(last - 2, last - 1, last)]))
 }
 
-#' Likelihood ratio test on time varying trading days
+#' @title Likelihood ratio test on time varying trading days
 #'
 #' @param s The tested time series
 #' @param groups The groups of days used to generate the regression variables.

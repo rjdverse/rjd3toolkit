@@ -1,4 +1,4 @@
-#' Periodic B-Splines
+#' @title Periodic B-Splines
 #'
 #' @param order Order of the splines (4 for cubic)
 #' @param period Period of the splines (1 by default)
@@ -21,7 +21,7 @@ periodic_bsplines <- function(order = 4, period = 1, knots, pos) {
     return(res)
 }
 
-#' B-Splines
+#' @title B-Splines
 #'
 #' @param order Order of the splines (4 for cubic)
 #' @param knots Knots of the splines (in [0, period[)
@@ -43,7 +43,7 @@ bsplines <- function(order = 4, knots, pos) {
     return(res)
 }
 
-#' Natural cubic spline
+#' @title Natural cubic spline
 #'
 #' @param x Abscissas of the knots
 #' @param y Ordinates of the knots
@@ -62,7 +62,7 @@ natural_cspline <- function(x, y, pos) {
     ))
 }
 
-#' Monotonic cubic spline
+#' @title Monotonic cubic spline
 #'
 #' @param x Abscissas of the knots
 #' @param y Ordinates of the knots
@@ -81,7 +81,7 @@ monotonic_cspline <- function(x, y, pos) {
     ))
 }
 
-#' Periodic cubic spline
+#' @title Periodic cubic spline
 #'
 #' @param x Abscissas of the knots
 #' @param y Ordinates of the knots
@@ -100,7 +100,7 @@ periodic_cspline <- function(x, y, pos) {
     ))
 }
 
-#' Periodic cardinal cubic splines
+#' @title Periodic cardinal cubic splines
 #'
 #' @param x Abscissas of the knots
 #' @param pos Requested positions
