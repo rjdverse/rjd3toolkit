@@ -73,3 +73,30 @@ user_defined <- function(object, userdefined = NULL) {
     class(result) <- c("user_defined")
     result
 }
+
+#' @title Add user-defined variable to a SA model
+#'
+#' @inheritParams user_defined
+#' @param x The model of SA
+#' @param jx Reference to a Java object
+#' @param out_class Java class of the result object
+#' @param result Boolean. Does \code{jx} contains the results? Default to FALSE.
+#'
+#' @export
+.add_ud_var <- function(x, jx, userdefined = NULL, out_class = NULL, result = FALSE) {
+    if (is.null(userdefined)) {
+        x$user_defined <- user_defined(res, userdefined = userdefined)
+        return(x)
+    }
+    if (result) {
+        res <- jx
+    } else if (is.null(out_class)) {
+        res <- jx$getResult()
+    } else {
+        res <- .jcall(jx, out_class, "getResult")
+    }
+    res <- .jd3_object(res, result = TRUE)
+
+    x$user_defined <- user_defined(res, userdefined = userdefined)
+    return(x)
+}

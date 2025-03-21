@@ -32,4 +32,5 @@ Combined test on the presence of identifiable seasonality (see Ladiray and Quenn
 s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_combined(s)
 seasonality_combined(random_t(2, 1000), 7)
+
 }

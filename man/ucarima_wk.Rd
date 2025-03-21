@@ -18,7 +18,8 @@ ucarima_wk(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300)
 \item{nwk}{Number of weights of the Wiener-Kolmogorov filter returned in the result}
 }
 \value{
-A list with the (pseudo-)spectrum, the weights of the filter and the squared-gain function (with the same number of points as the spectrum)
+A list with the (pseudo-)spectrum, the weights of the filter and the
+squared-gain function (with the same number of points as the spectrum)
 }
 \description{
 Wiener Kolmogorov Estimators

@@ -14,15 +14,20 @@ long_term_mean(
 \arguments{
 \item{calendar}{The calendar containing the required holidays}
 
-\item{frequency}{Frequency of the series, number of periods per year (12,4,3,2..)}
+\item{frequency}{Frequency of the series, number of periods per year
+(12, 4, 3, 2...)}
 
-\item{groups}{Groups of days. The length of the array must be 7. It indicates to what group each week day
-belongs. The first item corresponds to Mondays and the last one to Sundays. The group used for contrasts (usually Sundays) is identified by 0.
-The other groups are identified by 1, 2,... n (<= 6). For instance, usual trading days are defined by c(1,2,3,4,5,6,0),
-week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc.}
+\item{groups}{Groups of days. The length of the array must be 7. It indicates
+to what group each week day belongs. The first item corresponds to Mondays
+and the last one to Sundays. The group used for contrasts (usually Sundays)
+is identified by 0. The other groups are identified by 1, 2,... n (<= 6).
+For instance, usual trading days are defined by c(1, 2, 3, 4, 5, 6, 0), week
+days by c(1, 1, 1, 1, 1, 0, 0), week days, Saturdays, Sundays by
+c(1, 1, 1, 1, 1, 2, 0) etc.}
 
-\item{holiday}{Day to aggregate holidays with. (holidays are considered as that day).
-1 for Monday... 7 for Sunday. Doesn't necessary belong to the 0-group.}
+\item{holiday}{Day to aggregate holidays with. (holidays are considered as
+that day). 1 for Monday... 7 for Sunday. Doesn't necessary belong to the
+0-group.}
 }
 \value{
 returns an object of class \code{c("matrix","array")} with the long term means corresponding

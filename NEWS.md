@@ -15,6 +15,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 * Spline functions (periodic, b-splines, cardinal splines)
+* function `.add_ud_var` (from {rjd3tramoseats} and {rjd3x13})
+
 
 ## [3.3.0] - 2024-10-28
 
@@ -24,14 +26,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Improve Canova-Hansen tests for seasonality and trading days (new options, more output)
 * Document (UC)ARIMA models
 
-## [3.2.4] - 2024-07-12
 
+## [3.2.4] - 2024-07-12
 
 ### Changed
 
 * New .jar (related to release [3.2.4](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.4))
 * Some linting of R functions
-
 
 ### Fixed
 
