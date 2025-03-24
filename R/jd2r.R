@@ -127,7 +127,12 @@ NULL
         s <- matrix(s, nrow = length(s), ncol = 1)
     }
     sdim <- dim(s)
-    return(.jcall("jdplus/toolkit/base/api/math/matrices/Matrix", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "of", .jarray(as.double(s)), as.integer(sdim[1]), as.integer(sdim[2])))
+    return(.jcall(
+        obj = "jdplus/toolkit/base/api/math/matrices/Matrix",
+        returnSig = "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+        method = "of",
+        .jarray(as.double(s)), as.integer(sdim[1]), as.integer(sdim[2])
+    ))
 }
 
 .j2r_ldt <- function(ldt) {

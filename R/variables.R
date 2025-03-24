@@ -76,13 +76,16 @@ lp_variable <- function(frequency, start, length, s, type = c("LeapYear", "Lengt
     return(ts(data, frequency = frequency, start = start))
 }
 
-#' Generating Outlier regressors
+#' @title Generating Outlier regressors
 #'
 #' @inheritParams td
-#' @param pos,date the date of the outlier, defined by the position in period compared to the first date (\code{pos} parameter)
-#' or by a specific \code{date} defined in the format \code{"YYYY-MM-DD"}.
+#' @param pos,date the date of the outlier, defined by the position in period
+#' compared to the first date (\code{pos} parameter) or by a specific
+#' \code{date} defined in the format \code{"YYYY-MM-DD"}.
 #' @param rate the decay rate of the transitory change regressor (see details).
-#' @param zeroended Boolean indicating if the regressor should end by 0 (\code{zeroended = TRUE}, default) or 1 (\code{zeroended = FALSE}), argument valid only for LS and SO.
+#' @param zeroended Boolean indicating if the regressor should end by 0
+#' (\code{zeroended = TRUE}, default) or 1 (\code{zeroended = FALSE}), argument
+#' valid only for LS and SO.
 #'
 #' @details
 #' An additive outlier (AO, \code{ao_variable}) is defined as:

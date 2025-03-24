@@ -1,62 +1,58 @@
-
-# Example code in package build process
-# Hidden file from mac-os
 # History files
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-# Output files from R CMD build
-# Output files from R CMD check
-# R Environment Variables
-# RStudio Connect folder
-# RStudio files
+.Rhistory
+.Rapp.history
+
 # Session Data files
-# Temporary files created by R markdown
-# User-specific files
-# knitr and R markdown default cache directories
-# pkgdown site
-# produced README.html
-# produced vignettes
-# translation temp files
-*-Ex.R
-*.dbf
-*.doc*
-*.gddoc
-*.gdsheet
-*.gpkg
-*.html
-*.knit.md
-*.mdb
-*.shp*
-*.shx
-*.utf8.md
-*.xls*
-*_cache/
-*_files
-.DS_Store
 .RData
 .RDataTmp
-.Rapp.history
-.Renviron
-.Rhistory
-.Rproj.user
-.Rproj.user/
+
+# User-specific files
 .Ruserdata
-.httr-oauth
-/*.Rcheck/
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
 /*.tar.gz
-/cache/
-Meta/
-README.html
-doc/
-docs
-docs/
-inst/doc/
-libs
-output
-po/*~
-renv/library
-rsconnect/
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
 vignettes/*.html
 vignettes/*.pdf
-inst/doc
-/doc/
-/Meta/
+Meta/
+inst/doc/
+doc/
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# R Environment Variables
+.Renviron
+
+# pkgdown site
+docs/
+
+# translation temp files
+po/*~
+
+# RStudio Connect folder
+rsconnect/
+
+# Hidden file from mac-os
+.DS_Store
+
+# produced README.html
+README.html

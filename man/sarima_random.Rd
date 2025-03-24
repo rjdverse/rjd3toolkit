@@ -19,6 +19,9 @@ Unused if \code{tdegree} is larger than 0.}
 
 \item{seed}{seed of the random numbers generator. Negative values mean random seeds}
 }
+\value{
+a numeric vector with the simulated series.
+}
 \description{
 Simulate Seasonal ARIMA
 }
@@ -27,4 +30,5 @@ Simulate Seasonal ARIMA
 s_model <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 x <- sarima_random(s_model, length = 64, seed = 0)
 plot(x, type = "l")
+
 }

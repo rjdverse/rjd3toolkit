@@ -12,22 +12,28 @@ weighted_calendar(calendars, weights)
 \item{weights}{vector of weights associated to each calendar.}
 }
 \value{
-returns an object of class \code{c("JD3_WEIGHTEDCALENDAR","JD3_CALENDARDEFINITION")}
+returns an object of class
+\code{c("JD3_WEIGHTEDCALENDAR", "JD3_CALENDARDEFINITION")}
 }
 \description{
-Allows to combine two or more calendars into one calendar, weighting all the holidays of each of them.
+Allows to combine two or more calendars into one calendar, weighting all the
+holidays of each of them.
 }
 \details{
-Composite calendars are useful for a series that including data from more than one country/region.
-They can be used, for example, to create the calendar for the European Union or to create the national calendar for a country,
-in which regional holidays are celebrated.
+Composite calendars are useful for a series that including data from more
+than one country/region. They can be used, for example, to create the
+calendar for the European Union or to create the national calendar for a
+country, in which regional holidays are celebrated.
 For example, in Germany public holidays are determined by the federal states.
-Therefore, Epiphany is celebrated only in Baden-Wurttemberg, Bavaria and in Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated only in Saxony.
+Therefore, Epiphany is celebrated only in Baden-Wurttemberg, Bavaria and in
+Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated
+only in Saxony.
 }
 \examples{
 Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
 France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
 composite_calendar <- weighted_calendar(list(France, Belgium), weights = c(1, 2))
+
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

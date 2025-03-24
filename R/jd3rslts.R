@@ -4,11 +4,11 @@
 #' @rdname jd3_utilities
 .proc_numeric <- function(rslt, name) {
     s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (!is.jnull(s)) {
-        .jcall(s, "D", "doubleValue")
-    } else {
+    if (is.jnull(s)) {
         return(NaN)
     }
+
+    return(.jcall(s, "D", "doubleValue"))
 }
 #' @export
 #' @rdname jd3_utilities
@@ -189,17 +189,17 @@
 #' @rdname jd3_utilities
 .proc_likelihood <- function(jrslt, prefix) {
     return(list(
-        ll = .proc_numeric(jrslt, paste(prefix, "ll", sep = "")),
-        ssq = .proc_numeric(jrslt, paste(prefix, "ssqerr", sep = "")),
-        nobs = .proc_int(jrslt, paste(prefix, "nobs", sep = "")),
-        neffective = .proc_int(jrslt, paste(prefix, "neffective", sep = "")),
-        nparams = .proc_int(jrslt, paste(prefix, "nparams", sep = "")),
-        df = .proc_int(jrslt, paste(prefix, "df", sep = "")),
-        aic = .proc_numeric(jrslt, paste(prefix, "aic", sep = "")),
-        aicc = .proc_numeric(jrslt, paste(prefix, "aicc", sep = "")),
-        bic = .proc_numeric(jrslt, paste(prefix, "bic", sep = "")),
-        bic2 = .proc_numeric(jrslt, paste(prefix, "bic2", sep = "")),
-        bicc = .proc_numeric(jrslt, paste(prefix, "bicc", sep = "")),
-        hannanquinn = .proc_numeric(jrslt, paste(prefix, "hannanquinn", sep = ""))
+        ll = .proc_numeric(jrslt, paste0(prefix, "ll")),
+        ssq = .proc_numeric(jrslt, paste0(prefix, "ssqerr")),
+        nobs = .proc_int(jrslt, paste0(prefix, "nobs")),
+        neffective = .proc_int(jrslt, paste0(prefix, "neffective")),
+        nparams = .proc_int(jrslt, paste0(prefix, "nparams")),
+        df = .proc_int(jrslt, paste0(prefix, "df")),
+        aic = .proc_numeric(jrslt, paste0(prefix, "aic")),
+        aicc = .proc_numeric(jrslt, paste0(prefix, "aicc")),
+        bic = .proc_numeric(jrslt, paste0(prefix, "bic")),
+        bic2 = .proc_numeric(jrslt, paste0(prefix, "bic2")),
+        bicc = .proc_numeric(jrslt, paste0(prefix, "bicc")),
+        hannanquinn = .proc_numeric(jrslt, paste0(prefix, "hannanquinn"))
     ))
 }
