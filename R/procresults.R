@@ -16,9 +16,12 @@ RSLT <- "JD3_ProcResults"
 }
 
 
-#' Get Dictionary and Result
+#' @title Get Dictionary and Result
 #'
-#' Extract dictionary of a \code{"JD3_ProcResults"} object (\code{dictionary()}) and extract a specific value (\code{result()}) or a list of values (\code{user_defined()}).
+#' @description
+#' Extract dictionary of a \code{"JD3_ProcResults"} object (\code{dictionary()})
+#' and extract a specific value (\code{result()}) or a list of values
+#' (\code{user_defined()}).
 #'
 #' @param object the java object.
 #' @param id the name of the object to extract.

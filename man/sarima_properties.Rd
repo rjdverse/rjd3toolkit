@@ -13,6 +13,9 @@ sarima_properties(model, nspectrum = 601, nacf = 36)
 
 \item{nacf}{maximum lag at which to calculate the acf.}
 }
+\value{
+List with the acf and the spectrum of the model.
+}
 \description{
 SARIMA Properties
 }

@@ -25,12 +25,15 @@ so_variable(frequency, start, length, s, pos, date = NULL, zeroended = TRUE)
 \item{s}{time series used to get the dates for the trading days variables. If supplied the
 parameters \code{frequency}, \code{start} and \code{length} are ignored.}
 
-\item{pos, date}{the date of the outlier, defined by the position in period compared to the first date (\code{pos} parameter)
-or by a specific \code{date} defined in the format \code{"YYYY-MM-DD"}.}
+\item{pos, date}{the date of the outlier, defined by the position in period
+compared to the first date (\code{pos} parameter) or by a specific
+\code{date} defined in the format \code{"YYYY-MM-DD"}.}
 
 \item{rate}{the decay rate of the transitory change regressor (see details).}
 
-\item{zeroended}{Boolean indicating if the regressor should end by 0 (\code{zeroended = TRUE}, default) or 1 (\code{zeroended = FALSE}), argument valid only for LS and SO.}
+\item{zeroended}{Boolean indicating if the regressor should end by 0
+(\code{zeroended = TRUE}, default) or 1 (\code{zeroended = FALSE}), argument
+valid only for LS and SO.}
 }
 \description{
 Generating Outlier regressors

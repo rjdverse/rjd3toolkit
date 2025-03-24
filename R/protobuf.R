@@ -38,7 +38,7 @@ NULL
 #' @rdname jd3_utilities
 .enum_extract <- function(type, p) {
     name <- type$value(number = p)$name()
-    return(substring(name, regexpr("_", name) + 1))
+    return(substring(name, regexpr("_", name, fixed = TRUE) + 1))
 }
 
 #' @export

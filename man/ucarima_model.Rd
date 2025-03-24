@@ -2,8 +2,8 @@
 % Please edit documentation in R/arima.R
 \name{ucarima_model}
 \alias{ucarima_model}
-\title{Creates an UCARIMA model, which is composed of ARIMA models with independent
-innovations.}
+\title{Creates an UCARIMA model, which is composed of ARIMA models with
+independent innovations.}
 \usage{
 ucarima_model(model = NULL, components, complements = NULL, checkmodel = FALSE)
 }
@@ -22,8 +22,8 @@ similar controls are applied on complements. Currently not implemented}
 A list with the reduced model, the components and their complements
 }
 \description{
-Creates an UCARIMA model, which is composed of ARIMA models with independent
-innovations.
+Creates an UCARIMA model, which is composed of ARIMA models with
+independent innovations.
 }
 \examples{
 mod1 <- arima_model("trend", delta = c(1, -2, 1))

@@ -15,7 +15,9 @@ differencing_fast(data, period, mad = TRUE, centile = 90, k = 1.2)
 
 \item{centile}{Percentage of the data used for computing the variance (90 by default).}
 
-\item{k}{tolerance in the decrease of the variance. The algorithm stops if the new variance is higher than k*the old variance. k should be equal or slightly higher than 1 (1.2 by default)}
+\item{k}{tolerance in the decrease of the variance. The algorithm stops if
+the new variance is higher than k*the old variance. k should be equal or
+slightly higher than 1 (1.2 by default)}
 }
 \value{
 Stationary transformation

@@ -342,13 +342,22 @@ dynamic_ts <- function(moniker, data) {
 #' @references
 #' More information on auxiliary variables in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
+#'
 modelling_context <- function(calendars = NULL, variables = NULL) {
-    if (is.null(calendars)) calendars <- list()
-    if (is.null(variables)) variables <- list()
-    if (!is.list(calendars)) stop("calendars should be a list of calendars")
-    if (length(calendars) > 0) if (length(calendars) != length(which(sapply(calendars, function(z) is(z, "JD3_CALENDARDEFINITION"))))) stop("calendars should be a list of calendars")
-    if (!is.list(variables)) stop("variables should be a list of vars")
-    if (length(variables) != 0) {
+    if (is.null(calendars) || length(calendars) == 0L) {
+        calendars <- list()
+    } else if (is.list(calendars)) {
+        is_calendar <- sapply(X = calendars, FUN = is, class2 = "JD3_CALENDARDEFINITION")
+        if (!all(is_calendar)) {
+            stop("calendars should be a list of calendars")
+        }
+    } else {
+        stop("calendars should be a list of calendars")
+    }
+
+    if (is.null(variables) || length(variables) == 0L) {
+        variables <- list()
+    } else if (is.list(variables)) {
         list_var <- sapply(variables, is.list)
         mts_var <- sapply(variables, is.mts)
         ts_var <- (!list_var) & (!mts_var)
@@ -374,6 +383,8 @@ modelling_context <- function(calendars = NULL, variables = NULL) {
             combined_var <- list(r = combined_var)
             variables <- c(variables[names(variables) != "r"], combined_var)
         }
+    } else {
+        stop("variables should be a list of vars")
     }
 
     return(list(calendars = calendars, variables = variables))
