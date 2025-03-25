@@ -50,7 +50,8 @@
 
 
 <dl><dt id="arg-s">s<a class="anchor" aria-label="anchor" href="#arg-s"></a></dt>
-<dd><p>a <code>ts</code> object that corresponds to the input time series to test.</p></dd>
+<dd><p>a <code>ts</code> object that corresponds to the input time series to
+test.</p></dd>
 
 
 <dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
@@ -58,15 +59,17 @@
 
 
 <dt id="arg-nyears">nyears<a class="anchor" aria-label="anchor" href="#arg-nyears"></a></dt>
-<dd><p><code>integer</code> that corresponds to the length of the sub series, starting from the end of the series, to be used for the test:
-in number of periods (positive value) or years (negative values).
+<dd><p><code>integer</code> that corresponds to the length of the sub
+series, starting from the end of the series, to be used for the test: in
+number of periods (positive value) or years (negative values).
 By default (<code>nyears = 0</code>), the entire sample is used.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The function performs a residual seasonality test that is a joint F-Test on the coefficients of trading days regressors.
-Several specifications can be used on the model:</p><ul><li><p><code>model = "WN"</code> the following model is used:
+    <p>The function performs a residual seasonality test that is a joint F-Test on
+the coefficients of trading days regressors. Several specifications can be
+used on the model:</p><ul><li><p><code>model = "WN"</code> the following model is used:
 $$
 y_t - \bar y =\beta TD_t +  \varepsilon_t
 $$</p></li>
@@ -80,7 +83,7 @@ $$
 $$</p></li>
 <li><p><code>model = "DYD1"</code> the following model is used:
 $$
-\Delta_s\Delta y_t - \overline{\Delta_s \Delta y} =\beta \Delta_s \Delta TD_t +  \varepsilon_t
+\Delta_s\Delta y_t - \overline{\Delta_s \Delta y} =\beta \Delta_s \Delta TD_t + \varepsilon_t
 $$</p></li>
 <li><p><code>model = "AIRLINE"</code> the following model is used:
 $$
