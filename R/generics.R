@@ -1,4 +1,4 @@
-#' Generic Diagnostics Function
+#' @title Generic Diagnostics Function
 #'
 #' @param x the object to extract diagnostics.
 #' @param ... further arguments.
@@ -16,8 +16,9 @@ diagnostics.JD3 <- function(x, ...) {
 }
 
 
-#' Generic Preprocessing Function
+#' @title Generic Preprocessing Function
 #'
+#' @description
 #' Generic function for preprocessing defined in other packages.
 #'
 #' @param x,... parameters.
@@ -28,8 +29,9 @@ sa_preprocessing <- function(x, ...) {
 }
 
 
-#' Generic Function for Seasonal Adjustment Decomposition
+#' @title Generic Function for Seasonal Adjustment Decomposition
 #'
+#' @description
 #' Generic function to format the seasonal adjustment decomposition components.
 #' \code{sa_decomposition()} is a generic function defined in other packages.
 #'
@@ -43,7 +45,7 @@ sa_preprocessing <- function(x, ...) {
 #' @param colors the colours used in the plot.
 #' @param ... further arguments.
 #'
-#' @return \code{"JD3_SADECOMPOSITION"} object.
+#' @returns \code{"JD3_SADECOMPOSITION"} object.
 #' @name sa_decomposition
 NULL
 
@@ -53,7 +55,7 @@ sa_decomposition <- function(x, ...) {
     UseMethod("sa_decomposition", x)
 }
 
-#' Deprecated functions
+#' @title Deprecated functions
 #'
 #' @description
 #' Use [sa_decomposition()] instead of `sa.decomposition()`.

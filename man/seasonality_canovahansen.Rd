@@ -39,4 +39,5 @@ Canova-Hansen seasonality test
 s <- log(ABS$X0.2.20.10.M)
 seasonality_canovahansen(s, 12, type = "Contrast")
 seasonality_canovahansen(s, 12, type = "Trigonometric")
+
 }

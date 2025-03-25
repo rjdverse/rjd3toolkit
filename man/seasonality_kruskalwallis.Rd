@@ -28,4 +28,5 @@ Non parametric test on the ranks.
 s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_kruskalwallis(s)
 seasonality_kruskalwallis(random_t(2, 1000), 7)
+
 }

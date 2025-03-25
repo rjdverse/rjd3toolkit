@@ -83,6 +83,7 @@ my_context <- modelling_context(variables = vars)
 # new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)
 # modelling context is needed for the estimation phase
 # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+
 }
 \references{
 More information on outliers and other auxiliary variables in JDemetra+ online documentation:

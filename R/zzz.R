@@ -14,7 +14,6 @@ DATE_MAX <- NULL
 #' @importFrom stats frequency is.ts pf ts ts.union
 NULL
 
-
 .onLoad <- function(libname, pkgname) {
     result <- .jpackage(pkgname, lib.loc = libname)
     if (!result) stop("Loading java packages failed")
