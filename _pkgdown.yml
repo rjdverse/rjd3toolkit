@@ -2,3 +2,261 @@ url: https://rjdverse.github.io/rjd3toolkit/
 template:
   bootstrap: 5
 
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    - rpackages
+    right:
+    - jdemetra
+    - github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: News
+      href: news/index.html
+    jdemetra:
+      text: JDemetra+
+      menu:
+      - text: Download JDemetra+
+        href: https://github.com/jdemetra/jdemetra-app/releases
+      - text: JDemetra+ documentation
+        href: https://jdemetra-new-documentation.netlify.app/
+    rpackages:
+      text: Around JDemetra+ and R
+      menu:
+      - text: rjd3x13
+        href: https://github.com/rjdverse/rjd3x13
+      - text: rjd3tramoseats
+        href: https://github.com/rjdverse/rjd3tramoseats
+      - text: rjd3workspace
+        href: https://github.com/rjdverse/rjd3workspace
+    github:
+      icon: fa-github fa-lg
+      href: https://github.com/rjdverse/rjd3toolkit
+
+reference:
+- title: Customizing specifications in  X-13ARIMA (rjd3x13) or TRAMO-SEATS (rjd3tramoseats)
+  desc: Functions allowing to set user defined parameters
+  contents:
+- '`add_outlier`'
+- '`remove_outlier`'
+- '`add_ramp`'
+- '`remove_ramp`'
+- '`add_usrdefvar`'
+- '`set_arima`'
+- '`set_automodel`'
+- '`set_basic`'
+- '`set_benchmarking`'
+- '`set_easter`'
+- '`set_estimate`'
+- '`set_outlier`'
+- '`set_tradingdays`'
+- '`set_transform`'
+
+- title: Print and Plot Methods
+  desc: Functions to print and plot specific JDemetra+ class objects
+  contents:
+
+- '`sadecomposition`'
+- '`print<JD3_SADECOMPOSITION>`'
+- '`plot<JD3_SADECOMPOSITION>`'
+- '`sa_decomposition`'
+- '`sa_preprocessing`'
+
+
+
+- title: Outliers, Intervention variables and Ramps
+  desc: Functions allowing to generate specify outliers, intervention variables and ramps
+  contents:
+- '`ao_variable`'
+- '`tc_variable`'
+- '`ls_variable`'
+- '`so_variable`'
+- title: Seasonality Tests
+  desc: Functions to test the presence of seasonality in a time series
+  contents:
+- '`seasonality_canovahansen`'
+- '`seasonality_canovahansen_trigs`'
+- '`seasonality_combined`'
+- '`seasonality_f`'
+- '`seasonality_friedman`'
+- '`seasonality_kruskalwallis`'
+- '`seasonality_modified_qs`'
+- '`seasonality_periodogram`'
+- '`seasonality_qs`'
+
+- title: (S)arima Models
+  desc: Functions to wrangle (S)arima models
+  contents:
+
+- '`sarima_decompose`'
+- '`sarima_estimate`'
+- '`sarima_hannan_rissanen`'
+- '`sarima_model`'
+- '`sarima_properties`'
+- '`sarima_random`'
+
+- title: UC Decomposition
+  desc: Functions to perform canonical decomposition of a Sarima Model
+  contents:
+
+- '`ucarima_canonical`'
+- '`ucarima_estimate`'
+- '`ucarima_model`'
+- '`ucarima_wk`'
+
+- title: Distributions
+  desc: PDFs, CDFs and inverses
+  contents:
+- '`density_inverse_gamma`'
+- '`cdf_inverse_gamma`'
+- '`random_inverse_gamma`'
+- '`density_inverse_gaussian`'
+- '`cdf_inverse_gaussian`'
+- '`random_inverse_gaussian`'
+
+- title: Splines
+  desc: Functions to generate different types of splines
+  contents:
+- '`bsplines`'
+- '`periodic_bsplines`'
+- '`periodic_cspline`'
+- '`periodic_csplines`'
+
+- title: Databases
+  desc: Lists of Time Series from ABS, NBB and US Census Bureau
+  contents:
+  - '`ABS`'
+  - '`Exports`'
+  - '`Imports`'
+  - '`Retail`'
+ - title: Wrangling Java objects
+  desc: Functions to easily interact between R and Java objects
+  contents:
+- '`r2jd_calendarts`'
+- '`.likelihood`'
+- '`.tsmoniker`'
+- '`.r2jd_tsdata`'
+- '`.r2jd_tsdomain`'
+- '`.jd2r_tsdata`'
+- '`.jd2r_mts`'
+- '`.jd2r_lts`'
+- '`.jd2r_matrix`'
+- '`.r2jd_matrix`'
+- '`.jdomain`'
+- '`.enum_sextract`'
+- '`.enum_sof`'
+- '`.enum_extract`'
+- '`.enum_of`'
+- '`.r2p_parameter`'
+- '`.p2r_parameter`'
+- '`.r2p_parameters`'
+- '`.r2p_lparameters`'
+- '`.p2r_parameters`'
+- '`.p2r_parameters_rslt`'
+- '`.p2r_parameters_rsltx`'
+- '`.p2r_test`'
+- '`.p2r_matrix`'
+- '`.p2r_tsdata`'
+- '`.r2p_tsdata`'
+- '`.p2r_parameters_estimation`'
+- '`.p2r_likelihood`'
+- '`.p2r_date`'
+- '`.r2p_date`'
+- '`.p2r_span`'
+- '`.r2p_span`'
+- '`.p2r_arima`'
+- '`.p2r_ucarima`'
+- '`.p2r_spec_sarima`'
+- '`.r2p_spec_sarima`'
+- '`.p2r_outliers`'
+- '`.r2p_outliers`'
+- '`.p2r_sequences`'
+- '`.r2p_sequences`'
+- '`.p2r_iv`'
+- '`.r2p_iv`'
+- '`.p2r_ivs`'
+- '`.r2p_ivs`'
+- '`.p2r_ramps`'
+- '`.r2p_ramps`'
+- '`.p2r_uservars`'
+- '`.r2p_uservars`'
+- '`.p2r_variables`'
+- '`.p2r_sa_decomposition`'
+- '`.p2r_sa_diagnostics`'
+- '`.p2r_spec_benchmarking`'
+- '`.r2p_spec_benchmarking`'
+- '`.r2jd_sarima`'
+- '`.jd2r_ucarima`'
+- '`.p2jd_calendar`'
+- '`.r2p_calendar`'
+- '`.proc_numeric`'
+- '`.proc_vector`'
+- '`.proc_int`'
+- '`.proc_bool`'
+- '`.proc_ts`'
+- '`.proc_str`'
+- '`.proc_desc`'
+- '`.proc_test`'
+- '`.proc_parameter`'
+- '`.proc_parameters`'
+- '`.proc_matrix`'
+- '`.proc_data`'
+- '`.proc_dictionary`'
+- '`.proc_dictionary2`'
+- '`.proc_likelihood`'
+- '`.r2p_moniker`'
+- '`.p2r_moniker`'
+- '`.r2p_datasupplier`'
+- '`.p2r_metadata`'
+- '`.r2p_metadata`'
+- '`.p2r_ts`'
+- '`.r2p_ts`'
+- '`.p2r_tscollection`'
+- '`.r2p_tscollection`'
+- '`.r2jd_ts`'
+- '`.jd2r_ts`'
+- '`.r2jd_tscollection`'
+- '`.jd2r_tscollection`'
+- '`.p2r_datasupplier`'
+- '`.r2p_datasuppliers`'
+- '`.p2r_datasuppliers`'
+- '`.p2jd_variables`'
+- '`.jd2p_variables`'
+- '`.jd2r_variables`'
+- '`.r2jd_variables`'
+- '`.p2r_context`'
+- '`.r2p_context`'
+- '`.p2jd_context`'
+- '`.jd2p_context`'
+- '`.jd2r_modellingcontext`'
+- '`.r2jd_modellingcontext`'
+- '`.p2r_calendars`'
+- '`.r2p_calendars`'
+- '`.p2jd_calendars`'
+- '`.jd2p_calendars`'
+- '`.jd2r_calendars`'
+- '`.r2jd_calendars`'
+- '`.jd3_object`'
+- '`.p2r_regarima_rslts`'
+- '`.r2jd_tmp_ts`'
+- '`.r2jd_make_ts`'
+- '`.r2jd_make_tscollection`'
+- title: Deprecated functions
+  desc: Avoid Using
+  contents:
+- '`sa.decomposition`'
+
+
+
