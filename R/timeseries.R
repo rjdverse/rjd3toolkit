@@ -230,7 +230,7 @@ ts_adjust.data.frame <- function(s, method = c("LeapYear", "LengthOfPeriod"), re
 #' @returns A list of the starting dates of each period
 #' @export
 #'
-#' @examples daysOf(retail$BookStores)
+#' @examples daysOf(Retail$BookStores)
 daysOf <- function(ts, pos = 1) {
     start <- start(ts)
     jdom <- .r2jd_tsdomain(frequency(ts), start[1], start[2], length(ts))
