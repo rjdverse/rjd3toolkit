@@ -2,13 +2,7 @@
 % Please edit documentation in R/spec_regarima.R
 \name{add_usrdefvar}
 \alias{add_usrdefvar}
-\title{Add a User-Defined Variable to Pre-Processing Specification.
-
-Function allowing to add any user-defined regressor to a specification and
-allocate its effect to a selected component, excepted to the calendar component.
-To add user-defined calendar regressors, \code{\link{set_tradingdays}}. Once added to
-a specification, the external regressor(s) will also have to be added to a modelling context
-before being used in an estimation process. see \code{\link{modelling_context}} and example.}
+\title{Add a User-Defined Variable to Pre-Processing Specification.}
 \usage{
 add_usrdefvar(
   x,
@@ -39,8 +33,6 @@ By default (\code{lag = 0}), the regressor \eqn{x_t} is not lagged. If \code{lag
 By default (\code{"Undefined"}), see details.}
 }
 \description{
-Add a User-Defined Variable to Pre-Processing Specification.
-
 Function allowing to add any user-defined regressor to a specification and
 allocate its effect to a selected component, excepted to the calendar component.
 To add user-defined calendar regressors, \code{\link{set_tradingdays}}. Once added to
@@ -91,6 +83,7 @@ my_context <- modelling_context(variables = vars)
 # new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)
 # modelling context is needed for the estimation phase
 # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+
 }
 \references{
 More information on outliers and other auxiliary variables in JDemetra+ online documentation:

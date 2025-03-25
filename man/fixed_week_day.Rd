@@ -16,7 +16,8 @@ fixed_week_day(month, week, dayofweek, weight = 1, validity = NULL)
 
 \item{weight}{weight associated to the holiday.}
 
-\item{validity}{validity period: either \code{NULL} (full sample) or a named list with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
+\item{validity}{validity period: either \code{NULL} (full sample) or a named list
+with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
 }
 \value{
 returns an object of class \code{c("JD3_FIXEDWEEKDAY","JD3_HOLIDAY")}

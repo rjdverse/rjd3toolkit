@@ -1,4 +1,4 @@
-#' Periodic B-Splines
+#' @title Periodic B-Splines
 #'
 #' @param order Order of the splines (4 for cubic)
 #' @param period Period of the splines (1 by default)
@@ -6,7 +6,7 @@
 #' @param pos Requested positions (in [0, period[). The rows of the returned matrix
 #' will correspond to those positions
 #'
-#' @return A matrix (len(pos) x len(knots))
+#' @returns A matrix (len(pos) x len(knots))
 #' @export
 #'
 #' @examples
@@ -21,14 +21,14 @@ periodic_bsplines <- function(order = 4, period = 1, knots, pos) {
     return(res)
 }
 
-#' B-Splines
+#' @title B-Splines
 #'
 #' @param order Order of the splines (4 for cubic)
 #' @param knots Knots of the splines (in [0, period[)
 #' @param pos Requested positions (in [0, period[). The rows of the returned matrix
 #' will correspond to those positions
 #'
-#' @return A matrix (len(pos) x len(knots))
+#' @returns A matrix (len(pos) x len(knots))
 #' @export
 #'
 #' @examples
@@ -43,13 +43,13 @@ bsplines <- function(order = 4, knots, pos) {
     return(res)
 }
 
-#' Natural cubic spline
+#' @title Natural cubic spline
 #'
 #' @param x Abscissas of the knots
 #' @param y Ordinates of the knots
 #' @param pos Requested positions
 #'
-#' @return An array corresponding to the values of the spline at the requested positions
+#' @returns An array corresponding to the values of the spline at the requested positions
 #' @export
 #'
 #' @examples
@@ -62,13 +62,13 @@ natural_cspline <- function(x, y, pos) {
     ))
 }
 
-#' Monotonic cubic spline
+#' @title Monotonic cubic spline
 #'
 #' @param x Abscissas of the knots
 #' @param y Ordinates of the knots
 #' @param pos Requested positions
 #'
-#' @return An array corresponding to the values of the spline at the requested positions
+#' @returns An array corresponding to the values of the spline at the requested positions
 #' @export
 #'
 #' @examples
@@ -81,13 +81,13 @@ monotonic_cspline <- function(x, y, pos) {
     ))
 }
 
-#' Periodic cubic spline
+#' @title Periodic cubic spline
 #'
 #' @param x Abscissas of the knots
 #' @param y Ordinates of the knots
 #' @param pos Requested positions
 #'
-#' @return An array corresponding to the values of the spline at the requested positions
+#' @returns An array corresponding to the values of the spline at the requested positions
 #' @export
 #'
 #' @examples
@@ -100,11 +100,11 @@ periodic_cspline <- function(x, y, pos) {
     ))
 }
 
-#' Periodic cardinal cubic splines
+#' @title Periodic cardinal cubic splines
 #'
 #' @param x Abscissas of the knots
 #' @param pos Requested positions
-#' @return A matrix (len(pos) x len(knots))
+#' @returns A matrix (len(pos) x len(knots))
 #' @export
 #'
 #' @examples

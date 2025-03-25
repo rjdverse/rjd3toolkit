@@ -1,4 +1,4 @@
-#' Set Benchmarking Specification
+#' @title Set Benchmarking Specification
 #'
 #' @description
 #' Function allowing to perform a benchmarking procedure after the decomposition
