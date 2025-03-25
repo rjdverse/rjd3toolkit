@@ -1,5 +1,6 @@
-#' Manage Outliers/Ramps in Specification
+#' @title Manage Outliers/Ramps in Specification
 #'
+#' @description
 #' Generic function to add outliers or Ramp regressors (\code{add_outlier()} and
 #' \code{add_ramp()}) to a specification or to remove them
 #' (\code{remove_outlier()} and \code{remove_ramp()}).
@@ -13,6 +14,7 @@
 #' @param name the name of the variable (to format print).
 #' @param coef the coefficient if needs to be fixed. If equal to 0 the
 #' outliers/ramps coefficients are estimated.
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
@@ -22,6 +24,7 @@
 #' performed, each type of Outlier will be allocated to a pre-defined component
 #' after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to
 #' the trend.
+#'
 #' @examples
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
@@ -228,7 +231,7 @@ remove_ramp.default <- function(x,
     x
 }
 
-#' Set estimation sub-span and quality check specification
+#' @title Set estimation sub-span and quality check specification
 #'
 #' @description
 #' Function allowing to check if the series can be processed and to define a
@@ -322,7 +325,7 @@ set_basic.default <- function(x,
     x$basic <- basic
     x
 }
-#' Set Numeric Estimation Parameters and Modelling Span
+#' @title Set Numeric Estimation Parameters and Modelling Span
 #'
 #' @description
 #' Function allowing to define numeric boundaries for estimation and to define
@@ -457,6 +460,7 @@ set_estimate.default <- function(x,
 #' in the intermediate steps. If \code{TRUE}, an exact likelihood estimation
 #' method is used.
 #' When \code{FALSE}, the fast Hannan-Rissanen method is used.
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
@@ -585,7 +589,7 @@ set_outlier.default <- function(x,
     x
 }
 
-#' Set Arima Model Identification in Pre-Processing Specification
+#' @title Set Arima Model Identification in Pre-Processing Specification
 #'
 #' @description
 #' Function allowing to customize Arima model identification procedure.
@@ -800,8 +804,9 @@ set_automodel.default <- function(x,
     x$automodel <- automodel
     x
 }
-#' Set ARIMA Model Structure in Pre-Processing Specification
+#' @title Set ARIMA Model Structure in Pre-Processing Specification
 #'
+#' @description
 #' Function allowing to customize the ARIMA model structure
 #' when the automatic modelling is disabled.(see example)
 #'
@@ -823,6 +828,7 @@ set_automodel.default <- function(x,
 #' Possible procedures are: \code{"Undefined"} = no use of any user-defined input (i.e. coefficients are estimated),
 #' \code{"Fixed"} = the coefficients are fixed at the value provided by the user,
 #' \code{"Initial"} = the value defined by the user is used as the initial condition.
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
@@ -1330,38 +1336,52 @@ set_tradingdays.default <- function(x,
     x
 }
 
-#' Set Easter effect correction in Pre-Processing Specification
-#'
+#' @title Set Easter effect correction in Pre-Processing Specification
 #'
 #' @inheritParams set_basic
-#' @param enabled a logical indicating if the program considers the Easter effect in the pre-processing model.
-#' Default = TRUE.
+#' @param enabled a logical indicating if the program considers the Easter
+#' effect in the pre-processing model. Default = TRUE.
 #'
-#' @param julian a logical indicating if the program uses the Julian Easter (expressed in Gregorian calendar).
+#' @param julian a logical indicating if the program uses the Julian Easter
+#' (expressed in Gregorian calendar).
 #'
-#' @param duration a numeric indicating the duration of the Easter effect (length in days, between 1 and 20).
+#' @param duration a numeric indicating the duration of the Easter effect
+#' (length in days, between 1 and 20).
 #' Default value = 8 in REGARIMA/X-13 and 6 in TRAMO.
 #'
-#' @param test defines the pre-tests for the significance of the Easter effect based on the t-statistic
-#' (the Easter effect is considered as significant if the t-statistic is greater than 1.96):
-#' \code{"Add"} = the Easter effect variable is not included in the initial regression model but can be added
-#' to the RegARIMA model after the test;
-#' \code{"Remove"} = the Easter effect variable belongs to the initial regression model but can be removed
-#' from the RegARIMA model after the test;
-#' \code{"None"} = the Easter effect variable is not pre-tested and is included in the model.
-#' @param coef to set the coefficient of the easter regressor.(Test parameter has to be set to \code{"None"})
-#' @param coef.type a character defining the easter regressor coefficient estimation procedure.
-#' Possible procedures are: \code{"Estimated"} = coefficient is estimated,
-#' \code{"Fixed"} = the coefficients is fixed. By default the coefficient is estimated.
-#' @param type (TRAMO specific) a \code{character} that specifies the presence and the length of the Easter effect:
-#' \code{"Unused"} = the Easter effect is not considered; \code{"Standard"} = influences the period of \code{n} days strictly before Easter Sunday;
-#' \code{"IncludeEaster"} = influences the entire period (\code{n}) up to and including Easter Sunday;
-#' \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to and including Easter Monday.
+#' @param test defines the pre-tests for the significance of the Easter effect
+#' based on the t-statistic (the Easter effect is considered as significant if
+#' the t-statistic is greater than 1.96):
+#' \code{"Add"} = the Easter effect variable is not included in the initial
+#' regression model but can be added to the RegARIMA model after the test;
+#' \code{"Remove"} = the Easter effect variable belongs to the initial
+#' regression model but can be removed from the RegARIMA model after the test;
+#' \code{"None"} = the Easter effect variable is not pre-tested and is included
+#' in the model.
+#' @param coef to set the coefficient of the easter regressor.(Test parameter
+#' has to be set to \code{"None"})
+#' @param coef.type a character defining the easter regressor coefficient
+#' estimation procedure. Possible procedures are:
+#' \code{"Estimated"} =  coefficient is estimated,
+#' \code{"Fixed"} = the coefficients is fixed. By default the coefficient is
+#' estimated.
+#' @param type (TRAMO specific) a \code{character} that specifies the presence
+#' and the length of the Easter effect:
+#' \code{"Unused"} = the Easter effect is not considered;
+#' \code{"Standard"} = influences the period of \code{n} days strictly before
+#' Easter Sunday;
+#' \code{"IncludeEaster"} = influences the entire period (\code{n}) up to and
+#' including Easter Sunday;
+#' \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to
+#' and including Easter Monday.
+#'
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-#' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-#' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
+#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
+#'
 #' @seealso \code{\link{easter_variable}}, \code{\link{easter_day}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -1466,8 +1486,7 @@ set_easter.default <- function(x, enabled = NA,
     x
 }
 
-#' Set Log-level Transformation and Decomposition scheme in Pre-Processing Specification
-#'
+#' @title Set Log-level Transformation and Decomposition scheme in Pre-Processing Specification
 #'
 #' @inheritParams set_basic
 #' @param fun the transformation of the input series: \code{"None"} = no transformation of the series;
@@ -1482,11 +1501,13 @@ set_easter.default <- function(x, enabled = NA,
 #' @param fct (TRAMO specific) \code{numeric} controlling the bias in the log/level pre-test:
 #' \code{transform.fct}> 1 favours levels, \code{transform.fct}< 1 favours logs.
 #' Considered only when \code{fun = "Auto"}.
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
+#'
 #' @seealso \code{\link{set_outlier}}, \code{\link{set_tradingdays}}
 #' @references
 #' More information in JDemetra+ online documentation:
@@ -1577,6 +1598,7 @@ set_transform.default <- function(x,
 #' @param coef the coefficient, if needs to be fixed.
 #' @param regeffect component to which the effect of the user-defined variable will be assigned.
 #' By default (`"Undefined"`), see details.
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
@@ -1593,6 +1615,7 @@ set_transform.default <- function(x,
 #' the raw series: \eqn{yc_t=y_t+ effect}
 #' - \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to
 #' the seasonally adjusted series: \eqn{sa_t=T+I+effect}
+#'
 #' @examples
 #' # creating one or several external regressors (TS objects),
 #' # which will be gathered in one or several groups
@@ -1618,7 +1641,7 @@ set_transform.default <- function(x,
 #' # new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)
 #' # modelling context is needed for the estimation phase
 #' # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
-
+#'
 #' @seealso \code{\link{set_tradingdays}}, \code{\link{intervention_variable}}
 #' @references
 #' More information on outliers and other auxiliary variables in JDemetra+ online documentation:

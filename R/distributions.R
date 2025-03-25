@@ -1,5 +1,6 @@
-#' The Student Distribution
+#' @title The Student Distribution
 #'
+#' @description
 #' Density, (cumulative) distribution function and random generation for Student distribution.
 #'
 #' @param df degrees of freedom.
@@ -34,8 +35,9 @@ cdf_t <- function(df, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfT", df, .jarray(as.numeric(x)))
 }
 
-#' The Chi-Squared Distribution
+#' @title The Chi-Squared Distribution
 #'
+#' @description
 #' Density, (cumulative) distribution function and random generation for chi-squared distribution.
 #'
 #' @inheritParams studentdistribution
@@ -62,8 +64,9 @@ cdf_chi2 <- function(df, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfChi2", df, .jarray(as.numeric(x)))
 }
 
-#' The Gamma Distribution
+#' @title The Gamma Distribution
 #'
+#' @description
 #' Density, (cumulative) distribution function and random generation for Gamma distribution.
 #'
 #' @inheritParams studentdistribution
@@ -91,8 +94,9 @@ cdf_gamma <- function(shape, scale, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfGamma", shape, scale, .jarray(as.numeric(x)))
 }
 
-#' The Inverse-Gamma Distribution
+#' @title The Inverse-Gamma Distribution
 #'
+#' @description
 #' Density, (cumulative) distribution function and random generation for inverse-gamma distribution.
 #'
 #' @inheritParams gammadistribution
@@ -119,8 +123,9 @@ cdf_inverse_gamma <- function(shape, scale, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfInverseGamma", shape, scale, .jarray(as.numeric(x)))
 }
 
-#' The Inverse-Gaussian Distribution
+#' @title The Inverse-Gaussian Distribution
 #'
+#' @description
 #' Density, (cumulative) distribution function and random generation for inverse-gaussian distribution.
 #'
 #' @inheritParams gammadistribution
