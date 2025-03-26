@@ -868,7 +868,7 @@ calendar_td <- function(calendar,
         length <- .length_ts(s)
     }
 
-    if (holidays != 7L) {
+    if (holiday != 7L) {
         warning("holiday parameter is set to 7 (Sunday) by default and cannot be changed for the time being.")
     }
 
