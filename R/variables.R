@@ -322,17 +322,17 @@ intervention_variable <- function(frequency, start, length, s, starts, ends, del
 #' @inheritParams outliers_variables
 #'
 #' @details
-#' The function periodic.dummies creates as many time series as types of periods in a year (4 or 12)
+#' The function periodic_dummies creates as many time series as types of periods in a year (4 or 12)
 #' with the value one only for one given type of period (ex Q1)
-#' The periodic.contrasts function is based on periodic.dummies but adds -1 to the period preceding a 1.
+#' The periodic_contrasts function is based on periodic_dummies but adds -1 to the period preceding a 1.
 #' @examples
 #' # periodic dummies for a quarterly series
-#' p <- periodic.dummies(4, c(2000, 1), 60)
+#' p <- periodic_dummies(4, c(2000, 1), 60)
 #' # periodic contrasts for a quarterly series
-#' q <- periodic.contrasts(4, c(2000, 1), 60)
+#' q <- periodic_contrasts(4, c(2000, 1), 60)
 #' q[1:9, ]
 #' @export
-periodic.dummies <- function(frequency, start, length, s) {
+periodic_dummies <- function(frequency, start, length, s) {
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
@@ -344,8 +344,8 @@ periodic.dummies <- function(frequency, start, length, s) {
     return(ts(data, frequency = frequency, start = start))
 }
 #' @export
-#' @rdname periodic.dummies
-periodic.contrasts <- function(frequency, start, length, s) {
+#' @rdname periodic_dummies
+periodic_contrasts <- function(frequency, start, length, s) {
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)

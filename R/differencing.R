@@ -106,7 +106,7 @@ differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
 #' @export
 #'
 #' @examples
-#' differences(retail$BookStores, c(1, 1, 12), FALSE)
+#' differences(Retail$BookStores, c(1, 1, 12), FALSE)
 #'
 differences <- function(data, lags = 1, mean = TRUE) {
     UseMethod("differences", data)

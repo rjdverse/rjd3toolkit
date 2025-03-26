@@ -999,7 +999,9 @@ set_arima.default <- function(x,
 #' @param option to specify the set of trading days regression variables:
 #'  - \code{"TradingDays"} = six contrast variables, each type of day (from
 #'      Monday to Saturday) vs Sundays;
-#'  - \code{"WorkingDays"} = one working (week days)/non-working (week-ends) day
+#'  - \code{"WorkingDays"} = one working (week days) vs non-working (week-ends) day
+#'      contrast variable;
+#'  - \code{"TD2c"} = one working (Mondays to Saturdays) vs non-working (Sundays) day
 #'      contrast variable;
 #'  - \code{"TD3"} = two contrast variables: week-days vs Sundays and  Saturdays
 #'      vs Sundays;
@@ -1137,7 +1139,7 @@ set_arima.default <- function(x,
 #' # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
 #' @export
 set_tradingdays <- function(x,
-                            option = c(NA, "TradingDays", "WorkingDays", "TD3", "TD3c", "TD4", "None", "UserDefined"),
+                            option = c(NA, "TradingDays", "WorkingDays", "TD2c", "TD3", "TD3c", "TD4", "None", "UserDefined"),
                             calendar.name = NA,
                             uservariable = NA,
                             stocktd = NA,
@@ -1157,7 +1159,7 @@ set_tradingdays <- function(x,
 
 #' @export
 set_tradingdays.default <- function(x,
-                                    option = c(NA, "TradingDays", "WorkingDays", "TD3", "TD3c", "TD4", "None", "UserDefined"),
+                                    option = c(NA, "TradingDays", "WorkingDays", "TD2c", "TD3", "TD3c", "TD4", "None", "UserDefined"),
                                     calendar.name = NA,
                                     uservariable = NA,
                                     stocktd = NA,
@@ -1180,7 +1182,7 @@ set_tradingdays.default <- function(x,
         option <- match.arg(toupper(option)[1],
             choices = c(
                 "TRADINGDAYS", "WORKINGDAYS", "NONE", "USERDEFINED",
-                "TD3", "TD3C", "TD4", "HOLIDAYS"
+                "TD2C", "TD3", "TD3C", "TD4", "HOLIDAYS"
             )
         )
         td$td <- switch(option,
@@ -1291,10 +1293,12 @@ set_tradingdays.default <- function(x,
             )
             coef.type[is.na(coef.type)] <- "FIXED"
         }
-        ntd <- switch(td$td,
+        ntd <- switch(
+            td$td,
             TD2 = 1,
+            TD2C = 1,
             TD3 = 2,
-            TD3C = 3,
+            TD3C = 2,
             TD4 = 3,
             TD7 = 6,
             length(td$users)
