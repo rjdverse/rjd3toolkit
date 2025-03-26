@@ -6,7 +6,7 @@
 \usage{
 set_tradingdays(
   x,
-  option = c(NA, "TradingDays", "WorkingDays", "TD3", "TD3c", "TD4", "None",
+  option = c(NA, "TradingDays", "WorkingDays", "TD2c", "TD3", "TD3c", "TD4", "None",
     "UserDefined"),
   calendar.name = NA,
   uservariable = NA,
@@ -30,7 +30,9 @@ details).}
 \itemize{
 \item \code{"TradingDays"} = six contrast variables, each type of day (from
 Monday to Saturday) vs Sundays;
-\item \code{"WorkingDays"} = one working (week days)/non-working (week-ends) day
+\item \code{"WorkingDays"} = one working (week days) vs non-working (week-ends) day
+contrast variable;
+\item \code{"TD2c"} = one working (Mondays to Saturdays) vs non-working (Sundays) day
 contrast variable;
 \item \code{"TD3"} = two contrast variables: week-days vs Sundays and  Saturdays
 vs Sundays;

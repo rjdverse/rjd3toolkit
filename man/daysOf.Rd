@@ -18,5 +18,5 @@ A list of the starting dates of each period
 Provides a list of dates corresponding to each period of the given time series
 }
 \examples{
-daysOf(retail$BookStores)
+daysOf(Retail$BookStores)
 }
