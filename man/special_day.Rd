@@ -9,16 +9,18 @@ special_day(event, offset = 0, weight = 1, validity = NULL)
 \arguments{
 \item{event}{the event to add (see details).}
 
-\item{offset}{The position of the holiday in relation to the selected pre-specified holiday measured in days (can be positive or negative).
+\item{offset}{The position of the holiday in relation to the selected
+pre-specified holiday measured in days (can be positive or negative).
 By default \code{offset = 0}.}
 
 \item{weight}{weight associated to the holiday.}
 
-\item{validity}{validity period: either \code{NULL} (full sample) or a named list with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
+\item{validity}{validity period: either \code{NULL} (full sample) or a named list
+with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
 }
 \description{
-Allows to define a holiday choosing from a list of pre-specified events, equivalent
-to use \code{fixed_day} or \code{easter_day} functions.
+Allows to define a holiday choosing from a list of pre-specified events,
+equivalent to use \code{fixed_day} or \code{easter_day} functions.
 }
 \details{
 Possible values :

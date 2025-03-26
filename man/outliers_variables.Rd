@@ -17,13 +17,15 @@ ls_variable(frequency, start, length, s, pos, date = NULL, zeroended = TRUE)
 so_variable(frequency, start, length, s, pos, date = NULL, zeroended = TRUE)
 }
 \arguments{
-\item{frequency}{Frequency of the series, number of periods per year (12,4,3,2..)}
+\item{frequency}{Frequency of the series, number of periods per year
+(12, 4, 3, 2...)}
 
-\item{start, length}{First date (array with the first year and the first period)
-(for instance \code{c(1980, 1)}) and number of periods of the output variables. Can also be provided with the \code{s} argument}
+\item{start, length}{First date (array with the first year and the first
+period, for instance \code{c(1980, 1)}) and number of periods of the output
+variables. Can also be provided with the \code{s} argument}
 
-\item{s}{time series used to get the dates for the trading days variables. If supplied the
-parameters \code{frequency}, \code{start} and \code{length} are ignored.}
+\item{s}{time series used to get the dates for the trading days variables.
+If supplied the parameters \code{frequency}, \code{start} and \code{length} are ignored.}
 
 \item{pos, date}{the date of the outlier, defined by the position in period
 compared to the first date (\code{pos} parameter) or by a specific

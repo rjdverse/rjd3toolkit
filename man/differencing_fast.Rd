@@ -2,7 +2,7 @@
 % Please edit documentation in R/differencing.R
 \name{differencing_fast}
 \alias{differencing_fast}
-\title{Automatic differencing}
+\title{The series is differenced till its variance is decreasing.}
 \usage{
 differencing_fast(data, period, mad = TRUE, centile = 90, k = 1.2)
 }
@@ -32,7 +32,7 @@ Stationary transformation
 }
 }
 \description{
-The series is differenced till its variance is decreasing.
+Automatic differencing
 }
 \examples{
 differencing_fast(log(ABS$X0.2.09.10.M), 12)

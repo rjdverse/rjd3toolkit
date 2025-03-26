@@ -58,16 +58,19 @@ SINGLEDAY <- "JD3_SINGLEDAY"
     }
 }
 
-#' Set a holiday on a Fixed Day
+#' @title Set a holiday on a Fixed Day
 #'
-#' @description creates a holiday falling on a fixed day each year, with an optional weight and period of validity,
-#' like Christmas which is always celebrated on December 25th.
+#' @description
+#' It creates a holiday falling on a fixed day each year, with an optional
+#' weight and period of validity, like Christmas which is always celebrated on
+#' December 25th.
 #'
 #' @param month,day the month and the day of the fixed day to add.
 #' @param weight weight associated to the holiday.
-#' @param validity validity period: either `NULL` (full sample) or a named list with `"start"` and/or "end" dates in the format `"YYYY-MM-DD"`.
+#' @param validity validity period: either `NULL` (full sample) or a named list
+#' with `"start"` and/or "end" dates in the format `"YYYY-MM-DD"`.
 #'
-#' @return returns an object of class \code{c("JD3_FIXEDDAY","JD3_HOLIDAY")}
+#' @returns returns an object of class \code{c("JD3_FIXEDDAY","JD3_HOLIDAY")}
 #' @export
 #'
 #' @examples
@@ -82,11 +85,25 @@ SINGLEDAY <- "JD3_SINGLEDAY"
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 fixed_day <- function(month, day, weight = 1, validity = NULL) {
-    return(structure(list(month = month, day = day, weight = weight, validity = validity), class = c(FIXEDDAY, HOLIDAY)))
+    output <- list(
+        month = month,
+        day = day,
+        weight = weight,
+        validity = validity
+    )
+    class(output) <- c(FIXEDDAY, HOLIDAY)
+    return(output)
 }
 
 .p2r_fixedday <- function(p) {
-    return(structure(list(month = p$month, day = p$day, weight = p$weight, validity = .p2r_validityPeriod(p$validity)), class = FIXEDDAY))
+    output <- list(
+        month = p$month,
+        day = p$day,
+        weight = p$weight,
+        validity = .p2r_validityPeriod(p$validity)
+    )
+    class(output) <- FIXEDDAY
+    return(output)
 }
 
 .r2p_fixedday <- function(r) {
@@ -104,7 +121,7 @@ fixed_day <- function(month, day, weight = 1, validity = NULL) {
 }
 
 
-#' Set a Holiday on a Fixed Week Day
+#' @title Set a Holiday on a Fixed Week Day
 #'
 #' @description
 #' Allows to define a holiday falling on a fixed week day each year, like Labour Day in the
@@ -116,7 +133,7 @@ fixed_day <- function(month, day, weight = 1, validity = NULL) {
 #' @param week position of the specified week day in the month: from `1` (first week of the month) to `5`. Should be always lower than 5.
 #' `-1` for the last `dayofweek` of the month.
 #' @param dayofweek day of the week: from `1` (Monday) to `7` (Sunday).
-#' @return returns an object of class \code{c("JD3_FIXEDWEEKDAY","JD3_HOLIDAY")}
+#' @returns returns an object of class \code{c("JD3_FIXEDWEEKDAY","JD3_HOLIDAY")}
 
 #' @export
 #'
@@ -150,7 +167,7 @@ fixed_week_day <- function(month, week, dayofweek, weight = 1, validity = NULL) 
     return(fd)
 }
 
-#' Set a Holiday on an Easter related day
+#' @title Set a Holiday on an Easter related day
 #'
 #' @description
 #' Allows to define a holiday which date is related to Easter Sunday.
@@ -196,7 +213,7 @@ easter_day <- function(offset, julian = FALSE, weight = 1, validity = NULL) {
 }
 
 
-#' Set a holiday on a Single Day
+#' @title Set a holiday on a Single Day
 #'
 #' @description
 #' Allows to set a holiday as a once-occurring event.
@@ -206,7 +223,7 @@ easter_day <- function(offset, julian = FALSE, weight = 1, validity = NULL) {
 #'
 #' @examples
 #' single_day("1999-03-19")
-#' @seealso \code{\link{national_calendar}}, \code{\link{fixed_day}},\code{\link{special_day}},\code{\link{easter_day}}
+#' @seealso \code{\link{national_calendar}}, \code{\link{fixed_day}}, \code{\link{special_day}},\code{\link{easter_day}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
@@ -228,13 +245,15 @@ single_day <- function(date, weight = 1) {
 }
 
 
-
-#' List of Pre-Defined Holidays to choose from
+#' @title List of Pre-Defined Holidays to choose from
+#'
 #' @description
-#' Allows to define a holiday choosing from a list of pre-specified events, equivalent
-#' to use `fixed_day` or `easter_day` functions.
+#' Allows to define a holiday choosing from a list of pre-specified events,
+#' equivalent to use `fixed_day` or `easter_day` functions.
+#'
 #' @inheritParams fixed_day
-#' @param offset The position of the holiday in relation to the selected pre-specified holiday measured in days (can be positive or negative).
+#' @param offset The position of the holiday in relation to the selected
+#' pre-specified holiday measured in days (can be positive or negative).
 #' By default `offset = 0`.
 #' @param event the event to add (see details).
 #'
@@ -275,7 +294,9 @@ single_day <- function(date, weight = 1) {
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 special_day <- function(event, offset = 0, weight = 1, validity = NULL) {
-    return(structure(list(event = event, offset = offset, weight = weight, validity = validity), class = c(SPECIALDAY, HOLIDAY)))
+    output <- list(event = event, offset = offset, weight = weight, validity = validity)
+    class(output) <- c(SPECIALDAY, HOLIDAY)
+    return(output)
 }
 
 .p2r_specialday <- function(p) {
@@ -315,32 +336,45 @@ special_day <- function(event, offset = 0, weight = 1, validity = NULL) {
     x
 }
 
-#' Trading day regressors without holidays
+#' @title Trading day regressors without holidays
+#'
 #' @description
-#' Allows to generate trading day regressors (as many as defined groups), taking into account
-#' 7 or less different types of days, from Monday to Sunday, but no specific holidays. Regressors are not
-#' corrected for long term mean.
+#' Allows to generate trading day regressors (as many as defined groups), taking
+#' into account 7 or less different types of days, from Monday to Sunday, but no
+#' specific holidays. Regressors are not corrected for long term mean.
+#'
 #' @details
-#' Aggregated values for monthly or quarterly are the numbers of days belonging to a given group.
-#' Contrasts are the differences between the number of days in a given group (1 to 6) and the number of days in
-#' the reference group (0).
-#' @param frequency Frequency of the series, number of periods per year (12,4,3,2..)
-#' @param start,length First date (array with the first year and the first period)
-#' (for instance `c(1980, 1)`) and number of periods of the output variables. Can also be provided with the `s` argument
-#' @param s time series used to get the dates for the trading days variables. If supplied the
-#' parameters `frequency`, `start` and `length` are ignored.
-#' @param groups Groups of days. The length of the array must be 7. It indicates to what group each week day
-#' belongs. The first item corresponds to Mondays and the last one to Sundays. The group used for contrasts (usually Sundays) is identified by 0.
-#' The other groups are identified by 1, 2,... n (<= 6). For instance, usual trading days are defined by c(1,2,3,4,5,6,0),
-#' week days by c(1,1,1,1,1,0,0), week days, Saturdays, Sundays by c(1,1,1,1,1,2,0) etc.
-#' @param contrasts If true, the variables are defined by contrasts with the 0-group. Otherwise, raw number of days is provided.
-#' @return Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
-#' or the 1-group (\code{contrasts = TRUE}).
+#' Aggregated values for monthly or quarterly are the numbers of days belonging
+#' to a given group. Contrasts are the differences between the number of days in
+#' a given group (1 to 6) and the number of days in the reference group (0).
+#'
+#' @param frequency Frequency of the series, number of periods per year
+#' (12, 4, 3, 2...)
+#' @param start,length First date (array with the first year and the first
+#' period, for instance `c(1980, 1)`) and number of periods of the output
+#' variables. Can also be provided with the `s` argument
+#' @param s time series used to get the dates for the trading days variables.
+#' If supplied the parameters `frequency`, `start` and `length` are ignored.
+#' @param groups Groups of days. The length of the array must be 7. It indicates
+#' to what group each week day belongs. The first item corresponds to Mondays
+#' and the last one to Sundays. The group used for contrasts (usually Sundays)
+#' is identified by 0. The other groups are identified by 1, 2,... n (<= 6).
+#' For instance, usual trading days are defined by c(1, 2, 3, 4, 5, 6, 0), week
+#' days by c(1, 1, 1, 1, 1, 0, 0), week days, Saturdays, Sundays by
+#' c(1, 1, 1, 1, 1, 2, 0) etc.
+#' @param contrasts If true, the variables are defined by contrasts with the
+#' 0-group. Otherwise, raw number of days is provided.
+#'
+#' @returns Time series (object of class \code{c("ts","mts","matrix")})
+#' corresponding to each group, starting with the 0-group
+#' (\code{contrasts = FALSE}) or the 1-group (\code{contrasts = TRUE}).
+#'
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @export
+#'
 #' @examples
 #' # Monthly regressors for Trading Days: each type of day is different
 #' # contrasts to Sundays (6 series)
@@ -443,7 +477,7 @@ holidays <- function(calendar,
     return(res)
 }
 
-#' Display Long-term means for a set of calendar regressors
+#' @title Display Long-term means for a set of calendar regressors
 #'
 #' @description
 #' Given a pre-defined calendar and set of groups, the function displays the long-term means which
@@ -454,7 +488,7 @@ holidays <- function(calendar,
 #' (see references). For monthly regressors there are 12 types of periods (January to December).
 #' @inheritParams calendar_td
 #'
-#' @return returns an object of class \code{c("matrix","array")} with the long term means corresponding
+#' @returns returns an object of class \code{c("matrix","array")} with the long term means corresponding
 #' to each group/period, starting with the 0-group.
 #' @export
 #' @examples
@@ -485,15 +519,17 @@ long_term_mean <- function(calendar, frequency, groups = c(1, 2, 3, 4, 5, 6, 0),
     return(.group_names(res, contrasts = FALSE))
 }
 
-#' Display Easter Sunday dates in given period
+#' @title Display Easter Sunday dates in given period
+#'
 #' @description
 #' Allows to display the date of Easter Sunday for each year, in the defined period. Dates are
 #' displayed in "YYYY-MM-DD" format and as a number of days since January 1st 1970.
+#'
 #' @param year0,year1 starting year and ending year
 #' @inheritParams easter_day
 #'
 #' @export
-#' @return a named numeric vector. Names are the dates in format "YYYY-MM-DD",
+#' @returns a named numeric vector. Names are the dates in format "YYYY-MM-DD",
 #' values are number of days since January 1st 1970.
 #' @seealso \code{\link{national_calendar}}, \code{\link{easter_day}}
 #' @references
@@ -508,7 +544,7 @@ easter_dates <- function(year0, year1, julian = FALSE) {
     return(sapply(dates, as.Date))
 }
 
-#' Trading day Regressor for Stock series
+#' @title Trading day Regressor for Stock series
 #'
 #' @description
 #' Allows to generate a specific regressor for correcting trading days effects in Stock series.
@@ -517,7 +553,7 @@ easter_dates <- function(year0, year1, julian = FALSE) {
 #' (to denote the last day of the month enter 31).
 #' @details
 #' The regressor will have the value -1 if the w-th day is a Sunday, 1 if it is a Monday as 0 otherwise.
-#' @return Time series (object of class \code{c("ts","mts","matrix")}).
+#' @returns Time series (object of class \code{c("ts","mts","matrix")}).
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -530,7 +566,12 @@ stock_td <- function(frequency, start, length, s, w = 31) {
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    jm <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "stockTradingDays", jdom, as.integer(w))
+    jm <- .jcall(
+        obj = "jdplus/toolkit/base/r/modelling/Variables",
+        returnSig = "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+        method = "stockTradingDays",
+        jdom, as.integer(w)
+    )
     data <- .jd2r_matrix(jm)
     colnames(data) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
     return(ts(data, frequency = frequency, start = start))
@@ -593,7 +634,7 @@ stock_td <- function(frequency, start, length, s, w = 31) {
     return(p)
 }
 
-#' Create a Chained Calendar
+#' @title Create a Chained Calendar
 #'
 #' @description
 #' Allows to combine two calendars, one before and one after a given date.
@@ -605,7 +646,8 @@ stock_td <- function(frequency, start, length, s, w = 31) {
 #'
 #' @param calendar1,calendar2 calendars to chain.
 #' @param break_date the break date in the format `"YYYY-MM-DD"`.
-#' @return returns an object of class \code{c("JD3_CHAINEDCALENDAR","JD3_CALENDARDEFINITION")}
+#'
+#' @returns returns an object of class \code{c("JD3_CHAINEDCALENDAR","JD3_CALENDARDEFINITION")}
 #' @seealso \code{\link{national_calendar}}, \code{\link{weighted_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -655,7 +697,7 @@ chained_calendar <- function(calendar1, calendar2, break_date) {
 #' Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated
 #' only in Saxony.
 #'
-#' @return returns an object of class
+#' @returns returns an object of class
 #' \code{c("JD3_WEIGHTEDCALENDAR", "JD3_CALENDARDEFINITION")}
 #'
 #' @seealso \code{\link{national_calendar}}, \code{\link{chained_calendar}}
@@ -724,7 +766,7 @@ weighted_calendar <- function(calendars, weights) {
 }
 
 
-#' Create a National Calendar
+#' @title Create a National Calendar
 #'
 #' @description
 #' Will create a calendar as a list of days corresponding to the required holidays.
@@ -757,7 +799,7 @@ weighted_calendar <- function(calendars, weights) {
 #'     special_day("ALLSAINTSDAY"),
 #'     special_day("ARMISTICE")
 #' ))
-#' @return returns an object of class \code{c("JD3_CALENDAR","JD3_CALENDARDEFINITION")}
+#' @returns returns an object of class \code{c("JD3_CALENDAR","JD3_CALENDARDEFINITION")}
 #' @seealso \code{\link{chained_calendar}}, \code{\link{weighted_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -771,22 +813,24 @@ national_calendar <- function(days, mean_correction = TRUE) {
 #' @title Trading day regressors with pre-defined holidays
 #'
 #' @description
-#' Allows to generate trading day regressors (as many as defined groups), taking into account
-#' 7 or less different types of days, from Monday to Sunday, and specific holidays,which are to
-#' defined beforehand in a calendar using the functions `national_calendar`,`weighted_calendar` or
-#' `Chained_calendar`.
+#' Allows to generate trading day regressors (as many as defined groups), taking
+#' into account 7 or less different types of days, from Monday to Sunday, and
+#' specific holidays,which are to defined beforehand in a calendar using the
+#' functions `national_calendar`,`weighted_calendar` or `Chained_calendar`.
 #' @details
-#' Aggregated values for monthly or quarterly are the numbers of days belonging to a given group, holidays
-#' are all summed together in of those groups.
-#' Contrasts are the differences between the number of days in a given group (1 to 6) and the number of days in
-#' the reference group (0).
+#' Aggregated values for monthly or quarterly are the numbers of days belonging
+#' to a given group, holidays are all summed together in of those groups.
+#' Contrasts are the differences between the number of days in a given group
+#' (1 to 6) and the number of days in the reference group (0).
 #' Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
 #' @inheritParams td
 #' @param calendar The calendar containing the required holidays
-#' @param holiday Day to aggregate holidays with. (holidays are considered as that day).
-#' 1 for Monday... 7 for Sunday. Doesn't necessary belong to the 0-group.
-#' @return Time series (object of class \code{c("ts","mts","matrix")}) corresponding to each group, starting with the 0-group (\code{contrasts = FALSE})
-#' or the 1-group (\code{contrasts = TRUE}).
+#' @param holiday Day to aggregate holidays with. (holidays are considered as
+#' that day). 1 for Monday... 7 for Sunday. Doesn't necessary belong to the
+#' 0-group.
+#' @returns Time series (object of class \code{c("ts","mts","matrix")})
+#' corresponding to each group, starting with the 0-group
+#' (\code{contrasts = FALSE}) or the 1-group (\code{contrasts = TRUE}).
 #' @export
 #' @examples
 #' BE <- national_calendar(list(
@@ -809,7 +853,14 @@ national_calendar <- function(days, mean_correction = TRUE) {
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
-calendar_td <- function(calendar, frequency, start, length, s, groups = c(1, 2, 3, 4, 5, 6, 0), holiday = 7, contrasts = TRUE) {
+calendar_td <- function(calendar,
+                        frequency,
+                        start,
+                        length,
+                        s,
+                        groups = c(1, 2, 3, 4, 5, 6, 0),
+                        holiday = 7,
+                        contrasts = TRUE) {
     if (!is(calendar, "JD3_CALENDAR")) stop("Invalid calendar")
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -828,12 +879,14 @@ calendar_td <- function(calendar, frequency, start, length, s, groups = c(1, 2, 
     return(ts(output, start = start, frequency = frequency))
 }
 
-#' Calendars Print Methods
+#' @title Calendars Print Methods
 #'
+#' @description
 #' Print functions for calendars
 #'
 #' @param x The object.
 #' @param ... other unused parameters.
+#'
 #' @name print.calendars
 NULL
 

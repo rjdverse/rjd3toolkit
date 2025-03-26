@@ -29,4 +29,5 @@ Estimation of a model with seasonal dummies. Joint F-test on the coefficients of
 \examples{
 seasonality_f(ABS$X0.2.09.10.M, model = "D1")
 seasonality_f(random_t(2, 1000), 7)
+
 }

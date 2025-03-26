@@ -1,9 +1,9 @@
 #' @include utils.R
 NULL
 
-
-#' Generic Function For 'JDemetra+' Tests
+#' @title Generic Function For 'JDemetra+' Tests
 #'
+#' @description
 #' Generic function to format the results of 'JDemetra+' tests.
 #'
 #' @param val,pval,dist statistical parameters.
@@ -11,7 +11,7 @@ NULL
 #' @param details boolean indicating if the statistical distribution should be printed.
 #' @param ... further arguments (ignored).
 #'
-#' @return \code{c("JD3_TEST", "JD3")} object that is a list of three parameters:
+#' @returns \code{c("JD3_TEST", "JD3")} object that is a list of three parameters:
 #' \itemize{
 #' \item{\code{value}} the statistical value of the test.
 #' \item{\code{pvalue}} the p-value of the test.
@@ -47,8 +47,9 @@ print.JD3_TEST <- function(x, details = FALSE, ...) {
 
 
 
-#' Ljung-Box Test
+#' @title Ljung-Box Test
 #'
+#' @description
 #' Compute Ljung-Box test to check the independence of a data.
 #'
 #' @param data data being tested.
@@ -61,7 +62,7 @@ print.JD3_TEST <- function(x, details = FALSE, ...) {
 #' @param mean Mean correction. If \code{TRUE}, the auto-correlations are computed as usual.
 #' If `FALSE`, we consider that the (known) mean is 0 and that the series has been corrected for it.
 #'
-#' @return A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for details).
+#' @returns A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for details).
 #'
 #' @examples
 #' ljungbox(random_t(2, 100), lag = 24, k = 1)
@@ -75,15 +76,16 @@ ljungbox <- function(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE) {
     return(.jd2r_test(jtest))
 }
 
-#' Normality Tests
+#' @title Normality Tests
 #'
+#' @description
 #' Set of functions to test the normality of a time series.
 #'
 #' @inheritParams ljungbox
 #' @param k number of degrees of freedom to be subtracted if the input time series is a series of residuals.
 #' @param sample boolean indicating if unbiased empirical moments should be computed.
 #'
-#' @return A \code{c("JD3_TEST", "JD3")} object (see \code{\link{statisticaltest}} for details).
+#' @returns A \code{c("JD3_TEST", "JD3")} object (see \code{\link{statisticaltest}} for details).
 #'
 #' @examples
 #' x <- rnorm(100) # null
@@ -101,7 +103,12 @@ NULL
 #' @export
 #' @describeIn normality_tests Bowman-Shenton test
 bowmanshenton <- function(data) {
-    jtest <- .jcall("jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "bowmanShenton", as.numeric(data))
+    jtest <- .jcall(
+        obj = "jdplus/toolkit/base/r/stats/Tests",
+        returnSig = "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
+        method = "bowmanShenton",
+        as.numeric(data)
+    )
     return(.jd2r_test(jtest))
 }
 
@@ -121,7 +128,9 @@ doornikhansen <- function(data) {
 #' @describeIn normality_tests Jarque-Bera test
 jarquebera <- function(data, k = 0, sample = TRUE) {
     jtest <- .jcall(
-        "jdplus/toolkit/base/r/stats/Tests", "Ljdplus/toolkit/base/api/stats/StatisticalTest;", "jarqueBera",
+        obj = "jdplus/toolkit/base/r/stats/Tests",
+        returnSig = "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
+        method = "jarqueBera",
         as.numeric(data), as.integer(k), as.logical(sample)
     )
     return(.jd2r_test(jtest))
@@ -140,7 +149,7 @@ jarquebera <- function(data, k = 0, sample = TRUE) {
 #' @param number If \code{TRUE}, test the number of runs. Otherwise, test the
 #' lengths of the runs.
 #'
-#' @return A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for
+#' @returns A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for
 #' details).
 #' @name runstests
 #'
@@ -174,7 +183,7 @@ testofupdownruns <- function(data, number = TRUE) {
     return(.jd2r_test(jtest))
 }
 
-#' Autocorrelation Functions
+#' @title Autocorrelation Functions
 #'
 #' @inheritParams ljungbox
 #' @param n maximum lag at which to calculate the stats.
@@ -194,6 +203,7 @@ autocorrelations <- function(data, mean = TRUE, n = 15) {
     names(res) <- seq_len(n)
     return(res)
 }
+
 #' @export
 #' @rdname autocorrelations
 autocorrelations_partial <- function(data, mean = TRUE, n = 15) {
@@ -204,6 +214,7 @@ autocorrelations_partial <- function(data, mean = TRUE, n = 15) {
     names(res) <- seq_len(n)
     return(res)
 }
+
 #' @export
 #' @rdname autocorrelations
 autocorrelations_inverse <- function(data, nar = 30, n = 15) {
@@ -229,13 +240,13 @@ kurtosis <- function(data) {
     return(.jd2r_test(jtest))
 }
 
-#' Compute a robust median absolute deviation (MAD)
+#' @title Compute a robust median absolute deviation (MAD)
 #'
 #' @param data The data for which we compute the robust deviation
 #' @param centile The centile used to exclude extreme values (only the "centile" part of the data are is to compute the mad)
 #' @param medianCorrected TRUE if the series is corrected for its median, FALSE if the median is supposed to be 0
 #'
-#' @return The median absolute deviation
+#' @returns The median absolute deviation
 #' @export
 #'
 #' @examples
