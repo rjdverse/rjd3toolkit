@@ -31,7 +31,7 @@ Utility package in JDemetra+ 3.x R ecosystem. Contains functions used in other `
 
 ## Main Functions 
 
--   customize specifications in rjd3x13 and rjdtramoseats
+-   customize specifications in rjd3x13 and rjd3tramoseats
 
 -   generate user-defined regressors for calendar correction
 
@@ -39,7 +39,7 @@ Utility package in JDemetra+ 3.x R ecosystem. Contains functions used in other `
 
 -   run arima model estimations
 
--   perform tests (seasonality, normality, white noise)
+-   perform tests (seasonality, normality, independence)
 
 -   access general functions such as auto-correlations, distributions
 

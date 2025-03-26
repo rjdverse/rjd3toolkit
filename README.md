@@ -7,6 +7,8 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rjd3toolkit)](https://CRAN.R-project.org/package=rjd3toolkit)
+[![Mentioned in Awesome Official
+Statistics](https://awesome.re/mentioned-badge.svg)](http://www.awesomeofficialstatistics.org)
 
 [![R-CMD-check](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml)
 [![lint](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yaml)
@@ -21,7 +23,7 @@ using any other rjd3 package.
 
 ## Main Functions
 
-- customize specifications in rjd3x13 and rjdtramoseats
+- customize specifications in rjd3x13 and rjd3tramoseats
 
 - generate user-defined regressors for calendar correction
 
@@ -29,7 +31,7 @@ using any other rjd3 package.
 
 - run arima model estimations
 
-- perform tests (seasonality, normality, white noise)
+- perform tests (seasonality, normality, independence)
 
 - access general functions such as auto-correlations, distributions
 
