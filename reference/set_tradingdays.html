@@ -58,7 +58,7 @@ be built.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">set_tradingdays</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"TradingDays"</span>, <span class="st">"WorkingDays"</span>, <span class="st">"TD3"</span>, <span class="st">"TD3c"</span>, <span class="st">"TD4"</span>, <span class="st">"None"</span>,</span>
+<span>  option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"TradingDays"</span>, <span class="st">"WorkingDays"</span>, <span class="st">"TD2c"</span>, <span class="st">"TD3"</span>, <span class="st">"TD3c"</span>, <span class="st">"TD4"</span>, <span class="st">"None"</span>,</span>
 <span>    <span class="st">"UserDefined"</span><span class="op">)</span>,</span>
 <span>  calendar.name <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  uservariable <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -87,7 +87,9 @@ details).</p></dd>
 <dt id="arg-option">option<a class="anchor" aria-label="anchor" href="#arg-option"></a></dt>
 <dd><p>to specify the set of trading days regression variables:</p><ul><li><p><code>"TradingDays"</code> = six contrast variables, each type of day (from
 Monday to Saturday) vs Sundays;</p></li>
-<li><p><code>"WorkingDays"</code> = one working (week days)/non-working (week-ends) day
+<li><p><code>"WorkingDays"</code> = one working (week days) vs non-working (week-ends) day
+contrast variable;</p></li>
+<li><p><code>"TD2c"</code> = one working (Mondays to Saturdays) vs non-working (Sundays) day
 contrast variable;</p></li>
 <li><p><code>"TD3"</code> = two contrast variables: week-days vs Sundays and  Saturdays
 vs Sundays;</p></li>
