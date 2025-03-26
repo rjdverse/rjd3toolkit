@@ -10,7 +10,7 @@ NULL
 #' @title US Retail trade statistics
 #'
 #' @source US-Census Bureau
-"retail"
+"Retail"
 
 #' @title Belgian exports to European countries
 #'
