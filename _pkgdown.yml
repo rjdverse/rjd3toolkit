@@ -95,8 +95,8 @@ reference:
     - '`so_variable`'
     - '`intervention_variable`'
     - '`ramp_variable`'
-    - '`periodic.dummies`'
-    - '`periodic.contrasts`'
+    - '`periodic_dummies`'
+    - '`periodic_contrasts`'
     - '`trigonometric_variables`'
 - title: Seasonality Tests
   desc: Functions to test the presence of seasonality in a time series
@@ -215,7 +215,7 @@ reference:
     - '`ABS`'
     - '`Exports`'
     - '`Imports`'
-    - '`retail`'
+    - '`Retail`'
 - title: Print and Plot Methods
   desc: Functions to print and plot specific JDemetra+ class objects
   contents:
