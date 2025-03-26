@@ -34,12 +34,12 @@ dictionary <- function(object) {
     }
     if (is.jnull(object$internal)) {
         stop("No java object")
+    }
+
+    if (.jinstanceof(object$internal, "jdplus/toolkit/base/api/information/Explorable")) {
+        .proc_dictionary2(object$internal)
     } else {
-        if (.jinstanceof(object$internal, "jdplus/toolkit/base/api/information/Explorable")) {
-            .proc_dictionary2(object$internal)
-        } else {
-            .proc_dictionary(.jclass(object$internal))
-        }
+        .proc_dictionary(.jclass(object$internal))
     }
 }
 
@@ -51,9 +51,8 @@ result <- function(object, id) {
     }
     if (is.jnull(object$internal)) {
         stop("No java object")
-    } else {
-        .proc_data(object$internal, id)
     }
+    return(.proc_data(object$internal, id))
 }
 
 #' @rdname dictionary
@@ -70,7 +69,7 @@ user_defined <- function(object, userdefined = NULL) {
             names(result) <- userdefined
         }
     }
-    class(result) <- c("user_defined")
+    class(result) <- "user_defined"
     result
 }
 
