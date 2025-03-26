@@ -5,8 +5,8 @@ NULL
 #' @export
 DATE_MIN <- NULL
 
-#' @export
 #' @rdname jd3_utilities
+#' @export
 DATE_MAX <- NULL
 
 #' @importFrom RProtoBuf read readProtoFiles2
