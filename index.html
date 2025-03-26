@@ -38,14 +38,27 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">News</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-around-jdemetra-and-r" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Around JDemetra+ and R</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-around-jdemetra-and-r">
+<li><a class="external-link dropdown-item" href="https://github.com/rjdverse/rjd3x13">rjd3x13</a></li>
+    <li><a class="external-link dropdown-item" href="https://github.com/rjdverse/rjd3tramoseats">rjd3tramoseats</a></li>
+    <li><a class="external-link dropdown-item" href="https://github.com/rjdverse/rjd3workspace">rjd3workspace</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><form class="form-inline" role="search">
- <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
-</form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rjdverse/rjd3toolkit/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-jdemetra-" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">JDemetra+</button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-jdemetra-">
+<li><a class="external-link dropdown-item" href="https://github.com/jdemetra/jdemetra-app/releases">Download JDemetra+</a></li>
+    <li><a class="external-link dropdown-item" href="https://jdemetra-new-documentation.netlify.app/">JDemetra+ documentation</a></li>
+  </ul>
+</li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rjdverse/rjd3toolkit"><span class="fa fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -69,11 +82,11 @@
 <h2 id="main-functions">Main Functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
 </h2>
 <ul>
-<li><p>customize specifications in rjd3x13 and rjdtramoseats</p></li>
+<li><p>customize specifications in rjd3x13 and rjd3tramoseats</p></li>
 <li><p>generate user-defined regressors for calendar correction</p></li>
 <li><p>generate auxiliary variables (outliers, ramps..)</p></li>
 <li><p>run arima model estimations</p></li>
-<li><p>perform tests (seasonality, normality, white noise)</p></li>
+<li><p>perform tests (seasonality, normality, independence)</p></li>
 <li><p>access general functions such as auto-correlations, distributions</p></li>
 </ul>
 </div>
@@ -162,6 +175,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=rjd3toolkit" class="external-link"><img src="https://www.r-pkg.org/badges/version/rjd3toolkit" alt="CRAN status"></a></li>
+<li><a href="http://www.awesomeofficialstatistics.org" class="external-link"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Official Statistics"></a></li>
 </ul>
 </div>
 

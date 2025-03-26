@@ -15,11 +15,21 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
-      </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
- <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rjdverse/rjd3toolkit/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-around-jdemetra-and-r" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Around JDemetra+ and R</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-around-jdemetra-and-r"><li><a class="external-link dropdown-item" href="https://github.com/rjdverse/rjd3x13">rjd3x13</a></li>
+    <li><a class="external-link dropdown-item" href="https://github.com/rjdverse/rjd3tramoseats">rjd3tramoseats</a></li>
+    <li><a class="external-link dropdown-item" href="https://github.com/rjdverse/rjd3workspace">rjd3workspace</a></li>
+  </ul></li>
+      </ul><ul class="navbar-nav"><li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-jdemetra-" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">JDemetra+</button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-jdemetra-"><li><a class="external-link dropdown-item" href="https://github.com/jdemetra/jdemetra-app/releases">Download JDemetra+</a></li>
+    <li><a class="external-link dropdown-item" href="https://jdemetra-new-documentation.netlify.app/">JDemetra+ documentation</a></li>
+  </ul></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rjdverse/rjd3toolkit"><span class="fa fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -31,9 +41,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="customizing-specifications">Customizing specifications<a class="anchor" aria-label="anchor" href="#customizing-specifications"></a></h2>
 
-
+      <div class="section-desc"><p>Functions allowing to set user defined parameters in X-13ARIMA (rjd3x13) or TRAMO-SEATS (rjd3tramoseats)</p></div>
 
 
     </div><div class="section level2">
@@ -42,24 +52,6 @@
 
 
       <dl><dt>
-
-          <code><a href="ABS.html">ABS</a></code>
-
-        </dt>
-        <dd>Retail trade statistics in Australia</dd>
-      </dl><dl><dt>
-
-          <code><a href="Exports.html">Exports</a></code>
-
-        </dt>
-        <dd>Belgian exports to European countries</dd>
-      </dl><dl><dt>
-
-          <code><a href="Imports.html">Imports</a></code>
-
-        </dt>
-        <dd>Belgian imports from European countries</dd>
-      </dl><dl><dt>
 
           <code><a href="add_outlier.html">add_outlier()</a></code> <code><a href="add_outlier.html">remove_outlier()</a></code> <code><a href="add_outlier.html">add_ramp()</a></code> <code><a href="add_outlier.html">remove_ramp()</a></code>
 
@@ -73,442 +65,10 @@
         <dd>Add a User-Defined Variable to Pre-Processing Specification.</dd>
       </dl><dl><dt>
 
-          <code><a href="aggregate.html">aggregate()</a></code>
-
-        </dt>
-        <dd>Aggregation of time series</dd>
-      </dl><dl><dt>
-
-          <code><a href="arima_difference.html">arima_difference()</a></code>
-
-        </dt>
-        <dd>Remove an arima model from an existing one.</dd>
-      </dl><dl><dt>
-
-          <code><a href="arima_model.html">arima_model()</a></code>
-
-        </dt>
-        <dd>ARIMA Model</dd>
-      </dl><dl><dt>
-
-          <code><a href="arima_properties.html">arima_properties()</a></code>
-
-        </dt>
-        <dd>Properties of an ARIMA model</dd>
-      </dl><dl><dt>
-
-          <code><a href="arima_sum.html">arima_sum()</a></code>
-
-        </dt>
-        <dd>Sum ARIMA Models</dd>
-      </dl><dl><dt>
-
-          <code><a href="autocorrelations.html">autocorrelations()</a></code> <code><a href="autocorrelations.html">autocorrelations_partial()</a></code> <code><a href="autocorrelations.html">autocorrelations_inverse()</a></code>
-
-        </dt>
-        <dd>Autocorrelation Functions</dd>
-      </dl><dl><dt>
-
-          <code><a href="bsplines.html">bsplines()</a></code>
-
-        </dt>
-        <dd>B-Splines</dd>
-      </dl><dl><dt>
-
-          <code><a href="calendar_td.html">calendar_td()</a></code>
-
-        </dt>
-        <dd>Trading day regressors with pre-defined holidays</dd>
-      </dl><dl><dt>
-
-          <code><a href="chained_calendar.html">chained_calendar()</a></code>
-
-        </dt>
-        <dd>Create a Chained Calendar</dd>
-      </dl><dl><dt>
-
-          <code><a href="chi2distribution.html">density_chi2()</a></code> <code><a href="chi2distribution.html">cdf_chi2()</a></code> <code><a href="chi2distribution.html">random_chi2()</a></code>
-
-        </dt>
-        <dd>The Chi-Squared Distribution</dd>
-      </dl><dl><dt>
-
-          <code><a href="clean_extremities.html">clean_extremities()</a></code>
-
-        </dt>
-        <dd>Removal of missing values at the beginning/end</dd>
-      </dl><dl><dt>
-
-          <code><a href="compare_annual_totals.html">compare_annual_totals()</a></code>
-
-        </dt>
-        <dd>Compare the annual totals of two series</dd>
-      </dl><dl><dt>
-
-          <code><a href="data_to_ts.html">data_to_ts()</a></code>
-
-        </dt>
-        <dd>Promote a R time series to a "full JDemetra+ time series"</dd>
-      </dl><dl><dt>
-
-          <code><a href="daysOf.html">daysOf()</a></code>
-
-        </dt>
-        <dd>Provides a list of dates corresponding to each period of the given time series</dd>
-      </dl><dl><dt>
-
-          <code><a href="deprecated-rjd3toolkit.html">sa.decomposition()</a></code>
-
-        </dt>
-        <dd>Deprecated functions</dd>
-      </dl><dl><dt>
-
-          <code><a href="diagnostics.html">diagnostics()</a></code>
-
-        </dt>
-        <dd>Generic Diagnostics Function</dd>
-      </dl><dl><dt>
-
-          <code><a href="dictionary.html">dictionary()</a></code> <code><a href="dictionary.html">result()</a></code> <code><a href="dictionary.html">user_defined()</a></code>
-
-        </dt>
-        <dd>Get Dictionary and Result</dd>
-      </dl><dl><dt>
-
-          <code><a href="differences.html">differences()</a></code>
-
-        </dt>
-        <dd>Differencing of a series</dd>
-      </dl><dl><dt>
-
-          <code><a href="differencing_fast.html">differencing_fast()</a></code>
-
-        </dt>
-        <dd>The series is differenced till its variance is decreasing.</dd>
-      </dl><dl><dt>
-
-          <code><a href="do_stationary.html">do_stationary()</a></code>
-
-        </dt>
-        <dd>Automatic stationary transformation</dd>
-      </dl><dl><dt>
-
-          <code><a href="dot-add_ud_var.html">.add_ud_var()</a></code>
-
-        </dt>
-        <dd>Add user-defined variable to a SA model</dd>
-      </dl><dl><dt>
-
-          <code><a href="dot-likelihood.html">.likelihood()</a></code>
-
-        </dt>
-        <dd>Information on the (log-)likelihood</dd>
-      </dl><dl><dt>
-
-          <code><a href="dot-tsmoniker.html">.tsmoniker()</a></code>
-
-        </dt>
-        <dd>Create a Moniker</dd>
-      </dl><dl><dt>
-
-          <code><a href="easter_dates.html">easter_dates()</a></code>
-
-        </dt>
-        <dd>Display Easter Sunday dates in given period</dd>
-      </dl><dl><dt>
-
-          <code><a href="easter_day.html">easter_day()</a></code>
-
-        </dt>
-        <dd>Set a Holiday on an Easter related day</dd>
-      </dl><dl><dt>
-
-          <code><a href="easter_variable.html">easter_variable()</a></code> <code><a href="easter_variable.html">julianeaster_variable()</a></code>
-
-        </dt>
-        <dd>Easter regressor</dd>
-      </dl><dl><dt>
-
-          <code><a href="fixed_day.html">fixed_day()</a></code>
-
-        </dt>
-        <dd>Set a holiday on a Fixed Day</dd>
-      </dl><dl><dt>
-
-          <code><a href="fixed_week_day.html">fixed_week_day()</a></code>
-
-        </dt>
-        <dd>Set a Holiday on a Fixed Week Day</dd>
-      </dl><dl><dt>
-
-          <code><a href="gammadistribution.html">density_gamma()</a></code> <code><a href="gammadistribution.html">cdf_gamma()</a></code> <code><a href="gammadistribution.html">random_gamma()</a></code>
-
-        </dt>
-        <dd>The Gamma Distribution</dd>
-      </dl><dl><dt>
-
-          <code><a href="holidays.html">holidays()</a></code>
-
-        </dt>
-        <dd>Daily calendar regressors corresponding to holidays</dd>
-      </dl><dl><dt>
-
-          <code><a href="intervention_variable.html">intervention_variable()</a></code>
-
-        </dt>
-        <dd>Intervention variable</dd>
-      </dl><dl><dt>
-
-          <code><a href="invgammadistribution.html">density_inverse_gamma()</a></code> <code><a href="invgammadistribution.html">cdf_inverse_gamma()</a></code> <code><a href="invgammadistribution.html">random_inverse_gamma()</a></code>
-
-        </dt>
-        <dd>The Inverse-Gamma Distribution</dd>
-      </dl><dl><dt>
-
-          <code><a href="invgaussiandistribution.html">density_inverse_gaussian()</a></code> <code><a href="invgaussiandistribution.html">cdf_inverse_gaussian()</a></code> <code><a href="invgaussiandistribution.html">random_inverse_gaussian()</a></code>
-
-        </dt>
-        <dd>The Inverse-Gaussian Distribution</dd>
-      </dl><dl><dt>
-
-          <code><a href="jd3_print.html">print(<i>&lt;JD3_ARIMA&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_UCARIMA&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_SARIMA&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_SARIMA_ESTIMATION&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_SPAN&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_LIKELIHOOD&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_REGARIMA_RSLTS&gt;</i>)</a></code>
-
-        </dt>
-        <dd>JD3 print functions</dd>
-      </dl><dl><dt>
-
-          <code><a href="jd3_utilities.html">.r2jd_tsdata()</a></code> <code><a href="jd3_utilities.html">.r2jd_tsdomain()</a></code> <code><a href="jd3_utilities.html">.jd2r_tsdata()</a></code> <code><a href="jd3_utilities.html">.jd2r_mts()</a></code> <code><a href="jd3_utilities.html">.jd2r_lts()</a></code> <code><a href="jd3_utilities.html">.jd2r_matrix()</a></code> <code><a href="jd3_utilities.html">.r2jd_matrix()</a></code> <code><a href="jd3_utilities.html">.jdomain()</a></code> <code><a href="jd3_utilities.html">.enum_sextract()</a></code> <code><a href="jd3_utilities.html">.enum_sof()</a></code> <code><a href="jd3_utilities.html">.enum_extract()</a></code> <code><a href="jd3_utilities.html">.enum_of()</a></code> <code><a href="jd3_utilities.html">.r2p_parameter()</a></code> <code><a href="jd3_utilities.html">.p2r_parameter()</a></code> <code><a href="jd3_utilities.html">.r2p_parameters()</a></code> <code><a href="jd3_utilities.html">.r2p_lparameters()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters_rslt()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters_rsltx()</a></code> <code><a href="jd3_utilities.html">.p2r_test()</a></code> <code><a href="jd3_utilities.html">.p2r_matrix()</a></code> <code><a href="jd3_utilities.html">.p2r_tsdata()</a></code> <code><a href="jd3_utilities.html">.r2p_tsdata()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters_estimation()</a></code> <code><a href="jd3_utilities.html">.p2r_likelihood()</a></code> <code><a href="jd3_utilities.html">.p2r_date()</a></code> <code><a href="jd3_utilities.html">.r2p_date()</a></code> <code><a href="jd3_utilities.html">.p2r_span()</a></code> <code><a href="jd3_utilities.html">.r2p_span()</a></code> <code><a href="jd3_utilities.html">.p2r_arima()</a></code> <code><a href="jd3_utilities.html">.p2r_ucarima()</a></code> <code><a href="jd3_utilities.html">.p2r_spec_sarima()</a></code> <code><a href="jd3_utilities.html">.r2p_spec_sarima()</a></code> <code><a href="jd3_utilities.html">.p2r_outliers()</a></code> <code><a href="jd3_utilities.html">.r2p_outliers()</a></code> <code><a href="jd3_utilities.html">.p2r_sequences()</a></code> <code><a href="jd3_utilities.html">.r2p_sequences()</a></code> <code><a href="jd3_utilities.html">.p2r_iv()</a></code> <code><a href="jd3_utilities.html">.r2p_iv()</a></code> <code><a href="jd3_utilities.html">.p2r_ivs()</a></code> <code><a href="jd3_utilities.html">.r2p_ivs()</a></code> <code><a href="jd3_utilities.html">.p2r_ramps()</a></code> <code><a href="jd3_utilities.html">.r2p_ramps()</a></code> <code><a href="jd3_utilities.html">.p2r_uservars()</a></code> <code><a href="jd3_utilities.html">.r2p_uservars()</a></code> <code><a href="jd3_utilities.html">.p2r_variables()</a></code> <code><a href="jd3_utilities.html">.p2r_sa_decomposition()</a></code> <code><a href="jd3_utilities.html">.p2r_sa_diagnostics()</a></code> <code><a href="jd3_utilities.html">.p2r_spec_benchmarking()</a></code> <code><a href="jd3_utilities.html">.r2p_spec_benchmarking()</a></code> <code><a href="jd3_utilities.html">.r2jd_sarima()</a></code> <code><a href="jd3_utilities.html">.jd2r_ucarima()</a></code> <code><a href="jd3_utilities.html">.p2jd_calendar()</a></code> <code><a href="jd3_utilities.html">.r2p_calendar()</a></code> <code><a href="jd3_utilities.html">.proc_numeric()</a></code> <code><a href="jd3_utilities.html">.proc_vector()</a></code> <code><a href="jd3_utilities.html">.proc_int()</a></code> <code><a href="jd3_utilities.html">.proc_bool()</a></code> <code><a href="jd3_utilities.html">.proc_ts()</a></code> <code><a href="jd3_utilities.html">.proc_str()</a></code> <code><a href="jd3_utilities.html">.proc_desc()</a></code> <code><a href="jd3_utilities.html">.proc_test()</a></code> <code><a href="jd3_utilities.html">.proc_parameter()</a></code> <code><a href="jd3_utilities.html">.proc_parameters()</a></code> <code><a href="jd3_utilities.html">.proc_matrix()</a></code> <code><a href="jd3_utilities.html">.proc_data()</a></code> <code><a href="jd3_utilities.html">.proc_dictionary()</a></code> <code><a href="jd3_utilities.html">.proc_dictionary2()</a></code> <code><a href="jd3_utilities.html">.proc_likelihood()</a></code> <code><a href="jd3_utilities.html">.r2p_moniker()</a></code> <code><a href="jd3_utilities.html">.p2r_moniker()</a></code> <code><a href="jd3_utilities.html">.r2p_datasupplier()</a></code> <code><a href="jd3_utilities.html">.p2r_metadata()</a></code> <code><a href="jd3_utilities.html">.r2p_metadata()</a></code> <code><a href="jd3_utilities.html">.p2r_ts()</a></code> <code><a href="jd3_utilities.html">.r2p_ts()</a></code> <code><a href="jd3_utilities.html">.p2r_tscollection()</a></code> <code><a href="jd3_utilities.html">.r2p_tscollection()</a></code> <code><a href="jd3_utilities.html">.r2jd_ts()</a></code> <code><a href="jd3_utilities.html">.jd2r_ts()</a></code> <code><a href="jd3_utilities.html">.r2jd_tscollection()</a></code> <code><a href="jd3_utilities.html">.jd2r_tscollection()</a></code> <code><a href="jd3_utilities.html">.p2r_datasupplier()</a></code> <code><a href="jd3_utilities.html">.r2p_datasuppliers()</a></code> <code><a href="jd3_utilities.html">.p2r_datasuppliers()</a></code> <code><a href="jd3_utilities.html">.p2jd_variables()</a></code> <code><a href="jd3_utilities.html">.jd2p_variables()</a></code> <code><a href="jd3_utilities.html">.jd2r_variables()</a></code> <code><a href="jd3_utilities.html">.r2jd_variables()</a></code> <code><a href="jd3_utilities.html">.p2r_context()</a></code> <code><a href="jd3_utilities.html">.r2p_context()</a></code> <code><a href="jd3_utilities.html">.p2jd_context()</a></code> <code><a href="jd3_utilities.html">.jd2p_context()</a></code> <code><a href="jd3_utilities.html">.jd2r_modellingcontext()</a></code> <code><a href="jd3_utilities.html">.r2jd_modellingcontext()</a></code> <code><a href="jd3_utilities.html">.p2r_calendars()</a></code> <code><a href="jd3_utilities.html">.r2p_calendars()</a></code> <code><a href="jd3_utilities.html">.p2jd_calendars()</a></code> <code><a href="jd3_utilities.html">.jd2p_calendars()</a></code> <code><a href="jd3_utilities.html">.jd2r_calendars()</a></code> <code><a href="jd3_utilities.html">.r2jd_calendars()</a></code> <code><a href="jd3_utilities.html">.jd3_object()</a></code> <code><a href="jd3_utilities.html">.p2r_regarima_rslts()</a></code> <code><a href="jd3_utilities.html">.r2jd_tmp_ts()</a></code> <code><a href="jd3_utilities.html">.r2jd_make_ts()</a></code> <code><a href="jd3_utilities.html">.r2jd_make_tscollection()</a></code> <code><a href="jd3_utilities.html">DATE_MIN</a></code> <code><a href="jd3_utilities.html">DATE_MAX</a></code>
-
-        </dt>
-        <dd>Java Utility Functions</dd>
-      </dl><dl><dt>
-
-          <code><a href="ljungbox.html">ljungbox()</a></code>
-
-        </dt>
-        <dd>Ljung-Box Test</dd>
-      </dl><dl><dt>
-
-          <code><a href="long_term_mean.html">long_term_mean()</a></code>
-
-        </dt>
-        <dd>Display Long-term means for a set of calendar regressors</dd>
-      </dl><dl><dt>
-
-          <code><a href="lp_variable.html">lp_variable()</a></code>
-
-        </dt>
-        <dd>Leap Year regressor</dd>
-      </dl><dl><dt>
-
-          <code><a href="mad.html">mad()</a></code>
-
-        </dt>
-        <dd>Compute a robust median absolute deviation (MAD)</dd>
-      </dl><dl><dt>
-
           <code><a href="modelling_context.html">modelling_context()</a></code>
 
         </dt>
         <dd>Create modelling context</dd>
-      </dl><dl><dt>
-
-          <code><a href="monotonic_cspline.html">monotonic_cspline()</a></code>
-
-        </dt>
-        <dd>Monotonic cubic spline</dd>
-      </dl><dl><dt>
-
-          <code><a href="national_calendar.html">national_calendar()</a></code>
-
-        </dt>
-        <dd>Create a National Calendar</dd>
-      </dl><dl><dt>
-
-          <code><a href="natural_cspline.html">natural_cspline()</a></code>
-
-        </dt>
-        <dd>Natural cubic spline</dd>
-      </dl><dl><dt>
-
-          <code><a href="normality_tests.html">bowmanshenton()</a></code> <code><a href="normality_tests.html">doornikhansen()</a></code> <code><a href="normality_tests.html">jarquebera()</a></code> <code><a href="normality_tests.html">skewness()</a></code> <code><a href="normality_tests.html">kurtosis()</a></code>
-
-        </dt>
-        <dd>Normality Tests</dd>
-      </dl><dl><dt>
-
-          <code><a href="outliers_variables.html">ao_variable()</a></code> <code><a href="outliers_variables.html">tc_variable()</a></code> <code><a href="outliers_variables.html">ls_variable()</a></code> <code><a href="outliers_variables.html">so_variable()</a></code>
-
-        </dt>
-        <dd>Generating Outlier regressors</dd>
-      </dl><dl><dt>
-
-          <code><a href="periodic_bsplines.html">periodic_bsplines()</a></code>
-
-        </dt>
-        <dd>Periodic B-Splines</dd>
-      </dl><dl><dt>
-
-          <code><a href="periodic_cspline.html">periodic_cspline()</a></code>
-
-        </dt>
-        <dd>Periodic cubic spline</dd>
-      </dl><dl><dt>
-
-          <code><a href="periodic_csplines.html">periodic_csplines()</a></code>
-
-        </dt>
-        <dd>Periodic cardinal cubic splines</dd>
-      </dl><dl><dt>
-
-          <code><a href="periodic_dummies.html">periodic_dummies()</a></code> <code><a href="periodic_dummies.html">periodic_contrasts()</a></code>
-
-        </dt>
-        <dd>Periodic dummies and contrasts</dd>
-      </dl><dl><dt>
-
-          <code><a href="print.calendars.html">print(<i>&lt;JD3_FIXEDDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_FIXEDWEEKDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_EASTERDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_SPECIALDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_SINGLEDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_CALENDAR&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Calendars Print Methods</dd>
-      </dl><dl><dt>
-
-          <code><a href="r2jd_calendarts.html">r2jd_calendarts()</a></code>
-
-        </dt>
-        <dd>Create Java CalendarTimeSeries</dd>
-      </dl><dl><dt>
-
-          <code><a href="ramp_variable.html">ramp_variable()</a></code>
-
-        </dt>
-        <dd>Ramp regressor</dd>
-      </dl><dl><dt>
-
-          <code><a href="rangemean_tstat.html">rangemean_tstat()</a></code>
-
-        </dt>
-        <dd>Range-Mean Regression</dd>
-      </dl><dl><dt>
-
-          <code><a href="reload_dictionaries.html">reload_dictionaries()</a></code>
-
-        </dt>
-        <dd>Reload dictionaries</dd>
-      </dl><dl><dt>
-
-          <code><a href="retail.html">Retail</a></code>
-
-        </dt>
-        <dd>US Retail trade statistics</dd>
-      </dl><dl><dt>
-
-          <code><a href="runstests.html">testofruns()</a></code> <code><a href="runstests.html">testofupdownruns()</a></code>
-
-        </dt>
-        <dd>Runs Tests around the mean or the median</dd>
-      </dl><dl><dt>
-
-          <code><a href="sa_decomposition.html">sadecomposition()</a></code> <code><a href="sa_decomposition.html">print(<i>&lt;JD3_SADECOMPOSITION&gt;</i>)</a></code> <code><a href="sa_decomposition.html">plot(<i>&lt;JD3_SADECOMPOSITION&gt;</i>)</a></code> <code><a href="sa_decomposition.html">sa_decomposition()</a></code>
-
-        </dt>
-        <dd>Generic Function for Seasonal Adjustment Decomposition</dd>
-      </dl><dl><dt>
-
-          <code><a href="sa_preprocessing.html">sa_preprocessing()</a></code>
-
-        </dt>
-        <dd>Generic Preprocessing Function</dd>
-      </dl><dl><dt>
-
-          <code><a href="sarima_decompose.html">sarima_decompose()</a></code>
-
-        </dt>
-        <dd>Decompose SARIMA Model into three components trend, seasonal, irregular</dd>
-      </dl><dl><dt>
-
-          <code><a href="sarima_estimate.html">sarima_estimate()</a></code>
-
-        </dt>
-        <dd>Estimate SARIMA Model</dd>
-      </dl><dl><dt>
-
-          <code><a href="sarima_hannan_rissanen.html">sarima_hannan_rissanen()</a></code>
-
-        </dt>
-        <dd>Estimate ARIMA Model with Hannan-Rissanen method</dd>
-      </dl><dl><dt>
-
-          <code><a href="sarima_model.html">sarima_model()</a></code>
-
-        </dt>
-        <dd>Seasonal ARIMA model (Box-Jenkins)</dd>
-      </dl><dl><dt>
-
-          <code><a href="sarima_properties.html">sarima_properties()</a></code>
-
-        </dt>
-        <dd>SARIMA Properties</dd>
-      </dl><dl><dt>
-
-          <code><a href="sarima_random.html">sarima_random()</a></code>
-
-        </dt>
-        <dd>Simulate Seasonal ARIMA</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_canovahansen.html">seasonality_canovahansen()</a></code>
-
-        </dt>
-        <dd>Canova-Hansen seasonality test</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_canovahansen_trigs.html">seasonality_canovahansen_trigs()</a></code>
-
-        </dt>
-        <dd>Canova-Hansen test using trigonometric variables</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_combined.html">seasonality_combined()</a></code>
-
-        </dt>
-        <dd>"X12" Test On Seasonality</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_f.html">seasonality_f()</a></code>
-
-        </dt>
-        <dd>F-test on seasonal dummies</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_friedman.html">seasonality_friedman()</a></code>
-
-        </dt>
-        <dd>Friedman Seasonality Test</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_kruskalwallis.html">seasonality_kruskalwallis()</a></code>
-
-        </dt>
-        <dd>Kruskall-Wallis Seasonality Test</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_modified_qs.html">seasonality_modified_qs()</a></code>
-
-        </dt>
-        <dd>Modified QS Seasonality Test (Maravall)</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_periodogram.html">seasonality_periodogram()</a></code>
-
-        </dt>
-        <dd>Periodogram Seasonality Test</dd>
-      </dl><dl><dt>
-
-          <code><a href="seasonality_qs.html">seasonality_qs()</a></code>
-
-        </dt>
-        <dd>QS (seasonal Ljung-Box) test.</dd>
       </dl><dl><dt>
 
           <code><a href="set_arima.html">set_arima()</a></code>
@@ -563,6 +123,41 @@
 
         </dt>
         <dd>Set Log-level Transformation and Decomposition scheme in Pre-Processing Specification</dd>
+      </dl></div><div class="section level2">
+      <h2 id="calendars">Calendars<a class="anchor" aria-label="anchor" href="#calendars"></a></h2>
+
+      <div class="section-desc"><p>Functions allowing to define customized calendars</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="easter_dates.html">easter_dates()</a></code>
+
+        </dt>
+        <dd>Display Easter Sunday dates in given period</dd>
+      </dl><dl><dt>
+
+          <code><a href="easter_day.html">easter_day()</a></code>
+
+        </dt>
+        <dd>Set a Holiday on an Easter related day</dd>
+      </dl><dl><dt>
+
+          <code><a href="fixed_day.html">fixed_day()</a></code>
+
+        </dt>
+        <dd>Set a holiday on a Fixed Day</dd>
+      </dl><dl><dt>
+
+          <code><a href="fixed_week_day.html">fixed_week_day()</a></code>
+
+        </dt>
+        <dd>Set a Holiday on a Fixed Week Day</dd>
       </dl><dl><dt>
 
           <code><a href="single_day.html">single_day()</a></code>
@@ -577,23 +172,187 @@
         <dd>List of Pre-Defined Holidays to choose from</dd>
       </dl><dl><dt>
 
-          <code><a href="statisticaltest.html">statisticaltest()</a></code> <code><a href="statisticaltest.html">print(<i>&lt;JD3_TEST&gt;</i>)</a></code>
+          <code><a href="national_calendar.html">national_calendar()</a></code>
 
         </dt>
-        <dd>Generic Function For 'JDemetra+' Tests</dd>
+        <dd>Create a National Calendar</dd>
+      </dl><dl><dt>
+
+          <code><a href="chained_calendar.html">chained_calendar()</a></code>
+
+        </dt>
+        <dd>Create a Chained Calendar</dd>
+      </dl><dl><dt>
+
+          <code><a href="weighted_calendar.html">weighted_calendar()</a></code>
+
+        </dt>
+        <dd>Create a Composite Calendar</dd>
+      </dl></div><div class="section level2">
+      <h2 id="calendar-regressors">Calendar Regressors<a class="anchor" aria-label="anchor" href="#calendar-regressors"></a></h2>
+
+      <div class="section-desc"><p>Functions allowing to generate calendar regressors</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="calendar_td.html">calendar_td()</a></code>
+
+        </dt>
+        <dd>Trading day regressors with pre-defined holidays</dd>
+      </dl><dl><dt>
+
+          <code><a href="easter_variable.html">easter_variable()</a></code> <code><a href="easter_variable.html">julianeaster_variable()</a></code>
+
+        </dt>
+        <dd>Easter regressor</dd>
+      </dl><dl><dt>
+
+          <code><a href="holidays.html">holidays()</a></code>
+
+        </dt>
+        <dd>Daily calendar regressors corresponding to holidays</dd>
+      </dl><dl><dt>
+
+          <code><a href="lp_variable.html">lp_variable()</a></code>
+
+        </dt>
+        <dd>Leap Year regressor</dd>
+      </dl><dl><dt>
+
+          <code><a href="long_term_mean.html">long_term_mean()</a></code>
+
+        </dt>
+        <dd>Display Long-term means for a set of calendar regressors</dd>
       </dl><dl><dt>
 
           <code><a href="stock_td.html">stock_td()</a></code>
 
         </dt>
         <dd>Trading day Regressor for Stock series</dd>
-      </dl><dl><dt>
+      </dl></div><div class="section level2">
+      <h2 id="outliers-intervention-variables-and-ramps">Outliers, Intervention variables and Ramps<a class="anchor" aria-label="anchor" href="#outliers-intervention-variables-and-ramps"></a></h2>
 
-          <code><a href="studentdistribution.html">density_t()</a></code> <code><a href="studentdistribution.html">cdf_t()</a></code> <code><a href="studentdistribution.html">random_t()</a></code>
+      <div class="section-desc"><p>Functions allowing to generate outliers, intervention variables and ramps</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="outliers_variables.html">ao_variable()</a></code> <code><a href="outliers_variables.html">tc_variable()</a></code> <code><a href="outliers_variables.html">ls_variable()</a></code> <code><a href="outliers_variables.html">so_variable()</a></code>
 
         </dt>
-        <dd>The Student Distribution</dd>
+        <dd>Generating Outlier regressors</dd>
       </dl><dl><dt>
+
+          <code><a href="intervention_variable.html">intervention_variable()</a></code>
+
+        </dt>
+        <dd>Intervention variable</dd>
+      </dl><dl><dt>
+
+          <code><a href="ramp_variable.html">ramp_variable()</a></code>
+
+        </dt>
+        <dd>Ramp regressor</dd>
+      </dl><dl><dt>
+
+          <code><a href="periodic_dummies.html">periodic_dummies()</a></code> <code><a href="periodic_dummies.html">periodic_contrasts()</a></code>
+
+        </dt>
+        <dd>Periodic dummies and contrasts</dd>
+      </dl><dl><dt>
+
+          <code><a href="trigonometric_variables.html">trigonometric_variables()</a></code>
+
+        </dt>
+        <dd>Trigonometric variables</dd>
+      </dl></div><div class="section level2">
+      <h2 id="seasonality-tests">Seasonality Tests<a class="anchor" aria-label="anchor" href="#seasonality-tests"></a></h2>
+
+      <div class="section-desc"><p>Functions to test the presence of seasonality in a time series</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="seasonality_canovahansen.html">seasonality_canovahansen()</a></code>
+
+        </dt>
+        <dd>Canova-Hansen seasonality test</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_canovahansen_trigs.html">seasonality_canovahansen_trigs()</a></code>
+
+        </dt>
+        <dd>Canova-Hansen test using trigonometric variables</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_combined.html">seasonality_combined()</a></code>
+
+        </dt>
+        <dd>"X12" Test On Seasonality</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_f.html">seasonality_f()</a></code>
+
+        </dt>
+        <dd>F-test on seasonal dummies</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_friedman.html">seasonality_friedman()</a></code>
+
+        </dt>
+        <dd>Friedman Seasonality Test</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_kruskalwallis.html">seasonality_kruskalwallis()</a></code>
+
+        </dt>
+        <dd>Kruskall-Wallis Seasonality Test</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_modified_qs.html">seasonality_modified_qs()</a></code>
+
+        </dt>
+        <dd>Modified QS Seasonality Test (Maravall)</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_periodogram.html">seasonality_periodogram()</a></code>
+
+        </dt>
+        <dd>Periodogram Seasonality Test</dd>
+      </dl><dl><dt>
+
+          <code><a href="seasonality_qs.html">seasonality_qs()</a></code>
+
+        </dt>
+        <dd>QS (seasonal Ljung-Box) test.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="residual-trading-days-tests">Residual Trading Days Tests<a class="anchor" aria-label="anchor" href="#residual-trading-days-tests"></a></h2>
+
+      <div class="section-desc"><p>Functions to test the presence of residual trading days effects</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
 
           <code><a href="td.html">td()</a></code>
 
@@ -617,43 +376,129 @@
 
         </dt>
         <dd>Likelihood ratio test on time varying trading days</dd>
-      </dl><dl><dt>
+      </dl></div><div class="section level2">
+      <h2 id="tests-of-independence-and-normality">Tests of Independence and Normality<a class="anchor" aria-label="anchor" href="#tests-of-independence-and-normality"></a></h2>
 
-          <code><a href="to_ts.html">to_ts()</a></code>
+      <div class="section-desc"><p>Functions allowing to test if residuals are White Noise</p></div>
 
-        </dt>
-        <dd>Creates a time series object</dd>
-      </dl><dl><dt>
 
-          <code><a href="to_tscollection.html">to_tscollection()</a></code>
+    </div><div class="section level2">
 
-        </dt>
-        <dd>Creates a collection of time series</dd>
-      </dl><dl><dt>
 
-          <code><a href="trigonometric_variables.html">trigonometric_variables()</a></code>
 
-        </dt>
-        <dd>Trigonometric variables</dd>
-      </dl><dl><dt>
 
-          <code><a href="ts_adjust.html">ts_adjust()</a></code>
+      <dl><dt>
+
+          <code><a href="normality_tests.html">bowmanshenton()</a></code> <code><a href="normality_tests.html">doornikhansen()</a></code> <code><a href="normality_tests.html">jarquebera()</a></code> <code><a href="normality_tests.html">skewness()</a></code> <code><a href="normality_tests.html">kurtosis()</a></code>
 
         </dt>
-        <dd>Multiplicative adjustment of a time series for leap year / length of periods</dd>
+        <dd>Normality Tests</dd>
       </dl><dl><dt>
 
-          <code><a href="ts_interpolate.html">ts_interpolate()</a></code>
+          <code><a href="ljungbox.html">ljungbox()</a></code>
 
         </dt>
-        <dd>Interpolation of a time series with missing values</dd>
-      </dl><dl><dt>
+        <dd>Ljung-Box Test</dd>
+      </dl></div><div class="section level2">
+      <h2 id="randomness-tests">Randomness Tests<a class="anchor" aria-label="anchor" href="#randomness-tests"></a></h2>
 
-          <code><a href="tsdata_of.html">tsdata_of()</a></code>
+      <div class="section-desc"><p>Functions to test data randomness</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="runstests.html">testofruns()</a></code> <code><a href="runstests.html">testofupdownruns()</a></code>
 
         </dt>
-        <dd>Title</dd>
+        <dd>Runs Tests around the mean or the median</dd>
+      </dl></div><div class="section level2">
+      <h2 id="-s-arima-models">(S)arima Models<a class="anchor" aria-label="anchor" href="#-s-arima-models"></a></h2>
+
+      <div class="section-desc"><p>Functions to wrangle (S)arima models</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="arima_difference.html">arima_difference()</a></code>
+
+        </dt>
+        <dd>Remove an arima model from an existing one.</dd>
       </dl><dl><dt>
+
+          <code><a href="arima_model.html">arima_model()</a></code>
+
+        </dt>
+        <dd>ARIMA Model</dd>
+      </dl><dl><dt>
+
+          <code><a href="arima_properties.html">arima_properties()</a></code>
+
+        </dt>
+        <dd>Properties of an ARIMA model</dd>
+      </dl><dl><dt>
+
+          <code><a href="arima_sum.html">arima_sum()</a></code>
+
+        </dt>
+        <dd>Sum ARIMA Models</dd>
+      </dl><dl><dt>
+
+          <code><a href="sarima_decompose.html">sarima_decompose()</a></code>
+
+        </dt>
+        <dd>Decompose SARIMA Model into three components trend, seasonal, irregular</dd>
+      </dl><dl><dt>
+
+          <code><a href="sarima_estimate.html">sarima_estimate()</a></code>
+
+        </dt>
+        <dd>Estimate SARIMA Model</dd>
+      </dl><dl><dt>
+
+          <code><a href="sarima_hannan_rissanen.html">sarima_hannan_rissanen()</a></code>
+
+        </dt>
+        <dd>Estimate ARIMA Model with Hannan-Rissanen method</dd>
+      </dl><dl><dt>
+
+          <code><a href="sarima_model.html">sarima_model()</a></code>
+
+        </dt>
+        <dd>Seasonal ARIMA model (Box-Jenkins)</dd>
+      </dl><dl><dt>
+
+          <code><a href="sarima_properties.html">sarima_properties()</a></code>
+
+        </dt>
+        <dd>SARIMA Properties</dd>
+      </dl><dl><dt>
+
+          <code><a href="sarima_random.html">sarima_random()</a></code>
+
+        </dt>
+        <dd>Simulate Seasonal ARIMA</dd>
+      </dl></div><div class="section level2">
+      <h2 id="uc-decomposition">UC Decomposition<a class="anchor" aria-label="anchor" href="#uc-decomposition"></a></h2>
+
+      <div class="section-desc"><p>Functions to perform canonical decomposition of a Sarima Model</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
 
           <code><a href="ucarima_canonical.html">ucarima_canonical()</a></code>
 
@@ -677,14 +522,400 @@
 
         </dt>
         <dd>Wiener Kolmogorov Estimators</dd>
-      </dl><dl><dt>
+      </dl></div><div class="section level2">
+      <h2 id="data-ts-transformations">Data (TS) Transformations<a class="anchor" aria-label="anchor" href="#data-ts-transformations"></a></h2>
 
-          <code><a href="weighted_calendar.html">weighted_calendar()</a></code>
+      <div class="section-desc"><p>Functions to compute basic transformations on time series</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="aggregate.html">aggregate()</a></code>
 
         </dt>
-        <dd>Create a Composite Calendar</dd>
+        <dd>Aggregation of time series</dd>
+      </dl><dl><dt>
+
+          <code><a href="clean_extremities.html">clean_extremities()</a></code>
+
+        </dt>
+        <dd>Removal of missing values at the beginning/end</dd>
+      </dl><dl><dt>
+
+          <code><a href="daysOf.html">daysOf()</a></code>
+
+        </dt>
+        <dd>Provides a list of dates corresponding to each period of the given time series</dd>
+      </dl><dl><dt>
+
+          <code><a href="differences.html">differences()</a></code>
+
+        </dt>
+        <dd>Differencing of a series</dd>
+      </dl><dl><dt>
+
+          <code><a href="differencing_fast.html">differencing_fast()</a></code>
+
+        </dt>
+        <dd>The series is differenced till its variance is decreasing.</dd>
+      </dl><dl><dt>
+
+          <code><a href="do_stationary.html">do_stationary()</a></code>
+
+        </dt>
+        <dd>Automatic stationary transformation</dd>
+      </dl><dl><dt>
+
+          <code><a href="ts_adjust.html">ts_adjust()</a></code>
+
+        </dt>
+        <dd>Multiplicative adjustment of a time series for leap year / length of periods</dd>
+      </dl><dl><dt>
+
+          <code><a href="ts_interpolate.html">ts_interpolate()</a></code>
+
+        </dt>
+        <dd>Interpolation of a time series with missing values</dd>
+      </dl><dl><dt>
+
+          <code><a href="tsdata_of.html">tsdata_of()</a></code>
+
+        </dt>
+        <dd>Title</dd>
+      </dl></div><div class="section level2">
+      <h2 id="autocorrelations">Autocorrelations<a class="anchor" aria-label="anchor" href="#autocorrelations"></a></h2>
+
+      <div class="section-desc"><p>Functions allowing to compute autocorrelations</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="autocorrelations.html">autocorrelations()</a></code> <code><a href="autocorrelations.html">autocorrelations_partial()</a></code> <code><a href="autocorrelations.html">autocorrelations_inverse()</a></code>
+
+        </dt>
+        <dd>Autocorrelation Functions</dd>
+      </dl></div><div class="section level2">
+      <h2 id="statistics-and-regressions">Statistics and regressions<a class="anchor" aria-label="anchor" href="#statistics-and-regressions"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="compare_annual_totals.html">compare_annual_totals()</a></code>
+
+        </dt>
+        <dd>Compare the annual totals of two series</dd>
+      </dl><dl><dt>
+
+          <code><a href="mad.html">mad()</a></code>
+
+        </dt>
+        <dd>Compute a robust median absolute deviation (MAD)</dd>
+      </dl><dl><dt>
+
+          <code><a href="rangemean_tstat.html">rangemean_tstat()</a></code>
+
+        </dt>
+        <dd>Range-Mean Regression</dd>
+      </dl></div><div class="section level2">
+      <h2 id="distributions">Distributions<a class="anchor" aria-label="anchor" href="#distributions"></a></h2>
+
+      <div class="section-desc"><p>PDFs, CDFs and inverses</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="chi2distribution.html">density_chi2()</a></code> <code><a href="chi2distribution.html">cdf_chi2()</a></code> <code><a href="chi2distribution.html">random_chi2()</a></code>
+
+        </dt>
+        <dd>The Chi-Squared Distribution</dd>
+      </dl><dl><dt>
+
+          <code><a href="gammadistribution.html">density_gamma()</a></code> <code><a href="gammadistribution.html">cdf_gamma()</a></code> <code><a href="gammadistribution.html">random_gamma()</a></code>
+
+        </dt>
+        <dd>The Gamma Distribution</dd>
+      </dl><dl><dt>
+
+          <code><a href="invgammadistribution.html">density_inverse_gamma()</a></code> <code><a href="invgammadistribution.html">cdf_inverse_gamma()</a></code> <code><a href="invgammadistribution.html">random_inverse_gamma()</a></code>
+
+        </dt>
+        <dd>The Inverse-Gamma Distribution</dd>
+      </dl><dl><dt>
+
+          <code><a href="invgaussiandistribution.html">density_inverse_gaussian()</a></code> <code><a href="invgaussiandistribution.html">cdf_inverse_gaussian()</a></code> <code><a href="invgaussiandistribution.html">random_inverse_gaussian()</a></code>
+
+        </dt>
+        <dd>The Inverse-Gaussian Distribution</dd>
+      </dl><dl><dt>
+
+          <code><a href="studentdistribution.html">density_t()</a></code> <code><a href="studentdistribution.html">cdf_t()</a></code> <code><a href="studentdistribution.html">random_t()</a></code>
+
+        </dt>
+        <dd>The Student Distribution</dd>
+      </dl></div><div class="section level2">
+      <h2 id="splines">Splines<a class="anchor" aria-label="anchor" href="#splines"></a></h2>
+
+      <div class="section-desc"><p>Functions to generate different types of splines</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="bsplines.html">bsplines()</a></code>
+
+        </dt>
+        <dd>B-Splines</dd>
+      </dl><dl><dt>
+
+          <code><a href="periodic_bsplines.html">periodic_bsplines()</a></code>
+
+        </dt>
+        <dd>Periodic B-Splines</dd>
+      </dl><dl><dt>
+
+          <code><a href="periodic_cspline.html">periodic_cspline()</a></code>
+
+        </dt>
+        <dd>Periodic cubic spline</dd>
+      </dl><dl><dt>
+
+          <code><a href="periodic_csplines.html">periodic_csplines()</a></code>
+
+        </dt>
+        <dd>Periodic cardinal cubic splines</dd>
+      </dl><dl><dt>
+
+          <code><a href="monotonic_cspline.html">monotonic_cspline()</a></code>
+
+        </dt>
+        <dd>Monotonic cubic spline</dd>
+      </dl><dl><dt>
+
+          <code><a href="natural_cspline.html">natural_cspline()</a></code>
+
+        </dt>
+        <dd>Natural cubic spline</dd>
+      </dl></div><div class="section level2">
+      <h2 id="-output-dictionary">(Output) Dictionary<a class="anchor" aria-label="anchor" href="#-output-dictionary"></a></h2>
+
+      <div class="section-desc"><p>Functions allowing to get objects names and contents</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="dictionary.html">dictionary()</a></code> <code><a href="dictionary.html">result()</a></code> <code><a href="dictionary.html">user_defined()</a></code>
+
+        </dt>
+        <dd>Get Dictionary and Result</dd>
+      </dl><dl><dt>
+
+          <code><a href="reload_dictionaries.html">reload_dictionaries()</a></code>
+
+        </dt>
+        <dd>Reload dictionaries</dd>
+      </dl></div><div class="section level2">
+      <h2 id="databases">Databases<a class="anchor" aria-label="anchor" href="#databases"></a></h2>
+
+      <div class="section-desc"><p>Lists of Time Series from ABS, NBB and US Census Bureau</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="ABS.html">ABS</a></code>
+
+        </dt>
+        <dd>Retail trade statistics in Australia</dd>
+      </dl><dl><dt>
+
+          <code><a href="Exports.html">Exports</a></code>
+
+        </dt>
+        <dd>Belgian exports to European countries</dd>
+      </dl><dl><dt>
+
+          <code><a href="Imports.html">Imports</a></code>
+
+        </dt>
+        <dd>Belgian imports from European countries</dd>
+      </dl><dl><dt>
+
+          <code><a href="Retail.html">Retail</a></code>
+
+        </dt>
+        <dd>US Retail trade statistics</dd>
+      </dl></div><div class="section level2">
+      <h2 id="print-and-plot-methods">Print and Plot Methods<a class="anchor" aria-label="anchor" href="#print-and-plot-methods"></a></h2>
+
+      <div class="section-desc"><p>Functions to print and plot specific JDemetra+ class objects</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="diagnostics.html">diagnostics()</a></code>
+
+        </dt>
+        <dd>Generic Diagnostics Function</dd>
+      </dl><dl><dt>
+
+          <code><a href="sa_decomposition.html">sadecomposition()</a></code> <code><a href="sa_decomposition.html">print(<i>&lt;JD3_SADECOMPOSITION&gt;</i>)</a></code> <code><a href="sa_decomposition.html">plot(<i>&lt;JD3_SADECOMPOSITION&gt;</i>)</a></code> <code><a href="sa_decomposition.html">sa_decomposition()</a></code>
+
+        </dt>
+        <dd>Generic Function for Seasonal Adjustment Decomposition</dd>
+      </dl><dl><dt>
+
+          <code><a href="sa_preprocessing.html">sa_preprocessing()</a></code>
+
+        </dt>
+        <dd>Generic Preprocessing Function</dd>
+      </dl><dl><dt>
+
+          <code><a href="statisticaltest.html">statisticaltest()</a></code> <code><a href="statisticaltest.html">print(<i>&lt;JD3_TEST&gt;</i>)</a></code>
+
+        </dt>
+        <dd>Generic Function For 'JDemetra+' Tests</dd>
+      </dl></div><div class="section level2">
+      <h2 id="full-jdemetra-ts-objects">Full JDemetra+ TS objects<a class="anchor" aria-label="anchor" href="#full-jdemetra-ts-objects"></a></h2>
+
+      <div class="section-desc"><p>Creating Full JDemetra+ TS objects</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="data_to_ts.html">data_to_ts()</a></code>
+
+        </dt>
+        <dd>Promote a R time series to a "full JDemetra+ time series"</dd>
+      </dl><dl><dt>
+
+          <code><a href="to_ts.html">to_ts()</a></code>
+
+        </dt>
+        <dd>Creates a time series object</dd>
+      </dl><dl><dt>
+
+          <code><a href="to_tscollection.html">to_tscollection()</a></code>
+
+        </dt>
+        <dd>Creates a collection of time series</dd>
+      </dl></div><div class="section level2">
+      <h2 id="wrangling-java-objects">Wrangling Java objects<a class="anchor" aria-label="anchor" href="#wrangling-java-objects"></a></h2>
+
+      <div class="section-desc"><p>Functions to easily interact between R and Java objects</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="jd3_utilities.html">.r2jd_tsdata()</a></code> <code><a href="jd3_utilities.html">.r2jd_tsdomain()</a></code> <code><a href="jd3_utilities.html">.jd2r_tsdata()</a></code> <code><a href="jd3_utilities.html">.jd2r_mts()</a></code> <code><a href="jd3_utilities.html">.jd2r_lts()</a></code> <code><a href="jd3_utilities.html">.jd2r_matrix()</a></code> <code><a href="jd3_utilities.html">.r2jd_matrix()</a></code> <code><a href="jd3_utilities.html">.jdomain()</a></code> <code><a href="jd3_utilities.html">.enum_sextract()</a></code> <code><a href="jd3_utilities.html">.enum_sof()</a></code> <code><a href="jd3_utilities.html">.enum_extract()</a></code> <code><a href="jd3_utilities.html">.enum_of()</a></code> <code><a href="jd3_utilities.html">.r2p_parameter()</a></code> <code><a href="jd3_utilities.html">.p2r_parameter()</a></code> <code><a href="jd3_utilities.html">.r2p_parameters()</a></code> <code><a href="jd3_utilities.html">.r2p_lparameters()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters_rslt()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters_rsltx()</a></code> <code><a href="jd3_utilities.html">.p2r_test()</a></code> <code><a href="jd3_utilities.html">.p2r_matrix()</a></code> <code><a href="jd3_utilities.html">.p2r_tsdata()</a></code> <code><a href="jd3_utilities.html">.r2p_tsdata()</a></code> <code><a href="jd3_utilities.html">.p2r_parameters_estimation()</a></code> <code><a href="jd3_utilities.html">.p2r_likelihood()</a></code> <code><a href="jd3_utilities.html">.p2r_date()</a></code> <code><a href="jd3_utilities.html">.r2p_date()</a></code> <code><a href="jd3_utilities.html">.p2r_span()</a></code> <code><a href="jd3_utilities.html">.r2p_span()</a></code> <code><a href="jd3_utilities.html">.p2r_arima()</a></code> <code><a href="jd3_utilities.html">.p2r_ucarima()</a></code> <code><a href="jd3_utilities.html">.p2r_spec_sarima()</a></code> <code><a href="jd3_utilities.html">.r2p_spec_sarima()</a></code> <code><a href="jd3_utilities.html">.p2r_outliers()</a></code> <code><a href="jd3_utilities.html">.r2p_outliers()</a></code> <code><a href="jd3_utilities.html">.p2r_sequences()</a></code> <code><a href="jd3_utilities.html">.r2p_sequences()</a></code> <code><a href="jd3_utilities.html">.p2r_iv()</a></code> <code><a href="jd3_utilities.html">.r2p_iv()</a></code> <code><a href="jd3_utilities.html">.p2r_ivs()</a></code> <code><a href="jd3_utilities.html">.r2p_ivs()</a></code> <code><a href="jd3_utilities.html">.p2r_ramps()</a></code> <code><a href="jd3_utilities.html">.r2p_ramps()</a></code> <code><a href="jd3_utilities.html">.p2r_uservars()</a></code> <code><a href="jd3_utilities.html">.r2p_uservars()</a></code> <code><a href="jd3_utilities.html">.p2r_variables()</a></code> <code><a href="jd3_utilities.html">.p2r_sa_decomposition()</a></code> <code><a href="jd3_utilities.html">.p2r_sa_diagnostics()</a></code> <code><a href="jd3_utilities.html">.p2r_spec_benchmarking()</a></code> <code><a href="jd3_utilities.html">.r2p_spec_benchmarking()</a></code> <code><a href="jd3_utilities.html">.r2jd_sarima()</a></code> <code><a href="jd3_utilities.html">.jd2r_ucarima()</a></code> <code><a href="jd3_utilities.html">.p2jd_calendar()</a></code> <code><a href="jd3_utilities.html">.r2p_calendar()</a></code> <code><a href="jd3_utilities.html">.proc_numeric()</a></code> <code><a href="jd3_utilities.html">.proc_vector()</a></code> <code><a href="jd3_utilities.html">.proc_int()</a></code> <code><a href="jd3_utilities.html">.proc_bool()</a></code> <code><a href="jd3_utilities.html">.proc_ts()</a></code> <code><a href="jd3_utilities.html">.proc_str()</a></code> <code><a href="jd3_utilities.html">.proc_desc()</a></code> <code><a href="jd3_utilities.html">.proc_test()</a></code> <code><a href="jd3_utilities.html">.proc_parameter()</a></code> <code><a href="jd3_utilities.html">.proc_parameters()</a></code> <code><a href="jd3_utilities.html">.proc_matrix()</a></code> <code><a href="jd3_utilities.html">.proc_data()</a></code> <code><a href="jd3_utilities.html">.proc_dictionary()</a></code> <code><a href="jd3_utilities.html">.proc_dictionary2()</a></code> <code><a href="jd3_utilities.html">.proc_likelihood()</a></code> <code><a href="jd3_utilities.html">.r2p_moniker()</a></code> <code><a href="jd3_utilities.html">.p2r_moniker()</a></code> <code><a href="jd3_utilities.html">.r2p_datasupplier()</a></code> <code><a href="jd3_utilities.html">.p2r_metadata()</a></code> <code><a href="jd3_utilities.html">.r2p_metadata()</a></code> <code><a href="jd3_utilities.html">.p2r_ts()</a></code> <code><a href="jd3_utilities.html">.r2p_ts()</a></code> <code><a href="jd3_utilities.html">.p2r_tscollection()</a></code> <code><a href="jd3_utilities.html">.r2p_tscollection()</a></code> <code><a href="jd3_utilities.html">.r2jd_ts()</a></code> <code><a href="jd3_utilities.html">.jd2r_ts()</a></code> <code><a href="jd3_utilities.html">.r2jd_tscollection()</a></code> <code><a href="jd3_utilities.html">.jd2r_tscollection()</a></code> <code><a href="jd3_utilities.html">.p2r_datasupplier()</a></code> <code><a href="jd3_utilities.html">.r2p_datasuppliers()</a></code> <code><a href="jd3_utilities.html">.p2r_datasuppliers()</a></code> <code><a href="jd3_utilities.html">.p2jd_variables()</a></code> <code><a href="jd3_utilities.html">.jd2p_variables()</a></code> <code><a href="jd3_utilities.html">.jd2r_variables()</a></code> <code><a href="jd3_utilities.html">.r2jd_variables()</a></code> <code><a href="jd3_utilities.html">.p2r_context()</a></code> <code><a href="jd3_utilities.html">.r2p_context()</a></code> <code><a href="jd3_utilities.html">.p2jd_context()</a></code> <code><a href="jd3_utilities.html">.jd2p_context()</a></code> <code><a href="jd3_utilities.html">.jd2r_modellingcontext()</a></code> <code><a href="jd3_utilities.html">.r2jd_modellingcontext()</a></code> <code><a href="jd3_utilities.html">.p2r_calendars()</a></code> <code><a href="jd3_utilities.html">.r2p_calendars()</a></code> <code><a href="jd3_utilities.html">.p2jd_calendars()</a></code> <code><a href="jd3_utilities.html">.jd2p_calendars()</a></code> <code><a href="jd3_utilities.html">.jd2r_calendars()</a></code> <code><a href="jd3_utilities.html">.r2jd_calendars()</a></code> <code><a href="jd3_utilities.html">.jd3_object()</a></code> <code><a href="jd3_utilities.html">.p2r_regarima_rslts()</a></code> <code><a href="jd3_utilities.html">.r2jd_tmp_ts()</a></code> <code><a href="jd3_utilities.html">.r2jd_make_ts()</a></code> <code><a href="jd3_utilities.html">.r2jd_make_tscollection()</a></code> <code><a href="jd3_utilities.html">DATE_MIN</a></code> <code><a href="jd3_utilities.html">DATE_MAX</a></code>
+
+        </dt>
+        <dd>Java Utility Functions</dd>
+      </dl><dl><dt>
+
+          <code><a href="jd3_print.html">print(<i>&lt;JD3_ARIMA&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_UCARIMA&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_SARIMA&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_SARIMA_ESTIMATION&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_SPAN&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_LIKELIHOOD&gt;</i>)</a></code> <code><a href="jd3_print.html">print(<i>&lt;JD3_REGARIMA_RSLTS&gt;</i>)</a></code>
+
+        </dt>
+        <dd>JD3 print functions</dd>
+      </dl><dl><dt>
+
+          <code><a href="print.calendars.html">print(<i>&lt;JD3_FIXEDDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_FIXEDWEEKDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_EASTERDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_SPECIALDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_SINGLEDAY&gt;</i>)</a></code> <code><a href="print.calendars.html">print(<i>&lt;JD3_CALENDAR&gt;</i>)</a></code>
+
+        </dt>
+        <dd>Calendars Print Methods</dd>
+      </dl><dl><dt>
+
+          <code><a href="r2jd_calendarts.html">r2jd_calendarts()</a></code>
+
+        </dt>
+        <dd>Create Java CalendarTimeSeries</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-add_ud_var.html">.add_ud_var()</a></code>
+
+        </dt>
+        <dd>Add user-defined variable to a SA model</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-likelihood.html">.likelihood()</a></code>
+
+        </dt>
+        <dd>Information on the (log-)likelihood</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-tsmoniker.html">.tsmoniker()</a></code>
+
+        </dt>
+        <dd>Create a Moniker</dd>
+      </dl></div><div class="section level2">
+      <h2 id="deprecated-functions">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a></h2>
+
+      <div class="section-desc"><p>Avoid Using</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="deprecated-rjd3toolkit.html">sa.decomposition()</a></code>
+
+        </dt>
+        <dd>Deprecated functions</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
