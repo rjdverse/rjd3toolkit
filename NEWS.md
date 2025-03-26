@@ -11,6 +11,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 * New JARS
+* Replace `.` with `_` in function's name
+* The dataset `retail` is renamed `Retail`
 
 ### Added
 
