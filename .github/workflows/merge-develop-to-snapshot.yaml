@@ -21,7 +21,6 @@ jobs:
           git config --global user.email "github-actions@users.noreply.github.com"
 
       - name: Set up Java
-        if: github.event.inputs.update_jars == 'true'
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
@@ -35,15 +34,12 @@ jobs:
           git push --force origin snapshot  # Force push sur `snapshot`
 
       - name: Update Java Dependencies
-        if: github.event.inputs.update_jars == 'true'
         run: mvn versions:update-properties -DallowSnapshots -DallowDowngrade
 
       - name: Run Maven to Copy JARs
-        if: github.event.inputs.update_jars == 'true'
         run: mvn -Pcopy-jars
 
       - name: Commit & Push Updated POM and JARs
-        if: github.event.inputs.update_jars == 'true'
         run: |
           git add -A
           git commit -m "Update Java dependencies & JARs after merging develop → snapshot" || echo "No changes to commit"
