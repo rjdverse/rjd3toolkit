@@ -11,7 +11,7 @@
 	<description>Usage: mvn -Pcopy-jars</description>
 
 	<properties>
-		<jdplus-main.version>3.4.0</jdplus-main.version>
+		<jdplus-main.version>3.2.4</jdplus-main.version>
 	</properties>
 
 	<dependencies>
