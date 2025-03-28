@@ -16,9 +16,9 @@ sadecomposition <- function(y, sa, t, s, i, mul) {
 
     n <- length(y)
     if (mul) {
-        content <- rep(1, 1, n)
+        content <- rep_len(x = 1, length.out = n)
     } else {
-        content <- rep(0, 1, n)
+        content <- rep_len(x = 0, length.out = n)
     }
 
     if (is.null(s)) {

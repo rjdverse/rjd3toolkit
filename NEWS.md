@@ -11,11 +11,16 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 * New JARS
+* Replace `.` with `_` in function's name #88
+* The dataset `retail` is renamed `Retail` #89
+* The number of regressor was false for TD3c #92
 
 ### Added
 
 * Spline functions (periodic, b-splines, cardinal splines)
 * function `.add_ud_var` (from {rjd3tramoseats} and {rjd3x13})
+* warning added in the function `calendar_td` #10
+* Regressor `TD2c` for regarima specifications #53
 
 
 ## [3.3.0] - 2024-10-28

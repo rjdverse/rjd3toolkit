@@ -867,6 +867,11 @@ calendar_td <- function(calendar,
         start <- stats::start(s)
         length <- .length_ts(s)
     }
+
+    if (holiday != 7L) {
+        warning("holiday parameter is set to 7 (Sunday) by default and cannot be changed for the time being.")
+    }
+
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     pcal <- .r2p_calendar(calendar)
     jcal <- .p2jd_calendar(pcal)

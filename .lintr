@@ -14,15 +14,9 @@ linters: lintr::all_linters(
         unnecessary_lambda_linter = NULL,
         todo_comment_linter = NULL,
         function_argument_linter = NULL,
-        condition_message_linter = NULL,
-        unnecessary_concatenation_linter = NULL,
-        return_linter = NULL,
         object_overwrite_linter = NULL,
         condition_call_linter = NULL,
-        rep_len_linter = NULL,
-        unnecessary_nesting_linter = NULL,
         object_overwrite_linter = NULL,
-        rep_len_linter = NULL,
         if_switch_linter = NULL
     )
 encoding: "UTF-8"
