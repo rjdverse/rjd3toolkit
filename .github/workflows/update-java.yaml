@@ -12,7 +12,7 @@ on:
           - snapshot
           - release
   # schedule:
-  #   - cron: '0 3 * * 1'  # Exécution automatique tous les lundis à 3h du matin (UTC)
+  #   - cron: '0 3 * * 1'
 
 jobs:
   update-java:
@@ -21,6 +21,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@users.noreply.github.com"
 
       - name: Set up Java
         uses: actions/setup-java@v3
@@ -45,16 +50,8 @@ jobs:
       - name: Run Maven to Copy JARs
         run: mvn -Pcopy-jars
 
-      - name: Upload JARs as Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: target/*.jar
-
       - name: Commit & Push Updated POM
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions@users.noreply.github.com"
           git add -A
           git commit -m "Update Java dependencies to latest ${{ github.event.inputs.update_type || 'snapshot' }}"
           git push

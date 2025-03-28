@@ -1,0 +1,50 @@
+name: Merge Develop to Snapshot & Update Java
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 3 * * 1'
+
+jobs:
+  merge-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@users.noreply.github.com"
+
+      - name: Set up Java
+        if: github.event.inputs.update_jars == 'true'
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Force Merge Develop into Snapshot
+        run: |
+          git checkout snapshot
+          git fetch origin develop
+          git reset --hard origin/develop # Force `snapshot` à être identique à `develop`
+          git push --force origin snapshot  # Force push sur `snapshot`
+
+      - name: Update Java Dependencies
+        if: github.event.inputs.update_jars == 'true'
+        run: mvn versions:update-properties -DallowSnapshots -DallowDowngrade
+
+      - name: Run Maven to Copy JARs
+        if: github.event.inputs.update_jars == 'true'
+        run: mvn -Pcopy-jars
+
+      - name: Commit & Push Updated POM and JARs
+        if: github.event.inputs.update_jars == 'true'
+        run: |
+          git add -A
+          git commit -m "Update Java dependencies & JARs after merging develop → snapshot" || echo "No changes to commit"
+          git push origin snapshot
