@@ -1,8 +1,9 @@
 #' @include jd2r.R
 NULL
 
-#' Aggregation of time series
+#' @title Aggregation of time series
 #'
+#' @description
 #' Makes a frequency change of this series.
 #'
 #' @param s the input time series.
@@ -13,7 +14,7 @@ NULL
 #' @param complete  Boolean indicating if the observation for a given period in the
 #' new series is set missing if some data in the original series are missing.
 #'
-#' @return A new time series of frequency \code{nfreq}.
+#' @returns A new time series of frequency \code{nfreq}.
 #' @export
 #'
 #' @examples
@@ -28,6 +29,7 @@ aggregate <- function(s, nfreq = 1,
                       complete = TRUE) {
     UseMethod("aggregate", s)
 }
+
 #' @export
 aggregate.default <- function(s, nfreq = 1,
                               conversion = c("Sum", "Average", "First", "Last", "Min", "Max"),
@@ -49,6 +51,7 @@ aggregate.default <- function(s, nfreq = 1,
         return(.jd2r_tsdata(jd_agg))
     }
 }
+
 #' @export
 aggregate.matrix <- function(s, nfreq = 1,
                              conversion = c("Sum", "Average", "First", "Last", "Min", "Max"),
@@ -59,6 +62,7 @@ aggregate.matrix <- function(s, nfreq = 1,
     colnames(res) <- colnames(s)
     res
 }
+
 #' @export
 aggregate.data.frame <- function(s, nfreq = 1,
                                  conversion = c("Sum", "Average", "First", "Last", "Min", "Max"),
@@ -70,11 +74,11 @@ aggregate.data.frame <- function(s, nfreq = 1,
     res
 }
 
-#' Removal of missing values at the beginning/end
+#' @title Removal of missing values at the beginning/end
 #'
 #' @param s Original series
 #'
-#' @return Cleaned series
+#' @returns Cleaned series
 #' @export
 #'
 #' @examples
@@ -86,7 +90,12 @@ clean_extremities <- function(s) {
         return(NULL)
     }
     jd_s <- .r2jd_tsdata(s)
-    jd_scleaned <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/TsData;", "cleanExtremities", jd_s)
+    jd_scleaned <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsData;",
+        method = "cleanExtremities",
+        jd_s
+    )
 
     if (is.jnull(jd_scleaned)) {
         return(NULL)
@@ -96,18 +105,19 @@ clean_extremities <- function(s) {
 }
 
 
-#' Interpolation of a time series with missing values
+#' @title Interpolation of a time series with missing values
 #'
 #' @param s The original time series
 #' @param method
 #'    airline: interpolation through an estimated airline model
 #'    average: interpolation using the average of the previous and next non missing values
-#' @return The interpolated series
+#' @returns The interpolated series
 #' @export
 #'
 ts_interpolate <- function(s, method = c("airline", "average")) {
     UseMethod("ts_interpolate", s)
 }
+
 #' @export
 ts_interpolate.default <- function(s, method = c("airline", "average")) {
     method <- match.arg(method)
@@ -116,15 +126,26 @@ ts_interpolate.default <- function(s, method = c("airline", "average")) {
     }
     jd_s <- .r2jd_tsdata(s)
     if (method == "airline") {
-        jd_si <- .jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "airlineInterpolation", jd_s)
+        jd_si <- .jcall(
+            obj = "jdplus/toolkit/base/r/modelling/Interpolation",
+            returnSig = "Ljdplus/toolkit/base/api/timeseries/TsData;",
+            method = "airlineInterpolation",
+            jd_s
+        )
         return(.jd2r_tsdata(jd_si))
     } else if (method == "average") {
-        jd_si <- .jcall("jdplus/toolkit/base/r/modelling/Interpolation", "Ljdplus/toolkit/base/api/timeseries/TsData;", "averageInterpolation", jd_s)
+        jd_si <- .jcall(
+            obj = "jdplus/toolkit/base/r/modelling/Interpolation",
+            returnSig = "Ljdplus/toolkit/base/api/timeseries/TsData;",
+            method = "averageInterpolation",
+            jd_s
+        )
         return(.jd2r_tsdata(jd_si))
     } else {
         return(NULL)
     }
 }
+
 #' @export
 ts_interpolate.matrix <- function(s, method = c("airline", "average")) {
     result <- s
@@ -133,6 +154,7 @@ ts_interpolate.matrix <- function(s, method = c("airline", "average")) {
     }
     result
 }
+
 #' @export
 ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
     result <- s
@@ -142,14 +164,14 @@ ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
     result
 }
 
-#' Multiplicative adjustment of a time series for leap year / length of periods
+#' @title Multiplicative adjustment of a time series for leap year / length of periods
 #'
 #' @param s The original time series
 #' @param method
 #'    \code{"LeapYear"}: correction for leap year
 #'    \code{"LengthOfPeriod"}: correction for the length of periods
 #' @param reverse Adjustment or reverse operation
-#' @return The interpolated series
+#' @returns The interpolated series
 #'
 #' @export
 #'
@@ -161,6 +183,7 @@ ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
 ts_adjust <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     UseMethod("ts_adjust", s)
 }
+
 #' @export
 ts_adjust.default <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     method <- match.arg(method)
@@ -180,6 +203,7 @@ ts_adjust.default <- function(s, method = c("LeapYear", "LengthOfPeriod"), rever
         return(.jd2r_tsdata(jd_st))
     }
 }
+
 #' @export
 ts_adjust.matrix <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     result <- s
@@ -188,6 +212,7 @@ ts_adjust.matrix <- function(s, method = c("LeapYear", "LengthOfPeriod"), revers
     }
     result
 }
+
 #' @export
 ts_adjust.data.frame <- function(s, method = c("LeapYear", "LengthOfPeriod"), reverse = FALSE) {
     result <- s
@@ -197,15 +222,15 @@ ts_adjust.data.frame <- function(s, method = c("LeapYear", "LengthOfPeriod"), re
     result
 }
 
-#' Provides a list of dates corresponding to each period of the given time series
+#' @title Provides a list of dates corresponding to each period of the given time series
 #'
 #' @param ts A time series
 #' @param pos The position of the first considered period.
 #'
-#' @return A list of the starting dates of each period
+#' @returns A list of the starting dates of each period
 #' @export
 #'
-#' @examples daysOf(retail$BookStores)
+#' @examples daysOf(Retail$BookStores)
 daysOf <- function(ts, pos = 1) {
     start <- start(ts)
     jdom <- .r2jd_tsdomain(frequency(ts), start[1], start[2], length(ts))
@@ -213,14 +238,14 @@ daysOf <- function(ts, pos = 1) {
     return(as.Date(days))
 }
 
-#' Creates a time series object
+#' @title Creates a time series object
 #'
 #' @param source Source of the time series
 #' @param id Identifier of the time series (source-dependent)
 #' @param type Type of the requested information (Data, Metadata...).
 #' All by default.
 #'
-#' @return An object of type "JD3_TS". List containing the identifiers,
+#' @returns An object of type "JD3_TS". List containing the identifiers,
 #' the data and the metadata
 #' @export
 to_ts <- function(source, id, type = "All") {
@@ -231,14 +256,14 @@ to_ts <- function(source, id, type = "All") {
     return(.p2r_ts(p))
 }
 
-#' Creates a collection of time series
+#' @title Creates a collection of time series
 #'
 #' @param source Source of the collection of time series
 #' @param id Identifier of the collection of time series (source-dependent)
 #' @param type Type of the requested information (Data, Metadata...).
 #' All by default.
 #'
-#' @return An object of type "JD3_TSCOLLECTION". List containing the identifiers,
+#' @returns An object of type "JD3_TSCOLLECTION". List containing the identifiers,
 #' the metadata and all the series (data).
 #'
 #' @examples
@@ -250,19 +275,34 @@ to_ts <- function(source, id, type = "All") {
 #' # my_collection<-to_tscollection(source,id)
 #' @export
 to_tscollection <- function(source, id, type = "All") {
-    jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
-    jtscoll <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
-    bytes <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jtscoll)
+    jmoniker <- .jcall(
+        obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsMoniker;",
+        method = "of",
+        source, id
+    )
+    jtscoll <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTsCollection",
+        jmoniker, type
+    )
+    bytes <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "[B",
+        method = "toBuffer",
+        jtscoll
+    )
     p <- RProtoBuf::read(jd3.TsCollection, bytes)
     return(.p2r_tscollection(p))
 }
 
-#' Promote a R time series to a "full JDemetra+ time series"
+#' @title Promote a R time series to a "full JDemetra+ time series"
 #'
 #' @param s R time series (class TS)
 #' @param name name of the series
 #'
-#' @return
+#' @returns
 #' Returns a java object of class JD3_TS
 #' @export
 #'
@@ -270,8 +310,18 @@ to_tscollection <- function(source, id, type = "All") {
 #' s <- ABS$X0.2.09.10.M
 #' t <- data_to_ts(s, "test")
 data_to_ts <- function(s, name) {
-    jts <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", .r2jd_tsdata(s), name)
-    bytes <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jts)
+    jts <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTs",
+        .r2jd_tsdata(s), name
+    )
+    bytes <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "[B",
+        method = "toBuffer",
+        jts
+    )
     p <- RProtoBuf::read(jd3.Ts, bytes)
     return(.p2r_ts(p))
 }
@@ -279,32 +329,57 @@ data_to_ts <- function(s, name) {
 #' @export
 #' @rdname jd3_utilities
 .r2jd_tmp_ts <- function(s, name) {
-    jts <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", .r2jd_tsdata(s), name)
+    jts <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTs",
+        .r2jd_tsdata(s), name
+    )
     return(jts)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_make_ts <- function(source, id, type = "All") {
-    jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
-    jts <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
+    jmoniker <- .jcall(
+        obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsMoniker;",
+        method = "of",
+        source, id
+    )
+    jts <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTs",
+        jmoniker, type
+    )
     return(jts)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .r2jd_make_tscollection <- function(source, id, type = "All") {
-    jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
-    jtscoll <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTsCollection", jmoniker, type)
+    jmoniker <- .jcall(
+        obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsMoniker;",
+        method = "of",
+        source, id
+    )
+    jtscoll <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTsCollection",
+        jmoniker, type
+    )
     return(jtscoll)
 }
 
-#' Title
+#' @title Title
 #'
 #' @param values Values of the time series
 #' @param dates Dates of the values (could be any date inside the considered period)
 #'
-#' @return A \code{ts} object. The frequency will be identified automatically and missing values will be added in need be.
+#' @returns A \code{ts} object. The frequency will be identified automatically and missing values will be added in need be.
 #' The identified frequency will be the lowest frequency that match the figures.
 #' The provided data can contain missing values (NA)
 #' @export
@@ -325,7 +400,7 @@ tsdata_of <- function(values, dates) {
     return(.jd2r_tsdata(jtsdata))
 }
 
-#' Compare the annual totals of two series
+#' @title Compare the annual totals of two series
 #'
 #' @description
 #' Usually a raw series and the corresponding seasonally adjusted series
@@ -333,7 +408,7 @@ tsdata_of <- function(values, dates) {
 #' @param raw Raw series
 #' @param sa Seasonally adjusted series
 #'
-#' @return
+#' @returns
 #' The largest annual difference (in percentage of the average level of the seasonally adjusted series)
 #'
 #' @examples

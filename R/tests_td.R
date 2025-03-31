@@ -1,17 +1,20 @@
 #' @include protobuf.R jd2r.R
 NULL
 
-#' Residual Trading Days Test
+#' @title Residual Trading Days Test
 #'
-#' @param nyears \code{integer} that corresponds to the length of the sub series, starting from the end of the series, to be used for the test:
-#' in number of periods (positive value) or years (negative values).
+#' @param nyears \code{integer} that corresponds to the length of the sub
+#' series, starting from the end of the series, to be used for the test: in
+#' number of periods (positive value) or years (negative values).
 #' By default (\code{nyears = 0}), the entire sample is used.
-#' @param s a \code{ts} object that corresponds to the input time series to test.
+#' @param s a \code{ts} object that corresponds to the input time series to
+#' test.
 #' @param model the model to use for the residuals. See details.
 #'
 #' @details
-#' The function performs a residual seasonality test that is a joint F-Test on the coefficients of trading days regressors.
-#' Several specifications can be used on the model:
+#' The function performs a residual seasonality test that is a joint F-Test on
+#' the coefficients of trading days regressors. Several specifications can be
+#' used on the model:
 #' \itemize{
 #' \item \code{model = "WN"} the following model is used:
 #' \deqn{
@@ -27,7 +30,7 @@ NULL
 #' }
 #' \item \code{model = "DYD1"} the following model is used:
 #' \deqn{
-#' \Delta_s\Delta y_t - \overline{\Delta_s \Delta y} =\beta \Delta_s \Delta TD_t +  \varepsilon_t
+#' \Delta_s\Delta y_t - \overline{\Delta_s \Delta y} =\beta \Delta_s \Delta TD_t + \varepsilon_t
 #' }
 #' \item \code{model = "AIRLINE"} the following model is used:
 #' \deqn{
@@ -56,14 +59,14 @@ td_f <- function(s, model = c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100
     return(.jd2r_test(jtest))
 }
 
-#' Canova-Hansen test for stable trading days
+#' @title Canova-Hansen test for stable trading days
 #'
 #' @inheritParams td_f
 #' @param differencing Differencing lags.
 #' @param kernel Kernel used to compute the robust covariance matrix.
 #' @param order The truncation parameter used to compute the robust covariance matrix.
 #'
-#' @return list with the ftest on td, the joint test and the details for the stability of the different days (starting with Mondays).
+#' @returns list with the ftest on td, the joint test and the details for the stability of the different days (starting with Mondays).
 #' @export
 #'
 #' @examples
@@ -83,7 +86,7 @@ td_canovahansen <- function(s, differencing, kernel = c("Bartlett", "Square", "W
     return(list(td = list(value = q[last - 1], pvalue = q[last]), joint = q[last - 2], details = q[-c(last - 2, last - 1, last)]))
 }
 
-#' Likelihood ratio test on time varying trading days
+#' @title Likelihood ratio test on time varying trading days
 #'
 #' @param s The tested time series
 #' @param groups The groups of days used to generate the regression variables.
@@ -91,7 +94,7 @@ td_canovahansen <- function(s, differencing, kernel = c("Bartlett", "Square", "W
 #' used for the time-varying coefficients are related to the contrasts if TRUE,
 #' on the actual number of days (all the days are driven by the same variance) if FALSE.
 #'
-#' @return A Chi2 test
+#' @returns A Chi2 test
 #' @export
 #'
 #' @examples
