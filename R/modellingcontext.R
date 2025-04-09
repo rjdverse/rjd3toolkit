@@ -6,15 +6,21 @@ JD3_TSMONIKER <- "JD3_TSMONIKER"
 JD3_TS <- "JD3_TS"
 JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 
-#' Title
+#' @title Create a Moniker
 #'
 #' @param source Source of the time series.
 #' @param id Id of the time series.
 #'
-#' @return
-#' @export
-#'
+#' @returns
+#' Returns a java object of class JD3_TSMONIKER.
 #' @examples
+#' source <- "Txt"
+#' # id is split due to length restrictions
+#' id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd%2FMM%2Fyyyy&delimiter=SEMICOLON&"
+#' id2 <- "file=C%3A%5CDocuments%5CIPI%5CData%5CIPI_nace4.csv#seriesIndex=0"
+#' id<-paste(id1,id2)
+#' moniker <- .tsmoniker(source,id)
+#' @export
 .tsmoniker <- function(source, id) {
     return(structure(list(source = source, id = id), class = c(JD3_TSMONIKER)))
 }
@@ -302,15 +308,18 @@ dynamic_ts <- function(moniker, data) {
 }
 
 
-#' @title Create context
+#' @title Create modelling context
+#'
 #' @description
 #' Function allowing to include calendars and external regressors in a format that makes them usable
-#' in an estimation processes (seasonal adjustment or pre-processing). The regressors can be created with functions available in the package
+#' in an estimation process (reg-arima or tramo modelling, stand alone or as pre-processing in seasonal adjustment).
+#' The regressors can be created with functions available in the package
 #' or come from any other source, provided they are \code{ts} class objects.
+#'
 #' @param calendars list of calendars.
 #' @param variables list of variables.
 #'
-#' @return list of calendars and variables
+#' @returns list of calendars and variables
 #' @export
 #'
 #' @examples
@@ -335,13 +344,22 @@ dynamic_ts <- function(moniker, data) {
 #' @references
 #' More information on auxiliary variables in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
+#'
 modelling_context <- function(calendars = NULL, variables = NULL) {
-    if (is.null(calendars)) calendars <- list()
-    if (is.null(variables)) variables <- list()
-    if (!is.list(calendars)) stop("calendars should be a list of calendars")
-    if (length(calendars) > 0) if (length(calendars) != length(which(sapply(calendars, function(z) is(z, "JD3_CALENDARDEFINITION"))))) stop("calendars should be a list of calendars")
-    if (!is.list(variables)) stop("variables should be a list of vars")
-    if (length(variables) != 0) {
+    if (is.null(calendars) || length(calendars) == 0L) {
+        calendars <- list()
+    } else if (is.list(calendars)) {
+        is_calendar <- sapply(X = calendars, FUN = is, class2 = "JD3_CALENDARDEFINITION")
+        if (!all(is_calendar)) {
+            stop("calendars should be a list of calendars")
+        }
+    } else {
+        stop("calendars should be a list of calendars")
+    }
+
+    if (is.null(variables) || length(variables) == 0L) {
+        variables <- list()
+    } else if (is.list(variables)) {
         list_var <- sapply(variables, is.list)
         mts_var <- sapply(variables, is.mts)
         ts_var <- (!list_var) & (!mts_var)
@@ -367,6 +385,8 @@ modelling_context <- function(calendars = NULL, variables = NULL) {
             combined_var <- list(r = combined_var)
             variables <- c(variables[names(variables) != "r"], combined_var)
         }
+    } else {
+        stop("variables should be a list of vars")
     }
 
     return(list(calendars = calendars, variables = variables))

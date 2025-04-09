@@ -2,22 +2,22 @@
 #' @importFrom methods is
 NULL
 
-#' Retail trade statistics in Australia
+#' @title Retail trade statistics in Australia
 #'
 #' @source ABS
 "ABS"
 
-#' US Retail trade statistics
+#' @title US Retail trade statistics
 #'
 #' @source US-Census Bureau
-"retail"
+"Retail"
 
-#' Belgian exports to European countries
+#' @title Belgian exports to European countries
 #'
 #' @source NBB
 "Exports"
 
-#' Belgian imports from European countries
+#' @title Belgian imports from European countries
 #'
 #' @source NBB
 "Imports"
@@ -51,13 +51,12 @@ parseDate <- function(s) {
     return(d)
 }
 
-#' Title
+#' @title Reload dictionaries
 #'
 #' @export
 reload_dictionaries <- function() {
     .jcall("jdplus/toolkit/base/api/information/InformationExtractors", "V", "reloadExtractors")
 }
-
 
 #' @importFrom stats pf frequency
 NULL
@@ -74,10 +73,14 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
     return(statisticaltest(val, pval, desc))
 }
 
-#' Information on the (log-)likelihood
+#' @title Information on the (log-)likelihood
 #'
-#' @param nobs Number of observation
-#' @param neffectiveobs Number of effective observations. NA if it is the same as nobs.
+#' @description
+#' Function allowing to gather information on likelihood estimation
+#'
+#'
+#' @param nobs Number of observations
+#' @param neffectiveobs Number of effective observations. NA if the same as nobs.
 #' @param nparams Number of hyper-parameters
 #' @param ll Log-likelihood
 #' @param adjustedll Adjusted log-likelihood when the series has been transformed
@@ -87,9 +90,17 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
 #' @param bicc BIC corrected for the length
 #' @param ssq Sum of the squared residuals
 #'
-#' @export
+#' @returns
+#' Returns a java object of class JD3_LIKELIHOOD.
 #'
 #' @examples
+#' # Values used below are taken from the following estimation
+#' # m<- x13(rjd3toolkit::ABS$X0.2.09.10.M,"rsa3")
+#' # m$result$preprocessing$estimation$likelihood
+#' ll_estimation <- .likelihood(425,4,7,720.2,-2147.407,4308.14,4309.09,4333.96, 433.962, 0.0418)
+#'
+#' @export
+#'
 .likelihood <- function(nobs, neffectiveobs = NA, nparams = 0, ll, adjustedll = NA, aic, aicc, bic, bicc, ssq) {
     if (is.na(neffectiveobs)) neffectiveobs <- nobs
     if (is.na(adjustedll)) adjustedll <- ll

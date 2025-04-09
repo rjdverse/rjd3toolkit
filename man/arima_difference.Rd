@@ -2,7 +2,7 @@
 % Please edit documentation in R/arima.R
 \name{arima_difference}
 \alias{arima_difference}
-\title{Remove an arima model from an existing one. More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.}
+\title{Remove an arima model from an existing one.}
 \usage{
 arima_difference(left, right, simplify = TRUE)
 }
@@ -11,13 +11,14 @@ arima_difference(left, right, simplify = TRUE)
 
 \item{right}{Right operand (JD3_ARIMA object)}
 
-\item{simplify}{Simplify the results if possible (common roots in the auto-regressive and in the moving average polynomials, including unit roots)}
+\item{simplify}{Simplify the results if possible (common roots in the
+auto-regressive and in the moving average polynomials, including unit roots)}
 }
 \value{
 a \code{"JD3_ARIMA"} model.
 }
 \description{
-Remove an arima model from an existing one. More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
+More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
 }
 \examples{
 mod1 <- arima_model(delta = c(1, -2, 1))

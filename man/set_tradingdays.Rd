@@ -6,7 +6,7 @@
 \usage{
 set_tradingdays(
   x,
-  option = c(NA, "TradingDays", "WorkingDays", "TD3", "TD3c", "TD4", "None",
+  option = c(NA, "TradingDays", "WorkingDays", "TD2c", "TD3", "TD3c", "TD4", "None",
     "UserDefined"),
   calendar.name = NA,
   uservariable = NA,
@@ -27,44 +27,65 @@ set_tradingdays(
 details).}
 
 \item{option}{to specify the set of trading days regression variables:
-\code{"TradingDays"} = six contrast variables, each type of day (from Monday to Saturday) vs Sundays;
-\code{"WorkingDays"} = one working (week days)/non-working (week-ends) day contrast variable;
-\code{"TD3"} = two contrast variables: week-days vs Sundays and  Saturdays vs Sundays;
-\code{"TD3c"} = two contrast variables: week-days (Mondays to Thursdays) vs Sundays and  Fridays+Saturdays vs Sundays;
-\code{"TD4"} = three contrast variables: week-days (Mondays to Thursdays) vs Sundays, Fridays vs Sundays, Saturdays vs Sundays;
-\code{"None"} = no correction for trading days;
-\code{"UserDefined"} = userdefined trading days regressors.}
+\itemize{
+\item \code{"TradingDays"} = six contrast variables, each type of day (from
+Monday to Saturday) vs Sundays;
+\item \code{"WorkingDays"} = one working (week days) vs non-working (week-ends) day
+contrast variable;
+\item \code{"TD2c"} = one working (Mondays to Saturdays) vs non-working (Sundays) day
+contrast variable;
+\item \code{"TD3"} = two contrast variables: week-days vs Sundays and  Saturdays
+vs Sundays;
+\item \code{"TD3c"} = two contrast variables: week-days (Mondays to Thursdays)
+vs Sundays and  Fridays+Saturdays vs Sundays;
+\item \code{"TD4"} = three contrast variables: week-days (Mondays to Thursdays)
+vs Sundays, Fridays vs Sundays, Saturdays vs Sundays;
+\item \code{"None"} = no correction for trading days;
+\item \code{"UserDefined"} = userdefined trading days regressors.
+}}
 
-\item{calendar.name}{name (string) of the user-defined calendar to be taken into account when generating
-built-in regressors set in 'option' (if not 'UserDefined).(see examples)}
+\item{calendar.name}{name (string) of the user-defined calendar to be taken
+into account when generating built-in regressors set in \code{option} (if
+not \code{"UserDefined"}).(see examples)}
 
-\item{uservariable}{a vector of characters to specify the name of user-defined calendar regressors.
-When specified, automatically set \code{option = "UserDefined"}. Names have to be the same as
-in \code{\link{modelling_context}}, see example.}
+\item{uservariable}{a vector of characters to specify the name of
+user-defined calendar regressors. When specified, automatically set
+\code{option = "UserDefined"}. Names have to be the same as in
+\code{\link{modelling_context}}, see example.}
 
-\item{stocktd}{a numeric indicating the day of the month when inventories and other stock are reported
-(to denote the last day of the month, set the variable to 31).
-When specified, automatically set \code{option = "None"}. See \code{stock_td} function for details.}
+\item{stocktd}{a numeric indicating the day of the month when inventories
+and other stock are reported (to denote the last day of the month, set the
+variable to 31). When specified, automatically set \code{option = "None"}.
+See \code{stock_td} function for details.}
 
-\item{test}{defines the pre-tests for the significance of the trading day regression variables
-based on the AICC statistics: \code{"None"} = the trading day variables are not pre-tested and are included in the model;
+\item{test}{defines the pre-tests for the significance of the trading day
+regression variables based on the AICC statistics: \code{"None"} = the
+trading day variables are not pre-tested and are included in the model;
 
 (REGARIMA/X-13 specific)
-
-\code{"Add"} = the trading day variables are not included in the initial regression model
-but can be added to the RegARIMA model after the test;
-\code{"Remove"} = the trading day variables belong to the initial regression model but can be removed from the RegARIMA model
-after the test;
+\itemize{
+\item \code{"Add"} = the trading day variables are not included in the initial
+regression model but can be added to the RegARIMA model after the test;
+\item \code{"Remove"} = the trading day variables belong to the initial
+regression model but can be removed from the RegARIMA model after the
+test;
+}
 
 (TRAMO specific)
-
-\code{"Separate_T"} = a t-test is applied to each trading day variable separately and the trading day variables are included in the RegArima model
-if at least one t-statistic is greater than 2.6 or if two t-statistics are greater than 2.0 (in absolute terms);
-\code{"Joint_F"} = a joint F-test of significance of all the trading day variables. The trading day effect is significant if the F statistic is greater than 0.95.}
+\itemize{
+\item \code{"Separate_T"} = a t-test is applied to each trading day variable
+separately and the trading day variables are included in the RegArima
+model if at least one t-statistic is greater than 2.6 or if two
+t-statistics are greater than 2.0 (in absolute terms);
+\item \code{"Joint_F"} = a joint F-test of significance of all the trading day
+variables. The trading day effect is significant if the F statistic is
+greater than 0.95.
+}}
 
 \item{coef}{vector of coefficients for the trading-days regressors.}
 
-\item{coef.type, leapyear.coef.type}{vector defining if the coefficients are fixed or estimated.}
+\item{coef.type, leapyear.coef.type}{vector defining if the coefficients are
+fixed or estimated.}
 
 \item{automatic}{defines whether the calendar effects should be added to the
 model manually (\code{"Unused"}) or automatically. During the automatic
@@ -73,15 +94,22 @@ the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test
 (\code{"WaldTest"}), or by minimizing AIC or BIC; the model with higher
 F-value is chosen, provided that it is higher than \code{pftd}).}
 
-\item{pftd}{(TRAMO SPECIFIC) \code{numeric}. The p-value used to assess the significance of the pre-tested calendar effects.}
+\item{pftd}{(TRAMO SPECIFIC) \code{numeric}. The p-value used to assess the
+significance of the pre-tested calendar effects.}
 
-\item{autoadjust}{a logical indicating if the program corrects automatically the raw series for
-the leap year effect if the leap year regressor is significant. Only used when the data is log transformed.}
+\item{autoadjust}{a logical indicating if the program corrects automatically
+the raw series for the leap year effect if the leap year regressor is
+significant. Only used when the data is log transformed.}
 
-\item{leapyear}{a \code{character} to specify whether or not to include the leap-year effect in the model:
-\code{"LeapYear"} = leap year effect; \code{"LengthOfPeriod"} = length of period (REGARIMA/X-13 specific),
-\code{"None"} = no effect included. Default: a leap year effect regressor is included with any built-in set
-of trading day regressors.}
+\item{leapyear}{a \code{character} to specify whether or not to include the
+leap-year effect in the model:
+\itemize{
+\item \code{"LeapYear"} = leap year effect;
+\item \code{"LengthOfPeriod"} = length of period (REGARIMA/X-13 specific),
+\item \code{"None"} = no effect included.
+Default: a leap year effect regressor is included with any built-in set of
+trading day regressors.
+}}
 
 \item{leapyear.coef}{coefficient of the leap year regressor.}
 }
@@ -96,9 +124,10 @@ don't take into account any holiday. To do so user-defined regressors have to
 be built.
 }
 \details{
-\code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-(or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
-generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+\code{x} specification parameter must be a JD3_X13_SPEC" class object
+generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
+with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+\code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{

@@ -1,16 +1,18 @@
 #' @include protobuf.R jd2r.R
 NULL
 
-#' Easter regressor
+#' @title Easter regressor
 #'
 #' @description
 #' Allows to generate a regressor taking into account the (Julian) Easter effect in monthly or quarterly time series.
+#'
 #' @inheritParams td
 #' @param duration Duration (length in days) of the Easter effect. (value between 1 and 20, default =6)
 #' @param endpos Position of the end of the Easter effect, relatively to Easter:
 #' -1(default): before Easter Sunday, 0: on Easter Sunday, 1: on Easter Monday)
 #' @param correction mean correction option. Simple"(default), "PreComputed", "Theoretical" or "None".
-#' @return A time series (object of class \code{"ts"})
+#'
+#' @returns A time series (object of class \code{"ts"})
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -45,13 +47,16 @@ julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
     return(ts(data, frequency = frequency, start = start))
 }
 
-#' Leap Year regressor
+#' @title Leap Year regressor
+#'
 #' @description
 #' Allows to generate a regressor correcting for the leap year or length-of-period effect.
+#'
 #' @inheritParams td
 #' @param type the modelling of the leap year effect: as a contrast variable (\code{type = "LeapYear"}, default)
 #' or by a length-of-month (or length-of-quarter; \code{type = "LengthOfPeriod"}).
-#' @return Time series (object of class \code{"ts"})
+#'
+#' @returns Time series (object of class \code{"ts"})
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -76,13 +81,16 @@ lp_variable <- function(frequency, start, length, s, type = c("LeapYear", "Lengt
     return(ts(data, frequency = frequency, start = start))
 }
 
-#' Generating Outlier regressors
+#' @title Generating Outlier regressors
 #'
 #' @inheritParams td
-#' @param pos,date the date of the outlier, defined by the position in period compared to the first date (\code{pos} parameter)
-#' or by a specific \code{date} defined in the format \code{"YYYY-MM-DD"}.
+#' @param pos,date the date of the outlier, defined by the position in period
+#' compared to the first date (\code{pos} parameter) or by a specific
+#' \code{date} defined in the format \code{"YYYY-MM-DD"}.
 #' @param rate the decay rate of the transitory change regressor (see details).
-#' @param zeroended Boolean indicating if the regressor should end by 0 (\code{zeroended = TRUE}, default) or 1 (\code{zeroended = FALSE}), argument valid only for LS and SO.
+#' @param zeroended Boolean indicating if the regressor should end by 0
+#' (\code{zeroended = TRUE}, default) or 1 (\code{zeroended = FALSE}), argument
+#' valid only for LS and SO.
 #'
 #' @details
 #' An additive outlier (AO, \code{ao_variable}) is defined as:
@@ -128,6 +136,7 @@ ao_variable <- function(frequency, start, length, s, pos, date = NULL) {
     }
     return(ts(data, frequency = frequency, start = start))
 }
+
 #' @export
 #' @rdname outliers_variables
 tc_variable <- function(frequency, start, length, s, pos, date = NULL, rate = 0.7) {
@@ -182,7 +191,7 @@ so_variable <- function(frequency, start, length, s, pos, date = NULL, zeroended
     return(ts(data, frequency = frequency, start = start))
 }
 
-#' Ramp regressor
+#' @title Ramp regressor
 #'
 #' @inheritParams outliers_variables
 #' @param range the range of the regressor. A vector of length 2 containing the datesin the format \code{"YYYY-MM-DD"}
@@ -230,16 +239,19 @@ ramp_variable <- function(frequency, start, length, s, range) {
     return(ts(data, frequency = frequency, start = start))
 }
 
-#' Intervention variable
+#' @title Intervention variable
+#'
 #' @description
 #' Function allowing to create external regressors as sequences of zeros and ones. The generated variables
 #' will have to be added with \code{\link{add_usrdefvar}} function will require a modelling context definition
 #' with \code{\link{modelling_context}} to be used in an estimation process.
+#'
 #' @inheritParams outliers_variables
 #' @param starts,ends characters specifying sequences of starts/ends dates for the intervention variable.
 #' Can be characters or integers.
 #' @param delta regular differencing order.
 #' @param seasonaldelta seasonal differencing order.
+#'
 #' @details
 #' Intervention variables are combinations of any possible sequence of ones and zeros
 #' (the sequence of ones being defined by the parameters `starts` and `ends`)
@@ -305,21 +317,22 @@ intervention_variable <- function(frequency, start, length, s, starts, ends, del
     return(ts(data, frequency = frequency, start = start))
 }
 
-#' Periodic dummies and contrasts
+#' @title Periodic dummies and contrasts
 #'
 #' @inheritParams outliers_variables
+#'
 #' @details
-#' The function periodic.dummies creates as many time series as types of periods in a year (4 or 12)
+#' The function periodic_dummies creates as many time series as types of periods in a year (4 or 12)
 #' with the value one only for one given type of period (ex Q1)
-#' The periodic.contrasts function is based on periodic.dummies but adds -1 to the period preceding a 1.
+#' The periodic_contrasts function is based on periodic_dummies but adds -1 to the period preceding a 1.
 #' @examples
 #' # periodic dummies for a quarterly series
-#' p <- periodic.dummies(4, c(2000, 1), 60)
+#' p <- periodic_dummies(4, c(2000, 1), 60)
 #' # periodic contrasts for a quarterly series
-#' q <- periodic.contrasts(4, c(2000, 1), 60)
+#' q <- periodic_contrasts(4, c(2000, 1), 60)
 #' q[1:9, ]
 #' @export
-periodic.dummies <- function(frequency, start, length, s) {
+periodic_dummies <- function(frequency, start, length, s) {
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
@@ -331,8 +344,8 @@ periodic.dummies <- function(frequency, start, length, s) {
     return(ts(data, frequency = frequency, start = start))
 }
 #' @export
-#' @rdname periodic.dummies
-periodic.contrasts <- function(frequency, start, length, s) {
+#' @rdname periodic_dummies
+periodic_contrasts <- function(frequency, start, length, s) {
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
@@ -343,8 +356,10 @@ periodic.contrasts <- function(frequency, start, length, s) {
     data <- .jd2r_matrix(jm)
     return(ts(data, frequency = frequency, start = start))
 }
-#' Trigonometric variables
+
+#' @title Trigonometric variables
 #'
+#' @description
 #' Computes trigonometric variables at different frequencies.
 #'
 #' @inheritParams outliers_variables

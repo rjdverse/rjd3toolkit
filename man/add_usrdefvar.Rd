@@ -46,15 +46,15 @@ generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" gene
 \code{rjd3tramoseats::spec_tramo()}).
 Components to which the effect of the regressor can be allocated:
 \itemize{
-\item "Undefined" : the effect of the regressor is assigned to an additional component,
+\item \code{"Undefined"} : the effect of the regressor is assigned to an additional component,
 the variable is used to improve the pre-processing step, but is not removed from the series
 for the decomposition.
-\item "Trend": after the decomposition the effect is allocated to the trend component, like a Level-Shift
-\item "Irregular": after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
-\item "Seasonal": after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
-\item "Series": after the decomposition the effect is allocated to
+\item \code{"Trend"}: after the decomposition the effect is allocated to the trend component, like a Level-Shift
+\item \code{"Irregular"}: after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
+\item \code{"Seasonal"}: after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
+\item \code{"Series"}: after the decomposition the effect is allocated to
 the raw series: \eqn{yc_t=y_t+ effect}
-\item "SeasonallyAdjusted": after the decomposition the effect is allocated to
+\item \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to
 the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 }
 }
@@ -83,6 +83,7 @@ my_context <- modelling_context(variables = vars)
 # new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)
 # modelling context is needed for the estimation phase
 # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+
 }
 \references{
 More information on outliers and other auxiliary variables in JDemetra+ online documentation:

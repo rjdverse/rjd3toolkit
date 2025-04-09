@@ -2,7 +2,7 @@
 % Please edit documentation in R/arima.R
 \name{sarima_hannan_rissanen}
 \alias{sarima_hannan_rissanen}
-\title{Title}
+\title{Estimate ARIMA Model with Hannan-Rissanen method}
 \usage{
 sarima_hannan_rissanen(
   x,
@@ -14,7 +14,7 @@ sarima_hannan_rissanen(
 )
 }
 \arguments{
-\item{x}{a univariate time series.}
+\item{x}{an univariate time series (TS object).}
 
 \item{order}{vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.}
 
@@ -27,10 +27,13 @@ Either  a list with components \code{order} and \code{period} or a numeric vecto
 
 \item{finalCorrection}{Final correction as implemented in Tramo}
 }
+\value{
+An object of class \code{JD3_SARIMA} with the estimated coefficient.
+}
 \description{
-Title
+Estimate ARIMA Model with Hannan-Rissanen method
 }
 \examples{
 y <- ABS$X0.2.09.10.M
-sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
+model<- sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 }

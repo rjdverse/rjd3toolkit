@@ -1,0 +1,58 @@
+name: Update Java Dependencies
+
+on:
+  workflow_dispatch:
+    inputs:
+      update_type:
+        description: "Type de mise à jour (snapshot/release)"
+        required: true
+        default: "snapshot"
+        type: choice
+        options:
+          - snapshot
+          - release
+  # schedule:
+  #   - cron: '0 3 * * 1'
+
+jobs:
+  update-java:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@users.noreply.github.com"
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Determine Update Type
+        id: set-update-command
+        run: |
+          if [[ "${{ github.event.inputs.update_type }}" == "release" ]]; then
+            echo "UPDATE_COMMAND=mvn versions:update-properties -DallowDowngrade" >> $GITHUB_ENV
+            echo "ARTIFACT_NAME=java-dependencies-release" >> $GITHUB_ENV
+          else
+            echo "UPDATE_COMMAND=mvn versions:update-properties -DallowSnapshots -DallowDowngrade" >> $GITHUB_ENV
+            echo "ARTIFACT_NAME=java-dependencies-snapshot" >> $GITHUB_ENV
+          fi
+
+      - name: Update Java Dependencies
+        run: ${{ env.UPDATE_COMMAND }}
+
+      - name: Run Maven to Copy JARs
+        run: mvn -Pcopy-jars
+
+      - name: Commit & Push Updated POM
+        run: |
+          git add -A
+          git commit -m "Update Java dependencies to latest ${{ github.event.inputs.update_type || 'snapshot' }}"
+          git push
+        continue-on-error: true

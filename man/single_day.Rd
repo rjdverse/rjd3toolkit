@@ -22,5 +22,5 @@ More information on calendar correction in JDemetra+ online documentation:
 \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 }
 \seealso{
-\code{\link{national_calendar}}, \code{\link{fixed_day}},\code{\link{special_day}},\code{\link{easter_day}}
+\code{\link{national_calendar}}, \code{\link{fixed_day}}, \code{\link{special_day}},\code{\link{easter_day}}
 }

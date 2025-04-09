@@ -2,7 +2,7 @@
 % Please edit documentation in R/differencing.R
 \name{differencing_fast}
 \alias{differencing_fast}
-\title{Automatic differencing}
+\title{The series is differenced till its variance is decreasing.}
 \usage{
 differencing_fast(data, period, mad = TRUE, centile = 90, k = 1.2)
 }
@@ -15,7 +15,9 @@ differencing_fast(data, period, mad = TRUE, centile = 90, k = 1.2)
 
 \item{centile}{Percentage of the data used for computing the variance (90 by default).}
 
-\item{k}{tolerance in the decrease of the variance. The algorithm stops if the new variance is higher than k*the old variance. k should be equal or slightly higher than 1 (1.2 by default)}
+\item{k}{tolerance in the decrease of the variance. The algorithm stops if
+the new variance is higher than k*the old variance. k should be equal or
+slightly higher than 1 (1.2 by default)}
 }
 \value{
 Stationary transformation
@@ -30,7 +32,7 @@ Stationary transformation
 }
 }
 \description{
-The series is differenced till its variance is decreasing.
+Automatic differencing
 }
 \examples{
 differencing_fast(log(ABS$X0.2.09.10.M), 12)

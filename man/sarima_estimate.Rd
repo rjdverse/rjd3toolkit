@@ -14,7 +14,7 @@ sarima_estimate(
 )
 }
 \arguments{
-\item{x}{a univariate time series.}
+\item{x}{an univariate time series (class Ts object).}
 
 \item{order}{vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.}
 
@@ -26,6 +26,21 @@ Either  a list with components \code{order} and \code{period} or a numeric vecto
 \item{xreg}{vector or matrix of external regressors.}
 
 \item{eps}{precision.}
+}
+\value{
+An object of class \code{JD3_SARIMA_ESTIMATE} containing:
+\itemize{
+\item the estimated parameters,
+\item the raw data,
+\item the regressors,
+\item the standard errors,
+\item the log-likelihood (with the number of observations, the number of
+effective observations, the number of parameters, the log-likelihood,
+the adjusted log-likelihood, the AIC, the AICC, the BIC, the BICC, and
+the sum of squares),
+\item the residuals,
+\item the orders of the model.
+}
 }
 \description{
 Estimate SARIMA Model

@@ -43,6 +43,14 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
+      - name: Update NEWS.md with package name and version
+        run: |
+          PACKAGE_NAME=$(grep -E '^Package:' DESCRIPTION | awk '{print $2}')
+          VERSION=$(grep -E '^Version:' DESCRIPTION | awk '{print $2}')
+          sed -i '1{/^# Changelog$/d}' NEWS.md
+          sed -i "1s/^/# ${PACKAGE_NAME} ${VERSION}\n\n/" NEWS.md
+        shell: bash
+
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}

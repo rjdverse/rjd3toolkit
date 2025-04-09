@@ -42,3 +42,7 @@ A \code{"JD3_SARIMA"} model.
 \description{
 Seasonal ARIMA model (Box-Jenkins)
 }
+\examples{
+mod1 <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
+
+}

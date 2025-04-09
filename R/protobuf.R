@@ -3,8 +3,9 @@
 #' @importFrom stats frequency ts start
 NULL
 
-#' Java Utility Functions
+#' @title Java Utility Functions
 #'
+#' @description
 #' These functions are used in all JDemetra+ 3.0 packages to easily interact between R and Java objects.
 #'
 #' @param p,r,spec,jucm,start,end,name,period,type,code,prefix,span,rspan,full,rslt,jd,jcontext,jobjRef,jcals,subclasses,result,pcalendar parameters.
@@ -38,7 +39,7 @@ NULL
 #' @rdname jd3_utilities
 .enum_extract <- function(type, p) {
     name <- type$value(number = p)$name()
-    return(substring(name, regexpr("_", name) + 1))
+    return(substring(name, regexpr("_", name, fixed = TRUE) + 1))
 }
 
 #' @export

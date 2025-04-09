@@ -12,7 +12,8 @@ td_canovahansen(
 )
 }
 \arguments{
-\item{s}{a \code{ts} object that corresponds to the input time series to test.}
+\item{s}{a \code{ts} object that corresponds to the input time series to
+test.}
 
 \item{differencing}{Differencing lags.}
 
