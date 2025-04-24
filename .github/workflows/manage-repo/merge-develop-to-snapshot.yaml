@@ -1,6 +1,9 @@
 name: Merge Develop to Snapshot & Update Java
 
 on:
+  push:
+    branches:
+      - develop
   workflow_dispatch:
   # schedule:
   #   - cron: '0 3 * * 1'
@@ -9,11 +12,15 @@ jobs:
   merge-and-update:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: snapshot
 
       - name: Configure Git
         run: |
@@ -26,12 +33,10 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Force Merge Develop into Snapshot
+      - name: Rebase develop into snapshot
         run: |
-          git checkout snapshot
-          git fetch origin develop
-          git reset --hard origin/develop # Force `snapshot` à être identique à `develop`
-          git push --force origin snapshot  # Force push sur `snapshot`
+          git fetch origin
+          git rebase origin/develop
 
       - name: Update Java Dependencies
         run: mvn versions:update-properties -DallowSnapshots -DallowDowngrade
@@ -43,4 +48,7 @@ jobs:
         run: |
           git add -A
           git commit -m "Update Java dependencies & JARs after merging develop → snapshot" || echo "No changes to commit"
-          git push origin snapshot
+
+      - name: Push Updated Repository
+        run: |
+          git push --force origin snapshot
