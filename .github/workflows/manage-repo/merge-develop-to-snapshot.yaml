@@ -12,6 +12,9 @@ jobs:
   merge-and-update:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -49,6 +52,3 @@ jobs:
       - name: Push Updated Repository
         run: |
           git push --force origin snapshot
-
-
-
