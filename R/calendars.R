@@ -953,7 +953,7 @@ print.JD3_SINGLEDAY <- function(x, ...) {
 #' @rdname print.calendars
 print.JD3_CALENDAR <- function(x, ...) {
     cat("Holiday:\n")
-    for (day in x$day) {
+    for (day in x$days) {
         cat("\t- ")
         print(day)
         cat("\n")
