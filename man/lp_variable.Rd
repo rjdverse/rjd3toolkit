@@ -33,9 +33,11 @@ Time series (object of class \code{"ts"})
 Allows to generate a regressor correcting for the leap year or length-of-period effect.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Leap years occur in year 2000, 2004, 2008 and 2012
 lp_variable(4, start = c(2000, 1), length = 4 * 13)
 lper <- lp_variable(12, c(2000, 1), length = 10 * 12, type = "LengthOfPeriod")
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

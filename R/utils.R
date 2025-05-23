@@ -93,9 +93,9 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
 #' @returns
 #' Returns a java object of class JD3_LIKELIHOOD.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # Values used below are taken from the following estimation
-#' # m<- x13(rjd3toolkit::ABS$X0.2.09.10.M,"rsa3")
+#' # m <- x13(rjd3toolkit::ABS$X0.2.09.10.M,"rsa3")
 #' # m$result$preprocessing$estimation$likelihood
 #' ll_estimation <- .likelihood(425,4,7,720.2,-2147.407,4308.14,4309.09,4333.96, 433.962, 0.0418)
 #'

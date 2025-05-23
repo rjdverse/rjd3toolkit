@@ -18,6 +18,8 @@ A matrix (len(pos) x len(knots))
 Periodic cardinal cubic splines
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 s<-periodic_csplines(x = c(0,.2,.3, .9,.95, 1), pos=seq(0,1,0.01))
 matplot(s, type='l')
+\dontshow{\}) # examplesIf}
 }

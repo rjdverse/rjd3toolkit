@@ -27,7 +27,8 @@ F-test on seasonal dummies
 Estimation of a model with seasonal dummies. Joint F-test on the coefficients of the dummies.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 seasonality_f(ABS$X0.2.09.10.M, model = "D1")
 seasonality_f(random_t(2, 1000), 7)
-
+\dontshow{\}) # examplesIf}
 }

@@ -62,9 +62,11 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
 # new_spec<-set_estimate(init_spec, type= "From", d0 = "2012-01-01", tol = 0.0000002,
 # exact.ml = FALSE, unit.root.limit = 0.98)
+\dontshow{\}) # examplesIf}
 }
 \references{
 More in JDemetra+ online documentation:

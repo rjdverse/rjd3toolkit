@@ -36,8 +36,10 @@ NULL
 #' @md
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
+#'
 #' do_stationary(log(ABS$X0.2.09.10.M), 12)
+#'
 do_stationary <- function(data, period) {
     if (is.ts(data) && missing(period)) {
         period <- frequency(data)
@@ -76,7 +78,7 @@ do_stationary <- function(data, period) {
 #'    * \code{order}: order of the differencing
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' differencing_fast(log(ABS$X0.2.09.10.M), 12)
 #'
 differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
@@ -105,7 +107,7 @@ differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
 #' @returns The differenced series.
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' differences(Retail$BookStores, c(1, 1, 12), FALSE)
 #'
 differences <- function(data, lags = 1, mean = TRUE) {
@@ -176,7 +178,7 @@ differences.data.frame <- function(data, lags = 1, mean = TRUE) {
 #'
 #' @returns T-Stat of the slope of the range-mean regression.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' y <- ABS$X0.2.09.10.M
 #' # Multiplicative pattern
 #' plot(y)

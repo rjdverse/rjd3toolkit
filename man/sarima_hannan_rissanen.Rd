@@ -34,6 +34,8 @@ An object of class \code{JD3_SARIMA} with the estimated coefficient.
 Estimate ARIMA Model with Hannan-Rissanen method
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 y <- ABS$X0.2.09.10.M
 model<- sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
+\dontshow{\}) # examplesIf}
 }

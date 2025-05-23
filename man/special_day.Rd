@@ -48,6 +48,7 @@ CHRISTMAS      \tab Fixed holiday, falls on December, 25th.
 }
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # To add Easter Monday
 special_day("EASTERMONDAY")
 # To define a holiday for the day after Christmas, with validity and weight
@@ -55,6 +56,7 @@ special_day("CHRISTMAS",
     offset = 1, weight = 0.8,
     validity = list(start = "2000-01-01", end = "2020-12-01")
 )
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

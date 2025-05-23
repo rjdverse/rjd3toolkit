@@ -20,6 +20,8 @@ The median absolute deviation
 Compute a robust median absolute deviation (MAD)
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 y <- rnorm(1000)
 m <- rjd3toolkit::mad(y, centile = 70)
+\dontshow{\}) # examplesIf}
 }

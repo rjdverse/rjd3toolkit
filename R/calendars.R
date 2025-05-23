@@ -73,7 +73,7 @@ SINGLEDAY <- "JD3_SINGLEDAY"
 #' @returns returns an object of class \code{c("JD3_FIXEDDAY","JD3_HOLIDAY")}
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' day <- fixed_day(7, 21, .9)
 #' day # July 21st, with weight=0.9, on the whole sample
 #' day <- fixed_day(12, 25, .5, validity = list(start = "2010-01-01"))
@@ -137,7 +137,7 @@ fixed_day <- function(month, day, weight = 1, validity = NULL) {
 
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' day <- fixed_week_day(9, 1, 1) # first Monday(1) of September.
 #' day
 #' @seealso \code{\link{national_calendar}}, \code{\link{fixed_day}},\code{\link{special_day}},\code{\link{easter_day}}
@@ -176,7 +176,7 @@ fixed_week_day <- function(month, week, dayofweek, weight = 1, validity = NULL) 
 #' @param offset The position of the holiday in relation to Easter Sunday, measured in days (can be positive or negative).
 #' @param julian Boolean indicating if Julian calendar must be used.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' easter_day(1) # Easter Monday
 #' easter_day(-2) # Easter Good Friday
 #' # Corpus Christi 60 days after Easter
@@ -221,7 +221,7 @@ easter_day <- function(offset, julian = FALSE, weight = 1, validity = NULL) {
 #' @param date the date of the holiday in the format `"YYYY-MM-DD"`.
 #'
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' single_day("1999-03-19")
 #' @seealso \code{\link{national_calendar}}, \code{\link{fixed_day}}, \code{\link{special_day}},\code{\link{easter_day}}
 #' @references
@@ -281,7 +281,7 @@ single_day <- function(date, weight = 1) {
 #' CHRISTMAS      \tab Fixed holiday, falls on December, 25th.
 #' }
 #' @export
-#' @examples
+#' @examplesIf jversion >= 17
 #' # To add Easter Monday
 #' special_day("EASTERMONDAY")
 #' # To define a holiday for the day after Christmas, with validity and weight
@@ -370,18 +370,22 @@ special_day <- function(event, offset = 0, weight = 1, validity = NULL) {
 #' (\code{contrasts = FALSE}) or the 1-group (\code{contrasts = TRUE}).
 #'
 #' @seealso \code{\link{calendar_td}}
+#'
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
+#'
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
+#'
 #' # Monthly regressors for Trading Days: each type of day is different
 #' # contrasts to Sundays (6 series)
 #' regs_td <- td(12, c(2020, 1), 60, groups = c(1, 2, 3, 4, 5, 6, 0), contrasts = TRUE)
 #' # Quarterly regressors for Working Days: week days are similar
 #' # contrasts to week-end days (1 series)
 #' regs_wd <- td(4, c(2020, 1), 60, groups = c(1, 1, 1, 1, 1, 0, 0), contrasts = TRUE)
+#'
 td <- function(frequency, start, length, s, groups = c(1, 2, 3, 4, 5, 6, 0), contrasts = TRUE) {
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -435,7 +439,7 @@ td <- function(frequency, start, length, s, groups = c(1, 2, 3, 4, 5, 6, 0), con
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
-#' @examples
+#' @examplesIf jversion >= 17
 #' BE <- national_calendar(list(
 #'     fixed_day(7, 21),
 #'     special_day("NEWYEAR"),
@@ -491,7 +495,7 @@ holidays <- function(calendar,
 #' @returns returns an object of class \code{c("matrix","array")} with the long term means corresponding
 #' to each group/period, starting with the 0-group.
 #' @export
-#' @examples
+#' @examplesIf jversion >= 17
 #' BE <- national_calendar(list(
 #'     fixed_day(7, 21),
 #'     special_day("NEWYEAR"),
@@ -536,7 +540,7 @@ long_term_mean <- function(calendar, frequency, groups = c(1, 2, 3, 4, 5, 6, 0),
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #
-#' @examples
+#' @examplesIf jversion >= 17
 #' # Dates from 2018(included) to 2023 (included)
 #' easter_dates(2018, 2023)
 easter_dates <- function(year0, year1, julian = FALSE) {
@@ -652,7 +656,7 @@ stock_td <- function(frequency, start, length, s, w = 31) {
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
-#' @examples
+#' @examplesIf jversion >= 17
 #' Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
 #' France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
 #' chained_cal <- chained_calendar(France, Belgium, "2000-01-01")
@@ -707,7 +711,7 @@ chained_calendar <- function(calendar1, calendar2, break_date) {
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
 #' France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
 #' composite_calendar <- weighted_calendar(list(France, Belgium), weights = c(1, 2))
@@ -778,7 +782,7 @@ weighted_calendar <- function(calendars, weights) {
 #' @param mean_correction TRUE if the variables generated by this calendar will
 #' contain long term mean corrections (default). FALSE otherwise.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # Fictional calendar using all possibilities to set the required holidays
 #' MyCalendar <- national_calendar(list(
 #'     fixed_day(7, 21),
@@ -832,7 +836,8 @@ national_calendar <- function(days, mean_correction = TRUE) {
 #' corresponding to each group, starting with the 0-group
 #' (\code{contrasts = FALSE}) or the 1-group (\code{contrasts = TRUE}).
 #' @export
-#' @examples
+#' @examplesIf jversion >= 17
+#'
 #' BE <- national_calendar(list(
 #'     fixed_day(7, 21),
 #'     special_day("NEWYEAR"),
@@ -849,10 +854,12 @@ national_calendar <- function(days, mean_correction = TRUE) {
 #'     holiday = 7, groups = c(1, 1, 1, 2, 2, 3, 0),
 #'     contrasts = FALSE
 #' )
+#'
 #' @seealso \code{\link{national_calendar}}, \code{\link{td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
+#'
 calendar_td <- function(calendar,
                         frequency,
                         start,

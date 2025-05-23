@@ -21,6 +21,7 @@ The regressors can be created with functions available in the package
 or come from any other source, provided they are \code{ts} class objects.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # creating one or several external regressors (TS objects), which will
 # be gathered in one or several groups
 iv1 <- intervention_variable(12, c(2000, 1), 60,
@@ -38,6 +39,7 @@ my_context <- modelling_context(variables = vars)
 # new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
 # modelling context is needed for the estimation phase
 # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on auxiliary variables in JDemetra+ online documentation:
