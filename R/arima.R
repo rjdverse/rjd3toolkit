@@ -60,8 +60,18 @@ sarima_model <- function(name = "sarima",
 #'
 sarima_properties <- function(model, nspectrum = 601, nacf = 36) {
     jmodel <- .r2jd_sarima(model)
-    spectrum <- .jcall("jdplus/toolkit/base/r/arima/SarimaModels", "[D", "spectrum", jmodel, as.integer(nspectrum))
-    acf <- .jcall("jdplus/toolkit/base/r/arima/SarimaModels", "[D", "acf", jmodel, as.integer(nacf))
+    spectrum <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/SarimaModels",
+        returnSig = "[D",
+        method = "spectrum",
+        jmodel, as.integer(nspectrum)
+    )
+    acf <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/SarimaModels",
+        returnSig = "[D",
+        method = "acf",
+        jmodel, as.integer(nacf)
+    )
     return(list(acf = acf, spectrum = spectrum))
 }
 
@@ -70,11 +80,12 @@ sarima_properties <- function(model, nspectrum = 601, nacf = 36) {
 #'
 #' @param model a `"JD3_SARIMA"` model (see [sarima_model()] function).
 #' @param length length of the output series.
-#' @param stde deviation of the normal distribution of the innovations of the simulated series.
-#'  Unused if `tdegree` is larger than 0.
+#' @param stde deviation of the normal distribution of the innovations of the
+#' simulated series. Unused if `tdegree` is larger than 0.
 #' @param tdegree degrees of freedom of the T distribution of the innovations.
 #' `tdegree = 0` if normal distribution is used.
-#' @param seed seed of the random numbers generator. Negative values mean random seeds
+#' @param seed seed of the random numbers generator. Negative values mean
+#' random seeds.
 #'
 #' @returns a numeric vector with the simulated series.
 #'
@@ -125,7 +136,9 @@ sarima_decompose <- function(model, rmod = 0, epsphi = 0) {
     }
     jmodel <- .r2jd_sarima(model)
     jucm <- .jcall(
-        "jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/ucarima/UcarimaModel;", "decompose",
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig = "Ljdplus/toolkit/base/core/ucarima/UcarimaModel;",
+        method = "decompose",
         jmodel, as.numeric(rmod), as.numeric(epsphi)
     )
     if (is.jnull(jucm)) {
@@ -188,7 +201,9 @@ arima_model <- function(name = "arima", ar = 1, delta = 1, ma = 1, variance = 1)
 
 .r2jd_arima <- function(model) {
     return(.jcall(
-        "jdplus/toolkit/base/r/arima/ArimaModels", "Ljdplus/toolkit/base/core/arima/ArimaModel;", "of",
+        obj = "jdplus/toolkit/base/r/arima/ArimaModels",
+        returnSig = "Ljdplus/toolkit/base/core/arima/ArimaModel;",
+        method = "of",
         .jarray(as.numeric(model$ar)),
         .jarray(as.numeric(model$delta)),
         .jarray(as.numeric(model$ma)),
@@ -223,7 +238,12 @@ arima_sum <- function(...) {
 
 arima_lsum <- function(components) {
     q <- .jarray(lapply(components, .r2jd_arima), "jdplus/toolkit/base/core/arima/ArimaModel")
-    jsum <- .jcall("jdplus/toolkit/base/r/arima/ArimaModels", "Ljdplus/toolkit/base/core/arima/ArimaModel;", "sum", q)
+    jsum <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/ArimaModels",
+        returnSig = "Ljdplus/toolkit/base/core/arima/ArimaModel;",
+        method = "sum",
+        q
+    )
     return(.jd2r_arima(jsum))
 }
 
@@ -388,18 +408,38 @@ ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
         jwks, as.integer(cmp - 1), signal
     )
 
-    spectrum <- .jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "[D", "spectrum", jwk, as.integer(nspectrum))
-    wk <- .jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "[D", "filter", jwk, as.integer(nwk))
-    gain <- .jcall("jdplus/toolkit/base/r/arima/UcarimaModels", "[D", "gain", jwk, as.integer(nspectrum))
+    spectrum <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig = "[D",
+        method = "spectrum",
+        jwk, as.integer(nspectrum)
+    )
+    wk <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig = "[D",
+        method = "filter",
+        jwk, as.integer(nwk)
+    )
+    gain <- .jcall(
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig =  "[D",
+        method = "gain",
+        jwk, as.integer(nspectrum)
+    )
 
     return(structure(list(spectrum = spectrum, filter = wk, gain2 = gain * gain), class = "JD3_UCARIMA_WK"))
 }
 
-#' @title Makes a UCARIMA model canonical; more specifically, put all the noise of the components in one dedicated component
+#' @title Makes a UCARIMA model canonical
+#'
+#' @description
+#' More specifically, put all the noise of the components in one dedicated component
 #'
 #' @param ucm An UCARIMA model returned by [ucarima_model()].
-#' @param cmp Index of the component that will contain the noises; 0 if a new component with all the noises will be added to the model
-#' @param adjust If TRUE, some noise could be added to the model to ensure that all the components has positive (pseudo-)spectrum
+#' @param cmp Index of the component that will contain the noises; 0 if a new
+#' component with all the noises will be added to the model
+#' @param adjust If TRUE, some noise could be added to the model to ensure that
+#' all the components has positive (pseudo-)spectrum
 #'
 #' @returns A new UCARIMA model
 #' @export
@@ -412,7 +452,9 @@ ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
 ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
     jucm <- .r2jd_ucarima(ucm)
     jnucm <- .jcall(
-        "jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/core/ucarima/UcarimaModel;", "doCanonical",
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig = "Ljdplus/toolkit/base/core/ucarima/UcarimaModel;",
+        method = "doCanonical",
         jucm, as.integer(cmp - 1), as.logical(adjust)
     )
     return(.jd2r_ucarima(jnucm))
@@ -424,7 +466,8 @@ ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
 #' @param x Univariate time series
 #' @param stdev TRUE if standard deviation of the components are computed
 #'
-#' @returns A matrix containing the different components and their standard deviations if stdev is TRUE.
+#' @returns A matrix containing the different components and their standard
+#' deviations if stdev is TRUE.
 #' @export
 #'
 #' @examplesIf jversion >= 17
@@ -439,7 +482,9 @@ ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
 ucarima_estimate <- function(x, ucm, stdev = TRUE) {
     jucm <- .r2jd_ucarima(ucm)
     jcmps <- .jcall(
-        "jdplus/toolkit/base/r/arima/UcarimaModels", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "estimate",
+        obj = "jdplus/toolkit/base/r/arima/UcarimaModels",
+        returnSig = "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+        method = "estimate",
         as.numeric(x), jucm, as.logical(stdev)
     )
     return(.jd2r_matrix(jcmps))
@@ -448,9 +493,12 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 #' @title Estimate SARIMA Model
 #'
 #' @param x an univariate time series (class Ts object).
-#' @param order vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.
-#' @param seasonal specification of the seasonal part of the ARIMA model and the seasonal frequency (by default equals to `frequency(x)`).
-#' Either  a list with components `order` and `period` or a numeric vector specifying the seasonal order (the default period is then used).
+#' @param order vector specifying of the non-seasonal part of the ARIMA model:
+#' the AR order, the degree of differencing, and the MA order.
+#' @param seasonal specification of the seasonal part of the ARIMA model and the
+#' seasonal frequency (by default equals to `frequency(x)`).
+#' Either  a list with components `order` and `period` or a numeric vector
+#' specifying the seasonal order (the default period is then used).
 #' @param mean should the SARIMA model include an intercept term.
 #' @param xreg vector or matrix of external regressors.
 #' @param eps precision.
@@ -535,10 +583,14 @@ sarima_estimate <- function(x,
 #' @title Estimate ARIMA Model with Hannan-Rissanen method
 #'
 #' @param x an univariate time series (TS object).
-#' @param order vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.
-#' @param seasonal specification of the seasonal part of the ARIMA model and the seasonal frequency (by default equals to `frequency(x)`).
-#' Either  a list with components `order` and `period` or a numeric vector specifying the seasonal order (the default period is then used).
-#' @param initialization Algorithm used in the computation of the long order auto-regressive model (used to estimate the innovations)
+#' @param order vector specifying of the non-seasonal part of the ARIMA model:
+#' the AR order, the degree of differencing, and the MA order.
+#' @param seasonal specification of the seasonal part of the ARIMA model and the
+#' seasonal frequency (by default equals to `frequency(x)`).
+#' Either  a list with components `order` and `period` or a numeric vector
+#' specifying the seasonal order (the default period is then used).
+#' @param initialization Algorithm used in the computation of the long order
+#' auto-regressive model (used to estimate the innovations)
 #' @param biasCorrection Bias correction
 #' @param finalCorrection Final correction as implemented in Tramo
 #'

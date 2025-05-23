@@ -252,9 +252,24 @@ daysOf <- function(ts, pos = 1) {
 #' the data and the metadata
 #' @export
 to_ts <- function(source, id, type = "All") {
-    jmoniker <- .jcall("jdplus/toolkit/base/api/timeseries/TsMoniker", "Ljdplus/toolkit/base/api/timeseries/TsMoniker;", "of", source, id)
-    jts <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "makeTs", jmoniker, type)
-    bytes <- .jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "[B", "toBuffer", jts)
+    jmoniker <- .jcall(
+        obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/TsMoniker;",
+        method = "of",
+        source, id
+    )
+    jts <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "makeTs",
+        jmoniker, type
+    )
+    bytes <- .jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "[B",
+        method = "toBuffer",
+        jts
+    )
     p <- RProtoBuf::read(jd3.Ts, bytes)
     return(.p2r_ts(p))
 }
