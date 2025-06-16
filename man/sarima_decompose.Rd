@@ -20,7 +20,8 @@ An UCARIMA model
 Decompose SARIMA Model into three components trend, seasonal, irregular
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 model <- sarima_model(period = 12, d = 1, bd = 1, theta = -0.6, btheta = -0.5)
 ucm <- sarima_decompose(model)
-
+\dontshow{\}) # examplesIf}
 }

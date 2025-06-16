@@ -46,7 +46,7 @@ NULL
 #' }
 #' }
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' td_f(ABS$X0.2.09.10.M)
 #' @export
 td_f <- function(s, model = c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"), nyears = 0) {
@@ -69,7 +69,7 @@ td_f <- function(s, model = c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100
 #' @returns list with the ftest on td, the joint test and the details for the stability of the different days (starting with Mondays).
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' s <- log(ABS$X0.2.20.10.M)
 #' td_canovahansen(s, c(1, 12))
 td_canovahansen <- function(s, differencing, kernel = c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),
@@ -97,7 +97,7 @@ td_canovahansen <- function(s, differencing, kernel = c("Bartlett", "Square", "W
 #' @returns A Chi2 test
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' s <- log(ABS$X0.2.20.10.M)
 #' td_timevarying(s)
 td_timevarying <- function(s, groups = c(1, 2, 3, 4, 5, 6, 0), contrasts = FALSE) {

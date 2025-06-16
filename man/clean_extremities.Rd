@@ -16,7 +16,9 @@ Cleaned series
 Removal of missing values at the beginning/end
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 y <- window(ABS$X0.2.09.10.M, start = 1982, end = 2018, extend = TRUE)
 y
 clean_extremities(y)
+\dontshow{\}) # examplesIf}
 }

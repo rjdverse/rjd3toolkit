@@ -50,6 +50,7 @@ by the parameters \code{starts} and \code{ends}. With \code{delta = 1} and \code
 the cumulative sum of temporary level shifts, once differenced the regressor will become a classical level shift.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 iv1 <- intervention_variable(12, c(2000, 1), 60,
     starts = "2001-01-01", ends = "2001-12-01"
 )
@@ -68,6 +69,7 @@ my_context <- modelling_context(variables = vars)
 # new_spec<- add_usrdefvar(init_spec,id = "reg1.iv1", regeffect="Trend")
 # modelling context is needed for the estimation phase
 # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on auxiliary variables in JDemetra+ online documentation:

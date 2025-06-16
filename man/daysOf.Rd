@@ -18,5 +18,8 @@ A list of the starting dates of each period
 Provides a list of dates corresponding to each period of the given time series
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
 daysOf(Retail$BookStores)
+\dontshow{\}) # examplesIf}
 }

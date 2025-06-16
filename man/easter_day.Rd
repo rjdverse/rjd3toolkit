@@ -20,6 +20,7 @@ with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
 Allows to define a holiday which date is related to Easter Sunday.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 easter_day(1) # Easter Monday
 easter_day(-2) # Easter Good Friday
 # Corpus Christi 60 days after Easter
@@ -28,6 +29,7 @@ easter_day(
     offset = 60, julian = TRUE, weight = 0.5,
     validity = list(start = "2000-01-01", end = "2020-12-01")
 )
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

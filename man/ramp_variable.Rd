@@ -34,9 +34,11 @@ A ramp between two dates \eqn{t_0} and \eqn{t_1} is defined as:
 }
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Ramp variable from January 2001 to September 2001
 rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c(13, 21))
 # Or equivalently
 rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c("2001-01-01", "2001-09-02"))
 plot.ts(rp)
+\dontshow{\}) # examplesIf}
 }

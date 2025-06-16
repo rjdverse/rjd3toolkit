@@ -62,6 +62,8 @@ Contrasts are the differences between the number of days in a given group
 Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
 BE <- national_calendar(list(
     fixed_day(7, 21),
     special_day("NEWYEAR"),
@@ -78,6 +80,7 @@ calendar_td(BE, 12, c(1980, 1), 240,
     holiday = 7, groups = c(1, 1, 1, 2, 2, 3, 0),
     contrasts = FALSE
 )
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

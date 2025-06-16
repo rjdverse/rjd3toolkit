@@ -13,7 +13,7 @@ JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 #'
 #' @returns
 #' Returns a java object of class JD3_TSMONIKER.
-#' @examples
+#' @examplesIf jversion >= 17
 #' source <- "Txt"
 #' # id is split due to length restrictions
 #' id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd%2FMM%2Fyyyy&delimiter=SEMICOLON&"
@@ -64,11 +64,13 @@ dynamic_ts <- function(moniker, data) {
 }
 
 .ts <- function(name, moniker, metadata, data) {
-    return(structure(list(name = name, moniker = moniker, metadata = metadata, data = data), class = c(JD3_TS)))
+    return(structure(list(name = name, moniker = moniker, metadata = metadata, data = data),
+                     class = c(JD3_TS)))
 }
 
 .tscollection <- function(name, moniker, metadata, series) {
-    return(structure(list(name = name, moniker = moniker, metadata = metadata, series = series), class = c(JD3_TSCOLLECTION)))
+    return(structure(list(name = name, moniker = moniker, metadata = metadata, series = series),
+                     class = c(JD3_TSCOLLECTION)))
 }
 
 #' @export
@@ -166,7 +168,12 @@ dynamic_ts <- function(moniker, data) {
     }
     ps <- .r2p_ts(s)
     bytes <- RProtoBuf::serialize(ps, NULL)
-    return(.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsOfBytes", bytes))
+    return(.jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "tsOfBytes",
+        bytes
+    ))
 }
 
 #' @export
@@ -188,7 +195,12 @@ dynamic_ts <- function(moniker, data) {
     }
     ps <- .r2p_tscollection(s)
     bytes <- RProtoBuf::serialize(ps, NULL)
-    return(.jcall("jdplus/toolkit/base/r/timeseries/TsUtility", "Ljdplus/toolkit/base/api/timeseries/Ts;", "tsCollectionOfBytes", bytes))
+    return(.jcall(
+        obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
+        returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
+        method = "tsCollectionOfBytes",
+        bytes
+    ))
 }
 
 #' @export
@@ -322,7 +334,7 @@ dynamic_ts <- function(moniker, data) {
 #' @returns list of calendars and variables
 #' @export
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # creating one or several external regressors (TS objects), which will
 #' # be gathered in one or several groups
 #' iv1 <- intervention_variable(12, c(2000, 1), 60,

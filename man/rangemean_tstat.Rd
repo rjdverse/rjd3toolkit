@@ -49,6 +49,7 @@ The function \code{rangemean_tstat} returns the T-statistic associated to \eqn{\
 If it is significantly higher than 0, log transformation is recommended.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 y <- ABS$X0.2.09.10.M
 # Multiplicative pattern
 plot(y)
@@ -64,4 +65,5 @@ pt(rm_t, period - 2, lower.tail = FALSE)
 rm_t_log <- rangemean_tstat(log(y), period = period, groupsize = period)
 rm_t_log
 pt(rm_t_log, period - 2, lower.tail = FALSE)
+\dontshow{\}) # examplesIf}
 }

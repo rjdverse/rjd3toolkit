@@ -25,7 +25,9 @@ A \code{c("JD3_TEST", "JD3")} object (see \code{\link[=statisticaltest]{statisti
 QS (seasonal Ljung-Box) test.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_qs(s)
 seasonality_qs(random_t(2, 1000), 7)
+\dontshow{\}) # examplesIf}
 }

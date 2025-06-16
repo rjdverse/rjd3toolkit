@@ -15,7 +15,9 @@ single_day(date, weight = 1)
 Allows to set a holiday as a once-occurring event.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 single_day("1999-03-19")
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:
