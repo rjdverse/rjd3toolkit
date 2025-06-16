@@ -43,6 +43,7 @@ A \code{"JD3_SARIMA"} model.
 Seasonal ARIMA model (Box-Jenkins)
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 mod1 <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
-
+\dontshow{\}) # examplesIf}
 }

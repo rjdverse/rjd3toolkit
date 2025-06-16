@@ -131,6 +131,7 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pre-defined regressors
 # y_raw<-ABS$X0.2.09.10.M
 # init_spec <- rjd3x13::x13_spec("RSA5c")
@@ -180,6 +181,7 @@ my_context <- modelling_context(calendars = list(cal = BE))
 # test = "None")
 # estimate with context
 # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

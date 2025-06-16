@@ -8,7 +8,7 @@
 #' @param x vector of quantiles.
 #'
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # T with 2 degrees of freedom.
 #' z <- density_t(2, .01 * seq(-100, 100, 1))
 #' # T with 2 degrees of freedom. 100 random

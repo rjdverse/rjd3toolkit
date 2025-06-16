@@ -30,8 +30,9 @@ seasonality_canovahansen_trigs(
 Canova-Hansen test using trigonometric variables
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 s <- log(ABS$X0.2.20.10.M)
 freqs <- seq(0.01, 0.5, 0.001)
 plot(seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE), type = "l")
-
+\dontshow{\}) # examplesIf}
 }

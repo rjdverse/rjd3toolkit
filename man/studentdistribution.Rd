@@ -24,8 +24,10 @@ random_t(df, n)
 Density, (cumulative) distribution function and random generation for Student distribution.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # T with 2 degrees of freedom.
 z <- density_t(2, .01 * seq(-100, 100, 1))
 # T with 2 degrees of freedom. 100 random
 z <- random_t(2, 100)
+\dontshow{\}) # examplesIf}
 }

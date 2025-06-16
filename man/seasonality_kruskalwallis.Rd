@@ -25,8 +25,9 @@ Kruskall-Wallis Seasonality Test
 Non parametric test on the ranks.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_kruskalwallis(s)
 seasonality_kruskalwallis(random_t(2, 1000), 7)
-
+\dontshow{\}) # examplesIf}
 }

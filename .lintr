@@ -1,7 +1,7 @@
 linters: lintr::all_linters(
         indentation_linter = lintr::indentation_linter(indent = 4L),
         # line_length_linter = lintr::line_length_linter(80L),
-        line_length_linter = lintr::line_length_linter(150L),
+        line_length_linter = lintr::line_length_linter(200L),
         cyclocomp_linter = lintr::cyclocomp_linter(complexity_limit = 65L),
         return_linter = NULL,
         object_length_linter = NULL,

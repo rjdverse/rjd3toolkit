@@ -23,12 +23,14 @@ weight and period of validity, like Christmas which is always celebrated on
 December 25th.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 day <- fixed_day(7, 21, .9)
 day # July 21st, with weight=0.9, on the whole sample
 day <- fixed_day(12, 25, .5, validity = list(start = "2010-01-01"))
 day # December 25th, with weight=0.5, from January 2010
 day <- fixed_day(12, 25, .5, validity = list(start = "1968-02-01", end = "2010-01-01"))
 day # December 25th, with weight=0.9, from February 1968 until January 2010
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

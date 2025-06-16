@@ -54,6 +54,7 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # init_spec <- rjd3x13::x13_spec("RSA5c")
 # new_spec<- set_benchmarking(init_spec,
 #                            enabled = TRUE,
@@ -62,6 +63,7 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 #                            lambda = 0.5,
 #                            forecast = FALSE,
 #                            bias = "None")
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on benchmarking in JDemetra+ online documentation:

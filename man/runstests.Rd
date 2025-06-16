@@ -36,6 +36,7 @@ check randomness of a data.
 
 }}
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 x <- random_t(5, 1000)
 # random values
 testofruns(x)
@@ -43,4 +44,5 @@ testofupdownruns(x)
 # non-random values
 testofruns(ABS$X0.2.09.10.M)
 testofupdownruns(ABS$X0.2.09.10.M)
+\dontshow{\}) # examplesIf}
 }
