@@ -75,7 +75,7 @@ add_outlier.default <- function(x,
         warning("Duplicated outliers removed: last outliers kept")
         x$regression$outliers <- x$regression$outliers[!dupl_out]
     }
-    x
+    return(x)
 }
 
 .create_outlier <- function(code, pos, name = NULL, coef = NULL) {
@@ -148,7 +148,7 @@ remove_outlier.default <- function(x,
     if (length(x$regression$outliers) == 0) {
         x$regression["outliers"] <- list(NULL)
     }
-    x
+    return(x)
 }
 #' @rdname add_outlier
 #' @export
@@ -187,7 +187,7 @@ add_ramp.default <- function(x,
         warning("Duplicated ramps removed")
         x$regression$ramps <- x$regression$ramps[!dupl_out]
     }
-    x
+    return(x)
 }
 
 .create_ramp <- function(start, end, name = NULL, coef = NULL) {
@@ -232,7 +232,7 @@ remove_ramp.default <- function(x,
     if (length(x$regression$ramps) == 0) {
         x$regression["ramps"] <- list(NULL)
     }
-    x
+    return(x)
 }
 
 #' @title Set estimation sub-span and quality check specification
@@ -328,7 +328,7 @@ set_basic.default <- function(x,
         # basic$preliminaryCheck <- preliminary.check
     }
     x$basic <- basic
-    x
+    return(x)
 }
 #' @title Set Numeric Estimation Parameters and Modelling Span
 #'
@@ -415,7 +415,7 @@ set_estimate.default <- function(x,
     }
     # END TRAMO-SEATS SPECIFIC
     x$estimate <- estimate
-    x
+    return(x)
 }
 #' @title Set Outlier Detection Parameters
 #'
@@ -595,7 +595,7 @@ set_outlier.default <- function(x,
         }
     }
     x$outlier <- outlier
-    x
+    return(x)
 }
 
 #' @title Set Arima Model Identification in Pre-Processing Specification
@@ -811,7 +811,7 @@ set_automodel.default <- function(x,
     }
 
     x$automodel <- automodel
-    x
+    return(x)
 }
 #' @title Set ARIMA Model Structure in Pre-Processing Specification
 #'
@@ -988,8 +988,7 @@ set_arima.default <- function(x,
         regression$mean$type <- mean.type
     }
     x$regression <- regression
-
-    x
+    return(x)
 }
 
 
@@ -1361,7 +1360,7 @@ set_tradingdays.default <- function(x,
     }
 
     x$regression$td <- td
-    x
+    return(x)
 }
 
 #' @title Set Easter effect correction in Pre-Processing Specification
@@ -1516,7 +1515,7 @@ set_easter.default <- function(x, enabled = NA,
         }
     }
     x$regression$easter <- easter
-    x
+    return(x)
 }
 
 #' @title Set Log-level Transformation and Decomposition scheme in Pre-Processing Specification
@@ -1607,7 +1606,7 @@ set_transform.default <- function(x,
     }
 
     x$transform <- transform
-    x
+    return(x)
 }
 
 #' @title Add a User-Defined Variable to Pre-Processing Specification.
@@ -1787,5 +1786,5 @@ set_span <- function(x,
             }
         }
     }
-    x
+    return(x)
 }

@@ -218,24 +218,16 @@ print.JD3_SPAN <- function(x, ...) {
     n0 <- span$n0
     n1 <- span$n1
 
-    if (type == "ALL") {
-        x <- "All"
-    } else if (type == "FROM") {
-        x <- paste("From", d0, sep = " ")
-    } else if (type == "TO") {
-        x <- paste("Until", d1, sep = " ")
-    } else if (type == "BETWEEN") {
-        x <- paste(d0, d1, sep = " - ")
-    } else if (type == "FIRST") {
-        x <- paste("First", n0, "periods", sep = " ")
-    } else if (type == "LAST") {
-        x <- paste("Last", n1, "periods", sep = " ")
-    } else if (type == "EXCLUDING") {
-        x <- paste("All but first", n0, "periods and last", n1, "periods", sep = " ")
-    } else {
-        x <- "Undefined"
-    }
-
+    x <- switch(type,
+        ALL = "All",
+        FROM = paste("From", d0, sep = " "),
+        TO = paste("Until", d1, sep = " "),
+        BETWEEN = paste(d0, d1, sep = " - "),
+        FIRST = paste("First", n0, "periods", sep = " "),
+        LAST = paste("Last", n1, "periods", sep = " "),
+        EXCLUDING = paste("All but first", n0, "periods and last", n1, "periods", sep = " "),
+        "Undefined"
+    )
     cat(x, "\n")
 
     return(invisible(x))
