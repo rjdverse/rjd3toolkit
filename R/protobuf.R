@@ -80,9 +80,7 @@ NULL
     if (n == 0) {
         return(NULL)
     }
-    p <- apply(r, 2, function(z) {
-        .r2p_parameter(z)
-    })
+    p <- apply(X = r, MARGIN = 2, FUN = .r2p_parameter)
     return(p)
 }
 
@@ -104,13 +102,9 @@ NULL
     if (n == 0) {
         return(NULL)
     }
-    p <- lapply(r, function(z) {
-        .r2p_parameter(z)
-    })
+    p <- lapply(r, FUN = .r2p_parameter)
     return(p)
 }
-
-
 
 #' @export
 #' @rdname jd3_utilities
@@ -295,12 +289,13 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .p2r_ucarima <- function(p) {
-    model <- .p2r_arima(p$model)
-    return(ucarima_model(model, lapply(p$components, function(z) {
-        .p2r_arima(z)
-    }), lapply(p$complements, function(z) {
-        .p2r_arima(z)
-    }), FALSE))
+    output <- ucarima_model(
+        model = .p2r_arima(p$model),
+        components = lapply(p$components, FUN = .p2r_arima),
+        complements = lapply(p$complements, FUN = .p2r_arima),
+        checkmodel = FALSE
+    )
+    return(output)
 }
 
 
@@ -362,9 +357,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_outlier(z)
-    }))
+    return(lapply(p, FUN = .p2r_outlier))
 }
 
 #' @export
@@ -373,9 +366,7 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_outlier(z)
-    }))
+    return(lapply(r, FUN = .r2p_outlier))
 }
 
 .p2r_sequence <- function(p) {
@@ -398,9 +389,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_sequence(z)
-    }))
+    return(lapply(p, FUN = .p2r_sequence))
 }
 
 #' @export
@@ -409,9 +398,7 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_sequence(z)
-    }))
+    return(lapply(r, FUN = .r2p_sequence))
 }
 
 #' @export
@@ -444,9 +431,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_iv(z)
-    }))
+    return(lapply(p, FUN = .p2r_iv))
 }
 
 #' @export
@@ -455,9 +440,7 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_iv(z)
-    }))
+    return(lapply(r, FUN = .r2p_iv))
 }
 
 
@@ -488,9 +471,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_ramp(z)
-    }))
+    return(lapply(p, FUN = .p2r_ramp))
 }
 
 #' @export
@@ -499,9 +480,7 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_ramp(z)
-    }))
+    return(lapply(r, FUN = .r2p_ramp))
 }
 
 .regeffect <- function(map) {
@@ -543,9 +522,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_uservar(z)
-    }))
+    return(lapply(p, FUN = .p2r_uservar))
 }
 #' @export
 #' @rdname jd3_utilities
@@ -553,16 +530,12 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_uservar(z)
-    }))
+    return(lapply(r, FUN = .r2p_uservar))
 }
 #' @export
 #' @rdname jd3_utilities
 .p2r_variables <- function(p) {
-    return(lapply(p, function(v) {
-        .p2r_variable(v)
-    }))
+    return(lapply(p, FUN = .p2r_variable))
 }
 
 .p2r_variable <- function(p) {

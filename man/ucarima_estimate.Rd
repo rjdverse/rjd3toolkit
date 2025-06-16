@@ -14,7 +14,8 @@ ucarima_estimate(x, ucm, stdev = TRUE)
 \item{stdev}{TRUE if standard deviation of the components are computed}
 }
 \value{
-A matrix containing the different components and their standard deviations if stdev is TRUE.
+A matrix containing the different components and their standard
+deviations if stdev is TRUE.
 }
 \description{
 Estimate UCARIMA Model

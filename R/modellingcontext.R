@@ -136,9 +136,7 @@ dynamic_ts <- function(moniker, data) {
     if (is.null(p)) {
         return(NULL)
     } else {
-        rs <- lapply(p$series, function(s) {
-            return(.p2r_ts(s))
-        })
+        rs <- lapply(p$series, FUN = .p2r_ts)
         names <- lapply(rs, function(s) {
             return(s$name)
         })
@@ -154,9 +152,7 @@ dynamic_ts <- function(moniker, data) {
     p$name <- r$name
     p$moniker <- .r2p_moniker(r$moniker)
     p$metadata <- .r2p_metadata(r$metadata, jd3.TsCollection$MetadataEntry)
-    p$series <- lapply(r$series, function(s) {
-        return(.r2p_ts(s))
-    })
+    p$series <- lapply(r$series, FUN = .r2p_ts)
     return(p)
 }
 

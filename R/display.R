@@ -32,9 +32,7 @@ print.JD3_ARIMA <- function(x, ...) {
 print.JD3_UCARIMA <- function(x, ...) {
     ucm <- x
     print(ucm$model)
-    lapply(ucm$components, function(z) {
-        print(z)
-    })
+    lapply(ucm$components, FUN = print)
     invisible(x)
 }
 
@@ -488,7 +486,7 @@ diagnostics.JD3_REGARIMA_RSLTS <- function(x, ...) {
     residuals_test <- data.frame(
         Statistic = sapply(residuals_test, function(test) test[["value"]]),
         P.value = sapply(residuals_test, function(test) test[["pvalue"]]),
-        Description = sapply(residuals_test, function(test) attr(test, "distribution"))
+        Description = sapply(residuals_test, FUN = attr, which = "distribution")
     )
     residuals_test
 }

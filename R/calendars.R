@@ -603,11 +603,11 @@ stock_td <- function(frequency, start, length, s, w = 31) {
 .p2r_calendar <- function(p) {
     return(structure(
         list(
-            days = c(lapply(p$fixed_days, function(z) .p2r_fixedday(z)),
-                     lapply(p$fixed_week_days, function(z) .p2r_fixedweekday(z)),
-                     lapply(p$easter_related_days, function(z) .p2r_easterday(z)),
-                     lapply(p$prespecified_holidays, function(z) .p2r_specialday(z)),
-                     lapply(p$single_dates, function(z) .p2r_singleday(z))),
+            days = c(lapply(p$fixed_days, FUN = .p2r_fixedday),
+                     lapply(p$fixed_week_days, FUN = .p2r_fixedweekday),
+                     lapply(p$easter_related_days, FUN = .p2r_easterday),
+                     lapply(p$prespecified_holidays, FUN = .p2r_specialday),
+                     lapply(p$single_dates, FUN = .p2r_singleday)),
             mean_correction = p$mean_correction
         ),
         class = c("JD3_CALENDAR", "JD3_CALENDARDEFINITION")
@@ -620,20 +620,20 @@ stock_td <- function(frequency, start, length, s, w = 31) {
     p <- jd3.Calendar$new()
     if (length(r$days) > 0) {
         # select fixed days
-        sel <- which(sapply(r$days, function(z) is(z, FIXEDDAY)))
-        p$fixed_days <- lapply(r$days[sel], function(z) .r2p_fixedday(z))
+        sel <- which(sapply(r$days, FUN = is, class2 = FIXEDDAY))
+        p$fixed_days <- lapply(r$days[sel], FUN = .r2p_fixedday)
         # select fixed week days
-        sel <- which(sapply(r$days, function(z) is(z, FIXEDWEEKDAY)))
-        p$fixed_week_days <- lapply(r$days[sel], function(z) .r2p_fixedweekday(z))
+        sel <- which(sapply(r$days, FUN = is, class2 = FIXEDWEEKDAY))
+        p$fixed_week_days <- lapply(r$days[sel], FUN = .r2p_fixedweekday)
         # select easter days
-        sel <- which(sapply(r$days, function(z) is(z, EASTERDAY)))
-        p$easter_related_days <- lapply(r$days[sel], function(z) .r2p_easterday(z))
+        sel <- which(sapply(r$days, FUN = is, class2 = EASTERDAY))
+        p$easter_related_days <- lapply(r$days[sel], FUN = .r2p_easterday)
         # select special days
-        sel <- which(sapply(r$days, function(z) is(z, SPECIALDAY)))
-        p$prespecified_holidays <- lapply(r$days[sel], function(z) .r2p_specialday(z))
+        sel <- which(sapply(r$days, FUN = is, class2 = SPECIALDAY))
+        p$prespecified_holidays <- lapply(r$days[sel], FUN = .r2p_specialday)
         # select single days
-        sel <- which(sapply(r$days, function(z) is(z, SINGLEDAY)))
-        p$single_dates <- lapply(r$days[sel], function(z) .r2p_singleday(z))
+        sel <- which(sapply(r$days, FUN = is, class2 = SINGLEDAY))
+        p$single_dates <- lapply(r$days[sel], FUN = .r2p_singleday)
     }
     p$mean_correction <- r$mean_correction
     return(p)
