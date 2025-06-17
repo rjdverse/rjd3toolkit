@@ -29,6 +29,7 @@ NULL
 .enum_sextract <- function(type, p) {
     return(type$value(number = p)$name())
 }
+
 #' @export
 #' @rdname jd3_utilities
 .enum_sof <- function(type, code) {
@@ -62,7 +63,6 @@ NULL
     }
     return(p)
 }
-
 
 #' @export
 #' @rdname jd3_utilities
@@ -118,6 +118,7 @@ NULL
     })
     return(r)
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_parameters_rslt <- function(p) {
@@ -135,6 +136,7 @@ NULL
     })
     return(data.frame(value = value, type = type))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_parameters_rsltx <- function(p) {
@@ -159,6 +161,7 @@ NULL
 
     return(rslt)
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_test <- function(p) {
@@ -219,7 +222,6 @@ NULL
     return(list(val = p$value, score = p$score, cov = .p2r_matrix(p$covariance), description = p$description))
 }
 
-
 #' @export
 #' @rdname jd3_utilities
 .p2r_likelihood <- function(p) {
@@ -250,7 +252,6 @@ NULL
     }
 }
 
-
 # Span
 #' @export
 #' @rdname jd3_utilities
@@ -261,6 +262,7 @@ NULL
 
     return(structure(list(type = type, d0 = dt0, d1 = dt1, n0 = span$n0, n1 = span$n1), class = "JD3_SPAN"))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .r2p_span <- function(rspan) {
@@ -272,7 +274,6 @@ NULL
     pspan$d1 <- .r2p_date(rspan$d1)
     return(pspan)
 }
-
 
 .p2r_sarima <- function(p) {
     return(sarima_model(
@@ -286,6 +287,7 @@ NULL
 .p2r_arima <- function(p) {
     return(arima_model(p$name, p$ar, p$delta, p$ma, p$innovation_variance))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_ucarima <- function(p) {
@@ -297,8 +299,6 @@ NULL
     )
     return(output)
 }
-
-
 
 # Sarima
 #' @export
@@ -443,9 +443,6 @@ NULL
     return(lapply(r, FUN = .r2p_iv))
 }
 
-
-
-
 .p2r_ramp <- function(p) {
     return(list(
         name = p$name,
@@ -454,7 +451,6 @@ NULL
         coef = .p2r_parameter(p$coefficient)
     ))
 }
-
 
 .r2p_ramp <- function(r) {
     p <- modelling.Ramp$new()
@@ -516,6 +512,7 @@ NULL
     p$metadata <- modelling.TsVariable.MetadataEntry$new(key = "regeffect", value = r$regeffect)
     return(p)
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_uservars <- function(p) {
@@ -524,6 +521,7 @@ NULL
     }
     return(lapply(p, FUN = .p2r_uservar))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .r2p_uservars <- function(r) {
@@ -532,6 +530,7 @@ NULL
     }
     return(lapply(r, FUN = .r2p_uservar))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_variables <- function(p) {
@@ -544,7 +543,6 @@ NULL
     coef <- .p2r_parameters_rsltx(p$coefficients)
     return(list(name = name, type = type, coef = coef))
 }
-
 
 .p2r_component <- function(p) {
     s <- p$data$values

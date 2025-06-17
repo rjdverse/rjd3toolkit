@@ -5,7 +5,7 @@
 \title{Trading day regressors with pre-defined holidays}
 \usage{
 calendar_td(
-  calendar,
+  calendar = national_calendar(),
   frequency,
   start,
   length,
