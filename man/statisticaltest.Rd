@@ -30,8 +30,9 @@ statisticaltest(val, pval, dist = NULL)
 Generic function to format the results of 'JDemetra+' tests.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 udr_test <- testofupdownruns(random_t(5, 1000))
 udr_test # default print
 print(udr_test, details = TRUE) # with the distribution
-
+\dontshow{\}) # examplesIf}
 }

@@ -20,6 +20,7 @@ The differenced series.
 Differencing of a series
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 differences(Retail$BookStores, c(1, 1, 12), FALSE)
-
+\dontshow{\}) # examplesIf}
 }

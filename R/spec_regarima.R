@@ -25,7 +25,7 @@
 #' after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to
 #' the trend.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
 #' # ramp on year 2012
@@ -271,7 +271,7 @@ remove_ramp.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # estimation on sub-span between two dates (date d1 is excluded)
 #' # new_spec<-set_basic(init_spec,type = "Between",d0 = "2014-01-01",
@@ -362,7 +362,7 @@ set_basic.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
 #' # new_spec<-set_estimate(init_spec, type= "From", d0 = "2012-01-01", tol = 0.0000002,
 #' # exact.ml = FALSE, unit.root.limit = 0.98)
@@ -478,7 +478,7 @@ set_estimate.default <- function(x,
 #' allocated to a pre-defined component after the decomposition: "AO" and "TC"
 #' to the irregular, "LS" to the trend and "SO" to seasonal component.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
 #' # new_spec<-set_outlier(init_spec, span.type= "From", d0 = "2012-01-01",
 #' #                      outliers.type = c("LS", "AO"),
@@ -704,7 +704,7 @@ set_outlier.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-set_automodel(init_spec,
 #' #                        enabled = FALSE,
@@ -844,7 +844,7 @@ set_automodel.default <- function(x,
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' @seealso \code{\link{set_automodel}}, \code{\link{set_transform}}
-#' @examples
+#' @examplesIf jversion >= 17
 #' # create default spec
 #' # my_spec<-rjd3x13::x13_spec("rsa5c")
 #' # disable automatic arima modelling
@@ -1098,7 +1098,7 @@ set_arima.default <- function(x,
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # Pre-defined regressors
 #' # y_raw<-ABS$X0.2.09.10.M
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
@@ -1414,7 +1414,7 @@ set_tradingdays.default <- function(x,
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
-#' @examples
+#' @examplesIf jversion >= 17
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<-set_easter(init_spec,
 #' #                     enabled = TRUE,
@@ -1545,7 +1545,7 @@ set_easter.default <- function(x, enabled = NA,
 #' @references
 #' More information in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
-#' @examples
+#' @examplesIf jversion >= 17
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<- set_transform(init_spec,
 #' #                        fun = "Log",
@@ -1646,7 +1646,7 @@ set_transform.default <- function(x,
 #' - \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to
 #' the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' # creating one or several external regressors (TS objects),
 #' # which will be gathered in one or several groups
 #' iv1 <- intervention_variable(12, c(2000, 1), 60,

@@ -44,12 +44,13 @@ generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" gene
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # init_spec <- rjd3x13::x13_spec("RSA5c")
 # new_spec<- set_transform(init_spec,
 #                        fun = "Log",
 #                        outliers = TRUE)
 # sa<-rjd3x13::x13(ABS$X0.2.09.10.M,new_spec)
-
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information in JDemetra+ online documentation:

@@ -29,9 +29,11 @@ with the value one only for one given type of period (ex Q1)
 The periodic_contrasts function is based on periodic_dummies but adds -1 to the period preceding a 1.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # periodic dummies for a quarterly series
 p <- periodic_dummies(4, c(2000, 1), 60)
 # periodic contrasts for a quarterly series
 q <- periodic_contrasts(4, c(2000, 1), 60)
 q[1:9, ]
+\dontshow{\}) # examplesIf}
 }

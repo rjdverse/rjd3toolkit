@@ -60,5 +60,7 @@ y_t =\alpha_0 + \alpha_1 y_{t-1} + \beta TD_t +  \varepsilon_t
 }
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 td_f(ABS$X0.2.09.10.M)
+\dontshow{\}) # examplesIf}
 }

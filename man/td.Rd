@@ -51,12 +51,15 @@ to a given group. Contrasts are the differences between the number of days in
 a given group (1 to 6) and the number of days in the reference group (0).
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
 # Monthly regressors for Trading Days: each type of day is different
 # contrasts to Sundays (6 series)
 regs_td <- td(12, c(2020, 1), 60, groups = c(1, 2, 3, 4, 5, 6, 0), contrasts = TRUE)
 # Quarterly regressors for Working Days: week days are similar
 # contrasts to week-end days (1 series)
 regs_wd <- td(4, c(2020, 1), 60, groups = c(1, 1, 1, 1, 1, 0, 0), contrasts = TRUE)
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

@@ -21,8 +21,10 @@ The interpolated series
 Multiplicative adjustment of a time series for leap year / length of periods
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 y <- ABS$X0.2.09.10.M
 ts_adjust(y)
 # with reverse we can find the
 all.equal(ts_adjust(ts_adjust(y), reverse = TRUE), y)
+\dontshow{\}) # examplesIf}
 }

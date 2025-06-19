@@ -13,9 +13,13 @@ r2jd_calendarts(calendarobs)
 Create Java CalendarTimeSeries
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# example code
+
 obs <- list(
     list(start = as.Date("1980-01-01"), end = as.Date("1999-12-31"), value = 2000),
     list(start = as.Date("2000-01-01"), end = as.Date("2010-01-01"), value = 1000)
 )
 jobj <- r2jd_calendarts(obs)
+\dontshow{\}) # examplesIf}
 }

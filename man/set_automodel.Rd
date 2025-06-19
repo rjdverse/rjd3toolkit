@@ -129,11 +129,12 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # init_spec <- rjd3x13::x13_spec("RSA5c")
 # new_spec<-set_automodel(init_spec,
 #                        enabled = FALSE,
 #                        acceptdefault = TRUE)
-
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on reg-arima modelling in JDemetra+ online documentation:

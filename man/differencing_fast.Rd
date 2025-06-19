@@ -35,6 +35,7 @@ Stationary transformation
 Automatic differencing
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 differencing_fast(log(ABS$X0.2.09.10.M), 12)
-
+\dontshow{\}) # examplesIf}
 }

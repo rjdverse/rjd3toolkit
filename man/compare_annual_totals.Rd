@@ -18,8 +18,10 @@ The largest annual difference (in percentage of the average level of the seasona
 Usually a raw series and the corresponding seasonally adjusted series
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 s1<- rjd3toolkit::ABS$X0.2.09.10.M
 # two raw series for example's sake
 s2 <- rjd3toolkit::ABS$X0.2.08.10.M
 compare_annual_totals(s1,s2)
+\dontshow{\}) # examplesIf}
 }

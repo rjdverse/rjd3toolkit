@@ -57,6 +57,7 @@ A seasonal outlier (SO, \code{so_variable}) is defined as (if \code{zeroended = 
  -\frac{1}{s-1} & \text{otherwise }\end{cases}}
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Outliers in February 2002
 ao <- ao_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
 ls <- ls_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
@@ -66,4 +67,5 @@ plot.ts(ts.union(ao, ls, tc, so),
     plot.type = "single",
     col = c("black", "orange", "green", "gray")
 )
+\dontshow{\}) # examplesIf}
 }

@@ -53,6 +53,7 @@ This kind of non-aggregated regressors are used for calendar correction in
 daily data.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 BE <- national_calendar(list(
     fixed_day(7, 21),
     special_day("NEWYEAR"),
@@ -67,6 +68,7 @@ BE <- national_calendar(list(
 ))
 q <- holidays(BE, "2021-01-01", 366 * 10, type = "All")
 plot(apply(q, 1, max))
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on calendar correction in JDemetra+ online documentation:

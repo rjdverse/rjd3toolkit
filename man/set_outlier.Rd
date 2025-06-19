@@ -91,12 +91,13 @@ allocated to a pre-defined component after the decomposition: "AO" and "TC"
 to the irregular, "LS" to the trend and "SO" to seasonal component.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
 # new_spec<-set_outlier(init_spec, span.type= "From", d0 = "2012-01-01",
 #                      outliers.type = c("LS", "AO"),
 #                      critical.value = 5,
 #                      tc.rate =0.85)
-
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on outliers and other auxiliary variables in JDemetra+ online documentation:
