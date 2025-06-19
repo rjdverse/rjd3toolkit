@@ -74,7 +74,6 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
 [Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...HEAD
-[3.5.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.5.1
 [3.5.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.0...v3.5.1
 [3.5.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.3.0...v3.5.0
 [3.3.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.2.4...v3.3.0
