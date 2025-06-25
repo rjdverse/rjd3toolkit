@@ -383,6 +383,10 @@ modelling_context <- function(calendars = NULL, variables = NULL) {
                 })
                 names(all_var) <- colnames(variables[[i]])
                 variables[[i]] <- all_var
+                if (is.null(names(variables)[i]) || names(variables)[i] == "") {
+                    # if the name is not set, use 'r' as the name of the dictionary
+                    names(variables)[i] <- "r"
+                }
             }
         }
         if (any(ts_var)) {
