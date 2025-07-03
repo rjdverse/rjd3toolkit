@@ -5,21 +5,30 @@ NULL
 #' @title Retail trade statistics in Australia
 #'
 #' @source ABS
+#' @examples
+#' data(ABS)
+#'
 "ABS"
 
 #' @title US Retail trade statistics
 #'
 #' @source US-Census Bureau
+#' @examples
+#' data(Retail)
 "Retail"
 
 #' @title Belgian exports to European countries
 #'
 #' @source NBB
+#' @examples
+#' data(Exports)
 "Exports"
 
 #' @title Belgian imports from European countries
 #'
 #' @source NBB
+#' @examples
+#' data(Imports)
 "Imports"
 
 
