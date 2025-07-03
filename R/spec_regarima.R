@@ -42,6 +42,7 @@ add_outlier <- function(x,
                         coef = 0) {
     UseMethod("add_outlier", x)
 }
+
 #' @export
 add_outlier.default <- function(x,
                                 type,

@@ -16,4 +16,7 @@ Retail
 \description{
 US Retail trade statistics
 }
+\examples{
+data(Retail)
+}
 \keyword{datasets}

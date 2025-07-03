@@ -31,6 +31,32 @@ NULL
 #' data(Imports)
 "Imports"
 
+#' @title French national electricity consumtion
+#'
+#' @source <https://www.rte-france.com/en/eco2mix/download-indicators>
+#' @examples
+#' data(Electricity)
+"Electricity"
+
+#' @title Number of births registered in France from 1968 to 2023
+#'
+#' @source <https://www.insee.fr/fr/statistiques/8256971?sommaire=8256973>
+#' @examples
+#' data(Births)
+"Births"
+
+#' @title Default X13 specification
+#'
+#' @examples
+#' data(x13_spec_default)
+"x13_spec_default"
+
+#' @title Default Tramo-Seats specification
+#'
+#' @examples
+#' data(tramoseats_spec_default)
+"tramoseats_spec_default"
+
 
 ymd <- function(y, m, d = 1) {
     return(as.Date(sprintf("%04i-%02i-%02i", y, m, d)))

@@ -31,7 +31,6 @@ SINGLEDAY <- "JD3_SINGLEDAY"
     return(vp)
 }
 
-
 .p2r_validityPeriod <- function(vp) {
     DATE_MIN <- get_date_min()
     DATE_MAX <- get_date_max()
