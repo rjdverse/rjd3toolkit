@@ -21,15 +21,12 @@ current_java_version <- get_java_version()
 
 #' @rdname jd3_utilities
 #' @export
-minimal_java_version <- 18
-
-#' @rdname jd3_utilities
-#' @export
-minimal_java_version2 <- sample(1:10, size = 1)
+minimal_java_version <- 17
 
 .onAttach <- function(libname, pkgname) {
     if (current_java_version < minimal_java_version) {
-        packageStartupMessage(sprintf("Your java version is %s. %s or higher is needed.", current_java_version, minimal_java_version))
+        packageStartupMessage(sprintf("Your java version is %s. %s or higher is needed.",
+                                      current_java_version, minimal_java_version))
     }
 }
 

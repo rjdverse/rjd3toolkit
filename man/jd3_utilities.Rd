@@ -114,7 +114,6 @@
 \alias{get_java_version}
 \alias{current_java_version}
 \alias{minimal_java_version}
-\alias{minimal_java_version2}
 \alias{get_date_min}
 \alias{get_date_max}
 \title{Java Utility Functions}
@@ -122,8 +121,6 @@
 An object of class \code{integer} of length 1.
 
 An object of class \code{numeric} of length 1.
-
-An object of class \code{integer} of length 1.
 }
 \usage{
 .r2jd_tsdata(s)
@@ -343,8 +340,6 @@ get_java_version()
 current_java_version
 
 minimal_java_version
-
-minimal_java_version2
 
 get_date_min()
 
