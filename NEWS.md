@@ -8,7 +8,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [3.5.1] - 2025-06-16
+## [3.5.1] - 2025-06-18
+
 
 ### Changed
 
