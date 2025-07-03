@@ -46,7 +46,7 @@ after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to
 the trend.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # init_spec <- rjd3x13::x13_spec("RSA5c")
 # new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
 # ramp on year 2012

@@ -17,7 +17,7 @@ NULL
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
 #' ee <- easter_variable(12, c(2020, 1), length = 5 * 12, duration = 8, endpos = 1)
 #' @export
@@ -64,7 +64,7 @@ julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Leap years occur in year 2000, 2004, 2008 and 2012
 #' lp_variable(4, start = c(2000, 1), length = 4 * 13)
 #' lper <- lp_variable(12, c(2000, 1), length = 10 * 12, type = "LengthOfPeriod")
@@ -110,7 +110,7 @@ lp_variable <- function(frequency, start, length, s, type = c("LeapYear", "Lengt
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Outliers in February 2002
 #' ao <- ao_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
 #' ls <- ls_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
@@ -209,7 +209,7 @@ so_variable <- function(frequency, start, length, s, pos, date = NULL, zeroended
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Ramp variable from January 2001 to September 2001
 #' rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c(13, 21))
 #' # Or equivalently
@@ -263,7 +263,7 @@ ramp_variable <- function(frequency, start, length, s, range) {
 #' by the parameters `starts` and `ends`. With `delta = 1` and `seasonaldelta = 0` we get
 #' the cumulative sum of temporary level shifts, once differenced the regressor will become a classical level shift.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' iv1 <- intervention_variable(12, c(2000, 1), 60,
 #'     starts = "2001-01-01", ends = "2001-12-01"
 #' )
@@ -325,7 +325,7 @@ intervention_variable <- function(frequency, start, length, s, starts, ends, del
 #' The function periodic_dummies creates as many time series as types of periods in a year (4 or 12)
 #' with the value one only for one given type of period (ex Q1)
 #' The periodic_contrasts function is based on periodic_dummies but adds -1 to the period preceding a 1.
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # periodic dummies for a quarterly series
 #' p <- periodic_dummies(4, c(2000, 1), 60)
 #' # periodic contrasts for a quarterly series

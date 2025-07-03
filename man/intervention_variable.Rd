@@ -50,7 +50,7 @@ by the parameters \code{starts} and \code{ends}. With \code{delta = 1} and \code
 the cumulative sum of temporary level shifts, once differenced the regressor will become a classical level shift.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 iv1 <- intervention_variable(12, c(2000, 1), 60,
     starts = "2001-01-01", ends = "2001-12-01"
 )

@@ -20,7 +20,7 @@ with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
 Allows to define a holiday which date is related to Easter Sunday.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 easter_day(1) # Easter Monday
 easter_day(-2) # Easter Good Friday
 # Corpus Christi 60 days after Easter

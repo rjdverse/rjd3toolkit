@@ -17,7 +17,7 @@ NULL
 #' @returns A new time series of frequency \code{nfreq}.
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' s <- ABS$X0.2.09.10.M
 #' # Annual sum
 #' aggregate(s, nfreq = 1, conversion = "Sum") # first and last years removed
@@ -81,7 +81,7 @@ aggregate.data.frame <- function(s, nfreq = 1,
 #' @returns Cleaned series
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' y <- window(ABS$X0.2.09.10.M, start = 1982, end = 2018, extend = TRUE)
 #' y
 #' clean_extremities(y)
@@ -175,7 +175,7 @@ ts_interpolate.data.frame <- function(s, method = c("airline", "average")) {
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' y <- ABS$X0.2.09.10.M
 #' ts_adjust(y)
 #' # with reverse we can find the
@@ -230,7 +230,7 @@ ts_adjust.data.frame <- function(s, method = c("LeapYear", "LengthOfPeriod"), re
 #' @returns A list of the starting dates of each period
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #'
 #' daysOf(Retail$BookStores)
 #'
@@ -284,7 +284,7 @@ to_ts <- function(source, id, type = "All") {
 #' @returns An object of type "JD3_TSCOLLECTION". List containing the identifiers,
 #' the metadata and all the series (data).
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # id is split due to length restrictions
 #' # id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd%2FMM%2Fyyyy&delimiter=SEMICOLON&"
 #' # id2 <- "file=C%3A%5CDocuments%5CIPI%5CData%5CIPI_nace4.csv#seriesIndex=0"
@@ -324,7 +324,7 @@ to_tscollection <- function(source, id, type = "All") {
 #' Returns a java object of class JD3_TS
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' s <- ABS$X0.2.09.10.M
 #' t <- data_to_ts(s, "test")
 data_to_ts <- function(s, name) {
@@ -402,7 +402,7 @@ data_to_ts <- function(s, name) {
 #' The provided data can contain missing values (NA)
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Annual series
 #' s <- tsdata_of(c(1, 2, 3, 4), c("1990-01-01", "1995-01-01", "1996-01-01",
 #'         "2000-11-01"))
@@ -429,7 +429,7 @@ tsdata_of <- function(values, dates) {
 #' @returns
 #' The largest annual difference (in percentage of the average level of the seasonally adjusted series)
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' s1<- rjd3toolkit::ABS$X0.2.09.10.M
 #' # two raw series for example's sake
 #' s2 <- rjd3toolkit::ABS$X0.2.08.10.M

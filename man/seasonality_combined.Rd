@@ -29,7 +29,7 @@ If \code{data} is not a \code{"ts"} object, \code{firstperiod = 1} by default.}
 Combined test on the presence of identifiable seasonality (see Ladiray and Quenneville, 1999).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_combined(s)
 seasonality_combined(random_t(2, 1000), 7)

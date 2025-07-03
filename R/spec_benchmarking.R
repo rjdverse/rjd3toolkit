@@ -30,7 +30,7 @@
 #' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # init_spec <- rjd3x13::x13_spec("RSA5c")
 #' # new_spec<- set_benchmarking(init_spec,
 #' #                            enabled = TRUE,

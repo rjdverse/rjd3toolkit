@@ -45,7 +45,7 @@ Returns a java object of class JD3_LIKELIHOOD.
 Function allowing to gather information on likelihood estimation
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Values used below are taken from the following estimation
 # m <- x13(rjd3toolkit::ABS$X0.2.09.10.M,"rsa3")
 # m$result$preprocessing$estimation$likelihood

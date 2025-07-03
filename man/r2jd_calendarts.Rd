@@ -13,7 +13,7 @@ r2jd_calendarts(calendarobs)
 Create Java CalendarTimeSeries
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # example code
 
 obs <- list(

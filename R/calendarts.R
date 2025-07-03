@@ -4,7 +4,7 @@
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # example code
 #'
 #' obs <- list(

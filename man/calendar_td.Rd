@@ -62,7 +62,7 @@ Contrasts are the differences between the number of days in a given group
 Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 BE <- national_calendar(list(
     fixed_day(7, 21),

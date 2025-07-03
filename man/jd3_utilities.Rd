@@ -113,7 +113,9 @@
 \alias{.r2jd_make_tscollection}
 \alias{DATE_MIN}
 \alias{DATE_MAX}
-\alias{jversion}
+\alias{get_java_version}
+\alias{current_java_version}
+\alias{minimal_java_version}
 \title{Java Utility Functions}
 \format{
 An object of class \code{Message} of length 3.
@@ -121,6 +123,8 @@ An object of class \code{Message} of length 3.
 An object of class \code{Message} of length 3.
 
 An object of class \code{integer} of length 1.
+
+An object of class \code{numeric} of length 1.
 }
 \usage{
 .r2jd_tsdata(s)
@@ -339,7 +343,11 @@ DATE_MIN
 
 DATE_MAX
 
-jversion
+get_java_version()
+
+current_java_version
+
+minimal_java_version
 }
 \arguments{
 \item{s}{Time series}

@@ -59,7 +59,7 @@ the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 }
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # creating one or several external regressors (TS objects),
 # which will be gathered in one or several groups
 iv1 <- intervention_variable(12, c(2000, 1), 60,

@@ -26,7 +26,7 @@ If \code{FALSE}, we consider that the (known) mean is 0 and that the series has 
 Autocorrelation Functions
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 x <- ABS$X0.2.09.10.M
 autocorrelations(x)
 autocorrelations_partial(x)
