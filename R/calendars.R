@@ -12,6 +12,9 @@ SPECIALDAY <- "JD3_SPECIALDAY"
 SINGLEDAY <- "JD3_SINGLEDAY"
 
 .r2p_validityPeriod <- function(start, end) {
+    DATE_MIN <- get_date_min()
+    DATE_MAX <- get_date_max()
+
     vp <- jd3.ValidityPeriod$new()
     if (is.null(start)) {
         pstart <- DATE_MIN
@@ -30,6 +33,9 @@ SINGLEDAY <- "JD3_SINGLEDAY"
 
 
 .p2r_validityPeriod <- function(vp) {
+    DATE_MIN <- get_date_min()
+    DATE_MAX <- get_date_max()
+
     pstart <- vp$start
     if (pstart == DATE_MIN) {
         start <- NULL
