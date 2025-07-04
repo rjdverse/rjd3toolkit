@@ -331,7 +331,8 @@ dynamic_ts <- function(moniker, data) {
 #' @export
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # creating one or several external regressors (TS objects), which will
+#'
+#' # Creating one or several external regressors (TS objects), which will
 #' # be gathered in one or several groups
 #' iv1 <- intervention_variable(12, c(2000, 1), 60,
 #'     starts = "2001-01-01", ends = "2001-12-01"
@@ -339,15 +340,13 @@ dynamic_ts <- function(moniker, data) {
 #' iv2 <- intervention_variable(12, c(2000, 1), 60,
 #'     starts = "2001-01-01", ends = "2001-12-01", delta = 1
 #' )
-#' # regressors as a list of two groups reg1 and reg2
+#'
+#' # Regressors as a list of two groups reg1 and reg2
 #' vars <- list(reg1 = list(x = iv1), reg2 = list(x = iv2))
-#' # creating the modelling context
+#'
+#' # Creating the modelling context
 #' my_context <- modelling_context(variables = vars)
-#' # customize a default specification
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
-#' # modelling context is needed for the estimation phase
-#' # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+#'
 #' @seealso \code{\link{add_usrdefvar}}, \code{\link{intervention_variable}}
 #' @references
 #' More information on auxiliary variables in JDemetra+ online documentation:

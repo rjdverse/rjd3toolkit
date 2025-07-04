@@ -45,11 +45,9 @@ generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" gene
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<- set_transform(init_spec,
-#                        fun = "Log",
-#                        outliers = TRUE)
-# sa<-rjd3x13::x13(ABS$X0.2.09.10.M,new_spec)
+# Customize a default specification
+init_spec <- x13_spec_default
+new_spec <- set_transform(x = init_spec, fun = "Log", outliers = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \references{

@@ -63,9 +63,16 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
-# new_spec<-set_estimate(init_spec, type= "From", d0 = "2012-01-01", tol = 0.0000002,
-# exact.ml = FALSE, unit.root.limit = 0.98)
+# Customize a default specification
+init_spec <- tramoseats_spec_default
+new_spec <- set_estimate(
+    x = init_spec,
+    type = "From",
+    d0 = "2012-01-01",
+    tol = 0.0000002,
+    exact.ml = FALSE,
+    unit.root.limit = 0.98
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

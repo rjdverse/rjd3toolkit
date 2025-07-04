@@ -49,41 +49,52 @@ Components to which the effect of the regressor can be allocated:
 \item \code{"Undefined"} : the effect of the regressor is assigned to an additional component,
 the variable is used to improve the pre-processing step, but is not removed from the series
 for the decomposition.
+\itemize{
 \item \code{"Trend"}: after the decomposition the effect is allocated to the trend component, like a Level-Shift
-\item \code{"Irregular"}: after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
+\item \code{"Irregular"}: after the decomposition the effect is allocated to the irregular component, like an Additive-outlier
 \item \code{"Seasonal"}: after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
-\item \code{"Series"}: after the decomposition the effect is allocated to
-the raw series: \eqn{yc_t=y_t+ effect}
-\item \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to
-the seasonally adjusted series: \eqn{sa_t=T+I+effect}
+\item \code{"Series"}: after the decomposition the effect is allocated to the raw series: \eqn{yc_t=y_t+ effect}
+\item \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to the seasonally adjusted series: \eqn{sa_t=T+I+effect}
+}
 }
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# creating one or several external regressors (TS objects),
+
+# Creating one or several external regressors (TS objects),
 # which will be gathered in one or several groups
-iv1 <- intervention_variable(12, c(2000, 1), 60,
-    starts = "2001-01-01", ends = "2001-12-01"
+iv1 <- intervention_variable(
+    frequency = 12,
+    start = c(2000, 1),
+    length = 60,
+    starts = "2001-01-01",
+    ends = "2001-12-01"
 )
-iv2 <- intervention_variable(12, c(2000, 1), 60,
-    starts = "2001-01-01", ends = "2001-12-01", delta = 1
+iv2 <- intervention_variable(
+    frequency = 12,
+    start = c(2000, 1),
+    length = 60,
+    starts = "2001-01-01",
+    ends = "2001-12-01",
+    delta = 1
 )
-# configuration 1: regressors in the same default group (named "r")
-variables <- list("iv1" = iv1, "iv2" = iv2)
-# to use those regressors, input : name=r.iv1 and r.iv2 in add_usrdefvar function
-# configuration 2: group names are user-defined
-# here: regressors as a list of two groups (lists) reg1 and reg2
-vars <- list(reg1 = list(iv1 = iv1), reg2 = list(iv2 = iv2))
-# to use those regressors, input : name=reg1.iv1 and name=reg2.iv2 in add_usrdefvar function
-# creating the modelling context
+
+# Using one variable in a a seasonal adjustment process
+# Regressors as a list of two groups reg1 and reg2
+vars <- list(
+    reg1 = list(x = iv1),
+    reg2 = list(x = iv2)
+)
+
+# Creating the modelling context
 my_context <- modelling_context(variables = vars)
-# customize a default specification
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# regressors have to be added one by one
-# new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
-# new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)
-# modelling context is needed for the estimation phase
-# sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+
+# Customize a default specification
+init_spec <- x13_spec_default
+
+# Regressors have to be added one by one
+new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
+new spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
 \dontshow{\}) # examplesIf}
 }
 \references{

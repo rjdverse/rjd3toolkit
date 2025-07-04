@@ -92,11 +92,17 @@ to the irregular, "LS" to the trend and "SO" to seasonal component.
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
-# new_spec<-set_outlier(init_spec, span.type= "From", d0 = "2012-01-01",
-#                      outliers.type = c("LS", "AO"),
-#                      critical.value = 5,
-#                      tc.rate =0.85)
+
+# Customize a default specification
+init_spec <- tramoseats_spec_default
+new_spec <- set_outlier(
+    x = init_spec,
+    span.type = "From",
+    d0 = "2012-01-01",
+    outliers.type = c("LS", "AO"),
+    critical.value = 5,
+    tc.rate = 0.85
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

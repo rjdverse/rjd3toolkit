@@ -31,14 +31,18 @@
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<- set_benchmarking(init_spec,
-#' #                            enabled = TRUE,
-#' #                            target = "Normal",
-#' #                            rho = 0.8,
-#' #                            lambda = 0.5,
-#' #                            forecast = FALSE,
-#' #                            bias = "None")
+#'
+#' init_spec <- x13_spec_default
+#' new_spec <- set_benchmarking(
+#'     x = init_spec,
+#'     enabled = TRUE,
+#'     target = "Normal",
+#'     rho = 0.8,
+#'     lambda = 0.5,
+#'     forecast = FALSE,
+#'     bias = "None"
+#' )
+#'
 #' @references
 #' More information on benchmarking in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}

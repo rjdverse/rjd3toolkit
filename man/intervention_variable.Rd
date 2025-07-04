@@ -51,24 +51,38 @@ the cumulative sum of temporary level shifts, once differenced the regressor wil
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-iv1 <- intervention_variable(12, c(2000, 1), 60,
-    starts = "2001-01-01", ends = "2001-12-01"
+
+iv1 <- intervention_variable(
+    frequency = 12,
+    start = c(2000, 1),
+    length = 60,
+    starts = "2001-01-01",
+    ends = "2001-12-01"
 )
 plot(iv1)
-iv2 <- intervention_variable(12, c(2000, 1), 60,
-    starts = "2001-01-01", ends = "2001-12-01", delta = 1
+iv2 <- intervention_variable(
+    frequency = 12,
+    start = c(2000, 1),
+    length = 60,
+    starts = "2001-01-01",
+    ends = "2001-12-01",
+    delta = 1
 )
 plot(iv2)
-# using one variable in a a seasonal adjustment process
-# regressors as a list of two groups reg1 and reg2
-vars <- list(reg1 = list(x = iv1), reg2 = list(x = iv2))
+
+# Using one variable in a a seasonal adjustment process
+# Regressors as a list of two groups reg1 and reg2
+vars <- list(
+    reg1 = list(x = iv1),
+    reg2 = list(x = iv2)
+)
+
 # creating the modelling context
 my_context <- modelling_context(variables = vars)
+
 # customize a default specification
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<- add_usrdefvar(init_spec,id = "reg1.iv1", regeffect="Trend")
-# modelling context is needed for the estimation phase
-# sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+init_spec <- x13_spec_default
+new_spec <- add_usrdefvar(init_spec, id = "reg1.iv1", regeffect = "Trend")
 \dontshow{\}) # examplesIf}
 }
 \references{

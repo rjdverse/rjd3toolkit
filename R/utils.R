@@ -33,12 +33,25 @@ NULL
 
 #' @title French national electricity consumtion
 #'
+#' @format A data frame with 210384 rows and 3 variables:
+#' \itemize{
+#'   \item Date: Date of the event (from January 1, 2012 to December 31, 2023)
+#'   \item Hours: Timestamp of the event (from 00:00 AM to 11:30 PM)
+#'   \item Consumtion: number of daily birth (29124--102098)
+#' }
+#'
 #' @source <https://www.rte-france.com/en/eco2mix/download-indicators>
 #' @examples
 #' data(Electricity)
 "Electricity"
 
 #' @title Number of births registered in France from 1968 to 2023
+#'
+#' @format A data frame with 20454 rows and 2 variables:
+#' \itemize{
+#'   \item date: Date of the value (from January 1, 1968 to December 31, 2023)
+#'   \item births: number of daily birth (1254--2830)
+#' }
 #'
 #' @source <https://www.insee.fr/fr/statistiques/8256971?sommaire=8256973>
 #' @examples

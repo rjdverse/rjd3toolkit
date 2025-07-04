@@ -5,7 +5,11 @@
 \alias{Births}
 \title{Number of births registered in France from 1968 to 2023}
 \format{
-An object of class \code{data.frame} with 20454 rows and 2 columns.
+A data frame with 20454 rows and 2 variables:
+\itemize{
+\item date: Date of the value (from January 1, 1968 to December 31, 2023)
+\item births: number of daily birth (1254--2830)
+}
 }
 \source{
 \url{https://www.insee.fr/fr/statistiques/8256971?sommaire=8256973}

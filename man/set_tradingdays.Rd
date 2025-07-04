@@ -133,16 +133,21 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pre-defined regressors
-# y_raw<-ABS$X0.2.09.10.M
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<-set_tradingdays(init_spec,
-#                          option = "TD4",
-#                          test =  "None",
-#                        coef=c(0.7,NA,0.5),
-#        coef.type=c("Fixed","Estimated","Fixed"),
-#        leapyear="LengthOfPeriod",
-#        leapyear.coef=0.6)
-# sa<-rjd3x13::x13(y_raw,new_spec)
+y_raw <- ABS$X0.2.09.10.M
+
+# Customize a default specification
+init_spec <- x13_spec_default
+
+# Estimation on sub-span between two dates (date d1 is excluded)
+new_spec <- set_tradingdays(
+    init_spec,
+    option = "TD4",
+    test = "None",
+    coef = c(0.7, NA, 0.5),
+    coef.type = c("Fixed", "Estimated", "Fixed"),
+    leapyear = "LengthOfPeriod",
+    leapyear.coef = 0.6
+)
 
 # Pre-defined regressors based on user-defined calendar
 ### create a calendar
@@ -158,28 +163,37 @@ BE <- national_calendar(list(
     special_day("ALLSAINTSDAY"),
     special_day("ARMISTICE")
 ))
-## put into a context
+## Put into a context
 my_context <- modelling_context(calendars = list(cal = BE))
-## create a specification
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-## modify the specification
-# new_spec<-set_tradingdays(init_spec,
-#                          option = "TradingDays", calendar.name="cal")
-## estimate with context
-# sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
 
-# User-defined regressors
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# add regressors to context
-# variables<-list(Monday,Tuesday, Wednesday,
-# Thursday, Friday, Saturday)
-# my_context<-modelling_context(variables=variables)
+## Default specification
+init_spec <- x13_spec_default
+
+## Modify the specification
+new_spec <- set_tradingdays(
+    init_spec,
+    option = "TradingDays",
+    calendar.name = "cal"
+)
+
+## Estimate with context
+# sa <- rjd3x13::x13(y_raw, new_spec, context = my_context)
+
+## Default specification
+init_spec <- x13_spec_default
+# Add regressors to context
+variables <- list(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday)
+my_context <- modelling_context(variables = variables)
+
 # create a new spec (here default group name: r)
-# new_spec<-set_tradingdays(init_spec,
-#                          option = "UserDefined",
-# uservariable=c("r.Monday","r.Tuesday","r.Wednesday","r.Thursday","r.Friday","r.Saturday"),
-# test = "None")
-# estimate with context
+# new_spec <- set_tradingdays(
+    init_spec,
+    option = "UserDefined",
+    uservariable = c("r.Monday", "r.Tuesday", "r.Wednesday", "r.Thursday", "r.Friday", "r.Saturday"),
+    test = "None"
+)
+
+# Estimate with context
 # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
 \dontshow{\}) # examplesIf}
 }

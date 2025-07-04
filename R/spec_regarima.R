@@ -26,10 +26,13 @@
 #' the trend.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
-#' # ramp on year 2012
-#' # new_spec<-rjd3toolkit::add_ramp(init_spec,start="2012-01-01",end="2012-12-01")
+#'
+#' init_spec <- x13_spec_default
+#' new_spec <- add_outlier(init_spec, type = "AO", date = "2012-01-01")
+#'
+#' # Adding ramp on year 2012
+#' new_spec <- add_ramp(init_spec, start = "2012-01-01", end = "2012-12-01")
+#'
 #' @seealso \code{\link{add_usrdefvar}}, \code{\link{intervention_variable}}
 #' @references
 #' More information on outliers and other auxiliary variables in JDemetra+ online documentation:
@@ -273,22 +276,48 @@ remove_ramp.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # estimation on sub-span between two dates (date d1 is excluded)
-#' # new_spec<-set_basic(init_spec,type = "Between",d0 = "2014-01-01",
-#' # d1 = "2019-01-01", preliminary.check = TRUE, preprocessing = TRUE)
+#'
+#' # Customize a default specification
+#' init_spec <- x13_spec_default
+#'
+#' # Estimation on sub-span between two dates (date d1 is excluded)
+#' new_spec <- set_basic(
+#'     init_spec,
+#'     type = "Between",
+#'     d0 = "2014-01-01",
+#'     d1 = "2019-01-01",
+#'     preliminary.check = TRUE,
+#'     preprocessing = TRUE
+#' )
+#'
 #' # Estimation on the first 60 observations
-#' # new_spec <-set_basic(init_spec,Type="First", n0 = 60,
-#' #                      preliminary.check = TRUE,
-#' #                      preprocessing= TRUE)
+#' new_spec <- set_basic(
+#'     init_spec,
+#'     Type = "First",
+#'     n0 = 60,
+#'     preliminary.check = TRUE,
+#'     preprocessing = TRUE
+#' )
+#'
 #' # Estimation on the last 60 observations
-#' # new_spec <-set_basic(init_spec,Type="Last", n1 = 60,
-#' #                      preliminary.check = TRUE,
-#' #                      preprocessing= TRUE)
+#' new_spec <- set_basic(
+#'     init_spec,
+#'     Type = "Last",
+#'     n1 = 60,
+#'     preliminary.check = TRUE,
+#'     preprocessing = TRUE
+#' )
+#'
 #' # Estimation excluding 60 observations at the beginning and 36 at the end of the series
-#' # new_spec <-set_basic(init_spec,Type="Excluding", n0=60, n1=36,
-#' #                      preliminary.check = TRUE,
-#' #                      preprocessing= TRUE)
+#' new_spec <-set_basic(
+#'     init_spec,
+#'     Type = "Excluding",
+#'     n0 = 60,
+#'     n1 = 36,
+#'     preliminary.check = TRUE,
+#'     preprocessing = TRUE
+#' )
+#'
 #' @seealso \code{\link{set_estimate}}, \code{\link{set_arima}}
 #' @references
 #' More information in JDemetra+ online documentation:
@@ -364,9 +393,17 @@ set_basic.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
-#' # new_spec<-set_estimate(init_spec, type= "From", d0 = "2012-01-01", tol = 0.0000002,
-#' # exact.ml = FALSE, unit.root.limit = 0.98)
+#' # Customize a default specification
+#' init_spec <- tramoseats_spec_default
+#' new_spec <- set_estimate(
+#'     x = init_spec,
+#'     type = "From",
+#'     d0 = "2012-01-01",
+#'     tol = 0.0000002,
+#'     exact.ml = FALSE,
+#'     unit.root.limit = 0.98
+#' )
+#'
 #' @seealso \code{\link{set_basic}}, \code{\link{set_arima}}
 #' @references
 #' More in JDemetra+ online documentation:
@@ -480,11 +517,17 @@ set_estimate.default <- function(x,
 #' to the irregular, "LS" to the trend and "SO" to seasonal component.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
-#' # new_spec<-set_outlier(init_spec, span.type= "From", d0 = "2012-01-01",
-#' #                      outliers.type = c("LS", "AO"),
-#' #                      critical.value = 5,
-#' #                      tc.rate =0.85)
+#'
+#' # Customize a default specification
+#' init_spec <- tramoseats_spec_default
+#' new_spec <- set_outlier(
+#'     x = init_spec,
+#'     span.type = "From",
+#'     d0 = "2012-01-01",
+#'     outliers.type = c("LS", "AO"),
+#'     critical.value = 5,
+#'     tc.rate = 0.85
+#' )
 #'
 #' @seealso \code{\link{add_outlier}}, \code{\link{add_usrdefvar}}
 #'
@@ -706,10 +749,10 @@ set_outlier.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<-set_automodel(init_spec,
-#' #                        enabled = FALSE,
-#' #                        acceptdefault = TRUE)
+#'
+#' # Customize a default specification
+#' init_spec <- x13_spec_default
+#' new_spec <- set_automodel(x = init_spec, enabled = FALSE, acceptdefault = TRUE)
 #'
 #' @seealso \code{\link{set_arima}}, \code{\link{set_transform}}
 #'
@@ -1100,16 +1143,21 @@ set_arima.default <- function(x,
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # Pre-defined regressors
-#' # y_raw<-ABS$X0.2.09.10.M
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<-set_tradingdays(init_spec,
-#' #                          option = "TD4",
-#' #                          test =  "None",
-#' #                        coef=c(0.7,NA,0.5),
-#' #        coef.type=c("Fixed","Estimated","Fixed"),
-#' #        leapyear="LengthOfPeriod",
-#' #        leapyear.coef=0.6)
-#' # sa<-rjd3x13::x13(y_raw,new_spec)
+#' y_raw <- ABS$X0.2.09.10.M
+#'
+#' # Customize a default specification
+#' init_spec <- x13_spec_default
+#'
+#' # Estimation on sub-span between two dates (date d1 is excluded)
+#' new_spec <- set_tradingdays(
+#'     init_spec,
+#'     option = "TD4",
+#'     test = "None",
+#'     coef = c(0.7, NA, 0.5),
+#'     coef.type = c("Fixed", "Estimated", "Fixed"),
+#'     leapyear = "LengthOfPeriod",
+#'     leapyear.coef = 0.6
+#' )
 #'
 #' # Pre-defined regressors based on user-defined calendar
 #' ### create a calendar
@@ -1125,28 +1173,37 @@ set_arima.default <- function(x,
 #'     special_day("ALLSAINTSDAY"),
 #'     special_day("ARMISTICE")
 #' ))
-#' ## put into a context
+#' ## Put into a context
 #' my_context <- modelling_context(calendars = list(cal = BE))
-#' ## create a specification
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' ## modify the specification
-#' # new_spec<-set_tradingdays(init_spec,
-#' #                          option = "TradingDays", calendar.name="cal")
-#' ## estimate with context
-#' # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
 #'
-#' # User-defined regressors
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # add regressors to context
-#' # variables<-list(Monday,Tuesday, Wednesday,
-#' # Thursday, Friday, Saturday)
-#' # my_context<-modelling_context(variables=variables)
+#' ## Default specification
+#' init_spec <- x13_spec_default
+#'
+#' ## Modify the specification
+#' new_spec <- set_tradingdays(
+#'     init_spec,
+#'     option = "TradingDays",
+#'     calendar.name = "cal"
+#' )
+#'
+#' ## Estimate with context
+#' # sa <- rjd3x13::x13(y_raw, new_spec, context = my_context)
+#'
+#' ## Default specification
+#' init_spec <- x13_spec_default
+#' # Add regressors to context
+#' variables <- list(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday)
+#' my_context <- modelling_context(variables = variables)
+#'
 #' # create a new spec (here default group name: r)
-#' # new_spec<-set_tradingdays(init_spec,
-#' #                          option = "UserDefined",
-#' # uservariable=c("r.Monday","r.Tuesday","r.Wednesday","r.Thursday","r.Friday","r.Saturday"),
-#' # test = "None")
-#' # estimate with context
+#' # new_spec <- set_tradingdays(
+#'     init_spec,
+#'     option = "UserDefined",
+#'     uservariable = c("r.Monday", "r.Tuesday", "r.Wednesday", "r.Thursday", "r.Friday", "r.Saturday"),
+#'     test = "None"
+#' )
+#'
+#' # Estimate with context
 #' # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
 #' @export
 set_tradingdays <- function(x,
@@ -1415,13 +1472,17 @@ set_tradingdays.default <- function(x,
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<-set_easter(init_spec,
-#' #                     enabled = TRUE,
-#' #                     duration = 12,
-#' #                    test = "None",
-#' #                    type = "IncludeEasterMonday")
-#' # sa<-rjd3x13::x13(ABS$X0.2.09.10.M,new_spec)
+#'
+#' # Customize a default specification
+#' init_spec <- x13_spec_default
+#' new_spec <- set_easter(
+#'     x = init_spec,
+#'     enabled = TRUE,
+#'     duration = 12,
+#'     test = "None",
+#'     type = "IncludeEasterMonday"
+#' )
+#'
 #' @export
 set_easter <- function(x, enabled = NA,
                        julian = NA,
@@ -1545,12 +1606,11 @@ set_easter.default <- function(x, enabled = NA,
 #' @references
 #' More information in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
+#'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<- set_transform(init_spec,
-#' #                        fun = "Log",
-#' #                        outliers = TRUE)
-#' # sa<-rjd3x13::x13(ABS$X0.2.09.10.M,new_spec)
+#' # Customize a default specification
+#' init_spec <- x13_spec_default
+#' new_spec <- set_transform(x = init_spec, fun = "Log", outliers = TRUE)
 #'
 #' @export
 set_transform <- function(x,
@@ -1638,39 +1698,50 @@ set_transform.default <- function(x,
 #' - \code{"Undefined"} : the effect of the regressor is assigned to an additional component,
 #' the variable is used to improve the pre-processing step, but is not removed from the series
 #' for the decomposition.
-#' - \code{"Trend"}: after the decomposition the effect is allocated to the trend component, like a Level-Shift
-#' - \code{"Irregular"}: after the decomposition the effect is allocated to the irregular component, like an Additive-outlier.
-#' - \code{"Seasonal"}: after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
-#' - \code{"Series"}: after the decomposition the effect is allocated to
-#' the raw series: \eqn{yc_t=y_t+ effect}
-#' - \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to
-#' the seasonally adjusted series: \eqn{sa_t=T+I+effect}
+#' \itemize{
+#'   \item \code{"Trend"}: after the decomposition the effect is allocated to the trend component, like a Level-Shift
+#'   \item \code{"Irregular"}: after the decomposition the effect is allocated to the irregular component, like an Additive-outlier
+#'   \item \code{"Seasonal"}: after the decomposition the effect is allocated to the seasonal component, like a Seasonal-outlier
+#'   \item \code{"Series"}: after the decomposition the effect is allocated to the raw series: \eqn{yc_t=y_t+ effect}
+#'   \item \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to the seasonally adjusted series: \eqn{sa_t=T+I+effect}
+#' }
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # creating one or several external regressors (TS objects),
+#'
+#' # Creating one or several external regressors (TS objects),
 #' # which will be gathered in one or several groups
-#' iv1 <- intervention_variable(12, c(2000, 1), 60,
-#'     starts = "2001-01-01", ends = "2001-12-01"
+#' iv1 <- intervention_variable(
+#'     frequency = 12,
+#'     start = c(2000, 1),
+#'     length = 60,
+#'     starts = "2001-01-01",
+#'     ends = "2001-12-01"
 #' )
-#' iv2 <- intervention_variable(12, c(2000, 1), 60,
-#'     starts = "2001-01-01", ends = "2001-12-01", delta = 1
+#' iv2 <- intervention_variable(
+#'     frequency = 12,
+#'     start = c(2000, 1),
+#'     length = 60,
+#'     starts = "2001-01-01",
+#'     ends = "2001-12-01",
+#'     delta = 1
 #' )
-#' # configuration 1: regressors in the same default group (named "r")
-#' variables <- list("iv1" = iv1, "iv2" = iv2)
-#' # to use those regressors, input : name=r.iv1 and r.iv2 in add_usrdefvar function
-#' # configuration 2: group names are user-defined
-#' # here: regressors as a list of two groups (lists) reg1 and reg2
-#' vars <- list(reg1 = list(iv1 = iv1), reg2 = list(iv2 = iv2))
-#' # to use those regressors, input : name=reg1.iv1 and name=reg2.iv2 in add_usrdefvar function
-#' # creating the modelling context
+#'
+#' # Using one variable in a a seasonal adjustment process
+#' # Regressors as a list of two groups reg1 and reg2
+#' vars <- list(
+#'     reg1 = list(x = iv1),
+#'     reg2 = list(x = iv2)
+#' )
+#'
+#' # Creating the modelling context
 #' my_context <- modelling_context(variables = vars)
-#' # customize a default specification
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # regressors have to be added one by one
-#' # new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
-#' # new spec<- add_usrdefvar(new_spec,name = "reg2.iv2", regeffect="Trend", coef=0.7)
-#' # modelling context is needed for the estimation phase
-#' # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+#'
+#' # Customize a default specification
+#' init_spec <- x13_spec_default
+#'
+#' # Regressors have to be added one by one
+#' new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
+#' new spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
 #'
 #' @seealso \code{\link{set_tradingdays}}, \code{\link{intervention_variable}}
 #' @references
