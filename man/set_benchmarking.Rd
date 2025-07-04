@@ -60,7 +60,7 @@ init_spec <- x13_spec_default
 new_spec <- set_benchmarking(
     x = init_spec,
     enabled = TRUE,
-    target = "Normal",
+    target = "Original",
     rho = 0.8,
     lambda = 0.5,
     forecast = FALSE,

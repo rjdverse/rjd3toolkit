@@ -30,6 +30,9 @@ outliers/ramps coefficients are estimated.}
 
 \item{start, end}{dates of the ramp regressor.}
 }
+\value{
+The modified specification (with/without outliers or ramp)
+}
 \description{
 Generic function to add outliers or Ramp regressors (\code{add_outlier()} and
 \code{add_ramp()}) to a specification or to remove them

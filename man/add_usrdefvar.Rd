@@ -32,6 +32,9 @@ By default (\code{lag = 0}), the regressor \eqn{x_t} is not lagged. If \code{lag
 \item{regeffect}{component to which the effect of the user-defined variable will be assigned.
 By default (\code{"Undefined"}), see details.}
 }
+\value{
+The modified specification (with new user-defined variables)
+}
 \description{
 Function allowing to add any user-defined regressor to a specification and
 allocate its effect to a selected component, excepted to the calendar component.
@@ -94,7 +97,7 @@ init_spec <- x13_spec_default
 
 # Regressors have to be added one by one
 new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
-new spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
+new_spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
 \dontshow{\}) # examplesIf}
 }
 \references{

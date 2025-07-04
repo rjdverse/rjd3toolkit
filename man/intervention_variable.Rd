@@ -82,7 +82,7 @@ my_context <- modelling_context(variables = vars)
 
 # customize a default specification
 init_spec <- x13_spec_default
-new_spec <- add_usrdefvar(init_spec, id = "reg1.iv1", regeffect = "Trend")
+new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
 \dontshow{\}) # examplesIf}
 }
 \references{

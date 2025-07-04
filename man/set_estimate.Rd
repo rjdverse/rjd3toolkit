@@ -49,6 +49,9 @@ smaller than this number, then a unit root is assumed, the order of the AR
 polynomial is reduced by one and the appropriate order of the differencing
 (non-seasonal, seasonal) is increased.(Default value: 0.96)}
 }
+\value{
+The modified specification (with new estimation parameters)
+}
 \description{
 Function allowing to define numeric boundaries for estimation and to define
 a sub-span on which reg-arima (tramo) modelling will be performed

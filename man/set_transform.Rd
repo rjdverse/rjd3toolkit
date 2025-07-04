@@ -34,6 +34,9 @@ transformation selection is chosen (considered only when \code{fun = "Auto"}). D
 \code{transform.fct}> 1 favours levels, \code{transform.fct}< 1 favours logs.
 Considered only when \code{fun = "Auto"}.}
 }
+\value{
+The modified specification (with log/level transformation scheme)
+}
 \description{
 Set Log-level Transformation and Decomposition scheme in Pre-Processing Specification
 }

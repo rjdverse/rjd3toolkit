@@ -75,6 +75,9 @@ in the intermediate steps. If \code{TRUE}, an exact likelihood estimation
 method is used.
 When \code{FALSE}, the fast Hannan-Rissanen method is used.}
 }
+\value{
+The modified specification (with new outlier parameters)
+}
 \description{
 Function allowing to customize the automatic outlier detection
 process built in in the pre-processing step (regarima or tramo).

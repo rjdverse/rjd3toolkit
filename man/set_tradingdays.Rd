@@ -113,6 +113,9 @@ trading day regressors.
 
 \item{leapyear.coef}{coefficient of the leap year regressor.}
 }
+\value{
+The modified specification (with new trading days variables)
+}
 \description{
 Function allowing to select the trading-days regressors to be used for
 calendar correction in the pre-processing step of a seasonal adjustment
@@ -166,9 +169,6 @@ BE <- national_calendar(list(
 ## Put into a context
 my_context <- modelling_context(calendars = list(cal = BE))
 
-## Default specification
-init_spec <- x13_spec_default
-
 ## Modify the specification
 new_spec <- set_tradingdays(
     init_spec,
@@ -179,14 +179,25 @@ new_spec <- set_tradingdays(
 ## Estimate with context
 # sa <- rjd3x13::x13(y_raw, new_spec, context = my_context)
 
-## Default specification
-init_spec <- x13_spec_default
+regs_td <- rjd3toolkit::td(
+    s = y_raw,
+    groups = c(1, 2, 0, 4, 5, 6, 3),
+    contrasts = TRUE
+)
+
+variables <- list(
+    Monday = regs_td[, 1],
+    Tuesday = regs_td[, 2],
+    Wednesday = regs_td[, 3],
+    Thursday = regs_td[, 4],
+    Friday = regs_td[, 5],
+    Saturday = regs_td[, 6]
+)
 # Add regressors to context
-variables <- list(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday)
 my_context <- modelling_context(variables = variables)
 
-# create a new spec (here default group name: r)
-# new_spec <- set_tradingdays(
+# Create a new spec (here default group name: r)
+new_spec <- set_tradingdays(
     init_spec,
     option = "UserDefined",
     uservariable = c("r.Monday", "r.Tuesday", "r.Wednesday", "r.Thursday", "r.Friday", "r.Saturday"),
@@ -194,7 +205,7 @@ my_context <- modelling_context(variables = variables)
 )
 
 # Estimate with context
-# sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
+# sa <- rjd3x13::x13(y_raw, new_spec, context = my_context)
 \dontshow{\}) # examplesIf}
 }
 \references{

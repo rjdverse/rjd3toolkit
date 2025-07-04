@@ -40,6 +40,9 @@ values).}
 \item{preprocessing}{(REGARIMA/X13 Specific) a Boolean to enable/disable the pre-processing.
 Option disabled for the moment.}
 }
+\value{
+The modified specification with new estimation span
+}
 \description{
 Function allowing to check if the series can be processed and to define a
 sub-span on which estimation will be performed
@@ -70,7 +73,7 @@ new_spec <- set_basic(
 # Estimation on the first 60 observations
 new_spec <- set_basic(
     init_spec,
-    Type = "First",
+    type = "First",
     n0 = 60,
     preliminary.check = TRUE,
     preprocessing = TRUE
@@ -79,7 +82,7 @@ new_spec <- set_basic(
 # Estimation on the last 60 observations
 new_spec <- set_basic(
     init_spec,
-    Type = "Last",
+    type = "Last",
     n1 = 60,
     preliminary.check = TRUE,
     preprocessing = TRUE
@@ -88,7 +91,7 @@ new_spec <- set_basic(
 # Estimation excluding 60 observations at the beginning and 36 at the end of the series
 new_spec <-set_basic(
     init_spec,
-    Type = "Excluding",
+    type = "Excluding",
     n0 = 60,
     n1 = 36,
     preliminary.check = TRUE,

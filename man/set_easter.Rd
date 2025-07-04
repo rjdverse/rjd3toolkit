@@ -58,6 +58,9 @@ including Easter Sunday;
 \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to
 and including Easter Monday.}
 }
+\value{
+The modified specification (with new easter parameters)
+}
 \description{
 Set Easter effect correction in Pre-Processing Specification
 }

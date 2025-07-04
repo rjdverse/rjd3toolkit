@@ -15,6 +15,8 @@
 #' @param coef the coefficient if needs to be fixed. If equal to 0 the
 #' outliers/ramps coefficients are estimated.
 #'
+#' @returns The modified specification (with/without outliers or ramp)
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
@@ -116,6 +118,7 @@ remove_outlier <- function(x,
                            name = NULL) {
     UseMethod("remove_outlier", x)
 }
+
 #' @export
 remove_outlier.default <- function(x,
                                    type = NULL,
@@ -154,6 +157,7 @@ remove_outlier.default <- function(x,
     }
     return(x)
 }
+
 #' @rdname add_outlier
 #' @export
 add_ramp <- function(x,
@@ -163,6 +167,7 @@ add_ramp <- function(x,
                      coef = 0) {
     UseMethod("add_ramp", x)
 }
+
 #' @export
 add_ramp.default <- function(x,
                              start,
@@ -198,6 +203,7 @@ add_ramp.default <- function(x,
     res <- list(name = name, start = start, end = end, coef = .fixed_parameter(coef))
     return(res)
 }
+
 #' @rdname add_outlier
 #' @export
 remove_ramp <- function(x,
@@ -206,6 +212,7 @@ remove_ramp <- function(x,
                         name = NULL) {
     UseMethod("remove_ramp", x)
 }
+
 #' @export
 remove_ramp.default <- function(x,
                                 start = NULL,
@@ -268,6 +275,8 @@ remove_ramp.default <- function(x,
 #' @param preprocessing (REGARIMA/X13 Specific) a Boolean to enable/disable the pre-processing.
 #' Option disabled for the moment.
 #'
+#' @returns The modified specification with new estimation span
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
@@ -293,7 +302,7 @@ remove_ramp.default <- function(x,
 #' # Estimation on the first 60 observations
 #' new_spec <- set_basic(
 #'     init_spec,
-#'     Type = "First",
+#'     type = "First",
 #'     n0 = 60,
 #'     preliminary.check = TRUE,
 #'     preprocessing = TRUE
@@ -302,7 +311,7 @@ remove_ramp.default <- function(x,
 #' # Estimation on the last 60 observations
 #' new_spec <- set_basic(
 #'     init_spec,
-#'     Type = "Last",
+#'     type = "Last",
 #'     n1 = 60,
 #'     preliminary.check = TRUE,
 #'     preprocessing = TRUE
@@ -311,7 +320,7 @@ remove_ramp.default <- function(x,
 #' # Estimation excluding 60 observations at the beginning and 36 at the end of the series
 #' new_spec <-set_basic(
 #'     init_spec,
-#'     Type = "Excluding",
+#'     type = "Excluding",
 #'     n0 = 60,
 #'     n1 = 36,
 #'     preliminary.check = TRUE,
@@ -360,6 +369,7 @@ set_basic.default <- function(x,
     x$basic <- basic
     return(x)
 }
+
 #' @title Set Numeric Estimation Parameters and Modelling Span
 #'
 #' @description
@@ -384,6 +394,8 @@ set_basic.default <- function(x,
 #' smaller than this number, then a unit root is assumed, the order of the AR
 #' polynomial is reduced by one and the appropriate order of the differencing
 #' (non-seasonal, seasonal) is increased.(Default value: 0.96)
+#'
+#' @returns The modified specification (with new estimation parameters)
 #'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
@@ -455,6 +467,7 @@ set_estimate.default <- function(x,
     x$estimate <- estimate
     return(x)
 }
+
 #' @title Set Outlier Detection Parameters
 #'
 #' @description Function allowing to customize the automatic outlier detection
@@ -504,6 +517,8 @@ set_estimate.default <- function(x,
 #' in the intermediate steps. If \code{TRUE}, an exact likelihood estimation
 #' method is used.
 #' When \code{FALSE}, the fast Hannan-Rissanen method is used.
+#'
+#' @returns The modified specification (with new outlier parameters)
 #'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
@@ -741,6 +756,8 @@ set_outlier.default <- function(x,
 #'  Criteria considered are residual diagnostics, the model structure and the
 #'  number of outliers.
 #'
+#' @returns The modified specification (with new ARIMA parameters)
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
@@ -857,6 +874,7 @@ set_automodel.default <- function(x,
     x$automodel <- automodel
     return(x)
 }
+
 #' @title Set ARIMA Model Structure in Pre-Processing Specification
 #'
 #' @description
@@ -882,6 +900,8 @@ set_automodel.default <- function(x,
 #' \code{"Fixed"} = the coefficients are fixed at the value provided by the user,
 #' \code{"Initial"} = the value defined by the user is used as the initial condition.
 #'
+#' @returns The modified specification (with new ARIMA model)
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
@@ -889,17 +909,27 @@ set_automodel.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' @seealso \code{\link{set_automodel}}, \code{\link{set_transform}}
 #' @examplesIf current_java_version >= minimal_java_version
-#' # create default spec
-#' # my_spec<-rjd3x13::x13_spec("rsa5c")
-#' # disable automatic arima modelling
-#' # my_spec<-set_automodel(my_spec, enabled = FALSE)
-#' # customize arima model
-#' # my_spec <-set_arima(my_spec,mean = 0.2,
-#' #                      mean.type = "Fixed",
-#' #                      p = 1, d = 2, q = 0,
-#' #                      bp = 1, bd = 1, bq = 0,
-#' #                      coef = c(0.6,0.7),
-#' #                      coef.type = c("Initial","Fixed"))
+#' # Customize a default specification
+#' init_spec <- x13_spec_default
+#'
+#' # Disable automatic arima modelling
+#' new_spec <- set_automodel(init_spec, enabled = FALSE)
+#'
+#' # Customize arima model
+#' new_spec <- set_arima(
+#'     x = new_spec,
+#'     mean = 0.2,
+#'     mean.type = "Fixed",
+#'     p = 1,
+#'     d = 2,
+#'     q = 0,
+#'     bp = 1,
+#'     bd = 1,
+#'     bq = 0,
+#'     coef = c(0.6, 0.7),
+#'     coef.type = c("Initial", "Fixed")
+#' )
+#'
 #' @references
 #' More information on reg-arima modelling in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
@@ -1128,6 +1158,8 @@ set_arima.default <- function(x,
 #' @param coef.type,leapyear.coef.type vector defining if the coefficients are
 #' fixed or estimated.
 #'
+#' @returns The modified specification (with new trading days variables)
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
@@ -1176,9 +1208,6 @@ set_arima.default <- function(x,
 #' ## Put into a context
 #' my_context <- modelling_context(calendars = list(cal = BE))
 #'
-#' ## Default specification
-#' init_spec <- x13_spec_default
-#'
 #' ## Modify the specification
 #' new_spec <- set_tradingdays(
 #'     init_spec,
@@ -1189,14 +1218,25 @@ set_arima.default <- function(x,
 #' ## Estimate with context
 #' # sa <- rjd3x13::x13(y_raw, new_spec, context = my_context)
 #'
-#' ## Default specification
-#' init_spec <- x13_spec_default
+#' regs_td <- rjd3toolkit::td(
+#'     s = y_raw,
+#'     groups = c(1, 2, 0, 4, 5, 6, 3),
+#'     contrasts = TRUE
+#' )
+#'
+#' variables <- list(
+#'     Monday = regs_td[, 1],
+#'     Tuesday = regs_td[, 2],
+#'     Wednesday = regs_td[, 3],
+#'     Thursday = regs_td[, 4],
+#'     Friday = regs_td[, 5],
+#'     Saturday = regs_td[, 6]
+#' )
 #' # Add regressors to context
-#' variables <- list(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday)
 #' my_context <- modelling_context(variables = variables)
 #'
-#' # create a new spec (here default group name: r)
-#' # new_spec <- set_tradingdays(
+#' # Create a new spec (here default group name: r)
+#' new_spec <- set_tradingdays(
 #'     init_spec,
 #'     option = "UserDefined",
 #'     uservariable = c("r.Monday", "r.Tuesday", "r.Wednesday", "r.Thursday", "r.Friday", "r.Saturday"),
@@ -1204,7 +1244,7 @@ set_arima.default <- function(x,
 #' )
 #'
 #' # Estimate with context
-#' # sa<-rjd3x13::x13(y_raw,new_spec, context=my_context)
+#' # sa <- rjd3x13::x13(y_raw, new_spec, context = my_context)
 #' @export
 set_tradingdays <- function(x,
                             option = c(NA, "TradingDays", "WorkingDays", "TD2c", "TD3", "TD3c", "TD4", "None", "UserDefined"),
@@ -1460,6 +1500,8 @@ set_tradingdays.default <- function(x,
 #' \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to
 #' and including Easter Monday.
 #'
+#' @returns The modified specification (with new easter parameters)
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
@@ -1596,6 +1638,8 @@ set_easter.default <- function(x, enabled = NA,
 #' \code{transform.fct}> 1 favours levels, \code{transform.fct}< 1 favours logs.
 #' Considered only when \code{fun = "Auto"}.
 #'
+#' @returns The modified specification (with log/level transformation scheme)
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
@@ -1689,6 +1733,8 @@ set_transform.default <- function(x,
 #' @param regeffect component to which the effect of the user-defined variable will be assigned.
 #' By default (`"Undefined"`), see details.
 #'
+#' @returns The modified specification (with new user-defined variables)
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
 #' (or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
@@ -1741,7 +1787,7 @@ set_transform.default <- function(x,
 #'
 #' # Regressors have to be added one by one
 #' new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
-#' new spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
+#' new_spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
 #'
 #' @seealso \code{\link{set_tradingdays}}, \code{\link{intervention_variable}}
 #' @references
@@ -1757,6 +1803,7 @@ add_usrdefvar <- function(x,
                           regeffect = c("Undefined", "Trend", "Seasonal", "Irregular", "Series", "SeasonallyAdjusted")) {
     UseMethod("add_usrdefvar", x)
 }
+
 #' @export
 add_usrdefvar.default <- function(x,
                                   group = "r",

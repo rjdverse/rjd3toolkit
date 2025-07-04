@@ -43,6 +43,9 @@ Possible procedures are: \code{"Undefined"} = no use of any user-defined input (
 \code{"Fixed"} = the coefficients are fixed at the value provided by the user,
 \code{"Initial"} = the value defined by the user is used as the initial condition.}
 }
+\value{
+The modified specification (with new ARIMA model)
+}
 \description{
 Function allowing to customize the ARIMA model structure
 when the automatic modelling is disabled.(see example)
@@ -55,17 +58,26 @@ generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" gene
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# create default spec
-# my_spec<-rjd3x13::x13_spec("rsa5c")
-# disable automatic arima modelling
-# my_spec<-set_automodel(my_spec, enabled = FALSE)
-# customize arima model
-# my_spec <-set_arima(my_spec,mean = 0.2,
-#                      mean.type = "Fixed",
-#                      p = 1, d = 2, q = 0,
-#                      bp = 1, bd = 1, bq = 0,
-#                      coef = c(0.6,0.7),
-#                      coef.type = c("Initial","Fixed"))
+# Customize a default specification
+init_spec <- x13_spec_default
+
+# Disable automatic arima modelling
+new_spec <- set_automodel(init_spec, enabled = FALSE)
+
+# Customize arima model
+new_spec <- set_arima(
+    x = new_spec,
+    mean = 0.2,
+    mean.type = "Fixed",
+    p = 1,
+    d = 2,
+    q = 0,
+    bp = 1,
+    bd = 1,
+    bq = 0,
+    coef = c(0.6, 0.7),
+    coef.type = c("Initial", "Fixed")
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

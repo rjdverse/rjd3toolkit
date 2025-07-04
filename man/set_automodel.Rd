@@ -118,6 +118,9 @@ compares the model identified by the automatic procedure to the default model
 Criteria considered are residual diagnostics, the model structure and the
 number of outliers.}
 }
+\value{
+The modified specification (with new ARIMA parameters)
+}
 \description{
 Function allowing to customize Arima model identification procedure.
 }
