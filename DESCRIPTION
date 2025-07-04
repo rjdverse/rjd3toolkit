@@ -29,7 +29,7 @@ Imports:
     checkmate,
     methods
 SystemRequirements: Java (>= 17)
-License: EUPL-1.2
+License: EUPL
 URL: https://github.com/rjdverse/rjd3toolkit, https://rjdverse.github.io/rjd3toolkit/
 LazyData: TRUE
 Suggests:
