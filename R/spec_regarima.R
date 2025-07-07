@@ -1239,7 +1239,8 @@ set_arima.default <- function(x,
 #' new_spec <- set_tradingdays(
 #'     init_spec,
 #'     option = "UserDefined",
-#'     uservariable = c("r.Monday", "r.Tuesday", "r.Wednesday", "r.Thursday", "r.Friday", "r.Saturday"),
+#'     uservariable = c("r.Monday", "r.Tuesday", "r.Wednesday",
+#'                      "r.Thursday", "r.Friday", "r.Saturday"),
 #'     test = "None"
 #' )
 #'
