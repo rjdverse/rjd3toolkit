@@ -11,13 +11,14 @@ sarima_random(model, length, stde = 1, tdegree = 0, seed = -1)
 
 \item{length}{length of the output series.}
 
-\item{stde}{deviation of the normal distribution of the innovations of the simulated series.
-Unused if \code{tdegree} is larger than 0.}
+\item{stde}{deviation of the normal distribution of the innovations of the
+simulated series. Unused if \code{tdegree} is larger than 0.}
 
 \item{tdegree}{degrees of freedom of the T distribution of the innovations.
 \code{tdegree = 0} if normal distribution is used.}
 
-\item{seed}{seed of the random numbers generator. Negative values mean random seeds}
+\item{seed}{seed of the random numbers generator. Negative values mean
+random seeds.}
 }
 \value{
 a numeric vector with the simulated series.

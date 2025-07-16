@@ -1,7 +1,7 @@
 #' @title The Student Distribution
 #'
 #' @description
-#' Density, (cumulative) distribution function and random generation for Student distribution.
+#' Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
 #'
 #' @param df degrees of freedom.
 #' @param n number of observations.
@@ -9,10 +9,15 @@
 #'
 #'
 #' @examplesIf jversion >= 17
-#' # T with 2 degrees of freedom.
-#' z <- density_t(2, .01 * seq(-100, 100, 1))
-#' # T with 2 degrees of freedom. 100 random
+#' # Probability density function of T with 2 degrees of freedom.
+#' z <- density_t(df=2, .01 * seq(-100, 100, 1))
+#' # Generating a random vector with each component drawn from a T(2) distribution
 #' z <- random_t(2, 100)
+#' # Computing the probabilty that the random variable X folllowing a T distrubution with df degrees of freedom is lower than x
+#' z<-cdf_t(df=12,x=1.2)
+#' z
+#' z<-cdf_t(df=12,x=c(0:10)) # array of values
+#' z
 #' @name studentdistribution
 #' @rdname studentdistribution
 #' @order 3

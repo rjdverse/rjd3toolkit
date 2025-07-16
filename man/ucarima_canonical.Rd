@@ -2,22 +2,24 @@
 % Please edit documentation in R/arima.R
 \name{ucarima_canonical}
 \alias{ucarima_canonical}
-\title{Makes a UCARIMA model canonical; more specifically, put all the noise of the components in one dedicated component}
+\title{Makes a UCARIMA model canonical}
 \usage{
 ucarima_canonical(ucm, cmp = 0, adjust = TRUE)
 }
 \arguments{
 \item{ucm}{An UCARIMA model returned by \code{\link[=ucarima_model]{ucarima_model()}}.}
 
-\item{cmp}{Index of the component that will contain the noises; 0 if a new component with all the noises will be added to the model}
+\item{cmp}{Index of the component that will contain the noises; 0 if a new
+component with all the noises will be added to the model}
 
-\item{adjust}{If TRUE, some noise could be added to the model to ensure that all the components has positive (pseudo-)spectrum}
+\item{adjust}{If TRUE, some noise could be added to the model to ensure that
+all the components has positive (pseudo-)spectrum}
 }
 \value{
 A new UCARIMA model
 }
 \description{
-Makes a UCARIMA model canonical; more specifically, put all the noise of the components in one dedicated component
+More specifically, put all the noise of the components in one dedicated component
 }
 \examples{
 \dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

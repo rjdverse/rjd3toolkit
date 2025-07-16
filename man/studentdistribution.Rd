@@ -16,18 +16,23 @@ random_t(df, n)
 \arguments{
 \item{df}{degrees of freedom.}
 
-\item{x}{vector of quantiles.}
+\item{x}{vector of quantiles}
 
 \item{n}{number of observations.}
 }
 \description{
-Density, (cumulative) distribution function and random generation for Student distribution.
+Probabality Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
 }
 \examples{
 \dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# T with 2 degrees of freedom.
-z <- density_t(2, .01 * seq(-100, 100, 1))
-# T with 2 degrees of freedom. 100 random
+# Probability density function of T with 2 degrees of freedom.
+z <- density_t(df=2, .01 * seq(-100, 100, 1))
+# Generating a random vector with each component drawn from a T(2) distribution
 z <- random_t(2, 100)
+# Computing the probabilty that the random variable X folllowing a T distrubution with df degrees of freedom is lower than x
+z<-cdf_t(df=12,x=1.2)
+z
+z<-cdf_t(df=12,x=c(0:10)) # array of values
+z
 \dontshow{\}) # examplesIf}
 }
