@@ -1,11 +1,11 @@
 #' @title The Student Distribution
 #'
 #' @description
-#' Probabality Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
+#' Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
 #'
 #' @param df degrees of freedom.
 #' @param n number of observations.
-#' @param x vector of quantiles
+#' @param x vector of quantiles.
 #'
 #'
 #' @examplesIf jversion >= 17
