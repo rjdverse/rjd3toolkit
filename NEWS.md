@@ -8,6 +8,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+* default group value with mts objects in modelling_context #107
+
 ## [3.5.1] - 2025-06-18
 
 
