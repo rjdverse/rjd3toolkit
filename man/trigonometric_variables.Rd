@@ -58,3 +58,13 @@ are the five harmonics. The output matrix will be equal to:
 \end{pmatrix}
 }
 }
+\examples{
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+trigonometric_variables(
+    frequency = 12,
+    length = 480,
+    start = c(1990, 1),
+    seasonal_frequency = 3
+)
+\dontshow{\}) # examplesIf}
+}

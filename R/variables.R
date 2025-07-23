@@ -416,8 +416,16 @@ periodic_contrasts <- function(frequency, start, length, s) {
 #' \end{pmatrix}
 #' }
 #'
-#'
 #' @export
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' trigonometric_variables(
+#'     frequency = 12,
+#'     length = 480,
+#'     start = c(1990, 1),
+#'     seasonal_frequency = 3
+#' )
+#'
 trigonometric_variables <- function(frequency, start, length, s,
                                     seasonal_frequency = NULL) {
     if (!missing(s) && is.ts(s)) {

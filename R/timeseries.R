@@ -114,6 +114,13 @@ clean_extremities <- function(s) {
 #' @returns The interpolated series
 #' @export
 #'
+#' @examplesIf current_java_version >= minimal_java_version
+#' ts_interpolate(AirPassengers)
+#'
+#' x <- AirPassengers
+#' x[50:60] <- NA
+#' ts_interpolate(x)
+#'
 ts_interpolate <- function(s, method = c("airline", "average")) {
     UseMethod("ts_interpolate", s)
 }
@@ -251,6 +258,15 @@ daysOf <- function(ts, pos = 1) {
 #' @returns An object of type "JD3_TS". List containing the identifiers,
 #' the data and the metadata
 #' @export
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' source <- "Txt"
+#' # id is split due to length restrictions
+#' id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd%2FMM%2Fyyyy&delimiter=SEMICOLON&"
+#' id2 <- "file=C%3A%5CDocuments%5CIPI%5CData%5CIPI_nace4.csv#seriesIndex=0"
+#' id <- paste0(id1, id2)
+#'
+#' to_ts(source, id)
 to_ts <- function(source, id, type = "All") {
     jmoniker <- .jcall(
         obj = "jdplus/toolkit/base/api/timeseries/TsMoniker",

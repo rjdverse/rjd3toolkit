@@ -568,6 +568,9 @@ easter_dates <- function(year0, year1, julian = FALSE) {
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #' @export
+#' @examplesIf current_java_version >= minimal_java_version
+#' stock_td(frequency = 12L, start = c(1990L, 1L), length = 480L, w = 1L)
+#'
 stock_td <- function(frequency, start, length, s, w = 31) {
     if (!missing(s) && is.ts(s)) {
         frequency <- stats::frequency(s)
