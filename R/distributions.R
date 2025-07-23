@@ -7,7 +7,6 @@
 #' @param n number of observations.
 #' @param x vector of quantiles.
 #'
-#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # Probability density function of T with 2 degrees of freedom.
 #' z <- density_t(df = 2, .01 * seq(-100, 100, 1))

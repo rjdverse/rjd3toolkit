@@ -16,7 +16,7 @@ random_inverse_gaussian(shape, scale, n)
 \arguments{
 \item{shape, scale}{shape and scale parameters.}
 
-\item{x}{vector of quantiles}
+\item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
 }
