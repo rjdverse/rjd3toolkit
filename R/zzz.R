@@ -7,6 +7,9 @@ NULL
 NULL
 
 #' @rdname jd3_utilities
+#'
+#' @examples
+#' get_java_version()
 #' @export
 get_java_version <- function() {
     rJava::.jinit()

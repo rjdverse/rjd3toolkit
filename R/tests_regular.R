@@ -92,11 +92,15 @@ ljungbox <- function(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE) {
 #' bowmanshenton(x)
 #' doornikhansen(x)
 #' jarquebera(x)
+#' skewness(x)
+#' kurtosis(x)
 #'
 #' x <- random_t(2, 100) # alternative
 #' bowmanshenton(x)
 #' doornikhansen(x)
 #' jarquebera(x)
+#' skewness(x)
+#' kurtosis(x)
 #' @name normality_tests
 NULL
 

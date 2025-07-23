@@ -22,6 +22,14 @@ If \code{FALSE}, we consider that the (known) mean is 0 and that the series has 
 
 \item{nar}{number of AR lags used to compute inverse autocorrelations.}
 }
+\value{
+\code{autocorrelations()} returns a vector of length \code{n} with
+the autocorrelations.
+\code{autocorrelations_partial()} returns a vector of length \code{n} with
+the partial autocorrelations.
+\code{autocorrelations_inverse()} returns a vector of length \code{n} with
+the inverse autocorrelations.
+}
 \description{
 Autocorrelation Functions
 }

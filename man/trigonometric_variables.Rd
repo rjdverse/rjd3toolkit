@@ -20,6 +20,9 @@ If supplied the parameters \code{frequency}, \code{start} and \code{length} are 
 \item{seasonal_frequency}{the seasonal frequencies.
 By default the fundamental seasonal frequency and all the harmonics are used.}
 }
+\value{
+a mts object with 2 columns
+}
 \description{
 Computes trigonometric variables at different frequencies.
 }

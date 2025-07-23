@@ -30,10 +30,16 @@
 #' @examplesIf current_java_version >= minimal_java_version
 #'
 #' init_spec <- x13_spec_default
+#'
+#' # Adding outlier on year 2012
 #' new_spec <- add_outlier(init_spec, type = "AO", date = "2012-01-01")
+#' # Removing outlier on year 2012
+#' new_spec <- remove_outlier(new_spec, type = "AO", date = "2012-01-01")
 #'
 #' # Adding ramp on year 2012
-#' new_spec <- add_ramp(init_spec, start = "2012-01-01", end = "2012-12-01")
+#' new_spec2 <- add_ramp(init_spec, start = "2012-01-01", end = "2012-12-01")
+#' # Removing ramp on year 2012
+#' new_spec2 <- remove_ramp(new_spec2, start = "2012-01-01", end = "2012-12-01")
 #'
 #' @seealso \code{\link{add_usrdefvar}}, \code{\link{intervention_variable}}
 #' @references

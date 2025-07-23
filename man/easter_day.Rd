@@ -16,6 +16,9 @@ easter_day(offset, julian = FALSE, weight = 1, validity = NULL)
 \item{validity}{validity period: either \code{NULL} (full sample) or a named list
 with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
 }
+\value{
+returns an object of class \code{c("JD3_EASTERDAY","JD3_HOLIDAY")}
+}
 \description{
 Allows to define a holiday which date is related to Easter Sunday.
 }

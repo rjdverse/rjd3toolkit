@@ -51,10 +51,14 @@ x <- rnorm(100) # null
 bowmanshenton(x)
 doornikhansen(x)
 jarquebera(x)
+skewness(x)
+kurtosis(x)
 
 x <- random_t(2, 100) # alternative
 bowmanshenton(x)
 doornikhansen(x)
 jarquebera(x)
+skewness(x)
+kurtosis(x)
 \dontshow{\}) # examplesIf}
 }

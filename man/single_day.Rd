@@ -11,6 +11,9 @@ single_day(date, weight = 1)
 
 \item{weight}{weight associated to the holiday.}
 }
+\value{
+returns an object of class \code{c("JD3_SINGLEDAY","JD3_HOLIDAY")} (with name of the event, date, offset...)
+}
 \description{
 Allows to set a holiday as a once-occurring event.
 }

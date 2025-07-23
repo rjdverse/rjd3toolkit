@@ -371,4 +371,7 @@ get_date_max()
 \description{
 These functions are used in all JDemetra+ 3.0 packages to easily interact between R and Java objects.
 }
+\examples{
+get_java_version()
+}
 \keyword{datasets}

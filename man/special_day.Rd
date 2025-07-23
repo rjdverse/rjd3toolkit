@@ -18,6 +18,9 @@ By default \code{offset = 0}.}
 \item{validity}{validity period: either \code{NULL} (full sample) or a named list
 with \code{"start"} and/or "end" dates in the format \code{"YYYY-MM-DD"}.}
 }
+\value{
+returns an object of class \code{c("JD3_SPECIALDAY","JD3_HOLIDAY")} (with name of the event, date, offset...)
+}
 \description{
 Allows to define a holiday choosing from a list of pre-specified events,
 equivalent to use \code{fixed_day} or \code{easter_day} functions.
