@@ -102,6 +102,9 @@ parseDate <- function(s) {
 #' @title Reload dictionaries
 #'
 #' @export
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' reload_dictionaries()
 reload_dictionaries <- function() {
     .jcall("jdplus/toolkit/base/api/information/InformationExtractors", "V", "reloadExtractors")
 }

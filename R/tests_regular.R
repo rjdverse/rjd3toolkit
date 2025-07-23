@@ -189,6 +189,13 @@ testofupdownruns <- function(data, number = TRUE) {
 #' @param n maximum lag at which to calculate the stats.
 #' @param nar number of AR lags used to compute inverse autocorrelations.
 #'
+#' @returns \code{autocorrelations()} returns a vector of length \code{n} with
+#' the autocorrelations.
+#' \code{autocorrelations_partial()} returns a vector of length \code{n} with
+#' the partial autocorrelations.
+#' \code{autocorrelations_inverse()} returns a vector of length \code{n} with
+#' the inverse autocorrelations.
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' x <- ABS$X0.2.09.10.M
 #' autocorrelations(x)

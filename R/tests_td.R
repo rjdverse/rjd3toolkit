@@ -46,6 +46,8 @@ NULL
 #' }
 #' }
 #'
+#' @returns a \code{JD3_TEST} object with value, p-value and information about the distribution
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' td_f(ABS$X0.2.09.10.M)
 #' @export

@@ -181,6 +181,8 @@ fixed_week_day <- function(month, week, dayofweek, weight = 1, validity = NULL) 
 #' @param offset The position of the holiday in relation to Easter Sunday, measured in days (can be positive or negative).
 #' @param julian Boolean indicating if Julian calendar must be used.
 #'
+#' @returns returns an object of class \code{c("JD3_EASTERDAY","JD3_HOLIDAY")}
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' easter_day(1) # Easter Monday
 #' easter_day(-2) # Easter Good Friday
@@ -225,6 +227,7 @@ easter_day <- function(offset, julian = FALSE, weight = 1, validity = NULL) {
 #' @inheritParams fixed_day
 #' @param date the date of the holiday in the format `"YYYY-MM-DD"`.
 #'
+#' @returns returns an object of class \code{c("JD3_SINGLEDAY","JD3_HOLIDAY")} (with name of the event, date, offset...)
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' single_day("1999-03-19")
@@ -285,7 +288,11 @@ single_day <- function(date, weight = 1) {
 #' ARMISTICE      \tab Fixed holiday, falls on November, 11th.                                                \cr
 #' CHRISTMAS      \tab Fixed holiday, falls on December, 25th.
 #' }
+#'
+#' @returns returns an object of class \code{c("JD3_SPECIALDAY","JD3_HOLIDAY")} (with name of the event, date, offset...)
+#'
 #' @export
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # To add Easter Monday
 #' special_day("EASTERMONDAY")

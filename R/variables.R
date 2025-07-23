@@ -416,6 +416,8 @@ periodic_contrasts <- function(frequency, start, length, s) {
 #' \end{pmatrix}
 #' }
 #'
+#' @returns a mts object with 2 columns
+#'
 #' @export
 #'
 #' @examplesIf current_java_version >= minimal_java_version
