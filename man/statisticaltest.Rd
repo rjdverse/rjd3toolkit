@@ -34,5 +34,8 @@ Generic function to format the results of 'JDemetra+' tests.
 udr_test <- testofupdownruns(random_t(5, 1000))
 udr_test # default print
 print(udr_test, details = TRUE) # with the distribution
+
+test <- statisticaltest(val = 45, pval = 0.1)
+print(test)
 \dontshow{\}) # examplesIf}
 }

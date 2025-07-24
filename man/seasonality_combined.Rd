@@ -22,6 +22,9 @@ If \code{data} is not a \code{"ts"} object, \code{firstperiod = 1} by default.}
 
 \item{mul}{boolean indicating if the seasonal decomposition is multiplicative (\code{mul = TRUE}) or additive (\code{mul = FALSE}).}
 }
+\value{
+a \code{list} with several seasonnality tests (kruskalwallis, stable and evolutive)
+}
 \description{
 "X12" Test On Seasonality
 }

@@ -22,6 +22,9 @@ NULL
 #' udr_test # default print
 #' print(udr_test, details = TRUE) # with the distribution
 #'
+#' test <- statisticaltest(val = 45, pval = 0.1)
+#' print(test)
+#'
 #' @export
 statisticaltest <- function(val, pval, dist = NULL) {
     if (pval < 0) {
@@ -29,7 +32,11 @@ statisticaltest <- function(val, pval, dist = NULL) {
     } else if (pval > 1) {
         pval <- 1
     }
-    return(structure(list(value = val, pvalue = pval), distribution = dist, class = c("JD3_TEST", "JD3")))
+    return(structure(
+        list(value = val, pvalue = pval),
+        distribution = dist,
+        class = c("JD3_TEST", "JD3")
+    ))
 }
 
 #' @rdname statisticaltest

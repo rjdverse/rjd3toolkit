@@ -24,14 +24,17 @@
 #' benchmarking computation so that the benchmarking constrain is also applied
 #' to the forecasting period.
 #' @param bias TODO
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
 #' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
-#' @examplesIf current_java_version >= minimal_java_version
 #'
+#' @returns The modified specification with new estimation span
+#'
+#' @examplesIf current_java_version >= minimal_java_version
 #' init_spec <- x13_spec_default
 #' new_spec <- set_benchmarking(
 #'     x = init_spec,

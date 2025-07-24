@@ -6,6 +6,9 @@
 \usage{
 reload_dictionaries()
 }
+\value{
+invisibly \code{NULL}
+}
 \description{
 Reload dictionaries
 }

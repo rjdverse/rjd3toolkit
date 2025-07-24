@@ -179,6 +179,7 @@ seasonality_f <- function(data,
 #'
 #' @details Combined test on the presence of identifiable seasonality (see Ladiray and Quenneville, 1999).
 #' @export
+#' @returns a \code{list} with several seasonnality tests (kruskalwallis, stable and evolutive)
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
@@ -216,10 +217,13 @@ seasonality_combined <- function(data, period = NA, firstperiod = cycle(data)[1]
 #'
 #' @export
 #'
+#' @returns a numeric vector
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' s <- log(ABS$X0.2.20.10.M)
 #' freqs <- seq(0.01, 0.5, 0.001)
-#' plot(seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE), type = "l")
+#' sct <- seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE)
+#' plot(sct, type = "l")
 #'
 seasonality_canovahansen_trigs <- function(data, periods, lag1 = TRUE,
                                            kernel = c("Bartlett", "Square", "Welch", "Tukey", "Hamming", "Parzen"),

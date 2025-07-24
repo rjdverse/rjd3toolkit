@@ -27,7 +27,17 @@ RSLT <- "JD3_ProcResults"
 #' @param id the name of the object to extract.
 #' @param userdefined vector containing the names of the object to extract.
 #'
+#' @returns the function \code{dictionary()} returns a character vector with the items that can be extracted from \code{object}. The \code{result()} function extract an item from the object. The \code{user_defined()} function do the same thing as \code{result()} but can also extract several element at once and encapsulate the items in a \code{user_defined} class object.
+#'
 #' @export
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' jmod <- example_jmod_x13
+#'
+#' dictionary(object = jmod)
+#' result(object = jmod, id = "quality.summary")
+#' user_defined(jmod, userdefined = c("quality.summary", "mode"))
+#'
 dictionary <- function(object) {
     if (!is(object, RSLT)) {
         stop("No dictionary for this type of object")
@@ -80,6 +90,14 @@ user_defined <- function(object, userdefined = NULL) {
 #' @param jx Reference to a Java object
 #' @param out_class Java class of the result object
 #' @param result Boolean. Does \code{jx} contains the results? Default to FALSE.
+#'
+#' @returns A new model with same class as \code{x}
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' jmod <- example_jmod_x13
+#' mod <- example_mod_x13
+#'
+#' .add_ud_var(mod, jmod)
 #'
 #' @export
 .add_ud_var <- function(x, jx, userdefined = NULL, out_class = NULL, result = FALSE) {

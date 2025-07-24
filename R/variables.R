@@ -20,6 +20,8 @@ NULL
 #' @examplesIf current_java_version >= minimal_java_version
 #' # Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
 #' ee <- easter_variable(12, c(2020, 1), length = 5 * 12, duration = 8, endpos = 1)
+#' je <- julianeaster_variable(12, c(2020, 1), length = 5 * 12, duration = 8)
+#'
 #' @export
 easter_variable <- function(frequency, start, length, s, duration = 6, endpos = -1,
                             correction = c("Simple", "PreComputed", "Theoretical", "None")) {
@@ -209,6 +211,8 @@ so_variable <- function(frequency, start, length, s, pos, date = NULL, zeroended
 #'
 #' @export
 #'
+#' @returns a \code{ts} object
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # Ramp variable from January 2001 to September 2001
 #' rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c(13, 21))
@@ -263,8 +267,9 @@ ramp_variable <- function(frequency, start, length, s, range) {
 #' by the parameters `starts` and `ends`. With `delta = 1` and `seasonaldelta = 0` we get
 #' the cumulative sum of temporary level shifts, once differenced the regressor will become a classical level shift.
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @returns a \code{ts} object
 #'
+#' @examplesIf current_java_version >= minimal_java_version
 #' iv1 <- intervention_variable(
 #'     frequency = 12,
 #'     start = c(2000, 1),
@@ -337,9 +342,12 @@ intervention_variable <- function(frequency, start, length, s, starts, ends, del
 #' @inheritParams outliers_variables
 #'
 #' @details
-#' The function periodic_dummies creates as many time series as types of periods in a year (4 or 12)
+#' The function \code{periodic_dummies()} creates as many time series as types of periods in a year (4 or 12)
 #' with the value one only for one given type of period (ex Q1)
-#' The periodic_contrasts function is based on periodic_dummies but adds -1 to the period preceding a 1.
+#' The \code{periodic_contrasts()} function is based on periodic_dummies but adds -1 to the period preceding a 1.
+#'
+#' @returns a \code{mts} object with \code{frequency} column
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # periodic dummies for a quarterly series
 #' p <- periodic_dummies(4, c(2000, 1), 60)
@@ -354,7 +362,12 @@ periodic_dummies <- function(frequency, start, length, s) {
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    jm <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicDummies", jdom)
+    jm <- .jcall(
+        obj = "jdplus/toolkit/base/r/modelling/Variables",
+        returnSig = "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+        method = "periodicDummies",
+        jdom
+    )
     data <- .jd2r_matrix(jm)
     return(ts(data, frequency = frequency, start = start))
 }

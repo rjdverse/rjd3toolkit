@@ -33,6 +33,9 @@ Can be characters or integers.}
 
 \item{seasonaldelta}{seasonal differencing order.}
 }
+\value{
+a \code{ts} object
+}
 \description{
 Function allowing to create external regressors as sequences of zeros and ones. The generated variables
 will have to be added with \code{\link{add_usrdefvar}} function will require a modelling context definition
@@ -51,7 +54,6 @@ the cumulative sum of temporary level shifts, once differenced the regressor wil
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-
 iv1 <- intervention_variable(
     frequency = 12,
     start = c(2000, 1),

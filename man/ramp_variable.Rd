@@ -20,6 +20,9 @@ If supplied the parameters \code{frequency}, \code{start} and \code{length} are 
 \item{range}{the range of the regressor. A vector of length 2 containing the datesin the format \code{"YYYY-MM-DD"}
 or the position in the series, in number of periods from counting from the series start.}
 }
+\value{
+a \code{ts} object
+}
 \description{
 Ramp regressor
 }

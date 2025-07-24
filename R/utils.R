@@ -70,6 +70,34 @@ NULL
 #' data(tramoseats_spec_default)
 "tramoseats_spec_default"
 
+#' @title Application of an X-13 model
+#'
+#' @format A \code{"JD3_X13_OUTPUT"} object:
+#' \itemize{
+#'   \item result: content of the model \itemize{
+#'     \item preprocessing: the series created in the pre-adjustment
+#'     \item preadjust: the Reg-ARIMA model
+#'     \item decomposition: the series used / created in the decomposition
+#'     \item final: the final series (y, s, sa, i, t)
+#'     \item mstats: the m-statistics
+#'     \item diagnostics: a list of seasonnality tests
+#'   }
+#'   \item estimation_spec: applied constraints of the model
+#'   \item result_spec: estimated coefficient of the model
+#'   \item user_defined: additional variables requested by the user (here none)
+#'#' }
+#'
+#' @examples
+#' data(example_mod_x13)
+"example_mod_x13"
+
+#' @title Application of an X-13 jmodel
+#'
+#' @format a Java object of class \code{c("JD3_Object", "JD3_ProcResults")} that describe a X-13 model
+#'
+#' @examples
+#' data(example_jmod_x13)
+"example_jmod_x13"
 
 ymd <- function(y, m, d = 1) {
     return(as.Date(sprintf("%04i-%02i-%02i", y, m, d)))
@@ -102,6 +130,8 @@ parseDate <- function(s) {
 #' @title Reload dictionaries
 #'
 #' @export
+#'
+#' @returns invisibly \code{NULL}
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' reload_dictionaries()
