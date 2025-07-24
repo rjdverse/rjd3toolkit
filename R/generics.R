@@ -37,6 +37,8 @@ diagnostics.JD3 <- function(x, ...) {
 #'
 #' @param x,... parameters.
 #'
+#' @returns a list, the preprocessing part of a model.
+#'
 #' @export
 sa_preprocessing <- function(x, ...) {
     UseMethod("sa_preprocessing", x)
@@ -73,8 +75,6 @@ sa_preprocessing <- function(x, ...) {
 #' )
 #' print(decompo)
 #' plot(decompo)
-#'
-#' sa_decomposition(mod)
 #'
 NULL
 

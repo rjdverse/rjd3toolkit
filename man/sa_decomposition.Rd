@@ -60,7 +60,5 @@ decompo <- sadecomposition(
 )
 print(decompo)
 plot(decompo)
-
-sa_decomposition(mod)
 \dontshow{\}) # examplesIf}
 }
