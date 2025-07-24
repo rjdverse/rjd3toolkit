@@ -27,12 +27,3 @@ Extract dictionary of a \code{"JD3_ProcResults"} object (\code{dictionary()})
 and extract a specific value (\code{result()}) or a list of values
 (\code{user_defined()}).
 }
-\examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-jmod <- example_jmod_x13
-
-dictionary(object = jmod)
-result(object = jmod, id = "quality.summary")
-user_defined(jmod, userdefined = c("quality.summary", "mode"))
-\dontshow{\}) # examplesIf}
-}

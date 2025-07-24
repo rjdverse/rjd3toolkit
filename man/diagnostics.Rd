@@ -31,7 +31,5 @@ decompo <- sadecomposition(
     mul = TRUE
 )
 diagnostics(decompo)
-
-diagnostics(example_mod_x13)
 \dontshow{\}) # examplesIf}
 }

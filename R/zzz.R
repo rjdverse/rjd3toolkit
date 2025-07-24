@@ -2,7 +2,7 @@
 NULL
 
 #' @importFrom RProtoBuf read readProtoFiles2
-#' @importFrom rJava .jpackage .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass
+#' @importFrom rJava .jpackage .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass .jinit
 #' @importFrom stats frequency is.ts pf ts ts.union
 NULL
 
@@ -12,7 +12,7 @@ NULL
 #' get_java_version()
 #' @export
 get_java_version <- function() {
-    rJava::.jinit()
+    .jinit()
     jversion <- .jcall("java.lang.System", "S", "getProperty", "java.version")
     jversion <- as.integer(regmatches(jversion, regexpr(pattern = "^(\\d+)", text = jversion)))
     return(jversion)

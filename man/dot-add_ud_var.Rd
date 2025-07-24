@@ -23,11 +23,3 @@ A new model with same class as \code{x}
 \description{
 Add user-defined variable to a SA model
 }
-\examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-jmod <- example_jmod_x13
-mod <- example_mod_x13
-
-.add_ud_var(mod, jmod)
-\dontshow{\}) # examplesIf}
-}

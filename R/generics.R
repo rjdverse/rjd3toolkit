@@ -18,8 +18,6 @@
 #' )
 #' diagnostics(decompo)
 #'
-#' diagnostics(example_mod_x13)
-#'
 diagnostics <- function(x, ...) {
     UseMethod("diagnostics", x)
 }
