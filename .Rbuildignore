@@ -43,3 +43,4 @@ cran-comments.md
 
 ^man-roxygen$
 ^organisation.yml$
+^cran-comments\.md$
