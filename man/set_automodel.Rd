@@ -17,7 +17,6 @@ set_automodel(
   ubfinal = NA,
   checkmu = NA,
   mixed = NA,
-  fct = NA,
   balanced = NA,
   amicompare = NA
 )
