@@ -23,7 +23,9 @@
 #' adjusted series and of the target variable (\code{target}) are used in the
 #' benchmarking computation so that the benchmarking constrain is also applied
 #' to the forecasting period.
-#' @param bias TODO
+#' @param bias Character. Bias correction factor. No systematic bias is
+#' considered by default. See
+#' `vignette(topic = "rjd3bench", package = "rjd3bench")` for more details.
 #'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
@@ -55,7 +57,7 @@ set_benchmarking <- function(x, enabled = NA,
                              rho = NA,
                              lambda = NA,
                              forecast = NA,
-                             bias = c(NA, "None")) {
+                             bias = c("None", "Additive", "Multiplicative")) {
     UseMethod("set_benchmarking", x)
 }
 #' @export
@@ -64,14 +66,14 @@ set_benchmarking.default <- function(x, enabled = NA,
                                      rho = NA,
                                      lambda = NA,
                                      forecast = NA,
-                                     bias = c(NA, "None")) {
+                                     bias = c("None", "Additive", "Multiplicative")) {
     target <- match.arg(
         toupper(target[1]),
         c(NA, "CALENDARADJUSTED", "ORIGINAL")
     )
     bias <- match.arg(
         toupper(bias)[1],
-        c(NA, "NONE")
+        c("NONE", "ADDITIVE", "MULTIPLICATIVE")
     )
     if (!is.na(enabled) && is.logical(enabled)) {
         x$enabled <- enabled

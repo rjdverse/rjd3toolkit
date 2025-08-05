@@ -2,7 +2,7 @@
 % Please edit documentation in R/timeseries.R
 \name{tsdata_of}
 \alias{tsdata_of}
-\title{Title}
+\title{Create ts object with values and dates}
 \usage{
 tsdata_of(values, dates)
 }
@@ -17,7 +17,7 @@ The identified frequency will be the lowest frequency that match the figures.
 The provided data can contain missing values (NA)
 }
 \description{
-Title
+Create ts object with values and dates
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

@@ -104,8 +104,6 @@ If \code{FALSE}, a model with AR and MA terms in both the seasonal and
 non-seasonal parts of the model can be acceptable, provided there are no AR
 or MA terms in either the seasonal or non-seasonal terms.}
 
-\item{fct}{(REGARIMA/X13 Specific) \code{numeric}. TODO.}
-
 \item{balanced}{(REGARIMA/X13 Specific) \code{logical} If \code{TRUE}, the
 automatic model identification procedure will have a preference for balanced
 models (i.e. models for which the order of the combined AR and differencing

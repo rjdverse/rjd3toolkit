@@ -408,7 +408,7 @@ data_to_ts <- function(s, name) {
     return(jtscoll)
 }
 
-#' @title Title
+#' @title Create ts object with values and dates
 #'
 #' @param values Values of the time series
 #' @param dates Dates of the values (could be any date inside the considered period)
