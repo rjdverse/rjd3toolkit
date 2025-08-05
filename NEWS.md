@@ -14,7 +14,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Removed
 
-* `fct` parameter in `set_automodel()`
+* `fct` parameter in `set_automodel()` #85
 
 
 ## [3.5.1] - 2025-06-18

@@ -796,7 +796,6 @@ set_automodel <- function(x,
                           ubfinal = NA,
                           checkmu = NA,
                           mixed = NA,
-                          fct = NA,
                           balanced = NA,
                           # TRAMO SPECIFIC
                           amicompare = NA) {
