@@ -9,7 +9,7 @@ when the automatic modelling is disabled.(see example)"><meta property="og:image
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,7 @@ when the automatic modelling is disabled.(see example)"><meta property="og:image
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -107,6 +107,10 @@ Possible procedures are: <code>"Undefined"</code> = no use of any user-defined i
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>The modified specification (with new ARIMA model)</p>
+    </div>
+    <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><code>x</code> specification parameter must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::x13_spec()</code>
 (or "JD3_REGARIMA_SPEC" generated with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC"
@@ -125,17 +129,26 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># create default spec</span></span></span>
-<span class="r-in"><span><span class="co"># my_spec&lt;-rjd3x13::x13_spec("rsa5c")</span></span></span>
-<span class="r-in"><span><span class="co"># disable automatic arima modelling</span></span></span>
-<span class="r-in"><span><span class="co"># my_spec&lt;-set_automodel(my_spec, enabled = FALSE)</span></span></span>
-<span class="r-in"><span><span class="co"># customize arima model</span></span></span>
-<span class="r-in"><span><span class="co"># my_spec &lt;-set_arima(my_spec,mean = 0.2,</span></span></span>
-<span class="r-in"><span><span class="co">#                      mean.type = "Fixed",</span></span></span>
-<span class="r-in"><span><span class="co">#                      p = 1, d = 2, q = 0,</span></span></span>
-<span class="r-in"><span><span class="co">#                      bp = 1, bd = 1, bq = 0,</span></span></span>
-<span class="r-in"><span><span class="co">#                      coef = c(0.6,0.7),</span></span></span>
-<span class="r-in"><span><span class="co">#                      coef.type = c("Initial","Fixed"))</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Customize a default specification</span></span></span>
+<span class="r-in"><span><span class="va">init_spec</span> <span class="op">&lt;-</span> <span class="va">x13_spec_default</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Disable automatic arima modelling</span></span></span>
+<span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_automodel.html">set_automodel</a></span><span class="op">(</span><span class="va">init_spec</span>, enabled <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Customize arima model</span></span></span>
+<span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu">set_arima</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    x <span class="op">=</span> <span class="va">new_spec</span>,</span></span>
+<span class="r-in"><span>    mean <span class="op">=</span> <span class="fl">0.2</span>,</span></span>
+<span class="r-in"><span>    mean.type <span class="op">=</span> <span class="st">"Fixed"</span>,</span></span>
+<span class="r-in"><span>    p <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>    d <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>    q <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>    bp <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>    bd <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>    bq <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>    coef <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.6</span>, <span class="fl">0.7</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    coef.type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Initial"</span>, <span class="st">"Fixed"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

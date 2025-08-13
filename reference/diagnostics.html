@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -66,7 +66,25 @@
 <dd><p>further arguments.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p><code>"No diagnostic"</code> or a <code>list</code> with the diagnostic part of the model</p>
+    </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">decompo</span> <span class="op">&lt;-</span> <span class="fu"><a href="sa_decomposition.html">sadecomposition</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">112</span>, <span class="fl">118</span>, <span class="fl">132</span>, <span class="fl">129</span>, <span class="fl">121</span>, <span class="fl">135</span><span class="op">)</span>, start <span class="op">=</span> <span class="fl">2000</span>, frequency <span class="op">=</span> <span class="fl">12L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    sa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">121.72</span>, <span class="fl">124.52</span>, <span class="fl">125.4</span>, <span class="fl">128.91</span>, <span class="fl">128.84</span>, <span class="fl">126.73</span><span class="op">)</span>, start <span class="op">=</span> <span class="fl">2000</span>, frequency <span class="op">=</span> <span class="fl">12L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">122.24</span>, <span class="fl">124.33</span>, <span class="fl">126.21</span>, <span class="fl">127.61</span>, <span class="fl">127.8</span>, <span class="fl">126.94</span><span class="op">)</span>, start <span class="op">=</span> <span class="fl">2000</span>, frequency <span class="op">=</span> <span class="fl">12L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    s <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.92</span>, <span class="fl">0.95</span>, <span class="fl">1.05</span>, <span class="fl">1</span>, <span class="fl">0.94</span>, <span class="fl">1.07</span><span class="op">)</span>, start <span class="op">=</span> <span class="fl">2000</span>, frequency <span class="op">=</span> <span class="fl">12L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0.99</span>, <span class="fl">1.01</span>, <span class="fl">1.01</span>, <span class="fl">1</span><span class="op">)</span>, start <span class="op">=</span> <span class="fl">2000</span>, frequency <span class="op">=</span> <span class="fl">12L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    mul <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">diagnostics</span><span class="op">(</span><span class="va">decompo</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No diagnostic</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

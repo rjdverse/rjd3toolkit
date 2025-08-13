@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -95,6 +95,10 @@ Considered only when <code>fun = "Auto"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>The modified specification (with log/level transformation scheme)</p>
+    </div>
+    <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><code>x</code> specification parameter must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::x13_spec()</code>
 (or "JD3_REGARIMA_SPEC" generated with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC"
@@ -113,11 +117,9 @@ generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
-<span class="r-in"><span><span class="co"># new_spec&lt;- set_transform(init_spec,</span></span></span>
-<span class="r-in"><span><span class="co">#                        fun = "Log",</span></span></span>
-<span class="r-in"><span><span class="co">#                        outliers = TRUE)</span></span></span>
-<span class="r-in"><span><span class="co"># sa&lt;-rjd3x13::x13(ABS$X0.2.09.10.M,new_spec)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Customize a default specification</span></span></span>
+<span class="r-in"><span><span class="va">init_spec</span> <span class="op">&lt;-</span> <span class="va">x13_spec_default</span></span></span>
+<span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu">set_transform</span><span class="op">(</span>x <span class="op">=</span> <span class="va">init_spec</span>, fun <span class="op">=</span> <span class="st">"Log"</span>, outliers <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

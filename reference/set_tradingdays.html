@@ -19,7 +19,7 @@ be built."><meta property="og:image" content="https://rjdverse.github.io/rjd3too
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@ be built."><meta property="og:image" content="https://rjdverse.github.io/rjd3too
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -195,6 +195,10 @@ trading day regressors.</p></li>
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>The modified specification (with new trading days variables)</p>
+    </div>
+    <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><code>x</code> specification parameter must be a JD3_X13_SPEC" class object
 generated with <code>rjd3x13::x13_spec()</code> (or "JD3_REGARIMA_SPEC" generated
@@ -215,16 +219,21 @@ with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC" generated wi
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Pre-defined regressors</span></span></span>
-<span class="r-in"><span><span class="co"># y_raw&lt;-ABS$X0.2.09.10.M</span></span></span>
-<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
-<span class="r-in"><span><span class="co"># new_spec&lt;-set_tradingdays(init_spec,</span></span></span>
-<span class="r-in"><span><span class="co">#                          option = "TD4",</span></span></span>
-<span class="r-in"><span><span class="co">#                          test =  "None",</span></span></span>
-<span class="r-in"><span><span class="co">#                        coef=c(0.7,NA,0.5),</span></span></span>
-<span class="r-in"><span><span class="co">#        coef.type=c("Fixed","Estimated","Fixed"),</span></span></span>
-<span class="r-in"><span><span class="co">#        leapyear="LengthOfPeriod",</span></span></span>
-<span class="r-in"><span><span class="co">#        leapyear.coef=0.6)</span></span></span>
-<span class="r-in"><span><span class="co"># sa&lt;-rjd3x13::x13(y_raw,new_spec)</span></span></span>
+<span class="r-in"><span><span class="va">y_raw</span> <span class="op">&lt;-</span> <span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Customize a default specification</span></span></span>
+<span class="r-in"><span><span class="va">init_spec</span> <span class="op">&lt;-</span> <span class="va">x13_spec_default</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Estimation on sub-span between two dates (date d1 is excluded)</span></span></span>
+<span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu">set_tradingdays</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">init_spec</span>,</span></span>
+<span class="r-in"><span>    option <span class="op">=</span> <span class="st">"TD4"</span>,</span></span>
+<span class="r-in"><span>    test <span class="op">=</span> <span class="st">"None"</span>,</span></span>
+<span class="r-in"><span>    coef <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="cn">NA</span>, <span class="fl">0.5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    coef.type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fixed"</span>, <span class="st">"Estimated"</span>, <span class="st">"Fixed"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    leapyear <span class="op">=</span> <span class="st">"LengthOfPeriod"</span>,</span></span>
+<span class="r-in"><span>    leapyear.coef <span class="op">=</span> <span class="fl">0.6</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Pre-defined regressors based on user-defined calendar</span></span></span>
 <span class="r-in"><span><span class="co">### create a calendar</span></span></span>
@@ -240,29 +249,47 @@ with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC" generated wi
 <span class="r-in"><span>    <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ALLSAINTSDAY"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    <span class="fu"><a href="special_day.html">special_day</a></span><span class="op">(</span><span class="st">"ARMISTICE"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co">## put into a context</span></span></span>
+<span class="r-in"><span><span class="co">## Put into a context</span></span></span>
 <span class="r-in"><span><span class="va">my_context</span> <span class="op">&lt;-</span> <span class="fu"><a href="modelling_context.html">modelling_context</a></span><span class="op">(</span>calendars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cal <span class="op">=</span> <span class="va">BE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co">## create a specification</span></span></span>
-<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
-<span class="r-in"><span><span class="co">## modify the specification</span></span></span>
-<span class="r-in"><span><span class="co"># new_spec&lt;-set_tradingdays(init_spec,</span></span></span>
-<span class="r-in"><span><span class="co">#                          option = "TradingDays", calendar.name="cal")</span></span></span>
-<span class="r-in"><span><span class="co">## estimate with context</span></span></span>
-<span class="r-in"><span><span class="co"># sa&lt;-rjd3x13::x13(y_raw,new_spec, context=my_context)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># User-defined regressors</span></span></span>
-<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
-<span class="r-in"><span><span class="co"># add regressors to context</span></span></span>
-<span class="r-in"><span><span class="co"># variables&lt;-list(Monday,Tuesday, Wednesday,</span></span></span>
-<span class="r-in"><span><span class="co"># Thursday, Friday, Saturday)</span></span></span>
-<span class="r-in"><span><span class="co"># my_context&lt;-modelling_context(variables=variables)</span></span></span>
-<span class="r-in"><span><span class="co"># create a new spec (here default group name: r)</span></span></span>
-<span class="r-in"><span><span class="co"># new_spec&lt;-set_tradingdays(init_spec,</span></span></span>
-<span class="r-in"><span><span class="co">#                          option = "UserDefined",</span></span></span>
-<span class="r-in"><span><span class="co"># uservariable=c("r.Monday","r.Tuesday","r.Wednesday","r.Thursday","r.Friday","r.Saturday"),</span></span></span>
-<span class="r-in"><span><span class="co"># test = "None")</span></span></span>
-<span class="r-in"><span><span class="co"># estimate with context</span></span></span>
-<span class="r-in"><span><span class="co"># sa&lt;-rjd3x13::x13(y_raw,new_spec, context=my_context)</span></span></span>
+<span class="r-in"><span><span class="co">## Modify the specification</span></span></span>
+<span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu">set_tradingdays</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">init_spec</span>,</span></span>
+<span class="r-in"><span>    option <span class="op">=</span> <span class="st">"TradingDays"</span>,</span></span>
+<span class="r-in"><span>    calendar.name <span class="op">=</span> <span class="st">"cal"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Estimate with context</span></span></span>
+<span class="r-in"><span><span class="co"># sa &lt;- rjd3x13::x13(y_raw, new_spec, context = my_context)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">regs_td</span> <span class="op">&lt;-</span> <span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="fu"><a href="td.html">td</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    s <span class="op">=</span> <span class="va">y_raw</span>,</span></span>
+<span class="r-in"><span>    groups <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">3</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    contrasts <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">variables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    Monday <span class="op">=</span> <span class="va">regs_td</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    Tuesday <span class="op">=</span> <span class="va">regs_td</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    Wednesday <span class="op">=</span> <span class="va">regs_td</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    Thursday <span class="op">=</span> <span class="va">regs_td</span><span class="op">[</span>, <span class="fl">4</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    Friday <span class="op">=</span> <span class="va">regs_td</span><span class="op">[</span>, <span class="fl">5</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    Saturday <span class="op">=</span> <span class="va">regs_td</span><span class="op">[</span>, <span class="fl">6</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Add regressors to context</span></span></span>
+<span class="r-in"><span><span class="va">my_context</span> <span class="op">&lt;-</span> <span class="fu"><a href="modelling_context.html">modelling_context</a></span><span class="op">(</span>variables <span class="op">=</span> <span class="va">variables</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create a new spec (here default group name: r)</span></span></span>
+<span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu">set_tradingdays</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">init_spec</span>,</span></span>
+<span class="r-in"><span>    option <span class="op">=</span> <span class="st">"UserDefined"</span>,</span></span>
+<span class="r-in"><span>    uservariable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"r.Monday"</span>, <span class="st">"r.Tuesday"</span>, <span class="st">"r.Wednesday"</span>,</span></span>
+<span class="r-in"><span>                     <span class="st">"r.Thursday"</span>, <span class="st">"r.Friday"</span>, <span class="st">"r.Saturday"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    test <span class="op">=</span> <span class="st">"None"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Estimate with context</span></span></span>
+<span class="r-in"><span><span class="co"># sa &lt;- rjd3x13::x13(y_raw, new_spec, context = my_context)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

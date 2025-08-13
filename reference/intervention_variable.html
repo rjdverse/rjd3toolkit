@@ -11,7 +11,7 @@ with modelling_context to be used in an estimation process."><meta property="og:
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@ with modelling_context to be used in an estimation process."><meta property="og:
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -100,6 +100,10 @@ Can be characters or integers.</p></dd>
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>a <code>ts</code> object</p>
+    </div>
+    <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Intervention variables are combinations of any possible sequence of ones and zeros
 (the sequence of ones being defined by the parameters <code>starts</code> and <code>ends</code>)
@@ -122,26 +126,39 @@ the cumulative sum of temporary level shifts, once differenced the regressor wil
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">iv1</span> <span class="op">&lt;-</span> <span class="fu">intervention_variable</span><span class="op">(</span><span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">60</span>,</span></span>
-<span class="r-in"><span>    starts <span class="op">=</span> <span class="st">"2001-01-01"</span>, ends <span class="op">=</span> <span class="st">"2001-12-01"</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">iv1</span> <span class="op">&lt;-</span> <span class="fu">intervention_variable</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    frequency <span class="op">=</span> <span class="fl">12</span>,</span></span>
+<span class="r-in"><span>    start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    length <span class="op">=</span> <span class="fl">60</span>,</span></span>
+<span class="r-in"><span>    starts <span class="op">=</span> <span class="st">"2001-01-01"</span>,</span></span>
+<span class="r-in"><span>    ends <span class="op">=</span> <span class="st">"2001-12-01"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">iv1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="intervention_variable-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="va">iv2</span> <span class="op">&lt;-</span> <span class="fu">intervention_variable</span><span class="op">(</span><span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">60</span>,</span></span>
-<span class="r-in"><span>    starts <span class="op">=</span> <span class="st">"2001-01-01"</span>, ends <span class="op">=</span> <span class="st">"2001-12-01"</span>, delta <span class="op">=</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span><span class="va">iv2</span> <span class="op">&lt;-</span> <span class="fu">intervention_variable</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    frequency <span class="op">=</span> <span class="fl">12</span>,</span></span>
+<span class="r-in"><span>    start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    length <span class="op">=</span> <span class="fl">60</span>,</span></span>
+<span class="r-in"><span>    starts <span class="op">=</span> <span class="st">"2001-01-01"</span>,</span></span>
+<span class="r-in"><span>    ends <span class="op">=</span> <span class="st">"2001-12-01"</span>,</span></span>
+<span class="r-in"><span>    delta <span class="op">=</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">iv2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="intervention_variable-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="co"># using one variable in a a seasonal adjustment process</span></span></span>
-<span class="r-in"><span><span class="co"># regressors as a list of two groups reg1 and reg2</span></span></span>
-<span class="r-in"><span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>reg1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv1</span><span class="op">)</span>, reg2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using one variable in a a seasonal adjustment process</span></span></span>
+<span class="r-in"><span><span class="co"># Regressors as a list of two groups reg1 and reg2</span></span></span>
+<span class="r-in"><span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    reg1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    reg2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># creating the modelling context</span></span></span>
 <span class="r-in"><span><span class="va">my_context</span> <span class="op">&lt;-</span> <span class="fu"><a href="modelling_context.html">modelling_context</a></span><span class="op">(</span>variables <span class="op">=</span> <span class="va">vars</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># customize a default specification</span></span></span>
-<span class="r-in"><span><span class="co"># init_spec &lt;- rjd3x13::x13_spec("RSA5c")</span></span></span>
-<span class="r-in"><span><span class="co"># new_spec&lt;- add_usrdefvar(init_spec,id = "reg1.iv1", regeffect="Trend")</span></span></span>
-<span class="r-in"><span><span class="co"># modelling context is needed for the estimation phase</span></span></span>
-<span class="r-in"><span><span class="co"># sa_x13&lt;- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)</span></span></span>
+<span class="r-in"><span><span class="va">init_spec</span> <span class="op">&lt;-</span> <span class="va">x13_spec_default</span></span></span>
+<span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="add_usrdefvar.html">add_usrdefvar</a></span><span class="op">(</span><span class="va">init_spec</span>, name <span class="op">=</span> <span class="st">"reg1.iv1"</span>, regeffect <span class="op">=</span> <span class="st">"Trend"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

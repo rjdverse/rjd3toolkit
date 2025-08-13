@@ -7,6 +7,8 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/index.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/news/index.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ABS.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/Births.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/Electricity.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/Exports.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/Imports.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/Retail.html</loc></url>
@@ -105,6 +107,7 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/td_timevarying.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/to_ts.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/to_tscollection.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/tramoseats_spec_default.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/trigonometric_variables.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ts_adjust.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ts_interpolate.html</loc></url>
@@ -114,5 +117,6 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ucarima_model.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ucarima_wk.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/weighted_calendar.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/x13_spec_default.html</loc></url>
 </urlset>
 

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -260,18 +260,21 @@
 <span></span>
 <span><span class="fu">.r2jd_make_tscollection</span><span class="op">(</span><span class="va">source</span>, <span class="va">id</span>, type <span class="op">=</span> <span class="st">"All"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">DATE_MIN</span></span>
+<span><span class="fu">get_java_version</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">DATE_MAX</span></span>
+<span><span class="va">current_java_version</span></span>
 <span></span>
-<span><span class="va">jversion</span></span></code></pre></div>
+<span><span class="va">minimal_java_version</span></span>
+<span></span>
+<span><span class="fu">get_date_min</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">get_date_max</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>An object of class <code>Message</code> of length 3.</p>
-<p>An object of class <code>Message</code> of length 3.</p>
-<p>An object of class <code>integer</code> of length 1.</p>
+    <p>An object of class <code>integer</code> of length 1.</p>
+<p>An object of class <code>numeric</code> of length 1.</p>
     </div>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
@@ -322,6 +325,12 @@
 
 </dl></div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_java_version</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 17</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

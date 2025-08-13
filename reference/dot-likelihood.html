@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html" aria-label="Home"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
 <li class="nav-item dropdown">
@@ -113,10 +113,12 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Values used below are taken from the following estimation</span></span></span>
-<span class="r-in"><span><span class="co"># m &lt;- x13(rjd3toolkit::ABS$X0.2.09.10.M,"rsa3")</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Values used below are taken from the following estimation</span></span></span>
+<span class="r-in"><span><span class="co"># m &lt;- rjd3x13::x13(rjd3toolkit::ABS$X0.2.09.10.M, "rsa3")</span></span></span>
 <span class="r-in"><span><span class="co"># m$result$preprocessing$estimation$likelihood</span></span></span>
-<span class="r-in"><span><span class="va">ll_estimation</span> <span class="op">&lt;-</span> <span class="fu">.likelihood</span><span class="op">(</span><span class="fl">425</span>,<span class="fl">4</span>,<span class="fl">7</span>,<span class="fl">720.2</span>,<span class="op">-</span><span class="fl">2147.407</span>,<span class="fl">4308.14</span>,<span class="fl">4309.09</span>,<span class="fl">4333.96</span>, <span class="fl">433.962</span>, <span class="fl">0.0418</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ll_estimation</span> <span class="op">&lt;-</span> <span class="fu">.likelihood</span><span class="op">(</span><span class="fl">425</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">720.2</span>, <span class="op">-</span><span class="fl">2147.407</span>, <span class="fl">4308.14</span>, <span class="fl">4309.09</span>,</span></span>
+<span class="r-in"><span>                             <span class="fl">4333.96</span>, <span class="fl">433.962</span>, <span class="fl">0.0418</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
