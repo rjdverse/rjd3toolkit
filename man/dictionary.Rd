@@ -19,6 +19,13 @@ user_defined(object, userdefined = NULL)
 
 \item{userdefined}{vector containing the names of the object to extract.}
 }
+\value{
+the function \code{dictionary()} returns a character vector with
+the items that can be extracted from \code{object}. The \code{result()}
+function extract an item from the object. The \code{user_defined()} function
+do the same thing as \code{result()} but can also extract several element at
+once and encapsulate the items in a \code{user_defined} class object.
+}
 \description{
 Extract dictionary of a \code{"JD3_ProcResults"} object (\code{dictionary()})
 and extract a specific value (\code{result()}) or a list of values

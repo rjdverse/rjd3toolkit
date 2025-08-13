@@ -30,7 +30,7 @@ Saxony-Anhalt, while from 1994 Day of Repentance and Prayer is celebrated
 only in Saxony.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
 France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
 composite_calendar <- weighted_calendar(list(France, Belgium), weights = c(1, 2))

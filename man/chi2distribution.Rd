@@ -16,10 +16,17 @@ random_chi2(df, n)
 \arguments{
 \item{df}{degrees of freedom.}
 
-\item{x}{vector of quantiles}
+\item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
 }
 \description{
 Density, (cumulative) distribution function and random generation for chi-squared distribution.
+}
+\examples{
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+density_chi2(df = 3, 1:10)
+cdf_chi2(df = 3, 1:10)
+random_chi2(df = 3, n = 10)
+\dontshow{\}) # examplesIf}
 }

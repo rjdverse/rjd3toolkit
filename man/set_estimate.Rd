@@ -49,6 +49,9 @@ smaller than this number, then a unit root is assumed, the order of the AR
 polynomial is reduced by one and the appropriate order of the differencing
 (non-seasonal, seasonal) is increased.(Default value: 0.96)}
 }
+\value{
+The modified specification (with new estimation parameters)
+}
 \description{
 Function allowing to define numeric boundaries for estimation and to define
 a sub-span on which reg-arima (tramo) modelling will be performed
@@ -62,10 +65,17 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
-# new_spec<-set_estimate(init_spec, type= "From", d0 = "2012-01-01", tol = 0.0000002,
-# exact.ml = FALSE, unit.root.limit = 0.98)
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Customize a default specification
+init_spec <- tramoseats_spec_default
+new_spec <- set_estimate(
+    x = init_spec,
+    type = "From",
+    d0 = "2012-01-01",
+    tol = 0.0000002,
+    exact.ml = FALSE,
+    unit.root.limit = 0.98
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

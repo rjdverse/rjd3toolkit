@@ -17,9 +17,11 @@ NULL
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
 #' ee <- easter_variable(12, c(2020, 1), length = 5 * 12, duration = 8, endpos = 1)
+#' je <- julianeaster_variable(12, c(2020, 1), length = 5 * 12, duration = 8)
+#'
 #' @export
 easter_variable <- function(frequency, start, length, s, duration = 6, endpos = -1,
                             correction = c("Simple", "PreComputed", "Theoretical", "None")) {
@@ -64,7 +66,7 @@ julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Leap years occur in year 2000, 2004, 2008 and 2012
 #' lp_variable(4, start = c(2000, 1), length = 4 * 13)
 #' lper <- lp_variable(12, c(2000, 1), length = 10 * 12, type = "LengthOfPeriod")
@@ -110,7 +112,7 @@ lp_variable <- function(frequency, start, length, s, type = c("LeapYear", "Lengt
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Outliers in February 2002
 #' ao <- ao_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
 #' ls <- ls_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
@@ -209,7 +211,9 @@ so_variable <- function(frequency, start, length, s, pos, date = NULL, zeroended
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @returns a \code{ts} object
+#'
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Ramp variable from January 2001 to September 2001
 #' rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c(13, 21))
 #' # Or equivalently
@@ -263,25 +267,41 @@ ramp_variable <- function(frequency, start, length, s, range) {
 #' by the parameters `starts` and `ends`. With `delta = 1` and `seasonaldelta = 0` we get
 #' the cumulative sum of temporary level shifts, once differenced the regressor will become a classical level shift.
 #'
-#' @examplesIf jversion >= 17
-#' iv1 <- intervention_variable(12, c(2000, 1), 60,
-#'     starts = "2001-01-01", ends = "2001-12-01"
+#' @returns a \code{ts} object
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' iv1 <- intervention_variable(
+#'     frequency = 12,
+#'     start = c(2000, 1),
+#'     length = 60,
+#'     starts = "2001-01-01",
+#'     ends = "2001-12-01"
 #' )
 #' plot(iv1)
-#' iv2 <- intervention_variable(12, c(2000, 1), 60,
-#'     starts = "2001-01-01", ends = "2001-12-01", delta = 1
+#' iv2 <- intervention_variable(
+#'     frequency = 12,
+#'     start = c(2000, 1),
+#'     length = 60,
+#'     starts = "2001-01-01",
+#'     ends = "2001-12-01",
+#'     delta = 1
 #' )
 #' plot(iv2)
-#' # using one variable in a a seasonal adjustment process
-#' # regressors as a list of two groups reg1 and reg2
-#' vars <- list(reg1 = list(x = iv1), reg2 = list(x = iv2))
+#'
+#' # Using one variable in a a seasonal adjustment process
+#' # Regressors as a list of two groups reg1 and reg2
+#' vars <- list(
+#'     reg1 = list(x = iv1),
+#'     reg2 = list(x = iv2)
+#' )
+#'
 #' # creating the modelling context
 #' my_context <- modelling_context(variables = vars)
+#'
 #' # customize a default specification
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<- add_usrdefvar(init_spec,id = "reg1.iv1", regeffect="Trend")
-#' # modelling context is needed for the estimation phase
-#' # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+#' init_spec <- x13_spec_default
+#' new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
+#'
 #' @seealso \code{\link{modelling_context}}, \code{\link{add_usrdefvar}}
 #' @references
 #' More information on auxiliary variables in JDemetra+ online documentation:
@@ -322,10 +342,13 @@ intervention_variable <- function(frequency, start, length, s, starts, ends, del
 #' @inheritParams outliers_variables
 #'
 #' @details
-#' The function periodic_dummies creates as many time series as types of periods in a year (4 or 12)
+#' The function \code{periodic_dummies()} creates as many time series as types of periods in a year (4 or 12)
 #' with the value one only for one given type of period (ex Q1)
-#' The periodic_contrasts function is based on periodic_dummies but adds -1 to the period preceding a 1.
-#' @examplesIf jversion >= 17
+#' The \code{periodic_contrasts()} function is based on periodic_dummies but adds -1 to the period preceding a 1.
+#'
+#' @returns a \code{mts} object with \code{frequency} column
+#'
+#' @examplesIf current_java_version >= minimal_java_version
 #' # periodic dummies for a quarterly series
 #' p <- periodic_dummies(4, c(2000, 1), 60)
 #' # periodic contrasts for a quarterly series
@@ -339,7 +362,12 @@ periodic_dummies <- function(frequency, start, length, s) {
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    jm <- .jcall("jdplus/toolkit/base/r/modelling/Variables", "Ljdplus/toolkit/base/api/math/matrices/Matrix;", "periodicDummies", jdom)
+    jm <- .jcall(
+        obj = "jdplus/toolkit/base/r/modelling/Variables",
+        returnSig = "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
+        method = "periodicDummies",
+        jdom
+    )
     data <- .jd2r_matrix(jm)
     return(ts(data, frequency = frequency, start = start))
 }
@@ -401,8 +429,18 @@ periodic_contrasts <- function(frequency, start, length, s) {
 #' \end{pmatrix}
 #' }
 #'
+#' @returns a mts object with 2 columns
 #'
 #' @export
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' trigonometric_variables(
+#'     frequency = 12,
+#'     length = 480,
+#'     start = c(1990, 1),
+#'     seasonal_frequency = 3
+#' )
+#'
 trigonometric_variables <- function(frequency, start, length, s,
                                     seasonal_frequency = NULL) {
     if (!missing(s) && is.ts(s)) {

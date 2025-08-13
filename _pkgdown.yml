@@ -19,6 +19,7 @@ navbar:
     home:
       icon: fa-home fa-lg
       href: index.html
+      aria-label: Home
     reference:
       text: Reference
       href: reference/index.html
@@ -216,6 +217,10 @@ reference:
     - '`Exports`'
     - '`Imports`'
     - '`Retail`'
+    - '`Births`'
+    - '`Electricity`'
+    - '`tramoseats_spec_default`'
+    - '`x13_spec_default`'
 - title: Print and Plot Methods
   desc: Functions to print and plot specific JDemetra+ class objects
   contents:
@@ -236,8 +241,6 @@ reference:
 - title: Wrangling Java objects
   desc: Functions to easily interact between R and Java objects
   contents:
-    - '`DATE_MIN`'
-    - '`DATE_MAX`'
     - '`jd3_print`'
     - '`print.calendars`'
     - '`r2jd_calendarts`'

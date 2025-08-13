@@ -7,16 +7,16 @@
 #' @param n number of observations.
 #' @param x vector of quantiles.
 #'
-#'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Probability density function of T with 2 degrees of freedom.
-#' z <- density_t(df=2, .01 * seq(-100, 100, 1))
+#' z <- density_t(df = 2, .01 * seq(-100, 100, 1))
 #' # Generating a random vector with each component drawn from a T(2) distribution
 #' z <- random_t(2, 100)
-#' # Computing the probabilty that the random variable X folllowing a T distrubution with df degrees of freedom is lower than x
-#' z<-cdf_t(df=12,x=1.2)
+#' # Computing the probabilty that the random variable X following a T distribution
+#' # with df degrees of freedom is lower than x
+#' z <- cdf_t(df = 12, x = 1.2)
 #' z
-#' z<-cdf_t(df=12,x=c(0:10)) # array of values
+#' z <- cdf_t(df = 12, x = c(0:10)) # array of values
 #' z
 #' @name studentdistribution
 #' @rdname studentdistribution
@@ -50,6 +50,12 @@ cdf_t <- function(df, x) {
 #' @name chi2distribution
 #' @rdname chi2distribution
 #' @order 3
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' density_chi2(df = 3, 1:10)
+#' cdf_chi2(df = 3, 1:10)
+#' random_chi2(df = 3, n = 10)
+#'
 #' @export
 random_chi2 <- function(df, n) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "randomsChi2", df, as.integer(n))
@@ -79,6 +85,12 @@ cdf_chi2 <- function(df, x) {
 #'
 #' @name gammadistribution
 #' @rdname gammadistribution
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' density_gamma(shape = 1, scale = 2, x = 1:10)
+#' cdf_gamma(shape = 1, scale = 2, x = 1:10)
+#' random_gamma(shape = 1, scale = 2, n = 10)
+#'
 #' @order 3
 #' @export
 random_gamma <- function(shape, scale, n) {
@@ -109,6 +121,11 @@ cdf_gamma <- function(shape, scale, x) {
 #' @name invgammadistribution
 #' @rdname invgammadistribution
 #' @order 3
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' density_inverse_gamma(shape = 1, scale = 2, x = 1:10)
+#' cdf_inverse_gamma(shape = 1, scale = 2, x = 1:10)
+#' random_inverse_gamma(shape = 1, scale = 2, n = 10)
 #' @export
 random_inverse_gamma <- function(shape, scale, n) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "randomsInverseGamma", shape, scale, as.integer(n))
@@ -138,6 +155,11 @@ cdf_inverse_gamma <- function(shape, scale, x) {
 #' @name invgaussiandistribution
 #' @rdname invgaussiandistribution
 #' @order 3
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' density_inverse_gaussian(shape = 1, scale = 2, x = 1:10)
+#' random_inverse_gaussian(shape = 1, scale = 2, n = 10)
+#'
 #' @export
 random_inverse_gaussian <- function(shape, scale, n) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "randomsInverseGaussian", shape, scale, as.integer(n))

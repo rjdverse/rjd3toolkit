@@ -17,6 +17,9 @@
 
 \item{result}{Boolean. Does \code{jx} contains the results? Default to FALSE.}
 }
+\value{
+A new model with same class as \code{x}
+}
 \description{
 Add user-defined variable to a SA model
 }
