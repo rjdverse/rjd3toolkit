@@ -22,7 +22,7 @@ A new UCARIMA model
 More specifically, put all the noise of the components in one dedicated component
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 mod1 <- arima_model("trend", delta = c(1, -2, 1))
 mod2 <- arima_model("noise", var = 1600)
 hp <- ucarima_model(components = list(mod1, mod2))

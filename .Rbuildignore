@@ -31,6 +31,7 @@ cran-comments.md
 
 ^CITATION\.cff$
 ^LICENSE.md$
+^LICENSE$
 
 ^\.httr-oauth$
 ^\.zenodo\.json$
@@ -42,3 +43,4 @@ cran-comments.md
 
 ^man-roxygen$
 ^organisation.yml$
+^cran-comments\.md$

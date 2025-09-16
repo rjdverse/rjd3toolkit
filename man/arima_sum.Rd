@@ -25,7 +25,7 @@ polynomials is then computed and factorized, to get the moving average
 polynomial and innovation variance of the sum.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 mod1 <- arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
 mod2 <- arima_model(ar = 0, delta = 0, ma = c(0.4))
 arima_sum(mod1, mod2)

@@ -30,6 +30,9 @@ outliers/ramps coefficients are estimated.}
 
 \item{start, end}{dates of the ramp regressor.}
 }
+\value{
+The modified specification (with/without outliers or ramp)
+}
 \description{
 Generic function to add outliers or Ramp regressors (\code{add_outlier()} and
 \code{add_ramp()}) to a specification or to remove them
@@ -46,11 +49,19 @@ after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to
 the trend.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<-rjd3toolkit::add_outlier(init_spec, type="AO", date="2012-01-01")
-# ramp on year 2012
-# new_spec<-rjd3toolkit::add_ramp(init_spec,start="2012-01-01",end="2012-12-01")
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+init_spec <- x13_spec_default
+
+# Adding outlier on year 2012
+new_spec <- add_outlier(init_spec, type = "AO", date = "2012-01-01")
+# Removing outlier on year 2012
+new_spec <- remove_outlier(new_spec, type = "AO", date = "2012-01-01")
+
+# Adding ramp on year 2012
+new_spec2 <- add_ramp(init_spec, start = "2012-01-01", end = "2012-12-01")
+# Removing ramp on year 2012
+new_spec2 <- remove_ramp(new_spec2, start = "2012-01-01", end = "2012-12-01")
 \dontshow{\}) # examplesIf}
 }
 \references{

@@ -23,7 +23,7 @@ A list with the auto-covariances and with the (pseudo-)spectrum
 The (pseudo-)spectrum and the auto-covariances of the model are returned
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 mod1 <- arima_model(ar = c(0.1, 0.2), delta = c(1, -1), ma = 0)
 arima_properties(mod1)
 \dontshow{\}) # examplesIf}

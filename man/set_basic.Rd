@@ -40,6 +40,9 @@ values).}
 \item{preprocessing}{(REGARIMA/X13 Specific) a Boolean to enable/disable the pre-processing.
 Option disabled for the moment.}
 }
+\value{
+The modified specification with new estimation span
+}
 \description{
 Function allowing to check if the series can be processed and to define a
 sub-span on which estimation will be performed
@@ -52,23 +55,48 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# estimation on sub-span between two dates (date d1 is excluded)
-# new_spec<-set_basic(init_spec,type = "Between",d0 = "2014-01-01",
-# d1 = "2019-01-01", preliminary.check = TRUE, preprocessing = TRUE)
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+# Customize a default specification
+init_spec <- x13_spec_default
+
+# Estimation on sub-span between two dates (date d1 is excluded)
+new_spec <- set_basic(
+    init_spec,
+    type = "Between",
+    d0 = "2014-01-01",
+    d1 = "2019-01-01",
+    preliminary.check = TRUE,
+    preprocessing = TRUE
+)
+
 # Estimation on the first 60 observations
-# new_spec <-set_basic(init_spec,Type="First", n0 = 60,
-#                      preliminary.check = TRUE,
-#                      preprocessing= TRUE)
+new_spec <- set_basic(
+    init_spec,
+    type = "First",
+    n0 = 60,
+    preliminary.check = TRUE,
+    preprocessing = TRUE
+)
+
 # Estimation on the last 60 observations
-# new_spec <-set_basic(init_spec,Type="Last", n1 = 60,
-#                      preliminary.check = TRUE,
-#                      preprocessing= TRUE)
+new_spec <- set_basic(
+    init_spec,
+    type = "Last",
+    n1 = 60,
+    preliminary.check = TRUE,
+    preprocessing = TRUE
+)
+
 # Estimation excluding 60 observations at the beginning and 36 at the end of the series
-# new_spec <-set_basic(init_spec,Type="Excluding", n0=60, n1=36,
-#                      preliminary.check = TRUE,
-#                      preprocessing= TRUE)
+new_spec <-set_basic(
+    init_spec,
+    type = "Excluding",
+    n0 = 60,
+    n1 = 36,
+    preliminary.check = TRUE,
+    preprocessing = TRUE
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

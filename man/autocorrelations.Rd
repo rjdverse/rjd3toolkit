@@ -22,11 +22,19 @@ If \code{FALSE}, we consider that the (known) mean is 0 and that the series has 
 
 \item{nar}{number of AR lags used to compute inverse autocorrelations.}
 }
+\value{
+\code{autocorrelations()} returns a vector of length \code{n} with
+the autocorrelations.
+\code{autocorrelations_partial()} returns a vector of length \code{n} with
+the partial autocorrelations.
+\code{autocorrelations_inverse()} returns a vector of length \code{n} with
+the inverse autocorrelations.
+}
 \description{
 Autocorrelation Functions
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 x <- ABS$X0.2.09.10.M
 autocorrelations(x)
 autocorrelations_partial(x)

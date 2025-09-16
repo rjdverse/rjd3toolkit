@@ -1,27 +1,35 @@
 #' @include utils.R
 NULL
 
-#' @rdname jd3_utilities
-#' @export
-DATE_MIN <- NULL
-
-#' @rdname jd3_utilities
-#' @export
-DATE_MAX <- NULL
-
 #' @importFrom RProtoBuf read readProtoFiles2
-#' @importFrom rJava .jpackage .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass
+#' @importFrom rJava .jpackage .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass .jinit
 #' @importFrom stats frequency is.ts pf ts ts.union
 NULL
 
 #' @rdname jd3_utilities
+#'
+#' @examples
+#' get_java_version()
 #' @export
-jversion <- NULL
+get_java_version <- function() {
+    .jinit()
+    jversion <- .jcall("java.lang.System", "S", "getProperty", "java.version")
+    jversion <- as.integer(regmatches(jversion, regexpr(pattern = "^(\\d+)", text = jversion)))
+    return(jversion)
+}
+
+#' @rdname jd3_utilities
+#' @export
+current_java_version <- get_java_version()
+
+#' @rdname jd3_utilities
+#' @export
+minimal_java_version <- 17
 
 .onAttach <- function(libname, pkgname) {
-    # what's your java  version?  Need >= 17
-    if (jversion < 17) {
-        packageStartupMessage(sprintf("Your java version is %s. 17 or higher is needed.", jversion))
+    if (current_java_version < minimal_java_version) {
+        packageStartupMessage(sprintf("Your java version is %s. %s or higher is needed.",
+                                      current_java_version, minimal_java_version))
     }
 }
 
@@ -32,13 +40,17 @@ jversion <- NULL
     proto.dir <- system.file("proto", package = pkgname)
     readProtoFiles2(protoPath = proto.dir)
 
-    DATE_MIN <<- dateOf(1, 1, 1)
-    DATE_MAX <<- dateOf(9999, 12, 31)
-
-    jversion <<- .jcall("java.lang.System", "S", "getProperty", "java.version")
-    jversion <<- as.integer(regmatches(jversion, regexpr(pattern = "^(\\d+)", text = jversion)))
-
     if (is.null(getOption("summary_info"))) {
         options(summary_info = TRUE)
     }
+}
+
+#' @rdname jd3_utilities
+get_date_min <- function() {
+    return(dateOf(1, 1, 1))
+}
+
+#' @rdname jd3_utilities
+get_date_max <- function() {
+    return(dateOf(9999, 12, 31))
 }

@@ -24,7 +24,7 @@ a \code{"JD3_ARIMA"} model.
 ARIMA Model
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), var = 100)
 \dontshow{\}) # examplesIf}
 }

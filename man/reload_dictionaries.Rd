@@ -6,6 +6,14 @@
 \usage{
 reload_dictionaries()
 }
+\value{
+invisibly \code{NULL}
+}
 \description{
 Reload dictionaries
+}
+\examples{
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+reload_dictionaries()
+\dontshow{\}) # examplesIf}
 }

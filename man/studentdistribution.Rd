@@ -24,15 +24,16 @@ random_t(df, n)
 Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Probability density function of T with 2 degrees of freedom.
-z <- density_t(df=2, .01 * seq(-100, 100, 1))
+z <- density_t(df = 2, .01 * seq(-100, 100, 1))
 # Generating a random vector with each component drawn from a T(2) distribution
 z <- random_t(2, 100)
-# Computing the probabilty that the random variable X folllowing a T distrubution with df degrees of freedom is lower than x
-z<-cdf_t(df=12,x=1.2)
+# Computing the probabilty that the random variable X following a T distribution
+# with df degrees of freedom is lower than x
+z <- cdf_t(df = 12, x = 1.2)
 z
-z<-cdf_t(df=12,x=c(0:10)) # array of values
+z <- cdf_t(df = 12, x = c(0:10)) # array of values
 z
 \dontshow{\}) # examplesIf}
 }
