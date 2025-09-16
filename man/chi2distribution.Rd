@@ -16,7 +16,7 @@ random_chi2(df, n)
 \arguments{
 \item{df}{degrees of freedom.}
 
-\item{x}{vector of quantiles}
+\item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
 }

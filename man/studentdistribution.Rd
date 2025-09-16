@@ -16,12 +16,12 @@ random_t(df, n)
 \arguments{
 \item{df}{degrees of freedom.}
 
-\item{x}{vector of quantiles}
+\item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
 }
 \description{
-Probabality Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
+Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
 }
 \examples{
 \dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
