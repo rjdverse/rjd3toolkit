@@ -12,6 +12,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 * default group value with mts objects in modelling_context #107
 
+### Added
+
+* New `print()` and `summary()` method for `JD3_DICTIONARY` and `JD3_FULL_DICTIONARY`
+
 ## [3.5.1] - 2025-06-18
 
 
