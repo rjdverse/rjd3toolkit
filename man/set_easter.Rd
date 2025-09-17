@@ -58,6 +58,9 @@ including Easter Sunday;
 \code{"IncludeEasterMonday"} = influences the entire period (\code{n}) up to
 and including Easter Monday.}
 }
+\value{
+The modified specification (with new easter parameters)
+}
 \description{
 Set Easter effect correction in Pre-Processing Specification
 }
@@ -69,14 +72,17 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<-set_easter(init_spec,
-#                     enabled = TRUE,
-#                     duration = 12,
-#                    test = "None",
-#                    type = "IncludeEasterMonday")
-# sa<-rjd3x13::x13(ABS$X0.2.09.10.M,new_spec)
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+# Customize a default specification
+init_spec <- x13_spec_default
+new_spec <- set_easter(
+    x = init_spec,
+    enabled = TRUE,
+    duration = 12,
+    test = "None",
+    type = "IncludeEasterMonday"
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

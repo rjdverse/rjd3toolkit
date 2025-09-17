@@ -20,7 +20,7 @@ NULL
 #' @returns A `"JD3_SARIMA"` model.
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 #'
 sarima_model <- function(name = "sarima",
@@ -53,7 +53,7 @@ sarima_model <- function(name = "sarima",
 #'
 #' @returns List with the acf and the spectrum of the model.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 #' sarima_properties(mod1)
 #' @export
@@ -89,7 +89,7 @@ sarima_properties <- function(model, nspectrum = 601, nacf = 36) {
 #'
 #' @returns a numeric vector with the simulated series.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' # Airline model
 #' s_model <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 #' x <- sarima_random(s_model, length = 64, seed = 0)
@@ -126,7 +126,7 @@ sarima_random <- function(model, length, stde = 1, tdegree = 0, seed = -1) {
 #' @returns An UCARIMA model
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' model <- sarima_model(period = 12, d = 1, bd = 1, theta = -0.6, btheta = -0.5)
 #' ucm <- sarima_decompose(model)
 #'
@@ -158,7 +158,7 @@ sarima_decompose <- function(model, rmod = 0, epsphi = 0) {
 #' @returns a `"JD3_ARIMA"` model.
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), var = 100)
 arima_model <- function(name = "arima", ar = 1, delta = 1, ma = 1, variance = 1) {
     return(structure(list(name = name, ar = ar, delta = delta, ma = ma, var = variance), class = "JD3_ARIMA"))
@@ -226,7 +226,7 @@ arima_model <- function(name = "arima", ar = 1, delta = 1, ma = 1, variance = 1)
 #' polynomials is then computed and factorized, to get the moving average
 #' polynomial and innovation variance of the sum.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
 #' mod2 <- arima_model(ar = 0, delta = 0, ma = c(0.4))
 #' arima_sum(mod1, mod2)
@@ -260,7 +260,7 @@ arima_lsum <- function(components) {
 #' @returns a `"JD3_ARIMA"` model.
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model(delta = c(1, -2, 1))
 #' mod2 <- arima_model(variance = .01)
 #' diff <- arima_difference(mod1, mod2)
@@ -293,7 +293,7 @@ arima_difference <- function(left, right, simplify = TRUE) {
 #'
 #' @returns A list with the auto-covariances and with the (pseudo-)spectrum
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model(ar = c(0.1, 0.2), delta = c(1, -1), ma = 0)
 #' arima_properties(mod1)
 #' @export
@@ -327,7 +327,7 @@ arima_properties <- function(model, nspectrum = 601, nac = 36) {
 #' @returns A list with the reduced model, the components and their complements
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
 #' mod2 <- arima_model("noise", var = 1600)
 #' hp <- ucarima_model(components = list(mod1, mod2))
@@ -386,7 +386,7 @@ ucarima_model <- function(model = NULL,
 #' squared-gain function (with the same number of points as the spectrum)
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
 #' mod2 <- arima_model("noise", var = 1600)
 #' hp <- ucarima_model(components = list(mod1, mod2))
@@ -444,7 +444,7 @@ ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
 #' @returns A new UCARIMA model
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
 #' mod2 <- arima_model("noise", var = 1600)
 #' hp <- ucarima_model(components = list(mod1, mod2))
@@ -470,7 +470,7 @@ ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
 #' deviations if stdev is TRUE.
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
 #' mod2 <- arima_model("noise", var = 16)
 #' hp <- ucarima_model(components = list(mod1, mod2))
@@ -517,7 +517,7 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' y <- ABS$X0.2.09.10.M
 #' sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 sarima_estimate <- function(x,
@@ -598,7 +598,7 @@ sarima_estimate <- function(x,
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' y <- ABS$X0.2.09.10.M
 #' model<- sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 sarima_hannan_rissanen <- function(x,

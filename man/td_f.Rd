@@ -21,6 +21,9 @@ series, starting from the end of the series, to be used for the test: in
 number of periods (positive value) or years (negative values).
 By default (\code{nyears = 0}), the entire sample is used.}
 }
+\value{
+a \code{JD3_TEST} object with value, p-value and information about the distribution
+}
 \description{
 Residual Trading Days Test
 }
@@ -60,7 +63,7 @@ y_t =\alpha_0 + \alpha_1 y_{t-1} + \beta TD_t +  \varepsilon_t
 }
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 td_f(ABS$X0.2.09.10.M)
 \dontshow{\}) # examplesIf}
 }

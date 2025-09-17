@@ -11,13 +11,14 @@ sarima_random(model, length, stde = 1, tdegree = 0, seed = -1)
 
 \item{length}{length of the output series.}
 
-\item{stde}{deviation of the normal distribution of the innovations of the simulated series.
-Unused if \code{tdegree} is larger than 0.}
+\item{stde}{deviation of the normal distribution of the innovations of the
+simulated series. Unused if \code{tdegree} is larger than 0.}
 
 \item{tdegree}{degrees of freedom of the T distribution of the innovations.
 \code{tdegree = 0} if normal distribution is used.}
 
-\item{seed}{seed of the random numbers generator. Negative values mean random seeds}
+\item{seed}{seed of the random numbers generator. Negative values mean
+random seeds.}
 }
 \value{
 a numeric vector with the simulated series.
@@ -26,7 +27,7 @@ a numeric vector with the simulated series.
 Simulate Seasonal ARIMA
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Airline model
 s_model <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 x <- sarima_random(s_model, length = 64, seed = 0)

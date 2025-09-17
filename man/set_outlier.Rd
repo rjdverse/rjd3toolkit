@@ -75,6 +75,9 @@ in the intermediate steps. If \code{TRUE}, an exact likelihood estimation
 method is used.
 When \code{FALSE}, the fast Hannan-Rissanen method is used.}
 }
+\value{
+The modified specification (with new outlier parameters)
+}
 \description{
 Function allowing to customize the automatic outlier detection
 process built in in the pre-processing step (regarima or tramo).
@@ -91,12 +94,18 @@ allocated to a pre-defined component after the decomposition: "AO" and "TC"
 to the irregular, "LS" to the trend and "SO" to seasonal component.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3tramoseats::spec_tramoseats("rsafull")
-# new_spec<-set_outlier(init_spec, span.type= "From", d0 = "2012-01-01",
-#                      outliers.type = c("LS", "AO"),
-#                      critical.value = 5,
-#                      tc.rate =0.85)
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+# Customize a default specification
+init_spec <- tramoseats_spec_default
+new_spec <- set_outlier(
+    x = init_spec,
+    span.type = "From",
+    d0 = "2012-01-01",
+    outliers.type = c("LS", "AO"),
+    critical.value = 5,
+    tc.rate = 0.85
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

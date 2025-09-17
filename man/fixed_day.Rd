@@ -23,7 +23,7 @@ weight and period of validity, like Christmas which is always celebrated on
 December 25th.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 day <- fixed_day(7, 21, .9)
 day # July 21st, with weight=0.9, on the whole sample
 day <- fixed_day(12, 25, .5, validity = list(start = "2010-01-01"))

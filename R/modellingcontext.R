@@ -13,13 +13,13 @@ JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 #'
 #' @returns
 #' Returns a java object of class JD3_TSMONIKER.
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' source <- "Txt"
 #' # id is split due to length restrictions
 #' id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd%2FMM%2Fyyyy&delimiter=SEMICOLON&"
 #' id2 <- "file=C%3A%5CDocuments%5CIPI%5CData%5CIPI_nace4.csv#seriesIndex=0"
-#' id<-paste(id1,id2)
-#' moniker <- .tsmoniker(source,id)
+#' id <- paste0(id1, id2)
+#' moniker <- .tsmoniker(source, id)
 #' @export
 .tsmoniker <- function(source, id) {
     return(structure(list(source = source, id = id), class = c(JD3_TSMONIKER)))
@@ -136,9 +136,7 @@ dynamic_ts <- function(moniker, data) {
     if (is.null(p)) {
         return(NULL)
     } else {
-        rs <- lapply(p$series, function(s) {
-            return(.p2r_ts(s))
-        })
+        rs <- lapply(p$series, FUN = .p2r_ts)
         names <- lapply(rs, function(s) {
             return(s$name)
         })
@@ -154,9 +152,7 @@ dynamic_ts <- function(moniker, data) {
     p$name <- r$name
     p$moniker <- .r2p_moniker(r$moniker)
     p$metadata <- .r2p_metadata(r$metadata, jd3.TsCollection$MetadataEntry)
-    p$series <- lapply(r$series, function(s) {
-        return(.r2p_ts(s))
-    })
+    p$series <- lapply(r$series, FUN = .r2p_ts)
     return(p)
 }
 
@@ -334,8 +330,9 @@ dynamic_ts <- function(moniker, data) {
 #' @returns list of calendars and variables
 #' @export
 #'
-#' @examplesIf jversion >= 17
-#' # creating one or several external regressors (TS objects), which will
+#' @examplesIf current_java_version >= minimal_java_version
+#'
+#' # Creating one or several external regressors (TS objects), which will
 #' # be gathered in one or several groups
 #' iv1 <- intervention_variable(12, c(2000, 1), 60,
 #'     starts = "2001-01-01", ends = "2001-12-01"
@@ -343,15 +340,13 @@ dynamic_ts <- function(moniker, data) {
 #' iv2 <- intervention_variable(12, c(2000, 1), 60,
 #'     starts = "2001-01-01", ends = "2001-12-01", delta = 1
 #' )
-#' # regressors as a list of two groups reg1 and reg2
+#'
+#' # Regressors as a list of two groups reg1 and reg2
 #' vars <- list(reg1 = list(x = iv1), reg2 = list(x = iv2))
-#' # creating the modelling context
+#'
+#' # Creating the modelling context
 #' my_context <- modelling_context(variables = vars)
-#' # customize a default specification
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<- add_usrdefvar(init_spec,name = "reg1.iv1", regeffect="Trend")
-#' # modelling context is needed for the estimation phase
-#' # sa_x13<- rjd3x13::x13(ABS$X0.2.09.10.M, new_spec, context = my_context)
+#'
 #' @seealso \code{\link{add_usrdefvar}}, \code{\link{intervention_variable}}
 #' @references
 #' More information on auxiliary variables in JDemetra+ online documentation:
@@ -383,6 +378,10 @@ modelling_context <- function(calendars = NULL, variables = NULL) {
                 })
                 names(all_var) <- colnames(variables[[i]])
                 variables[[i]] <- all_var
+                if (is.null(names(variables)[i]) || names(variables)[i] == "") {
+                    # if the name is not set, use 'r' as the name of the dictionary
+                    names(variables)[i] <- "r"
+                }
             }
         }
         if (any(ts_var)) {

@@ -171,7 +171,7 @@ NULL
     }
     param_name <- deparse(substitute(jparams))
     Type <- sapply(param, function(x) .jcall(.jcall(x, "Ljdplus/toolkit/base/api/data/ParameterType;", "getType"), "S", "name"))
-    Value <- sapply(param, function(x) .jcall(x, "D", "getValue"))
+    Value <- sapply(param, FUN = .jcall, returnSig = "D", method = "getValue")
     data_param <- data.frame(Type = Type, Value = Value)
     rownames(data_param) <- sprintf(
         "%s(%i)",

@@ -38,6 +38,9 @@ to the forecasting period.}
 
 \item{bias}{TODO}
 }
+\value{
+The modified specification with new estimation span
+}
 \description{
 Function allowing to perform a benchmarking procedure after the decomposition
 step in a seasonal adjustment (disabled by default). Here benchmarking refers
@@ -54,15 +57,17 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<- set_benchmarking(init_spec,
-#                            enabled = TRUE,
-#                            target = "Normal",
-#                            rho = 0.8,
-#                            lambda = 0.5,
-#                            forecast = FALSE,
-#                            bias = "None")
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+init_spec <- x13_spec_default
+new_spec <- set_benchmarking(
+    x = init_spec,
+    enabled = TRUE,
+    target = "Original",
+    rho = 0.8,
+    lambda = 0.5,
+    forecast = FALSE,
+    bias = "None"
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

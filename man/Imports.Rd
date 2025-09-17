@@ -16,4 +16,7 @@ Imports
 \description{
 Belgian imports from European countries
 }
+\examples{
+data(Imports)
+}
 \keyword{datasets}

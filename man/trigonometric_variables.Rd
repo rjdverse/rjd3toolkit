@@ -20,6 +20,9 @@ If supplied the parameters \code{frequency}, \code{start} and \code{length} are 
 \item{seasonal_frequency}{the seasonal frequencies.
 By default the fundamental seasonal frequency and all the harmonics are used.}
 }
+\value{
+a mts object with 2 columns
+}
 \description{
 Computes trigonometric variables at different frequencies.
 }
@@ -57,4 +60,14 @@ are the five harmonics. The output matrix will be equal to:
 \cos(\lambda_6\times 12) & \sin (\lambda_6\times 12)
 \end{pmatrix}
 }
+}
+\examples{
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+trigonometric_variables(
+    frequency = 12,
+    length = 480,
+    start = c(1990, 1),
+    seasonal_frequency = 3
+)
+\dontshow{\}) # examplesIf}
 }

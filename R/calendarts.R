@@ -4,9 +4,10 @@
 #'
 #' @export
 #'
-#' @examplesIf jversion >= 17
-#' # example code
+#' @returns a Java object
 #'
+#' @examplesIf current_java_version >= minimal_java_version
+#' # example code
 #' obs <- list(
 #'     list(start = as.Date("1980-01-01"), end = as.Date("1999-12-31"), value = 2000),
 #'     list(start = as.Date("2000-01-01"), end = as.Date("2010-01-01"), value = 1000)

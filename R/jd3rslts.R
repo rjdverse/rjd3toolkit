@@ -192,7 +192,7 @@
         ll = .proc_numeric(jrslt, paste0(prefix, "ll")),
         ssq = .proc_numeric(jrslt, paste0(prefix, "ssqerr")),
         nobs = .proc_int(jrslt, paste0(prefix, "nobs")),
-        neffective = .proc_int(jrslt, paste0(prefix, "neffective")),
+        neffectiveobs = .proc_int(jrslt, paste0(prefix, "neffectiveobs")),
         nparams = .proc_int(jrslt, paste0(prefix, "nparams")),
         df = .proc_int(jrslt, paste0(prefix, "df")),
         aic = .proc_numeric(jrslt, paste0(prefix, "aic")),

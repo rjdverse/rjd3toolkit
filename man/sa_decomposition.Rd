@@ -48,3 +48,17 @@ the seasonally adjusted and the trend; \code{"seas-irr"} plots the seasonal and 
 Generic function to format the seasonal adjustment decomposition components.
 \code{sa_decomposition()} is a generic function defined in other packages.
 }
+\examples{
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+decompo <- sadecomposition(
+    y = ts(c(112, 118, 132, 129, 121, 135), start = 2000, frequency = 12L),
+    sa = ts(c(121.72, 124.52, 125.4, 128.91, 128.84, 126.73), start = 2000, frequency = 12L),
+    t = ts(c(122.24, 124.33, 126.21, 127.61, 127.8, 126.94), start = 2000, frequency = 12L),
+    s = ts(c(0.92, 0.95, 1.05, 1, 0.94, 1.07), start = 2000, frequency = 12L),
+    i = ts(c(1, 1, 0.99, 1.01, 1.01, 1), start = 2000, frequency = 12L),
+    mul = TRUE
+)
+print(decompo)
+plot(decompo)
+\dontshow{\}) # examplesIf}
+}

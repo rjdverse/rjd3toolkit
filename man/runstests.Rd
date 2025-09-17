@@ -36,7 +36,7 @@ check randomness of a data.
 
 }}
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 x <- random_t(5, 1000)
 # random values
 testofruns(x)
