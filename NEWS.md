@@ -12,8 +12,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 * default group value with mts objects in modelling_context #107
 
-## [3.5.1] - 2025-06-18
+### Removed
 
+* `fct` parameter in `set_automodel()` #85
+
+
+## [3.5.1] - 2025-06-18
 
 ### Changed
 

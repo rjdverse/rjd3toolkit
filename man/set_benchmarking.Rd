@@ -11,7 +11,7 @@ set_benchmarking(
   rho = NA,
   lambda = NA,
   forecast = NA,
-  bias = c(NA, "None")
+  bias = c("None", "Additive", "Multiplicative")
 )
 }
 \arguments{
@@ -36,7 +36,9 @@ adjusted series and of the target variable (\code{target}) are used in the
 benchmarking computation so that the benchmarking constrain is also applied
 to the forecasting period.}
 
-\item{bias}{TODO}
+\item{bias}{Character. Bias correction factor. No systematic bias is
+considered by default. See
+\code{vignette(topic = "rjd3bench", package = "rjd3bench")} for more details.}
 }
 \value{
 The modified specification with new estimation span

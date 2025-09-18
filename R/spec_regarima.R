@@ -748,8 +748,6 @@ set_outlier.default <- function(x,
 #'  non-seasonal parts of the model can be acceptable, provided there are no AR
 #'  or MA terms in either the seasonal or non-seasonal terms.
 #'
-#' @param fct (REGARIMA/X13 Specific) \code{numeric}. TODO.
-#'
 #' @param balanced (REGARIMA/X13 Specific) \code{logical} If \code{TRUE}, the
 #'  automatic model identification procedure will have a preference for balanced
 #'  models (i.e. models for which the order of the combined AR and differencing
@@ -798,7 +796,6 @@ set_automodel <- function(x,
                           ubfinal = NA,
                           checkmu = NA,
                           mixed = NA,
-                          fct = NA,
                           balanced = NA,
                           # TRAMO SPECIFIC
                           amicompare = NA) {
@@ -818,10 +815,10 @@ set_automodel.default <- function(x,
                                   ubfinal = NA,
                                   checkmu = NA,
                                   mixed = NA,
-                                  fct = NA,
                                   balanced = NA,
                                   # TRAMO SPECIFIC
                                   amicompare = NA) {
+    fct <- NA
     automodel <- x$automodel
 
     is_tramo <- inherits(x, "JD3_TRAMO_SPEC")
