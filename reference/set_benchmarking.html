@@ -70,7 +70,7 @@ and the corresponding annual totals of raw (or calendar adjusted) series.</p>
 <span>  rho <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  lambda <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  forecast <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>  bias <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"None"</span><span class="op">)</span></span>
+<span>  bias <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"None"</span>, <span class="st">"Additive"</span>, <span class="st">"Multiplicative"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -112,7 +112,9 @@ to the forecasting period.</p></dd>
 
 
 <dt id="arg-bias">bias<a class="anchor" aria-label="anchor" href="#arg-bias"></a></dt>
-<dd><p>TODO</p></dd>
+<dd><p>Character. Bias correction factor. No systematic bias is
+considered by default. See
+<code>vignette(topic = "rjd3bench", package = "rjd3bench")</code> for more details.</p></dd>
 
 </dl></div>
     <div class="section level2">
