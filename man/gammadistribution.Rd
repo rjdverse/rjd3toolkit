@@ -24,7 +24,7 @@ random_gamma(shape, scale, n)
 Density, (cumulative) distribution function and random generation for Gamma distribution.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 density_gamma(shape = 1, scale = 2, x = 1:10)
 cdf_gamma(shape = 1, scale = 2, x = 1:10)
 random_gamma(shape = 1, scale = 2, n = 10)

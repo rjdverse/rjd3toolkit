@@ -22,7 +22,7 @@ the data and the metadata
 Creates a time series object
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 source <- "Txt"
 # id is split due to length restrictions
 id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd\%2FMM\%2Fyyyy&delimiter=SEMICOLON&"

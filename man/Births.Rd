@@ -3,24 +3,37 @@
 \docType{data}
 \name{Births}
 \alias{Births}
-\title{Number of births registered in France from 1968 to 2023}
+\title{Number of births registered in France from 1968 to 2024}
 \format{
-A data frame with 20454 rows and 2 variables:
+A data frame with 20,820 rows and 2 variables:
 \itemize{
-\item date: Date of the value (from January 1, 1968 to December 31, 2023)
-\item births: number of daily birth (1254--2830)
+\item date: Date of the value (from 1968-01-01 to 2024-12-31)
+\item births: Number of daily births (1254--2830)
 }
 }
 \source{
-\url{https://www.insee.fr/fr/statistiques/8256971?sommaire=8256973}
+INSEE, Statistiques de l'état civil –
+\url{https://www.insee.fr/fr/statistiques/8582123?sommaire=8582147}
 }
 \usage{
 Births
 }
 \description{
-Number of births registered in France from 1968 to 2023
+Daily number of births recorded in France (metropolitan + DOM),
+covering the period from January 1, 1968 to December 31, 2024.
+}
+\details{
+The dataset corresponds to the INSEE series \strong{T79jnais}.
+The raw data can be downloaded as a CSV file here:
+\url{https://www.insee.fr/fr/statistiques/fichier/8582123/T79jnais.csv}
 }
 \examples{
 data(Births)
+plot(Births$date, Births$births,
+     type = "l",
+     main = "Daily births in France",
+     ylab = "Number of births",
+     xlab = "date")
+
 }
 \keyword{datasets}

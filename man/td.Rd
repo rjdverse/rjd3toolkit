@@ -51,7 +51,7 @@ to a given group. Contrasts are the differences between the number of days in
 a given group (1 to 6) and the number of days in the reference group (0).
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 
 # Monthly regressors for Trading Days: each type of day is different
 # contrasts to Sundays (6 series)
