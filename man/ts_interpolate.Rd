@@ -19,7 +19,7 @@ The interpolated series
 Interpolation of a time series with missing values
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 ts_interpolate(AirPassengers)
 
 x <- AirPassengers

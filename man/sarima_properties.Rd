@@ -20,7 +20,7 @@ List with the acf and the spectrum of the model.
 SARIMA Properties
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 mod1 <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 sarima_properties(mod1)
 \dontshow{\}) # examplesIf}

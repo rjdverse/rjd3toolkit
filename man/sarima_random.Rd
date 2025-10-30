@@ -27,7 +27,7 @@ a numeric vector with the simulated series.
 Simulate Seasonal ARIMA
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 # Airline model
 s_model <- sarima_model(period = 12, d = 1, bd = 1, theta = 0.2, btheta = 0.2)
 x <- sarima_random(s_model, length = 64, seed = 0)

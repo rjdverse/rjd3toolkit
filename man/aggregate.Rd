@@ -30,7 +30,7 @@ A new time series of frequency \code{nfreq}.
 Makes a frequency change of this series.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 s <- ABS$X0.2.09.10.M
 # Annual sum
 aggregate(s, nfreq = 1, conversion = "Sum") # first and last years removed
