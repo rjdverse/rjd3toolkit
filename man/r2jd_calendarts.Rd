@@ -16,7 +16,7 @@ a Java object
 Create Java CalendarTimeSeries
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 # example code
 obs <- list(
     list(start = as.Date("1980-01-01"), end = as.Date("1999-12-31"), value = 2000),

@@ -24,7 +24,7 @@ random_t(df, n)
 Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 # Probability density function of T with 2 degrees of freedom.
 z <- density_t(df = 2, .01 * seq(-100, 100, 1))
 # Generating a random vector with each component drawn from a T(2) distribution

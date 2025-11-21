@@ -22,7 +22,7 @@ the metadata and all the series (data).
 Creates a collection of time series
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 # id is split due to length restrictions
 id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd\%2FMM\%2Fyyyy&delimiter=SEMICOLON&"
 id2 <- "file=C\%3A\%5CDocuments\%5CIPI\%5CData\%5CIPI_nace4.csv#seriesIndex=0"

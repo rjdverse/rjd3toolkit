@@ -30,7 +30,7 @@ Allows to generate a specific regressor for correcting trading days effects in S
 The regressor will have the value -1 if the w-th day is a Sunday, 1 if it is a Monday as 0 otherwise.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 stock_td(frequency = 12L, start = c(1990L, 1L), length = 480L, w = 1L)
 \dontshow{\}) # examplesIf}
 }

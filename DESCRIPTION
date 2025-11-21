@@ -1,7 +1,11 @@
 Package: rjd3toolkit
 Type: Package
 Title: Utility Functions Around 'JDemetra+ 3.0'
+<<<<<<< HEAD
 Version: 3.5.1.9500
+=======
+Version: 3.6.0.9000
+>>>>>>> develop
 Authors@R: c(
     person(given = "Jean", 
            family = "Palate", role = c("aut"),
@@ -35,7 +39,7 @@ LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 BugReports: https://github.com/rjdverse/rjd3toolkit/issues
 Encoding: UTF-8

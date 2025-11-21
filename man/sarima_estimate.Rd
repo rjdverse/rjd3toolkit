@@ -49,7 +49,7 @@ the sum of squares),
 Estimate SARIMA Model
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 y <- ABS$X0.2.09.10.M
 sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 \dontshow{\}) # examplesIf}
