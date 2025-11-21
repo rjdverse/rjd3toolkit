@@ -23,7 +23,7 @@ In such a case two calendars describing the situation before and after the chang
 and bound together, one before the break and one after the break.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
 France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
 chained_cal <- chained_calendar(France, Belgium, "2000-01-01")

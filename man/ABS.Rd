@@ -16,4 +16,8 @@ ABS
 \description{
 Retail trade statistics in Australia
 }
+\examples{
+data(ABS)
+
+}
 \keyword{datasets}

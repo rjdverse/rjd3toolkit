@@ -11,7 +11,7 @@ set_benchmarking(
   rho = NA,
   lambda = NA,
   forecast = NA,
-  bias = c(NA, "None")
+  bias = c("None", "Additive", "Multiplicative")
 )
 }
 \arguments{
@@ -36,7 +36,12 @@ adjusted series and of the target variable (\code{target}) are used in the
 benchmarking computation so that the benchmarking constrain is also applied
 to the forecasting period.}
 
-\item{bias}{TODO}
+\item{bias}{Character. Bias correction factor. No systematic bias is
+considered by default. See
+\code{vignette(topic = "rjd3bench", package = "rjd3bench")} for more details.}
+}
+\value{
+The modified specification with new estimation span
 }
 \description{
 Function allowing to perform a benchmarking procedure after the decomposition
@@ -54,15 +59,17 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<- set_benchmarking(init_spec,
-#                            enabled = TRUE,
-#                            target = "Normal",
-#                            rho = 0.8,
-#                            lambda = 0.5,
-#                            forecast = FALSE,
-#                            bias = "None")
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+init_spec <- x13_spec_default
+new_spec <- set_benchmarking(
+    x = init_spec,
+    enabled = TRUE,
+    target = "Original",
+    rho = 0.8,
+    lambda = 0.5,
+    forecast = FALSE,
+    bias = "None"
+)
 \dontshow{\}) # examplesIf}
 }
 \references{

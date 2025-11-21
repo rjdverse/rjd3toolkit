@@ -26,13 +26,17 @@ seasonality_canovahansen_trigs(
 
 \item{original}{\code{TRUE} for original algorithm, \code{FALSE} for solution proposed by T. Proietti (based on Ox code).}
 }
+\value{
+a numeric vector
+}
 \description{
 Canova-Hansen test using trigonometric variables
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 s <- log(ABS$X0.2.20.10.M)
 freqs <- seq(0.01, 0.5, 0.001)
-plot(seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE), type = "l")
+sct <- seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE)
+plot(sct, type = "l")
 \dontshow{\}) # examplesIf}
 }

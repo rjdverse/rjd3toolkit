@@ -16,12 +16,16 @@ sarima_hannan_rissanen(
 \arguments{
 \item{x}{an univariate time series (TS object).}
 
-\item{order}{vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.}
+\item{order}{vector specifying of the non-seasonal part of the ARIMA model:
+the AR order, the degree of differencing, and the MA order.}
 
-\item{seasonal}{specification of the seasonal part of the ARIMA model and the seasonal frequency (by default equals to \code{frequency(x)}).
-Either  a list with components \code{order} and \code{period} or a numeric vector specifying the seasonal order (the default period is then used).}
+\item{seasonal}{specification of the seasonal part of the ARIMA model and the
+seasonal frequency (by default equals to \code{frequency(x)}).
+Either  a list with components \code{order} and \code{period} or a numeric vector
+specifying the seasonal order (the default period is then used).}
 
-\item{initialization}{Algorithm used in the computation of the long order auto-regressive model (used to estimate the innovations)}
+\item{initialization}{Algorithm used in the computation of the long order
+auto-regressive model (used to estimate the innovations)}
 
 \item{biasCorrection}{Bias correction}
 
@@ -34,7 +38,7 @@ An object of class \code{JD3_SARIMA} with the estimated coefficient.
 Estimate ARIMA Model with Hannan-Rissanen method
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 y <- ABS$X0.2.09.10.M
 model<- sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 \dontshow{\}) # examplesIf}

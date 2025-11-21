@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Utility Functions Around 'JDemetra+ 3.0'
-Version: 3.5.1
+Version: 3.6.0
 Authors@R: c(
     person(given = "Jean", 
            family = "Palate", role = c("aut"),
@@ -20,7 +20,7 @@ Authors@R: c(
 Description: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
  It provides functions allowing to model time series (create outlier regressors, user-defined calendar regressors,
  UCARIMA models...), to test the presence of trading days or seasonal effects and also
- to set specifications in pre-adjustment and benchmarking when using rjd3x13 or rjd3tramoseats.
+ to set specifications in pre-adjustment and benchmarking when using 'rjd3x13' or 'rjd3tramoseats'.
 Depends:
     R (>= 4.1)
 Imports:
@@ -29,13 +29,13 @@ Imports:
     checkmate,
     methods
 SystemRequirements: Java (>= 17)
-License: file LICENSE
+License: EUPL
 URL: https://github.com/rjdverse/rjd3toolkit, https://rjdverse.github.io/rjd3toolkit/
 LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 BugReports: https://github.com/rjdverse/rjd3toolkit/issues
 Encoding: UTF-8

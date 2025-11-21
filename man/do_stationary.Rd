@@ -29,7 +29,7 @@ The series should not be seasonal.
 Source: Tramo
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 
 do_stationary(log(ABS$X0.2.09.10.M), 12)
 \dontshow{\}) # examplesIf}

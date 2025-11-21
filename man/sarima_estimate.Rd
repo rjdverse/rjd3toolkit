@@ -16,10 +16,13 @@ sarima_estimate(
 \arguments{
 \item{x}{an univariate time series (class Ts object).}
 
-\item{order}{vector specifying of the non-seasonal part of the ARIMA model: the AR order, the degree of differencing, and the MA order.}
+\item{order}{vector specifying of the non-seasonal part of the ARIMA model:
+the AR order, the degree of differencing, and the MA order.}
 
-\item{seasonal}{specification of the seasonal part of the ARIMA model and the seasonal frequency (by default equals to \code{frequency(x)}).
-Either  a list with components \code{order} and \code{period} or a numeric vector specifying the seasonal order (the default period is then used).}
+\item{seasonal}{specification of the seasonal part of the ARIMA model and the
+seasonal frequency (by default equals to \code{frequency(x)}).
+Either  a list with components \code{order} and \code{period} or a numeric vector
+specifying the seasonal order (the default period is then used).}
 
 \item{mean}{should the SARIMA model include an intercept term.}
 
@@ -46,7 +49,7 @@ the sum of squares),
 Estimate SARIMA Model
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 y <- ABS$X0.2.09.10.M
 sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
 \dontshow{\}) # examplesIf}

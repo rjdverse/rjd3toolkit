@@ -8,8 +8,30 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [3.5.1] - 2025-06-18
+## [3.6.0] - 2025-11-21
 
+### Changed
+
+* default group value with mts objects in modelling_context #107
+* Examples are executed only if Java version >= 17
+
+### Removed
+
+* `fct` parameter in `set_automodel()` #85
+
+### Added
+
+* `get_java_version()` function to compute the Java installed version
+* `current_java_version` character string with the current installed Java version
+* `minimal_java_version` character string with the minimum viable Java version for rjdverse
+* `get_date_min()` to get the minimum date
+* `get_date_max()` to get the maximum date
+* New example to use the functions (#85)
+* Documentation of `bias` argument in `set_benchmarking()`
+* New datasets : `Electricity` (French national electricity consumtion), `Births` (Number of births registered in France from 1968 to 2024), `x13_spec_default`(Default X13 specification) and `tramoseats_spec_default` (Default Tramo-Seats specification)
+
+
+## [3.5.1] - 2025-06-18
 
 ### Changed
 
@@ -73,8 +95,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Release based on JD+_main : v3.0.2
 
 
-[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...HEAD
-[3.5.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.5.1
+[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...HEAD
+[3.6.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.6.0
 [3.5.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.0...v3.5.1
 [3.5.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.3.0...v3.5.0
 [3.3.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.2.4...v3.3.0

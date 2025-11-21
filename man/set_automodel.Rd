@@ -17,7 +17,6 @@ set_automodel(
   ubfinal = NA,
   checkmu = NA,
   mixed = NA,
-  fct = NA,
   balanced = NA,
   amicompare = NA
 )
@@ -104,8 +103,6 @@ If \code{FALSE}, a model with AR and MA terms in both the seasonal and
 non-seasonal parts of the model can be acceptable, provided there are no AR
 or MA terms in either the seasonal or non-seasonal terms.}
 
-\item{fct}{(REGARIMA/X13 Specific) \code{numeric}. TODO.}
-
 \item{balanced}{(REGARIMA/X13 Specific) \code{logical} If \code{TRUE}, the
 automatic model identification procedure will have a preference for balanced
 models (i.e. models for which the order of the combined AR and differencing
@@ -118,6 +115,9 @@ compares the model identified by the automatic procedure to the default model
 Criteria considered are residual diagnostics, the model structure and the
 number of outliers.}
 }
+\value{
+The modified specification (with new ARIMA parameters)
+}
 \description{
 Function allowing to customize Arima model identification procedure.
 }
@@ -129,11 +129,11 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# init_spec <- rjd3x13::x13_spec("RSA5c")
-# new_spec<-set_automodel(init_spec,
-#                        enabled = FALSE,
-#                        acceptdefault = TRUE)
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+
+# Customize a default specification
+init_spec <- x13_spec_default
+new_spec <- set_automodel(x = init_spec, enabled = FALSE, acceptdefault = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \references{

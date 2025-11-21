@@ -9,6 +9,9 @@ sa_preprocessing(x, ...)
 \arguments{
 \item{x, ...}{parameters.}
 }
+\value{
+a list, the preprocessing part of a model.
+}
 \description{
 Generic function for preprocessing defined in other packages.
 }

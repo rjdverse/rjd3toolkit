@@ -23,3 +23,9 @@ random_inverse_gaussian(shape, scale, n)
 \description{
 Density, (cumulative) distribution function and random generation for inverse-gaussian distribution.
 }
+\examples{
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+density_inverse_gaussian(shape = 1, scale = 2, x = 1:10)
+random_inverse_gaussian(shape = 1, scale = 2, n = 10)
+\dontshow{\}) # examplesIf}
+}

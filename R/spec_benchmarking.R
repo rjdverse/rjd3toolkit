@@ -23,22 +23,31 @@
 #' adjusted series and of the target variable (\code{target}) are used in the
 #' benchmarking computation so that the benchmarking constrain is also applied
 #' to the forecasting period.
-#' @param bias TODO
+#' @param bias Character. Bias correction factor. No systematic bias is
+#' considered by default. See
+#' `vignette(topic = "rjd3bench", package = "rjd3bench")` for more details.
+#'
 #' @details
 #' \code{x} specification parameter must be a JD3_X13_SPEC" class object
 #' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
 #' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
-#' @examplesIf jversion >= 17
-#' # init_spec <- rjd3x13::x13_spec("RSA5c")
-#' # new_spec<- set_benchmarking(init_spec,
-#' #                            enabled = TRUE,
-#' #                            target = "Normal",
-#' #                            rho = 0.8,
-#' #                            lambda = 0.5,
-#' #                            forecast = FALSE,
-#' #                            bias = "None")
+#'
+#' @returns The modified specification with new estimation span
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' init_spec <- x13_spec_default
+#' new_spec <- set_benchmarking(
+#'     x = init_spec,
+#'     enabled = TRUE,
+#'     target = "Original",
+#'     rho = 0.8,
+#'     lambda = 0.5,
+#'     forecast = FALSE,
+#'     bias = "None"
+#' )
+#'
 #' @references
 #' More information on benchmarking in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
@@ -48,7 +57,7 @@ set_benchmarking <- function(x, enabled = NA,
                              rho = NA,
                              lambda = NA,
                              forecast = NA,
-                             bias = c(NA, "None")) {
+                             bias = c("None", "Additive", "Multiplicative")) {
     UseMethod("set_benchmarking", x)
 }
 #' @export
@@ -57,14 +66,14 @@ set_benchmarking.default <- function(x, enabled = NA,
                                      rho = NA,
                                      lambda = NA,
                                      forecast = NA,
-                                     bias = c(NA, "None")) {
+                                     bias = c("None", "Additive", "Multiplicative")) {
     target <- match.arg(
         toupper(target[1]),
         c(NA, "CALENDARADJUSTED", "ORIGINAL")
     )
     bias <- match.arg(
         toupper(bias)[1],
-        c(NA, "NONE")
+        c("NONE", "ADDITIVE", "MULTIPLICATIVE")
     )
     if (!is.na(enabled) && is.logical(enabled)) {
         x$enabled <- enabled

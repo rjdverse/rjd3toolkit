@@ -29,6 +29,7 @@ NULL
 .enum_sextract <- function(type, p) {
     return(type$value(number = p)$name())
 }
+
 #' @export
 #' @rdname jd3_utilities
 .enum_sof <- function(type, code) {
@@ -63,7 +64,6 @@ NULL
     return(p)
 }
 
-
 #' @export
 #' @rdname jd3_utilities
 .p2r_parameter <- function(p) {
@@ -80,9 +80,7 @@ NULL
     if (n == 0) {
         return(NULL)
     }
-    p <- apply(r, 2, function(z) {
-        .r2p_parameter(z)
-    })
+    p <- apply(X = r, MARGIN = 2, FUN = .r2p_parameter)
     return(p)
 }
 
@@ -104,13 +102,9 @@ NULL
     if (n == 0) {
         return(NULL)
     }
-    p <- lapply(r, function(z) {
-        .r2p_parameter(z)
-    })
+    p <- lapply(r, FUN = .r2p_parameter)
     return(p)
 }
-
-
 
 #' @export
 #' @rdname jd3_utilities
@@ -124,6 +118,7 @@ NULL
     })
     return(r)
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_parameters_rslt <- function(p) {
@@ -141,6 +136,7 @@ NULL
     })
     return(data.frame(value = value, type = type))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_parameters_rsltx <- function(p) {
@@ -165,6 +161,7 @@ NULL
 
     return(rslt)
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_test <- function(p) {
@@ -225,7 +222,6 @@ NULL
     return(list(val = p$value, score = p$score, cov = .p2r_matrix(p$covariance), description = p$description))
 }
 
-
 #' @export
 #' @rdname jd3_utilities
 .p2r_likelihood <- function(p) {
@@ -256,7 +252,6 @@ NULL
     }
 }
 
-
 # Span
 #' @export
 #' @rdname jd3_utilities
@@ -267,6 +262,7 @@ NULL
 
     return(structure(list(type = type, d0 = dt0, d1 = dt1, n0 = span$n0, n1 = span$n1), class = "JD3_SPAN"))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .r2p_span <- function(rspan) {
@@ -278,7 +274,6 @@ NULL
     pspan$d1 <- .r2p_date(rspan$d1)
     return(pspan)
 }
-
 
 .p2r_sarima <- function(p) {
     return(sarima_model(
@@ -292,18 +287,18 @@ NULL
 .p2r_arima <- function(p) {
     return(arima_model(p$name, p$ar, p$delta, p$ma, p$innovation_variance))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_ucarima <- function(p) {
-    model <- .p2r_arima(p$model)
-    return(ucarima_model(model, lapply(p$components, function(z) {
-        .p2r_arima(z)
-    }), lapply(p$complements, function(z) {
-        .p2r_arima(z)
-    }), FALSE))
+    output <- ucarima_model(
+        model = .p2r_arima(p$model),
+        components = lapply(p$components, FUN = .p2r_arima),
+        complements = lapply(p$complements, FUN = .p2r_arima),
+        checkmodel = FALSE
+    )
+    return(output)
 }
-
-
 
 # Sarima
 #' @export
@@ -362,9 +357,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_outlier(z)
-    }))
+    return(lapply(p, FUN = .p2r_outlier))
 }
 
 #' @export
@@ -373,9 +366,7 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_outlier(z)
-    }))
+    return(lapply(r, FUN = .r2p_outlier))
 }
 
 .p2r_sequence <- function(p) {
@@ -398,9 +389,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_sequence(z)
-    }))
+    return(lapply(p, FUN = .p2r_sequence))
 }
 
 #' @export
@@ -409,9 +398,7 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_sequence(z)
-    }))
+    return(lapply(r, FUN = .r2p_sequence))
 }
 
 #' @export
@@ -444,9 +431,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_iv(z)
-    }))
+    return(lapply(p, FUN = .p2r_iv))
 }
 
 #' @export
@@ -455,13 +440,8 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_iv(z)
-    }))
+    return(lapply(r, FUN = .r2p_iv))
 }
-
-
-
 
 .p2r_ramp <- function(p) {
     return(list(
@@ -471,7 +451,6 @@ NULL
         coef = .p2r_parameter(p$coefficient)
     ))
 }
-
 
 .r2p_ramp <- function(r) {
     p <- modelling.Ramp$new()
@@ -488,9 +467,7 @@ NULL
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_ramp(z)
-    }))
+    return(lapply(p, FUN = .p2r_ramp))
 }
 
 #' @export
@@ -499,9 +476,7 @@ NULL
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_ramp(z)
-    }))
+    return(lapply(r, FUN = .r2p_ramp))
 }
 
 .regeffect <- function(map) {
@@ -537,32 +512,29 @@ NULL
     p$metadata <- modelling.TsVariable.MetadataEntry$new(key = "regeffect", value = r$regeffect)
     return(p)
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_uservars <- function(p) {
     if (length(p) == 0) {
         return(NULL)
     }
-    return(lapply(p, function(z) {
-        .p2r_uservar(z)
-    }))
+    return(lapply(p, FUN = .p2r_uservar))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .r2p_uservars <- function(r) {
     if (length(r) == 0) {
         return(list())
     }
-    return(lapply(r, function(z) {
-        .r2p_uservar(z)
-    }))
+    return(lapply(r, FUN = .r2p_uservar))
 }
+
 #' @export
 #' @rdname jd3_utilities
 .p2r_variables <- function(p) {
-    return(lapply(p, function(v) {
-        .p2r_variable(v)
-    }))
+    return(lapply(p, FUN = .p2r_variable))
 }
 
 .p2r_variable <- function(p) {
@@ -571,7 +543,6 @@ NULL
     coef <- .p2r_parameters_rsltx(p$coefficients)
     return(list(name = name, type = type, coef = coef))
 }
-
 
 .p2r_component <- function(p) {
     s <- p$data$values

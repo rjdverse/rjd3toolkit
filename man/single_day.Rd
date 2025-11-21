@@ -11,11 +11,14 @@ single_day(date, weight = 1)
 
 \item{weight}{weight associated to the holiday.}
 }
+\value{
+returns an object of class \code{c("JD3_SINGLEDAY","JD3_HOLIDAY")} (with name of the event, date, offset...)
+}
 \description{
 Allows to set a holiday as a once-occurring event.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 single_day("1999-03-19")
 \dontshow{\}) # examplesIf}
 }

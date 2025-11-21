@@ -43,7 +43,7 @@ A long-term mean is a probability based computation of the average value for eve
 (see references). For monthly regressors there are 12 types of periods (January to December).
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 BE <- national_calendar(list(
     fixed_day(7, 21),
     special_day("NEWYEAR"),

@@ -20,7 +20,7 @@ Allows to display the date of Easter Sunday for each year, in the defined period
 displayed in "YYYY-MM-DD" format and as a number of days since January 1st 1970.
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 # Dates from 2018(included) to 2023 (included)
 easter_dates(2018, 2023)
 \dontshow{\}) # examplesIf}

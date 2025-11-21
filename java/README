@@ -1,0 +1,6 @@
+Source Code Information
+=======================
+
+The java source code of JDemetra+ in version 3 can be found at [https://github.com/jdemetra/jdplus-main](https://github.com/jdemetra/jdplus-main).
+
+All other dependencies found in pom.xml of that project can be found via [Maven](https://mvnrepository.com/).
