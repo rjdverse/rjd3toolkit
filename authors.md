@@ -14,16 +14,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/rjdverse/rjd3toolkit/blob/develop/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/rjdverse/rjd3toolkit/blob/v3.6.0/DESCRIPTION)
 
 Palate J, Quartier-la-Tente A, Barthelemy T, Smyk A (2025).
 *rjd3toolkit: Utility Functions Around 'JDemetra+ 3.0'*. R package
-version 3.6.0.9000, <https://github.com/rjdverse/rjd3toolkit>.
+version 3.6.0, <https://github.com/rjdverse/rjd3toolkit>.
 
     @Manual{,
       title = {rjd3toolkit: Utility Functions Around 'JDemetra+ 3.0'},
       author = {Jean Palate and Alain Quartier-la-Tente and Tanguy Barthelemy and Anna Smyk},
       year = {2025},
-      note = {R package version 3.6.0.9000},
+      note = {R package version 3.6.0},
       url = {https://github.com/rjdverse/rjd3toolkit},
     }

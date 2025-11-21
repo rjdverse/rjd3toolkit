@@ -11,7 +11,7 @@ check randomness of a data."><meta property="og:image" content="https://rjdverse
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.6.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@ check randomness of a data."><meta property="og:image" content="https://rjdverse
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Runs Tests around the mean or the median</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/develop/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/v3.6.0/R/tests_regular.R" class="external-link"><code>R/tests_regular.R</code></a></small>
       <div class="d-none name"><code>runstests.Rd</code></div>
     </div>
 
@@ -94,11 +94,11 @@ details).</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="studentdistribution.html">random_t</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1000</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value: -0.3152585 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.7526 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: 0.6067715 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.5440 </span>
 <span class="r-in"><span><span class="fu">testofupdownruns</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Value: -0.02502269 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.9800 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Value: -0.1000907 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-Value: 0.9203 </span>
 <span class="r-in"><span><span class="co"># non-random values</span></span></span>
 <span class="r-in"><span><span class="fu">testofruns</span><span class="op">(</span><span class="va">ABS</span><span class="op">$</span><span class="va">X0.2.09.10.M</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Value: -14.05884 </span>
