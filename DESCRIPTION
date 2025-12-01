@@ -24,6 +24,7 @@ Description: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time
 Depends:
     R (>= 4.1)
 Imports:
+    rjd3jars,
     RProtoBuf (>= 0.4.20),
     rJava (>= 1.0-6),
     checkmate,
