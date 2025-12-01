@@ -29,6 +29,8 @@ Imports:
     rJava (>= 1.0-6),
     checkmate,
     methods
+Remotes: 
+    github::TanguyBarthelemy/rjd3jars
 SystemRequirements: Java (>= 17)
 License: EUPL
 URL: https://github.com/rjdverse/rjd3toolkit, https://rjdverse.github.io/rjd3toolkit/
