@@ -40,7 +40,7 @@ NULL
 #'   \item Consumtion: number of daily birth (29124--102098)
 #' }
 #'
-#' @source <https://www.rte-france.com/en/eco2mix/download-indicators>
+#' @source <https://www.rte-france.com/en/data-publications/eco2mix/download-indicators>
 #' @examples
 #' data(Electricity)
 "Electricity"

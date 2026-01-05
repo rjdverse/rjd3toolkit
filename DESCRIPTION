@@ -1,7 +1,7 @@
 Package: rjd3toolkit
 Type: Package
 Title: Utility Functions Around 'JDemetra+ 3.0'
-Version: 3.6.0.9000
+Version: 3.6.0
 Authors@R: c(
     person(given = "Jean", 
            family = "Palate", role = c("aut"),
@@ -29,8 +29,6 @@ Imports:
     rJava (>= 1.0-6),
     checkmate,
     methods
-Remotes: 
-    github::TanguyBarthelemy/rjd3jars
 SystemRequirements: Java (>= 17)
 License: EUPL
 URL: https://github.com/rjdverse/rjd3toolkit, https://rjdverse.github.io/rjd3toolkit/
