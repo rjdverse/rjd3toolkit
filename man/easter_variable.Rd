@@ -42,7 +42,7 @@ A time series (object of class \code{"ts"})
 Allows to generate a regressor taking into account the (Julian) Easter effect in monthly or quarterly time series.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 # Monthly regressor, five-year long, duration 8 days, effect finishing on Easter Monday
 ee <- easter_variable(12, c(2020, 1), length = 5 * 12, duration = 8, endpos = 1)
 je <- julianeaster_variable(12, c(2020, 1), length = 5 * 12, duration = 8)

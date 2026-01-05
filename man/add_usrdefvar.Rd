@@ -62,7 +62,7 @@ for the decomposition.
 }
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 
 # Creating one or several external regressors (TS objects),
 # which will be gathered in one or several groups

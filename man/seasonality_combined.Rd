@@ -32,7 +32,7 @@ a \code{list} with several seasonnality tests (kruskalwallis, stable and evoluti
 Combined test on the presence of identifiable seasonality (see Ladiray and Quenneville, 1999).
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_combined(s)
 seasonality_combined(random_t(2, 1000), 7)

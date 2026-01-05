@@ -49,7 +49,7 @@ Generic function to format the seasonal adjustment decomposition components.
 \code{sa_decomposition()} is a generic function defined in other packages.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 decompo <- sadecomposition(
     y = ts(c(112, 118, 132, 129, 121, 135), start = 2000, frequency = 12L),
     sa = ts(c(121.72, 124.52, 125.4, 128.91, 128.84, 126.73), start = 2000, frequency = 12L),
