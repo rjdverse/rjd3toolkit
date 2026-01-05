@@ -1,3 +1,0 @@
-exclude = [
-    '^https://CRAN.R-project.org/package=rjd3toolkit'
-]
