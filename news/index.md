@@ -45,6 +45,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `x13_spec_default`(Default X13 specification) and
   `tramoseats_spec_default` (Default Tramo-Seats specification)
 
+#### Added
+
+- New [`print()`](https://rdrr.io/r/base/print.html) and
+  [`summary()`](https://rdrr.io/r/base/summary.html) method for
+  `JD3_DICTIONARY` and `JD3_FULL_DICTIONARY`
+
 ### [3.5.1](https://github.com/rjdverse/rjd3toolkit/compare/v3.5.0...v3.5.1) - 2025-06-18
 
 #### Changed
