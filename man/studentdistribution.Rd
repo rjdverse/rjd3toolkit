@@ -20,6 +20,10 @@ random_t(df, n)
 
 \item{n}{number of observations.}
 }
+\value{
+The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
+The functions random_XXX return random number (numeric vectors) of length \code{n}.
+}
 \description{
 Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
 }
