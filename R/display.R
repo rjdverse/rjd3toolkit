@@ -249,6 +249,7 @@ print.JD3_LIKELIHOOD <- function(x, ...) {
     cat("BIC:", ll$bic, "\n\n")
     invisible(x)
 }
+
 #' @export
 summary.JD3_LIKELIHOOD <- function(object, ...) {
     res <- list(
@@ -265,6 +266,7 @@ summary.JD3_LIKELIHOOD <- function(object, ...) {
     class(res) <- "summary.JD3_LIKELIHOOD"
     res
 }
+
 #' @export
 print.summary.JD3_LIKELIHOOD <- function(x, ...) {
     cat("Number of observations: ", x$nobs,
@@ -282,7 +284,6 @@ print.summary.JD3_LIKELIHOOD <- function(x, ...) {
     )
     invisible(x)
 }
-
 
 #' @rdname jd3_print
 #' @export
@@ -319,6 +320,7 @@ print.JD3_REGARIMA_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3
 
     invisible(x)
 }
+
 #' @export
 print.JD3_SARIMA_ESTIMATE <- function(x, digits = max(3L, getOption("digits") - 3L), summary_info = getOption("summary_info"), ...) {
     tables <- .sarima_coef_table(x, ...)
@@ -358,9 +360,11 @@ print.JD3_SARIMA_ESTIMATE <- function(x, digits = max(3L, getOption("digits") - 
     }
     invisible(x)
 }
+
 .regarima_coef_table <- function(x, ...) {
     UseMethod(".regarima_coef_table", x)
 }
+
 .regarima_coef_table.default <- function(x, ...) {
     q <- x
     if (length(q$description$variables) > 0) {
@@ -385,6 +389,7 @@ print.JD3_SARIMA_ESTIMATE <- function(x, digits = max(3L, getOption("digits") - 
         NULL
     }
 }
+
 .regarima_coef_table.JD3_SARIMA_ESTIMATE <- function(x, ...) {
     ndf <- x$likelihood$neffectiveobs - x$likelihood$nparams
 
@@ -404,6 +409,7 @@ print.JD3_SARIMA_ESTIMATE <- function(x, digits = max(3L, getOption("digits") - 
     }
     table
 }
+
 #' @export
 summary.JD3_REGARIMA_RSLTS <- function(object, ...) {
     log <- object$description$log
