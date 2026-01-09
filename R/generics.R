@@ -83,16 +83,3 @@ NULL
 sa_decomposition <- function(x, ...) {
     UseMethod("sa_decomposition", x)
 }
-
-#' @title Deprecated functions
-#'
-#' @description
-#' Use [sa_decomposition()] instead of `sa.decomposition()`.
-#'
-#' @inheritParams sa_decomposition
-#' @name deprecated-rjd3toolkit
-#' @export
-sa.decomposition <- function(x, ...) {
-    .Deprecated("sa_decomposition")
-    UseMethod("sa_decomposition", x)
-}
