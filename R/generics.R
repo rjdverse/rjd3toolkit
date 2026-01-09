@@ -92,7 +92,6 @@ sa_decomposition <- function(x, ...) {
 #' @inheritParams sa_decomposition
 #' @name deprecated-rjd3toolkit
 #' @export
-#' @export
 sa.decomposition <- function(x, ...) {
     .Deprecated("sa_decomposition")
     UseMethod("sa_decomposition", x)
