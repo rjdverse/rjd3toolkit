@@ -47,6 +47,7 @@ Collate:
     'calendars.R'
     'calendarts.R'
     'decomposition.R'
+    'dictionary.R'
     'differencing.R'
     'display.R'
     'distributions.R'

@@ -31,6 +31,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * New datasets : `Electricity` (French national electricity consumtion), `Births` (Number of births registered in France from 1968 to 2024), `x13_spec_default`(Default X13 specification) and `tramoseats_spec_default` (Default Tramo-Seats specification)
 
 
+### Added
+
+* New `print()` and `summary()` method for `JD3_DICTIONARY` and `JD3_FULL_DICTIONARY`
+
 ## [3.5.1] - 2025-06-18
 
 ### Changed
