@@ -22,14 +22,17 @@ example](https://www.tidyverse.org/help/#reprex).
 - Look at the GitHub Actions build status before and after making
   changes. The `README` should contain badges for any continuous
   integration services used by the package.  
-- We require the `tidyverse` [style guide](http://style.tidyverse.org).
-  You can use the [`lintr`](https://CRAN.R-project.org/package=lintr)
+- We require the `tidyverse` [style
+  guide](https://style.tidyverse.org/). You can use the
+  [`lintr`](https://cran.r-project.org/web/packages/lintr/index.html)
   package to check these styles and the
-  [`styler`](https://CRAN.R-project.org/package=styler) package to apply
-  these styles, but please don’t restyle code that has nothing to do
-  with your PR.  
-- We use [`roxygen2`](https://cran.r-project.org/package=roxygen2).  
-- We use [`testthat`](https://cran.r-project.org/package=testthat).
+  [`styler`](https://cran.r-project.org/web/packages/styler/index.html)
+  package to apply these styles, but please don’t restyle code that has
+  nothing to do with your PR.  
+- We use
+  [`roxygen2`](https://cran.r-project.org/web/packages/roxygen2/index.html).  
+- We use
+  [`testthat`](https://cran.r-project.org/web/packages/testthat/index.html).
   Contributions with test cases included are easier to accept.  
 - For user-facing changes, add a bullet to the top of `NEWS.md` below
   the current development version (UNRELEASED) header describing the
