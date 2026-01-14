@@ -77,9 +77,9 @@ jobs:
         run: |
           mkdir -p ~/.R
           cat <<EOF > ~/.R/Makevars
-CXX14 = g++
-CXX14STD = -std=gnu++17
-EOF
+            CXX14 = g++
+            CXX14STD = -std=gnu++17
+            EOF
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
