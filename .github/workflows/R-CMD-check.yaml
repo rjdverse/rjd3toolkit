@@ -69,23 +69,29 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install protobuf-compiler libprotobuf-dev libprotoc-dev
 
-      - name: Force C++17 for R < 4.3 (RProtoBuf fix)
-        shell: bash
+      - name: Install RProtoBuf (conditional)
         run: |
-          mkdir -p ~/.R
-          cat <<EOF > ~/.R/Makevars
-          CXX14 = g++
-          CXX14STD = -std=gnu++17
-          CXX_STD=CXX17
-          EOF
+          r_version <- getRversion()
+          message("R version: ", r_version)
+
+          if (r_version < "4.3.0") {
+            message("Installing RProtoBuf 0.4.24 (last compatible)")
+            install.packages("remotes")
+            remotes::install_version(
+              "RProtoBuf",
+              version = "0.4.24",
+              repos = "https://cloud.r-project.org"
+            )
+          } else {
+            message("Installing latest RProtoBuf")
+            install.packages("RProtoBuf")
+          }
+        shell: Rscript {0}
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
           needs: check
-
-      - name: Check build tools
-        run: Rscript -e "pkgbuild::check_build_tools(debug = TRUE)"
 
       - uses: r-lib/actions/check-r-package@v2
         with:
