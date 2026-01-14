@@ -45,6 +45,7 @@ navbar:
     github:
       icon: fa-github fa-lg
       href: https://github.com/rjdverse/rjd3toolkit
+      aria-label: GitHub
 
 reference:
 - title: Customizing specifications
@@ -242,7 +243,7 @@ reference:
   desc: Functions to easily interact between R and Java objects
   contents:
     - '`jd3_print`'
-    - '`print.calendars`'
+    - '`print_calendars`'
     - '`r2jd_calendarts`'
     - '`.add_ud_var`'
     - '`.likelihood`'
