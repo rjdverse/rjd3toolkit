@@ -23,9 +23,12 @@
 \method{print}{JD3_CALENDAR}(x, ...)
 }
 \arguments{
-\item{x}{The object.}
+\item{x}{a calendar related object}
 
 \item{...}{other unused parameters.}
+}
+\value{
+same object as in input
 }
 \description{
 Print functions for calendars

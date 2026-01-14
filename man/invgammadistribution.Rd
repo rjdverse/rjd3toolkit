@@ -5,7 +5,7 @@
 \alias{cdf_inverse_gamma}
 \alias{invgammadistribution}
 \alias{random_inverse_gamma}
-\title{The Inverse-Gamma Distribution}
+\title{Inverse-Gamma Distribution}
 \usage{
 density_inverse_gamma(shape, scale, x)
 
@@ -19,6 +19,9 @@ random_inverse_gamma(shape, scale, n)
 \item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
+}
+\value{
+numeric vector
 }
 \description{
 Density, (cumulative) distribution function and random generation for inverse-gamma distribution.

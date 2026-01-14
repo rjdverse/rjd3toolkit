@@ -3,7 +3,7 @@
 \docType{data}
 \name{Births}
 \alias{Births}
-\title{Number of births registered in France from 1968 to 2024}
+\title{Data Base: Series of daily births in France from 1968 to 2024}
 \format{
 A data frame with 20,820 rows and 2 variables:
 \itemize{
@@ -20,7 +20,7 @@ Births
 }
 \description{
 Daily number of births recorded in France (metropolitan + DOM),
-covering the period from January 1, 1968 to December 31, 2024.
+covering the period from January 1st, 1968 to December 31st, 2024.
 }
 \details{
 The dataset corresponds to the INSEE series \strong{T79jnais}.

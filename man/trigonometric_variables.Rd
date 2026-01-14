@@ -2,7 +2,7 @@
 % Please edit documentation in R/variables.R
 \name{trigonometric_variables}
 \alias{trigonometric_variables}
-\title{Trigonometric variables}
+\title{Generating trigonometric variables}
 \usage{
 trigonometric_variables(frequency, start, length, s, seasonal_frequency = NULL)
 }
@@ -24,7 +24,7 @@ By default the fundamental seasonal frequency and all the harmonics are used.}
 a mts object with 2 columns
 }
 \description{
-Computes trigonometric variables at different frequencies.
+Generates trigonometric variables at different frequencies.
 }
 \details{
 Denote by \eqn{P} the value of \code{frequency} (= the period) and
@@ -65,9 +65,9 @@ are the five harmonics. The output matrix will be equal to:
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 trigonometric_variables(
     frequency = 12,
-    length = 480,
-    start = c(1990, 1),
-    seasonal_frequency = 3
+    length = 60,
+    start = c(2020, 1),
+    seasonal_frequency = 12
 )
 \dontshow{\}) # examplesIf}
 }

@@ -3,7 +3,7 @@
 \docType{data}
 \name{Retail}
 \alias{Retail}
-\title{US Retail trade statistics}
+\title{Data Base: US Retail trade series}
 \format{
 An object of class \code{list} of length 62.
 }
@@ -14,7 +14,7 @@ US-Census Bureau
 Retail
 }
 \description{
-US Retail trade statistics
+Data Base: US Retail trade series
 }
 \examples{
 data(Retail)

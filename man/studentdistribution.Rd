@@ -5,7 +5,7 @@
 \alias{cdf_t}
 \alias{studentdistribution}
 \alias{random_t}
-\title{The Student Distribution}
+\title{Student Distribution}
 \usage{
 density_t(df, x)
 
@@ -19,6 +19,9 @@ random_t(df, n)
 \item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
+}
+\value{
+numeric vector
 }
 \description{
 Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.

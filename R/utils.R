@@ -2,7 +2,7 @@
 #' @importFrom methods is
 NULL
 
-#' @title Retail trade statistics in Australia
+#' @title Data Base: Retail trade series in Australia
 #'
 #' @source ABS
 #' @examples
@@ -10,28 +10,28 @@ NULL
 #'
 "ABS"
 
-#' @title US Retail trade statistics
+#' @title Data Base: US Retail trade series
 #'
 #' @source US-Census Bureau
 #' @examples
 #' data(Retail)
 "Retail"
 
-#' @title Belgian exports to European countries
+#' @title Data Base: Belgian exports to European countries
 #'
 #' @source NBB
 #' @examples
 #' data(Exports)
 "Exports"
 
-#' @title Belgian imports from European countries
+#' @title Data Base: Belgian imports from European countries
 #'
 #' @source NBB
 #' @examples
 #' data(Imports)
 "Imports"
 
-#' @title French national electricity consumtion
+#' @title Data Base: French national electricity consumption
 #'
 #' @format A data frame with 210384 rows and 3 variables:
 #' \itemize{
@@ -45,11 +45,11 @@ NULL
 #' data(Electricity)
 "Electricity"
 
-#' @title Number of births registered in France from 1968 to 2024
+#' @title Data Base: Series of daily births in France from 1968 to 2024
 #'
 #' @description
 #' Daily number of births recorded in France (metropolitan + DOM),
-#' covering the period from January 1, 1968 to December 31, 2024.
+#' covering the period from January 1st, 1968 to December 31st, 2024.
 #'
 #' @format A data frame with 20,820 rows and 2 variables:
 #' \itemize{
@@ -77,11 +77,17 @@ NULL
 
 #' @title Default X13 specification
 #'
+#' @description X13 default specification generated with rjd3x13 used in examples for specification customization functions in rjd3toolkit
+#'
+#'
 #' @examples
 #' data(x13_spec_default)
 "x13_spec_default"
 
 #' @title Default Tramo-Seats specification
+#'
+#' @description XTramo-Seats default specification generated with rjd3tramoseats used in examples for specification customization functions in rjd3toolkit
+
 #'
 #' @examples
 #' data(tramoseats_spec_default)

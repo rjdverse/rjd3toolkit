@@ -3,7 +3,7 @@
 \docType{data}
 \name{Imports}
 \alias{Imports}
-\title{Belgian imports from European countries}
+\title{Data Base: Belgian imports from European countries}
 \format{
 An object of class \code{list} of length 34.
 }
@@ -14,7 +14,7 @@ NBB
 Imports
 }
 \description{
-Belgian imports from European countries
+Data Base: Belgian imports from European countries
 }
 \examples{
 data(Imports)
