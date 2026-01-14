@@ -22,17 +22,20 @@ jobs:
           - {os: macos-latest,   r: 'release'}
           - {os: macos-latest,   r: 'oldrel-1'}
           - {os: macos-latest,   r: 'oldrel-2'}
+          - {os: macos-latest,   r: '4.1.0'}
 
           - {os: windows-latest,  r: 'devel', http-user-agent: 'release'}
           - {os: windows-latest,  r: 'release'}
           - {os: windows-latest,  r: 'oldrel-1'}
           - {os: windows-latest,  r: 'oldrel-2'}
+          - {os: windows-latest,  r: '4.1.0'}
 
           - {os: ubuntu-latest,  r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,  r: 'release'}
           - {os: ubuntu-latest,  r: 'oldrel-1'}
           - {os: ubuntu-latest,  r: 'oldrel-2'}
           - {os: ubuntu-latest,  r: 'oldrel-3'}
+          - {os: ubuntu-latest,  r: '4.1.0'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -66,12 +69,6 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install protobuf-compiler libprotobuf-dev libprotoc-dev
 
-      - name: Force C++17
-        run: |
-          mkdir -p ~/.R
-          echo "CXX17 = g++ -std=gnu++17" >> ~/.R/Makevars
-          echo "CXX17STD = -std=gnu++17" >> ~/.R/Makevars
-
       - name: Force C++17 for R < 4.3 (RProtoBuf fix)
         shell: bash
         run: |
@@ -79,6 +76,7 @@ jobs:
           cat <<EOF > ~/.R/Makevars
             CXX14 = g++
             CXX14STD = -std=gnu++17
+            CXX_STD=CXX17
             EOF
 
       - uses: r-lib/actions/setup-r-dependencies@v2
