@@ -5,7 +5,7 @@
 \alias{cdf_inverse_gaussian}
 \alias{invgaussiandistribution}
 \alias{random_inverse_gaussian}
-\title{The Inverse-Gaussian Distribution}
+\title{Inverse-Gaussian Distribution}
 \usage{
 density_inverse_gaussian(shape, scale, x)
 
@@ -19,6 +19,9 @@ random_inverse_gaussian(shape, scale, n)
 \item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
+}
+\value{
+numeric vector
 }
 \description{
 Density, (cumulative) distribution function and random generation for inverse-gaussian distribution.

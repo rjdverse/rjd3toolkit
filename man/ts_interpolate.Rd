@@ -7,9 +7,9 @@
 ts_interpolate(s, method = c("airline", "average"))
 }
 \arguments{
-\item{s}{The original time series}
+\item{s}{time series with missing values}
 
-\item{method}{airline: interpolation through an estimated airline model
+\item{method}{airline: interpolation through an estimated airline model (Default)
 average: interpolation using the average of the previous and next non missing values}
 }
 \value{
@@ -20,10 +20,9 @@ Interpolation of a time series with missing values
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-ts_interpolate(AirPassengers)
-
-x <- AirPassengers
-x[50:60] <- NA
-ts_interpolate(x)
+y<- rjd3toolkit::ABS$X0.2.09.10.M
+y[400:410]<-NA
+y1<-ts_interpolate(y)
+y1[390,420]
 \dontshow{\}) # examplesIf}
 }

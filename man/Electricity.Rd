@@ -3,7 +3,7 @@
 \docType{data}
 \name{Electricity}
 \alias{Electricity}
-\title{French national electricity consumtion}
+\title{Data Base: French national electricity consumption}
 \format{
 A data frame with 210384 rows and 3 variables:
 \itemize{
@@ -19,7 +19,7 @@ A data frame with 210384 rows and 3 variables:
 Electricity
 }
 \description{
-French national electricity consumtion
+Data Base: French national electricity consumption
 }
 \examples{
 data(Electricity)

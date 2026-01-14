@@ -107,19 +107,18 @@ clean_extremities <- function(s) {
 
 #' @title Interpolation of a time series with missing values
 #'
-#' @param s The original time series
+#' @param s time series with missing values
 #' @param method
-#'    airline: interpolation through an estimated airline model
+#'    airline: interpolation through an estimated airline model (Default)
 #'    average: interpolation using the average of the previous and next non missing values
 #' @returns The interpolated series
 #' @export
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' ts_interpolate(AirPassengers)
-#'
-#' x <- AirPassengers
-#' x[50:60] <- NA
-#' ts_interpolate(x)
+#' y<- rjd3toolkit::ABS$X0.2.09.10.M
+#' y[400:410]<-NA
+#' y1<-ts_interpolate(y)
+#' y1[390,420]
 #'
 ts_interpolate <- function(s, method = c("airline", "average")) {
     UseMethod("ts_interpolate", s)
@@ -248,7 +247,11 @@ daysOf <- function(ts, pos = 1) {
     return(as.Date(days))
 }
 
-#' @title Creates a time series object
+#' @title Creates a JDemetra+ time series object
+#'
+#' @description A JDemetra+ specific object is useful when working with JDemetra+ workspaces
+#' (see rjd3workspace)
+#'
 #'
 #' @param source Source of the time series
 #' @param id Identifier of the time series (source-dependent)

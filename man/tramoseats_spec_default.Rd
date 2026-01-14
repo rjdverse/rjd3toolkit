@@ -11,7 +11,7 @@ An object of class \code{JD3_TRAMOSEATS_SPEC} of length 3.
 tramoseats_spec_default
 }
 \description{
-Default Tramo-Seats specification
+XTramo-Seats default specification generated with rjd3tramoseats used in examples for specification customization functions in rjd3toolkit
 }
 \examples{
 data(tramoseats_spec_default)

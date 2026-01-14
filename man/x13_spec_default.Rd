@@ -11,7 +11,7 @@ An object of class \code{JD3_X13_SPEC} of length 3.
 x13_spec_default
 }
 \description{
-Default X13 specification
+X13 default specification generated with rjd3x13 used in examples for specification customization functions in rjd3toolkit
 }
 \examples{
 data(x13_spec_default)

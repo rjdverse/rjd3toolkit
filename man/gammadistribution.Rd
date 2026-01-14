@@ -5,7 +5,7 @@
 \alias{cdf_gamma}
 \alias{gammadistribution}
 \alias{random_gamma}
-\title{The Gamma Distribution}
+\title{Gamma Distribution}
 \usage{
 density_gamma(shape, scale, x)
 
@@ -19,6 +19,9 @@ random_gamma(shape, scale, n)
 \item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
+}
+\value{
+numeric vector
 }
 \description{
 Density, (cumulative) distribution function and random generation for Gamma distribution.

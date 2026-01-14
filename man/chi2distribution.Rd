@@ -5,7 +5,7 @@
 \alias{cdf_chi2}
 \alias{chi2distribution}
 \alias{random_chi2}
-\title{The Chi-Squared Distribution}
+\title{Chi-Squared Distribution}
 \usage{
 density_chi2(df, x)
 
@@ -19,6 +19,9 @@ random_chi2(df, n)
 \item{x}{vector of quantiles.}
 
 \item{n}{number of observations.}
+}
+\value{
+numeric vector
 }
 \description{
 Density, (cumulative) distribution function and random generation for chi-squared distribution.

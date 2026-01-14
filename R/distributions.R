@@ -1,4 +1,4 @@
-#' @title The Student Distribution
+#' @title Student Distribution
 #'
 #' @description
 #' Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
@@ -6,6 +6,8 @@
 #' @param df degrees of freedom.
 #' @param n number of observations.
 #' @param x vector of quantiles.
+#'
+#' @return numeric vector
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # Probability density function of T with 2 degrees of freedom.
@@ -40,10 +42,11 @@ cdf_t <- function(df, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfT", df, .jarray(as.numeric(x)))
 }
 
-#' @title The Chi-Squared Distribution
+#' @title Chi-Squared Distribution
 #'
 #' @description
 #' Density, (cumulative) distribution function and random generation for chi-squared distribution.
+#' @return numeric vector
 #'
 #' @inheritParams studentdistribution
 #'
@@ -75,13 +78,14 @@ cdf_chi2 <- function(df, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfChi2", df, .jarray(as.numeric(x)))
 }
 
-#' @title The Gamma Distribution
+#' @title Gamma Distribution
 #'
 #' @description
 #' Density, (cumulative) distribution function and random generation for Gamma distribution.
 #'
 #' @inheritParams studentdistribution
 #' @param shape,scale shape and scale parameters.
+#' @return numeric vector
 #'
 #' @name gammadistribution
 #' @rdname gammadistribution
@@ -111,10 +115,11 @@ cdf_gamma <- function(shape, scale, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfGamma", shape, scale, .jarray(as.numeric(x)))
 }
 
-#' @title The Inverse-Gamma Distribution
+#' @title Inverse-Gamma Distribution
 #'
 #' @description
 #' Density, (cumulative) distribution function and random generation for inverse-gamma distribution.
+#' @return numeric vector
 #'
 #' @inheritParams gammadistribution
 #'
@@ -145,10 +150,11 @@ cdf_inverse_gamma <- function(shape, scale, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfInverseGamma", shape, scale, .jarray(as.numeric(x)))
 }
 
-#' @title The Inverse-Gaussian Distribution
+#' @title Inverse-Gaussian Distribution
 #'
 #' @description
 #' Density, (cumulative) distribution function and random generation for inverse-gaussian distribution.
+#' @return numeric vector
 #'
 #' @inheritParams gammadistribution
 #'

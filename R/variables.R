@@ -385,10 +385,10 @@ periodic_contrasts <- function(frequency, start, length, s) {
     return(ts(data, frequency = frequency, start = start))
 }
 
-#' @title Trigonometric variables
+#' @title Generating trigonometric variables
 #'
 #' @description
-#' Computes trigonometric variables at different frequencies.
+#' Generates trigonometric variables at different frequencies.
 #'
 #' @inheritParams outliers_variables
 #' @param seasonal_frequency the seasonal frequencies.
@@ -436,9 +436,9 @@ periodic_contrasts <- function(frequency, start, length, s) {
 #' @examplesIf current_java_version >= minimal_java_version
 #' trigonometric_variables(
 #'     frequency = 12,
-#'     length = 480,
-#'     start = c(1990, 1),
-#'     seasonal_frequency = 3
+#'     length = 60,
+#'     start = c(2020, 1),
+#'     seasonal_frequency = 12
 #' )
 #'
 trigonometric_variables <- function(frequency, start, length, s,
