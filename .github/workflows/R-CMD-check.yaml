@@ -72,6 +72,15 @@ jobs:
           echo "CXX17 = g++ -std=gnu++17" >> ~/.R/Makevars
           echo "CXX17STD = -std=gnu++17" >> ~/.R/Makevars
 
+      - name: Force C++17 for R < 4.3 (RProtoBuf fix)
+        shell: bash
+        run: |
+          mkdir -p ~/.R
+          cat <<EOF > ~/.R/Makevars
+CXX14 = g++
+CXX14STD = -std=gnu++17
+EOF
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
