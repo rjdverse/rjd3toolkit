@@ -22,15 +22,15 @@ Generic Diagnostics Function
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-y<-rjd3toolkit::ABS$X0.2.09.10.M
-y <- ABS$X0.2.09.10.M
-model<-sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
-diagnostics(model)
-
-# Using an X-13 estimation
-#library(rjd3x13)
-# m<-x13(y)
-# diagnostics(m)
+# example with X13
+rjd3toolkit::diagnostics(sa_x13_estimation)
+# sa_x13_estimation is generated as follows
+# y<- rjd3toolkit::ABS$X0.2.09.10.M
+# sa_x13_estimation <-x13(y,"rsa5c")
+# example with Tramo-Seats
+rjd3toolkit::diagnostics(sa_tramoseats_estimation)
+# sa_tramoseats_estimation is generated as follows
+# sa_tramoseats_estimation <-tramoseats(y,"rsafull")
 
 \dontshow{\}) # examplesIf}
 }
