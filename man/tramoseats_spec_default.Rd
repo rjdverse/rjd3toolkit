@@ -3,7 +3,7 @@
 \docType{data}
 \name{tramoseats_spec_default}
 \alias{tramoseats_spec_default}
-\title{Default Tramo-Seats specification}
+\title{Default Tramo-Seats specification ("rsafull")}
 \format{
 An object of class \code{JD3_TRAMOSEATS_SPEC} of length 3.
 }
@@ -12,8 +12,13 @@ tramoseats_spec_default
 }
 \description{
 XTramo-Seats default specification generated with rjd3tramoseats used in examples for specification customization functions in rjd3toolkit
+generated with \code{tramoseats_spec_default<- rjd3tramoseats::tramoseats_spec("rsafull")}
 }
 \examples{
 data(tramoseats_spec_default)
+tramoseats_spec_default
+}
+\seealso{
+the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
 }
 \keyword{datasets}
