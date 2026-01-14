@@ -66,6 +66,12 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install protobuf-compiler libprotobuf-dev libprotoc-dev
 
+      - name: Force C++17
+        run: |
+          mkdir -p ~/.R
+          echo "CXX17 = g++ -std=gnu++17" >> ~/.R/Makevars
+          echo "CXX17STD = -std=gnu++17" >> ~/.R/Makevars
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
