@@ -69,29 +69,9 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install protobuf-compiler libprotobuf-dev libprotoc-dev
 
-      - name: Install RProtoBuf (conditional)
-        run: |
-          r_version <- getRversion()
-          message("R version: ", r_version)
-
-          if (r_version < "4.3.0") {
-            message("Installing RProtoBuf 0.4.24 (last compatible)")
-            install.packages("remotes")
-            remotes::install_version(
-              "RProtoBuf",
-              version = "0.4.24",
-              repos = "https://cloud.r-project.org"
-            )
-          } else {
-            message("Installing latest RProtoBuf")
-            install.packages("RProtoBuf")
-          }
-        shell: Rscript {0}
-
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
-          exclude-packages: RProtoBuf
+          extra-packages: any::rcmdcheck, github::eddelbuettel/rprotobuf@0.4.23
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
