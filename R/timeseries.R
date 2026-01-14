@@ -118,7 +118,7 @@ clean_extremities <- function(s) {
 #' y<- rjd3toolkit::ABS$X0.2.09.10.M
 #' y[400:410]<-NA
 #' y1<-ts_interpolate(y)
-#' y1[390,420]
+#' y1[390:420]
 #'
 ts_interpolate <- function(s, method = c("airline", "average")) {
     UseMethod("ts_interpolate", s)
