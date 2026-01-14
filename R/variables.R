@@ -110,6 +110,8 @@ lp_variable <- function(frequency, start, length, s, type = c("LeapYear", "Lengt
 #' -1 & \text{if }t < t_0 \text{ and $t$ same periode as }t_0\\
 #'  -\frac{1}{s-1} & \text{otherwise }\end{cases}}
 #'
+#' @returns a \code{ts} object
+#'
 #' @export
 #'
 #' @examplesIf current_java_version >= minimal_java_version

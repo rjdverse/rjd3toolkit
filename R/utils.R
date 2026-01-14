@@ -7,7 +7,6 @@ NULL
 #' @source ABS
 #' @examples
 #' data(ABS)
-#'
 "ABS"
 
 #' @title US Retail trade statistics

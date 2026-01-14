@@ -37,6 +37,9 @@ compared to the first date (\code{pos} parameter) or by a specific
 (\code{zeroended = TRUE}, default) or 1 (\code{zeroended = FALSE}), argument
 valid only for LS and SO.}
 }
+\value{
+a \code{ts} object
+}
 \description{
 Generating Outlier regressors
 }

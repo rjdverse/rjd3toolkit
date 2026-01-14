@@ -914,21 +914,27 @@ calendar_td <- function(calendar = national_calendar(),
 #' @param x The object.
 #' @param ... other unused parameters.
 #'
-#' @name print.calendars
+#' @name print_calendars
+#' @returns The object is returned invisibly.
+#'
 NULL
 
 #' @export
-#' @rdname print.calendars
+#' @rdname print_calendars
 print.JD3_FIXEDDAY <- function(x, ...) {
     cat("Fixed day: month=", x$month, ", day=", x$day, sep = "")
     .print_weight(x)
     .print_validityperiod(x)
+    return(invisible(x))
 }
+
 .print_weight <- function(x, ...) {
     if (x$weight != 1) {
         cat(" , weight=", x$weight, sep = "")
     }
+    return(invisible(x))
 }
+
 .print_validityperiod <- function(x, ...) {
     if (!is.null(x$validity$start)) {
         cat(sprintf(" , from=%s", x$validity$start))
@@ -936,43 +942,49 @@ print.JD3_FIXEDDAY <- function(x, ...) {
     if (!is.null(x$validity$end)) {
         cat(sprintf(" , to=%s", x$validity$end))
     }
+    return(invisible(x))
 }
+
 DAYS <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
 #' @export
-#' @rdname print.calendars
+#' @rdname print_calendars
 print.JD3_FIXEDWEEKDAY <- function(x, ...) {
     cat("Fixed week day: month=", x$month, ", day of the week=", DAYS[x$dayofweek], ", week=", x$week, sep = "")
     .print_weight(x)
     .print_validityperiod(x)
+    return(invisible(x))
 }
 
 #' @export
-#' @rdname print.calendars
+#' @rdname print_calendars
 print.JD3_EASTERDAY <- function(x, ...) {
     cat("Easter related day: offset=", x$offset, sep = "")
     .print_weight(x)
     .print_validityperiod(x)
+    return(invisible(x))
 }
 
 #' @export
-#' @rdname print.calendars
+#' @rdname print_calendars
 print.JD3_SPECIALDAY <- function(x, ...) {
     cat("Prespecified holiday: event=", x$event, sep = "")
     if (x$offset != 0) cat(" , offset=", x$offset, sep = "")
     .print_weight(x)
     .print_validityperiod(x)
+    return(invisible(x))
 }
 
 #' @export
-#' @rdname print.calendars
+#' @rdname print_calendars
 print.JD3_SINGLEDAY <- function(x, ...) {
     cat("Single date: ", x$date, sep = "")
     .print_weight(x)
+    return(invisible(x))
 }
 
 #' @export
-#' @rdname print.calendars
+#' @rdname print_calendars
 print.JD3_CALENDAR <- function(x, ...) {
     cat("Holiday:\n")
     for (day in x$days) {
@@ -986,6 +998,7 @@ print.JD3_CALENDAR <- function(x, ...) {
 }
 
 #' @export
+#' @rdname print_calendars
 print.JD3_CHAINEDCALENDAR <- function(x, ...) {
     cat("First calendar before ", x$break_date, "\n", sep = "")
     print(x$calendar1)
@@ -999,6 +1012,7 @@ print.JD3_CHAINEDCALENDAR <- function(x, ...) {
 }
 
 #' @export
+#' @rdname print_calendars
 print.JD3_WEIGHTEDCALENDAR <- function(x, ...) {
     for (index_cal in seq_along(x$weights)) {
         cat("Calendar n", index_cal, "\n", sep = "")

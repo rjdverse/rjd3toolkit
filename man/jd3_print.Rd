@@ -21,7 +21,7 @@
 
 \method{print}{JD3_SPAN}(x, ...)
 
-\method{print}{JD3_LIKELIHOOD}(x, ...)
+\method{print}{JD3_LIKELIHOOD}(x, summary_info = getOption("summary_info"), ...)
 
 \method{print}{JD3_REGARIMA_RSLTS}(
   x,
@@ -41,6 +41,9 @@ numbers.}
 \item{summary_info}{boolean indicating if a message suggesting the use of the
 summary function for more details should be printed. By default used the
 option \code{"summary_info"} it used, which initialized to \code{TRUE}.}
+}
+\value{
+The object is returned invisibly.
 }
 \description{
 JD3 print functions
