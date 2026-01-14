@@ -1,7 +1,7 @@
-# Number of births registered in France from 1968 to 2024
+# Data Base: Series of daily births in France from 1968 to 2024
 
 Daily number of births recorded in France (metropolitan + DOM), covering
-the period from January 1, 1968 to December 31, 2024.
+the period from January 1st, 1968 to December 31st, 2024.
 
 ## Usage
 

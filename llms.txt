@@ -165,7 +165,7 @@ ramps
   [`periodic_contrasts()`](https://rjdverse.github.io/rjd3toolkit/reference/periodic_dummies.md)
   : Periodic dummies and contrasts
 - [`trigonometric_variables()`](https://rjdverse.github.io/rjd3toolkit/reference/trigonometric_variables.md)
-  : Trigonometric variables
+  : Generating trigonometric variables
 
 ## Seasonality Tests
 
@@ -314,23 +314,23 @@ PDFs, CDFs and inverses
 - [`density_chi2()`](https://rjdverse.github.io/rjd3toolkit/reference/chi2distribution.md)
   [`cdf_chi2()`](https://rjdverse.github.io/rjd3toolkit/reference/chi2distribution.md)
   [`random_chi2()`](https://rjdverse.github.io/rjd3toolkit/reference/chi2distribution.md)
-  : The Chi-Squared Distribution
+  : Chi-Squared Distribution
 - [`density_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/gammadistribution.md)
   [`cdf_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/gammadistribution.md)
   [`random_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/gammadistribution.md)
-  : The Gamma Distribution
+  : Gamma Distribution
 - [`density_inverse_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/invgammadistribution.md)
   [`cdf_inverse_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/invgammadistribution.md)
   [`random_inverse_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/invgammadistribution.md)
-  : The Inverse-Gamma Distribution
+  : Inverse-Gamma Distribution
 - [`density_inverse_gaussian()`](https://rjdverse.github.io/rjd3toolkit/reference/invgaussiandistribution.md)
   [`cdf_inverse_gaussian()`](https://rjdverse.github.io/rjd3toolkit/reference/invgaussiandistribution.md)
   [`random_inverse_gaussian()`](https://rjdverse.github.io/rjd3toolkit/reference/invgaussiandistribution.md)
-  : The Inverse-Gaussian Distribution
+  : Inverse-Gaussian Distribution
 - [`density_t()`](https://rjdverse.github.io/rjd3toolkit/reference/studentdistribution.md)
   [`cdf_t()`](https://rjdverse.github.io/rjd3toolkit/reference/studentdistribution.md)
   [`random_t()`](https://rjdverse.github.io/rjd3toolkit/reference/studentdistribution.md)
-  : The Student Distribution
+  : Student Distribution
 
 ## Splines
 
@@ -365,17 +365,17 @@ Functions allowing to get objects names and contents
 Lists of Time Series from ABS, NBB and US Census Bureau
 
 - [`ABS`](https://rjdverse.github.io/rjd3toolkit/reference/ABS.md) :
-  Retail trade statistics in Australia
+  Data Base: Retail trade series in Australia
 - [`Exports`](https://rjdverse.github.io/rjd3toolkit/reference/Exports.md)
-  : Belgian exports to European countries
+  : Data Base: Belgian exports to European countries
 - [`Imports`](https://rjdverse.github.io/rjd3toolkit/reference/Imports.md)
-  : Belgian imports from European countries
+  : Data Base: Belgian imports from European countries
 - [`Retail`](https://rjdverse.github.io/rjd3toolkit/reference/Retail.md)
-  : US Retail trade statistics
+  : Data Base: US Retail trade series
 - [`Births`](https://rjdverse.github.io/rjd3toolkit/reference/Births.md)
-  : Number of births registered in France from 1968 to 2024
+  : Data Base: Series of daily births in France from 1968 to 2024
 - [`Electricity`](https://rjdverse.github.io/rjd3toolkit/reference/Electricity.md)
-  : French national electricity consumtion
+  : Data Base: French national electricity consumption
 - [`tramoseats_spec_default`](https://rjdverse.github.io/rjd3toolkit/reference/tramoseats_spec_default.md)
   : Default Tramo-Seats specification
 - [`x13_spec_default`](https://rjdverse.github.io/rjd3toolkit/reference/x13_spec_default.md)
@@ -405,7 +405,7 @@ Creating Full JDemetra+ TS objects
 - [`data_to_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/data_to_ts.md)
   : Promote a R time series to a "full JDemetra+ time series"
 - [`to_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/to_ts.md)
-  : Creates a time series object
+  : Creates a JDemetra+ time series object
 - [`to_tscollection()`](https://rjdverse.github.io/rjd3toolkit/reference/to_tscollection.md)
   : Creates a collection of time series
 

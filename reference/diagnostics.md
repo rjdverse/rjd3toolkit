@@ -28,14 +28,14 @@ diagnostics(x, ...)
 ## Examples
 
 ``` r
-decompo <- sadecomposition(
-    y = ts(c(112, 118, 132, 129, 121, 135), start = 2000, frequency = 12L),
-    sa = ts(c(121.72, 124.52, 125.4, 128.91, 128.84, 126.73), start = 2000, frequency = 12L),
-    t = ts(c(122.24, 124.33, 126.21, 127.61, 127.8, 126.94), start = 2000, frequency = 12L),
-    s = ts(c(0.92, 0.95, 1.05, 1, 0.94, 1.07), start = 2000, frequency = 12L),
-    i = ts(c(1, 1, 0.99, 1.01, 1.01, 1), start = 2000, frequency = 12L),
-    mul = TRUE
-)
-diagnostics(decompo)
-#> No diagnostic
+y<-rjd3toolkit::ABS$X0.2.09.10.M
+y <- ABS$X0.2.09.10.M
+model<-sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
+diagnostics(model)
+#> data frame with 0 columns and 0 rows
+
+# Using an X-13 estimation
+#library(rjd3x13)
+# m<-x13(y)
+# diagnostics(m)
 ```

@@ -1,6 +1,7 @@
 # Default X13 specification
 
-Default X13 specification
+X13 default specification generated with rjd3x13 used in examples for
+specification customization functions in rjd3toolkit
 
 ## Usage
 

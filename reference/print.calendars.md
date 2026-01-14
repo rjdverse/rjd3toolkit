@@ -28,8 +28,12 @@ print(x, ...)
 
 - x:
 
-  The object.
+  a calendar related object
 
 - ...:
 
   other unused parameters.
+
+## Value
+
+same object as in input

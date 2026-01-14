@@ -1,4 +1,4 @@
-# The Student Distribution
+# Student Distribution
 
 Probability Density Function (PDF), Cumulative Density Function (CDF)
 and generation of random variables following a Student distribution.
@@ -26,6 +26,10 @@ random_t(df, n)
 - n:
 
   number of observations.
+
+## Value
+
+numeric vector
 
 ## Examples
 

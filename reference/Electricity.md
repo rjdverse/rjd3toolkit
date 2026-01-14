@@ -1,6 +1,6 @@
-# French national electricity consumtion
+# Data Base: French national electricity consumption
 
-French national electricity consumtion
+Data Base: French national electricity consumption
 
 ## Usage
 

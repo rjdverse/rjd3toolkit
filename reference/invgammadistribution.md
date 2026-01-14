@@ -1,4 +1,4 @@
-# The Inverse-Gamma Distribution
+# Inverse-Gamma Distribution
 
 Density, (cumulative) distribution function and random generation for
 inverse-gamma distribution.
@@ -27,6 +27,10 @@ random_inverse_gamma(shape, scale, n)
 
   number of observations.
 
+## Value
+
+numeric vector
+
 ## Examples
 
 ``` r
@@ -37,6 +41,6 @@ cdf_inverse_gamma(shape = 1, scale = 2, x = 1:10)
 #>  [1] 0.1353353 0.3678794 0.5134171 0.6065307 0.6703200 0.7165313 0.7514773
 #>  [8] 0.7788008 0.8007374 0.8187308
 random_inverse_gamma(shape = 1, scale = 2, n = 10)
-#>  [1]  2.4995529  5.7637154  1.3578221  2.6158588  0.9087582  1.0013406
-#>  [7]  3.8745271  3.0674750  1.0256122 29.0775152
+#>  [1]  0.5501105  7.1055523  1.7093186  0.4474485  0.4860074  1.8540039
+#>  [7]  2.9110631 32.3185862  3.9852558  3.5101829
 ```

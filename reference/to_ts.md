@@ -1,6 +1,7 @@
-# Creates a time series object
+# Creates a JDemetra+ time series object
 
-Creates a time series object
+A JDemetra+ specific object is useful when working with JDemetra+
+workspaces (see rjd3workspace)
 
 ## Usage
 
