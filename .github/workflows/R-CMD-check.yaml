@@ -85,8 +85,7 @@ jobs:
           needs: check
 
       - name: Check build tools
-        run: R -e "pkgbuild::check_build_tools(debug = TRUE)"
-
+        run: Rscript -e "pkgbuild::check_build_tools(debug = TRUE)"
 
       - uses: r-lib/actions/check-r-package@v2
         with:
