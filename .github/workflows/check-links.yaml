@@ -1,0 +1,40 @@
+name: Check links in documentation
+
+on:
+  push:
+    paths:
+      - '.github/workflows/check-links.yaml'
+      - 'lychee.toml'
+      - '**/*.md'
+      - '**/*.Rd'
+  schedule:
+    # Run on the first of each month at 9:00 AM
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref }}"
+  cancel-in-progress: true
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # required for peter-evans/create-issue-from-file
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2.7.0
+        with:
+          fail: true
+
+      - name: Create Issue From File
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue
