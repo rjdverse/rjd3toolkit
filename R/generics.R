@@ -1,22 +1,25 @@
-#' @title Generic Diagnostics Function
+#' @title Generic Diagnostics extraction
 #'
-#' @param x the object to extract diagnostics.
+#' @description extract diagnostics from estimation results obtained with rjd3x13 or rjd3tramoseats,
+#' which have to be loaded
+#'
+#' @param x the object to extract diagnostics from.
 #' @param ... further arguments.
 #'
 #' @export
 #'
-#' @returns \code{"No diagnostic"} or a \code{list} with the diagnostic part of the model
+#' @returns \code{"No diagnostic"} or a \code{list} with the diagnostics part of the model
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # example with X13
-#' rjd3toolkit::diagnostics(sa_x13_estimation)
-#' # sa_x13_estimation is generated as follows
 #' # y<- rjd3toolkit::ABS$X0.2.09.10.M
+#' # library(rjd3x13)
 #' # sa_x13_estimation <-x13(y,"rsa5c")
+#' # diagnostics(sa_x13_estimation)
 #' # example with Tramo-Seats
-#' rjd3toolkit::diagnostics(sa_tramoseats_estimation)
-#' # sa_tramoseats_estimation is generated as follows
+#' # library(rjd3tramoseats)
 #' # sa_tramoseats_estimation <-tramoseats(y,"rsafull")
+#' # diagnostics(sa_tramoseats_estimation)
 #'
 #'
 diagnostics <- function(x, ...) {
@@ -38,7 +41,7 @@ diagnostics.JD3 <- function(x, ...) {
 #'
 #' @param x,... parameters.
 #'
-#' @returns a list, the preprocessing part of a model.
+#' @returns a list containing preprocessing part of a model.
 #'
 #' @export
 sa_preprocessing <- function(x, ...) {
@@ -85,16 +88,4 @@ sa_decomposition <- function(x, ...) {
     UseMethod("sa_decomposition", x)
 }
 
-#' @title Deprecated functions
-#'
-#' @description
-#' Use [sa_decomposition()] instead of `sa.decomposition()`.
-#'
-#' @inheritParams sa_decomposition
-#' @name deprecated-rjd3toolkit
-#' @export
-#' @export
-sa.decomposition <- function(x, ...) {
-    .Deprecated("sa_decomposition")
-    UseMethod("sa_decomposition", x)
-}
+

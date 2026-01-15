@@ -88,7 +88,7 @@ NULL
 "x13_spec_default"
 #' @title Default Tramo-Seats specification ("rsafull")
 #'
-#' @description XTramo-Seats default specification generated with rjd3tramoseats used in examples for specification customization functions in rjd3toolkit
+#' @description Tramo-Seats default specification generated with rjd3tramoseats used in examples for specification customization functions in rjd3toolkit
 #' generated with `tramoseats_spec_default<- rjd3tramoseats::tramoseats_spec("rsafull")`
 #' @seealso the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
 #' @examples

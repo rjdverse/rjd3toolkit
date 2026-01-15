@@ -3,34 +3,35 @@
 \name{diagnostics}
 \alias{diagnostics}
 \alias{diagnostics.JD3}
-\title{Generic Diagnostics Function}
+\title{Generic Diagnostics extraction}
 \usage{
 diagnostics(x, ...)
 
 \method{diagnostics}{JD3}(x, ...)
 }
 \arguments{
-\item{x}{the object to extract diagnostics.}
+\item{x}{the object to extract diagnostics from.}
 
 \item{...}{further arguments.}
 }
 \value{
-\code{"No diagnostic"} or a \code{list} with the diagnostic part of the model
+\code{"No diagnostic"} or a \code{list} with the diagnostics part of the model
 }
 \description{
-Generic Diagnostics Function
+extract diagnostics from estimation results obtained with rjd3x13 or rjd3tramoseats,
+which have to be loaded
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 # example with X13
-rjd3toolkit::diagnostics(sa_x13_estimation)
-# sa_x13_estimation is generated as follows
 # y<- rjd3toolkit::ABS$X0.2.09.10.M
+# library(rjd3x13)
 # sa_x13_estimation <-x13(y,"rsa5c")
+# diagnostics(sa_x13_estimation)
 # example with Tramo-Seats
-rjd3toolkit::diagnostics(sa_tramoseats_estimation)
-# sa_tramoseats_estimation is generated as follows
+# library(rjd3tramoseats)
 # sa_tramoseats_estimation <-tramoseats(y,"rsafull")
+# diagnostics(sa_tramoseats_estimation)
 
 \dontshow{\}) # examplesIf}
 }
