@@ -356,7 +356,7 @@ Functions allowing to get objects names and contents
 - [`dictionary()`](https://rjdverse.github.io/rjd3toolkit/reference/dictionary.md)
   [`result()`](https://rjdverse.github.io/rjd3toolkit/reference/dictionary.md)
   [`user_defined()`](https://rjdverse.github.io/rjd3toolkit/reference/dictionary.md)
-  : Get Dictionary and Result
+  : Display names and items from a java (X13) estimation result object
 - [`reload_dictionaries()`](https://rjdverse.github.io/rjd3toolkit/reference/reload_dictionaries.md)
   : Reload dictionaries
 
@@ -377,16 +377,16 @@ Lists of Time Series from ABS, NBB and US Census Bureau
 - [`Electricity`](https://rjdverse.github.io/rjd3toolkit/reference/Electricity.md)
   : Data Base: French national electricity consumption
 - [`tramoseats_spec_default`](https://rjdverse.github.io/rjd3toolkit/reference/tramoseats_spec_default.md)
-  : Default Tramo-Seats specification
+  : Default Tramo-Seats specification ("rsafull")
 - [`x13_spec_default`](https://rjdverse.github.io/rjd3toolkit/reference/x13_spec_default.md)
-  : Default X13 specification
+  : Default X13 specification ("rsa4")
 
 ## Print and Plot Methods
 
 Functions to print and plot specific JDemetra+ class objects
 
 - [`diagnostics()`](https://rjdverse.github.io/rjd3toolkit/reference/diagnostics.md)
-  : Generic Diagnostics Function
+  : Generic Diagnostics extraction
 - [`sadecomposition()`](https://rjdverse.github.io/rjd3toolkit/reference/sa_decomposition.md)
   [`print(`*`<JD3_SADECOMPOSITION>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/sa_decomposition.md)
   [`plot(`*`<JD3_SADECOMPOSITION>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/sa_decomposition.md)

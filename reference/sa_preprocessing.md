@@ -16,4 +16,4 @@ sa_preprocessing(x, ...)
 
 ## Value
 
-a list, the preprocessing part of a model.
+a list containing preprocessing part of a model.

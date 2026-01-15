@@ -1,8 +1,9 @@
-# Get Dictionary and Result
+# Display names and items from a java (X13) estimation result object
 
-Extract dictionary of a `"JD3_ProcResults"` object (`dictionary()`) and
-extract a specific value (`result()`) or a list of values
-(`user_defined()`).
+rjd3x13 has to be loaded, `dictionary()` displays the names of all items
+contained in a `"JD3_ProcResults"` object, (`result()`) displays the
+contents of one item, (`user_defined()`) displays the contents of
+several items at once
 
 ## Usage
 
@@ -18,20 +19,29 @@ user_defined(object, userdefined = NULL)
 
 - object:
 
-  the java object.
+  java object.
 
 - id:
 
-  the name of the object to extract.
+  name of the object to extract.
 
 - userdefined:
 
-  vector containing the names of the object to extract.
+  vector containing the names of the objects to extract.
 
 ## Value
 
-the function `dictionary()` returns a character vector with the items
-that can be extracted from `object`. The `result()` function extract an
-item from the object. The `user_defined()` function do the same thing as
-`result()` but can also extract several element at once and encapsulate
-the items in a `user_defined` class object.
+`dictionary()` returns a character vector with the names of the items
+that can be extracted from `object`. `result()` returns a numeric or
+character or a ts object (series), `user_defined()` returns an object of
+class "user_defined" (list)
+
+## Examples
+
+``` r
+# library(rjd3x13)
+# dictionary(jsa_x13_estimation)
+# tail(result(jsa_x13_estimation, "decomposition.d8" ))
+# user_defined
+# user_defined(jsa_x13_estimation, userdefined=c("quality.summary","arima.p", "arima.d", "arima.q"))
+```

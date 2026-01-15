@@ -1,21 +1,9 @@
 # Deprecated functions
 
-Use
-[`sa_decomposition()`](https://rjdverse.github.io/rjd3toolkit/reference/sa_decomposition.md)
-instead of `sa.decomposition()`.
+Deprecated functions
 
 ## Usage
 
 ``` r
-sa.decomposition(x, ...)
+sa.decomposition()
 ```
-
-## Arguments
-
-- x:
-
-  the object to print.
-
-- ...:
-
-  further arguments.

@@ -1,6 +1,7 @@
-# Generic Diagnostics Function
+# Generic Diagnostics extraction
 
-Generic Diagnostics Function
+extract diagnostics from estimation results obtained with rjd3x13 or
+rjd3tramoseats, which have to be loaded
 
 ## Usage
 
@@ -15,7 +16,7 @@ diagnostics(x, ...)
 
 - x:
 
-  the object to extract diagnostics.
+  the object to extract diagnostics from.
 
 - ...:
 
@@ -23,19 +24,18 @@ diagnostics(x, ...)
 
 ## Value
 
-`"No diagnostic"` or a `list` with the diagnostic part of the model
+`"No diagnostic"` or a `list` with the diagnostics part of the model
 
 ## Examples
 
 ``` r
-y<-rjd3toolkit::ABS$X0.2.09.10.M
-y <- ABS$X0.2.09.10.M
-model<-sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
-diagnostics(model)
-#> data frame with 0 columns and 0 rows
-
-# Using an X-13 estimation
-#library(rjd3x13)
-# m<-x13(y)
-# diagnostics(m)
+# example with X13
+# y<- rjd3toolkit::ABS$X0.2.09.10.M
+# library(rjd3x13)
+# sa_x13_estimation <-x13(y,"rsa5c")
+# diagnostics(sa_x13_estimation)
+# example with Tramo-Seats
+# library(rjd3tramoseats)
+# sa_tramoseats_estimation <-tramoseats(y,"rsafull")
+# diagnostics(sa_tramoseats_estimation)
 ```

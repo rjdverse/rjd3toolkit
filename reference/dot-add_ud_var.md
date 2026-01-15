@@ -20,7 +20,7 @@ Add user-defined variable to a SA model
 
 - userdefined:
 
-  vector containing the names of the object to extract.
+  vector containing the names of the objects to extract.
 
 - out_class:
 
@@ -28,7 +28,7 @@ Add user-defined variable to a SA model
 
 - result:
 
-  Boolean. Does `jx` contains the results? Default to FALSE.
+  Boolean. Does `jx` contain the results? Default to FALSE.
 
 ## Value
 
