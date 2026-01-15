@@ -63,7 +63,9 @@ jobs:
 
       - name: Set up for RProtoBuf on macos
         if: runner.os == 'macOS'
-        run: brew install protobuf
+        run: |
+            brew install protobuf
+            R CMD javareconf
 
       - name: Set up for RProtoBuf on ubuntu
         if: runner.os == 'Linux'
