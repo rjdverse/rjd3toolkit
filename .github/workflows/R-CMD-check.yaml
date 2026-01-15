@@ -64,8 +64,12 @@ jobs:
       - name: Set up for RProtoBuf on macos
         if: runner.os == 'macOS'
         run: |
-            brew install protobuf
             R CMD javareconf
+            brew install protobuf
+            BREW_PREFIX=$(brew --prefix protobuf)
+
+            echo "PKG_CPPFLAGS=-I${BREW_PREFIX}/include" >> $GITHUB_ENV
+            echo "PKG_LIBS=-L${BREW_PREFIX}/lib" >> $GITHUB_ENV
 
       - name: Set up for RProtoBuf on ubuntu
         if: runner.os == 'Linux'
