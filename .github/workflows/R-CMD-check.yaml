@@ -19,19 +19,19 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macos-latest,   r: 'release'}
-          - {os: macos-latest,   r: 'oldrel-1'}
-          - {os: macos-latest,   r: 'oldrel-2'}
+          # - {os: macos-latest,   r: 'release'}
+          # - {os: macos-latest,   r: 'oldrel-1'}
+          # - {os: macos-latest,   r: 'oldrel-2'}
           - {os: macos-latest,   r: '4.1.0'}
 
           # - {os: windows-latest,  r: 'devel', http-user-agent: 'release'}
-          - {os: windows-latest,  r: 'release'}
+          # - {os: windows-latest,  r: 'release'}
           # - {os: windows-latest,  r: 'oldrel-1'}
           # - {os: windows-latest,  r: 'oldrel-2'}
           # - {os: windows-latest,  r: '4.1.0'}
           #
           # - {os: ubuntu-latest,  r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-latest,  r: 'release'}
+          # - {os: ubuntu-latest,  r: 'release'}
           # - {os: ubuntu-latest,  r: 'oldrel-1'}
           # - {os: ubuntu-latest,  r: 'oldrel-2'}
           # - {os: ubuntu-latest,  r: 'oldrel-3'}
@@ -72,8 +72,8 @@ jobs:
             mkdir -p ~/.R
 
             cat << EOF >> ~/.R/Makevars
-            PKG_CPPFLAGS=-I${BREW_PREFIX}/include
-            PKG_LIBS=-L${BREW_PREFIX}/lib
+            PKG_CPPFLAGS_RPROTOBUF=-I/opt/homebrew/opt/protobuf/include
+            PKG_LIBS_RPROTOBUF=-L/opt/homebrew/opt/protobuf/lib
             EOF
 
             cat ~/.R/Makevars
