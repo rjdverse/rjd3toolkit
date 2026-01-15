@@ -11,11 +11,11 @@
 
 \item{jx}{Reference to a Java object}
 
-\item{userdefined}{vector containing the names of the object to extract.}
+\item{userdefined}{vector containing the names of the objects to extract.}
 
 \item{out_class}{Java class of the result object}
 
-\item{result}{Boolean. Does \code{jx} contains the results? Default to FALSE.}
+\item{result}{Boolean. Does \code{jx} contain the results? Default to FALSE.}
 }
 \value{
 A new model with same class as \code{x}

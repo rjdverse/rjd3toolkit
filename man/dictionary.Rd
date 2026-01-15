@@ -4,7 +4,7 @@
 \alias{dictionary}
 \alias{result}
 \alias{user_defined}
-\title{Get Dictionary and Result}
+\title{Display names and items from a java (X13) estimation result object}
 \usage{
 dictionary(object)
 
@@ -13,21 +13,29 @@ result(object, id)
 user_defined(object, userdefined = NULL)
 }
 \arguments{
-\item{object}{the java object.}
+\item{object}{java object.}
 
-\item{id}{the name of the object to extract.}
+\item{id}{name of the object to extract.}
 
-\item{userdefined}{vector containing the names of the object to extract.}
+\item{userdefined}{vector containing the names of the objects to extract.}
 }
 \value{
-the function \code{dictionary()} returns a character vector with
-the items that can be extracted from \code{object}. The \code{result()}
-function extract an item from the object. The \code{user_defined()} function
-do the same thing as \code{result()} but can also extract several element at
-once and encapsulate the items in a \code{user_defined} class object.
+\code{dictionary()} returns a character vector with
+the names of the items that can be extracted from \code{object}.
+\code{result()} returns a numeric or character or a ts object (series),
+\code{user_defined()} returns an object of class "user_defined" (list)
 }
 \description{
-Extract dictionary of a \code{"JD3_ProcResults"} object (\code{dictionary()})
-and extract a specific value (\code{result()}) or a list of values
-(\code{user_defined()}).
+rjd3x13 has to be loaded,
+\code{dictionary()} displays the names of all items contained in a \code{"JD3_ProcResults"} object,
+(\code{result()}) displays the contents of one item, (\code{user_defined()}) displays the contents of several items at once
+}
+\examples{
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+# library(rjd3x13)
+# dictionary(jsa_x13_estimation)
+# tail(result(jsa_x13_estimation, "decomposition.d8" ))
+# user_defined
+# user_defined(jsa_x13_estimation, userdefined=c("quality.summary","arima.p", "arima.d", "arima.q"))
+\dontshow{\}) # examplesIf}
 }
