@@ -25,6 +25,6 @@ ARIMA Model
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), var = 100)
+model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), variance = 100)
 \dontshow{\}) # examplesIf}
 }
