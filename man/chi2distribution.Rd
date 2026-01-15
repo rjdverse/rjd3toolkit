@@ -5,7 +5,7 @@
 \alias{cdf_chi2}
 \alias{chi2distribution}
 \alias{random_chi2}
-\title{The Chi-Squared Distribution}
+\title{Chi-Squared Distribution}
 \usage{
 density_chi2(df, x)
 
@@ -21,6 +21,8 @@ random_chi2(df, n)
 \item{n}{number of observations.}
 }
 \value{
+numeric vector
+
 The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
 The functions random_XXX return random number (numeric vectors) of length \code{n}.
 }

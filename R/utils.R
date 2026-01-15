@@ -2,35 +2,35 @@
 #' @importFrom methods is
 NULL
 
-#' @title Retail trade statistics in Australia
+#' @title Data Base: Retail trade series in Australia
 #'
 #' @source ABS
 #' @examples
 #' data(ABS)
 "ABS"
 
-#' @title US Retail trade statistics
+#' @title Data Base: US Retail trade series
 #'
 #' @source US-Census Bureau
 #' @examples
 #' data(Retail)
 "Retail"
 
-#' @title Belgian exports to European countries
+#' @title Data Base: Belgian exports to European countries
 #'
 #' @source NBB
 #' @examples
 #' data(Exports)
 "Exports"
 
-#' @title Belgian imports from European countries
+#' @title Data Base: Belgian imports from European countries
 #'
 #' @source NBB
 #' @examples
 #' data(Imports)
 "Imports"
 
-#' @title French national electricity consumtion
+#' @title Data Base: French national electricity consumption
 #'
 #' @format A data frame with 210384 rows and 3 variables:
 #' \itemize{
@@ -44,11 +44,11 @@ NULL
 #' data(Electricity)
 "Electricity"
 
-#' @title Number of births registered in France from 1968 to 2024
+#' @title Data Base: Series of daily births in France from 1968 to 2024
 #'
 #' @description
 #' Daily number of births recorded in France (metropolitan + DOM),
-#' covering the period from January 1, 1968 to December 31, 2024.
+#' covering the period from January 1st, 1968 to December 31st, 2024.
 #'
 #' @format A data frame with 20,820 rows and 2 variables:
 #' \itemize{
@@ -74,16 +74,25 @@ NULL
 #'
 "Births"
 
-#' @title Default X13 specification
+#' @title Default X13 specification ("rsa4")
+#'
+#' @description X13 default specification generated with {rjd3x13} used in examples for specification customization functions in {rjd3toolkit}
+#' generated with `x13_spec_default <- rjd3x13::x13_spec("rsa4")`
+#'
+#' @seealso the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
 #'
 #' @examples
 #' data(x13_spec_default)
+#' x13_spec_default
 "x13_spec_default"
-
-#' @title Default Tramo-Seats specification
+#' @title Default Tramo-Seats specification ("rsafull")
 #'
+#' @description Tramo-Seats default specification generated with {rjd3tramoseats} used in examples for specification customization functions in {rjd3toolkit}
+#' generated with `tramoseats_spec_default<- rjd3tramoseats::tramoseats_spec("rsafull")`
+#' @seealso the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
 #' @examples
 #' data(tramoseats_spec_default)
+#' tramoseats_spec_default
 "tramoseats_spec_default"
 
 ymd <- function(y, m, d = 1) {

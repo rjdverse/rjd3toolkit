@@ -29,7 +29,7 @@
 \method{print}{JD3_WEIGHTEDCALENDAR}(x, ...)
 }
 \arguments{
-\item{x}{The object.}
+\item{x}{a calendar related object}
 
 \item{...}{other unused parameters.}
 }

@@ -5,7 +5,7 @@
 \alias{cdf_gamma}
 \alias{gammadistribution}
 \alias{random_gamma}
-\title{The Gamma Distribution}
+\title{Gamma Distribution}
 \usage{
 density_gamma(shape, scale, x)
 
@@ -21,6 +21,8 @@ random_gamma(shape, scale, n)
 \item{n}{number of observations.}
 }
 \value{
+numeric vector
+
 The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
 The functions random_XXX return random number (numeric vectors) of length \code{n}.
 }

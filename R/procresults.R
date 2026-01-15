@@ -16,22 +16,20 @@ RSLT <- "JD3_ProcResults"
 }
 
 
-#' @title Get Dictionary and Result
+#' @title Display names and items from a java (X13) estimation result object
 #'
 #' @description
-#' Extract dictionary of a \code{"JD3_ProcResults"} object (\code{dictionary()})
-#' and extract a specific value (\code{result()}) or a list of values
-#' (\code{user_defined()}).
+#'\code{dictionary()} displays the names of all items contained in a \code{"JD3_ProcResults"} object,
+#' (\code{result()}) displays the contents of one item, (\code{user_defined()}) displays the contents of several items at once
 #'
-#' @param object the java object.
-#' @param id the name of the object to extract.
-#' @param userdefined vector containing the names of the object to extract.
+#' @param object java object.
+#' @param id name of the object to extract.
+#' @param userdefined vector containing the names of the objects to extract.
 #'
-#' @returns the function \code{dictionary()} returns a character vector with
-#' the items that can be extracted from \code{object}. The \code{result()}
-#' function extract an item from the object. The \code{user_defined()} function
-#' do the same thing as \code{result()} but can also extract several element at
-#' once and encapsulate the items in a \code{user_defined} class object.
+#' @returns \code{dictionary()} returns a character vector with
+#' the names of the items that can be extracted from \code{object}.
+#' \code{result()} returns a numeric or character or a ts object (series),
+#' \code{user_defined()} returns an object of class "user_defined" (list)
 #'
 #' @export
 dictionary <- function(object) {
@@ -85,7 +83,7 @@ user_defined <- function(object, userdefined = NULL) {
 #' @param x The model of SA
 #' @param jx Reference to a Java object
 #' @param out_class Java class of the result object
-#' @param result Boolean. Does \code{jx} contains the results? Default to FALSE.
+#' @param result Boolean. Does \code{jx} contain the results? Default to FALSE.
 #'
 #' @returns A new model with same class as \code{x}
 #'

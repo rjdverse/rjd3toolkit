@@ -11,5 +11,5 @@
 #' @export
 sa.decomposition <- function(x, ...) {
     .Deprecated("sa_decomposition")
-    UseMethod("sa_decomposition", x)
+    sa_decomposition()
 }

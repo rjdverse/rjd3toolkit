@@ -5,7 +5,7 @@
 \alias{cdf_t}
 \alias{studentdistribution}
 \alias{random_t}
-\title{The Student Distribution}
+\title{Student Distribution}
 \usage{
 density_t(df, x)
 

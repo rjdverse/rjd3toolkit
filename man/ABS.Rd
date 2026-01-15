@@ -3,7 +3,7 @@
 \docType{data}
 \name{ABS}
 \alias{ABS}
-\title{Retail trade statistics in Australia}
+\title{Data Base: Retail trade series in Australia}
 \format{
 An object of class \code{data.frame} with 425 rows and 22 columns.
 }
@@ -14,7 +14,7 @@ ABS
 ABS
 }
 \description{
-Retail trade statistics in Australia
+Data Base: Retail trade series in Australia
 }
 \examples{
 data(ABS)

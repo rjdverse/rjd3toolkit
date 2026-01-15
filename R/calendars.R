@@ -911,7 +911,7 @@ calendar_td <- function(calendar = national_calendar(),
 #' @description
 #' Print functions for calendars
 #'
-#' @param x The object.
+#' @param x a calendar related object
 #' @param ... other unused parameters.
 #'
 #' @name print_calendars

@@ -5,7 +5,7 @@
 \alias{cdf_inverse_gaussian}
 \alias{invgaussiandistribution}
 \alias{random_inverse_gaussian}
-\title{The Inverse-Gaussian Distribution}
+\title{Inverse-Gaussian Distribution}
 \usage{
 density_inverse_gaussian(shape, scale, x)
 
@@ -21,6 +21,8 @@ random_inverse_gaussian(shape, scale, n)
 \item{n}{number of observations.}
 }
 \value{
+numeric vector
+
 The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
 The functions random_XXX return random number (numeric vectors) of length \code{n}.
 }
