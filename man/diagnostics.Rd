@@ -18,6 +18,6 @@ diagnostics(x, ...)
 \code{"No diagnostic"} or a \code{list} with the diagnostics part of the model
 }
 \description{
-Extract diagnostics from estimation results obtained with {rjd3x13} or {rjd3tramoseats},
+Extract diagnostics from estimation results obtained with \{rjd3x13\} or \{rjd3tramoseats\},
 which have to be loaded
 }

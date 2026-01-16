@@ -1,6 +1,6 @@
 #' @title Generic Diagnostics extraction
 #'
-#' @description Extract diagnostics from estimation results obtained with {rjd3x13} or {rjd3tramoseats},
+#' @description Extract diagnostics from estimation results obtained with \{rjd3x13\} or \{rjd3tramoseats\},
 #' which have to be loaded
 #'
 #' @param x the object to extract diagnostics from.

@@ -50,7 +50,7 @@ Generic function to format the seasonal adjustment decomposition components.
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-decompo <- sa_decomposition(
+decompo <- sadecomposition(
     y = ts(c(112, 118, 132, 129, 121, 135), start = 2000, frequency = 12L),
     sa = ts(c(121.72, 124.52, 125.4, 128.91, 128.84, 126.73), start = 2000, frequency = 12L),
     t = ts(c(122.24, 124.33, 126.21, 127.61, 127.8, 126.94), start = 2000, frequency = 12L),
