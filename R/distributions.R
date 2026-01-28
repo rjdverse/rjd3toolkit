@@ -7,7 +7,9 @@
 #' @param n number of observations.
 #' @param x vector of quantiles.
 #'
-#' @return numeric vector
+#' @returns
+#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
+#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # Probability density function of T with 2 degrees of freedom.
@@ -50,6 +52,10 @@ cdf_t <- function(df, x) {
 #'
 #' @inheritParams studentdistribution
 #'
+#' @returns
+#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
+#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
+#'
 #' @name chi2distribution
 #' @rdname chi2distribution
 #' @order 3
@@ -87,6 +93,10 @@ cdf_chi2 <- function(df, x) {
 #' @param shape,scale shape and scale parameters.
 #' @return numeric vector
 #'
+#' @returns
+#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
+#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
+#'
 #' @name gammadistribution
 #' @rdname gammadistribution
 #'
@@ -123,6 +133,10 @@ cdf_gamma <- function(shape, scale, x) {
 #'
 #' @inheritParams gammadistribution
 #'
+#' @returns
+#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
+#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
+#'
 #' @name invgammadistribution
 #' @rdname invgammadistribution
 #' @order 3
@@ -157,6 +171,10 @@ cdf_inverse_gamma <- function(shape, scale, x) {
 #' @return numeric vector
 #'
 #' @inheritParams gammadistribution
+#'
+#' @returns
+#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
+#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
 #'
 #' @name invgaussiandistribution
 #' @rdname invgaussiandistribution

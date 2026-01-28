@@ -18,20 +18,6 @@ diagnostics(x, ...)
 \code{"No diagnostic"} or a \code{list} with the diagnostics part of the model
 }
 \description{
-extract diagnostics from estimation results obtained with rjd3x13 or rjd3tramoseats,
+Extract diagnostics from estimation results obtained with \{rjd3x13\} or \{rjd3tramoseats\},
 which have to be loaded
-}
-\examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-# example with X13
-# y<- rjd3toolkit::ABS$X0.2.09.10.M
-# library(rjd3x13)
-# sa_x13_estimation <-x13(y,"rsa5c")
-# diagnostics(sa_x13_estimation)
-# example with Tramo-Seats
-# library(rjd3tramoseats)
-# sa_tramoseats_estimation <-tramoseats(y,"rsafull")
-# diagnostics(sa_tramoseats_estimation)
-
-\dontshow{\}) # examplesIf}
 }

@@ -13,7 +13,7 @@ A data frame with 210384 rows and 3 variables:
 }
 }
 \source{
-\url{https://www.rte-france.com/en/eco2mix/download-indicators}
+\url{https://www.rte-france.com/en/data-publications/eco2mix/download-indicators}
 }
 \usage{
 Electricity

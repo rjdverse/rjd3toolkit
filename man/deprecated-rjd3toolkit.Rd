@@ -5,8 +5,16 @@
 \alias{sa.decomposition}
 \title{Deprecated functions}
 \usage{
-sa.decomposition()
+sa.decomposition(x, ...)
+}
+\arguments{
+\item{x}{the object to print.}
+
+\item{...}{further arguments.}
+}
+\value{
+\code{"JD3_SADECOMPOSITION"} object.
 }
 \description{
-Deprecated functions
+Use \code{\link[=sa_decomposition]{sa_decomposition()}} instead of \code{sa.decomposition()}.
 }

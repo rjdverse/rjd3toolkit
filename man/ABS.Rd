@@ -18,6 +18,5 @@ Data Base: Retail trade series in Australia
 }
 \examples{
 data(ABS)
-
 }
 \keyword{datasets}

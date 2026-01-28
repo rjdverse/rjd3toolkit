@@ -8,6 +8,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+* Bug with to_tscollection() (moniker conversion)
+
+
 ## [3.6.0] - 2025-11-21
 
 ### Changed

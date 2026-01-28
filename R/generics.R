@@ -1,6 +1,6 @@
 #' @title Generic Diagnostics extraction
 #'
-#' @description extract diagnostics from estimation results obtained with rjd3x13 or rjd3tramoseats,
+#' @description Extract diagnostics from estimation results obtained with \{rjd3x13\} or \{rjd3tramoseats\},
 #' which have to be loaded
 #'
 #' @param x the object to extract diagnostics from.
@@ -10,22 +10,10 @@
 #'
 #' @returns \code{"No diagnostic"} or a \code{list} with the diagnostics part of the model
 #'
-#' @examplesIf current_java_version >= minimal_java_version
-#' # example with X13
-#' # y<- rjd3toolkit::ABS$X0.2.09.10.M
-#' # library(rjd3x13)
-#' # sa_x13_estimation <-x13(y,"rsa5c")
-#' # diagnostics(sa_x13_estimation)
-#' # example with Tramo-Seats
-#' # library(rjd3tramoseats)
-#' # sa_tramoseats_estimation <-tramoseats(y,"rsafull")
-#' # diagnostics(sa_tramoseats_estimation)
-#'
 #'
 diagnostics <- function(x, ...) {
     UseMethod("diagnostics", x)
 }
-
 
 #' @rdname diagnostics
 #' @export
@@ -87,5 +75,3 @@ NULL
 sa_decomposition <- function(x, ...) {
     UseMethod("sa_decomposition", x)
 }
-
-

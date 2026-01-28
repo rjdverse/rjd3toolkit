@@ -4,27 +4,16 @@ NULL
 #' @importFrom RProtoBuf read readProtoFiles2
 #' @importFrom rJava .jpackage .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass .jinit
 #' @importFrom stats frequency is.ts pf ts ts.union
+#' @importFrom rjd3jars get_java_version minimal_java_version
 NULL
 
 #' @rdname jd3_utilities
-#'
-#' @examples
-#' get_java_version()
 #' @export
-get_java_version <- function() {
-    .jinit()
-    jversion <- .jcall("java.lang.System", "S", "getProperty", "java.version")
-    jversion <- as.integer(regmatches(jversion, regexpr(pattern = "^(\\d+)", text = jversion)))
-    return(jversion)
-}
+current_java_version <- rjd3jars::get_java_version()
 
 #' @rdname jd3_utilities
 #' @export
-current_java_version <- get_java_version()
-
-#' @rdname jd3_utilities
-#' @export
-minimal_java_version <- 17
+minimal_java_version <- rjd3jars::minimal_java_version
 
 .onAttach <- function(libname, pkgname) {
     if (current_java_version < minimal_java_version) {
@@ -34,6 +23,9 @@ minimal_java_version <- 17
 }
 
 .onLoad <- function(libname, pkgname) {
+
+    if (!requireNamespace("rjd3jars", quietly = TRUE)) stop("Loading rjd3 libraries failed", call. = FALSE)
+
     result <- .jpackage(pkgname, lib.loc = libname)
     if (!result) stop("Loading java packages failed")
 

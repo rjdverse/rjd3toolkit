@@ -18,7 +18,7 @@ RSLT <- "JD3_ProcResults"
 
 #' @title Display names and items from a java (X13) estimation result object
 #'
-#' @description rjd3x13 has to be loaded,
+#' @description
 #'\code{dictionary()} displays the names of all items contained in a \code{"JD3_ProcResults"} object,
 #' (\code{result()}) displays the contents of one item, (\code{user_defined()}) displays the contents of several items at once
 #'
@@ -30,13 +30,6 @@ RSLT <- "JD3_ProcResults"
 #' the names of the items that can be extracted from \code{object}.
 #' \code{result()} returns a numeric or character or a ts object (series),
 #' \code{user_defined()} returns an object of class "user_defined" (list)
-
-#' @examplesIf current_java_version >= minimal_java_version
-#' # library(rjd3x13)
-#' # dictionary(jsa_x13_estimation)
-#' # tail(result(jsa_x13_estimation, "decomposition.d8" ))
-#' # user_defined
-#' # user_defined(jsa_x13_estimation, userdefined=c("quality.summary","arima.p", "arima.d", "arima.q"))
 #'
 #' @export
 dictionary <- function(object) {

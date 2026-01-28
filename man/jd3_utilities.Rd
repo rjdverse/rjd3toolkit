@@ -111,7 +111,6 @@
 \alias{.r2jd_tmp_ts}
 \alias{.r2jd_make_ts}
 \alias{.r2jd_make_tscollection}
-\alias{get_java_version}
 \alias{current_java_version}
 \alias{minimal_java_version}
 \alias{get_date_min}
@@ -335,8 +334,6 @@ An object of class \code{numeric} of length 1.
 
 .r2jd_make_tscollection(source, id, type = "All")
 
-get_java_version()
-
 current_java_version
 
 minimal_java_version
@@ -370,8 +367,5 @@ get_date_max()
 }
 \description{
 These functions are used in all JDemetra+ 3.0 packages to easily interact between R and Java objects.
-}
-\examples{
-get_java_version()
 }
 \keyword{datasets}

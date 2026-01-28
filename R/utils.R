@@ -7,7 +7,6 @@ NULL
 #' @source ABS
 #' @examples
 #' data(ABS)
-#'
 "ABS"
 
 #' @title Data Base: US Retail trade series
@@ -40,7 +39,7 @@ NULL
 #'   \item Consumtion: number of daily birth (29124--102098)
 #' }
 #'
-#' @source <https://www.rte-france.com/en/eco2mix/download-indicators>
+#' @source <https://www.rte-france.com/en/data-publications/eco2mix/download-indicators>
 #' @examples
 #' data(Electricity)
 "Electricity"
@@ -77,7 +76,7 @@ NULL
 
 #' @title Default X13 specification ("rsa4")
 #'
-#' @description X13 default specification generated with rjd3x13 used in examples for specification customization functions in rjd3toolkit
+#' @description X13 default specification generated with \{rjd3x13\} used in examples for specification customization functions in \{rjd3toolkit\}
 #' generated with `x13_spec_default <- rjd3x13::x13_spec("rsa4")`
 #'
 #' @seealso the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
@@ -88,7 +87,7 @@ NULL
 "x13_spec_default"
 #' @title Default Tramo-Seats specification ("rsafull")
 #'
-#' @description Tramo-Seats default specification generated with rjd3tramoseats used in examples for specification customization functions in rjd3toolkit
+#' @description Tramo-Seats default specification generated with \{rjd3tramoseats\} used in examples for specification customization functions in \{rjd3toolkit\}
 #' generated with `tramoseats_spec_default<- rjd3tramoseats::tramoseats_spec("rsafull")`
 #' @seealso the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
 #' @examples
