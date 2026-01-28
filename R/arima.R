@@ -159,7 +159,7 @@ sarima_decompose <- function(model, rmod = 0, epsphi = 0) {
 #' @export
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), var = 100)
+#' model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), variance = 100)
 arima_model <- function(name = "arima", ar = 1, delta = 1, ma = 1, variance = 1) {
     return(structure(list(name = name, ar = ar, delta = delta, ma = ma, var = variance), class = "JD3_ARIMA"))
 }
@@ -329,7 +329,7 @@ arima_properties <- function(model, nspectrum = 601, nac = 36) {
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
-#' mod2 <- arima_model("noise", var = 1600)
+#' mod2 <- arima_model("noise", variance = 1600)
 #' hp <- ucarima_model(components = list(mod1, mod2))
 #' print(hp$model)
 ucarima_model <- function(model = NULL,
@@ -388,7 +388,7 @@ ucarima_model <- function(model = NULL,
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
-#' mod2 <- arima_model("noise", var = 1600)
+#' mod2 <- arima_model("noise", variance = 1600)
 #' hp <- ucarima_model(components = list(mod1, mod2))
 #' wk1 <- ucarima_wk(hp, 1, nwk = 50)
 #' wk2 <- ucarima_wk(hp, 2)
@@ -446,7 +446,7 @@ ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
-#' mod2 <- arima_model("noise", var = 1600)
+#' mod2 <- arima_model("noise", variance = 1600)
 #' hp <- ucarima_model(components = list(mod1, mod2))
 #' hpc <- ucarima_canonical(hp, cmp = 2)
 ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
@@ -472,7 +472,7 @@ ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' mod1 <- arima_model("trend", delta = c(1, -2, 1))
-#' mod2 <- arima_model("noise", var = 16)
+#' mod2 <- arima_model("noise", variance = 16)
 #' hp <- ucarima_model(components = list(mod1, mod2))
 #' s <- log(aggregate(Retail$AutomobileDealers))
 #' all <- ucarima_estimate(s, hp, stdev = TRUE)
