@@ -421,12 +421,14 @@ Functions to easily interact between R and Java objects
   [`print(`*`<JD3_LIKELIHOOD>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_print.md)
   [`print(`*`<JD3_REGARIMA_RSLTS>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_print.md)
   : JD3 print functions
-- [`print(`*`<JD3_FIXEDDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print.calendars.md)
-  [`print(`*`<JD3_FIXEDWEEKDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print.calendars.md)
-  [`print(`*`<JD3_EASTERDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print.calendars.md)
-  [`print(`*`<JD3_SPECIALDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print.calendars.md)
-  [`print(`*`<JD3_SINGLEDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print.calendars.md)
-  [`print(`*`<JD3_CALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print.calendars.md)
+- [`print(`*`<JD3_FIXEDDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
+  [`print(`*`<JD3_FIXEDWEEKDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
+  [`print(`*`<JD3_EASTERDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
+  [`print(`*`<JD3_SPECIALDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
+  [`print(`*`<JD3_SINGLEDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
+  [`print(`*`<JD3_CALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
+  [`print(`*`<JD3_CHAINEDCALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
+  [`print(`*`<JD3_WEIGHTEDCALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   : Calendars Print Methods
 - [`r2jd_calendarts()`](https://rjdverse.github.io/rjd3toolkit/reference/r2jd_calendarts.md)
   : Create Java CalendarTimeSeries
@@ -542,7 +544,6 @@ Functions to easily interact between R and Java objects
   [`.r2jd_tmp_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_tscollection()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
-  [`get_java_version()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`current_java_version`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`minimal_java_version`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`get_date_min()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)

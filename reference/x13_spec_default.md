@@ -1,7 +1,7 @@
 # Default X13 specification ("rsa4")
 
-X13 default specification generated with rjd3x13 used in examples for
-specification customization functions in rjd3toolkit generated with
+X13 default specification generated with {rjd3x13} used in examples for
+specification customization functions in {rjd3toolkit} generated with
 `x13_spec_default <- rjd3x13::x13_spec("rsa4")`
 
 ## Usage

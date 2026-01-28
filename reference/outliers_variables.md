@@ -47,6 +47,10 @@ so_variable(frequency, start, length, s, pos, date = NULL, zeroended = TRUE)
   (`zeroended = TRUE`, default) or 1 (`zeroended = FALSE`), argument
   valid only for LS and SO.
 
+## Value
+
+a `ts` object
+
 ## Details
 
 An additive outlier (AO, `ao_variable`) is defined as: \$\$AO_t =

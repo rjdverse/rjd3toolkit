@@ -20,7 +20,7 @@ A data frame with 210384 rows and 3 variables:
 
 ## Source
 
-<https://www.rte-france.com/en/eco2mix/download-indicators>
+<https://www.rte-france.com/en/data-publications/eco2mix/download-indicators>
 
 ## Examples
 

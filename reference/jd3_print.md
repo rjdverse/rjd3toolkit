@@ -21,7 +21,7 @@ print(x, digits = max(3L, getOption("digits") - 3L), ...)
 print(x, ...)
 
 # S3 method for class 'JD3_LIKELIHOOD'
-print(x, ...)
+print(x, summary_info = getOption("summary_info"), ...)
 
 # S3 method for class 'JD3_REGARIMA_RSLTS'
 print(
@@ -51,3 +51,7 @@ print(
   boolean indicating if a message suggesting the use of the summary
   function for more details should be printed. By default used the
   option `"summary_info"` it used, which initialized to `TRUE`.
+
+## Value
+
+The object is returned invisibly.

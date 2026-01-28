@@ -29,7 +29,9 @@ random_t(df, n)
 
 ## Value
 
-numeric vector
+The functions density_XXX and cdf_t return numeric vectors of same
+length as `x`. The functions random_XXX return random number (numeric
+vectors) of length `n`.
 
 ## Examples
 

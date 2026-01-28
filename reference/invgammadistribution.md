@@ -31,6 +31,10 @@ random_inverse_gamma(shape, scale, n)
 
 numeric vector
 
+The functions density_XXX and cdf_t return numeric vectors of same
+length as `x`. The functions random_XXX return random number (numeric
+vectors) of length `n`.
+
 ## Examples
 
 ``` r
@@ -41,6 +45,6 @@ cdf_inverse_gamma(shape = 1, scale = 2, x = 1:10)
 #>  [1] 0.1353353 0.3678794 0.5134171 0.6065307 0.6703200 0.7165313 0.7514773
 #>  [8] 0.7788008 0.8007374 0.8187308
 random_inverse_gamma(shape = 1, scale = 2, n = 10)
-#>  [1]  3.751295  1.752639 14.743641  3.566159  4.757576  8.009282  1.140688
-#>  [8]  2.046445 11.422623  2.105217
+#>  [1]  0.8008125 10.3173078  1.9674811  0.7414301  3.3852592  1.5218736
+#>  [7]  0.6021212 16.9119971  1.2831747  1.3757213
 ```
