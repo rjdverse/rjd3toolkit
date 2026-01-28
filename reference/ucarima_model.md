@@ -37,7 +37,7 @@ A list with the reduced model, the components and their complements
 
 ``` r
 mod1 <- arima_model("trend", delta = c(1, -2, 1))
-mod2 <- arima_model("noise", var = 1600)
+mod2 <- arima_model("noise", variance = 1600)
 hp <- ucarima_model(components = list(mod1, mod2))
 print(hp$model)
 #> arima 

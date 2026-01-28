@@ -39,5 +39,5 @@ a `"JD3_ARIMA"` model.
 ## Examples
 
 ``` r
-model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), var = 100)
+model <- arima_model("trend", ar = c(1, -.8), delta = c(1, -1), ma = c(1, -.5), variance = 100)
 ```

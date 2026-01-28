@@ -32,7 +32,7 @@ deviations if stdev is TRUE.
 
 ``` r
 mod1 <- arima_model("trend", delta = c(1, -2, 1))
-mod2 <- arima_model("noise", var = 16)
+mod2 <- arima_model("noise", variance = 16)
 hp <- ucarima_model(components = list(mod1, mod2))
 s <- log(aggregate(Retail$AutomobileDealers))
 all <- ucarima_estimate(s, hp, stdev = TRUE)
