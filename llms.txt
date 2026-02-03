@@ -34,6 +34,12 @@ a configuration in R is explained
 
 To get the current stable version (from the latest release):
 
+- CRAN:
+
+``` r
+install.packages("rjd3toolkit")
+```
+
 - From GitHub:
 
 ``` r
