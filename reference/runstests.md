@@ -48,8 +48,8 @@ testofruns(x)
 #> Value: 0.3163862 
 #> P-Value: 0.7517 
 testofupdownruns(x)
-#> Value: 1.40127 
-#> P-Value: 0.1611 
+#> Value: 0.5755218 
+#> P-Value: 0.5649 
 # non-random values
 testofruns(ABS$X0.2.09.10.M)
 #> Value: -14.05884 
