@@ -1851,15 +1851,15 @@ set_span <- function(x,
         )
         if (type == "ALL") {
             x$type <- type
-            x$d0 <- x$d1 <- NULL
+            x[c("d0", "d1")] <- list(NULL, NULL)
             x$n0 <- x$n1 <- 0L
         } else if (type == "FROM") {
             if (is.null(d0)) {
                 warning("d0 parameter must be defined")
             } else {
                 x$type <- type
-                x$d0 <- d0
-                x$d1 <- NULL
+                x["d0"] <- list(d0)
+                x["d1"] <- list(NULL)
                 x$n0 <- x$n1 <- 0L
             }
         } else if (type == "TO") {
@@ -1867,8 +1867,8 @@ set_span <- function(x,
                 warning("d1 parameter must be defined")
             } else {
                 x$type <- type
-                x$d1 <- d1
-                x$d0 <- NULL
+                x["d1"] <- list(d1)
+                x["d0"] <- list(NULL)
                 x$n0 <- x$n1 <- 0L
             }
         } else if (type == "BETWEEN") {
@@ -1876,8 +1876,8 @@ set_span <- function(x,
                 warning("d0 and d1 parameters must be defined")
             } else {
                 x$type <- type
-                x$d0 <- d0
-                x$d1 <- d1
+                x["d0"] <- list(d0)
+                x["d1"] <- list(d1)
                 x$n0 <- x$n1 <- 0L
             }
         } else if (type == "FIRST") {
@@ -1885,7 +1885,7 @@ set_span <- function(x,
                 warning("n0 parameter must be defined")
             } else {
                 x$type <- type
-                x$d0 <- x$d1 <- NULL
+                x[c("d0", "d1")] <- list(NULL, NULL)
                 x$n0 <- n0
                 x$n1 <- 0L
             }
@@ -1894,7 +1894,7 @@ set_span <- function(x,
                 warning("n1 parameter must be defined")
             } else {
                 x$type <- type
-                x$d0 <- x$d1 <- NULL
+                x[c("d0", "d1")] <- list(NULL, NULL)
                 x$n0 <- 0L
                 x$n1 <- n1
             }
@@ -1903,7 +1903,7 @@ set_span <- function(x,
                 warning("n0 and n1 parameters must be defined")
             } else {
                 x$type <- type
-                x$d0 <- x$d1 <- NULL
+                x[c("d0", "d1")] <- list(NULL, NULL)
                 x$n0 <- n0
                 x$n1 <- n1
             }
