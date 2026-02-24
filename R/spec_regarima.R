@@ -1842,8 +1842,8 @@ set_span <- function(x,
                      type = c("All", "From", "To", "Between", "Last", "First", "Excluding"),
                      d0 = NULL,
                      d1 = NULL,
-                     n0 = 0,
-                     n1 = 0) {
+                     n0 = 0L,
+                     n1 = 0L) {
     if (!missing(type) && !is.null(type) && !is.na(type[1])) {
         type <- match.arg(
             toupper(type),
@@ -1851,8 +1851,8 @@ set_span <- function(x,
         )
         if (type == "ALL") {
             x$type <- type
-            x$d1 <- x$d1 <- NULL
-            x$n0 <- x$n1 <- 0
+            x$d0 <- x$d1 <- NULL
+            x$n0 <- x$n1 <- 0L
         } else if (type == "FROM") {
             if (is.null(d0)) {
                 warning("d0 parameter must be defined")
@@ -1860,7 +1860,7 @@ set_span <- function(x,
                 x$type <- type
                 x$d0 <- d0
                 x$d1 <- NULL
-                x$n0 <- x$n1 <- 0
+                x$n0 <- x$n1 <- 0L
             }
         } else if (type == "TO") {
             if (is.na(d1)) {
@@ -1869,7 +1869,7 @@ set_span <- function(x,
                 x$type <- type
                 x$d1 <- d1
                 x$d0 <- NULL
-                x$n0 <- x$n1 <- 0
+                x$n0 <- x$n1 <- 0L
             }
         } else if (type == "BETWEEN") {
             if (is.na(d0) || is.na(d1)) {
@@ -1878,7 +1878,7 @@ set_span <- function(x,
                 x$type <- type
                 x$d0 <- d0
                 x$d1 <- d1
-                x$n0 <- x$n1 <- 0
+                x$n0 <- x$n1 <- 0L
             }
         } else if (type == "FIRST") {
             if (is.na(n0)) {
@@ -1887,7 +1887,7 @@ set_span <- function(x,
                 x$type <- type
                 x$d0 <- x$d1 <- NULL
                 x$n0 <- n0
-                x$n1 <- 0
+                x$n1 <- 0L
             }
         } else if (type == "LAST") {
             if (is.na(n1)) {
@@ -1895,7 +1895,7 @@ set_span <- function(x,
             } else {
                 x$type <- type
                 x$d0 <- x$d1 <- NULL
-                x$n0 <- 0
+                x$n0 <- 0L
                 x$n1 <- n1
             }
         } else if (type == "EXCLUDING") {
