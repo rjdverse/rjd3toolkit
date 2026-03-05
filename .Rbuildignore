@@ -1,4 +1,3 @@
-
 ^.*\.Rproj$
 ^\.Rproj\.user$
 
@@ -44,6 +43,7 @@ cran-comments.md
 ^man-roxygen$
 ^organisation.yml$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
 
 ^lychee\.toml$
 ^\.lycheeignore$
