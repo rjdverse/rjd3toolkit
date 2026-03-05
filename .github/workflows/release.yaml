@@ -21,6 +21,6 @@ jobs:
       - uses: TanguyBarthelemy/r-release-action@v1.0.1
         with:
           tag: ${{ github.event.inputs.tag }}
-          gh_repo: "rjdverse/rjd3jars"
+          gh_repo: "rjdverse/rjd3toolkit"
           main-branch: "main"
           dev-branch: "develop"
