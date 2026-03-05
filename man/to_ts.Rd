@@ -23,7 +23,7 @@ A JDemetra+ specific object is useful when working with JDemetra+ workspaces
 (see rjd3workspace)
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 source <- "Txt"
 # id is split due to length restrictions
 id1 <- "demetra://tsprovider/Txt/20111201/SERIES?datePattern=dd\%2FMM\%2Fyyyy&delimiter=SEMICOLON&"

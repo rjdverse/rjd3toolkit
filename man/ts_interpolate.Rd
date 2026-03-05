@@ -19,7 +19,7 @@ The interpolated series
 Interpolation of a time series with missing values
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 y<- rjd3toolkit::ABS$X0.2.09.10.M
 y[400:410]<-NA
 y1<-ts_interpolate(y)

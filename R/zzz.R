@@ -9,6 +9,10 @@ NULL
 
 #' @rdname jd3_utilities
 #' @export
+get_java_version <- rjd3jars::get_java_version
+
+#' @rdname jd3_utilities
+#' @export
 current_java_version <- rjd3jars::get_java_version()
 
 #' @rdname jd3_utilities
@@ -16,9 +20,10 @@ current_java_version <- rjd3jars::get_java_version()
 minimal_java_version <- rjd3jars::minimal_java_version
 
 .onAttach <- function(libname, pkgname) {
-    if (current_java_version < minimal_java_version) {
+    .current_java_version <- get_java_version()
+    if (.current_java_version < minimal_java_version) {
         packageStartupMessage(sprintf("Your java version is %s. %s or higher is needed.",
-                                      current_java_version, minimal_java_version))
+                                      .current_java_version, minimal_java_version))
     }
 }
 

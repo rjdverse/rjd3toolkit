@@ -15,7 +15,7 @@ NULL
 #' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_qs(s)
 #' seasonality_qs(random_t(2, 1000), 7)
@@ -47,7 +47,7 @@ seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
 #' @returns The value of the test
 #' @export
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_modified_qs(s)
 #'
@@ -77,7 +77,7 @@ seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
 #' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_kruskalwallis(s)
 #' seasonality_kruskalwallis(random_t(2, 1000), 7)
@@ -101,7 +101,7 @@ seasonality_kruskalwallis <- function(data, period, nyears = 0) {
 #' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_periodogram(s)
 #' seasonality_periodogram(random_t(2, 1000), 7)
@@ -125,7 +125,7 @@ seasonality_periodogram <- function(data, period = NA, nyears = 0) {
 #' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_friedman(s)
 #' seasonality_friedman(random_t(2, 1000), 12)
@@ -149,7 +149,7 @@ seasonality_friedman <- function(data, period = NA, nyears = 0) {
 #' @returns A `c("JD3_TEST", "JD3")` object (see [statisticaltest()] for details).
 #' @export
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' seasonality_f(ABS$X0.2.09.10.M, model = "D1")
 #' seasonality_f(random_t(2, 1000), 7)
 #'
@@ -181,7 +181,7 @@ seasonality_f <- function(data,
 #' @export
 #' @returns a \code{list} with several seasonnality tests (kruskalwallis, stable and evolutive)
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_combined(s)
 #' seasonality_combined(random_t(2, 1000), 7)
@@ -219,7 +219,7 @@ seasonality_combined <- function(data, period = NA, firstperiod = cycle(data)[1]
 #'
 #' @returns a numeric vector
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- log(ABS$X0.2.20.10.M)
 #' freqs <- seq(0.01, 0.5, 0.001)
 #' sct <- seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE)
@@ -252,7 +252,7 @@ seasonality_canovahansen_trigs <- function(data, periods, lag1 = TRUE,
 #' @export
 #'
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' s <- log(ABS$X0.2.20.10.M)
 #' seasonality_canovahansen(s, 12, type = "Contrast")
 #' seasonality_canovahansen(s, 12, type = "Trigonometric")

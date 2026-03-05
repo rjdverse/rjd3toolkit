@@ -56,7 +56,7 @@ sa_preprocessing <- function(x, ...) {
 #' @returns \code{"JD3_SADECOMPOSITION"} object.
 #' @name sa_decomposition
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' decompo <- sadecomposition(
 #'     y = ts(c(112, 118, 132, 129, 121, 135), start = 2000, frequency = 12L),
 #'     sa = ts(c(121.72, 124.52, 125.4, 128.91, 128.84, 126.73), start = 2000, frequency = 12L),

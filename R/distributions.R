@@ -11,7 +11,7 @@
 #' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
 #' The functions random_XXX return random number (numeric vectors) of length \code{n}.
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' # Probability density function of T with 2 degrees of freedom.
 #' z <- density_t(df = 2, .01 * seq(-100, 100, 1))
 #' # Generating a random vector with each component drawn from a T(2) distribution
@@ -60,7 +60,7 @@ cdf_t <- function(df, x) {
 #' @rdname chi2distribution
 #' @order 3
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' density_chi2(df = 3, 1:10)
 #' cdf_chi2(df = 3, 1:10)
 #' random_chi2(df = 3, n = 10)
@@ -100,7 +100,7 @@ cdf_chi2 <- function(df, x) {
 #' @name gammadistribution
 #' @rdname gammadistribution
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' density_gamma(shape = 1, scale = 2, x = 1:10)
 #' cdf_gamma(shape = 1, scale = 2, x = 1:10)
 #' random_gamma(shape = 1, scale = 2, n = 10)
@@ -141,7 +141,7 @@ cdf_gamma <- function(shape, scale, x) {
 #' @rdname invgammadistribution
 #' @order 3
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' density_inverse_gamma(shape = 1, scale = 2, x = 1:10)
 #' cdf_inverse_gamma(shape = 1, scale = 2, x = 1:10)
 #' random_inverse_gamma(shape = 1, scale = 2, n = 10)
@@ -180,7 +180,7 @@ cdf_inverse_gamma <- function(shape, scale, x) {
 #' @rdname invgaussiandistribution
 #' @order 3
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' density_inverse_gaussian(shape = 1, scale = 2, x = 1:10)
 #' random_inverse_gaussian(shape = 1, scale = 2, n = 10)
 #'

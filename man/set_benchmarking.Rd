@@ -59,7 +59,7 @@ with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 init_spec <- x13_spec_default
 new_spec <- set_benchmarking(
     x = init_spec,
