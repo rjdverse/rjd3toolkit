@@ -44,11 +44,11 @@ print(x, details = FALSE, ...)
 ``` r
 udr_test <- testofupdownruns(random_t(5, 1000))
 udr_test # default print
-#> Value: 1.100998 
-#> P-Value: 0.2709 
+#> Value: 1.626475 
+#> P-Value: 0.1038 
 print(udr_test, details = TRUE) # with the distribution
-#> Value: 1.100998 
-#> P-Value: 0.2709 
+#> Value: 1.626475 
+#> P-Value: 0.1038 
 #> [ Normal with Mean = 0.0 and Stdev = 1.0 ]
 
 test <- statisticaltest(val = 45, pval = 0.1)
