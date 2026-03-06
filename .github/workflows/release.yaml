@@ -1,0 +1,26 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (e.g. v1.2.0 or 2.5.1)"
+        required: true
+        type: string
+
+jobs:
+  Prepare_new_release:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+      - uses: TanguyBarthelemy/r-release-action@v1.0.1
+        with:
+          tag: ${{ github.event.inputs.tag }}
+          gh_repo: "rjdverse/rjd3toolkit"
+          main-branch: "main"
+          dev-branch: "develop"

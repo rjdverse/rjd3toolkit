@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/check-links.yaml'
       - 'lychee.toml'
+      - '.lycheeignore'
       - '**/*.md'
       - '**/*.Rd'
   schedule:
