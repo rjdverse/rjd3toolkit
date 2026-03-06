@@ -37,7 +37,7 @@ Language: en-GB
 LazyData: TRUE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-SystemRequirements: Java (>= 17)
+SystemRequirements: Java (>= 21)
 Collate: 
     'utils.R'
     'jd2r.R'
