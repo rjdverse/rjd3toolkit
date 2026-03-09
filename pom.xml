@@ -109,6 +109,7 @@
 								<phase>package</phase>
 								<configuration>
 									<outputDirectory>${project.build.directory}</outputDirectory>
+                                    <excludeArtifactIds>protobuf-java</excludeArtifactIds>
 								</configuration>
 							</execution>
 						</executions>
