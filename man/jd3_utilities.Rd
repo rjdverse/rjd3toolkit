@@ -119,7 +119,7 @@
 \format{
 An object of class \code{integer} of length 1.
 
-An object of class \code{numeric} of length 1.
+An object of class \code{integer} of length 1.
 }
 \usage{
 .r2jd_tsdata(s)

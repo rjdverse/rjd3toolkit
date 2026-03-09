@@ -1,7 +1,7 @@
 Type: Package
 Package: rjd3toolkit
 Title: Utility Functions Around 'JDemetra+ 3.0'
-Version: 3.6.0
+Version: 3.6.0.9000
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Alain", "Quartier-la-Tente", , "alain.quartier@yahoo.fr", role = "aut",
@@ -28,7 +28,7 @@ Imports:
     graphics,
     methods,
     rJava (>= 1.0-6),
-    rjd3jars,
+    rjd3jars (>= 0.0.3),
     RProtoBuf (>= 0.4.20),
     stats,
     utils
@@ -37,7 +37,7 @@ Language: en-GB
 LazyData: TRUE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-SystemRequirements: Java (>= 17)
+SystemRequirements: Java (>= 21)
 Collate: 
     'utils.R'
     'jd2r.R'
