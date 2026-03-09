@@ -30,7 +30,7 @@ The functions random_XXX return random number (numeric vectors) of length \code{
 Density, (cumulative) distribution function and random generation for chi-squared distribution.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 density_chi2(df = 3, 1:10)
 cdf_chi2(df = 3, 1:10)
 random_chi2(df = 3, n = 10)

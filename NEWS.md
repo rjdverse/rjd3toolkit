@@ -10,7 +10,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-* Bug with to_tscollection() (moniker conversion)
+* Bug with `to_tscollection()`  (moniker conversion)
+
+### Changed
+
+* Use `get_java_version()` instead of `current_java_version`
 
 
 ## [3.6.0] - 2025-11-21

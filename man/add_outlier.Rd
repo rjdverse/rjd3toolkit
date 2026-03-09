@@ -49,7 +49,7 @@ after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to
 the trend.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 
 init_spec <- x13_spec_default
 

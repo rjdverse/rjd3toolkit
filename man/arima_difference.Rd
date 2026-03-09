@@ -21,7 +21,7 @@ a \code{"JD3_ARIMA"} model.
 More exactly, m_diff = m_left - m_right iff m_left = m_right + m_diff.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 mod1 <- arima_model(delta = c(1, -2, 1))
 mod2 <- arima_model(variance = .01)
 diff <- arima_difference(mod1, mod2)

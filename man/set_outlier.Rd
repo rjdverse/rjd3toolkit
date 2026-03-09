@@ -94,7 +94,7 @@ allocated to a pre-defined component after the decomposition: "AO" and "TC"
 to the irregular, "LS" to the trend and "SO" to seasonal component.
 }
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 
 # Customize a default specification
 init_spec <- tramoseats_spec_default

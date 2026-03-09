@@ -27,7 +27,7 @@
 #' after the decomposition: "AO" and "TC" to the irregular, "LS" and Ramps to
 #' the trend.
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #'
 #' init_spec <- x13_spec_default
 #'
@@ -290,7 +290,7 @@ remove_ramp.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #'
 #' # Customize a default specification
 #' init_spec <- x13_spec_default
@@ -410,7 +410,7 @@ set_basic.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' # Customize a default specification
 #' init_spec <- tramoseats_spec_default
 #' new_spec <- set_estimate(
@@ -537,7 +537,7 @@ set_estimate.default <- function(x,
 #' allocated to a pre-defined component after the decomposition: "AO" and "TC"
 #' to the irregular, "LS" to the trend and "SO" to seasonal component.
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #'
 #' # Customize a default specification
 #' init_spec <- tramoseats_spec_default
@@ -769,7 +769,7 @@ set_outlier.default <- function(x,
 #' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #'
 #' # Customize a default specification
 #' init_spec <- x13_spec_default
@@ -911,7 +911,7 @@ set_automodel.default <- function(x,
 #' generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #' @seealso \code{\link{set_automodel}}, \code{\link{set_transform}}
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' # Customize a default specification
 #' init_spec <- x13_spec_default
 #'
@@ -1176,7 +1176,7 @@ set_arima.default <- function(x,
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' # Pre-defined regressors
 #' y_raw <- ABS$X0.2.09.10.M
 #'
@@ -1517,7 +1517,7 @@ set_tradingdays.default <- function(x,
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-calendar-correction}
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #'
 #' # Customize a default specification
 #' init_spec <- x13_spec_default
@@ -1655,7 +1655,7 @@ set_easter.default <- function(x, enabled = NA,
 #' More information in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/}
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' # Customize a default specification
 #' init_spec <- x13_spec_default
 #' new_spec <- set_transform(x = init_spec, fun = "Log", outliers = TRUE)
@@ -1756,7 +1756,7 @@ set_transform.default <- function(x,
 #'   \item \code{"SeasonallyAdjusted"}: after the decomposition the effect is allocated to the seasonally adjusted series: \eqn{sa_t=T+I+effect}
 #' }
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #'
 #' # Creating one or several external regressors (TS objects),
 #' # which will be gathered in one or several groups

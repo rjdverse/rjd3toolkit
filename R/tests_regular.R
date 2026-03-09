@@ -17,7 +17,7 @@ NULL
 #' \item{\code{pvalue}} the p-value of the test.
 #' \item{\code{distribution}} the statistical distribution used.
 #' }
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' udr_test <- testofupdownruns(random_t(5, 1000))
 #' udr_test # default print
 #' print(udr_test, details = TRUE) # with the distribution
@@ -71,7 +71,7 @@ print.JD3_TEST <- function(x, details = FALSE, ...) {
 #'
 #' @returns A \code{c("JD3_TEST", "JD3")} object (see [statisticaltest()] for details).
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' ljungbox(random_t(2, 100), lag = 24, k = 1)
 #' ljungbox(ABS$X0.2.09.10.M, lag = 24, k = 1)
 #' @export
@@ -94,7 +94,7 @@ ljungbox <- function(data, k = 1, lag = 1, nhp = 0, sign = 0, mean = TRUE) {
 #'
 #' @returns A \code{c("JD3_TEST", "JD3")} object (see \code{\link{statisticaltest}} for details).
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' x <- rnorm(100) # null
 #' bowmanshenton(x)
 #' doornikhansen(x)
@@ -164,7 +164,7 @@ jarquebera <- function(data, k = 0, sample = TRUE) {
 #' details).
 #' @name runstests
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' x <- random_t(5, 1000)
 #' # random values
 #' testofruns(x)
@@ -207,7 +207,7 @@ testofupdownruns <- function(data, number = TRUE) {
 #' \code{autocorrelations_inverse()} returns a vector of length \code{n} with
 #' the inverse autocorrelations.
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' x <- ABS$X0.2.09.10.M
 #' autocorrelations(x)
 #' autocorrelations_partial(x)
@@ -267,7 +267,7 @@ kurtosis <- function(data) {
 #' @returns The median absolute deviation
 #' @export
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' y <- rnorm(1000)
 #' m <- rjd3toolkit::mad(y, centile = 70)
 mad <- function(data, centile = 50, medianCorrected = TRUE) {

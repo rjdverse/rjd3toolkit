@@ -46,7 +46,7 @@ Set of functions to test the normality of a time series.
 
 }}
 \examples{
-\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 x <- rnorm(100) # null
 bowmanshenton(x)
 doornikhansen(x)

@@ -36,7 +36,7 @@
 #'
 #' @returns The modified specification with new estimation span
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf get_java_version() >= minimal_java_version
 #' init_spec <- x13_spec_default
 #' new_spec <- set_benchmarking(
 #'     x = init_spec,
