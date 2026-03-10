@@ -46,6 +46,6 @@ seasonality_f(ABS$X0.2.09.10.M, model = "D1")
 #> Value: 388.7851 
 #> P-Value: 0.0000 
 seasonality_f(random_t(2, 1000), 7)
-#> Value: 0.5346087 
-#> P-Value: 0.7822 
+#> Value: 0.4312729 
+#> P-Value: 0.8583 
 ```
