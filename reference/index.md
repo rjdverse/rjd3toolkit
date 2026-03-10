@@ -472,6 +472,7 @@ Functions to easily interact between R and Java objects
   [`.r2jd_tmp_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_tscollection()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
+  [`get_java_version()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`current_java_version`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`minimal_java_version`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`get_date_min()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)

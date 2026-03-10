@@ -1,8 +1,6 @@
 # Changelog
 
-## rjd3toolkit 3.6.0
-
-CRAN release: 2026-01-13
+## rjd3toolkit 3.6.0.9000
 
 All notable changes to this project will be documented in this file.
 
@@ -14,7 +12,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Fixed
 
-- Bug with to_tscollection() (moniker conversion)
+- Bug with
+  [`to_tscollection()`](https://rjdverse.github.io/rjd3toolkit/reference/to_tscollection.md)
+  (moniker conversion)
+
+#### Changed
+
+- Use
+  [`get_java_version()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
+  instead of `current_java_version`
 
 ### [3.6.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.6.0) - 2025-11-21
 
@@ -22,7 +28,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - default group value with mts objects in modelling_context
   [\#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
-- Examples are executed only if Java version \>= 17
+- Examples are executed only if Java version \>= 21
 
 #### Removed
 
@@ -32,7 +38,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Added
 
-- `get_java_version()` function to compute the Java installed version
+- [`get_java_version()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
+  function to compute the Java installed version
 - `current_java_version` character string with the current installed
   Java version
 - `minimal_java_version` character string with the minimum viable Java
