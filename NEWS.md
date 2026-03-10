@@ -8,6 +8,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.7.1] - 2026-03-10
+
+
 ### Fixed
 
 * Bug with `to_tscollection()`  (moniker conversion)
@@ -108,7 +111,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Release based on JD+_main : v3.0.2
 
 
-[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...HEAD
+[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...HEAD
+[3.7.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...v3.7.1
 [3.6.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.6.0
 [3.5.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.0...v3.5.1
 [3.5.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.3.0...v3.5.0
