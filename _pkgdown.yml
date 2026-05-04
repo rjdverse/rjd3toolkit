@@ -190,7 +190,6 @@ reference:
     - '`density_inverse_gamma`'
     - '`random_inverse_gamma`'
     - '`density_inverse_gaussian`'
-    - '`cdf_inverse_gaussian`'
     - '`random_inverse_gaussian`'
     - '`density_t`'
     - '`cdf_t`'

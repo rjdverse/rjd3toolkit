@@ -21,8 +21,8 @@ random_t(df, n)
 \item{n}{number of observations.}
 }
 \value{
-The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
-The functions random_XXX return random number (numeric vectors) of length \code{n}.
+Functions density_XXX and cdf_XXX return numeric vectors of same length as \code{x}.
+Function random_XXX returns \code{n} random numbers (numeric vector of length \code{n}).
 }
 \description{
 Probability Density Function (PDF), Cumulative Density Function (CDF) and generation of random variables following a Student distribution.
@@ -33,7 +33,7 @@ Probability Density Function (PDF), Cumulative Density Function (CDF) and genera
 z <- density_t(df = 2, .01 * seq(-100, 100, 1))
 # Generating a random vector with each component drawn from a T(2) distribution
 z <- random_t(2, 100)
-# Computing the probabilty that the random variable X following a T distribution
+# Computing the probability that the random variable X following a T distribution
 # with df degrees of freedom is lower than x
 z <- cdf_t(df = 12, x = 1.2)
 z

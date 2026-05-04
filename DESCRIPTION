@@ -36,7 +36,6 @@ Encoding: UTF-8
 Language: en-GB
 LazyData: TRUE
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 SystemRequirements: Java (>= 21)
 Collate: 
     'utils.R'
@@ -66,3 +65,4 @@ Collate:
     'timeseries.R'
     'variables.R'
     'zzz.R'
+Config/roxygen2/version: 8.0.0

@@ -2,14 +2,11 @@
 % Please edit documentation in R/distributions.R
 \name{density_inverse_gaussian}
 \alias{density_inverse_gaussian}
-\alias{cdf_inverse_gaussian}
 \alias{invgaussiandistribution}
 \alias{random_inverse_gaussian}
 \title{Inverse-Gaussian Distribution}
 \usage{
 density_inverse_gaussian(shape, scale, x)
-
-cdf_inverse_gaussian(shape, scale, x)
 
 random_inverse_gaussian(shape, scale, n)
 }
@@ -23,15 +20,15 @@ random_inverse_gaussian(shape, scale, n)
 \value{
 numeric vector
 
-The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
-The functions random_XXX return random number (numeric vectors) of length \code{n}.
+Functions density_XXX and cdf_XXX return numeric vectors of same length as \code{x}.
+Functions random_XXX return \code{n} random numbers (numeric vectors of length \code{n}).
 }
 \description{
-Density, (cumulative) distribution function and random generation for inverse-gaussian distribution.
+Density and random generation for inverse-gaussian (Wald) distribution.
 }
 \examples{
 \dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
 density_inverse_gaussian(shape = 1, scale = 2, x = 1:10)
-random_inverse_gaussian(shape = 1, scale = 2, n = 10)
+random_inverse_gaussian(shape = 1, scale = 2, n = 5)
 \dontshow{\}) # examplesIf}
 }

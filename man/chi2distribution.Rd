@@ -5,7 +5,7 @@
 \alias{cdf_chi2}
 \alias{chi2distribution}
 \alias{random_chi2}
-\title{Chi-Squared Distribution}
+\title{Chi-Square Distribution}
 \usage{
 density_chi2(df, x)
 
@@ -23,16 +23,23 @@ random_chi2(df, n)
 \value{
 numeric vector
 
-The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
-The functions random_XXX return random number (numeric vectors) of length \code{n}.
+Functions density_XXX and cdf_XXX return numeric vectors of same length as \code{x}.
+Function random_XXX returns \code{n} random numbers (numeric vector of length \code{n}).
 }
 \description{
-Density, (cumulative) distribution function and random generation for chi-squared distribution.
+Density, cumulative distribution function and random generation for chi-square distribution.
 }
 \examples{
 \dontshow{if (get_java_version() >= minimal_java_version) withAutoprint(\{ # examplesIf}
-density_chi2(df = 3, 1:10)
-cdf_chi2(df = 3, 1:10)
-random_chi2(df = 3, n = 10)
+# Probability density function for a Chi-Square distribution with 3 degrees of freedom.
+z <-density_chi2(df = 3,.01 * seq(-100, 100, 1))
+
+# Computing the probability that the random variable X following a Chi-Square distribution
+# with df degrees of freedom is lower than x
+cdf_chi2(df = 3, x= 1:10)
+
+# Generating a random vector with each component drawn from a Chi-square distribution
+with df degrees of freedom
+z <- random_chi2(df = 3, n = 10)
 \dontshow{\}) # examplesIf}
 }

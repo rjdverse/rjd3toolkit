@@ -16,7 +16,7 @@ A data frame with 210384 rows and 3 variables:
 \url{https://www.rte-france.com/en/data-publications/eco2mix/download-indicators}
 }
 \usage{
-Electricity
+data(Electricity)
 }
 \description{
 Data Base: French national electricity consumption

@@ -48,3 +48,5 @@ cran-comments.md
 
 ^lychee\.toml$
 ^\.lycheeignore$
+^\.positai$
+^\.claude$

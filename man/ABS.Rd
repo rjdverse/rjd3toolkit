@@ -11,7 +11,7 @@ An object of class \code{data.frame} with 425 rows and 22 columns.
 ABS
 }
 \usage{
-ABS
+data(ABS)
 }
 \description{
 Data Base: Retail trade series in Australia

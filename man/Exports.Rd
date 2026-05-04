@@ -11,7 +11,7 @@ An object of class \code{list} of length 34.
 NBB
 }
 \usage{
-Exports
+data(Exports)
 }
 \description{
 Data Base: Belgian exports to European countries

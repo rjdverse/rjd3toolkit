@@ -8,15 +8,15 @@
 #' @param x vector of quantiles.
 #'
 #' @returns
-#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
-#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
+#' Functions density_XXX and cdf_XXX return numeric vectors of same length as \code{x}.
+#' Function random_XXX returns \code{n} random numbers (numeric vector of length \code{n}).
 #'
 #' @examplesIf get_java_version() >= minimal_java_version
 #' # Probability density function of T with 2 degrees of freedom.
 #' z <- density_t(df = 2, .01 * seq(-100, 100, 1))
 #' # Generating a random vector with each component drawn from a T(2) distribution
 #' z <- random_t(2, 100)
-#' # Computing the probabilty that the random variable X following a T distribution
+#' # Computing the probability that the random variable X following a T distribution
 #' # with df degrees of freedom is lower than x
 #' z <- cdf_t(df = 12, x = 1.2)
 #' z
@@ -44,26 +44,33 @@ cdf_t <- function(df, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfT", df, .jarray(as.numeric(x)))
 }
 
-#' @title Chi-Squared Distribution
+#' @title Chi-Square Distribution
 #'
 #' @description
-#' Density, (cumulative) distribution function and random generation for chi-squared distribution.
+#' Density, cumulative distribution function and random generation for chi-square distribution.
 #' @return numeric vector
 #'
 #' @inheritParams studentdistribution
 #'
 #' @returns
-#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
-#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
+#' Functions density_XXX and cdf_XXX return numeric vectors of same length as \code{x}.
+#' Function random_XXX returns \code{n} random numbers (numeric vector of length \code{n}).
 #'
 #' @name chi2distribution
 #' @rdname chi2distribution
 #' @order 3
 #'
 #' @examplesIf get_java_version() >= minimal_java_version
-#' density_chi2(df = 3, 1:10)
-#' cdf_chi2(df = 3, 1:10)
-#' random_chi2(df = 3, n = 10)
+#' # Probability density function for a Chi-Square distribution with 3 degrees of freedom.
+#' z <-density_chi2(df = 3,.01 * seq(-100, 100, 1))
+#'
+#' # Computing the probability that the random variable X following a Chi-Square distribution
+#' # with df degrees of freedom is lower than x
+#' cdf_chi2(df = 3, x= 1:10)
+#'
+#' # Generating a random vector with each component drawn from a Chi-square distribution
+#' with df degrees of freedom
+#' z <- random_chi2(df = 3, n = 10)
 #'
 #' @export
 random_chi2 <- function(df, n) {
@@ -167,14 +174,14 @@ cdf_inverse_gamma <- function(shape, scale, x) {
 #' @title Inverse-Gaussian Distribution
 #'
 #' @description
-#' Density, (cumulative) distribution function and random generation for inverse-gaussian distribution.
+#' Density and random generation for inverse-gaussian (Wald) distribution.
 #' @return numeric vector
 #'
 #' @inheritParams gammadistribution
 #'
 #' @returns
-#' The functions density_XXX and cdf_t return numeric vectors of same length as \code{x}.
-#' The functions random_XXX return random number (numeric vectors) of length \code{n}.
+#' Functions density_XXX and cdf_XXX return numeric vectors of same length as \code{x}.
+#' Functions random_XXX return \code{n} random numbers (numeric vectors of length \code{n}).
 #'
 #' @name invgaussiandistribution
 #' @rdname invgaussiandistribution
@@ -182,7 +189,7 @@ cdf_inverse_gamma <- function(shape, scale, x) {
 #'
 #' @examplesIf get_java_version() >= minimal_java_version
 #' density_inverse_gaussian(shape = 1, scale = 2, x = 1:10)
-#' random_inverse_gaussian(shape = 1, scale = 2, n = 10)
+#' random_inverse_gaussian(shape = 1, scale = 2, n = 5)
 #'
 #' @export
 random_inverse_gaussian <- function(shape, scale, n) {
@@ -196,9 +203,4 @@ density_inverse_gaussian <- function(shape, scale, x) {
     .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "densityInverseGaussian", shape, scale, .jarray(as.numeric(x)))
 }
 
-#' @rdname invgaussiandistribution
-#' @order 2
-#' @export
-cdf_inverse_gaussian <- function(shape, scale, x) {
-    .jcall("jdplus/toolkit/base/r/stats/Distributions", "[D", "cdfInverseGaussian", shape, scale, .jarray(as.numeric(x)))
-}
+

@@ -11,7 +11,7 @@ An object of class \code{list} of length 62.
 US-Census Bureau
 }
 \usage{
-Retail
+data(Retail)
 }
 \description{
 Data Base: US Retail trade series

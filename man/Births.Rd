@@ -16,7 +16,7 @@ INSEE, Statistiques de l'état civil –
 \url{https://www.insee.fr/fr/statistiques/8582123?sommaire=8582147}
 }
 \usage{
-Births
+data(Births)
 }
 \description{
 Daily number of births recorded in France (metropolitan + DOM),
