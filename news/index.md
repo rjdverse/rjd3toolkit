@@ -23,6 +23,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Use
   [`get_java_version()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   instead of `current_java_version`
+- New JARS related to version
+  [3.7.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.7.1)
 
 ### [3.6.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.6.0) - 2025-11-21
 
@@ -31,6 +33,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - default group value with mts objects in modelling_context
   [\#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
 - Examples are executed only if Java version \>= 21
+- New JARS related to version
+  [3.6.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.6.0)
 
 #### Removed
 
@@ -58,9 +62,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `Births` (Number of births registered in France from 1968 to 2024),
   `x13_spec_default`(Default X13 specification) and
   `tramoseats_spec_default` (Default Tramo-Seats specification)
-
-#### Added
-
 - New [`print()`](https://rdrr.io/r/base/print.html) and
   [`summary()`](https://rdrr.io/r/base/summary.html) method for
   `JD3_DICTIONARY` and `JD3_FULL_DICTIONARY`
@@ -69,13 +70,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Changed
 
-- New JARS
+- New JARS related to version
+  [3.5.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.5.1)
 
 ### [3.5.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.3.0...v3.5.0) - 2025-04-09
 
 #### Changed
 
-- New JARS
+- New JARS related to version
+  [3.5.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.5.0)
 - Replace `.` with `_` in function’s name
   [\#88](https://github.com/rjdverse/rjd3toolkit/issues/88)
 - The dataset `retail` is renamed `Retail`
@@ -96,7 +99,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Changed
 
-- New JARS
+- New JARS related to version
+  [3.3.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.3.0)
 - Improve Canova-Hansen tests for seasonality and trading days (new
   options, more output)
 - Document (UC)ARIMA models
@@ -105,8 +109,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Changed
 
-- New .jar (related to release
-  [3.2.4](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.4))
+- New JARS related to version
+  [3.2.4](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.4)
 - Some linting of R functions
 
 #### Fixed
@@ -116,14 +120,35 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [3.2.2](https://github.com/rjdverse/rjd3toolkit/compare/v3.2.1...v3.2.2) - 2024-03-15
 
+#### Changed
+
+- New JARS related to version
+  [3.2.2](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.2)
+
 ### [3.2.1](https://github.com/rjdverse/rjd3toolkit/compare/v3.2.0...v3.2.1) - 2023-12-12
+
+#### Changed
+
+- New JARS related to version
+  [3.2.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.1)
 
 ### [3.2.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.1.0...v3.2.0) - 2023-11-24
 
+#### Changed
+
+- New JARS related to version
+  [3.2.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.0)
+
 ### [3.1.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.0.0...v3.1.0) - 2023-10-11
+
+#### Changed
+
+- New JARS related to version
+  [3.1.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.1.0)
 
 ### [3.0.0](https://github.com/rjdverse/rjd3toolkit/releases/tag/v3.0.0) - 2023-06-14
 
 #### Added
 
-- Release based on JD+\_main : v3.0.2
+- New JARS related to version
+  [3.0.2](https://github.com/jdemetra/jdplus-main/releases/tag/v3.0.2)
