@@ -60,7 +60,8 @@ set_benchmarking(
 - bias:
 
   Character. Bias correction factor. No systematic bias is considered by
-  default. See `vignette(topic = "rjd3bench", package = "rjd3bench")`
+  default. See
+  [`vignette(topic = "rjd3bench", package = "rjd3bench")`](https://rjdverse.github.io/rjd3bench/articles/rjd3bench.html)
   for more details.
 
 ## Value

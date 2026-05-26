@@ -5,7 +5,7 @@ Data Base: Belgian imports from European countries
 ## Usage
 
 ``` r
-Imports
+data(Imports)
 ```
 
 ## Format

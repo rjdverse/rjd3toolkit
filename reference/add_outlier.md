@@ -70,6 +70,7 @@ online documentation: <https://jdemetra-new-documentation.netlify.app/>
 ## Examples
 
 ``` r
+
 init_spec <- x13_spec_default
 
 # Adding outlier on year 2012

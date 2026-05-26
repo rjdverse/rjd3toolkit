@@ -1,6 +1,6 @@
 # Gamma Distribution
 
-Density, (cumulative) distribution function and random generation for
+Density, cumulative distribution function and random generation for a
 Gamma distribution.
 
 ## Usage
@@ -31,20 +31,24 @@ random_gamma(shape, scale, n)
 
 numeric vector
 
-The functions density_XXX and cdf_t return numeric vectors of same
-length as `x`. The functions random_XXX return random number (numeric
-vectors) of length `n`.
+Functions density_XXX and cdf_t return numeric vectors of same length as
+`x`. Function random_XXX returns a numeric vector of length `n`.
 
 ## Examples
 
 ``` r
-density_gamma(shape = 1, scale = 2, x = 1:10)
-#>  [1] 0.303265330 0.183939721 0.111565080 0.067667642 0.041042499 0.024893534
-#>  [7] 0.015098692 0.009157819 0.005554498 0.003368973
-cdf_gamma(shape = 1, scale = 2, x = 1:10)
+# Probability density function for a Gamma distribution
+z <-density_gamma(shape = 7.5, scale =0.5 , x=.001 * seq(0, 300, 1))
+# Computing the probability that the random variable X following a Gamma distribution
+# with shape 1 and scale 2 is lower than x
+z<-cdf_gamma(shape = 1, scale = 2, x = 1:10)
+z
 #>  [1] 0.3934693 0.6321206 0.7768698 0.8646647 0.9179150 0.9502129 0.9698026
 #>  [8] 0.9816844 0.9888910 0.9932621
-random_gamma(shape = 1, scale = 2, n = 10)
-#>  [1] 1.3296696 2.6404941 0.4725842 1.2722563 1.8961828 0.3877253 0.2027756
-#>  [8] 1.5521831 1.0282263 1.9936514
+# Generating a random vector with each component drawn from a Gamma distribution
+# with shape 1 and scale 2
+z<- random_gamma(shape = 1, scale = 2, n = 10)
+z
+#>  [1] 1.3666626 2.5736638 0.4843587 1.3032372 4.3262089 0.4146952 1.0288316
+#>  [8] 1.5299768 4.2842621 0.7169014
 ```

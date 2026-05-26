@@ -68,6 +68,7 @@ Returns a java object of class JD3_LIKELIHOOD.
 ## Examples
 
 ``` r
+
 # Values used below are taken from the following estimation
 # m <- rjd3x13::x13(rjd3toolkit::ABS$X0.2.09.10.M, "rsa3")
 # m$result$preprocessing$estimation$likelihood

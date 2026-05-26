@@ -169,6 +169,7 @@ documentation: <https://jdemetra-new-documentation.netlify.app/>
 ## Examples
 
 ``` r
+
 # Customize a default specification
 init_spec <- x13_spec_default
 new_spec <- set_automodel(x = init_spec, enabled = FALSE, acceptdefault = TRUE)

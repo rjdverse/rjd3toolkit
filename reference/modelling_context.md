@@ -40,6 +40,7 @@ documentation: <https://jdemetra-new-documentation.netlify.app/>
 ## Examples
 
 ``` r
+
 # Creating one or several external regressors (TS objects), which will
 # be gathered in one or several groups
 iv1 <- intervention_variable(12, c(2000, 1), 60,

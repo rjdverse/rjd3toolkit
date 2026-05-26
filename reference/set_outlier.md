@@ -121,6 +121,7 @@ online documentation: <https://jdemetra-new-documentation.netlify.app/>
 ## Examples
 
 ``` r
+
 # Customize a default specification
 init_spec <- tramoseats_spec_default
 new_spec <- set_outlier(

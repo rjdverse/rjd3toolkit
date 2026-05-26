@@ -35,6 +35,7 @@ a configuration in R is explained
 To install it, you have to launch the following command line:
 
 ``` r
+
 install.packages("rjd3toolkit")
 ```
 
@@ -42,6 +43,7 @@ To get the current development version of **{rjd3toolkit}** from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("rjdverse/rjd3toolkit")
 ```

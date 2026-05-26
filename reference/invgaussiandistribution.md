@@ -1,14 +1,12 @@
 # Inverse-Gaussian Distribution
 
-Density, (cumulative) distribution function and random generation for
-inverse-gaussian distribution.
+Density and random generation for an Inverse-Gaussian (Wald)
+distribution.
 
 ## Usage
 
 ``` r
 density_inverse_gaussian(shape, scale, x)
-
-cdf_inverse_gaussian(shape, scale, x)
 
 random_inverse_gaussian(shape, scale, n)
 ```
@@ -31,17 +29,17 @@ random_inverse_gaussian(shape, scale, n)
 
 numeric vector
 
-The functions density_XXX and cdf_t return numeric vectors of same
-length as `x`. The functions random_XXX return random number (numeric
-vectors) of length `n`.
+Functions density_XXX and cdf_XXX return numeric vectors of same length
+as `x`. Function random_XXX returns a numeric vector of length `n`).
 
 ## Examples
 
 ``` r
-density_inverse_gaussian(shape = 1, scale = 2, x = 1:10)
-#>  [1] 5.641896e-01 1.209854e-01 2.862094e-02 7.433143e-03 2.056969e-03
-#>  [6] 5.951656e-04 1.779359e-04 5.454267e-05 1.705081e-05 5.415515e-06
-random_inverse_gaussian(shape = 1, scale = 2, n = 10)
-#>  [1] 2.1346720 0.6565176 1.7478655 0.7882034 0.6500500 1.5773267 0.3820930
-#>  [8] 0.4527496 2.0789275 0.2733796
+# Probability density function for an Inverse Gaussian distribution
+z <-density_inverse_gaussian(shape = 1, scale = 2, x = 0.1* 0:30)
+# Generating a random vector with each component drawn from an Inverse Gaussian distribution
+# with shape 1 and scale 2
+z<-random_inverse_gaussian(shape = 1, scale = 2, n = 5)
+z
+#> [1] 0.8207848 0.4208206 0.4582413 0.9415350 0.4258811
 ```

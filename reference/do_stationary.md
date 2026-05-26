@@ -37,6 +37,7 @@ Stationary transformation
 ## Examples
 
 ``` r
+
 do_stationary(log(ABS$X0.2.09.10.M), 12)
 #> $ddata
 #>                Jan           Feb           Mar           Apr           May

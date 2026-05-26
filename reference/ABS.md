@@ -5,7 +5,7 @@ Data Base: Retail trade series in Australia
 ## Usage
 
 ``` r
-ABS
+data(ABS)
 ```
 
 ## Format

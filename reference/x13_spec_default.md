@@ -7,7 +7,7 @@ specification customization functions in {rjd3toolkit} generated with
 ## Usage
 
 ``` r
-x13_spec_default
+data(x13_spec_default)
 ```
 
 ## Format

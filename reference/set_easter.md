@@ -98,6 +98,7 @@ documentation:
 ## Examples
 
 ``` r
+
 # Customize a default specification
 init_spec <- x13_spec_default
 new_spec <- set_easter(

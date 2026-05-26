@@ -229,12 +229,6 @@ get_date_min()
 get_date_max()
 ```
 
-## Format
-
-An object of class `integer` of length 1.
-
-An object of class `integer` of length 1.
-
 ## Arguments
 
 - s:

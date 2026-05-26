@@ -76,6 +76,7 @@ documentation:
 ## Examples
 
 ``` r
+
 # Monthly regressors for Trading Days: each type of day is different
 # contrasts to Sundays (6 series)
 regs_td <- td(12, c(2020, 1), 60, groups = c(1, 2, 3, 4, 5, 6, 0), contrasts = TRUE)

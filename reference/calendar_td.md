@@ -89,6 +89,7 @@ documentation: <https://jdemetra-new-documentation.netlify.app/>
 ## Examples
 
 ``` r
+
 BE <- national_calendar(list(
     fixed_day(7, 21),
     special_day("NEWYEAR"),

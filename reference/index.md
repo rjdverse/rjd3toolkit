@@ -242,7 +242,7 @@ PDFs, CDFs and inverses
 - [`density_chi2()`](https://rjdverse.github.io/rjd3toolkit/reference/chi2distribution.md)
   [`cdf_chi2()`](https://rjdverse.github.io/rjd3toolkit/reference/chi2distribution.md)
   [`random_chi2()`](https://rjdverse.github.io/rjd3toolkit/reference/chi2distribution.md)
-  : Chi-Squared Distribution
+  : Chi-Square Distribution
 - [`density_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/gammadistribution.md)
   [`cdf_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/gammadistribution.md)
   [`random_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/gammadistribution.md)
@@ -252,13 +252,12 @@ PDFs, CDFs and inverses
   [`random_inverse_gamma()`](https://rjdverse.github.io/rjd3toolkit/reference/invgammadistribution.md)
   : Inverse-Gamma Distribution
 - [`density_inverse_gaussian()`](https://rjdverse.github.io/rjd3toolkit/reference/invgaussiandistribution.md)
-  [`cdf_inverse_gaussian()`](https://rjdverse.github.io/rjd3toolkit/reference/invgaussiandistribution.md)
   [`random_inverse_gaussian()`](https://rjdverse.github.io/rjd3toolkit/reference/invgaussiandistribution.md)
   : Inverse-Gaussian Distribution
 - [`density_t()`](https://rjdverse.github.io/rjd3toolkit/reference/studentdistribution.md)
   [`cdf_t()`](https://rjdverse.github.io/rjd3toolkit/reference/studentdistribution.md)
   [`random_t()`](https://rjdverse.github.io/rjd3toolkit/reference/studentdistribution.md)
-  : Student Distribution
+  : Student (T) Distribution
 
 ## Splines
 
