@@ -30,7 +30,7 @@ list of calendars and variables
 ## References
 
 More information on auxiliary variables in JDemetra+ online
-documentation: <https://jdemetra-new-documentation.netlify.app/>
+documentation: <https://doc.jdemetra.org/a-outlier-detection>
 
 ## See also
 

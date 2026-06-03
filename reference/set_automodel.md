@@ -159,7 +159,7 @@ with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
 ## References
 
 More information on reg-arima modelling in JDemetra+ online
-documentation: <https://jdemetra-new-documentation.netlify.app/>
+documentation: <https://doc.jdemetra.org/>
 
 ## See also
 

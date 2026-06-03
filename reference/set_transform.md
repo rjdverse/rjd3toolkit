@@ -70,7 +70,7 @@ with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
 ## References
 
 More information in JDemetra+ online documentation:
-<https://jdemetra-new-documentation.netlify.app/>
+<https://doc.jdemetra.org/a-sa-pre-treatment#sa-pre-t-mode>
 
 ## See also
 

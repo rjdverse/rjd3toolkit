@@ -33,7 +33,7 @@ returns an object of class `c("JD3_CALENDAR","JD3_CALENDARDEFINITION")`
 ## References
 
 More information on calendar correction in JDemetra+ online
-documentation: <https://jdemetra-new-documentation.netlify.app/>
+documentation: <https://doc.jdemetra.org/a-calendar-correction>
 
 ## See also
 

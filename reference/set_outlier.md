@@ -111,7 +111,7 @@ component.
 ## References
 
 More information on outliers and other auxiliary variables in JDemetra+
-online documentation: <https://jdemetra-new-documentation.netlify.app/>
+online documentation: <https://doc.jdemetra.org/a-outlier-detection>
 
 ## See also
 
@@ -128,7 +128,7 @@ new_spec <- set_outlier(
     x = init_spec,
     span.type = "From",
     d0 = "2012-01-01",
-    outliers.type = c("LS", "AO"),
+    outliers.type = c("TC", "AO"),
     critical.value = 5,
     tc.rate = 0.85
 )

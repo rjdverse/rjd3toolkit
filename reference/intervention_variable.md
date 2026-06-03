@@ -74,7 +74,8 @@ classical level shift.
 ## References
 
 More information on auxiliary variables in JDemetra+ online
-documentation: <https://jdemetra-new-documentation.netlify.app/>
+documentation:
+<https://jdemetra-new-documentation.netlify.app/a-outlier-detection>
 
 ## See also
 

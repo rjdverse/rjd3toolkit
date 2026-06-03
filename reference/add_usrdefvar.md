@@ -96,7 +96,7 @@ regressor can be allocated:
 ## References
 
 More information on outliers and other auxiliary variables in JDemetra+
-online documentation: <https://jdemetra-new-documentation.netlify.app/>
+online documentation: <https://doc.jdemetra.org/a-outlier-detection>
 
 ## See also
 

@@ -79,7 +79,7 @@ with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
 ## References
 
 More information on benchmarking in JDemetra+ online documentation:
-<https://jdemetra-new-documentation.netlify.app/>
+<https://doc.jdemetra.org/a-benchmarking>
 
 ## Examples
 

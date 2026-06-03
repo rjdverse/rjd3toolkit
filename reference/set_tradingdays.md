@@ -173,8 +173,7 @@ with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
 ## References
 
 More information on calendar correction in JDemetra+ online
-documentation:
-<https://jdemetra-new-documentation.netlify.app/a-calendar-correction>
+documentation: <https://doc.jdemetra.org/a-calendar-correction>
 
 ## See also
 

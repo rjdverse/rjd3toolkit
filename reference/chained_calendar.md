@@ -34,8 +34,7 @@ break.
 ## References
 
 More information on calendar correction in JDemetra+ online
-documentation:
-<https://jdemetra-new-documentation.netlify.app/a-calendar-correction>
+documentation: <https://doc.jdemetra.org/a-calendar-correction>
 
 ## See also
 

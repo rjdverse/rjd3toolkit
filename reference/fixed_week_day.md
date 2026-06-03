@@ -42,8 +42,7 @@ returns an object of class `c("JD3_FIXEDWEEKDAY","JD3_HOLIDAY")`
 ## References
 
 More information on calendar correction in JDemetra+ online
-documentation:
-<https://jdemetra-new-documentation.netlify.app/a-calendar-correction>
+documentation: <https://doc.jdemetra.org/a-calendar-correction>
 
 ## See also
 
