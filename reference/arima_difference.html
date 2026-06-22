@@ -78,7 +78,9 @@ auto-regressive and in the moving average polynomials, including unit roots)</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span>variance <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">diff</span> <span class="op">&lt;-</span> <span class="fu">arima_difference</span><span class="op">(</span><span class="va">mod1</span>, <span class="va">mod2</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .jcheck():</span> java.lang.ExceptionInInitializerError</span>
 <span class="r-in"><span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_sum.html">arima_sum</a></span><span class="op">(</span><span class="va">diff</span>, <span class="va">mod2</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in model$ar:</span> object of type 'closure' is not subsettable</span>
 <span class="r-in"><span><span class="co"># sum should be equal to mod1</span></span></span>
 </code></pre></div>
     </div>

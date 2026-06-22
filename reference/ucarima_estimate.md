@@ -34,9 +34,14 @@ deviations if stdev is TRUE.
 mod1 <- arima_model("trend", delta = c(1, -2, 1))
 mod2 <- arima_model("noise", variance = 16)
 hp <- ucarima_model(components = list(mod1, mod2))
+#> Error in .jcheck(): java.lang.NoClassDefFoundError: Could not initialize class jdplus.toolkit.base.protobuf.modelling.ModellingProtos$ArimaModel
 s <- log(aggregate(Retail$AutomobileDealers))
 all <- ucarima_estimate(s, hp, stdev = TRUE)
+#> Error: object 'hp' not found
 plot(s, type = "l")
+
 t <- ts(all[, 1], frequency = frequency(s), start = start(s))
+#> Error in all[, 1]: object of type 'builtin' is not subsettable
 lines(t, col = "blue")
+#> Error in as.double(y): cannot coerce type 'closure' to vector of type 'double'
 ```

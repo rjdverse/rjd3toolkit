@@ -36,5 +36,7 @@ A new UCARIMA model
 mod1 <- arima_model("trend", delta = c(1, -2, 1))
 mod2 <- arima_model("noise", variance = 1600)
 hp <- ucarima_model(components = list(mod1, mod2))
+#> Error in .jcheck(): java.lang.NoClassDefFoundError: Could not initialize class jdplus.toolkit.base.protobuf.modelling.ModellingProtos$ArimaModel
 hpc <- ucarima_canonical(hp, cmp = 2)
+#> Error: object 'hp' not found
 ```

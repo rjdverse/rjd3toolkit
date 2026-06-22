@@ -39,11 +39,7 @@ A list with the reduced model, the components and their complements
 mod1 <- arima_model("trend", delta = c(1, -2, 1))
 mod2 <- arima_model("noise", variance = 1600)
 hp <- ucarima_model(components = list(mod1, mod2))
+#> Error in .jcheck(): java.lang.NoClassDefFoundError: Could not initialize class jdplus.toolkit.base.protobuf.modelling.ModellingProtos$ArimaModel
 print(hp$model)
-#> arima 
-#> 
-#> DIF: 1 -2 1 
-#> MA: 1 -1.777091 0.7994438 
-#> var:  2001.392 
-#> 
+#> Error: object 'hp' not found
 ```
