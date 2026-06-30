@@ -42,6 +42,6 @@ s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_friedman(s)
 #> Error: object 's' not found
 seasonality_friedman(random_t(2, 1000), 12)
-#> Value: 13.99722 
-#> P-Value: 0.2331 
+#> Value: 5.84152 
+#> P-Value: 0.8837 
 ```

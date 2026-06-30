@@ -43,6 +43,6 @@ s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_qs(s)
 #> Error: object 's' not found
 seasonality_qs(random_t(2, 1000), 7)
-#> Value: 0 
-#> P-Value: 1.0000 
+#> Value: 2.266338 
+#> P-Value: 0.3220 
 ```

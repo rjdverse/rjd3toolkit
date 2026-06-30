@@ -42,6 +42,6 @@ s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_periodogram(s)
 #> Error: object 's' not found
 seasonality_periodogram(random_t(2, 1000), 7)
-#> Value: 0.7624808 
-#> P-Value: 0.5995 
+#> Value: 0.9244779 
+#> P-Value: 0.4763 
 ```

@@ -42,6 +42,6 @@ s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 seasonality_kruskalwallis(s)
 #> Error: object 's' not found
 seasonality_kruskalwallis(random_t(2, 1000), 7)
-#> Value: 5.223753 
-#> P-Value: 0.5155 
+#> Value: 3.443359 
+#> P-Value: 0.7515 
 ```
