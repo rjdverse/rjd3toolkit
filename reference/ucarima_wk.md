@@ -44,11 +44,7 @@ squared-gain function (with the same number of points as the spectrum)
 mod1 <- arima_model("trend", delta = c(1, -2, 1))
 mod2 <- arima_model("noise", variance = 1600)
 hp <- ucarima_model(components = list(mod1, mod2))
-#> Error in .jcheck(): java.lang.NoClassDefFoundError: Could not initialize class jdplus.toolkit.base.protobuf.modelling.ModellingProtos$ArimaModel
 wk1 <- ucarima_wk(hp, 1, nwk = 50)
-#> Error: object 'hp' not found
 wk2 <- ucarima_wk(hp, 2)
-#> Error: object 'hp' not found
 plot(wk1$filter, type = "h")
-#> Error: object 'wk1' not found
 ```

@@ -1,6 +1,6 @@
 # Changelog
 
-## rjd3toolkit 3.7.1.9000
+## rjd3toolkit 3.8.0
 
 All notable changes to this project will be documented in this file.
 
@@ -10,10 +10,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased](https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...HEAD)
 
+#### Changed
+
+- Updated JARS from jdplus-main to
+  [3.8.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.8.0)
+
 #### Fixed
 
-- Fix bug in weighted calendar regressors
-  ([rjdverse/rjd3workspace#131](https://github.com/rjdverse/rjd3workspace/issues/131))
+- Fix bug in weighted calendar regressors.
+  [rjdverse/rjd3workspace#131](https://github.com/rjdverse/rjd3workspace/issues/131)
 
 ### [3.7.1](https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...v3.7.1) - 2026-03-10
 
@@ -25,9 +30,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Changed
 
-- Use
-  [`get_java_version()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
-  instead of `current_java_version`
+- Use `get_java_version()` instead of `current_java_version`
 - New JARS related to version
   [3.7.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.7.1)
 
@@ -49,8 +52,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Added
 
-- [`get_java_version()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
-  function to compute the Java installed version
+- `get_java_version()` function to compute the Java installed version
 - `current_java_version` character string with the current installed
   Java version
 - `minimal_java_version` character string with the minimum viable Java
@@ -60,7 +62,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - [`get_date_max()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   to get the maximum date
 - New example to use the functions
-  ([\#85](https://github.com/rjdverse/rjd3toolkit/issues/85))
+  [\#85](https://github.com/rjdverse/rjd3toolkit/issues/85)
 - Documentation of `bias` argument in
   [`set_benchmarking()`](https://rjdverse.github.io/rjd3toolkit/reference/set_benchmarking.md)
 - New datasets : `Electricity` (French national electricity consumtion),

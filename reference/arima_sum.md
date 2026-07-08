@@ -35,5 +35,4 @@ polynomial and innovation variance of the sum.
 mod1 <- arima_model(ar = c(0.1, 0.2), delta = 0, ma = 0)
 mod2 <- arima_model(ar = 0, delta = 0, ma = c(0.4))
 arima_sum(mod1, mod2)
-#> Error in .jcheck(): java.lang.NoClassDefFoundError: Could not initialize class jdplus.toolkit.base.protobuf.modelling.ModellingProtos$ArimaModel
 ```

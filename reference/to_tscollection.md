@@ -36,5 +36,4 @@ id2 <- "file=C%3A%5CDocuments%5CIPI%5CData%5CIPI_nace4.csv#seriesIndex=0"
 id <- paste0(id1, id2)
 source <- "Txt"
 my_collection <- to_tscollection(source, id)
-#> Error in .jcheck(): java.lang.ExceptionInInitializerError
 ```

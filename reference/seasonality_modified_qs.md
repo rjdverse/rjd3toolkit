@@ -39,7 +39,6 @@ series. Not critical.
 
 ``` r
 s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
-#> Error in .jcheck(): java.lang.NoClassDefFoundError: Could not initialize class jdplus.toolkit.base.protobuf.modelling.ModellingProtos$StationaryTransformation
 seasonality_modified_qs(s)
-#> Error: object 's' not found
+#> [1] 747.7281
 ```

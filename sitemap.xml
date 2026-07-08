@@ -43,6 +43,7 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/fixed_day.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/fixed_week_day.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/gammadistribution.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/get_toolkit_option.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/holidays.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/index.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/intervention_variable.html</loc></url>
@@ -68,7 +69,7 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/r2jd_calendarts.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ramp_variable.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/rangemean_tstat.html</loc></url>
-<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/reload_dictionaries.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/rjd3toolkit-package.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/runstests.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/sa_decomposition.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/sa_preprocessing.html</loc></url>
@@ -107,6 +108,7 @@
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/td_timevarying.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/to_ts.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/to_tscollection.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3toolkit/reference/toolkit_option.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/tramoseats_spec_default.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/trigonometric_variables.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3toolkit/reference/ts_adjust.html</loc></url>

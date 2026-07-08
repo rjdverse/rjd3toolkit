@@ -33,8 +33,6 @@ a `"JD3_ARIMA"` model.
 mod1 <- arima_model(delta = c(1, -2, 1))
 mod2 <- arima_model(variance = .01)
 diff <- arima_difference(mod1, mod2)
-#> Error in .jcheck(): java.lang.ExceptionInInitializerError
 sum <- arima_sum(diff, mod2)
-#> Error in model$ar: object of type 'closure' is not subsettable
 # sum should be equal to mod1
 ```

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.7.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,9 +78,7 @@ auto-regressive and in the moving average polynomials, including unit roots)</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_model.html">arima_model</a></span><span class="op">(</span>variance <span class="op">=</span> <span class="fl">.01</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">diff</span> <span class="op">&lt;-</span> <span class="fu">arima_difference</span><span class="op">(</span><span class="va">mod1</span>, <span class="va">mod2</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .jcheck():</span> java.lang.ExceptionInInitializerError</span>
 <span class="r-in"><span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="arima_sum.html">arima_sum</a></span><span class="op">(</span><span class="va">diff</span>, <span class="va">mod2</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in model$ar:</span> object of type 'closure' is not subsettable</span>
 <span class="r-in"><span><span class="co"># sum should be equal to mod1</span></span></span>
 </code></pre></div>
     </div>
@@ -93,7 +91,7 @@ auto-regressive and in the moving average polynomials, including unit roots)</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

@@ -31,5 +31,4 @@ An UCARIMA model
 ``` r
 model <- sarima_model(period = 12, d = 1, bd = 1, theta = -0.6, btheta = -0.5)
 ucm <- sarima_decompose(model)
-#> Error in .jcheck(): java.lang.ExceptionInInitializerError
 ```

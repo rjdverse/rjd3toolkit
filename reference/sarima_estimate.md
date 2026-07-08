@@ -71,5 +71,13 @@ An object of class `JD3_SARIMA_ESTIMATE` containing:
 ``` r
 y <- ABS$X0.2.09.10.M
 sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
-#> Error in .jcheck(): java.lang.ExceptionInInitializerError
+#> SARIMA model: (0,1,1) (0,1,1) [12]
+#> 
+#> Coefficients
+#>  theta(1) btheta(1) 
+#>   -0.8764   -0.3875 
+#> 
+#> No regression variables
+#> 
+#> For a more detailed output, use the 'summary()' function.
 ```

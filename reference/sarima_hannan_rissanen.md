@@ -55,5 +55,4 @@ An object of class `JD3_SARIMA` with the estimated coefficient.
 ``` r
 y <- ABS$X0.2.09.10.M
 model<- sarima_hannan_rissanen(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
-#> Error in .jcheck(): java.lang.ExceptionInInitializerError
 ```
