@@ -43,6 +43,6 @@ seasonality_qs(s)
 #> Value: 747.7281 
 #> P-Value: 0.0000 
 seasonality_qs(random_t(2, 1000), 7)
-#> Value: 0.5544695 
-#> P-Value: 0.7579 
+#> Value: 1.399673 
+#> P-Value: 0.4967 
 ```
