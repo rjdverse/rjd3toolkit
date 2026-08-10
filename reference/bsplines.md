@@ -25,7 +25,7 @@ bsplines(order = 4, knots, pos)
 
 ## Value
 
-A matrix (len(pos) x len(knots))
+A matrix (length(`pos`) x length(`knots`))
 
 ## Examples
 

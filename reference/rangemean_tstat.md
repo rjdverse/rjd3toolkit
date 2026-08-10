@@ -44,7 +44,7 @@ rangemean_tstat(data, period = 0, groupsize = 0, trim = 0)
 
 ## Value
 
-T-Stat of the slope of the range-mean regression.
+t-statistic of the slope of the range-mean regression.
 
 ## Details
 

@@ -20,7 +20,7 @@ periodic_csplines(x, pos)
 
 ## Value
 
-A matrix (len(pos) x len(knots))
+A matrix (length(`pos`) x length(`knots`))
 
 ## Examples
 

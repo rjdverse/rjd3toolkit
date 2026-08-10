@@ -1,7 +1,7 @@
 # Display Easter Sunday dates in given period
 
 Allows to display the date of Easter Sunday for each year, in the
-defined period. Dates are displayed in "YYYY-MM-DD" format and as a
+defined period. Dates are displayed in `"YYYY-MM-DD"` format and as a
 number of days since January 1st 1970.
 
 ## Usage
@@ -22,7 +22,7 @@ easter_dates(year0, year1, julian = FALSE)
 
 ## Value
 
-a named numeric vector. Names are the dates in format "YYYY-MM-DD",
+a named numeric vector. Names are the dates in format `"YYYY-MM-DD"`,
 values are number of days since January 1st 1970.
 
 ## References

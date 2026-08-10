@@ -68,10 +68,10 @@ The modified specification (with new user-defined variables)
 
 `x` specification parameter must be a JD3_X13_SPEC" class object
 generated with `rjd3x13::x13_spec()` (or "JD3_REGARIMA_SPEC" generated
-with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
-`rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated with
-`rjd3tramoseats::spec_tramo()`). Components to which the effect of the
-regressor can be allocated:
+with `rjd3x13::spec_regarima()` or `"JD3_TRAMOSEATS_SPEC"` generated
+with `rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated
+with `rjd3tramoseats::spec_tramo()`). Components to which the effect of
+the regressor can be allocated:
 
 - `"Undefined"` : the effect of the regressor is assigned to an
   additional component, the variable is used to improve the

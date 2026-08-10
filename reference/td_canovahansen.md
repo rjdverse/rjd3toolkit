@@ -33,7 +33,7 @@ td_canovahansen(
 
 ## Value
 
-list with the ftest on td, the joint test and the details for the
+list with the F-Test on td, the joint test and the details for the
 stability of the different days (starting with Mondays).
 
 ## Examples

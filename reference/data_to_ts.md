@@ -20,7 +20,7 @@ data_to_ts(s, name)
 
 ## Value
 
-Returns a java object of class JD3_TS
+Returns a Java object of class JD3_TS
 
 ## Examples
 

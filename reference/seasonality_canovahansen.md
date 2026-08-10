@@ -49,7 +49,7 @@ seasonality_canovahansen(
 
 ## Value
 
-list with the FTest on seasonal variables, the joint test and the
+list with the F-Test on seasonal variables, the joint test and the
 details for the stability of the different seasonal variables
 
 ## Examples

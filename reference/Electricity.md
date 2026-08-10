@@ -16,7 +16,7 @@ A data frame with 210384 rows and 3 variables:
 
 - Hours: Timestamp of the event (from 00:00 AM to 11:30 PM)
 
-- Consumtion: number of daily birth (29124–102098)
+- Consumption: number of daily birth (29124–102098)
 
 ## Source
 

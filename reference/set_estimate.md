@@ -1,7 +1,7 @@
 # Set Numeric Estimation Parameters and Modelling Span
 
 Function allowing to define numeric boundaries for estimation and to
-define a sub-span on which reg-arima (tramo) modelling will be performed
+define a sub-span on which Reg-ARIMA (Tramo) modelling will be performed
 (pre-processing step)
 
 ## Usage
@@ -31,7 +31,7 @@ set_estimate(
 
   parameters to specify the sub-span .
 
-  `d0` and `d1` characters in the format "YYYY-MM-DD" to specify
+  `d0` and `d1` characters in the format `"YYYY-MM-DD"` to specify
   first/last date of the span when `type` equals to `"From"`, `"To"` or
   `"Between"`. Date corresponding to `d0` will be included in the
   sub-span Date corresponding to `d1` will be excluded from the sub span
@@ -50,14 +50,14 @@ set_estimate(
 
 - exact.ml:
 
-  (TRAMO specific) `logical`, the exact maximum likelihood estimation.
+  (Tramo specific) `logical`, the exact maximum likelihood estimation.
   If `TRUE`, the program performs an exact maximum likelihood
   estimation. If `FASLE`, the Unconditional Least Squares method is
   used. (Default=TRUE)
 
 - unit.root.limit:
 
-  (TRAMO specific) `numeric`, the final unit root limit. The threshold
+  (Tramo specific) `numeric`, the final unit root limit. The threshold
   value for the final unit root test for identification of differencing
   orders. If the magnitude of an AR root for the final model is smaller
   than this number, then a unit root is assumed, the order of the AR
@@ -72,10 +72,10 @@ The modified specification (with new estimation parameters)
 ## Details
 
 `x` specification parameter must be a JD3_X13_SPEC" class object
-generated with `rjd3x13::x13_spec()` (or "JD3_REGARIMA_SPEC" generated
-with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
-`rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated with
-`rjd3tramoseats::spec_tramo()`).
+generated with `rjd3x13::x13_spec()` (or `"JD3_REGARIMA_SPEC"` generated
+with `rjd3x13::spec_regarima()` or `"JD3_TRAMOSEATS_SPEC"` generated
+with `rjd3tramoseats::spec_tramoseats()` or `"JD3_TRAMO_SPEC"` generated
+with `rjd3tramoseats::spec_tramo()`).
 
 ## References
 

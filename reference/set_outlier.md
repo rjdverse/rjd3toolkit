@@ -1,7 +1,7 @@
 # Set Outlier Detection Parameters
 
 Function allowing to customize the automatic outlier detection process
-built in in the pre-processing step (regarima or tramo).
+built in in the pre-processing step (Reg-ARIMA or Tramo).
 
 ## Usage
 
@@ -34,7 +34,7 @@ set_outlier(
 
   parameters to specify the sub-span on which outliers will be detected.
 
-  - `d0` and `d1` characters in the format "YYYY-MM-DD" to specify
+  - `d0` and `d1` characters in the format `"YYYY-MM-DD"` to specify
     first/last date of the span when `type` equals to `"From"`, `"To"`
     or `"Between"`.
 
@@ -97,11 +97,11 @@ The modified specification (with new outlier parameters)
 
 ## Details
 
-`x` specification parameter must be a JD3_X13_SPEC" class object
-generated with `rjd3x13::x13_spec()` (or "JD3_REGARIMA_SPEC" generated
-with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
-`rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated with
-`rjd3tramoseats::spec_tramo()`).
+`x` specification parameter must be a `"JD3_X13_SPEC"` class object
+generated with `rjd3x13::x13_spec()` (or `"JD3_REGARIMA_SPEC"` generated
+with `rjd3x13::spec_regarima()` or `"JD3_TRAMOSEATS_SPEC"` generated
+with `rjd3tramoseats::spec_tramoseats()` or `"JD3_TRAMO_SPEC"` generated
+with `rjd3tramoseats::spec_tramo()`).
 
 If a Seasonal adjustment process is performed, each type of Outlier will
 be allocated to a pre-defined component after the decomposition: "AO"

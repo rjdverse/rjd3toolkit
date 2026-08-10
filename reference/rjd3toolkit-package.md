@@ -20,12 +20,13 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Tanguy Barthelemy <tanguy.barthelemy@insee.fr>
-\[artist\]
+**Maintainer**: Tanguy Barthelemy <timeserieswithjdemetraandr@gmail.com>
+\[artist, copyright holder\]
 
 Authors:
 
-- Tanguy Barthelemy <tanguy.barthelemy@insee.fr> \[artist\]
+- Tanguy Barthelemy <timeserieswithjdemetraandr@gmail.com> \[artist,
+  copyright holder\]
 
 - Jean Palate <palatejean@gmail.com>
 

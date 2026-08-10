@@ -26,7 +26,7 @@ ucarima_estimate(x, ucm, stdev = TRUE)
 ## Value
 
 A matrix containing the different components and their standard
-deviations if stdev is TRUE.
+deviations if `stdev` is TRUE.
 
 ## Examples
 

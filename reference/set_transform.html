@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.8.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.8.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Set Log-level Transformation and Decomposition scheme in Pre-Processing Specification</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/v3.8.0/R/spec_regarima.R" class="external-link"><code>R/spec_regarima.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/develop/R/spec_regarima.R" class="external-link"><code>R/spec_regarima.R</code></a></small>
       <div class="d-none name"><code>set_transform.Rd</code></div>
     </div>
 
@@ -89,7 +89,7 @@ transformation selection is chosen (considered only when <code>fun = "Auto"</cod
 
 
 <dt id="arg-fct">fct<a class="anchor" aria-label="anchor" href="#arg-fct"></a></dt>
-<dd><p>(TRAMO specific) <code>numeric</code> controlling the bias in the log/level pre-test:
+<dd><p>(Tramo specific) <code>numeric</code> controlling the bias in the log/level pre-test:
 <code>transform.fct</code>&gt; 1 favours levels, <code>transform.fct</code>&lt; 1 favours logs.
 Considered only when <code>fun = "Auto"</code>.</p></dd>
 
@@ -101,7 +101,7 @@ Considered only when <code>fun = "Auto"</code>.</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><code>x</code> specification parameter must be a JD3_X13_SPEC" class object generated with <code>rjd3x13::x13_spec()</code>
-(or "JD3_REGARIMA_SPEC" generated with <code>rjd3x13::spec_regarima()</code> or "JD3_TRAMOSEATS_SPEC"
+(or "JD3_REGARIMA_SPEC" generated with <code>rjd3x13::spec_regarima()</code> or <code>"JD3_TRAMOSEATS_SPEC"</code>
 generated with <code>rjd3tramoseats::spec_tramoseats()</code> or "JD3_TRAMO_SPEC" generated with
 <code>rjd3tramoseats::spec_tramo()</code>).</p>
     </div>

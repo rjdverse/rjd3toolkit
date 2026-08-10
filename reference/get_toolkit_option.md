@@ -1,6 +1,6 @@
-# Set an option for toolkit
+# Get teh value of an option for toolkit
 
-Set an option for toolkit
+Get teh value of an option for toolkit
 
 ## Usage
 

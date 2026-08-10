@@ -49,8 +49,8 @@ julianeaster_variable(frequency, start, length, s, duration = 6)
 
 - correction:
 
-  mean correction option. Simple"(default), "PreComputed", "Theoretical"
-  or "None".
+  mean correction option. `"Simple"` (default), `"PreComputed"`,
+  `"Theoretical"` or `"None"`.
 
 ## Value
 

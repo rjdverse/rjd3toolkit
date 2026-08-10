@@ -29,7 +29,7 @@ periodic_bsplines(order = 4, period = 1, knots, pos)
 
 ## Value
 
-A matrix (len(pos) x len(knots))
+A matrix (length(`pos`) x length(`knots`))
 
 ## Examples
 

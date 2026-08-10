@@ -1,6 +1,6 @@
-# Create Java CalendarTimeSeries
+# Create Java `CalendarTimeSeries`
 
-Create Java CalendarTimeSeries
+Create Java `CalendarTimeSeries`
 
 ## Usage
 

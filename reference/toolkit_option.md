@@ -18,6 +18,10 @@ toolkit_option(name, obj)
 
   Option
 
+## Value
+
+Invisibly `NULL`
+
 ## Examples
 
 ``` r

@@ -25,7 +25,7 @@ ucarima_model(model = NULL, components, complements = NULL, checkmodel = FALSE)
 
 - checkmodel:
 
-  When the model is provided and *checkmodel* is TRUE, we check that it
+  When the model is provided and `checkmodel` is TRUE, we check that it
   indeed corresponds to the reduced form of the components; similar
   controls are applied on complements. Currently not implemented
 

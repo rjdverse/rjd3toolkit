@@ -70,11 +70,11 @@ The modified specification with new estimation span
 
 ## Details
 
-`x` specification parameter must be a JD3_X13_SPEC" class object
-generated with `rjd3x13::x13_spec()` (or "JD3_REGARIMA_SPEC" generated
-with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
-`rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated with
-`rjd3tramoseats::spec_tramo()`).
+`x` specification parameter must be a `"JD3_X13_SPEC"` class object
+generated with `rjd3x13::x13_spec()` (or `"JD3_REGARIMA_SPEC"` generated
+with `rjd3x13::spec_regarima()` or `"JD3_TRAMOSEATS_SPEC"` generated
+with `rjd3tramoseats::spec_tramoseats()` or `"JD3_TRAMO_SPEC"` generated
+with `rjd3tramoseats::spec_tramo()`).
 
 ## References
 

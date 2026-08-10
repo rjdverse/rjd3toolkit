@@ -63,7 +63,7 @@ set_tradingdays(
 
   - `"None"` = no correction for trading days;
 
-  - `"UserDefined"` = userdefined trading days regressors.
+  - `"UserDefined"` = user-defined trading days regressors.
 
 - calendar.name:
 
@@ -103,7 +103,7 @@ set_tradingdays(
     regression model but can be removed from the RegARIMA model after
     the test;
 
-  (TRAMO specific)
+  (Tramo specific)
 
   - `"Separate_T"` = a t-test is applied to each trading day variable
     separately and the trading day variables are included in the
@@ -127,7 +127,7 @@ set_tradingdays(
   defines whether the calendar effects should be added to the model
   manually (`"Unused"`) or automatically. During the automatic
   selection, the choice of the number of calendar variables can be based
-  on the F-Test (`"FTest"`, TRAMO specific), the Wald Test
+  on the F-Test (`"FTest"`, Tramo specific), the Wald Test
   (`"WaldTest"`), or by minimizing AIC or BIC; the model with higher
   F-value is chosen, provided that it is higher than `pftd`).
 
@@ -166,9 +166,9 @@ The modified specification (with new trading days variables)
 
 `x` specification parameter must be a JD3_X13_SPEC" class object
 generated with `rjd3x13::x13_spec()` (or "JD3_REGARIMA_SPEC" generated
-with `rjd3x13::spec_regarima()` or "JD3_TRAMOSEATS_SPEC" generated with
-`rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated with
-`rjd3tramoseats::spec_tramo()`).
+with `rjd3x13::spec_regarima()` or `"JD3_TRAMOSEATS_SPEC"` generated
+with `rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated
+with `rjd3tramoseats::spec_tramo()`).
 
 ## References
 

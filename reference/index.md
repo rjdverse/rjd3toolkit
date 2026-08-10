@@ -283,7 +283,7 @@ Functions allowing to get objects names and contents
 - [`dictionary()`](https://rjdverse.github.io/rjd3toolkit/reference/dictionary.md)
   [`result()`](https://rjdverse.github.io/rjd3toolkit/reference/dictionary.md)
   [`user_defined()`](https://rjdverse.github.io/rjd3toolkit/reference/dictionary.md)
-  : Display names and items from a java (X13) estimation result object
+  : Display names and items from a Java (X13) estimation result object
 
 ## Databases
 
@@ -291,20 +291,31 @@ Lists of Time Series from ABS, NBB and US Census Bureau
 
 - [`ABS`](https://rjdverse.github.io/rjd3toolkit/reference/ABS.md) :
   Data Base: Retail trade series in Australia
+
 - [`Exports`](https://rjdverse.github.io/rjd3toolkit/reference/Exports.md)
   : Data Base: Belgian exports to European countries
+
 - [`Imports`](https://rjdverse.github.io/rjd3toolkit/reference/Imports.md)
   : Data Base: Belgian imports from European countries
+
 - [`Retail`](https://rjdverse.github.io/rjd3toolkit/reference/Retail.md)
   : Data Base: US Retail trade series
+
 - [`Births`](https://rjdverse.github.io/rjd3toolkit/reference/Births.md)
   : Data Base: Series of daily births in France from 1968 to 2024
+
 - [`Electricity`](https://rjdverse.github.io/rjd3toolkit/reference/Electricity.md)
   : Data Base: French national electricity consumption
+
 - [`tramoseats_spec_default`](https://rjdverse.github.io/rjd3toolkit/reference/tramoseats_spec_default.md)
-  : Default Tramo-Seats specification ("rsafull")
+  :
+
+  Default Tramo-Seats specification (`"rsafull"`)
+
 - [`x13_spec_default`](https://rjdverse.github.io/rjd3toolkit/reference/x13_spec_default.md)
-  : Default X13 specification ("rsa4")
+  :
+
+  Default X13 specification (`"rsa4"`)
 
 ## Print and Plot Methods
 
@@ -339,7 +350,7 @@ Creating Full JDemetra+ TS objects
 Evironment specific to JDemetra+
 
 - [`get_toolkit_option()`](https://rjdverse.github.io/rjd3toolkit/reference/get_toolkit_option.md)
-  : Set an option for toolkit
+  : Get teh value of an option for toolkit
 - [`toolkit_option()`](https://rjdverse.github.io/rjd3toolkit/reference/toolkit_option.md)
   : Set an option for toolkit
 - [`.r2jd_tsdata()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
@@ -443,12 +454,12 @@ Evironment specific to JDemetra+
   [`.jd2p_calendars()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.jd2r_calendars()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_calendars()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
+  [`.jd3_env`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.jd3_object()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.p2r_regarima_rslts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_tmp_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_tscollection()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
-  [`.jd3_env`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`get_date_min()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`get_date_max()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   : Java Utility Functions
@@ -465,6 +476,7 @@ Functions to easily interact between R and Java objects
   [`print(`*`<JD3_LIKELIHOOD>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_print.md)
   [`print(`*`<JD3_REGARIMA_RSLTS>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_print.md)
   : JD3 print functions
+
 - [`print(`*`<JD3_FIXEDDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   [`print(`*`<JD3_FIXEDWEEKDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   [`print(`*`<JD3_EASTERDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
@@ -474,14 +486,21 @@ Functions to easily interact between R and Java objects
   [`print(`*`<JD3_CHAINEDCALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   [`print(`*`<JD3_WEIGHTEDCALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   : Calendars Print Methods
+
 - [`r2jd_calendarts()`](https://rjdverse.github.io/rjd3toolkit/reference/r2jd_calendarts.md)
-  : Create Java CalendarTimeSeries
+  :
+
+  Create Java `CalendarTimeSeries`
+
 - [`.add_ud_var()`](https://rjdverse.github.io/rjd3toolkit/reference/dot-add_ud_var.md)
   : Add user-defined variable to a SA model
+
 - [`.likelihood()`](https://rjdverse.github.io/rjd3toolkit/reference/dot-likelihood.md)
   : Information on the (log-)likelihood
+
 - [`.tsmoniker()`](https://rjdverse.github.io/rjd3toolkit/reference/dot-tsmoniker.md)
   : Create a Moniker
+
 - [`.r2jd_tsdata()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_tsdomain()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.jd2r_tsdata()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
@@ -583,12 +602,12 @@ Functions to easily interact between R and Java objects
   [`.jd2p_calendars()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.jd2r_calendars()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_calendars()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
+  [`.jd3_env`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.jd3_object()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.p2r_regarima_rslts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_tmp_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_ts()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`.r2jd_make_tscollection()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
-  [`.jd3_env`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`get_date_min()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   [`get_date_max()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)
   : Java Utility Functions
