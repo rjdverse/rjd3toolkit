@@ -77,6 +77,8 @@ or TRAMO-SEATS (rjd3tramoseats)
   : Add a User-Defined Variable to Pre-Processing Specification.
 - [`modelling_context()`](https://rjdverse.github.io/rjd3toolkit/reference/modelling_context.md)
   : Create modelling context
+- [`complete_modelling_context()`](https://rjdverse.github.io/rjd3toolkit/reference/complete_modelling_context.md)
+  : Complete a Modelling Context with Additional Regressors
 - [`set_arima()`](https://rjdverse.github.io/rjd3toolkit/reference/set_arima.md)
   : Set ARIMA Model Structure in Pre-Processing Specification
 - [`set_automodel()`](https://rjdverse.github.io/rjd3toolkit/reference/set_automodel.md)

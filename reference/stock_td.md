@@ -6,7 +6,7 @@ effects in Stock series.
 ## Usage
 
 ``` r
-stock_td(frequency, start, length, s, w = 31)
+stock_td(frequency, start, length, s = NULL, w = 31)
 ```
 
 ## Arguments
