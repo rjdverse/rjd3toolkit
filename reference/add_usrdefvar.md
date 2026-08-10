@@ -34,8 +34,8 @@ add_usrdefvar(
 
 - group, name:
 
-  the name of the regressor in the format `"group.name"`, by default
-  `"r.name"` by default if `group` NULL `"group.name"` has to be the
+  the name of the regressors in the format `"group.name"`, by default
+  `"r.name"` by default if `group` NULL. `"group.name"` has to be the
   same as in
   [`modelling_context`](https://rjdverse.github.io/rjd3toolkit/reference/modelling_context.md)
   (see examples)
@@ -66,32 +66,33 @@ The modified specification (with new user-defined variables)
 
 ## Details
 
-`x` specification parameter must be a JD3_X13_SPEC" class object
-generated with `rjd3x13::x13_spec()` (or "JD3_REGARIMA_SPEC" generated
-with `rjd3x13::spec_regarima()` or `"JD3_TRAMOSEATS_SPEC"` generated
-with `rjd3tramoseats::spec_tramoseats()` or "JD3_TRAMO_SPEC" generated
-with `rjd3tramoseats::spec_tramo()`). Components to which the effect of
-the regressor can be allocated:
+`x` specification parameter must be a `JD3_X13_SPEC` class object
+generated with `rjd3x13::x13_spec()` (or `JD3_REGARIMA_SPEC` generated
+with `rjd3x13::spec_regarima()` or `JD3_TRAMOSEATS_SPEC` generated with
+`rjd3tramoseats::spec_tramoseats()` or `JD3_TRAMO_SPEC` generated with
+`rjd3tramoseats::spec_tramo()`).
 
-- `"Undefined"` : the effect of the regressor is assigned to an
+Components to which the effect of the regressor can be allocated:
+
+- `"Undefined"`: the effect of the regressor is assigned to an
   additional component, the variable is used to improve the
   pre-processing step, but is not removed from the series for the
   decomposition.
 
-  - `"Trend"`: after the decomposition the effect is allocated to the
-    trend component, like a Level-Shift
+- `"Trend"`: after the decomposition the effect is allocated to the
+  trend component, like a Level-Shift
 
-  - `"Irregular"`: after the decomposition the effect is allocated to
-    the irregular component, like an Additive-outlier
+- `"Irregular"`: after the decomposition the effect is allocated to the
+  irregular component, like an Additive-outlier
 
-  - `"Seasonal"`: after the decomposition the effect is allocated to the
-    seasonal component, like a Seasonal-outlier
+- `"Seasonal"`: after the decomposition the effect is allocated to the
+  seasonal component, like a Seasonal-outlier
 
-  - `"Series"`: after the decomposition the effect is allocated to the
-    raw series: \\yc_t=y_t+ effect\\
+- `"Series"`: after the decomposition the effect is allocated to the raw
+  series: \\yc_t=y_t+ effect\\
 
-  - `"SeasonallyAdjusted"`: after the decomposition the effect is
-    allocated to the seasonally adjusted series: \\sa_t=T+I+effect\\
+- `"SeasonallyAdjusted"`: after the decomposition the effect is
+  allocated to the seasonally adjusted series: \\sa_t=T+I+effect\\
 
 ## References
 
@@ -141,6 +142,7 @@ init_spec <- x13_spec_default
 # Regressors have to be added one by one
 new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
 #> Replaced forbidden character(s) in 1 name(s).
-new_spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
+new_spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend",
+                          coef = 0.7)
 #> Replaced forbidden character(s) in 1 name(s).
 ```
