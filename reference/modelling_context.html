@@ -46,7 +46,7 @@ come from any other source, provided they are ts class objects."><meta property=
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Create modelling context</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/develop/R/modellingcontext.R" class="external-link"><code>R/modellingcontext.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3toolkit/blob/develop/R/modelling_context.R" class="external-link"><code>R/modelling_context.R</code></a></small>
       <div class="d-none name"><code>modelling_context.Rd</code></div>
     </div>
 
@@ -60,7 +60,7 @@ come from any other source, provided they are <code>ts</code> class objects.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">modelling_context</span><span class="op">(</span>calendars <span class="op">=</span> <span class="cn">NULL</span>, variables <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">modelling_context</span><span class="op">(</span>calendars <span class="op">=</span> <span class="cn">NULL</span>, variables <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -73,6 +73,11 @@ come from any other source, provided they are <code>ts</code> class objects.</p>
 
 <dt id="arg-variables">variables<a class="anchor" aria-label="anchor" href="#arg-variables"></a></dt>
 <dd><p>list of variables.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>Boolean indicating whether to print additional information.
+Default is <code>TRUE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -102,10 +107,11 @@ come from any other source, provided they are <code>ts</code> class objects.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Regressors as a list of two groups reg1 and reg2</span></span></span>
-<span class="r-in"><span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>reg1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv1</span><span class="op">)</span>, reg2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>reg1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv1</span><span class="op">)</span>, reg2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iv2</span><span class="op">)</span>, reg3 <span class="op">=</span> <span class="va">ABS</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Creating the modelling context</span></span></span>
 <span class="r-in"><span><span class="va">my_context</span> <span class="op">&lt;-</span> <span class="fu">modelling_context</span><span class="op">(</span>variables <span class="op">=</span> <span class="va">vars</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Replaced forbidden character(s) in 22 name(s).</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

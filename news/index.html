@@ -47,17 +47,34 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/" class="external-link">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html" class="external-link">Semantic Versioning</a>.</p>
 <div class="section level3">
 <h3 id="unreleased-3-8-0-9000"><a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...HEAD" class="external-link">Unreleased</a><a class="anchor" aria-label="anchor" href="#unreleased-3-8-0-9000"></a></h3>
+<div class="section level4">
+<h4 id="changed-3-8-0-9000">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000"></a></h4>
+<ul><li>
+<code>modelling_context</code> accept regressor with and without names in nested structure.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="fixed-3-8-0-9000">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000"></a></h4>
+<ul><li>
+<code>modelling_context</code> now accept <code>JD3_TS</code>, <code>JD3_DYNAMICTS</code> and <code>JD3_TSCOLLECTION</code> object <a href="https://github.com/rjdverse/rjd3toolkit/issues/111" class="external-link">#111</a>
+</li>
+<li>All unamed variables are regrouped together under the <code>r</code> group. <a href="https://github.com/rjdverse/rjd3toolkit/issues/107" class="external-link">#107</a>
+</li>
+<li>Unamed regressors and regressors with duplicated names are renamed with <code>x1</code>, <code>x2</code>… pattern. <a href="https://github.com/rjdverse/rjd3toolkit/issues/107" class="external-link">#107</a>
+</li>
+<li>Variables and regressor with dot (<code>.</code>) in their name are renamed. The dot is replaced with an underscore. <a href="https://github.com/rjdverse/rjd3toolkit/issues/148" class="external-link">#148</a>
+</li>
+</ul></div>
 </div>
 <div class="section level3">
 <h3 id="id_380---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...v3.8.0" class="external-link">3.8.0</a> - 2026-07-09<a class="anchor" aria-label="anchor" href="#id_380---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000"></a></h4>
+<h4 id="changed-3-8-0-9000-1">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-1"></a></h4>
 <ul><li>Updated JARS from <code>jdplus-main</code> to <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.8.0" class="external-link">3.8.0</a>
 </li>
 </ul></div>
 <div class="section level4">
-<h4 id="fixed-3-8-0-9000">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000"></a></h4>
+<h4 id="fixed-3-8-0-9000-1">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000-1"></a></h4>
 <ul><li>Fix bug in weighted calendar regressors. <a href="https://github.com/rjdverse/rjd3workspace/issues/131" class="external-link">rjdverse/rjd3workspace#131</a>
 </li>
 </ul></div>
@@ -66,11 +83,11 @@
 <h3 id="id_371---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...v3.7.1" class="external-link">3.7.1</a> - 2026-03-10<a class="anchor" aria-label="anchor" href="#id_371---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="fixed-3-8-0-9000-1">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000-1"></a></h4>
+<h4 id="fixed-3-8-0-9000-2">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000-2"></a></h4>
 <ul><li>Bug with <code><a href="../reference/to_tscollection.html">to_tscollection()</a></code> (moniker conversion)</li>
 </ul></div>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-1">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-1"></a></h4>
+<h4 id="changed-3-8-0-9000-2">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-2"></a></h4>
 <ul><li>Use <code>get_java_version()</code> instead of <code>current_java_version</code>
 </li>
 <li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.7.1" class="external-link">3.7.1</a>
@@ -81,7 +98,7 @@
 <h3 id="id_360---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.6.0" class="external-link">3.6.0</a> - 2025-11-21<a class="anchor" aria-label="anchor" href="#id_360---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-2">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-2"></a></h4>
+<h4 id="changed-3-8-0-9000-3">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-3"></a></h4>
 <ul><li>default group value with mts objects in modelling_context <a href="https://github.com/rjdverse/rjd3toolkit/issues/107" class="external-link">#107</a>
 </li>
 <li>Examples are executed only if Java version &gt;= 21</li>
@@ -119,7 +136,7 @@
 <h3 id="id_351---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.5.0...v3.5.1" class="external-link">3.5.1</a> - 2025-06-18<a class="anchor" aria-label="anchor" href="#id_351---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-3">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-3"></a></h4>
+<h4 id="changed-3-8-0-9000-4">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-4"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.5.1" class="external-link">3.5.1</a>
 </li>
 </ul></div>
@@ -128,7 +145,7 @@
 <h3 id="id_350---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.3.0...v3.5.0" class="external-link">3.5.0</a> - 2025-04-09<a class="anchor" aria-label="anchor" href="#id_350---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-4">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-4"></a></h4>
+<h4 id="changed-3-8-0-9000-5">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-5"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.5.0" class="external-link">3.5.0</a>
 </li>
 <li>Replace <code>.</code> with <code>_</code> in function’s name <a href="https://github.com/rjdverse/rjd3toolkit/issues/88" class="external-link">#88</a>
@@ -152,7 +169,7 @@
 <h3 id="id_330---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.2.4...v3.3.0" class="external-link">3.3.0</a> - 2024-10-28<a class="anchor" aria-label="anchor" href="#id_330---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-5">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-5"></a></h4>
+<h4 id="changed-3-8-0-9000-6">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-6"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.3.0" class="external-link">3.3.0</a>
 </li>
 <li>Improve Canova-Hansen tests for seasonality and trading days (new options, more output)</li>
@@ -163,13 +180,13 @@
 <h3 id="id_324---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.2.2...v3.2.4" class="external-link">3.2.4</a> - 2024-07-12<a class="anchor" aria-label="anchor" href="#id_324---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-6">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-6"></a></h4>
+<h4 id="changed-3-8-0-9000-7">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-7"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.4" class="external-link">3.2.4</a>
 </li>
 <li>Some linting of R functions</li>
 </ul></div>
 <div class="section level4">
-<h4 id="fixed-3-8-0-9000-2">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000-2"></a></h4>
+<h4 id="fixed-3-8-0-9000-3">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000-3"></a></h4>
 <ul><li>Correct SA decomposition with backcasts and forecasts (Java to R transfer) <a href="https://github.com/rjdverse/rjd3tramoseats/issues/2" class="external-link">#2</a>
 </li>
 </ul></div>
@@ -178,7 +195,7 @@
 <h3 id="id_322---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.2.1...v3.2.2" class="external-link">3.2.2</a> - 2024-03-15<a class="anchor" aria-label="anchor" href="#id_322---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-7">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-7"></a></h4>
+<h4 id="changed-3-8-0-9000-8">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-8"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.2" class="external-link">3.2.2</a>
 </li>
 </ul></div>
@@ -187,7 +204,7 @@
 <h3 id="id_321---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.2.0...v3.2.1" class="external-link">3.2.1</a> - 2023-12-12<a class="anchor" aria-label="anchor" href="#id_321---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-8">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-8"></a></h4>
+<h4 id="changed-3-8-0-9000-9">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-9"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.1" class="external-link">3.2.1</a>
 </li>
 </ul></div>
@@ -196,7 +213,7 @@
 <h3 id="id_320---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.1.0...v3.2.0" class="external-link">3.2.0</a> - 2023-11-24<a class="anchor" aria-label="anchor" href="#id_320---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-9">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-9"></a></h4>
+<h4 id="changed-3-8-0-9000-10">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-10"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.0" class="external-link">3.2.0</a>
 </li>
 </ul></div>
@@ -205,7 +222,7 @@
 <h3 id="id_310---3-8-0-9000">
 <a href="https://github.com/rjdverse/rjd3toolkit/compare/v3.0.0...v3.1.0" class="external-link">3.1.0</a> - 2023-10-11<a class="anchor" aria-label="anchor" href="#id_310---3-8-0-9000"></a></h3>
 <div class="section level4">
-<h4 id="changed-3-8-0-9000-10">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-10"></a></h4>
+<h4 id="changed-3-8-0-9000-11">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000-11"></a></h4>
 <ul><li>New JARS related to version <a href="https://github.com/jdemetra/jdplus-main/releases/tag/v3.1.0" class="external-link">3.1.0</a>
 </li>
 </ul></div>

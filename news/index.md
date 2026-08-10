@@ -10,6 +10,25 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased](https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...HEAD)
 
+#### Changed
+
+- `modelling_context` accept regressor with and without names in nested
+  structure.
+
+#### Fixed
+
+- `modelling_context` now accept `JD3_TS`, `JD3_DYNAMICTS` and
+  `JD3_TSCOLLECTION` object
+  [\#111](https://github.com/rjdverse/rjd3toolkit/issues/111)
+- All unamed variables are regrouped together under the `r` group.
+  [\#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
+- Unamed regressors and regressors with duplicated names are renamed
+  with `x1`, `x2`… pattern.
+  [\#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
+- Variables and regressor with dot (`.`) in their name are renamed. The
+  dot is replaced with an underscore.
+  [\#148](https://github.com/rjdverse/rjd3toolkit/issues/148)
+
 ### [3.8.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...v3.8.0) - 2026-07-09
 
 #### Changed

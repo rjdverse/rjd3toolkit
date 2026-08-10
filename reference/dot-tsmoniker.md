@@ -20,7 +20,7 @@ Create a Moniker
 
 ## Value
 
-Returns a Java object of class JD3_TSMONIKER.
+Returns a Java object of class `JD3_TSMONIKER`.
 
 ## Examples
 
