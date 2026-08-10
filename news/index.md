@@ -12,8 +12,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Changed
 
-- `modelling_context` accept regressor with and without names in nested
+- `modelling_context` accepts regressor with and without names in nested
   structure.
+- `add_usrdefvar` renames automatically the group or variables that
+  contains a dot (`.`)
+  [\#148](https://github.com/rjdverse/rjd3toolkit/issues/148).
 
 #### Fixed
 
@@ -25,8 +28,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Unamed regressors and regressors with duplicated names are renamed
   with `x1`, `x2`… pattern.
   [\#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
-- Variables and regressor with dot (`.`) in their name are renamed. The
-  dot is replaced with an underscore.
+- Variables and regressor with dot (`.`) in their name are renamed in
+  `modelling_context`. The dot is replaced with an underscore.
   [\#148](https://github.com/rjdverse/rjd3toolkit/issues/148)
 
 ### [3.8.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...v3.8.0) - 2026-07-09

@@ -140,5 +140,7 @@ init_spec <- x13_spec_default
 
 # Regressors have to be added one by one
 new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
+#> Replaced forbidden character(s) in 1 name(s).
 new_spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend", coef = 0.7)
+#> Replaced forbidden character(s) in 1 name(s).
 ```

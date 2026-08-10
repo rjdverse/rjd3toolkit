@@ -50,7 +50,9 @@
 <div class="section level4">
 <h4 id="changed-3-8-0-9000">Changed<a class="anchor" aria-label="anchor" href="#changed-3-8-0-9000"></a></h4>
 <ul><li>
-<code>modelling_context</code> accept regressor with and without names in nested structure.</li>
+<code>modelling_context</code> accepts regressor with and without names in nested structure.</li>
+<li>
+<code>add_usrdefvar</code> renames automatically the group or variables that contains a dot (<code>.</code>) <a href="https://github.com/rjdverse/rjd3toolkit/issues/148" class="external-link">#148</a>.</li>
 </ul></div>
 <div class="section level4">
 <h4 id="fixed-3-8-0-9000">Fixed<a class="anchor" aria-label="anchor" href="#fixed-3-8-0-9000"></a></h4>
@@ -61,7 +63,7 @@
 </li>
 <li>Unamed regressors and regressors with duplicated names are renamed with <code>x1</code>, <code>x2</code>… pattern. <a href="https://github.com/rjdverse/rjd3toolkit/issues/107" class="external-link">#107</a>
 </li>
-<li>Variables and regressor with dot (<code>.</code>) in their name are renamed. The dot is replaced with an underscore. <a href="https://github.com/rjdverse/rjd3toolkit/issues/148" class="external-link">#148</a>
+<li>Variables and regressor with dot (<code>.</code>) in their name are renamed in <code>modelling_context</code>. The dot is replaced with an underscore. <a href="https://github.com/rjdverse/rjd3toolkit/issues/148" class="external-link">#148</a>
 </li>
 </ul></div>
 </div>
