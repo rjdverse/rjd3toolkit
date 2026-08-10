@@ -8,6 +8,8 @@ instead of `sa.decomposition()`.
 
 ``` r
 sa.decomposition(x, ...)
+
+sa_preprocessing(x, ...)
 ```
 
 ## Arguments

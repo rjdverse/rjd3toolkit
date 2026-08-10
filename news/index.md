@@ -10,6 +10,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased](https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...HEAD)
 
+#### Deprecated
+
+- `sa_preprocessing` is now deprecated. Please don’t use anymore this
+  function. [\#122](https://github.com/rjdverse/rjd3toolkit/issues/122)
+
 #### Changed
 
 - `modelling_context` accepts regressor with and without names in nested

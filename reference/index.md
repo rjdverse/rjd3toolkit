@@ -328,8 +328,9 @@ Functions to print and plot specific JDemetra+ class objects
   [`plot(`*`<JD3_SADECOMPOSITION>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/sa_decomposition.md)
   [`sa_decomposition()`](https://rjdverse.github.io/rjd3toolkit/reference/sa_decomposition.md)
   : Generic Function for Seasonal Adjustment Decomposition
-- [`sa_preprocessing()`](https://rjdverse.github.io/rjd3toolkit/reference/sa_preprocessing.md)
-  : Generic Preprocessing Function
+- [`sa.decomposition()`](https://rjdverse.github.io/rjd3toolkit/reference/deprecated-rjd3toolkit.md)
+  [`sa_preprocessing()`](https://rjdverse.github.io/rjd3toolkit/reference/deprecated-rjd3toolkit.md)
+  : Deprecated functions
 - [`statisticaltest()`](https://rjdverse.github.io/rjd3toolkit/reference/statisticaltest.md)
   [`print(`*`<JD3_TEST>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/statisticaltest.md)
   : Generic Function For 'JDemetra+' Tests
@@ -617,4 +618,5 @@ Functions to easily interact between R and Java objects
 Avoid Using
 
 - [`sa.decomposition()`](https://rjdverse.github.io/rjd3toolkit/reference/deprecated-rjd3toolkit.md)
+  [`sa_preprocessing()`](https://rjdverse.github.io/rjd3toolkit/reference/deprecated-rjd3toolkit.md)
   : Deprecated functions
