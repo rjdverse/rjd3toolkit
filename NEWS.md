@@ -14,7 +14,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Deprecated
 
-* `sa_preprocessing` is now deprecated. Please don't use anymore this function. [#122](https://github.com/rjdverse/rjd3toolkit/issues/122)
+* `sa_preprocessing` is now deprecated. Please don't use any more this function. [#122](https://github.com/rjdverse/rjd3toolkit/issues/122)
 
 ### Changed
 
@@ -25,8 +25,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Fixed
 
 * `modelling_context` now accept `JD3_TS`, `JD3_DYNAMICTS` and `JD3_TSCOLLECTION` object [#111](https://github.com/rjdverse/rjd3toolkit/issues/111)
-* All unamed variables are regrouped together under the `r` group. [#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
-* Unamed regressors and regressors with duplicated names are renamed with `x1`, `x2`... pattern. [#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
+* All unnamed variables are regrouped together under the `r` group. [#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
+* Unnamed regressors and regressors with duplicated names are renamed with `x1`, `x2`... pattern. [#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
 * Variables and regressor with dot (`.`) in their name are renamed in `modelling_context`. The dot is replaced with an underscore. [#148](https://github.com/rjdverse/rjd3toolkit/issues/148)
 
 

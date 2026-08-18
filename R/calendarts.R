@@ -13,6 +13,10 @@
 #'     list(start = as.Date("2000-01-01"), end = as.Date("2010-01-01"), value = 1000)
 #' )
 #' jobj <- r2jd_calendarts(obs)
+#'
+#' @importFrom rJava .jarray
+#' @importFrom rJava .jcall
+#'
 r2jd_calendarts <- function(calendarobs) {
     if (is.null(calendarobs) || !is.list(calendarobs)) {
         return(NULL)
@@ -26,13 +30,13 @@ r2jd_calendarts <- function(calendarobs) {
     values <- sapply(calendarobs, function(z) {
         as.numeric(z$value)
     })
-    jts <- .jcall(
+    jts <- rJava::.jcall(
         "jdplus/toolkit/base/r/timeseries/TsUtility",
         "Ljdplus/toolkit/base/api/timeseries/CalendarTimeSeries;",
         "of",
-        .jarray(starts, "Ljava/lang/String;"),
-        .jarray(ends, "Ljava/lang/String;"),
-        .jarray(values)
+        rJava::.jarray(starts, "Ljava/lang/String;"),
+        rJava::.jarray(ends, "Ljava/lang/String;"),
+        rJava::.jarray(values)
     )
     return(jts)
 }

@@ -24,10 +24,14 @@
 #' z
 #' @name studentdistribution
 #' @rdname studentdistribution
+#'
 #' @order 3
+#'
 #' @export
+#'
+#' @importFrom rJava .jcall
 random_t <- function(df, n) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "randomsT",
@@ -36,29 +40,33 @@ random_t <- function(df, n) {
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname studentdistribution
 #' @order 1
 #' @export
 density_t <- function(df, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "densityT",
         df,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname studentdistribution
 #' @order 2
 #' @export
 cdf_t <- function(df, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "cdfT",
         df,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
@@ -91,8 +99,11 @@ cdf_t <- function(df, x) {
 #' z <- random_chi2(df = 3, n = 10)
 #'
 #' @export
+#'
+#' @importFrom rJava .jcall
+#'
 random_chi2 <- function(df, n) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "randomsChi2",
@@ -101,29 +112,33 @@ random_chi2 <- function(df, n) {
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname chi2distribution
 #' @order 1
 #' @export
 density_chi2 <- function(df, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "densityChi2",
         df,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname chi2distribution
 #' @order 2
 #' @export
 cdf_chi2 <- function(df, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "cdfChi2",
         df,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
@@ -157,8 +172,11 @@ cdf_chi2 <- function(df, x) {
 #'
 #' @order 3
 #' @export
+#'
+#' @importFrom rJava .jcall
+#'
 random_gamma <- function(shape, scale, n) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "randomsGamma",
@@ -168,31 +186,35 @@ random_gamma <- function(shape, scale, n) {
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname gammadistribution
 #' @order 1
 #' @export
 density_gamma <- function(shape, scale, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "densityGamma",
         shape,
         scale,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname gammadistribution
 #' @order 2
 #' @export
 cdf_gamma <- function(shape, scale, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "cdfGamma",
         shape,
         scale,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
@@ -223,10 +245,13 @@ cdf_gamma <- function(shape, scale, x) {
 #' # with shape 1 and scale 2
 #' z<- random_inverse_gamma(shape = 1, scale = 2, n = 10)
 #' z
-
+#'
 #' @export
+#'
+#' @importFrom rJava .jcall
+#'
 random_inverse_gamma <- function(shape, scale, n) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "randomsInverseGamma",
@@ -236,31 +261,35 @@ random_inverse_gamma <- function(shape, scale, n) {
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname invgammadistribution
 #' @order 1
 #' @export
 density_inverse_gamma <- function(shape, scale, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "densityInverseGamma",
         shape,
         scale,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname invgammadistribution
 #' @order 2
 #' @export
 cdf_inverse_gamma <- function(shape, scale, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "cdfInverseGamma",
         shape,
         scale,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }
 
@@ -289,8 +318,11 @@ cdf_inverse_gamma <- function(shape, scale, x) {
 #' z
 #'
 #' @export
+#'
+#' @importFrom rJava .jcall
+#'
 random_inverse_gaussian <- function(shape, scale, n) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "randomsInverseGaussian",
@@ -300,16 +332,18 @@ random_inverse_gaussian <- function(shape, scale, n) {
     )
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 #' @rdname invgaussiandistribution
 #' @order 1
 #' @export
 density_inverse_gaussian <- function(shape, scale, x) {
-    .jcall(
+    rJava::.jcall(
         "jdplus/toolkit/base/r/stats/Distributions",
         "[D",
         "densityInverseGaussian",
         shape,
         scale,
-        .jarray(as.numeric(x))
+        rJava::.jarray(as.numeric(x))
     )
 }

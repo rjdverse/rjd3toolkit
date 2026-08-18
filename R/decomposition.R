@@ -1,28 +1,26 @@
-#' @importFrom stats is.ts ts ts.union .preformat.ts start ts.plot window
-#' @importFrom utils tail
-#' @importFrom graphics legend
-NULL
-
-
 #' @rdname sa_decomposition
 #' @export
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats ts
+#' @importFrom stats start
 sadecomposition <- function(y, sa, t, s, i, mul) {
     if (!is.logical(mul)) {
         stop("Invalid SA decomposition: mul must be boolean.")
     }
-    if (is.null(y) && !is.ts(y)) {
+    if (is.null(y) && !stats::is.ts(y)) {
         stop("Invalid SA decomposition: y must be a ts object.")
     }
-    if (!is.null(s) && !is.ts(s)) {
+    if (!is.null(s) && !stats::is.ts(s)) {
         stop("Invalid SA decomposition: s must be a ts object.")
     }
-    if (!is.null(i) && !is.ts(i)) {
+    if (!is.null(i) && !stats::is.ts(i)) {
         stop("Invalid SA decomposition: i must be a ts object.")
     }
-    if (!is.ts(sa)) {
+    if (!stats::is.ts(sa)) {
         stop("Invalid SA decomposition: sa must be a ts object.")
     }
-    if (!is.ts(t)) {
+    if (!stats::is.ts(t)) {
         stop("Invalid SA decomposition: t must be a ts object.")
     }
 
@@ -34,10 +32,18 @@ sadecomposition <- function(y, sa, t, s, i, mul) {
     }
 
     if (is.null(s)) {
-        s <- ts(content, start = start(y), frequency = frequency(y))
+        s <- stats::ts(
+            content,
+            start = stats::start(y),
+            frequency = stats::frequency(y)
+        )
     }
     if (is.null(i)) {
-        i <- ts(content, start = start(y), frequency = frequency(y))
+        i <- stats::ts(
+            content,
+            start = stats::start(y),
+            frequency = stats::frequency(y)
+        )
     }
 
     output <- structure(
@@ -55,17 +61,21 @@ sadecomposition <- function(y, sa, t, s, i, mul) {
     return(output)
 }
 
+#' @importFrom utils tail
 #' @rdname sa_decomposition
 #' @export
+#' @importFrom stats ts.union
+#' @importFrom stats .preformat.ts
+#' @importFrom stats frequency
 print.JD3_SADECOMPOSITION <- function(
     x,
-    n_last_obs = frequency(x$series),
+    n_last_obs = stats::frequency(x$series),
     ...
 ) {
     cat("Last values\n")
-    print(tail(
-        .preformat.ts(
-            ts.union(
+    print(utils::tail(
+        stats::.preformat.ts(
+            stats::ts.union(
                 series = x$series,
                 sa = x$sa,
                 trend = x$trend,
@@ -77,8 +87,17 @@ print.JD3_SADECOMPOSITION <- function(
         n_last_obs
     ))
 }
+
+#' @importFrom graphics legend
 #' @rdname sa_decomposition
 #' @export
+#' @importFrom stats ts.union
+#' @importFrom stats ts.plot
+#' @importFrom stats ts.plot
+#' @importFrom stats window
+#' @importFrom stats ts
+#' @importFrom stats ts
+#' @importFrom stats ts
 plot.JD3_SADECOMPOSITION <- function(
     x,
     first_date = NULL,
@@ -99,7 +118,7 @@ plot.JD3_SADECOMPOSITION <- function(
 ) {
     type_chart <- match.arg(type_chart)
 
-    data_plot <- ts.union(
+    data_plot <- stats::ts.union(
         y = x$series,
         sa = x$sa,
         t = x$trend,
@@ -107,10 +126,10 @@ plot.JD3_SADECOMPOSITION <- function(
         i = x$irr
     )
     if (!missing(first_date)) {
-        data_plot <- window(data_plot, start = first_date)
+        data_plot <- stats::window(data_plot, start = first_date)
     }
     if (!missing(last_date)) {
-        data_plot <- window(data_plot, end = last_date)
+        data_plot <- stats::window(data_plot, end = last_date)
     }
 
     if ("sa-trend" %in% type_chart) {
@@ -121,14 +140,14 @@ plot.JD3_SADECOMPOSITION <- function(
         # lty[grep("_f$", series_graph)] <- 1
         # col <- colors[gsub("_.*$", "", series_graph)]
         # par(mar = c(5, 4, 4, 2) + 0.1)
-        ts.plot(
+        stats::ts.plot(
             data_plot[, series_graph],
             col = colors[series_graph],
             main = caption[1],
             lty = lty,
             ...
         )
-        legend(
+        graphics::legend(
             "bottomleft",
             legend = c("Series", "Trend", "Seasonally adjusted"),
             col = colors[series_graph],
@@ -146,14 +165,14 @@ plot.JD3_SADECOMPOSITION <- function(
         lty <- rep(1, length(series_graph))
         # lty[grep("_f$", series_graph, invert = TRUE)] <- 1
         # col <- colors[gsub("_.*$", "", series_graph)]
-        ts.plot(
+        stats::ts.plot(
             data_plot[, series_graph],
             col = colors[series_graph],
             main = caption[1],
             lty = lty,
             ...
         )
-        legend(
+        graphics::legend(
             "bottomleft",
             legend = c(
                 "Seas (component)",

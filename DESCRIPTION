@@ -32,7 +32,7 @@ Imports:
     RProtoBuf (>= 0.4.25),
     stats,
     utils
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Encoding: UTF-8
 Language: en-GB
 LazyData: TRUE
@@ -57,7 +57,6 @@ Collate:
     'modelling_context.R'
     'options.R'
     'procresults.R'
-    'protos.R'
     'regarima_generic.R'
     'regarima_rslts.R'
     'rjd3toolkit-package.R'

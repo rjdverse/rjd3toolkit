@@ -50,7 +50,11 @@ NULL
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' td_f(ABS$X0.2.09.10.M)
+#'
 #' @export
+#'
+#' @importFrom rJava .jcall
+#'
 td_f <- function(
     s,
     model = c("D1", "DY", "DYD1", "WN", "AIRLINE", "R011", "R100"),
@@ -58,7 +62,7 @@ td_f <- function(
 ) {
     model <- match.arg(model)
     jts <- .r2jd_tsdata(s)
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/TradingDaysTests",
         "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
         "fTest",
@@ -77,11 +81,15 @@ td_f <- function(
 #' @param order The truncation parameter used to compute the robust covariance matrix.
 #'
 #' @returns list with the F-Test on td, the joint test and the details for the stability of the different days (starting with Mondays).
+#'
 #' @export
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' s <- log(ABS$X0.2.20.10.M)
 #' td_canovahansen(s, c(1, 12))
+#'
+#' @importFrom rJava .jarray
+#' @importFrom rJava .jcall
 td_canovahansen <- function(
     s,
     differencing,
@@ -93,12 +101,12 @@ td_canovahansen <- function(
         order <- -1
     }
     jts <- .r2jd_tsdata(s)
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/TradingDaysTests",
         "[D",
         "canovaHansen",
         jts,
-        .jarray(as.integer(differencing)),
+        rJava::.jarray(as.integer(differencing)),
         kernel,
         as.integer(order)
     )
@@ -125,6 +133,8 @@ td_canovahansen <- function(
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' s <- log(ABS$X0.2.20.10.M)
 #' td_timevarying(s)
+#'
+#' @importFrom rJava .jcall
 td_timevarying <- function(
     s,
     groups = c(1, 2, 3, 4, 5, 6, 0),
@@ -132,7 +142,7 @@ td_timevarying <- function(
 ) {
     jts <- .r2jd_tsdata(s)
     igroups <- as.integer(groups)
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/TradingDaysTests",
         "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
         "timeVaryingTradingDaysTest",
