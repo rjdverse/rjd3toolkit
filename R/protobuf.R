@@ -195,6 +195,7 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
+#' @importFrom stats ts
 .p2r_tsdata <- function(p) {
     if (length(p$values) == 0) {
         return(NULL)
@@ -210,6 +211,8 @@ NULL
 
 #' @export
 #' @rdname jd3_utilities
+#' @importFrom stats frequency
+#' @importFrom stats start
 .r2p_tsdata <- function(r) {
     p <- jd3.TsData$new()
     p$name <- attr(r, "name")
@@ -579,6 +582,7 @@ NULL
     return(list(name = name, type = type, coef = coef))
 }
 
+#' @importFrom stats ts
 .p2r_component <- function(p) {
     s <- p$data$values
     n <- length(s)
@@ -611,6 +615,8 @@ NULL
     return(rslt)
 }
 
+#' @importFrom stats ts
+#' @importFrom stats ts
 .p2r_sa_component <- function(p) {
     e <- p$stde
     if (length(e) == 0) {

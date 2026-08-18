@@ -36,6 +36,7 @@ parseDate <- function(s) {
     ))
 }
 
+#' @importFrom stats pf
 test_anova <- function(ssm, dfm, ssr, dfr) {
     val <- (ssm / dfm) * (dfr / ssr)
     desc <- paste0("F(", dfm, ",", dfr, ")")

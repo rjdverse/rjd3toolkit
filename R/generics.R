@@ -22,6 +22,7 @@ diagnostics.JD3 <- function(x, ...) {
 }
 
 #' @export
+#' @importFrom stats ts
 diagnostics.JD3_REGARIMA_RSLTS <- function(x, ...) {
     if (is.null(x)) {
         return(NULL)

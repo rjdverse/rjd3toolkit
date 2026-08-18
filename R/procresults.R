@@ -35,8 +35,9 @@ RSLT <- "JD3_ProcResults"
 #' @importFrom rJava is.jnull
 #' @importFrom rJava .jclass
 #' @export
+#' @importFrom methods is
 dictionary <- function(object) {
-    if (!is(object, RSLT)) {
+    if (!methods::is(object, RSLT)) {
         stop("No dictionary for this type of object")
     }
     if (rJava::is.jnull(object$internal)) {
@@ -58,8 +59,9 @@ dictionary <- function(object) {
 #' @importFrom rJava is.jnull
 #' @rdname dictionary
 #' @export
+#' @importFrom methods is
 result <- function(object, id) {
-    if (!is(object, RSLT)) {
+    if (!methods::is(object, RSLT)) {
         stop("No result for this type of object")
     }
     if (rJava::is.jnull(object$internal)) {

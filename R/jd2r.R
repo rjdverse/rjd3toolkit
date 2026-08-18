@@ -31,6 +31,8 @@ NULL
 #' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
+#' @importFrom stats frequency
+#' @importFrom stats start
 .r2jd_tsdata <- function(s) {
     if (is.null(s)) {
         return(NULL)
@@ -67,6 +69,7 @@ NULL
 #' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
+#' @importFrom stats ts
 .jd2r_tsdata <- function(s) {
     if (rJava::is.jnull(s)) {
         return(NULL)
@@ -96,6 +99,7 @@ NULL
 #' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
+#' @importFrom stats ts
 .jd2r_mts <- function(s) {
     if (rJava::is.jnull(s)) {
         return(NULL)

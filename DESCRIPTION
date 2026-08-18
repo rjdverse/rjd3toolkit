@@ -67,7 +67,6 @@ Collate:
     'tests_seasonality.R'
     'tests_td.R'
     'timeseries.R'
-    'tmp.R'
     'variables.R'
     'zzz.R'
 Remotes: 

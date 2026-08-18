@@ -1,12 +1,6 @@
 #' @include utils.R
 NULL
 
-
-#' @importFrom stats is.ts pf ts.union .preformat.ts ts.plot window pt printCoefmat frequency ts is.mts start end cycle
-#' @importFrom methods is
-NULL
-
-
 #' @importFrom rjd3jars check_java_version
 .onAttach <- function(libname, pkgname) {
     # Check Java version

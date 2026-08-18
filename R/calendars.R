@@ -62,6 +62,7 @@ SINGLEDAY <- "JD3_SINGLEDAY"
     }
 }
 
+#' @importFrom stats is.mts
 .length_ts <- function(s) {
     if (stats::is.mts(s)) {
         nrow(s)
@@ -457,6 +458,9 @@ special_day <- function(event, offset = 0, weight = 1, validity = NULL) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats start
 td <- function(
     frequency,
     start,
@@ -697,6 +701,9 @@ easter_dates <- function(year0, year1, julian = FALSE) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats start
 stock_td <- function(frequency, start, length, s = NULL, w = 31) {
     if (!is.null(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -737,20 +744,21 @@ stock_td <- function(frequency, start, length, s = NULL, w = 31) {
     return(ts(data, frequency = frequency, start = start))
 }
 
+#' @importFrom methods is
 .r2p_holiday <- function(r) {
-    if (is(r, SPECIALDAY)) {
+    if (methods::is(r, SPECIALDAY)) {
         return(.r2p_specialday(r))
     }
-    if (is(r, FIXEDDAY)) {
+    if (methods::is(r, FIXEDDAY)) {
         return(.r2p_fixedday(r))
     }
-    if (is(r, EASTERDAY)) {
+    if (methods::is(r, EASTERDAY)) {
         return(.r2p_easterday(r))
     }
-    if (is(r, FIXEDWEEKDAY)) {
+    if (methods::is(r, FIXEDWEEKDAY)) {
         return(.r2p_fixedweekday(r))
     }
-    if (is(r, SINGLEDAY)) {
+    if (methods::is(r, SINGLEDAY)) {
         return(.r2p_singleday(r))
     }
     return(NULL)
@@ -923,13 +931,14 @@ weighted_calendar <- function(calendars, weights) {
     return(NULL)
 }
 
+#' @importFrom methods is
 .r2p_calendardef <- function(r) {
     p <- jd3.CalendarDefinition$new()
-    if (is(r, "JD3_CALENDAR")) {
+    if (methods::is(r, "JD3_CALENDAR")) {
         p$calendar <- .r2p_calendar(r)
-    } else if (is(r, "JD3_CHAINEDCALENDAR")) {
+    } else if (methods::is(r, "JD3_CHAINEDCALENDAR")) {
         p$chained_calendar <- .r2p_chainedcalendar(r)
-    } else if (is(r, "JD3_WEIGHTEDCALENDAR")) {
+    } else if (methods::is(r, "JD3_WEIGHTEDCALENDAR")) {
         p$weighted_calendar <- .r2p_wcalendar(r)
     }
     return(p)
@@ -1036,6 +1045,10 @@ national_calendar <- function(days = list(), mean_correction = TRUE) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats start
+#' @importFrom methods is
 calendar_td <- function(
     calendar = national_calendar(),
     frequency,
@@ -1046,7 +1059,7 @@ calendar_td <- function(
     holiday = 7,
     contrasts = TRUE
 ) {
-    if (!is(calendar, "JD3_CALENDAR")) {
+    if (!methods::is(calendar, "JD3_CALENDAR")) {
         stop("Invalid calendar")
     }
     if (!missing(s) && stats::is.ts(s)) {

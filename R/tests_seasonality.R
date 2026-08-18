@@ -22,6 +22,8 @@ NULL
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
 seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)
@@ -61,6 +63,8 @@ seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
 seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)
@@ -97,6 +101,8 @@ seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
 seasonality_kruskalwallis <- function(data, period, nyears = 0) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)
@@ -127,6 +133,8 @@ seasonality_kruskalwallis <- function(data, period, nyears = 0) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
 seasonality_periodogram <- function(data, period = NA, nyears = 0) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)
@@ -157,6 +165,8 @@ seasonality_periodogram <- function(data, period = NA, nyears = 0) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
 seasonality_friedman <- function(data, period = NA, nyears = 0) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)
@@ -186,6 +196,8 @@ seasonality_friedman <- function(data, period = NA, nyears = 0) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
 seasonality_f <- function(
     data,
     period = NA,
@@ -229,6 +241,9 @@ seasonality_f <- function(
 #' @importFrom rJava .jcall
 #' @importFrom RProtoBuf read
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats cycle
 seasonality_combined <- function(
     data,
     period = NA,

@@ -114,6 +114,7 @@ summary.JD3_SARIMA_ESTIMATION <- function(object, ...) {
 }
 
 #' @export
+#' @importFrom stats printCoefmat
 print.summary.JD3_SARIMA_ESTIMATION <- function(
     x,
     digits = max(3L, getOption("digits") - 3L),
@@ -154,6 +155,7 @@ print.summary.JD3_SARIMA_ESTIMATION <- function(
     UseMethod(".sarima_coef_table", x)
 }
 
+#' @importFrom stats pt
 .sarima_coef_table.default <- function(x, cov = NULL, ndf = NULL, ...) {
     m <- x
     if (!is.null(m$phi)) {
@@ -234,6 +236,7 @@ print.summary.JD3_SARIMA_ESTIMATION <- function(
     .sarima_coef_table(x$description$arima, cov = cov, ndf = ndf, ...)
 }
 
+#' @importFrom stats pt
 .sarima_coef_table.JD3_SARIMA_ESTIMATE <- function(x, ...) {
     ndf <- x$likelihood$neffectiveobs - x$likelihood$nparams
     sarima_orders <- list(
@@ -486,6 +489,7 @@ print.JD3_SARIMA_ESTIMATE <- function(
     UseMethod(".regarima_coef_table", x)
 }
 
+#' @importFrom stats pt
 .regarima_coef_table.default <- function(x, ...) {
     q <- x
     if (length(q$description$variables) > 0) {
@@ -518,6 +522,7 @@ print.JD3_SARIMA_ESTIMATE <- function(
     return(xregs)
 }
 
+#' @importFrom stats pt
 .regarima_coef_table.JD3_SARIMA_ESTIMATE <- function(x, ...) {
     ndf <- x$likelihood$neffectiveobs - x$likelihood$nparams
 
@@ -587,6 +592,7 @@ summary.JD3_SARIMA_ESTIMATE <- function(object, ...) {
 }
 
 #' @export
+#' @importFrom stats printCoefmat
 print.summary.JD3_REGARIMA_RSLTS <- function(
     x,
     digits = max(3L, getOption("digits") - 3L),

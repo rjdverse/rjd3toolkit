@@ -46,14 +46,16 @@ JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 
 #' @export
 #' @rdname jd3_utilities
+#' @importFrom stats is.ts
+#' @importFrom methods is
 .r2p_datasupplier <- function(name, r) {
     p <- jd3.TsDataSuppliers$Item$new()
     p$name <- name
     if (stats::is.ts(r)) {
         p$data <- .r2p_tsdata(r)
-    } else if (is(r, JD3_DYNAMICTS)) {
+    } else if (methods::is(r, JD3_DYNAMICTS)) {
         p$dynamic_data <- .r2p_dynamic_ts(r)
-    } else if (is(r, JD3_TS)) {
+    } else if (methods::is(r, JD3_TS)) {
         p$dynamic_data <- .r2p_dynamic_ts(r)
     } else {
         return(NULL)

@@ -40,6 +40,10 @@ NULL
 #' @importFrom RProtoBuf read
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats ts
+#' @importFrom stats end
 do_stationary <- function(data, period) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)
@@ -98,6 +102,10 @@ do_stationary <- function(data, period) {
 #' @importFrom RProtoBuf read
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats ts
+#' @importFrom stats end
 differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)
@@ -149,6 +157,10 @@ differences <- function(data, lags = 1, mean = TRUE) {
 #' @export
 #' @importFrom rJava .jcall
 #' @importFrom rJava .jarray
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats ts
+#' @importFrom stats end
 differences.default <- function(data, lags = 1, mean = TRUE) {
     res <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Differencing",
@@ -178,6 +190,7 @@ differences.matrix <- function(data, lags = 1, mean = TRUE) {
 }
 
 #' @export
+#' @importFrom stats pt
 differences.data.frame <- function(data, lags = 1, mean = TRUE) {
     result <- data[-(1:sum(lags)), ]
     for (i in seq_len(ncol(data))) {
@@ -244,6 +257,8 @@ differences.data.frame <- function(data, lags = 1, mean = TRUE) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
 rangemean_tstat <- function(data, period = 0, groupsize = 0, trim = 0) {
     if (stats::is.ts(data) && missing(period)) {
         period <- stats::frequency(data)

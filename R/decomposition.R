@@ -1,5 +1,9 @@
 #' @rdname sa_decomposition
 #' @export
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats ts
+#' @importFrom stats start
 sadecomposition <- function(y, sa, t, s, i, mul) {
     if (!is.logical(mul)) {
         stop("Invalid SA decomposition: mul must be boolean.")
@@ -60,6 +64,9 @@ sadecomposition <- function(y, sa, t, s, i, mul) {
 #' @importFrom utils tail
 #' @rdname sa_decomposition
 #' @export
+#' @importFrom stats ts.union
+#' @importFrom stats .preformat.ts
+#' @importFrom stats frequency
 print.JD3_SADECOMPOSITION <- function(
     x,
     n_last_obs = stats::frequency(x$series),
@@ -84,6 +91,13 @@ print.JD3_SADECOMPOSITION <- function(
 #' @importFrom graphics legend
 #' @rdname sa_decomposition
 #' @export
+#' @importFrom stats ts.union
+#' @importFrom stats ts.plot
+#' @importFrom stats ts.plot
+#' @importFrom stats window
+#' @importFrom stats ts
+#' @importFrom stats ts
+#' @importFrom stats ts
 plot.JD3_SADECOMPOSITION <- function(
     x,
     first_date = NULL,

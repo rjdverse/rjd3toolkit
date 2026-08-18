@@ -86,6 +86,7 @@ aggregate.matrix <- function(
 }
 
 #' @export
+#' @importFrom stats window
 aggregate.data.frame <- function(
     s,
     nfreq = 1,
@@ -295,6 +296,8 @@ ts_adjust.data.frame <- function(
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats frequency
+#' @importFrom stats start
 daysOf <- function(ts, pos = 1) {
     start <- stats::start(ts)
     jdom <- .r2jd_tsdomain(stats::frequency(ts), start[1], start[2], length(ts))

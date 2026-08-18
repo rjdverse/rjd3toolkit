@@ -393,6 +393,7 @@ arima_properties <- function(model, nspectrum = 601, nac = 36) {
 #' mod2 <- arima_model("noise", variance = 1600)
 #' hp <- ucarima_model(components = list(mod1, mod2))
 #' print(hp$model)
+#' @importFrom methods is
 ucarima_model <- function(
     model = NULL,
     components,
@@ -401,7 +402,7 @@ ucarima_model <- function(
 ) {
     if (is.null(model)) {
         model <- arima_lsum(components)
-    } else if (!is(model, "JD3_ARIMA") && !is(model, "JD3_SARIMA")) {
+    } else if (!methods::is(model, "JD3_ARIMA") && !methods::is(model, "JD3_SARIMA")) {
         stop("Invalid model")
     }
 
@@ -540,6 +541,9 @@ ucarima_wk <- function(ucm, cmp, signal = TRUE, nspectrum = 601, nwk = 300) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats frequency
+#' @importFrom stats ts
+#' @importFrom stats start
 ucarima_canonical <- function(ucm, cmp = 0, adjust = TRUE) {
     jucm <- .r2jd_ucarima(ucm)
     jnucm <- rJava::.jcall(
@@ -621,6 +625,7 @@ ucarima_estimate <- function(x, ucm, stdev = TRUE) {
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' y <- ABS$X0.2.09.10.M
 #' sarima_estimate(y, order = c(0, 1, 1), seasonal = c(0, 1, 1))
+#' @importFrom stats frequency
 sarima_estimate <- function(
     x,
     order = c(0, 0, 0),
@@ -712,6 +717,7 @@ sarima_estimate <- function(
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats frequency
 sarima_hannan_rissanen <- function(
     x,
     order = c(0, 0, 0),

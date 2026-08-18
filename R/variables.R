@@ -27,6 +27,9 @@ NULL
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats start
 easter_variable <- function(
     frequency,
     start,
@@ -58,6 +61,9 @@ easter_variable <- function(
 #' @importFrom rJava .jcall
 #' @rdname easter_variable
 #' @export
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats start
 julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
     if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -99,6 +105,11 @@ julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats ts.union
+#' @importFrom stats frequency
+#' @importFrom stats ts
+#' @importFrom stats start
 lp_variable <- function(
     frequency,
     start,
@@ -170,6 +181,9 @@ lp_variable <- function(
 #'
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats start
 ao_variable <- function(frequency, start, length, s, pos, date = NULL) {
     if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -200,6 +214,9 @@ ao_variable <- function(frequency, start, length, s, pos, date = NULL) {
 #' @importFrom rJava .jcall
 #' @export
 #' @rdname outliers_variables
+#' @importFrom stats is.ts
+#' @importFrom stats frequency
+#' @importFrom stats start
 tc_variable <- function(
     frequency,
     start,
@@ -241,6 +258,8 @@ tc_variable <- function(
 #' @importFrom stats is.ts
 #' @export
 #' @rdname outliers_variables
+#' @importFrom stats frequency
+#' @importFrom stats start
 ls_variable <- function(
     frequency,
     start,
@@ -282,6 +301,8 @@ ls_variable <- function(
 #' @importFrom stats is.ts
 #' @export
 #' @rdname outliers_variables
+#' @importFrom stats frequency
+#' @importFrom stats start
 so_variable <- function(
     frequency,
     start,
@@ -348,6 +369,8 @@ so_variable <- function(
 #' # Or equivalently
 #' rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c("2001-01-01", "2001-09-02"))
 #' plot.ts(rp)
+#' @importFrom stats frequency
+#' @importFrom stats start
 ramp_variable <- function(frequency, start, length, s, range) {
     if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -448,6 +471,8 @@ ramp_variable <- function(frequency, start, length, s, range) {
 #' @importFrom rJava .jcall
 #' @importFrom stats is.ts
 #' @export
+#' @importFrom stats frequency
+#' @importFrom stats start
 intervention_variable <- function(
     frequency,
     start,
@@ -517,6 +542,8 @@ intervention_variable <- function(
 #' @importFrom stats is.ts
 #' @importFrom rJava .jcall
 #'
+#' @importFrom stats frequency
+#' @importFrom stats start
 periodic_dummies <- function(frequency, start, length, s) {
     if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -538,6 +565,8 @@ periodic_dummies <- function(frequency, start, length, s) {
 #' @importFrom rJava .jcall
 #' @export
 #' @rdname periodic_dummies
+#' @importFrom stats frequency
+#' @importFrom stats start
 periodic_contrasts <- function(frequency, start, length, s) {
     if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
@@ -615,6 +644,8 @@ periodic_contrasts <- function(frequency, start, length, s) {
 #'     seasonal_frequency = 12
 #' )
 #'
+#' @importFrom stats frequency
+#' @importFrom stats start
 trigonometric_variables <- function(
     frequency,
     start,
