@@ -13,6 +13,7 @@ NULL
 #' @param correction mean correction option. `"Simple"` (default), `"PreComputed"`, `"Theoretical"` or `"None"`.
 #'
 #' @returns A time series (object of class \code{"ts"})
+#'
 #' @seealso \code{\link{calendar_td}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
@@ -23,6 +24,9 @@ NULL
 #' je <- julianeaster_variable(12, c(2020, 1), length = 5 * 12, duration = 8)
 #'
 #' @export
+#'
+#' @importFrom rJava .jcall
+#'
 easter_variable <- function(
     frequency,
     start,
@@ -33,13 +37,13 @@ easter_variable <- function(
     correction = c("Simple", "PreComputed", "Theoretical", "None")
 ) {
     correction <- match.arg(correction)
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    data <- .jcall(
+    data <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Variables",
         "[D",
         "easter",
@@ -51,16 +55,17 @@ easter_variable <- function(
     return(ts(data, frequency = frequency, start = start))
 }
 
+#' @importFrom rJava .jcall
 #' @rdname easter_variable
 #' @export
 julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    data <- .jcall(
+    data <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Variables",
         "[D",
         "julianEaster",
@@ -91,6 +96,9 @@ julianeaster_variable <- function(frequency, start, length, s, duration = 6) {
 #' # Leap years occur in year 2000, 2004, 2008 and 2012
 #' lp_variable(4, start = c(2000, 1), length = 4 * 13)
 #' lper <- lp_variable(12, c(2000, 1), length = 10 * 12, type = "LengthOfPeriod")
+#'
+#' @importFrom rJava .jcall
+#'
 lp_variable <- function(
     frequency,
     start,
@@ -100,13 +108,13 @@ lp_variable <- function(
 ) {
     type <- match.arg(type)
     lp <- type == "LeapYear"
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    data <- .jcall(
+    data <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Variables",
         "[D",
         "leapYear",
@@ -153,21 +161,24 @@ lp_variable <- function(
 #' ls <- ls_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
 #' tc <- tc_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
 #' so <- so_variable(12, c(2000, 1), length = 12 * 4, date = "2002-02-01")
-#' plot.ts(ts.union(ao, ls, tc, so),
+#' plot.ts(stats::ts.union(ao, ls, tc, so),
 #'     plot.type = "single",
 #'     col = c("black", "orange", "green", "gray")
 #' )
 #' @name outliers_variables
 #' @rdname outliers_variables
+#'
+#' @importFrom rJava .jcall
+#'
 ao_variable <- function(frequency, start, length, s, pos, date = NULL) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     if (is.null(date)) {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "ao",
@@ -175,7 +186,7 @@ ao_variable <- function(frequency, start, length, s, pos, date = NULL) {
             as.integer(pos - 1)
         )
     } else {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "ao",
@@ -186,6 +197,7 @@ ao_variable <- function(frequency, start, length, s, pos, date = NULL) {
     return(ts(data, frequency = frequency, start = start))
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname outliers_variables
 tc_variable <- function(
@@ -197,14 +209,14 @@ tc_variable <- function(
     date = NULL,
     rate = 0.7
 ) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     if (is.null(date)) {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "tc",
@@ -213,7 +225,7 @@ tc_variable <- function(
             rate
         )
     } else {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "tc",
@@ -225,6 +237,8 @@ tc_variable <- function(
     return(ts(data, frequency = frequency, start = start))
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom stats is.ts
 #' @export
 #' @rdname outliers_variables
 ls_variable <- function(
@@ -236,14 +250,14 @@ ls_variable <- function(
     date = NULL,
     zeroended = TRUE
 ) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     if (is.null(date)) {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "ls",
@@ -252,7 +266,7 @@ ls_variable <- function(
             as.logical(zeroended)
         )
     } else {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "ls",
@@ -264,6 +278,8 @@ ls_variable <- function(
     return(ts(data, frequency = frequency, start = start))
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom stats is.ts
 #' @export
 #' @rdname outliers_variables
 so_variable <- function(
@@ -275,14 +291,14 @@ so_variable <- function(
     date = NULL,
     zeroended = TRUE
 ) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     if (is.null(date)) {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "so",
@@ -291,7 +307,7 @@ so_variable <- function(
             as.logical(zeroended)
         )
     } else {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "so",
@@ -321,6 +337,9 @@ so_variable <- function(
 #'
 #' @export
 #'
+#' @importFrom rJava .jcall
+#' @importFrom stats is.ts
+#'
 #' @returns a \code{ts} object
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
@@ -330,7 +349,7 @@ so_variable <- function(
 #' rp <- ramp_variable(12, c(2000, 1), length = 12 * 4, range = c("2001-01-01", "2001-09-02"))
 #' plot.ts(rp)
 ramp_variable <- function(frequency, start, length, s, range) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
@@ -340,7 +359,7 @@ ramp_variable <- function(frequency, start, length, s, range) {
         stop("Invalid range")
     }
     if (is.character(range)) {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "ramp",
@@ -349,7 +368,7 @@ ramp_variable <- function(frequency, start, length, s, range) {
             as.character(range[2])
         )
     } else {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "ramp",
@@ -424,7 +443,10 @@ ramp_variable <- function(frequency, start, length, s, range) {
 #' @references
 #' More information on auxiliary variables in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/a-outlier-detection}
-
+#'
+#' @importFrom rJava .jarray
+#' @importFrom rJava .jcall
+#' @importFrom stats is.ts
 #' @export
 intervention_variable <- function(
     frequency,
@@ -436,7 +458,7 @@ intervention_variable <- function(
     delta = 0,
     seasonaldelta = 0
 ) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
@@ -447,26 +469,26 @@ intervention_variable <- function(
 
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     if (is.character(starts) && is.character(ends)) {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "interventionVariable",
             jdom,
             delta,
             seasonaldelta,
-            .jarray(as.character(starts)),
-            .jarray(as.character(ends))
+            rJava::.jarray(as.character(starts)),
+            rJava::.jarray(as.character(ends))
         )
     } else {
-        data <- .jcall(
+        data <- rJava::.jcall(
             "jdplus/toolkit/base/r/modelling/Variables",
             "[D",
             "interventionVariable",
             jdom,
             delta,
             seasonaldelta,
-            .jarray(as.integer(starts - 1)),
-            .jarray(as.integer(ends - 1))
+            rJava::.jarray(as.integer(starts - 1)),
+            rJava::.jarray(as.integer(ends - 1))
         )
     }
     return(ts(data, frequency = frequency, start = start))
@@ -489,15 +511,20 @@ intervention_variable <- function(
 #' # periodic contrasts for a quarterly series
 #' q <- periodic_contrasts(4, c(2000, 1), 60)
 #' q[1:9, ]
+#'
 #' @export
+#'
+#' @importFrom stats is.ts
+#' @importFrom rJava .jcall
+#'
 periodic_dummies <- function(frequency, start, length, s) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    jm <- .jcall(
+    jm <- rJava::.jcall(
         obj = "jdplus/toolkit/base/r/modelling/Variables",
         returnSig = "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
         method = "periodicDummies",
@@ -506,16 +533,19 @@ periodic_dummies <- function(frequency, start, length, s) {
     data <- .jd2r_matrix(jm)
     return(ts(data, frequency = frequency, start = start))
 }
+
+#' @importFrom stats is.ts
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname periodic_dummies
 periodic_contrasts <- function(frequency, start, length, s) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
     }
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
-    jm <- .jcall(
+    jm <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Variables",
         "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
         "periodicContrasts",
@@ -571,6 +601,10 @@ periodic_contrasts <- function(frequency, start, length, s) {
 #'
 #' @returns a mts object with 2 columns
 #'
+#' @importFrom rJava .jarray
+#' @importFrom rJava .jcall
+#' @importFrom stats is.ts
+#'
 #' @export
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
@@ -588,7 +622,7 @@ trigonometric_variables <- function(
     s,
     seasonal_frequency = NULL
 ) {
-    if (!missing(s) && is.ts(s)) {
+    if (!missing(s) && stats::is.ts(s)) {
         frequency <- stats::frequency(s)
         start <- stats::start(s)
         length <- .length_ts(s)
@@ -598,12 +632,12 @@ trigonometric_variables <- function(
     if (!is.null(seasonal_frequency)) {
         seasonal_frequency <- as.integer(seasonal_frequency)
     }
-    jm <- .jcall(
+    jm <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Variables",
         "Ljdplus/toolkit/base/api/math/matrices/Matrix;",
         "trigonometricVariables",
         jdom,
-        .jarray(seasonal_frequency)
+        rJava::.jarray(seasonal_frequency)
     )
     data <- .jd2r_matrix(jm)
 
@@ -635,7 +669,7 @@ trigonometric_variables <- function(
 # }
 # trigonometric_variables2 <- function(frequencies, length, start){
 #   r.Variables <- J("jdplus/toolkit/base/r/modelling/Variables")
-#   data <- r.Variables$trigonometricVariables(.jarray(frequencies),
+#   data <- r.Variables$trigonometricVariables(rJava::.jarray(frequencies),
 #                                      as.integer(start),
 #                                      as.integer(length))
 #   data <- .jd2r_matrix(data)

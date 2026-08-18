@@ -1,9 +1,11 @@
 #' @include utils.R
 NULL
 
-#' @importFrom rJava .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass .jinit
-#' @importFrom stats frequency is.ts pf ts ts.union
+
+#' @importFrom stats is.ts pf ts.union .preformat.ts ts.plot window pt printCoefmat frequency ts is.mts start end cycle
+#' @importFrom methods is
 NULL
+
 
 #' @importFrom rjd3jars check_java_version
 .onAttach <- function(libname, pkgname) {

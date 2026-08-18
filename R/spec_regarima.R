@@ -1924,10 +1924,6 @@ set_transform.default <- function(
 #' @references
 #' More information on outliers and other auxiliary variables in JDemetra+
 #' online documentation: \url{https://doc.jdemetra.org/a-outlier-detection}
-#' @importFrom checkmate assert_character
-#' @importFrom checkmate assert_scalar
-#' @importFrom checkmate assert_integerish
-#' @importFrom checkmate assert_numeric
 #' @export
 add_usrdefvar <- function(
     x,
@@ -1948,6 +1944,10 @@ add_usrdefvar <- function(
     UseMethod("add_usrdefvar", x)
 }
 
+#' @importFrom checkmate assert_character
+#' @importFrom checkmate assert_scalar
+#' @importFrom checkmate assert_integerish
+#' @importFrom checkmate assert_numeric
 #' @export
 add_usrdefvar.default <- function(
     x,

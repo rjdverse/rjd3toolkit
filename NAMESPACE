@@ -78,6 +78,12 @@ S3method(set_names,list)
 S3method(set_outlier,default)
 S3method(set_tradingdays,default)
 S3method(set_transform,default)
+S3method(stats::coef,JD3_REGARIMA_RSLTS)
+S3method(stats::df.residual,JD3_REGARIMA_RSLTS)
+S3method(stats::logLik,JD3_REGARIMA_RSLTS)
+S3method(stats::nobs,JD3_REGARIMA_RSLTS)
+S3method(stats::residuals,JD3_REGARIMA_RSLTS)
+S3method(stats::vcov,JD3_REGARIMA_RSLTS)
 S3method(summary,JD3_DICTIONARY)
 S3method(summary,JD3_FULL_DICTIONARY)
 S3method(summary,JD3_LIKELIHOOD)
@@ -327,11 +333,12 @@ export(ucarima_model)
 export(ucarima_wk)
 export(user_defined)
 export(weighted_calendar)
-import(RProtoBuf)
-importFrom(RProtoBuf,readProtoFiles2)
+importFrom(RProtoBuf,
+  read,
+  readProtoFiles2,
+  serialize
+)
 importFrom(checkmate,
-  assertNames,
-  assertNumeric,
   assert_character,
   assert_integerish,
   assert_numeric,
@@ -346,7 +353,6 @@ importFrom(rJava,
   .jcastToArray,
   .jclass,
   .jevalArray,
-  .jinit,
   .jinstanceof,
   .jnew,
   .jnull,

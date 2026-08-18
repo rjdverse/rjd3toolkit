@@ -30,7 +30,6 @@ Source: Tramo
 }
 \examples{
 \dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
-
 do_stationary(log(ABS$X0.2.09.10.M), 12)
 \dontshow{\}) # examplesIf}
 }

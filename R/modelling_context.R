@@ -49,7 +49,7 @@ JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 .r2p_datasupplier <- function(name, r) {
     p <- jd3.TsDataSuppliers$Item$new()
     p$name <- name
-    if (is.ts(r)) {
+    if (stats::is.ts(r)) {
         p$data <- .r2p_tsdata(r)
     } else if (is(r, JD3_DYNAMICTS)) {
         p$dynamic_data <- .r2p_dynamic_ts(r)
@@ -175,15 +175,18 @@ dynamic_ts <- function(moniker, data) {
     return(p)
 }
 
+#' @importFrom RProtoBuf serialize
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jnull
 #' @export
 #' @rdname jd3_utilities
 .r2jd_ts <- function(s) {
     if (is.null(s)) {
-        return(.jnull("jdplus/toolkit/base/api/timeseries/Ts"))
+        return(rJava::.jnull("jdplus/toolkit/base/api/timeseries/Ts"))
     }
     ps <- .r2p_ts(s)
     bytes <- RProtoBuf::serialize(ps, NULL)
-    return(.jcall(
+    return(rJava::.jcall(
         obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
         returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
         method = "tsOfBytes",
@@ -191,13 +194,16 @@ dynamic_ts <- function(moniker, data) {
     ))
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .jd2r_ts <- function(js) {
-    if (is.jnull(js)) {
+    if (rJava::is.jnull(js)) {
         return(NULL)
     }
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/toolkit/base/r/timeseries/TsUtility",
         "[B",
         "toBuffer",
@@ -207,15 +213,18 @@ dynamic_ts <- function(moniker, data) {
     return(.p2r_ts(p))
 }
 
+#' @importFrom RProtoBuf serialize
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jnull
 #' @export
 #' @rdname jd3_utilities
 .r2jd_tscollection <- function(s) {
     if (is.null(s)) {
-        return(.jnull("jdplus/toolkit/base/api/timeseries/TsCollection"))
+        return(rJava::.jnull("jdplus/toolkit/base/api/timeseries/TsCollection"))
     }
     ps <- .r2p_tscollection(s)
     bytes <- RProtoBuf::serialize(ps, NULL)
-    return(.jcall(
+    return(rJava::.jcall(
         obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
         returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
         method = "tsCollectionOfBytes",
@@ -223,13 +232,16 @@ dynamic_ts <- function(moniker, data) {
     ))
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .jd2r_tscollection <- function(js) {
-    if (is.jnull(js)) {
+    if (rJava::is.jnull(js)) {
         return(NULL)
     }
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/toolkit/base/r/timeseries/TsUtility",
         "[B",
         "toBuffer",
@@ -310,11 +322,12 @@ dynamic_ts <- function(moniker, data) {
     return(l)
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .p2jd_variables <- function(p) {
     bytes <- p$serialize(NULL)
-    jcal <- .jcall(
+    jcal <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "Ljdplus/toolkit/base/api/timeseries/regression/TsDataSuppliers;",
         "variablesOf",
@@ -323,10 +336,12 @@ dynamic_ts <- function(moniker, data) {
     return(jcal)
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .jd2p_variables <- function(jd) {
-    bytes <- .jcall(
+    bytes <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "[B",
         "toBuffer",
@@ -1093,11 +1108,12 @@ complete_modelling_context <- function(
     return(p)
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .p2jd_context <- function(p) {
     bytes <- p$serialize(NULL)
-    jcal <- .jcall(
+    jcal <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "Ljdplus/toolkit/base/api/timeseries/regression/ModellingContext;",
         "of",
@@ -1106,10 +1122,12 @@ complete_modelling_context <- function(
     return(jcal)
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .jd2p_context <- function(jd) {
-    bytes <- .jcall(
+    bytes <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "[B",
         "toBuffer",
@@ -1169,11 +1187,12 @@ complete_modelling_context <- function(
     return(p)
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .p2jd_calendars <- function(p) {
     bytes <- p$serialize(NULL)
-    jcal <- .jcall(
+    jcal <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "Ljdplus/toolkit/base/api/timeseries/calendars/CalendarManager;",
         "calendarsOf",
@@ -1182,10 +1201,12 @@ complete_modelling_context <- function(
     return(jcal)
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .jd2p_calendars <- function(jd) {
-    bytes <- .jcall(
+    bytes <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "[B",
         "toBuffer",

@@ -35,21 +35,23 @@ NULL
 #' @export
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
-#'
 #' do_stationary(log(ABS$X0.2.09.10.M), 12)
 #'
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
+#'
 do_stationary <- function(data, period) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    jst <- .jcall(
+    jst <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Differencing",
         "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;",
         "doStationary",
         as.numeric(data),
         as.integer(period)
     )
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Differencing",
         "[B",
         "toBuffer",
@@ -57,15 +59,20 @@ do_stationary <- function(data, period) {
     )
     p <- RProtoBuf::read(modelling.StationaryTransformation, q)
     res <- .p2r_differencing(p)
-    if (is.ts(data)) {
-        res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
+    if (stats::is.ts(data)) {
+        res$ddata <- stats::ts(
+            res$ddata,
+            end = stats::end(data),
+            frequency = stats::frequency(data)
+        )
     }
     return(res)
 }
 
-#' Automatic differencing
+#' @title Automatic differencing
 #'
-#' @title The series is differenced till its variance is decreasing.
+#' @description
+#' The series is differenced till its variance is decreasing.
 #'
 #' @param data Series being differenced.
 #' @param period Period considered in the automatic differencing.
@@ -82,16 +89,20 @@ do_stationary <- function(data, period) {
 #' * \code{differences}:
 #'    * \code{lag}: \eqn{ddata(t)=data(t)-data(t-lag)}
 #'    * \code{order}: order of the differencing
+#'
 #' @export
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' differencing_fast(log(ABS$X0.2.09.10.M), 12)
 #'
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
+#'
 differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    jst <- .jcall(
+    jst <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Differencing",
         "Ljdplus/toolkit/base/core/modelling/StationaryTransformation;",
         "fastDifferencing",
@@ -101,7 +112,7 @@ differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
         centile,
         k
     )
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Differencing",
         "[B",
         "toBuffer",
@@ -109,8 +120,12 @@ differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
     )
     p <- RProtoBuf::read(modelling.StationaryTransformation, q)
     res <- .p2r_differencing(p)
-    if (is.ts(data)) {
-        res$ddata <- ts(res$ddata, end = end(data), frequency = frequency(data))
+    if (stats::is.ts(data)) {
+        res$ddata <- stats::ts(
+            res$ddata,
+            end = stats::end(data),
+            frequency = stats::frequency(data)
+        )
     }
     return(res)
 }
@@ -130,21 +145,29 @@ differencing_fast <- function(data, period, mad = TRUE, centile = 90, k = 1.2) {
 differences <- function(data, lags = 1, mean = TRUE) {
     UseMethod("differences", data)
 }
+
 #' @export
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jarray
 differences.default <- function(data, lags = 1, mean = TRUE) {
-    res <- .jcall(
+    res <- rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/Differencing",
         "[D",
         "differences",
         as.numeric(data),
-        .jarray(as.integer(lags)),
+        rJava::.jarray(as.integer(lags)),
         mean
     )
-    if (is.ts(data)) {
-        res <- ts(res, end = end(data), frequency = frequency(data))
+    if (stats::is.ts(data)) {
+        res <- stats::ts(
+            res,
+            end = stats::end(data),
+            frequency = stats::frequency(data)
+        )
     }
     return(res)
 }
+
 #' @export
 differences.matrix <- function(data, lags = 1, mean = TRUE) {
     result <- data[-(1:sum(lags)), ]
@@ -153,6 +176,7 @@ differences.matrix <- function(data, lags = 1, mean = TRUE) {
     }
     result
 }
+
 #' @export
 differences.data.frame <- function(data, lags = 1, mean = TRUE) {
     result <- data[-(1:sum(lags)), ]
@@ -207,20 +231,24 @@ differences.data.frame <- function(data, lags = 1, mean = TRUE) {
 #' rm_t <- rangemean_tstat(y, period = period, groupsize = period)
 #' rm_t # higher than 0
 #' # Can be tested:
-#' pt(rm_t, period - 2, lower.tail = FALSE)
+#' stats::pt(rm_t, period - 2, lower.tail = FALSE)
 #' # Or :
 #' 1 - cdf_t(period - 2, rm_t)
 #'
 #' # Close to 0
 #' rm_t_log <- rangemean_tstat(log(y), period = period, groupsize = period)
 #' rm_t_log
-#' pt(rm_t_log, period - 2, lower.tail = FALSE)
+#' stats::pt(rm_t_log, period - 2, lower.tail = FALSE)
+#'
 #' @export
+#'
+#' @importFrom rJava .jcall
+#'
 rangemean_tstat <- function(data, period = 0, groupsize = 0, trim = 0) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    return(.jcall(
+    return(rJava::.jcall(
         "jdplus/toolkit/base/r/modelling/AutoModelling",
         "D",
         "rangeMean",

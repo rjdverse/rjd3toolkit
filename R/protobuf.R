@@ -1,6 +1,4 @@
 #' @include utils.R
-#' @import RProtoBuf
-#' @importFrom stats frequency ts start
 NULL
 
 #' @title Java Utility Functions
@@ -201,7 +199,7 @@ NULL
     if (length(p$values) == 0) {
         return(NULL)
     }
-    s <- ts(
+    s <- stats::ts(
         data = p$values,
         frequency = p$annual_frequency,
         start = c(p$start_year, p$start_period)
@@ -215,8 +213,8 @@ NULL
 .r2p_tsdata <- function(r) {
     p <- jd3.TsData$new()
     p$name <- attr(r, "name")
-    p$annual_frequency <- frequency(r)
-    s <- start(r)
+    p$annual_frequency <- stats::frequency(r)
+    s <- stats::start(r)
     p$start_year <- s[1]
     p$start_period <- s[2]
     p$values <- as.numeric(r)
@@ -592,18 +590,18 @@ NULL
     nb <- p$nbcasts
     nf <- p$nfcasts
 
-    val <- ts(
+    val <- stats::ts(
         s[(nb + 1):(n - nf)],
         frequency = freq,
         start = .ts_move(start, freq, nb)
     )
     rslt <- list(data = val)
     if (nb > 0) {
-        bcasts <- ts(s[1:nb], frequency = freq, start = start)
+        bcasts <- stats::ts(s[1:nb], frequency = freq, start = start)
         rslt[["bcasts"]] <- bcasts
     }
     if (nf > 0) {
-        fcasts <- ts(
+        fcasts <- stats::ts(
             s[(n - nf + 1):n],
             frequency = freq,
             start = .ts_move(start, freq, n - nf)
@@ -632,21 +630,21 @@ NULL
     fstart <- .ts_move(start, freq, n - nf)
 
     idx <- (nb + 1):(n - nf)
-    data <- ts(s[idx], frequency = freq, dstart)
-    edata <- ts(e[idx], frequency = freq, dstart)
+    data <- stats::ts(s[idx], frequency = freq, dstart)
+    edata <- stats::ts(e[idx], frequency = freq, dstart)
 
     rslt <- list(data = data, data.stde = edata)
     if (nb > 0) {
         idx <- 1:nb
-        bcasts <- ts(s[idx], frequency = freq, start = start)
-        ebcasts <- ts(e[idx], frequency = freq, start = start)
+        bcasts <- stats::ts(s[idx], frequency = freq, start = start)
+        ebcasts <- stats::ts(e[idx], frequency = freq, start = start)
         rslt[["bcasts"]] <- bcasts
         rslt[["bcasts.stde"]] <- ebcasts
     }
     if (nf > 0) {
         idx <- (n - nf + 1):n
-        fcasts <- ts(s[idx], frequency = freq, start = fstart)
-        efcasts <- ts(e[idx], frequency = freq, start = fstart)
+        fcasts <- stats::ts(s[idx], frequency = freq, start = fstart)
+        efcasts <- stats::ts(e[idx], frequency = freq, start = fstart)
         rslt[["fcasts"]] <- fcasts
         rslt[["fcasts.stde"]] <- efcasts
     }

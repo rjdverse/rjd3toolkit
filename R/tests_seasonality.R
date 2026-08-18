@@ -19,11 +19,14 @@ NULL
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_qs(s)
 #' seasonality_qs(random_t(2, 1000), 7)
+#'
+#' @importFrom rJava .jcall
+#'
 seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
         "qsTest",
@@ -56,12 +59,13 @@ seasonality_qs <- function(data, period = NA, nyears = 0, type = 1) {
 #' s <- do_stationary(log(ABS$X0.2.09.10.M))$ddata
 #' seasonality_modified_qs(s)
 #'
-
+#' @importFrom rJava .jcall
+#'
 seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    test <- .jcall(
+    test <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "D",
         "modifiedQsTest",
@@ -91,11 +95,13 @@ seasonality_modified_qs <- function(data, period = NA, nyears = 0) {
 #' seasonality_kruskalwallis(s)
 #' seasonality_kruskalwallis(random_t(2, 1000), 7)
 #'
+#' @importFrom rJava .jcall
+#'
 seasonality_kruskalwallis <- function(data, period, nyears = 0) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
         "kruskalWallisTest",
@@ -119,11 +125,13 @@ seasonality_kruskalwallis <- function(data, period, nyears = 0) {
 #' seasonality_periodogram(s)
 #' seasonality_periodogram(random_t(2, 1000), 7)
 #'
+#' @importFrom rJava .jcall
+#'
 seasonality_periodogram <- function(data, period = NA, nyears = 0) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
         "periodogramTest",
@@ -147,11 +155,13 @@ seasonality_periodogram <- function(data, period = NA, nyears = 0) {
 #' seasonality_friedman(s)
 #' seasonality_friedman(random_t(2, 1000), 12)
 #'
+#' @importFrom rJava .jcall
+#'
 seasonality_friedman <- function(data, period = NA, nyears = 0) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
         "friedmanTest",
@@ -174,17 +184,19 @@ seasonality_friedman <- function(data, period = NA, nyears = 0) {
 #' seasonality_f(ABS$X0.2.09.10.M, model = "D1")
 #' seasonality_f(random_t(2, 1000), 7)
 #'
+#' @importFrom rJava .jcall
+#'
 seasonality_f <- function(
     data,
     period = NA,
     model = c("AR", "D1", "WN"),
     nyears = 0
 ) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
     model <- match.arg(model)
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "Ljdplus/toolkit/base/api/stats/StatisticalTest;",
         "fTest",
@@ -214,16 +226,19 @@ seasonality_f <- function(
 #' seasonality_combined(s)
 #' seasonality_combined(random_t(2, 1000), 7)
 #'
+#' @importFrom rJava .jcall
+#' @importFrom RProtoBuf read
+#'
 seasonality_combined <- function(
     data,
     period = NA,
-    firstperiod = cycle(data)[1],
+    firstperiod = stats::cycle(data)[1],
     mul = TRUE
 ) {
-    if (is.ts(data) && missing(period)) {
-        period <- frequency(data)
+    if (stats::is.ts(data) && missing(period)) {
+        period <- stats::frequency(data)
     }
-    jctest <- .jcall(
+    jctest <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "Ljdplus/sa/base/core/tests/CombinedSeasonality;",
         "combinedTest",
@@ -232,7 +247,12 @@ seasonality_combined <- function(
         as.integer(firstperiod - 1),
         as.logical(mul)
     )
-    q <- .jcall("jdplus/sa/base/r/SeasonalityTests", "[B", "toBuffer", jctest)
+    q <- rJava::.jcall(
+        "jdplus/sa/base/r/SeasonalityTests",
+        "[B",
+        "toBuffer",
+        jctest
+    )
     p <- RProtoBuf::read(sa.CombinedSeasonalityTest, q)
 
     output <- list(
@@ -263,6 +283,9 @@ seasonality_combined <- function(
 #' sct <- seasonality_canovahansen_trigs(s, 1 / freqs, original = FALSE)
 #' plot(sct, type = "l")
 #'
+#' @importFrom rJava .jarray
+#' @importFrom rJava .jcall
+#'
 seasonality_canovahansen_trigs <- function(
     data,
     periods,
@@ -276,12 +299,12 @@ seasonality_canovahansen_trigs <- function(
         order <- -1
     }
 
-    jtest <- .jcall(
+    jtest <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "[D",
         "canovaHansenTrigs",
         as.numeric(data),
-        .jarray(periods),
+        rJava::.jarray(periods),
         as.logical(lag1),
         kernel,
         as.integer(order),
@@ -302,6 +325,7 @@ seasonality_canovahansen_trigs <- function(
 #' @returns list with the F-Test on seasonal variables, the joint test and the details for the stability of the different seasonal variables
 #' @export
 #'
+#' @importFrom rJava .jcall
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' s <- log(ABS$X0.2.20.10.M)
@@ -323,7 +347,7 @@ seasonality_canovahansen <- function(
         order <- -1
     }
 
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/sa/base/r/SeasonalityTests",
         "[D",
         "canovaHansen",

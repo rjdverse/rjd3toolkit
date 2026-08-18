@@ -12,7 +12,7 @@ data_to_ts(s, name)
 \item{name}{name of the series}
 }
 \value{
-Returns a Java object of class JD3_TS
+a Java object of class JD3_TS
 }
 \description{
 Promote a R time series to a "full JDemetra+ time series"
