@@ -418,11 +418,14 @@ extract_elements_by_name <- function(x, n) {
 #' rjd3toolkit:::regroup_elements_by_name(test_list)
 #'
 #' @noRd
+#'
+#' @importFrom stats setNames
+#'
 regroup_elements_by_name <- function(x) {
     var_names <- unique(names(x))
     output <- var_names |>
         lapply(extract_elements_by_name, x = x) |>
-        setNames(var_names)
+        stats::setNames(var_names)
     return(output)
 }
 
@@ -492,40 +495,44 @@ put_elt_on_same_level.data.frame <- function(x, n = NULL) {
     return(output)
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level JD3_TSCOLLECTION
 #' @method put_elt_on_same_level JD3_TSCOLLECTION
 #' @export
 put_elt_on_same_level.JD3_TSCOLLECTION <- function(x, n = NULL) {
-    return(setNames(x$series, rep(n, length(x$series))))
+    return(stats::setNames(x$series, rep(n, length(x$series))))
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level JD3_DYNAMICTS
 #' @method put_elt_on_same_level JD3_DYNAMICTS
 #' @export
 put_elt_on_same_level.JD3_DYNAMICTS <- function(x, n = NULL) {
-    return(setNames(list(x), n))
+    return(stats::setNames(list(x), n))
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level JD3_TS
 #' @method put_elt_on_same_level JD3_TS
 #' @export
 put_elt_on_same_level.JD3_TS <- function(x, n = NULL) {
-    return(setNames(list(x), n))
+    return(stats::setNames(list(x), n))
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level default
 #' @method put_elt_on_same_level default
 #' @export
 put_elt_on_same_level.default <- function(x, n = NULL) {
-    return(setNames(list(x), n))
+    return(stats::setNames(list(x), n))
 }
 
 #' @title Assign Names to List
@@ -778,6 +785,7 @@ format_regressor <- function(x, n = NULL) {
     UseMethod("format_regressor", x)
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor mts
@@ -785,20 +793,22 @@ format_regressor <- function(x, n = NULL) {
 #' @export
 format_regressor.mts <- function(x, n = NULL) {
     output <- lapply(X = seq_len(ncol(x)), FUN = \(k) x[, k]) |>
-        setNames(nm = colnames(x)) |>
+        stats::setNames(nm = colnames(x)) |>
         set_names(n)
     return(output)
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor ts
 #' @method format_regressor ts
 #' @export
 format_regressor.ts <- function(x, n = NULL) {
-    return(setNames(object = list(x), nm = n))
+    return(stats::setNames(object = list(x), nm = n))
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor JD3_TS
@@ -806,7 +816,7 @@ format_regressor.ts <- function(x, n = NULL) {
 #' @export
 format_regressor.JD3_TS <- function(x, n = NULL) {
     output <- list(x) |>
-        setNames(ifelse(
+        stats::setNames(ifelse(
             test = is.null(x$name) || is.na(x$name) || !nzchar(x$name),
             yes = n,
             no = x$name
@@ -814,15 +824,17 @@ format_regressor.JD3_TS <- function(x, n = NULL) {
     return(output)
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor JD3_DYNAMICTS
 #' @method format_regressor JD3_DYNAMICTS
 #' @export
 format_regressor.JD3_DYNAMICTS <- function(x, n = NULL) {
-    return(setNames(object = list(x), nm = n))
+    return(stats::setNames(object = list(x), nm = n))
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor JD3_TSCOLLECTION
@@ -834,7 +846,7 @@ format_regressor.JD3_TSCOLLECTION <- function(x, n = NULL) {
         FUN = format_regressor
     ) |>
         do.call(what = c) |>
-        setNames(nm = names(x$series))
+        stats::setNames(nm = names(x$series))
     return(output)
 }
 
@@ -1013,6 +1025,8 @@ modelling_context <- function(
 #'     name = "another_regressor"
 #' )
 #' @export
+#' @importFrom stats setNames
+#'
 complete_modelling_context <- function(
     modelling_context,
     y,
@@ -1028,7 +1042,7 @@ complete_modelling_context <- function(
     # Check name
     checkmate::assert_character(name, len = 1L)
 
-    new_variable <- format_variable(list(setNames(list(y), name)))
+    new_variable <- format_variable(list(stats::setNames(list(y), name)))
     regressors_name <- names(new_variable)
     current_regressors_names <- names(modelling_context$variables[[group]])
 

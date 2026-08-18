@@ -19,7 +19,7 @@ NULL
 #' @param source Source of the time series information
 #' @param id Identifier of the time series information (source-dependent)
 #'
-#' @returns Informations retrieved from or for Java, proto
+#' @returns Informations retrieved from or for Java, ProtoBuf.
 #'
 #' @name jd3_utilities
 NULL

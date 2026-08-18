@@ -2,7 +2,7 @@
 % Please edit documentation in R/options.R
 \name{get_toolkit_option}
 \alias{get_toolkit_option}
-\title{Get teh value of an option for toolkit}
+\title{Get the value of an option for toolkit}
 \usage{
 get_toolkit_option(name)
 }
@@ -13,7 +13,7 @@ get_toolkit_option(name)
 The requested option or NULL if it doesn't exist
 }
 \description{
-Get teh value of an option for toolkit
+Get the value of an option for toolkit
 }
 \examples{
 toolkit_option("test", "DUMMY")
