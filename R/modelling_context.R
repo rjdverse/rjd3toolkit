@@ -996,7 +996,13 @@ modelling_context <- function(
 #'     name = "another_regressor"
 #' )
 #' @export
-complete_modelling_context <- function(modelling_context, y, group = "r", name = "", overwrite = FALSE) {
+complete_modelling_context <- function(
+    modelling_context,
+    y,
+    group = "r",
+    name = "",
+    overwrite = FALSE
+) {
     # Check group
     checkmate::assert_character(group)
     checkmate::assert_scalar(group)

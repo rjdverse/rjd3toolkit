@@ -1711,8 +1711,7 @@ set_easter.default <- function(
     if (!missing(duration) && !is.na(duration)) {
         easter$duration <- duration
     }
-    if (missing(coef) || is.null(coef) || is.na(coef)) {
-    } else {
+    if (missing(coef) || is.null(coef) || is.na(coef)) {} else {
         if (missing(coef.type) || anyNA(coef.type)) {
             coef.type <- "FIXED"
         } else {

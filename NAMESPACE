@@ -329,47 +329,57 @@ export(user_defined)
 export(weighted_calendar)
 import(RProtoBuf)
 importFrom(RProtoBuf,readProtoFiles2)
-importFrom(checkmate,assertNames)
-importFrom(checkmate,assertNumeric)
-importFrom(checkmate,assert_character)
-importFrom(checkmate,assert_integerish)
-importFrom(checkmate,assert_numeric)
-importFrom(checkmate,assert_scalar)
+importFrom(checkmate,
+  assertNames,
+  assertNumeric,
+  assert_character,
+  assert_integerish,
+  assert_numeric,
+  assert_scalar
+)
 importFrom(graphics,legend)
 importFrom(methods,is)
-importFrom(rJava,.jarray)
-importFrom(rJava,.jcall)
-importFrom(rJava,.jcast)
-importFrom(rJava,.jcastToArray)
-importFrom(rJava,.jclass)
-importFrom(rJava,.jevalArray)
-importFrom(rJava,.jinit)
-importFrom(rJava,.jinstanceof)
-importFrom(rJava,.jnew)
-importFrom(rJava,.jnull)
-importFrom(rJava,.jpackage)
-importFrom(rJava,is.jnull)
-importFrom(rjd3jars,check_java_version)
-importFrom(rjd3jars,reload_dictionaries)
-importFrom(stats,.preformat.ts)
-importFrom(stats,coef)
-importFrom(stats,cycle)
-importFrom(stats,df.residual)
-importFrom(stats,end)
-importFrom(stats,frequency)
-importFrom(stats,is.mts)
-importFrom(stats,is.ts)
-importFrom(stats,logLik)
-importFrom(stats,nobs)
-importFrom(stats,pf)
-importFrom(stats,printCoefmat)
-importFrom(stats,pt)
-importFrom(stats,residuals)
-importFrom(stats,start)
-importFrom(stats,ts)
-importFrom(stats,ts.plot)
-importFrom(stats,ts.union)
-importFrom(stats,vcov)
-importFrom(stats,window)
-importFrom(utils,head)
-importFrom(utils,tail)
+importFrom(rJava,
+  .jarray,
+  .jcall,
+  .jcast,
+  .jcastToArray,
+  .jclass,
+  .jevalArray,
+  .jinit,
+  .jinstanceof,
+  .jnew,
+  .jnull,
+  .jpackage,
+  is.jnull
+)
+importFrom(rjd3jars,
+  check_java_version,
+  reload_dictionaries
+)
+importFrom(stats,
+  .preformat.ts,
+  coef,
+  cycle,
+  df.residual,
+  end,
+  frequency,
+  is.mts,
+  is.ts,
+  logLik,
+  nobs,
+  pf,
+  printCoefmat,
+  pt,
+  residuals,
+  start,
+  ts,
+  ts.plot,
+  ts.union,
+  vcov,
+  window
+)
+importFrom(utils,
+  head,
+  tail
+)

@@ -8,7 +8,7 @@
 An object of class \code{JD3_TRAMOSEATS_SPEC} of length 3.
 }
 \usage{
-data(tramoseats_spec_default)
+tramoseats_spec_default
 }
 \description{
 Tramo-Seats default specification generated with \{rjd3tramoseats\} used in
