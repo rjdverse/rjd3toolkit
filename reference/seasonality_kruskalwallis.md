@@ -42,6 +42,6 @@ seasonality_kruskalwallis(s)
 #> Value: 333.9183 
 #> P-Value: 0.0000 
 seasonality_kruskalwallis(random_t(2, 1000), 7)
-#> Value: 3.004574 
-#> P-Value: 0.8083 
+#> Value: 4.226599 
+#> P-Value: 0.6460 
 ```
