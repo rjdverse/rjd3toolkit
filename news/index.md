@@ -17,7 +17,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Deprecated
 
-- `sa_preprocessing` is now deprecated. Please don’t use anymore this
+- `sa_preprocessing` is now deprecated. Please don’t use any more this
   function. [\#122](https://github.com/rjdverse/rjd3toolkit/issues/122)
 
 #### Changed
@@ -29,15 +29,16 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `add_usrdefvar` renames automatically the group or variables that
   contains a dot (`.`)
   [\#148](https://github.com/rjdverse/rjd3toolkit/issues/148).
+- Updated jdplus-main JARS from 3.8.0 to 3.9.0
 
 #### Fixed
 
 - `modelling_context` now accept `JD3_TS`, `JD3_DYNAMICTS` and
   `JD3_TSCOLLECTION` object
   [\#111](https://github.com/rjdverse/rjd3toolkit/issues/111)
-- All unamed variables are regrouped together under the `r` group.
+- All unnamed variables are regrouped together under the `r` group.
   [\#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
-- Unamed regressors and regressors with duplicated names are renamed
+- Unnamed regressors and regressors with duplicated names are renamed
   with `x1`, `x2`… pattern.
   [\#107](https://github.com/rjdverse/rjd3toolkit/issues/107)
 - Variables and regressor with dot (`.`) in their name are renamed in

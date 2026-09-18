@@ -208,7 +208,7 @@ Functions to compute basic transformations on time series
 - [`differences()`](https://rjdverse.github.io/rjd3toolkit/reference/differences.md)
   : Differencing of a series
 - [`differencing_fast()`](https://rjdverse.github.io/rjd3toolkit/reference/differencing_fast.md)
-  : The series is differenced till its variance is decreasing.
+  : Automatic differencing
 - [`do_stationary()`](https://rjdverse.github.io/rjd3toolkit/reference/do_stationary.md)
   : Automatic stationary transformation
 - [`ts_adjust()`](https://rjdverse.github.io/rjd3toolkit/reference/ts_adjust.md)
@@ -353,7 +353,7 @@ Creating Full JDemetra+ TS objects
 Evironment specific to JDemetra+
 
 - [`get_toolkit_option()`](https://rjdverse.github.io/rjd3toolkit/reference/get_toolkit_option.md)
-  : Get teh value of an option for toolkit
+  : Get the value of an option for toolkit
 - [`toolkit_option()`](https://rjdverse.github.io/rjd3toolkit/reference/toolkit_option.md)
   : Set an option for toolkit
 - [`.r2jd_tsdata()`](https://rjdverse.github.io/rjd3toolkit/reference/jd3_utilities.md)

@@ -10,7 +10,7 @@ packages.
 sadecomposition(y, sa, t, s, i, mul)
 
 # S3 method for class 'JD3_SADECOMPOSITION'
-print(x, n_last_obs = frequency(x$series), ...)
+print(x, n_last_obs = stats::frequency(x$series), ...)
 
 # S3 method for class 'JD3_SADECOMPOSITION'
 plot(
@@ -71,11 +71,11 @@ sa_decomposition(x, ...)
 
 ``` r
 decompo <- sadecomposition(
-    y = ts(c(112, 118, 132, 129, 121, 135), start = 2000, frequency = 12L),
-    sa = ts(c(121.72, 124.52, 125.4, 128.91, 128.84, 126.73), start = 2000, frequency = 12L),
-    t = ts(c(122.24, 124.33, 126.21, 127.61, 127.8, 126.94), start = 2000, frequency = 12L),
-    s = ts(c(0.92, 0.95, 1.05, 1, 0.94, 1.07), start = 2000, frequency = 12L),
-    i = ts(c(1, 1, 0.99, 1.01, 1.01, 1), start = 2000, frequency = 12L),
+    y =stats::ts(c(112, 118, 132, 129, 121, 135), start = 2000, frequency = 12L),
+    sa =stats::ts(c(121.72, 124.52, 125.4, 128.91, 128.84, 126.73), start = 2000, frequency = 12L),
+    t =stats::ts(c(122.24, 124.33, 126.21, 127.61, 127.8, 126.94), start = 2000, frequency = 12L),
+    s =stats::ts(c(0.92, 0.95, 1.05, 1, 0.94, 1.07), start = 2000, frequency = 12L),
+    i =stats::ts(c(1, 1, 0.99, 1.01, 1.01, 1), start = 2000, frequency = 12L),
     mul = TRUE
 )
 print(decompo)

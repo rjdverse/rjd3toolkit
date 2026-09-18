@@ -1,6 +1,6 @@
-# The series is differenced till its variance is decreasing.
+# Automatic differencing
 
-Automatic differencing
+The series is differenced till its variance is decreasing.
 
 ## Usage
 

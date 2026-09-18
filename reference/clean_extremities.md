@@ -21,7 +21,7 @@ Cleaned series
 ## Examples
 
 ``` r
-y <- window(ABS$X0.2.09.10.M, start = 1982, end = 2018, extend = TRUE)
+y <- stats::window(ABS$X0.2.09.10.M, start = 1982, end = 2018, extend = TRUE)
 y
 #>         Jan    Feb    Mar    Apr    May    Jun    Jul    Aug    Sep    Oct
 #> 1982     NA     NA     NA  460.1  502.6  443.8  459.1  438.4  465.1  452.7

@@ -8,7 +8,7 @@
 seasonality_combined(
   data,
   period = NA,
-  firstperiod = cycle(data)[1],
+  firstperiod = stats::cycle(data)[1],
   mul = TRUE
 )
 ```
@@ -97,43 +97,43 @@ seasonality_combined(random_t(2, 1000), 7)
 #> [1] "NONE"
 #> 
 #> $kruskalwallis
-#> Value: 9.258939 
-#> P-Value: 0.1595 
+#> Value: 8.879454 
+#> P-Value: 0.1805 
 #> 
 #> $stable
 #> $stable$SSM
-#> [1] 38.11787
+#> [1] 73.98143
 #> 
 #> $stable$dfM
 #> [1] 6
 #> 
 #> $stable$SSR
-#> [1] 7677.2
+#> [1] 14212.6
 #> 
 #> $stable$dfR
 #> [1] 993
 #> 
 #> $stable$test
-#> Value: 0.8217197 
-#> P-Value: 0.5531 
+#> Value: 0.8614842 
+#> P-Value: 0.5227 
 #> 
 #> 
 #> $evolutive
 #> $evolutive$SSM
-#> [1] 700.9122
+#> [1] 1880.836
 #> 
 #> $evolutive$dfM
 #> [1] 141
 #> 
 #> $evolutive$SSR
-#> [1] 5199.015
+#> [1] 9565.97
 #> 
 #> $evolutive$dfR
 #> [1] 846
 #> 
 #> $evolutive$test
-#> Value: 0.8088981 
-#> P-Value: 0.9424 
+#> Value: 1.179704 
+#> P-Value: 0.0902 
 #> 
 #> 
 ```

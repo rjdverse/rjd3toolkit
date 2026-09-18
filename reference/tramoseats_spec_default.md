@@ -8,7 +8,7 @@ generated with
 ## Usage
 
 ``` r
-data(tramoseats_spec_default)
+tramoseats_spec_default
 ```
 
 ## Format

@@ -6,7 +6,7 @@ the period from January 1st, 1968 to December 31st, 2024.
 ## Usage
 
 ``` r
-data(Births)
+Births
 ```
 
 ## Format

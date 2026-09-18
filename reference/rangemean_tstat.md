@@ -73,7 +73,7 @@ rm_t <- rangemean_tstat(y, period = period, groupsize = period)
 rm_t # higher than 0
 #> [1] 32.41607
 # Can be tested:
-pt(rm_t, period - 2, lower.tail = FALSE)
+stats::pt(rm_t, period - 2, lower.tail = FALSE)
 #> [1] 9.196296e-12
 # Or :
 1 - cdf_t(period - 2, rm_t)
@@ -83,6 +83,6 @@ pt(rm_t, period - 2, lower.tail = FALSE)
 rm_t_log <- rangemean_tstat(log(y), period = period, groupsize = period)
 rm_t_log
 #> [1] 0.5946804
-pt(rm_t_log, period - 2, lower.tail = FALSE)
+stats::pt(rm_t_log, period - 2, lower.tail = FALSE)
 #> [1] 0.2826345
 ```

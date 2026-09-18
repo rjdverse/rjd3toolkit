@@ -5,7 +5,7 @@ Data Base: French national electricity consumption
 ## Usage
 
 ``` r
-data(Electricity)
+Electricity
 ```
 
 ## Format

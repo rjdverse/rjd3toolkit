@@ -275,4 +275,4 @@ get_date_max()
 
 ## Value
 
-Informations retrieved from or for Java, proto
+Informations retrieved from or for Java, ProtoBuf.

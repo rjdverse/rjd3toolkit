@@ -5,7 +5,7 @@ Data Base: US Retail trade series
 ## Usage
 
 ``` r
-data(Retail)
+Retail
 ```
 
 ## Format

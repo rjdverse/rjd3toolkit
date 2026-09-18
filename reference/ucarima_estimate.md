@@ -37,6 +37,6 @@ hp <- ucarima_model(components = list(mod1, mod2))
 s <- log(aggregate(Retail$AutomobileDealers))
 all <- ucarima_estimate(s, hp, stdev = TRUE)
 plot(s, type = "l")
-t <- ts(all[, 1], frequency = frequency(s), start = start(s))
+t <- stats::ts(all[, 1], frequency = stats::frequency(s), start = stats::start(s))
 lines(t, col = "blue")
 ```
