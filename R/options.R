@@ -20,7 +20,7 @@ toolkit_option <- function(name, obj) {
     return(invisible(NULL))
 }
 
-#' @title Get teh value of an option for toolkit
+#' @title Get the value of an option for toolkit
 #'
 #' @param name Name of the option
 #'

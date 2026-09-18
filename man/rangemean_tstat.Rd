@@ -57,13 +57,13 @@ period <- 12
 rm_t <- rangemean_tstat(y, period = period, groupsize = period)
 rm_t # higher than 0
 # Can be tested:
-pt(rm_t, period - 2, lower.tail = FALSE)
+stats::pt(rm_t, period - 2, lower.tail = FALSE)
 # Or :
 1 - cdf_t(period - 2, rm_t)
 
 # Close to 0
 rm_t_log <- rangemean_tstat(log(y), period = period, groupsize = period)
 rm_t_log
-pt(rm_t_log, period - 2, lower.tail = FALSE)
+stats::pt(rm_t_log, period - 2, lower.tail = FALSE)
 \dontshow{\}) # examplesIf}
 }

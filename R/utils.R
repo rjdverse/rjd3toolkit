@@ -1,7 +1,3 @@
-#' @importFrom rJava .jpackage .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass
-#' @importFrom methods is
-NULL
-
 ymd <- function(y, m, d = 1) {
     return(as.Date(sprintf("%04i-%02i-%02i", y, m, d)))
 }
@@ -30,10 +26,6 @@ parseDate <- function(s) {
     return(d)
 }
 
-#' @importFrom stats pf frequency
-NULL
-
-
 .p2r_anova <- function(p) {
     return(list(
         SSM = p$SSM,
@@ -44,10 +36,11 @@ NULL
     ))
 }
 
+#' @importFrom stats pf
 test_anova <- function(ssm, dfm, ssr, dfr) {
     val <- (ssm / dfm) * (dfr / ssr)
     desc <- paste0("F(", dfm, ",", dfr, ")")
-    pval <- 1 - pf(val, dfm, dfr)
+    pval <- 1 - stats::pf(val, dfm, dfr)
     return(statisticaltest(val, pval, desc))
 }
 

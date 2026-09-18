@@ -31,34 +31,40 @@ RSLT <- "JD3_ProcResults"
 #' \code{result()} returns a numeric or character or a ts object (series),
 #' \code{user_defined()} returns an object of class "user_defined" (list)
 #'
+#' @importFrom rJava .jinstanceof
+#' @importFrom rJava is.jnull
+#' @importFrom rJava .jclass
 #' @export
+#' @importFrom methods is
 dictionary <- function(object) {
-    if (!is(object, RSLT)) {
+    if (!methods::is(object, RSLT)) {
         stop("No dictionary for this type of object")
     }
-    if (is.jnull(object$internal)) {
+    if (rJava::is.jnull(object$internal)) {
         stop("No Java object")
     }
 
     if (
-        .jinstanceof(
+        rJava::.jinstanceof(
             object$internal,
             "jdplus/toolkit/base/api/information/Explorable"
         )
     ) {
         .proc_dictionary2(object$internal)
     } else {
-        .proc_dictionary(.jclass(object$internal))
+        .proc_dictionary(rJava::.jclass(object$internal))
     }
 }
 
+#' @importFrom rJava is.jnull
 #' @rdname dictionary
 #' @export
+#' @importFrom methods is
 result <- function(object, id) {
-    if (!is(object, RSLT)) {
+    if (!methods::is(object, RSLT)) {
         stop("No result for this type of object")
     }
-    if (is.jnull(object$internal)) {
+    if (rJava::is.jnull(object$internal)) {
         stop("No Java object")
     }
     return(.proc_data(object$internal, id))
@@ -93,6 +99,8 @@ user_defined <- function(object, userdefined = NULL) {
 #' @returns A new model with same class as \code{x}
 #'
 #' @export
+#' @importFrom rJava .jcall
+#'
 .add_ud_var <- function(
     x,
     jx,
@@ -109,7 +117,7 @@ user_defined <- function(object, userdefined = NULL) {
     } else if (is.null(out_class)) {
         res <- jx$getResult()
     } else {
-        res <- .jcall(jx, out_class, "getResult")
+        res <- rJava::.jcall(jx, out_class, "getResult")
     }
     res <- .jd3_object(res, result = TRUE)
 

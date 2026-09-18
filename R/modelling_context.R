@@ -46,14 +46,16 @@ JD3_TSCOLLECTION <- "JD3_TSCOLLECTION"
 
 #' @export
 #' @rdname jd3_utilities
+#' @importFrom stats is.ts
+#' @importFrom methods is
 .r2p_datasupplier <- function(name, r) {
     p <- jd3.TsDataSuppliers$Item$new()
     p$name <- name
-    if (is.ts(r)) {
+    if (stats::is.ts(r)) {
         p$data <- .r2p_tsdata(r)
-    } else if (is(r, JD3_DYNAMICTS)) {
+    } else if (methods::is(r, JD3_DYNAMICTS)) {
         p$dynamic_data <- .r2p_dynamic_ts(r)
-    } else if (is(r, JD3_TS)) {
+    } else if (methods::is(r, JD3_TS)) {
         p$dynamic_data <- .r2p_dynamic_ts(r)
     } else {
         return(NULL)
@@ -175,15 +177,18 @@ dynamic_ts <- function(moniker, data) {
     return(p)
 }
 
+#' @importFrom RProtoBuf serialize
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jnull
 #' @export
 #' @rdname jd3_utilities
 .r2jd_ts <- function(s) {
     if (is.null(s)) {
-        return(.jnull("jdplus/toolkit/base/api/timeseries/Ts"))
+        return(rJava::.jnull("jdplus/toolkit/base/api/timeseries/Ts"))
     }
     ps <- .r2p_ts(s)
     bytes <- RProtoBuf::serialize(ps, NULL)
-    return(.jcall(
+    return(rJava::.jcall(
         obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
         returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
         method = "tsOfBytes",
@@ -191,13 +196,16 @@ dynamic_ts <- function(moniker, data) {
     ))
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .jd2r_ts <- function(js) {
-    if (is.jnull(js)) {
+    if (rJava::is.jnull(js)) {
         return(NULL)
     }
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/toolkit/base/r/timeseries/TsUtility",
         "[B",
         "toBuffer",
@@ -207,15 +215,18 @@ dynamic_ts <- function(moniker, data) {
     return(.p2r_ts(p))
 }
 
+#' @importFrom RProtoBuf serialize
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jnull
 #' @export
 #' @rdname jd3_utilities
 .r2jd_tscollection <- function(s) {
     if (is.null(s)) {
-        return(.jnull("jdplus/toolkit/base/api/timeseries/TsCollection"))
+        return(rJava::.jnull("jdplus/toolkit/base/api/timeseries/TsCollection"))
     }
     ps <- .r2p_tscollection(s)
     bytes <- RProtoBuf::serialize(ps, NULL)
-    return(.jcall(
+    return(rJava::.jcall(
         obj = "jdplus/toolkit/base/r/timeseries/TsUtility",
         returnSig = "Ljdplus/toolkit/base/api/timeseries/Ts;",
         method = "tsCollectionOfBytes",
@@ -223,13 +234,16 @@ dynamic_ts <- function(moniker, data) {
     ))
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .jd2r_tscollection <- function(js) {
-    if (is.jnull(js)) {
+    if (rJava::is.jnull(js)) {
         return(NULL)
     }
-    q <- .jcall(
+    q <- rJava::.jcall(
         "jdplus/toolkit/base/r/timeseries/TsUtility",
         "[B",
         "toBuffer",
@@ -310,11 +324,12 @@ dynamic_ts <- function(moniker, data) {
     return(l)
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .p2jd_variables <- function(p) {
     bytes <- p$serialize(NULL)
-    jcal <- .jcall(
+    jcal <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "Ljdplus/toolkit/base/api/timeseries/regression/TsDataSuppliers;",
         "variablesOf",
@@ -323,10 +338,12 @@ dynamic_ts <- function(moniker, data) {
     return(jcal)
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .jd2p_variables <- function(jd) {
-    bytes <- .jcall(
+    bytes <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "[B",
         "toBuffer",
@@ -401,11 +418,14 @@ extract_elements_by_name <- function(x, n) {
 #' rjd3toolkit:::regroup_elements_by_name(test_list)
 #'
 #' @noRd
+#'
+#' @importFrom stats setNames
+#'
 regroup_elements_by_name <- function(x) {
     var_names <- unique(names(x))
     output <- var_names |>
         lapply(extract_elements_by_name, x = x) |>
-        setNames(var_names)
+        stats::setNames(var_names)
     return(output)
 }
 
@@ -475,40 +495,44 @@ put_elt_on_same_level.data.frame <- function(x, n = NULL) {
     return(output)
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level JD3_TSCOLLECTION
 #' @method put_elt_on_same_level JD3_TSCOLLECTION
 #' @export
 put_elt_on_same_level.JD3_TSCOLLECTION <- function(x, n = NULL) {
-    return(setNames(x$series, rep(n, length(x$series))))
+    return(stats::setNames(x$series, rep(n, length(x$series))))
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level JD3_DYNAMICTS
 #' @method put_elt_on_same_level JD3_DYNAMICTS
 #' @export
 put_elt_on_same_level.JD3_DYNAMICTS <- function(x, n = NULL) {
-    return(setNames(list(x), n))
+    return(stats::setNames(list(x), n))
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level JD3_TS
 #' @method put_elt_on_same_level JD3_TS
 #' @export
 put_elt_on_same_level.JD3_TS <- function(x, n = NULL) {
-    return(setNames(list(x), n))
+    return(stats::setNames(list(x), n))
 }
 
+#' @importFrom stats setNames
 #' @rdname put_elt_on_same_level
 #' @noRd
 #' @exportS3Method put_elt_on_same_level default
 #' @method put_elt_on_same_level default
 #' @export
 put_elt_on_same_level.default <- function(x, n = NULL) {
-    return(setNames(list(x), n))
+    return(stats::setNames(list(x), n))
 }
 
 #' @title Assign Names to List
@@ -761,6 +785,7 @@ format_regressor <- function(x, n = NULL) {
     UseMethod("format_regressor", x)
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor mts
@@ -768,20 +793,22 @@ format_regressor <- function(x, n = NULL) {
 #' @export
 format_regressor.mts <- function(x, n = NULL) {
     output <- lapply(X = seq_len(ncol(x)), FUN = \(k) x[, k]) |>
-        setNames(nm = colnames(x)) |>
+        stats::setNames(nm = colnames(x)) |>
         set_names(n)
     return(output)
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor ts
 #' @method format_regressor ts
 #' @export
 format_regressor.ts <- function(x, n = NULL) {
-    return(setNames(object = list(x), nm = n))
+    return(stats::setNames(object = list(x), nm = n))
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor JD3_TS
@@ -789,7 +816,7 @@ format_regressor.ts <- function(x, n = NULL) {
 #' @export
 format_regressor.JD3_TS <- function(x, n = NULL) {
     output <- list(x) |>
-        setNames(ifelse(
+        stats::setNames(ifelse(
             test = is.null(x$name) || is.na(x$name) || !nzchar(x$name),
             yes = n,
             no = x$name
@@ -797,15 +824,17 @@ format_regressor.JD3_TS <- function(x, n = NULL) {
     return(output)
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor JD3_DYNAMICTS
 #' @method format_regressor JD3_DYNAMICTS
 #' @export
 format_regressor.JD3_DYNAMICTS <- function(x, n = NULL) {
-    return(setNames(object = list(x), nm = n))
+    return(stats::setNames(object = list(x), nm = n))
 }
 
+#' @importFrom stats setNames
 #' @noRd
 #' @rdname format_regressor
 #' @exportS3Method format_regressor JD3_TSCOLLECTION
@@ -817,7 +846,7 @@ format_regressor.JD3_TSCOLLECTION <- function(x, n = NULL) {
         FUN = format_regressor
     ) |>
         do.call(what = c) |>
-        setNames(nm = names(x$series))
+        stats::setNames(nm = names(x$series))
     return(output)
 }
 
@@ -996,7 +1025,15 @@ modelling_context <- function(
 #'     name = "another_regressor"
 #' )
 #' @export
-complete_modelling_context <- function(modelling_context, y, group = "r", name = "", overwrite = FALSE) {
+#' @importFrom stats setNames
+#'
+complete_modelling_context <- function(
+    modelling_context,
+    y,
+    group = "r",
+    name = "",
+    overwrite = FALSE
+) {
     # Check group
     checkmate::assert_character(group)
     checkmate::assert_scalar(group)
@@ -1005,7 +1042,7 @@ complete_modelling_context <- function(modelling_context, y, group = "r", name =
     # Check name
     checkmate::assert_character(name, len = 1L)
 
-    new_variable <- format_variable(list(setNames(list(y), name)))
+    new_variable <- format_variable(list(stats::setNames(list(y), name)))
     regressors_name <- names(new_variable)
     current_regressors_names <- names(modelling_context$variables[[group]])
 
@@ -1087,11 +1124,12 @@ complete_modelling_context <- function(modelling_context, y, group = "r", name =
     return(p)
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .p2jd_context <- function(p) {
     bytes <- p$serialize(NULL)
-    jcal <- .jcall(
+    jcal <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "Ljdplus/toolkit/base/api/timeseries/regression/ModellingContext;",
         "of",
@@ -1100,10 +1138,12 @@ complete_modelling_context <- function(modelling_context, y, group = "r", name =
     return(jcal)
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .jd2p_context <- function(jd) {
-    bytes <- .jcall(
+    bytes <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "[B",
         "toBuffer",
@@ -1163,11 +1203,12 @@ complete_modelling_context <- function(modelling_context, y, group = "r", name =
     return(p)
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .p2jd_calendars <- function(p) {
     bytes <- p$serialize(NULL)
-    jcal <- .jcall(
+    jcal <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "Ljdplus/toolkit/base/api/timeseries/calendars/CalendarManager;",
         "calendarsOf",
@@ -1176,10 +1217,12 @@ complete_modelling_context <- function(modelling_context, y, group = "r", name =
     return(jcal)
 }
 
+#' @importFrom RProtoBuf read
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .jd2p_calendars <- function(jd) {
-    bytes <- .jcall(
+    bytes <- rJava::.jcall(
         "jdplus/toolkit/base/r/util/Modelling",
         "[B",
         "toBuffer",

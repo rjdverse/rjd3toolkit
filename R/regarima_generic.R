@@ -1,5 +1,5 @@
-# Method "JD3_REGARIMA_RSLTS" for the function coef
-#' @importFrom stats coef df.residual logLik residuals vcov nobs
+#' @importFrom stats coef
+#' @exportS3Method stats::coef
 #' @export
 coef.JD3_REGARIMA_RSLTS <- function(
     object,
@@ -26,7 +26,8 @@ coef.JD3_REGARIMA_RSLTS <- function(
     res
 }
 
-# Method "JD3_REGARIMA_RSLTS" for the function logLik
+#' @importFrom stats logLik
+#' @exportS3Method stats::logLik
 #' @export
 logLik.JD3_REGARIMA_RSLTS <- function(object, ...) {
     if (!is.null(object$estimation)) {
@@ -46,6 +47,9 @@ logLik.JD3_REGARIMA_RSLTS <- function(object, ...) {
     class(res) <- "logLik"
     res
 }
+
+#' @importFrom stats vcov
+#' @exportS3Method stats::vcov
 #' @export
 vcov.JD3_REGARIMA_RSLTS <- function(
     object,
@@ -68,6 +72,8 @@ vcov.JD3_REGARIMA_RSLTS <- function(
     }
 }
 
+#' @importFrom stats df.residual
+#' @exportS3Method stats::df.residual
 #' @export
 df.residual.JD3_REGARIMA_RSLTS <- function(object, ...) {
     if (is.null(object)) {
@@ -80,6 +86,8 @@ df.residual.JD3_REGARIMA_RSLTS <- function(object, ...) {
     object$likelihood$neffectiveobs - object$likelihood$nparams
 }
 
+#' @importFrom stats nobs
+#' @exportS3Method stats::nobs
 #' @export
 nobs.JD3_REGARIMA_RSLTS <- function(object, ...) {
     if (is.null(object)) {
@@ -92,6 +100,8 @@ nobs.JD3_REGARIMA_RSLTS <- function(object, ...) {
     object$likelihood$neffectiveobs
 }
 
+#' @importFrom stats residuals
+#' @exportS3Method stats::residuals
 #' @export
 residuals.JD3_REGARIMA_RSLTS <- function(object, ...) {
     if (is.null(object)) {

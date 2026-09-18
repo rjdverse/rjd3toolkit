@@ -1,51 +1,68 @@
 #' @include jd2r.R
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_numeric <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NaN)
     }
 
-    return(.jcall(s, "D", "doubleValue"))
+    return(rJava::.jcall(s, "D", "doubleValue"))
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jevalArray
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_vector <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
-    .jevalArray(s)
+    rJava::.jevalArray(s)
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_int <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(-1)
     }
-    .jcall(s, "I", "intValue")
+    rJava::.jcall(s, "I", "intValue")
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_bool <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(FALSE)
     }
-    .jcall(s, "Z", "booleanValue")
+    rJava::.jcall(s, "Z", "booleanValue")
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jinstanceof
+#' @importFrom rJava .jcast
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_ts <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
-    if (.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData")) {
-        return(.jd2r_tsdata(.jcast(
+    if (rJava::.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData")) {
+        return(.jd2r_tsdata(rJava::.jcast(
             s,
             "jdplus/toolkit/base/api/timeseries/TsData"
         )))
@@ -53,149 +70,188 @@
         return(NULL)
     }
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_str <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
-    .jcall(s, "S", "toString")
+    rJava::.jcall(s, "S", "toString")
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jevalArray
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_desc <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
-    .jevalArray(s)
+    rJava::.jevalArray(s)
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_test <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
-    desc <- .jcall(s, "S", "getDescription")
-    val <- .jcall(s, "D", "getValue")
-    pval <- .jcall(s, "D", "getPvalue")
+    desc <- rJava::.jcall(s, "S", "getDescription")
+    val <- rJava::.jcall(s, "D", "getValue")
+    pval <- rJava::.jcall(s, "D", "getPvalue")
     all <- c(val, pval)
     attr(all, "description") <- desc
     all
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_parameter <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
-    val <- .jcall(s, "D", "getValue")
+    val <- rJava::.jcall(s, "D", "getValue")
     return(val)
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jcastToArray
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_parameters <- function(rslt, name) {
-    jd_p <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(jd_p)) {
+    jd_p <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(jd_p)) {
         return(NULL)
     }
-    p <- .jcastToArray(jd_p)
+    p <- rJava::.jcastToArray(jd_p)
     len <- length(p)
     all <- array(0, dim = c(len))
     for (i in 1:len) {
-        all[i] <- .jcall(p[[i]], "D", "getValue")
+        all[i] <- rJava::.jcall(p[[i]], "D", "getValue")
     }
     all
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava is.jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_matrix <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
     return(.jd2r_matrix(s))
 }
+
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jcastToArray
+#' @importFrom rJava .jcast
+#' @importFrom rJava .jevalArray
+#' @importFrom rJava is.jnull
+#' @importFrom rJava .jinstanceof
 #' @export
 #' @rdname jd3_utilities
 .proc_data <- function(rslt, name) {
-    s <- .jcall(rslt, "Ljava/lang/Object;", "getData", name)
-    if (is.jnull(s)) {
+    s <- rJava::.jcall(rslt, "Ljava/lang/Object;", "getData", name)
+    if (rJava::is.jnull(s)) {
         return(NULL)
     }
-    if (.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData")) {
-        return(.jd2r_tsdata(.jcast(
+    if (rJava::.jinstanceof(s, "jdplus/toolkit/base/api/timeseries/TsData")) {
+        return(.jd2r_tsdata(rJava::.jcast(
             s,
             "jdplus/toolkit/base/api/timeseries/TsData"
         )))
-    } else if (.jinstanceof(s, "java/lang/Number")) {
-        return(.jcall(s, "D", "doubleValue"))
+    } else if (rJava::.jinstanceof(s, "java/lang/Number")) {
+        return(rJava::.jcall(s, "D", "doubleValue"))
     } else if (
-        .jinstanceof(s, "jdplus/toolkit/base/api/math/matrices/Matrix")
+        rJava::.jinstanceof(s, "jdplus/toolkit/base/api/math/matrices/Matrix")
     ) {
-        return(.jd2r_matrix(.jcast(
+        return(.jd2r_matrix(rJava::.jcast(
             s,
             "jdplus/toolkit/base/api/math/matrices/Matrix"
         )))
-    } else if (.jinstanceof(s, "jdplus/toolkit/base/api/data/Parameter")) {
-        val <- .jcall(s, "D", "getValue")
+    } else if (
+        rJava::.jinstanceof(s, "jdplus/toolkit/base/api/data/Parameter")
+    ) {
+        val <- rJava::.jcall(s, "D", "getValue")
         return(c(val))
-    } else if (.jinstanceof(s, "[Ljdplus/toolkit/base/api/data/Parameter;")) {
-        p <- .jcastToArray(s)
+    } else if (
+        rJava::.jinstanceof(s, "[Ljdplus/toolkit/base/api/data/Parameter;")
+    ) {
+        p <- rJava::.jcastToArray(s)
         len <- length(p)
         all <- array(0, dim = c(len))
         for (i in 1:len) {
-            all[i] <- .jcall(p[[i]], "D", "getValue")
+            all[i] <- rJava::.jcall(p[[i]], "D", "getValue")
         }
         return(all)
     } else if (
-        .jcall(.jcall(s, "Ljava/lang/Class;", "getClass"), "Z", "isArray")
+        rJava::.jcall(
+            rJava::.jcall(s, "Ljava/lang/Class;", "getClass"),
+            "Z",
+            "isArray"
+        )
     ) {
-        return(.jevalArray(s, silent = TRUE))
+        return(rJava::.jevalArray(s, silent = TRUE))
     } else if (
-        .jinstanceof(s, "jdplus/toolkit/base/api/stats/StatisticalTest")
+        rJava::.jinstanceof(s, "jdplus/toolkit/base/api/stats/StatisticalTest")
     ) {
         return(.jd2r_test(s))
     } else if (
-        .jinstanceof(
+        rJava::.jinstanceof(
             s,
             "jdplus/toolkit/base/api/timeseries/regression/RegressionItem"
         )
     ) {
         return(.jd2r_regression_item(s))
     } else {
-        return(.jcall(s, "S", "toString"))
+        return(rJava::.jcall(s, "S", "toString"))
     }
 }
 
+#' @importFrom rJava .jcall
+#' @importFrom rJava .jcast
+#' @importFrom rJava .jnew
+#' @importFrom rJava .jnull
 #' @export
 #' @rdname jd3_utilities
 .proc_dictionary <- function(name) {
-    jmapping <- .jcall(
+    jmapping <- rJava::.jcall(
         name,
         "Ljdplus/toolkit/base/api/information/InformationMapping;",
         "getMapping"
     )
-    jmap <- .jnew("java/util/LinkedHashMap")
-    .jcall(
+    jmap <- rJava::.jnew("java/util/LinkedHashMap")
+    rJava::.jcall(
         jmapping,
         "V",
         "fillDictionary",
-        .jnull("java/lang/String"),
-        .jcast(jmap, "java/util/Map"),
+        rJava::.jnull("java/lang/String"),
+        rJava::.jcast(jmap, "java/util/Map"),
         TRUE
     )
-    jkeys <- .jcall(jmap, "Ljava/util/Set;", "keySet")
-    size <- .jcall(jkeys, "I", "size")
+    jkeys <- rJava::.jcall(jmap, "Ljava/util/Set;", "keySet")
+    size <- rJava::.jcall(jkeys, "I", "size")
     keys <- array(dim = size)
     if (size > 0) {
-        jiter <- .jcall(jkeys, "Ljava/util/Iterator;", "iterator")
+        jiter <- rJava::.jcall(jkeys, "Ljava/util/Iterator;", "iterator")
         for (i in 1:size) {
-            keys[i] <- .jcall(
-                .jcall(jiter, "Ljava/lang/Object;", "next"),
+            keys[i] <- rJava::.jcall(
+                rJava::.jcall(jiter, "Ljava/lang/Object;", "next"),
                 "Ljava/lang/String;",
                 "toString"
             )
@@ -204,18 +260,19 @@
     return(keys)
 }
 
+#' @importFrom rJava .jcall
 #' @export
 #' @rdname jd3_utilities
 .proc_dictionary2 <- function(jobj) {
-    jmap <- .jcall(jobj, "Ljava/util/Map;", "getDictionary")
-    jkeys <- .jcall(jmap, "Ljava/util/Set;", "keySet")
-    size <- .jcall(jkeys, "I", "size")
+    jmap <- rJava::.jcall(jobj, "Ljava/util/Map;", "getDictionary")
+    jkeys <- rJava::.jcall(jmap, "Ljava/util/Set;", "keySet")
+    size <- rJava::.jcall(jkeys, "I", "size")
     keys <- array(dim = size)
     if (size > 0) {
-        jiter <- .jcall(jkeys, "Ljava/util/Iterator;", "iterator")
+        jiter <- rJava::.jcall(jkeys, "Ljava/util/Iterator;", "iterator")
         for (i in 1:size) {
-            keys[i] <- .jcall(
-                .jcall(jiter, "Ljava/lang/Object;", "next"),
+            keys[i] <- rJava::.jcall(
+                rJava::.jcall(jiter, "Ljava/lang/Object;", "next"),
                 "Ljava/lang/String;",
                 "toString"
             )
