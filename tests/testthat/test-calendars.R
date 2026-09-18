@@ -1,4 +1,8 @@
 test_that("calendar_td works", {
+    testthat::skip_if_not(
+        condition = rjd3jars::check_java_version(silent = TRUE),
+        message = "Java version is not sufficient."
+    )
     reg <- calendar_td(frequency = 12L, start = 2020L, length = 3L)
     expect_s3_class(reg, "mts")
     expect_identical(

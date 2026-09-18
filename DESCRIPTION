@@ -1,7 +1,7 @@
 Type: Package
 Package: rjd3toolkit
 Title: Utility Functions Around 'JDemetra+ 3.0'
-Version: 3.8.0.9000
+Version: 3.9.0
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Alain", "Quartier-la-Tente", , "alain.quartier@yahoo.fr", role = "aut",
@@ -28,11 +28,15 @@ Imports:
     graphics,
     methods,
     rJava (>= 1.0-6),
-    rjd3jars (>= 0.0.5),
+    rjd3jars (>= 0.0.6),
     RProtoBuf (>= 0.4.25),
     stats,
     utils
+Suggests: 
+    spelling,
+    testthat (>= 3.0.0)
 Config/roxygen2/version: 8.1.0
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB
 LazyData: TRUE
@@ -69,9 +73,3 @@ Collate:
     'timeseries.R'
     'variables.R'
     'zzz.R'
-Remotes: 
-    github::rjdverse/rjd3jars
-Suggests: 
-    testthat (>= 3.0.0),
-    spelling
-Config/testthat/edition: 3

@@ -1,3 +1,16 @@
+## Submission of {rjd3toolkit} v3.9.0 - 2026-09-18
+
+### R CMD check results
+
+* checked on windows, mac, ubuntu
+
+0 errors | 0 warnings | 1 note
+
+### Changes
+
+* Maintainer email adress has changed
+
+
 ## Re-Submission of {rjd3toolkit} v3.8.0 - 2026-07-08
 
 ### R CMD check results
