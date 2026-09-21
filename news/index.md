@@ -8,7 +8,9 @@ The format is based on [Keep a
 Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### [Unreleased](https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...HEAD)
+### [Unreleased](https://github.com/rjdverse/rjd3toolkit/compare/v3.9.0...HEAD)
+
+### [3.9.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...v3.9.0) - 2026-09-21
 
 #### Added
 
@@ -24,11 +26,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - `modelling_context` accepts regressor with and without names in nested
   structure.
+
 - `add_usrdefvar` accepts multiple regressor in the same group.
   [\#106](https://github.com/rjdverse/rjd3toolkit/issues/106)
+
 - `add_usrdefvar` renames automatically the group or variables that
   contains a dot (`.`)
   [\#148](https://github.com/rjdverse/rjd3toolkit/issues/148).
+
 - Updated jdplus-main JARS from 3.8.0 to 3.9.0
 
 #### Fixed
