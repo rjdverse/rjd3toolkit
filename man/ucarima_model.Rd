@@ -14,7 +14,7 @@ ucarima_model(model = NULL, components, complements = NULL, checkmodel = FALSE)
 
 \item{complements}{Complements of (some) components. Usually not provided}
 
-\item{checkmodel}{When the model is provided and \emph{checkmodel} is TRUE, we
+\item{checkmodel}{When the model is provided and \code{checkmodel} is TRUE, we
 check that it indeed corresponds to the reduced form of the components;
 similar controls are applied on complements. Currently not implemented}
 }

@@ -30,7 +30,7 @@ in the test for the log-level specification (\code{fun = "Auto"}). By default to
 \item{aicdiff}{(REGARIMA/X-13 specific)  a numeric defining the difference in AICC needed to accept no transformation when the automatic
 transformation selection is chosen (considered only when \code{fun = "Auto"}). Default= -2.}
 
-\item{fct}{(TRAMO specific) \code{numeric} controlling the bias in the log/level pre-test:
+\item{fct}{(Tramo specific) \code{numeric} controlling the bias in the log/level pre-test:
 \code{transform.fct}> 1 favours levels, \code{transform.fct}< 1 favours logs.
 Considered only when \code{fun = "Auto"}.}
 }
@@ -42,7 +42,7 @@ Set Log-level Transformation and Decomposition scheme in Pre-Processing Specific
 }
 \details{
 \code{x} specification parameter must be a JD3_X13_SPEC" class object generated with \code{rjd3x13::x13_spec()}
-(or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC"
+(or "JD3_REGARIMA_SPEC" generated with \code{rjd3x13::spec_regarima()} or \code{"JD3_TRAMOSEATS_SPEC"}
 generated with \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }

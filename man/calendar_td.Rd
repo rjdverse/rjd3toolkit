@@ -63,7 +63,6 @@ Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
 }
 \examples{
 \dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
-
 BE <- national_calendar(list(
     fixed_day(7, 21),
     special_day("NEWYEAR"),

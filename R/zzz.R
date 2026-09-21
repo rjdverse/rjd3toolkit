@@ -1,17 +1,9 @@
 #' @include utils.R
 NULL
 
-#' @importFrom rJava .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass .jinit
-#' @importFrom stats frequency is.ts pf ts ts.union
-NULL
-
-#' @rdname jd3_utilities
-#' @export
-.jd3_env <- new.env()
-
 #' @importFrom rjd3jars check_java_version
 .onAttach <- function(libname, pkgname) {
-    # Check java version
+    # Check Java version
     rjd3jars::check_java_version(silent = FALSE, startup = TRUE)
 }
 
@@ -38,7 +30,7 @@ NULL
         morePaths = jars_inst
     )
     if (!result) {
-        stop("Loading java packages failed")
+        stop("Loading Java packages failed")
     }
 
     has_java <- rjd3jars::check_java_version(silent = TRUE)
@@ -56,7 +48,6 @@ NULL
     }
 }
 
-
 #' @rdname jd3_utilities
 get_date_min <- function() {
     return(dateOf(1, 1, 1))
@@ -65,35 +56,4 @@ get_date_min <- function() {
 #' @rdname jd3_utilities
 get_date_max <- function() {
     return(dateOf(9999, 12, 31))
-}
-
-#' @title Set an option for toolkit
-#'
-#' @param name Name of the option
-#' @param obj Option
-#'
-#' @export
-#'
-#' @examples
-#' toolkit_option("test", "DUMMY")
-toolkit_option <- function(name, obj) {
-    options <- .jd3_env$toolkit
-    options[[name]] <- obj
-    assign("toolkit", options, .jd3_env)
-    return(invisible(NULL))
-}
-
-#' @title Set an option for toolkit
-#'
-#' @param name Name of the option
-#'
-#' @returns The requested option or NULL if it doesn't exist
-#' @export
-#'
-#' @examples
-#' toolkit_option("test", "DUMMY")
-#' get_toolkit_option("test")
-get_toolkit_option <- function(name) {
-    options <- .jd3_env$toolkit
-    return(options[[name]])
 }

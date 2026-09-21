@@ -7,7 +7,7 @@
 seasonality_combined(
   data,
   period = NA,
-  firstperiod = cycle(data)[1],
+  firstperiod = stats::cycle(data)[1],
   mul = TRUE
 )
 }
@@ -16,14 +16,14 @@ seasonality_combined(
 
 \item{period}{Tested periodicity. Can be missing if the input is a time series}
 
-\item{firstperiod}{Position in a cycle of the first obs.
+\item{firstperiod}{Position in a cycle of the first observation.
 For example, for a monthly, \code{firstperiod = 1} means January.
 If \code{data} is not a \code{"ts"} object, \code{firstperiod = 1} by default.}
 
 \item{mul}{boolean indicating if the seasonal decomposition is multiplicative (\code{mul = TRUE}) or additive (\code{mul = FALSE}).}
 }
 \value{
-a \code{list} with several seasonnality tests (kruskalwallis, stable and evolutive)
+a \code{list} with several seasonality tests (Kruskal-Wallis, stable and evolutive)
 }
 \description{
 "X12" Test On Seasonality

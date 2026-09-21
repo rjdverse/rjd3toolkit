@@ -33,7 +33,7 @@ If supplied the parameters \code{frequency}, \code{start} and \code{length} are 
 \item{endpos}{Position of the end of the Easter effect, relatively to Easter:
 -1(default): before Easter Sunday, 0: on Easter Sunday, 1: on Easter Monday)}
 
-\item{correction}{mean correction option. Simple"(default), "PreComputed", "Theoretical" or "None".}
+\item{correction}{mean correction option. \code{"Simple"} (default), \code{"PreComputed"}, \code{"Theoretical"} or \code{"None"}.}
 }
 \value{
 A time series (object of class \code{"ts"})

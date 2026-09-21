@@ -8,7 +8,7 @@ summary.JD3_DICTIONARY <- function(object, ...) {
 #' @importFrom utils head
 print.JD3_DICTIONARY <- function(x, ...) {
     cat("List of possible outputs:\n\n")
-    cat("-", paste(head(x), collapse = "\n- "), "\n")
+    cat("-", paste(utils::head(x), collapse = "\n- "), "\n")
     if (length(x) > 6) {
         cat(
             "- ...\n\n For a complete list of all outputs, please call summary()"
@@ -63,14 +63,14 @@ summary.JD3_FULL_DICTIONARY <- function(object, ...) {
 #' @importFrom utils head
 print.JD3_FULL_DICTIONARY <- function(x, ...) {
     summary_dico <- summary(x)
-    print.data.frame(head(summary_dico))
+    print.data.frame(utils::head(summary_dico))
     if (nrow(summary_dico) > 6L) {
         cat(
             "...\n\n For a complete list of all outputs, please call summary()\n"
         )
     }
     cat(
-        "\n For more informations about the type, the java class of the output or additive details, call `View()`.\n"
+        "\n For more informations about the type, the Java class of the output or additive details, call `View()`.\n"
     )
     return(invisible(NULL))
 }
@@ -79,7 +79,7 @@ print.JD3_FULL_DICTIONARY <- function(x, ...) {
 print.summary.JD3_FULL_DICTIONARY <- function(x, ...) {
     print.data.frame(x)
     cat(
-        "\n For more informations about the type, the java class of the output or additive details, call `View()`.\n"
+        "\n For more informations about the type, the Java class of the output or additive details, call `View()`.\n"
     )
     return(invisible(NULL))
 }

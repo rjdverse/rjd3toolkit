@@ -19,7 +19,6 @@ Provides a list of dates corresponding to each period of the given time series
 }
 \examples{
 \dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
-
 daysOf(Retail$BookStores)
 \dontshow{\}) # examplesIf}
 }

@@ -12,18 +12,18 @@ A data frame with 20,820 rows and 2 variables:
 }
 }
 \source{
-INSEE, Statistiques de l'état civil –
+INSEE, Civil registration statistics –
 \url{https://www.insee.fr/fr/statistiques/8582123?sommaire=8582147}
 }
 \usage{
-data(Births)
+Births
 }
 \description{
 Daily number of births recorded in France (metropolitan + DOM),
 covering the period from January 1st, 1968 to December 31st, 2024.
 }
 \details{
-The dataset corresponds to the INSEE series \strong{T79jnais}.
+The dataset corresponds to the INSEE series \strong{\code{T79jnais}}.
 The raw data can be downloaded as a CSV file here:
 \url{https://www.insee.fr/fr/statistiques/fichier/8582123/T79jnais.csv}
 }

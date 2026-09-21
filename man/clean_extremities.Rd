@@ -17,7 +17,7 @@ Removal of missing values at the beginning/end
 }
 \examples{
 \dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
-y <- window(ABS$X0.2.09.10.M, start = 1982, end = 2018, extend = TRUE)
+y <- stats::window(ABS$X0.2.09.10.M, start = 1982, end = 2018, extend = TRUE)
 y
 clean_extremities(y)
 \dontshow{\}) # examplesIf}

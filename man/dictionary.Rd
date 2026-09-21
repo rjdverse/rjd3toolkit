@@ -4,7 +4,7 @@
 \alias{dictionary}
 \alias{result}
 \alias{user_defined}
-\title{Display names and items from a java (X13) estimation result object}
+\title{Display names and items from a Java (X13) estimation result object}
 \usage{
 dictionary(object)
 
@@ -13,7 +13,7 @@ result(object, id)
 user_defined(object, userdefined = NULL)
 }
 \arguments{
-\item{object}{java object.}
+\item{object}{Java object.}
 
 \item{id}{name of the object to extract.}
 

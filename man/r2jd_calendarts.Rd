@@ -2,7 +2,7 @@
 % Please edit documentation in R/calendarts.R
 \name{r2jd_calendarts}
 \alias{r2jd_calendarts}
-\title{Create Java CalendarTimeSeries}
+\title{Create Java \code{CalendarTimeSeries}}
 \usage{
 r2jd_calendarts(calendarobs)
 }
@@ -13,7 +13,7 @@ r2jd_calendarts(calendarobs)
 a Java object
 }
 \description{
-Create Java CalendarTimeSeries
+Create Java \code{CalendarTimeSeries}
 }
 \examples{
 \dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}

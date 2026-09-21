@@ -10,11 +10,11 @@ status](https://www.r-pkg.org/badges/version/rjd3toolkit)](https://CRAN.R-projec
 [![Mentioned in Awesome Official
 Statistics](https://awesome.re/mentioned-badge.svg)](https://github.com/SNStatComp/awesome-official-statistics-software)
 
-[![R-CMD-check](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yaml)
-[![lint](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yaml)
+[![`R-CMD-check`](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/R-CMD-check.yml)
+[![lint](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/lint.yml)
 
 [![GH Pages
-built](https://github.com/rjdverse/rjd3toolkit/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/pkgdown.yaml)
+built](https://github.com/rjdverse/rjd3toolkit/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/rjdverse/rjd3toolkit/actions/workflows/pkgdown.yml)
 <!-- badges: end -->
 
 Utility package in JDemetra+ 3.x R ecosystem. Contains functions used in
@@ -68,4 +68,4 @@ should be added or updated.
 
 The code of this project is licensed under the [European Union Public
 Licence
-(EUPL)](https://interoperable-europe.ec.europa.eu:443/collection/eupl/eupl-text-eupl-12).
+(EUPL)](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12).

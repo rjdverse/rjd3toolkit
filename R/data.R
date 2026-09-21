@@ -32,7 +32,7 @@
 #' \itemize{
 #'   \item Date: Date of the event (from January 1, 2012 to December 31, 2023)
 #'   \item Hours: Timestamp of the event (from 00:00 AM to 11:30 PM)
-#'   \item Consumtion: number of daily birth (29124--102098)
+#'   \item Consumption: number of daily birth (29124--102098)
 #' }
 #'
 #' @source <https://www.rte-france.com/en/data-publications/eco2mix/download-indicators>
@@ -53,11 +53,11 @@
 #' }
 #'
 #' @details
-#' The dataset corresponds to the INSEE series **T79jnais**.
+#' The dataset corresponds to the INSEE series **`T79jnais`**.
 #' The raw data can be downloaded as a CSV file here:
 #' <https://www.insee.fr/fr/statistiques/fichier/8582123/T79jnais.csv>
 #'
-#' @source INSEE, Statistiques de l'état civil –
+#' @source INSEE, Civil registration statistics –
 #' <https://www.insee.fr/fr/statistiques/8582123?sommaire=8582147>
 #'
 #' @examples
@@ -70,22 +70,32 @@
 #'
 "Births"
 
-#' @title Default X13 specification ("rsa4")
+#' @title Default X13 specification (`"rsa4"`)
 #'
-#' @description X13 default specification generated with \{rjd3x13\} used in examples for specification customization functions in \{rjd3toolkit\}
-#' generated with `x13_spec_default <- rjd3x13::x13_spec("rsa4")`
+#' @description
+#' X13 default specification generated with \{rjd3x13\} used in examples for
+#' specification customization functions in \{rjd3toolkit\} generated with
+#' `x13_spec_default <- rjd3x13::x13_spec("rsa4")`
 #'
-#' @seealso the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
+#' @seealso the set of functions allowing to customize specifications
+#' (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
 #'
 #' @examples
 #' data(x13_spec_default)
 #' x13_spec_default
 "x13_spec_default"
-#' @title Default Tramo-Seats specification ("rsafull")
+
+#' @title Default Tramo-Seats specification (`"rsafull"`)
 #'
-#' @description Tramo-Seats default specification generated with \{rjd3tramoseats\} used in examples for specification customization functions in \{rjd3toolkit\}
-#' generated with `tramoseats_spec_default<- rjd3tramoseats::tramoseats_spec("rsafull")`
-#' @seealso the set of functions allowing to customize specifications (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
+#' @description
+#' Tramo-Seats default specification generated with \{rjd3tramoseats\} used in
+#' examples for specification customization functions in \{rjd3toolkit\}
+#' generated with
+#' `tramoseats_spec_default <- rjd3tramoseats::tramoseats_spec("rsafull")`
+#'
+#' @seealso the set of functions allowing to customize specifications
+#' (\url{https://rjdverse.github.io/rjd3toolkit/reference/index.html#customizing-specifications})
+#'
 #' @examples
 #' data(tramoseats_spec_default)
 #' tramoseats_spec_default

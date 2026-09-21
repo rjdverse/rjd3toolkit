@@ -61,12 +61,12 @@ If there is no cancellation, the AR root is set equal to unity (i.e. the
 differencing order changes).
 Default = 1.136364.}
 
-\item{reducecv}{\code{numeric}, ReduceCV. The percentage by which the outlier
+\item{reducecv}{\code{numeric}, \code{ReduceCV}. The percentage by which the outlier
 critical value will be reduced when an identified model is found to have a
 Ljung-Box statistic with an unacceptable confidence coefficient.
 The parameter should be between 0 and 1, and will only be active when
 automatic outlier identification is enabled. The reduced critical value will
-be set to (1 - ReduceCV) x CV, where CV is the original critical value.
+be set to (1 - \code{ReduceCV}) x \code{CV}, where \code{CV} is the original critical value.
 Default =  0.14268.}
 
 \item{ljungboxlimit}{\code{numeric}, the Ljung Box limit, setting the
@@ -124,7 +124,7 @@ Function allowing to customize Arima model identification procedure.
 \details{
 \code{x} specification parameter must be a JD3_X13_SPEC" class object
 generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
-with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+with \code{rjd3x13::spec_regarima()} or \code{"JD3_TRAMOSEATS_SPEC"} generated with
 \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }

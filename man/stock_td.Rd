@@ -4,7 +4,7 @@
 \alias{stock_td}
 \title{Trading day Regressor for Stock series}
 \usage{
-stock_td(frequency, start, length, s, w = 31)
+stock_td(frequency, start, length, s = NULL, w = 31)
 }
 \arguments{
 \item{frequency}{Frequency of the series, number of periods per year

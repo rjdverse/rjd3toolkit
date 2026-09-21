@@ -12,7 +12,7 @@ periodic_csplines(x, pos)
 \item{pos}{Requested positions}
 }
 \value{
-A matrix (len(pos) x len(knots))
+A matrix (length(\code{pos}) x length(\code{knots}))
 }
 \description{
 Periodic cardinal cubic splines

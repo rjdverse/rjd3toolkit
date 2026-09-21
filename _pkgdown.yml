@@ -57,6 +57,7 @@ reference:
     - '`remove_ramp`'
     - '`add_usrdefvar`'
     - '`modelling_context`'
+    - '`complete_modelling_context`'
     - '`set_arima`'
     - '`set_automodel`'
     - '`set_basic`'

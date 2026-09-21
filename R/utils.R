@@ -1,7 +1,3 @@
-#' @importFrom rJava .jpackage .jcall .jnull .jarray .jevalArray .jcast .jcastToArray .jinstanceof is.jnull .jnew .jclass
-#' @importFrom methods is
-NULL
-
 ymd <- function(y, m, d = 1) {
     return(as.Date(sprintf("%04i-%02i-%02i", y, m, d)))
 }
@@ -30,10 +26,6 @@ parseDate <- function(s) {
     return(d)
 }
 
-#' @importFrom stats pf frequency
-NULL
-
-
 .p2r_anova <- function(p) {
     return(list(
         SSM = p$SSM,
@@ -44,10 +36,11 @@ NULL
     ))
 }
 
+#' @importFrom stats pf
 test_anova <- function(ssm, dfm, ssr, dfr) {
     val <- (ssm / dfm) * (dfr / ssr)
     desc <- paste0("F(", dfm, ",", dfr, ")")
-    pval <- 1 - pf(val, dfm, dfr)
+    pval <- 1 - stats::pf(val, dfm, dfr)
     return(statisticaltest(val, pval, desc))
 }
 
@@ -58,7 +51,7 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
 #'
 #'
 #' @param nobs Number of observations
-#' @param neffectiveobs Number of effective observations. NA if the same as nobs.
+#' @param neffectiveobs Number of effective observations. NA if the same as `nobs`.
 #' @param nparams Number of hyper-parameters
 #' @param ll Log-likelihood
 #' @param adjustedll Adjusted log-likelihood when the series has been transformed
@@ -69,7 +62,7 @@ test_anova <- function(ssm, dfm, ssr, dfr) {
 #' @param ssq Sum of the squared residuals
 #'
 #' @returns
-#' Returns a java object of class JD3_LIKELIHOOD.
+#' Returns a Java object of class `"JD3_LIKELIHOOD"`.
 #'
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #'

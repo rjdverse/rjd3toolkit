@@ -12,12 +12,12 @@ easter_dates(year0, year1, julian = FALSE)
 \item{julian}{Boolean indicating if Julian calendar must be used.}
 }
 \value{
-a named numeric vector. Names are the dates in format "YYYY-MM-DD",
+a named numeric vector. Names are the dates in format \code{"YYYY-MM-DD"},
 values are number of days since January 1st 1970.
 }
 \description{
 Allows to display the date of Easter Sunday for each year, in the defined period. Dates are
-displayed in "YYYY-MM-DD" format and as a number of days since January 1st 1970.
+displayed in \code{"YYYY-MM-DD"} format and as a number of days since January 1st 1970.
 }
 \examples{
 \dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}

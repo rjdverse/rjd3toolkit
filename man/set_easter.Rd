@@ -48,7 +48,7 @@ estimation procedure. Possible procedures are:
 \code{"Fixed"} = the coefficients is fixed. By default the coefficient is
 estimated.}
 
-\item{type}{(TRAMO specific) a \code{character} that specifies the presence
+\item{type}{(Tramo specific) a \code{character} that specifies the presence
 and the length of the Easter effect:
 \code{"Unused"} = the Easter effect is not considered;
 \code{"Standard"} = influences the period of \code{n} days strictly before
@@ -67,7 +67,7 @@ Set Easter effect correction in Pre-Processing Specification
 \details{
 \code{x} specification parameter must be a JD3_X13_SPEC" class object
 generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
-with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+with \code{rjd3x13::spec_regarima()} or \code{"JD3_TRAMOSEATS_SPEC"} generated with
 \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }

@@ -41,7 +41,7 @@ vs Sundays and  Fridays+Saturdays vs Sundays;
 \item \code{"TD4"} = three contrast variables: week-days (Mondays to Thursdays)
 vs Sundays, Fridays vs Sundays, Saturdays vs Sundays;
 \item \code{"None"} = no correction for trading days;
-\item \code{"UserDefined"} = userdefined trading days regressors.
+\item \code{"UserDefined"} = user-defined trading days regressors.
 }}
 
 \item{calendar.name}{name (string) of the user-defined calendar to be taken
@@ -71,7 +71,7 @@ regression model but can be removed from the RegARIMA model after the
 test;
 }
 
-(TRAMO specific)
+(Tramo specific)
 \itemize{
 \item \code{"Separate_T"} = a t-test is applied to each trading day variable
 separately and the trading day variables are included in the RegArima
@@ -90,7 +90,7 @@ fixed or estimated.}
 \item{automatic}{defines whether the calendar effects should be added to the
 model manually (\code{"Unused"}) or automatically. During the automatic
 selection, the choice of the number of calendar variables can be based on
-the F-Test (\code{"FTest"}, TRAMO specific), the Wald Test
+the F-Test (\code{"FTest"}, Tramo specific), the Wald Test
 (\code{"WaldTest"}), or by minimizing AIC or BIC; the model with higher
 F-value is chosen, provided that it is higher than \code{pftd}).}
 
@@ -129,7 +129,7 @@ be built.
 \details{
 \code{x} specification parameter must be a JD3_X13_SPEC" class object
 generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
-with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
+with \code{rjd3x13::spec_regarima()} or \code{"JD3_TRAMOSEATS_SPEC"} generated with
 \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }

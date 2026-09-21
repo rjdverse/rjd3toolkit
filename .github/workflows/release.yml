@@ -19,7 +19,7 @@ jobs:
       contents: write
     steps:
       - name: Prepare R package release
-        uses: TanguyBarthelemy/actions/release-r-package@v1.0.4
+        uses: TanguyBarthelemy/actions/release-r-package@main
         with:
           tag: ${{ inputs.release_tag }}
           main-branch: "main"

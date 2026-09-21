@@ -28,10 +28,10 @@
 #' `vignette(topic = "rjd3bench", package = "rjd3bench")` for more details.
 #'
 #' @details
-#' \code{x} specification parameter must be a JD3_X13_SPEC" class object
-#' generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
-#' with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
-#' \code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+#' \code{x} specification parameter must be a `"JD3_X13_SPEC"` class object
+#' generated with \code{rjd3x13::x13_spec()} (or `"JD3_REGARIMA_SPEC"` generated
+#' with \code{rjd3x13::spec_regarima()} or `"JD3_TRAMOSEATS_SPEC"` generated with
+#' \code{rjd3tramoseats::spec_tramoseats()} or `"JD3_TRAMO_SPEC"` generated with
 #' \code{rjd3tramoseats::spec_tramo()}).
 #'
 #' @returns The modified specification with new estimation span

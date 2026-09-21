@@ -1,4 +1,5 @@
 
+^\.vscode$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 
@@ -12,10 +13,14 @@
 ^Meta$
 ^docs$
 ^doc$
+^vignettes/\.quarto$
+^vignettes/*_files$
 ^pkgdown$
 ^_pkgdown\.yml$
 
 ^\.lintr$
+^air\.toml$
+^[.]?air[.]toml$
 
 ^appveyor\.yml$
 .travis.yml
@@ -28,10 +33,12 @@ cran-comments.md
 ^reconf\.sh$
 
 ^pom\.xml$
+^pom\.xml\.versionsBackup$
 
 ^CITATION\.cff$
 ^LICENSE.md$
 ^LICENSE$
+^LICENCE$
 
 ^\.httr-oauth$
 ^\.zenodo\.json$
@@ -45,8 +52,12 @@ cran-comments.md
 ^organisation.yml$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^heylogs\.properties$
 
 ^lychee\.toml$
 ^\.lycheeignore$
 ^\.positai$
 ^\.claude$
+
+^why\.md$
+^why\.Rmd$

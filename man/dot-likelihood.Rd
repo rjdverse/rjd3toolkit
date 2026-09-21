@@ -20,7 +20,7 @@
 \arguments{
 \item{nobs}{Number of observations}
 
-\item{neffectiveobs}{Number of effective observations. NA if the same as nobs.}
+\item{neffectiveobs}{Number of effective observations. NA if the same as \code{nobs}.}
 
 \item{nparams}{Number of hyper-parameters}
 
@@ -39,7 +39,7 @@
 \item{ssq}{Sum of the squared residuals}
 }
 \value{
-Returns a java object of class JD3_LIKELIHOOD.
+Returns a Java object of class \code{"JD3_LIKELIHOOD"}.
 }
 \description{
 Function allowing to gather information on likelihood estimation

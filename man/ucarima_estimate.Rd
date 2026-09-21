@@ -15,7 +15,7 @@ ucarima_estimate(x, ucm, stdev = TRUE)
 }
 \value{
 A matrix containing the different components and their standard
-deviations if stdev is TRUE.
+deviations if \code{stdev} is TRUE.
 }
 \description{
 Estimate UCARIMA Model
@@ -28,7 +28,7 @@ hp <- ucarima_model(components = list(mod1, mod2))
 s <- log(aggregate(Retail$AutomobileDealers))
 all <- ucarima_estimate(s, hp, stdev = TRUE)
 plot(s, type = "l")
-t <- ts(all[, 1], frequency = frequency(s), start = start(s))
+t <- stats::ts(all[, 1], frequency = stats::frequency(s), start = stats::start(s))
 lines(t, col = "blue")
 \dontshow{\}) # examplesIf}
 }

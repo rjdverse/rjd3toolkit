@@ -1,7 +1,3 @@
-#' @importFrom stats pt
-NULL
-
-
 #' @title JD3 print functions
 #'
 #' @param x the object to print.
@@ -117,8 +113,8 @@ summary.JD3_SARIMA_ESTIMATION <- function(object, ...) {
     return(tables)
 }
 
-#' @importFrom stats printCoefmat
 #' @export
+#' @importFrom stats printCoefmat
 print.summary.JD3_SARIMA_ESTIMATION <- function(
     x,
     digits = max(3L, getOption("digits") - 3L),
@@ -144,7 +140,7 @@ print.summary.JD3_SARIMA_ESTIMATION <- function(
     } else if (ncol(x$coef_table) == 2) {
         print(x$coef_table, ...)
     } else {
-        printCoefmat(
+        stats::printCoefmat(
             x$coef_table[-2],
             digits = digits,
             signif.stars = signif.stars,
@@ -159,6 +155,7 @@ print.summary.JD3_SARIMA_ESTIMATION <- function(
     UseMethod(".sarima_coef_table", x)
 }
 
+#' @importFrom stats pt
 .sarima_coef_table.default <- function(x, cov = NULL, ndf = NULL, ...) {
     m <- x
     if (!is.null(m$phi)) {
@@ -206,7 +203,7 @@ print.summary.JD3_SARIMA_ESTIMATION <- function(
             stde <- sqrt(diag(cov))
             sel <- fr$type == "ESTIMATED"
             t <- fr$value[sel] / stde
-            pval <- 2 * pt(abs(t), ndf, lower.tail = FALSE)
+            pval <- 2 * stats::pt(abs(t), ndf, lower.tail = FALSE)
             fr$stde[sel] <- stde
             fr$t[sel] <- t
             fr$pvalue[sel] <- pval
@@ -239,6 +236,7 @@ print.summary.JD3_SARIMA_ESTIMATION <- function(
     .sarima_coef_table(x$description$arima, cov = cov, ndf = ndf, ...)
 }
 
+#' @importFrom stats pt
 .sarima_coef_table.JD3_SARIMA_ESTIMATE <- function(x, ...) {
     ndf <- x$likelihood$neffectiveobs - x$likelihood$nparams
     sarima_orders <- list(
@@ -255,7 +253,7 @@ print.summary.JD3_SARIMA_ESTIMATION <- function(
     if (length(estimate) > 0) {
         stde <- sqrt(diag(x$parameters$cov))
         t <- estimate / stde
-        pval <- 2 * pt(abs(t), ndf, lower.tail = FALSE)
+        pval <- 2 * stats::pt(abs(t), ndf, lower.tail = FALSE)
         table <- data.frame(
             estimate,
             "ESTIMATED",
@@ -491,6 +489,7 @@ print.JD3_SARIMA_ESTIMATE <- function(
     UseMethod(".regarima_coef_table", x)
 }
 
+#' @importFrom stats pt
 .regarima_coef_table.default <- function(x, ...) {
     q <- x
     if (length(q$description$variables) > 0) {
@@ -506,7 +505,7 @@ print.JD3_SARIMA_ESTIMATE <- function(
         t <- xregs$value[sel] / stde
         ndf <- q$estimation$likelihood$neffectiveobs -
             q$estimation$likelihood$nparams
-        pval <- 2 * pt(abs(t), ndf, lower.tail = FALSE)
+        pval <- 2 * stats::pt(abs(t), ndf, lower.tail = FALSE)
         xregs$stde[sel] <- stde
         xregs$t[sel] <- t
         xregs$pvalue[sel] <- pval
@@ -523,6 +522,7 @@ print.JD3_SARIMA_ESTIMATE <- function(
     return(xregs)
 }
 
+#' @importFrom stats pt
 .regarima_coef_table.JD3_SARIMA_ESTIMATE <- function(x, ...) {
     ndf <- x$likelihood$neffectiveobs - x$likelihood$nparams
 
@@ -530,7 +530,7 @@ print.JD3_SARIMA_ESTIMATE <- function(
     if (length(estimate) > 0) {
         stde <- sqrt(diag(x$bvar))
         t <- estimate / stde
-        pval <- 2 * pt(abs(t), ndf, lower.tail = FALSE)
+        pval <- 2 * stats::pt(abs(t), ndf, lower.tail = FALSE)
         coef_table <- data.frame(
             estimate,
             "ESTIMATED",
@@ -592,6 +592,7 @@ summary.JD3_SARIMA_ESTIMATE <- function(object, ...) {
 }
 
 #' @export
+#' @importFrom stats printCoefmat
 print.summary.JD3_REGARIMA_RSLTS <- function(
     x,
     digits = max(3L, getOption("digits") - 3L),
@@ -620,7 +621,7 @@ print.summary.JD3_REGARIMA_RSLTS <- function(
     cat("\n")
     if (!is.null(x$xregs)) {
         cat("Regression model:\n")
-        printCoefmat(
+        stats::printCoefmat(
             x$xregs[-2],
             digits = digits,
             signif.stars = signif.stars,
@@ -632,18 +633,4 @@ print.summary.JD3_REGARIMA_RSLTS <- function(
     }
     print(x$likelihood, ...)
     return(invisible(x))
-}
-
-#' @export
-diagnostics.JD3_REGARIMA_RSLTS <- function(x, ...) {
-    if (is.null(x)) {
-        return(NULL)
-    }
-    residuals_test <- x$diagnostics
-    residuals_test <- data.frame(
-        Statistic = sapply(residuals_test, function(test) test[["value"]]),
-        P.value = sapply(residuals_test, function(test) test[["pvalue"]]),
-        Description = sapply(residuals_test, FUN = attr, which = "distribution")
-    )
-    return(residuals_test)
 }

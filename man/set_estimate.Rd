@@ -22,7 +22,7 @@ details).}
 
 \item{type, d0, d1, n0, n1}{parameters to specify the sub-span .
 
-\code{d0} and \code{d1} characters in the format "YYYY-MM-DD" to specify
+\code{d0} and \code{d1} characters in the format \code{"YYYY-MM-DD"} to specify
 first/last date of the span when \code{type} equals to \code{"From"},
 \code{"To"} or \code{"Between"}.
 Date corresponding to \code{d0} will be included in the sub-span
@@ -37,12 +37,12 @@ beginning/end of the series to be used for defining the sub-span
 log-likelihood function are compared to this value to check for the
 convergence of the estimation iterations. (The default setting is 0.0000001)}
 
-\item{exact.ml}{(TRAMO specific) \code{logical}, the exact maximum likelihood
+\item{exact.ml}{(Tramo specific) \code{logical}, the exact maximum likelihood
 estimation. If \code{TRUE}, the program performs an exact maximum likelihood
 estimation. If \code{FASLE}, the Unconditional Least Squares method is used.
 (Default=TRUE)}
 
-\item{unit.root.limit}{(TRAMO specific) \code{numeric}, the final unit root
+\item{unit.root.limit}{(Tramo specific) \code{numeric}, the final unit root
 limit. The threshold value for the final unit root test for identification of
 differencing orders. If the magnitude of an AR root for the final model is
 smaller than this number, then a unit root is assumed, the order of the AR
@@ -54,14 +54,14 @@ The modified specification (with new estimation parameters)
 }
 \description{
 Function allowing to define numeric boundaries for estimation and to define
-a sub-span on which reg-arima (tramo) modelling will be performed
+a sub-span on which Reg-ARIMA (Tramo) modelling will be performed
 (pre-processing step)
 }
 \details{
 \code{x} specification parameter must be a JD3_X13_SPEC" class object
-generated with \code{rjd3x13::x13_spec()} (or "JD3_REGARIMA_SPEC" generated
-with \code{rjd3x13::spec_regarima()} or "JD3_TRAMOSEATS_SPEC" generated with
-\code{rjd3tramoseats::spec_tramoseats()} or "JD3_TRAMO_SPEC" generated with
+generated with \code{rjd3x13::x13_spec()} (or \code{"JD3_REGARIMA_SPEC"} generated
+with \code{rjd3x13::spec_regarima()} or \code{"JD3_TRAMOSEATS_SPEC"} generated with
+\code{rjd3tramoseats::spec_tramoseats()} or \code{"JD3_TRAMO_SPEC"} generated with
 \code{rjd3tramoseats::spec_tramo()}).
 }
 \examples{

@@ -3,9 +3,12 @@
 \name{deprecated-rjd3toolkit}
 \alias{deprecated-rjd3toolkit}
 \alias{sa.decomposition}
+\alias{sa_preprocessing}
 \title{Deprecated functions}
 \usage{
 sa.decomposition(x, ...)
+
+sa_preprocessing(x, ...)
 }
 \arguments{
 \item{x}{the object to print.}

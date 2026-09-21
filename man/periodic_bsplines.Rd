@@ -17,7 +17,7 @@ periodic_bsplines(order = 4, period = 1, knots, pos)
 will correspond to those positions}
 }
 \value{
-A matrix (len(pos) x len(knots))
+A matrix (length(\code{pos}) x length(\code{knots}))
 }
 \description{
 Periodic B-Splines
