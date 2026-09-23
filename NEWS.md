@@ -34,13 +34,21 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [3.8.0] - 2026-07-09
 
+### Added
+
+* Package-level documentation page
+
 ### Changed
 
 - Updated JARS from `jdplus-main` to [3.8.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.8.0)
+- New url for online documentation (https://doc.jdemetra.org)
+- New formating (apply [`air`](https://posit-dev.github.io/air/) on package)
 
 ### Fixed
 
 * Fix bug in weighted calendar regressors. [rjdverse/rjd3workspace#131](https://github.com/rjdverse/rjd3workspace/issues/131)
+* Fix typo between `"ts"` and `"tc"` [#159](https://github.com/rjdverse/rjd3toolkit/issues/159)
+* Some typos are corrected in the documentation. Examples have been updated.
 
 ## [3.7.1] - 2026-03-10
 
