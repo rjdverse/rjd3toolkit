@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout and Setup Maven
-        uses: s4u/setup-maven-action@v1.20.0
+        uses: s4u/setup-maven-action@v1.21.0
 
       - name: Check changelog using Heylogs latest version
         run: mvn -U com.github.nbbrd.heylogs:heylogs-maven-plugin::check -Dheylogs.inputFiles=NEWS.md
