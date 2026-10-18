@@ -23,7 +23,7 @@ jobs:
       contents: write
     steps:
       - name: Update Java dependencies
-        uses: TanguyBarthelemy/actions/update-java-dependencies@v1.0.6
+        uses: TanguyBarthelemy/actions/update-java-dependencies@v1.0.7
         with:
           update_type: ${{ inputs.update_type }}
           branch: ${{ github.ref_name }}
