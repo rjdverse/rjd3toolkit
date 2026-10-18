@@ -42,6 +42,6 @@ seasonality_friedman(s)
 #> Value: 301.0967 
 #> P-Value: 0.0000 
 seasonality_friedman(random_t(2, 1000), 12)
-#> Value: 9.255792 
-#> P-Value: 0.5983 
+#> Value: 10.20297 
+#> P-Value: 0.5122 
 ```
