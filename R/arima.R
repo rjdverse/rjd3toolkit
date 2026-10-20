@@ -402,7 +402,9 @@ ucarima_model <- function(
 ) {
     if (is.null(model)) {
         model <- arima_lsum(components)
-    } else if (!methods::is(model, "JD3_ARIMA") && !methods::is(model, "JD3_SARIMA")) {
+    } else if (
+        !methods::is(model, "JD3_ARIMA") && !methods::is(model, "JD3_SARIMA")
+    ) {
         stop("Invalid model")
     }
 
