@@ -998,8 +998,8 @@ national_calendar <- function(days = list(), mean_correction = TRUE) {
 #' @description
 #' Allows to generate trading day regressors (as many as defined groups), taking
 #' into account 7 or less different types of days, from Monday to Sunday, and
-#' specific holidays,which are to defined beforehand in a calendar using the
-#' functions `national_calendar`,`weighted_calendar` or `Chained_calendar`.
+#' specific holidays, which are to define beforehand in a calendar using the
+#' functions `national_calendar`,`weighted_calendar` or `chained_calendar`.
 #'
 #' @details
 #' Aggregated values for monthly or quarterly are the numbers of days belonging
@@ -1007,12 +1007,10 @@ national_calendar <- function(days = list(), mean_correction = TRUE) {
 #' Contrasts are the differences between the number of days in a given group
 #' (1 to 6) and the number of days in the reference group (0).
 #' Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
+#' Holidays are assigned to Sundays, and it cannot be changed for the time being.
 #'
 #' @inheritParams td
 #' @param calendar The calendar containing the required holidays
-#' @param holiday Day to aggregate holidays with. (holidays are considered as
-#' that day). 1 for Monday... 7 for Sunday. Doesn't necessary belong to the
-#' 0-group.
 #'
 #' @returns Time series (object of class \code{c("ts","mts","matrix")})
 #' corresponding to each group, starting with the 0-group
@@ -1034,7 +1032,7 @@ national_calendar <- function(days = list(), mean_correction = TRUE) {
 #'     special_day("ARMISTICE")
 #' ))
 #' calendar_td(BE, 12, c(1980, 1), 240,
-#'     holiday = 7, groups = c(1, 1, 1, 2, 2, 3, 0),
+#'     groups = c(1, 1, 1, 2, 2, 3, 0),
 #'     contrasts = FALSE
 #' )
 #'
@@ -1056,7 +1054,6 @@ calendar_td <- function(
     length,
     s,
     groups = c(1, 2, 3, 4, 5, 6, 0),
-    holiday = 7,
     contrasts = TRUE
 ) {
     if (!methods::is(calendar, "JD3_CALENDAR")) {
@@ -1081,11 +1078,6 @@ calendar_td <- function(
     checkmate::assert_count(frequency, positive = TRUE)
     checkmate::assert_choice(frequency, choices = c(1L, 2L, 3L, 4L, 6L, 12L))
 
-    if (holiday != 7L) {
-        warning(
-            "holiday parameter is set to 7 (Sunday) by default and cannot be changed for the time being."
-        )
-    }
 
     jdom <- .r2jd_tsdomain(frequency, start[1], start[2], length)
     pcal <- .r2p_calendar(calendar)
@@ -1097,7 +1089,7 @@ calendar_td <- function(
         jcal,
         jdom,
         as.integer(groups),
-        as.integer(holiday),
+        7L,
         contrasts
     )
     output <- .jd2r_matrix(jm)
