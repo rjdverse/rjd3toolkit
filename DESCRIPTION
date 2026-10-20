@@ -1,7 +1,7 @@
 Type: Package
 Package: rjd3toolkit
 Title: Utility Functions Around 'JDemetra+ 3.0'
-Version: 3.9.0
+Version: 3.9.0.9000
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Alain", "Quartier-la-Tente", , "alain.quartier@yahoo.fr", role = "aut",
@@ -73,3 +73,5 @@ Collate:
     'timeseries.R'
     'variables.R'
     'zzz.R'
+Remotes:  
+    github::rjdverse/rjd3jars

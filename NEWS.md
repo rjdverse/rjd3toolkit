@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.9.0] - 2026-09-21
+
 ### Added
 
 * New function `complete_modelling_context` to add new regressors and variables to a modelling_context object
@@ -20,6 +22,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * `modelling_context` accepts regressor with and without names in nested structure.
 * `add_usrdefvar` accepts multiple regressor in the same group. [#106](https://github.com/rjdverse/rjd3toolkit/issues/106)
 * `add_usrdefvar` renames automatically the group or variables that contains a dot (`.`) [#148](https://github.com/rjdverse/rjd3toolkit/issues/148).
+
 - Updated jdplus-main JARS from 3.8.0 to 3.9.0
 
 ### Fixed
@@ -31,13 +34,21 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [3.8.0] - 2026-07-09
 
+### Added
+
+* Package-level documentation page
+
 ### Changed
 
 - Updated JARS from `jdplus-main` to [3.8.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.8.0)
+- New url for online documentation (https://doc.jdemetra.org)
+- New formating (apply [`air`](https://posit-dev.github.io/air/) on package)
 
 ### Fixed
 
 * Fix bug in weighted calendar regressors. [rjdverse/rjd3workspace#131](https://github.com/rjdverse/rjd3workspace/issues/131)
+* Fix typo between `"ts"` and `"tc"` [#159](https://github.com/rjdverse/rjd3toolkit/issues/159)
+* Some typos are corrected in the documentation. Examples have been updated.
 
 ## [3.7.1] - 2026-03-10
 
@@ -145,7 +156,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 * New JARS related to version [3.0.2](https://github.com/jdemetra/jdplus-main/releases/tag/v3.0.2)
 
-[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...HEAD
+[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.9.0...HEAD
+[3.9.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...v3.9.0
 [3.8.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...v3.8.0
 [3.7.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...v3.7.1
 [3.6.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.5.1...v3.6.0
