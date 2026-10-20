@@ -611,8 +611,7 @@ holidays <- function(
 #'     special_day("ARMISTICE")
 #' ))
 #' lt <- long_term_mean(BE, 12,
-#'     groups = c(1, 1, 1, 1, 1, 0, 0),
-#'     holiday = 7
+#'     groups = c(1, 1, 1, 1, 1, 0, 0)
 #' )
 #'
 #' @importFrom rJava .jcall
@@ -620,8 +619,7 @@ holidays <- function(
 long_term_mean <- function(
     calendar,
     frequency,
-    groups = c(1, 2, 3, 4, 5, 6, 0),
-    holiday = 7
+    groups = c(1, 2, 3, 4, 5, 6, 0)
 ) {
     pcal <- .r2p_calendar(calendar)
     jcal <- .p2jd_calendar(pcal)
@@ -632,7 +630,7 @@ long_term_mean <- function(
         jcal,
         as.integer(frequency),
         as.integer(groups),
-        as.integer(holiday)
+        7L
     )
     res <- .jd2r_matrix(jm)
     return(.group_names(res, contrasts = FALSE))
