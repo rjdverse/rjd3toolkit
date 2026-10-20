@@ -441,7 +441,6 @@ put_univariate_in_r <- function(x, n = NULL) {
 #' @method put_univariate_in_r ts
 #' @export
 put_univariate_in_r.ts <- function(x, n = NULL) {
-    print("ts")
     return(list(r = stats::setNames(list(x), n)))
 }
 
@@ -451,7 +450,6 @@ put_univariate_in_r.ts <- function(x, n = NULL) {
 #' @method put_univariate_in_r mts
 #' @export
 put_univariate_in_r.mts <- function(x, n = NULL) {
-    print("mts")
     return(put_univariate_in_r.default(x, n))
 }
 
@@ -491,7 +489,6 @@ put_univariate_in_r.default <- function(x, n = NULL) {
 #' @method put_univariate_in_r default
 #' @export
 put_univariate_in_r.default <- function(x, n = NULL) {
-    print("other")
     return(stats::setNames(list(x), n))
 }
 
