@@ -11,7 +11,6 @@ calendar_td(
   length,
   s,
   groups = c(1, 2, 3, 4, 5, 6, 0),
-  holiday = 7,
   contrasts = TRUE
 )
 }
@@ -36,10 +35,6 @@ For instance, usual trading days are defined by c(1, 2, 3, 4, 5, 6, 0), week
 days by c(1, 1, 1, 1, 1, 0, 0), week days, Saturdays, Sundays by
 c(1, 1, 1, 1, 1, 2, 0) etc.}
 
-\item{holiday}{Day to aggregate holidays with. (holidays are considered as
-that day). 1 for Monday... 7 for Sunday. Doesn't necessary belong to the
-0-group.}
-
 \item{contrasts}{If true, the variables are defined by contrasts with the
 0-group. Otherwise, raw number of days is provided.}
 }
@@ -51,8 +46,8 @@ corresponding to each group, starting with the 0-group
 \description{
 Allows to generate trading day regressors (as many as defined groups), taking
 into account 7 or less different types of days, from Monday to Sunday, and
-specific holidays,which are to defined beforehand in a calendar using the
-functions \code{national_calendar},\code{weighted_calendar} or \code{Chained_calendar}.
+specific holidays, which are to define beforehand in a calendar using the
+functions \code{national_calendar},\code{weighted_calendar} or \code{chained_calendar}.
 }
 \details{
 Aggregated values for monthly or quarterly are the numbers of days belonging
@@ -60,6 +55,7 @@ to a given group, holidays are all summed together in of those groups.
 Contrasts are the differences between the number of days in a given group
 (1 to 6) and the number of days in the reference group (0).
 Regressors are corrected for long-term mean if \code{contrasts = TRUE}.
+Holidays are assigned to Sundays, and it cannot be changed for the time being.
 }
 \examples{
 \dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
@@ -76,7 +72,7 @@ BE <- national_calendar(list(
     special_day("ARMISTICE")
 ))
 calendar_td(BE, 12, c(1980, 1), 240,
-    holiday = 7, groups = c(1, 1, 1, 2, 2, 3, 0),
+    groups = c(1, 1, 1, 2, 2, 3, 0),
     contrasts = FALSE
 )
 \dontshow{\}) # examplesIf}
