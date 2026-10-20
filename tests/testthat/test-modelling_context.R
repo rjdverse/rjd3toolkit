@@ -41,16 +41,12 @@ test_that("modelling-context works", {
         mc2
     ))
     expect_message(expect_identical(
-        object = modelling_context(variables = list(v1 = AirPassengers)),
-        mc3
-    ))
-    expect_message(expect_identical(
-        object = modelling_context(variables = list(v1 = AirPassengers)),
-        mc3
-    ))
-    expect_message(expect_identical(
         object = modelling_context(variables = list(v1 = list(AirPassengers))),
         mc3
+    ))
+    expect_no_message(expect_identical(
+        object = modelling_context(variables = list(x1 = AirPassengers)),
+        mc4
     ))
     expect_no_message(expect_identical(
         object = modelling_context(variables = list(list(x1 = AirPassengers))),
