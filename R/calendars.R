@@ -326,13 +326,15 @@ single_day <- function(date, weight = 1) {
 #' WHITMONDAY     \tab Moving holiday, falling on the day after Pentecost.                                  \cr
 #' CORPUSCHRISTI  \tab Moving holiday, celebrated 60 days after Easter Sunday.                              \cr
 #' JULIANEASTER   \tab                                                                                      \cr
+#' LABORDAY       \tab Moving holiday, celebrated (in the USA) on the first Monday of September.              \cr                                                                             \cr
 #' MAYDAY         \tab Fixed holiday, falls on May, 1st.                                                      \cr
 #' ASSUMPTION     \tab Fixed holiday, falls on August, 15th.                                                  \cr
 #' HALLOWEEN      \tab Fixed holiday, falls on October, 31st.                                                 \cr
 #' ALLSAINTSDAY    \tab Fixed holiday, falls on November, 1st.                                                 \cr
 #' ARMISTICE      \tab Fixed holiday, falls on November, 11th.                                                \cr
-#' CHRISTMAS      \tab Fixed holiday, falls on December, 25th.
+#' CHRISTMAS      \tab Fixed holiday, falls on December, 25th.                                              \cr
 #' }
+#'
 #'
 #' @returns returns an object of class \code{c("JD3_SPECIALDAY","JD3_HOLIDAY")} (with name of the event, date, offset...)
 #'
