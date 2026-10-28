@@ -77,8 +77,6 @@ reference:
     - '`single_day`'
     - '`special_day`'
     - '`national_calendar`'
-    # - '`chained_calendar`'
-    # - '`weighted_calendar`'
 - title: Calendar Regressors
   desc: Functions allowing to generate calendar regressors
   contents:
