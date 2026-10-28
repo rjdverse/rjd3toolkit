@@ -8,8 +8,6 @@
 \alias{print.JD3_SPECIALDAY}
 \alias{print.JD3_SINGLEDAY}
 \alias{print.JD3_CALENDAR}
-\alias{print.JD3_CHAINEDCALENDAR}
-\alias{print.JD3_WEIGHTEDCALENDAR}
 \title{Calendars Print Methods}
 \usage{
 \method{print}{JD3_FIXEDDAY}(x, ...)
@@ -23,10 +21,6 @@
 \method{print}{JD3_SINGLEDAY}(x, ...)
 
 \method{print}{JD3_CALENDAR}(x, ...)
-
-\method{print}{JD3_CHAINEDCALENDAR}(x, ...)
-
-\method{print}{JD3_WEIGHTEDCALENDAR}(x, ...)
 }
 \arguments{
 \item{x}{a calendar related object}

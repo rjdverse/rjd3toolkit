@@ -22,17 +22,10 @@ A chained calendar is an useful option when major changes in the composition of 
 In such a case two calendars describing the situation before and after the change of regime can be defined
 and bound together, one before the break and one after the break.
 }
-\examples{
-\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
-Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
-France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
-chained_cal <- chained_calendar(France, Belgium, "2000-01-01")
-\dontshow{\}) # examplesIf}
-}
 \references{
 More information on calendar correction in JDemetra+ online documentation:
 \url{https://doc.jdemetra.org/a-calendar-correction}
 }
 \seealso{
-\code{\link{national_calendar}}, \code{\link{weighted_calendar}}
+\code{\link{national_calendar}}
 }
