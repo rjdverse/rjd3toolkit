@@ -42,13 +42,4 @@ documentation: <https://doc.jdemetra.org/a-calendar-correction>
 
 ## See also
 
-[`national_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/national_calendar.md),
-[`chained_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/chained_calendar.md)
-
-## Examples
-
-``` r
-Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
-France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
-composite_calendar <- weighted_calendar(list(France, Belgium), weights = c(1, 2))
-```
+[`national_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/national_calendar.md)

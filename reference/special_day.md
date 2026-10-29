@@ -55,13 +55,12 @@ Possible values :
 | CORPUSCHRISTI | Moving holiday, celebrated 60 days after Easter Sunday. |
 | JULIANEASTER |  |
 | LABORDAY | Moving holiday, celebrated (in the USA) on the first Monday of September. |
-|  | MAYDAY |
-| Fixed holiday, falls on May, 1st. | ASSUMPTION |
-| Fixed holiday, falls on August, 15th. | HALLOWEEN |
-| Fixed holiday, falls on October, 31st. | ALLSAINTSDAY |
-| Fixed holiday, falls on November, 1st. | ARMISTICE |
-| Fixed holiday, falls on November, 11th. | CHRISTMAS |
-| Fixed holiday, falls on December, 25th. |  |
+| MAYDAY | Fixed holiday, falls on May, 1st. |
+| ASSUMPTION | Fixed holiday, falls on August, 15th. |
+| HALLOWEEN | Fixed holiday, falls on October, 31st. |
+| ALLSAINTSDAY | Fixed holiday, falls on November, 1st. |
+| ARMISTICE | Fixed holiday, falls on November, 11th. |
+| CHRISTMAS | Fixed holiday, falls on December, 25th. |
 
 ## References
 

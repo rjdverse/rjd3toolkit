@@ -61,12 +61,8 @@ A matrix (class `"matrix"`) where each column is associated to a holiday
 
 ## Details
 
-The pre-defined in a calendar has to be created with the functions
-[`national_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/national_calendar.md)
-or
-[`weighted_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/weighted_calendar.md)
-or
-[`weighted_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/weighted_calendar.md).
+The pre-defined in a calendar has to be created with the function
+[`national_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/national_calendar.md).
 A many regressors as defined holidays are generated, when the holiday
 occurs the value is 1 and 0 otherwise. This kind of non-aggregated
 regressors are used for calendar correction in daily data.

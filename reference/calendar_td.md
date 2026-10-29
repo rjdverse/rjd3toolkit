@@ -2,9 +2,8 @@
 
 Allows to generate trading day regressors (as many as defined groups),
 taking into account 7 or less different types of days, from Monday to
-Sunday, and specific holidays,which are to defined beforehand in a
-calendar using the functions `national_calendar`,`weighted_calendar` or
-`Chained_calendar`.
+Sunday, and specific holidays, which are to define beforehand in a
+calendar using the function `national_calendar`.
 
 ## Usage
 
@@ -55,7 +54,8 @@ calendar_td(
 - holiday:
 
   Day to aggregate holidays with. (holidays are considered as that day).
-  1 for Monday... 7 for Sunday. Doesn't necessary belong to the 0-group.
+  1 for Monday... 7 for Sunday. Currently fixed to 7, not possible to be
+  changed. Doesn't necessary belong to the 0-group.
 
 - contrasts:
 

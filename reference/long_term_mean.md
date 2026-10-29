@@ -39,7 +39,8 @@ long_term_mean(
 - holiday:
 
   Day to aggregate holidays with. (holidays are considered as that day).
-  1 for Monday... 7 for Sunday. Doesn't necessary belong to the 0-group.
+  1 for Monday... 7 for Sunday. Currently fixed to 7, not possible to be
+  changed. Doesn't necessary belong to the 0-group.
 
 ## Value
 

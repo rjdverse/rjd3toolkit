@@ -1,6 +1,8 @@
 # Changelog
 
-## rjd3toolkit 3.9.0.9000
+## rjd3toolkit 3.9.1
+
+CRAN release: 2026-10-28
 
 All notable changes to this project will be documented in this file.
 
@@ -9,6 +11,19 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased](https://github.com/rjdverse/rjd3toolkit/compare/v3.9.0...HEAD)
+
+#### Deprecated
+
+- Remove functions `chained_calendar` and `weighted_calendar` (until
+  fixed)
+
+#### Changed
+
+- Changed the conventions for groups in modelling context (see examples
+  and [\#189](https://github.com/rjdverse/rjd3toolkit/issues/189))
+- Updated documentation with those changes
+- Handling of empty enums in jd3_utilities
+- Fixed documentation (README and special_day)
 
 ### [3.9.0](https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...v3.9.0) - 2026-09-21
 

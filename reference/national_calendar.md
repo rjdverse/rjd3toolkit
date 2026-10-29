@@ -35,11 +35,6 @@ returns an object of class `c("JD3_CALENDAR","JD3_CALENDARDEFINITION")`
 More information on calendar correction in JDemetra+ online
 documentation: <https://doc.jdemetra.org/a-calendar-correction>
 
-## See also
-
-[`chained_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/chained_calendar.md),
-[`weighted_calendar`](https://rjdverse.github.io/rjd3toolkit/reference/weighted_calendar.md)
-
 ## Examples
 
 ``` r

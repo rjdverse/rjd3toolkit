@@ -22,12 +22,6 @@ print(x, ...)
 
 # S3 method for class 'JD3_CALENDAR'
 print(x, ...)
-
-# S3 method for class 'JD3_CHAINEDCALENDAR'
-print(x, ...)
-
-# S3 method for class 'JD3_WEIGHTEDCALENDAR'
-print(x, ...)
 ```
 
 ## Arguments

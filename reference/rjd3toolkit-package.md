@@ -34,3 +34,5 @@ Authors:
   ([ORCID](https://orcid.org/0000-0001-7890-3857))
 
 - Anna Smyk <anna.smyk@insee.fr>
+
+- Eulalie Delaune <eulalie.delaune-virrion@insee.fr>

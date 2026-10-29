@@ -486,8 +486,6 @@ Functions to easily interact between R and Java objects
   [`print(`*`<JD3_SPECIALDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   [`print(`*`<JD3_SINGLEDAY>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   [`print(`*`<JD3_CALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
-  [`print(`*`<JD3_CHAINEDCALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
-  [`print(`*`<JD3_WEIGHTEDCALENDAR>`*`)`](https://rjdverse.github.io/rjd3toolkit/reference/print_calendars.md)
   : Calendars Print Methods
 
 - [`r2jd_calendarts()`](https://rjdverse.github.io/rjd3toolkit/reference/r2jd_calendarts.md)

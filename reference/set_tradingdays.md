@@ -244,6 +244,10 @@ variables <- list(
 # Add regressors to context
 my_context <- modelling_context(variables = variables)
 
+# Find the names of the variables in the modelling context:
+rjd3toolkit::.r2jd_modellingcontext(my_context)$getTsVariableDictionary()
+#> [1] "Java-Object{[r.Monday, r.Tuesday, r.Wednesday, r.Thursday, r.Friday, r.Saturday]}"
+
 # Create a new spec (here default group name: r)
 new_spec <- set_tradingdays(
     init_spec,

@@ -19,7 +19,7 @@ be built."><meta property="og:image" content="https://rjdverse.github.io/rjd3too
 
     <a class="navbar-brand me-2" href="../index.html">rjd3toolkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.9.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.9.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -279,6 +279,10 @@ with <code>rjd3x13::spec_regarima()</code> or <code>"JD3_TRAMOSEATS_SPEC"</code>
 <span class="r-in"><span><span class="co"># Add regressors to context</span></span></span>
 <span class="r-in"><span><span class="va">my_context</span> <span class="op">&lt;-</span> <span class="fu"><a href="modelling_context.html">modelling_context</a></span><span class="op">(</span>variables <span class="op">=</span> <span class="va">variables</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Find the names of the variables in the modelling context:</span></span></span>
+<span class="r-in"><span><span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="fu"><a href="jd3_utilities.html">.r2jd_modellingcontext</a></span><span class="op">(</span><span class="va">my_context</span><span class="op">)</span><span class="op">$</span><span class="fu">getTsVariableDictionary</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Java-Object{[r.Monday, r.Tuesday, r.Wednesday, r.Thursday, r.Friday, r.Saturday]}"</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create a new spec (here default group name: r)</span></span></span>
 <span class="r-in"><span><span class="va">new_spec</span> <span class="op">&lt;-</span> <span class="fu">set_tradingdays</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="va">init_spec</span>,</span></span>
@@ -297,7 +301,7 @@ with <code>rjd3x13::spec_regarima()</code> or <code>"JD3_TRAMOSEATS_SPEC"</code>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Jean Palate, Alain Quartier-la-Tente, Tanguy Barthelemy, Anna Smyk.</p>
+  <p>Developed by Jean Palate, Alain Quartier-la-Tente, Tanguy Barthelemy, Anna Smyk, Eulalie Delaune.</p>
 </div>
 
 <div class="pkgdown-footer-right">
