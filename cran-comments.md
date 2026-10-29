@@ -1,3 +1,12 @@
+## Submission of {rjd3toolkit} v3.9.1 - 2026-10-28
+
+### R CMD check results
+
+* checked on windows, mac, ubuntu
+
+0 errors | 0 warnings | 0 note
+
+
 ## Submission of {rjd3toolkit} v3.9.0 - 2026-09-18
 
 ### R CMD check results

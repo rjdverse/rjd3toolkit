@@ -7,6 +7,19 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.9.1] - 2026-10-29
+
+### Deprecated
+
+* Remove functions `chained_calendar` and `weighted_calendar` (until fixed)
+
+### Changed
+
+* Changed the conventions for groups in modelling context (see examples and [#189](https://github.com/rjdverse/rjd3toolkit/issues/189))
+* Updated documentation with those changes
+* Handling of empty enums in jd3_utilities
+* Fixed documentation (README and special_day)
+
 ## [3.9.0] - 2026-09-21
 
 ### Added
@@ -34,13 +47,21 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [3.8.0] - 2026-07-09
 
+### Added
+
+* Package-level documentation page
+
 ### Changed
 
 - Updated JARS from `jdplus-main` to [3.8.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.8.0)
+- New url for online documentation (https://doc.jdemetra.org)
+- New formating (apply [`air`](https://posit-dev.github.io/air/) on package)
 
 ### Fixed
 
 * Fix bug in weighted calendar regressors. [rjdverse/rjd3workspace#131](https://github.com/rjdverse/rjd3workspace/issues/131)
+* Fix typo between `"ts"` and `"tc"` [#159](https://github.com/rjdverse/rjd3toolkit/issues/159)
+* Some typos are corrected in the documentation. Examples have been updated.
 
 ## [3.7.1] - 2026-03-10
 
@@ -148,7 +169,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 * New JARS related to version [3.0.2](https://github.com/jdemetra/jdplus-main/releases/tag/v3.0.2)
 
-[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.9.0...HEAD
+[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.9.1...HEAD
+[3.9.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.9.0...v3.9.1
 [3.9.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...v3.9.0
 [3.8.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...v3.8.0
 [3.7.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...v3.7.1

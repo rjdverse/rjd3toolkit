@@ -26,8 +26,8 @@ days by c(1, 1, 1, 1, 1, 0, 0), week days, Saturdays, Sundays by
 c(1, 1, 1, 1, 1, 2, 0) etc.}
 
 \item{holiday}{Day to aggregate holidays with. (holidays are considered as
-that day). 1 for Monday... 7 for Sunday. Doesn't necessary belong to the
-0-group.}
+that day). 1 for Monday... 7 for Sunday. Currently fixed to 7, not possible
+to be changed. Doesn't necessary belong to the 0-group.}
 }
 \value{
 returns an object of class \code{c("matrix","array")} with the long term means corresponding

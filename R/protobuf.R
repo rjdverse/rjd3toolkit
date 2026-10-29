@@ -40,6 +40,9 @@ NULL
 #' @export
 #' @rdname jd3_utilities
 .enum_extract <- function(type, p) {
+    if (length(p) == 0) {
+        return(NULL)
+    }
     name <- type$value(number = p)$name()
     return(substring(name, regexpr("_", name, fixed = TRUE) + 1))
 }

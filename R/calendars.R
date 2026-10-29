@@ -326,13 +326,15 @@ single_day <- function(date, weight = 1) {
 #' WHITMONDAY     \tab Moving holiday, falling on the day after Pentecost.                                  \cr
 #' CORPUSCHRISTI  \tab Moving holiday, celebrated 60 days after Easter Sunday.                              \cr
 #' JULIANEASTER   \tab                                                                                      \cr
+#' LABORDAY       \tab Moving holiday, celebrated (in the USA) on the first Monday of September.              \cr
 #' MAYDAY         \tab Fixed holiday, falls on May, 1st.                                                      \cr
 #' ASSUMPTION     \tab Fixed holiday, falls on August, 15th.                                                  \cr
 #' HALLOWEEN      \tab Fixed holiday, falls on October, 31st.                                                 \cr
-#' ALLSAINTSDAY    \tab Fixed holiday, falls on November, 1st.                                                 \cr
+#' ALLSAINTSDAY   \tab Fixed holiday, falls on November, 1st.                                                 \cr
 #' ARMISTICE      \tab Fixed holiday, falls on November, 11th.                                                \cr
-#' CHRISTMAS      \tab Fixed holiday, falls on December, 25th.
+#' CHRISTMAS      \tab Fixed holiday, falls on December, 25th.                                              \cr
 #' }
+#'
 #'
 #' @returns returns an object of class \code{c("JD3_SPECIALDAY","JD3_HOLIDAY")} (with name of the event, date, offset...)
 #'
@@ -496,9 +498,8 @@ td <- function(
 #' holiday of a pre-defined calendar.
 #'
 #' @details
-#' The pre-defined in a calendar has to be created with the functions
-#' \code{\link{national_calendar}} or \code{\link{weighted_calendar}} or
-#' \code{\link{weighted_calendar}}. A many regressors  as defined holidays are
+#' The pre-defined in a calendar has to be created with the function
+#' \code{\link{national_calendar}}. A many regressors  as defined holidays are
 #' generated, when the holiday occurs the value is 1 and 0 otherwise.
 #' This kind of non-aggregated regressors are used for calendar correction in
 #' daily data.
@@ -819,16 +820,11 @@ stock_td <- function(frequency, start, length, s = NULL, w = 31) {
 #' @param break_date the break date in the format `"YYYY-MM-DD"`.
 #'
 #' @returns returns an object of class \code{c("JD3_CHAINEDCALENDAR","JD3_CALENDARDEFINITION")}
-#' @seealso \code{\link{national_calendar}}, \code{\link{weighted_calendar}}
+#' @seealso \code{\link{national_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://doc.jdemetra.org/a-calendar-correction}
-#' @examplesIf rjd3jars::check_java_version(silent = TRUE)
-#' Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
-#' France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
-#' chained_cal <- chained_calendar(France, Belgium, "2000-01-01")
 #'
-#' @export
 chained_calendar <- function(calendar1, calendar2, break_date) {
     return(structure(
         list(
@@ -874,18 +870,12 @@ chained_calendar <- function(calendar1, calendar2, break_date) {
 #' @returns returns an object of class
 #' \code{c("JD3_WEIGHTEDCALENDAR", "JD3_CALENDARDEFINITION")}
 #'
-#' @seealso \code{\link{national_calendar}}, \code{\link{chained_calendar}}
+#' @seealso \code{\link{national_calendar}}
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://doc.jdemetra.org/a-calendar-correction}
 #'
-#' @export
 #' @importFrom checkmate assert_numeric
-#'
-#' @examplesIf rjd3jars::check_java_version(silent = TRUE)
-#' Belgium <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 21)))
-#' France <- national_calendar(list(special_day("NEWYEAR"), fixed_day(7, 14)))
-#' composite_calendar <- weighted_calendar(list(France, Belgium), weights = c(1, 2))
 #'
 weighted_calendar <- function(calendars, weights) {
     checkmate::assert_numeric(weights)
@@ -978,7 +968,7 @@ weighted_calendar <- function(calendars, weights) {
 #'     special_day("ARMISTICE")
 #' ))
 #' @returns returns an object of class \code{c("JD3_CALENDAR","JD3_CALENDARDEFINITION")}
-#' @seealso \code{\link{chained_calendar}}, \code{\link{weighted_calendar}}
+#'
 #' @references
 #' More information on calendar correction in JDemetra+ online documentation:
 #' \url{https://doc.jdemetra.org/a-calendar-correction}
@@ -998,8 +988,8 @@ national_calendar <- function(days = list(), mean_correction = TRUE) {
 #' @description
 #' Allows to generate trading day regressors (as many as defined groups), taking
 #' into account 7 or less different types of days, from Monday to Sunday, and
-#' specific holidays,which are to defined beforehand in a calendar using the
-#' functions `national_calendar`,`weighted_calendar` or `Chained_calendar`.
+#' specific holidays, which are to define beforehand in a calendar using the
+#' function `national_calendar`.
 #'
 #' @details
 #' Aggregated values for monthly or quarterly are the numbers of days belonging
@@ -1011,8 +1001,8 @@ national_calendar <- function(days = list(), mean_correction = TRUE) {
 #' @inheritParams td
 #' @param calendar The calendar containing the required holidays
 #' @param holiday Day to aggregate holidays with. (holidays are considered as
-#' that day). 1 for Monday... 7 for Sunday. Doesn't necessary belong to the
-#' 0-group.
+#' that day). 1 for Monday... 7 for Sunday. Currently fixed to 7, not possible
+#' to be changed. Doesn't necessary belong to the 0-group.
 #'
 #' @returns Time series (object of class \code{c("ts","mts","matrix")})
 #' corresponding to each group, starting with the 0-group
@@ -1219,29 +1209,27 @@ print.JD3_CALENDAR <- function(x, ...) {
     return(invisible(x))
 }
 
-#' @export
 #' @rdname print_calendars
-print.JD3_CHAINEDCALENDAR <- function(x, ...) {
-    cat("First calendar before ", x$break_date, "\n", sep = "")
-    print(x$calendar1)
+# print.JD3_CHAINEDCALENDAR <- function(x, ...) {
+#     cat("First calendar before ", x$break_date, "\n", sep = "")
+#     print(x$calendar1)
+#
+#     cat("\n")
+#
+#     cat("Second calendar after ", x$break_date, "\n", sep = "")
+#     print(x$calendar2, enable_print_style = FALSE)
+#
+#     return(invisible(x))
+# }
 
-    cat("\n")
-
-    cat("Second calendar after ", x$break_date, "\n", sep = "")
-    print(x$calendar2, enable_print_style = FALSE)
-
-    return(invisible(x))
-}
-
-#' @export
 #' @rdname print_calendars
-print.JD3_WEIGHTEDCALENDAR <- function(x, ...) {
-    for (index_cal in seq_along(x$weights)) {
-        cat("Calendar n", index_cal, "\n", sep = "")
-        cat("weight: ", x$weight[index_cal], "\n", sep = "")
-        print(x$calendars[[index_cal]])
-        cat("\n")
-    }
-
-    return(invisible(x))
-}
+# print.JD3_WEIGHTEDCALENDAR <- function(x, ...) {
+#     for (index_cal in seq_along(x$weights)) {
+#         cat("Calendar n", index_cal, "\n", sep = "")
+#         cat("weight: ", x$weight[index_cal], "\n", sep = "")
+#         print(x$calendars[[index_cal]])
+#         cat("\n")
+#     }
+#
+#     return(invisible(x))
+# }

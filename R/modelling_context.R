@@ -429,6 +429,69 @@ regroup_elements_by_name <- function(x) {
     return(output)
 }
 
+#' @name put_univariate_in_r
+#' @noRd
+put_univariate_in_r <- function(x, n = NULL) {
+    UseMethod("put_univariate_in_r", x)
+}
+
+#' @rdname put_univariate_in_r
+#' @noRd
+#' @exportS3Method put_univariate_in_r ts
+#' @method put_univariate_in_r ts
+#' @export
+put_univariate_in_r.ts <- function(x, n = NULL) {
+    return(list(r = stats::setNames(list(x), n)))
+}
+
+#' @rdname put_univariate_in_r
+#' @noRd
+#' @exportS3Method put_univariate_in_r mts
+#' @method put_univariate_in_r mts
+#' @export
+put_univariate_in_r.mts <- function(x, n = NULL) {
+    return(put_univariate_in_r.default(x, n))
+}
+
+#' @importFrom stats setNames
+#' @rdname put_univariate_in_r
+#' @noRd
+#' @exportS3Method put_univariate_in_r JD3_DYNAMICTS
+#' @method put_univariate_in_r JD3_DYNAMICTS
+#' @export
+put_univariate_in_r.JD3_DYNAMICTS <- function(x, n = NULL) {
+    return(list(r = stats::setNames(list(x), n)))
+}
+
+#' @importFrom stats setNames
+#' @rdname put_univariate_in_r
+#' @noRd
+#' @exportS3Method put_univariate_in_r JD3_TS
+#' @method put_univariate_in_r JD3_TS
+#' @export
+put_univariate_in_r.JD3_TS <- function(x, n = NULL) {
+    return(list(r = stats::setNames(list(x), n)))
+}
+
+#' @importFrom stats setNames
+#' @rdname put_univariate_in_r
+#' @noRd
+#' @exportS3Method put_univariate_in_r default
+#' @method put_univariate_in_r default
+#' @export
+put_univariate_in_r.default <- function(x, n = NULL) {
+    return(stats::setNames(list(x), n))
+}
+
+#' @rdname put_univariate_in_r
+#' @noRd
+#' @exportS3Method put_univariate_in_r default
+#' @method put_univariate_in_r default
+#' @export
+put_univariate_in_r.default <- function(x, n = NULL) {
+    return(stats::setNames(list(x), n))
+}
+
 #' @title Flatten Nested Elements to Same Level
 #'
 #' @description
@@ -963,6 +1026,17 @@ modelling_context <- function(
     if (is.null(variables) || length(variables) == 0L) {
         variables <- list()
     } else if (is.list(variables)) {
+        variables <- lapply(
+            X = seq_along(variables),
+            FUN = function(id) {
+                put_univariate_in_r(
+                    x = variables[[id]],
+                    n = names(variables)[[id]]
+                )
+            }
+        ) |>
+            do.call(what = c)
+
         variables <- variables |>
             set_names(n = "r") |>
             replace_wrong_names(verbose = verbose) |>

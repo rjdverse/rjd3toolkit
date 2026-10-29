@@ -95,13 +95,22 @@ iv2 <- intervention_variable(
     ends = "2001-12-01",
     delta = 1
 )
-
-# Using one variable in a a seasonal adjustment process
-# Regressors as a list of two groups reg1 and reg2
-vars <- list(
-    reg1 = list(x = iv1),
-    reg2 = list(x = iv2)
+iv3 <- intervention_variable(
+    frequency = 12,
+    start = c(2000, 1),
+    length = 60,
+    starts = "2002-01-01",
+    ends = "2002-12-01"
 )
+
+# Regressors as a list of two groups reg1 and reg2_3
+vars <- list(
+    reg1 = list(iv1 = iv1),
+    reg2_3 = list(iv2 = iv2, iv3 = iv3)
+)
+# Possible not to define a group for a single regressor:
+# vars <- list(reg1 = iv1, reg2 = iv2)
+# This regressor is then automatically put into the 'r' group
 
 # Creating the modelling context
 my_context <- modelling_context(variables = vars)
@@ -110,9 +119,16 @@ my_context <- modelling_context(variables = vars)
 init_spec <- x13_spec_default
 
 # Regressors have to be added one by one
-new_spec <- add_usrdefvar(init_spec, name = "reg1.iv1", regeffect = "Trend")
-new_spec <- add_usrdefvar(new_spec, name = "reg2.iv2", regeffect = "Trend",
-                          coef = 0.7)
+new_spec <- add_usrdefvar(init_spec, name = "iv1", group = "reg1",
+                          regeffect = "Trend")
+new_spec <- add_usrdefvar(new_spec, name = "iv2", group = "reg2_3",
+                          regeffect = "Trend", coef = 0.7)
+new_spec <- add_usrdefvar(new_spec, name = "iv3", group = "reg2_3",
+                          regeffect = "Trend", coef = 0.6)
+
+# The default value of group is 'r', the group containing all the regressors
+# defined without specifying a group:
+# new_spec <- add_usrdefvar(new_spec, name = "reg1", regeffect = "Trend")
 \dontshow{\}) # examplesIf}
 }
 \references{

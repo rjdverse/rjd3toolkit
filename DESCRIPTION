@@ -1,13 +1,14 @@
 Type: Package
 Package: rjd3toolkit
 Title: Utility Functions Around 'JDemetra+ 3.0'
-Version: 3.9.0
+Version: 3.9.1
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Alain", "Quartier-la-Tente", , "alain.quartier@yahoo.fr", role = "aut",
            comment = c(ORCID = "0000-0001-7890-3857")),
     person("Tanguy", "Barthelemy", , "timeserieswithjdemetraandr@gmail.com", role = c("aut", "cre", "art", "cph")),
-    person("Anna", "Smyk", , "anna.smyk@insee.fr", role = "aut")
+    person("Anna", "Smyk", , "anna.smyk@insee.fr", role = "aut"),
+    person("Eulalie", "Delaune", , "eulalie.delaune-virrion@insee.fr", role = "aut")
   )
 Description: R Interface to 'JDemetra+ 3.x'
     (<https://github.com/jdemetra>) time series analysis software.  It
@@ -35,7 +36,7 @@ Imports:
 Suggests: 
     spelling,
     testthat (>= 3.0.0)
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB

@@ -196,6 +196,9 @@ variables <- list(
 # Add regressors to context
 my_context <- modelling_context(variables = variables)
 
+# Find the names of the variables in the modelling context:
+rjd3toolkit::.r2jd_modellingcontext(my_context)$getTsVariableDictionary()
+
 # Create a new spec (here default group name: r)
 new_spec <- set_tradingdays(
     init_spec,
