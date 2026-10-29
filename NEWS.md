@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.9.1] - 2026-10-29
+
 ### Deprecated
 
 * Remove functions `chained_calendar` and `weighted_calendar` (until fixed)
@@ -17,7 +19,6 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Updated documentation with those changes
 * Handling of empty enums in jd3_utilities
 * Fixed documentation (README and special_day)
-
 
 ## [3.9.0] - 2026-09-21
 
@@ -168,7 +169,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 * New JARS related to version [3.0.2](https://github.com/jdemetra/jdplus-main/releases/tag/v3.0.2)
 
-[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.9.0...HEAD
+[Unreleased]: https://github.com/rjdverse/rjd3toolkit/compare/v3.9.1...HEAD
+[3.9.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.9.0...v3.9.1
 [3.9.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.8.0...v3.9.0
 [3.8.0]: https://github.com/rjdverse/rjd3toolkit/compare/v3.7.1...v3.8.0
 [3.7.1]: https://github.com/rjdverse/rjd3toolkit/compare/v3.6.0...v3.7.1
