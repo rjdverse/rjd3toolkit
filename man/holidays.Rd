@@ -45,9 +45,8 @@ Allows to generate daily regressors (dummy variables) corresponding to each
 holiday of a pre-defined calendar.
 }
 \details{
-The pre-defined in a calendar has to be created with the functions
-\code{\link{national_calendar}} or \code{\link{weighted_calendar}} or
-\code{\link{weighted_calendar}}. A many regressors  as defined holidays are
+The pre-defined in a calendar has to be created with the function
+\code{\link{national_calendar}}. A many regressors  as defined holidays are
 generated, when the holiday occurs the value is 1 and 0 otherwise.
 This kind of non-aggregated regressors are used for calendar correction in
 daily data.

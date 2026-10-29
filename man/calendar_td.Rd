@@ -37,8 +37,8 @@ days by c(1, 1, 1, 1, 1, 0, 0), week days, Saturdays, Sundays by
 c(1, 1, 1, 1, 1, 2, 0) etc.}
 
 \item{holiday}{Day to aggregate holidays with. (holidays are considered as
-that day). 1 for Monday... 7 for Sunday. Doesn't necessary belong to the
-0-group.}
+that day). 1 for Monday... 7 for Sunday. Currently fixed to 7, not possible
+to be changed. Doesn't necessary belong to the 0-group.}
 
 \item{contrasts}{If true, the variables are defined by contrasts with the
 0-group. Otherwise, raw number of days is provided.}
@@ -51,8 +51,8 @@ corresponding to each group, starting with the 0-group
 \description{
 Allows to generate trading day regressors (as many as defined groups), taking
 into account 7 or less different types of days, from Monday to Sunday, and
-specific holidays,which are to defined beforehand in a calendar using the
-functions \code{national_calendar},\code{weighted_calendar} or \code{Chained_calendar}.
+specific holidays, which are to define beforehand in a calendar using the
+function \code{national_calendar}.
 }
 \details{
 Aggregated values for monthly or quarterly are the numbers of days belonging
