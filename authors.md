@@ -16,7 +16,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/rjdverse/rjd3toolkit/blob/develop/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/rjdverse/rjd3toolkit/blob/v3.9.1/DESCRIPTION)
 
 Palate J, Quartier-la-Tente A, Barthelemy T, Smyk A, Delaune E (2026).
 *rjd3toolkit: Utility Functions Around 'JDemetra+ 3.0'*. R package
